@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>성기현 · QA Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Noto+Sans+KR:wght@300;400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --surface: #111118;
+      --border: #1e1e2e;
+      --accent: #00e5a0;
+      --accent2: #7b61ff;
+      --text: #e8e8f0;
+      --muted: #6b6b80;
+      --card: #13131c;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Noto Sans KR', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── GRID NOISE BACKGROUND ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0,229,160,.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,229,160,.03) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── GLOW BLOB ── */
+    .glow {
+      position: fixed;
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(123,97,255,.12) 0%, transparent 70%);
+      top: -150px; right: -150px;
+      pointer-events: none;
+      z-index: 0;
+      animation: blobFloat 8s ease-in-out infinite alternate;
+    }
+    @keyframes blobFloat {
+      from { transform: translate(0,0) scale(1); }
+      to   { transform: translate(-40px, 60px) scale(1.1); }
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 60px;
+      background: rgba(10,10,15,.8);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: var(--accent);
+      letter-spacing: .05em;
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .78rem;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: .08em;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 120px 60px 80px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .hero-eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .8rem;
+      color: var(--accent);
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      opacity: 0;
+      animation: fadeUp .6s .2s forwards;
+    }
+    .hero-name {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(3.5rem, 9vw, 7.5rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -.02em;
+      margin-bottom: 12px;
+      opacity: 0;
+      animation: fadeUp .6s .35s forwards;
+    }
+    .hero-name span {
+      -webkit-text-stroke: 1.5px var(--accent);
+      color: transparent;
+    }
+    .hero-sub {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1rem, 2.5vw, 1.5rem);
+      font-weight: 600;
+      color: var(--muted);
+      margin-bottom: 36px;
+      opacity: 0;
+      animation: fadeUp .6s .5s forwards;
+    }
+    .hero-desc {
+      max-width: 520px;
+      font-size: .97rem;
+      color: #9494aa;
+      margin-bottom: 52px;
+      opacity: 0;
+      animation: fadeUp .6s .65s forwards;
+    }
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--accent);
+      color: #000;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .82rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-decoration: none;
+      padding: 14px 32px;
+      border-radius: 4px;
+      transition: transform .2s, box-shadow .2s;
+      opacity: 0;
+      animation: fadeUp .6s .8s forwards;
+    }
+    .hero-cta:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(0,229,160,.3);
+    }
+    .hero-cta svg { transition: transform .2s; }
+    .hero-cta:hover svg { transform: translateX(4px); }
+
+    /* ── SECTIONS ── */
+    section {
+      position: relative; z-index: 1;
+      max-width: 1100px; margin: 0 auto;
+      padding: 100px 60px;
+    }
+    .section-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .72rem;
+      color: var(--accent);
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .section-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      margin-bottom: 56px;
+      line-height: 1.1;
+    }
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: var(--border);
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* ── STACK GRID ── */
+    .stack-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 16px;
+    }
+    .stack-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px 24px;
+      transition: border-color .25s, transform .25s;
+      position: relative;
+      overflow: hidden;
+    }
+    .stack-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(0,229,160,.06), transparent 60%);
+      opacity: 0;
+      transition: opacity .25s;
+    }
+    .stack-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+    .stack-card:hover::before { opacity: 1; }
+    .stack-icon {
+      width: 44px; height: 44px;
+      background: rgba(0,229,160,.1);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 16px;
+      font-size: 1.3rem;
+    }
+    .stack-name {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      margin-bottom: 6px;
+    }
+    .stack-desc {
+      font-size: .82rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* ── PROJECT CARD ── */
+    .project-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 48px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color .3s;
+    }
+    .project-card:hover { border-color: var(--accent2); }
+    .project-badge {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .7rem;
+      color: var(--accent2);
+      border: 1px solid var(--accent2);
+      border-radius: 100px;
+      padding: 4px 14px;
+      margin-bottom: 24px;
+      letter-spacing: .1em;
+    }
+    .project-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.7rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+    .project-desc {
+      color: #9494aa;
+      max-width: 560px;
+      margin-bottom: 36px;
+      font-size: .95rem;
+    }
+    .workflow {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 36px;
+    }
+    .wf-step {
+      background: rgba(123,97,255,.12);
+      border: 1px solid rgba(123,97,255,.3);
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .75rem;
+      color: #b8aaff;
+    }
+    .wf-arrow { color: var(--muted); font-size: .9rem; }
+    .feature-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .feature-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: .9rem;
+      color: #9494aa;
+    }
+    .feature-list li::before {
+      content: '▸';
+      color: var(--accent);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .project-deco {
+      position: absolute;
+      right: -60px; bottom: -60px;
+      width: 280px; height: 280px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(123,97,255,.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* ── CONTACT ── */
+    .contact-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .contact-text .big {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 14px;
+    }
+    .contact-text .big em {
+      font-style: normal;
+      color: var(--accent);
+    }
+    .contact-text p { color: var(--muted); font-size: .92rem; }
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 24px;
+      text-decoration: none;
+      color: var(--text);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .8rem;
+      transition: border-color .2s, background .2s;
+      min-width: 240px;
+    }
+    .contact-link:hover { border-color: var(--accent); background: rgba(0,229,160,.05); }
+    .contact-link span { color: var(--accent); }
+
+    /* ── FOOTER ── */
+    footer {
+      position: relative; z-index: 1;
+      text-align: center;
+      padding: 32px 60px;
+      border-top: 1px solid var(--border);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .72rem;
+      color: var(--muted);
+      letter-spacing: .1em;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .65s, transform .65s;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      .hero, section { padding-left: 24px; padding-right: 24px; }
+      .project-card { padding: 28px; }
+      .contact-wrap { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <div class="glow"></div>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="#">KH.QA</a>
+    <ul class="nav-links">
+      <li><a href="#about">// about</a></li>
+      <li><a href="#stack">// stack</a></li>
+      <li><a href="#project">// project</a></li>
+      <li><a href="#contact">// contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero" id="about">
+    <p class="hero-eyebrow">QA Engineer · Automation Specialist</p>
+    <h1 class="hero-name">성<span>기현</span></h1>
+    <p class="hero-sub">Quality Assurance × AI Automation</p>
+    <p class="hero-desc">
+      Claude MCP를 활용한 QA 자동화 포트폴리오입니다.<br>
+      테스트 설계부터 자동 실행, 결과 리포팅까지—<br>
+      AI와 함께 QA의 새로운 가능성을 탐구합니다.
+    </p>
+    <a class="hero-cta" href="#project">
+      프로젝트 보기
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- STACK -->
+  <section id="stack">
+    <p class="section-label reveal">// tech stack</p>
+    <h2 class="section-title reveal">기술 스택</h2>
+    <div class="stack-grid">
+      <div class="stack-card reveal">
+        <div class="stack-icon">🤖</div>
+        <div class="stack-name">Claude MCP</div>
+        <div class="stack-desc">Model Context Protocol 기반 AI 에이전트 자동화 워크플로우 구축</div>
+      </div>
+      <div class="stack-card reveal">
+        <div class="stack-icon">🐙</div>
+        <div class="stack-name">GitHub</div>
+        <div class="stack-desc">버전 관리, CI/CD 파이프라인, 테스트 결과 자동 커밋 및 배포</div>
+      </div>
+      <div class="stack-card reveal">
+        <div class="stack-icon">📋</div>
+        <div class="stack-name">Notion</div>
+        <div class="stack-desc">테스트케이스 문서화, 버그 트래킹, QA 결과 자동 업데이트</div>
+      </div>
+      <div class="stack-card reveal">
+        <div class="stack-icon">🎭</div>
+        <div class="stack-name">Playwright</div>
+        <div class="stack-desc">E2E 브라우저 자동화 테스트, 스크린샷 캡처 및 시각 회귀 검증</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- PROJECT -->
+  <section id="project">
+    <p class="section-label reveal">// project</p>
+    <h2 class="section-title reveal">주요 프로젝트</h2>
+    <div class="project-card reveal">
+      <div class="project-deco"></div>
+      <div class="project-badge">FEATURED PROJECT</div>
+      <h3 class="project-title">테스트케이스 자동생성<br>워크플로우</h3>
+      <p class="project-desc">
+        Claude MCP를 중심으로 GitHub · Notion · Playwright를 연결한
+        엔드투엔드 QA 자동화 파이프라인. 요구사항 입력부터 테스트 실행,
+        결과 리포팅까지 전 과정을 자동화합니다.
+      </p>
+
+      <div class="workflow">
+        <div class="wf-step">요구사항 입력</div>
+        <span class="wf-arrow">→</span>
+        <div class="wf-step">Claude MCP</div>
+        <span class="wf-arrow">→</span>
+        <div class="wf-step">TC 자동 생성</div>
+        <span class="wf-arrow">→</span>
+        <div class="wf-step">Notion 저장</div>
+        <span class="wf-arrow">→</span>
+        <div class="wf-step">Playwright 실행</div>
+        <span class="wf-arrow">→</span>
+        <div class="wf-step">GitHub 커밋</div>
+      </div>
+
+      <ul class="feature-list">
+        <li>Claude MCP로 자연어 요구사항을 구조화된 테스트케이스로 자동 변환</li>
+        <li>생성된 TC를 Notion 데이터베이스에 자동 업로드 및 관리</li>
+        <li>Playwright 스크립트 자동 생성 후 브라우저 E2E 테스트 실행</li>
+        <li>테스트 결과 스크린샷·로그를 GitHub에 자동 커밋하여 이력 관리</li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="contact-wrap reveal">
+      <div class="contact-text">
+        <div class="big">함께 <em>더 나은</em><br>QA를 만들어요.</div>
+        <p>자동화 테스트, AI 기반 QA 전략에 관심 있으시면<br>언제든지 연락 주세요.</p>
+      </div>
+      <div class="contact-links">
+        <a class="contact-link" href="https://github.com/kihyunqa" target="_blank">
+          <span>◆</span> github.com/kihyunqa
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    © 2025 성기현 · Built with Claude MCP
+  </footer>
+
+  <script>
+    // Intersection Observer for reveal animations
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          // stagger children
+          const children = e.target.parentElement?.querySelectorAll('.reveal');
+          if (children) {
+            [...children].forEach((el, i) => {
+              el.style.transitionDelay = `${i * 0.08}s`;
+            });
+          }
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
