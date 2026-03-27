@@ -36,7 +36,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);font-weight:
 body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 70% 50% at 15% 10%,rgba(124,58,237,.07) 0%,transparent 55%),radial-gradient(ellipse 50% 70% at 85% 85%,rgba(168,85,247,.05) 0%,transparent 55%);pointer-events:none;z-index:0}
 body::after{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.025) 2px,rgba(0,0,0,.025) 4px);pointer-events:none;z-index:1}
 
-/* NAV - position: fixed, top: 0 */
+/* NAV */
 nav{position:fixed;top:0;left:0;right:0;padding:18px 56px;display:flex;align-items:center;justify-content:space-between;z-index:1000;background:rgba(8,6,15,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--p-border)}
 .nav-logo{font-family:var(--mono);font-size:12px;color:var(--purple);letter-spacing:.12em}
 .nav-links{display:flex;gap:32px;list-style:none}
@@ -389,6 +389,12 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:
       <div class="vc-desc">기능 명세 → TC 24건 자동 생성 → 로컬 저장 → GitHub 업로드. 반복 작업을 대화 한 번으로 처리합니다.</div>
       <div class="vc-tags"><span class="vc-tag">filesystem MCP</span><span class="vc-tag">github MCP</span><span class="vc-tag">playwright MCP</span></div>
     </div>
+    <div class="vision-card active-card">
+      <div class="vc-top"><div class="vc-icon">⚡</div><span class="badge badge-done">구현 완료</span></div>
+      <div class="vc-title">오케스트레이션 하네스</div>
+      <div class="vc-desc">여러 MCP 도구를 조합해 파이프라인을 자유롭게 구성하는 인터랙티브 하네스. 웹 검색 → AI 분석 → 문서 작성 → 번역까지 노드 단위로 체이닝합니다.</div>
+      <div class="vc-tags"><span class="vc-tag">Multi-MCP</span><span class="vc-tag">파이프라인 빌더</span><span class="vc-tag">Claude-in-Claude</span></div>
+    </div>
     <div class="vision-card">
       <div class="vc-top"><div class="vc-icon">🐛</div><span class="badge badge-wip">구현 예정</span></div>
       <div class="vc-title">Jira MCP 버그 패턴 분석</div>
@@ -406,12 +412,6 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:
       <div class="vc-title">Slack MCP QA 알림 봇</div>
       <div class="vc-desc">릴리즈 전 TC 통과율, 블로커 버그 현황을 Slack 채널에 자동 요약 전송합니다. QA 상태를 팀 전체가 실시간으로 파악합니다.</div>
       <div class="vc-tags"><span class="vc-tag">Slack MCP</span><span class="vc-tag">알림 자동화</span><span class="vc-tag">릴리즈 QA</span></div>
-    </div>
-    <div class="vision-card">
-      <div class="vc-top"><div class="vc-icon">🔀</div><span class="badge badge-wip">구현 예정</span></div>
-      <div class="vc-title">QA 오케스트레이션 하네스</div>
-      <div class="vc-desc">TC 생성 → 실행 → 버그 등록 → 문서화 → 알림까지, 전체 QA 파이프라인을 Claude가 오케스트레이션합니다.</div>
-      <div class="vc-tags"><span class="vc-tag">Multi-MCP</span><span class="vc-tag">파이프라인</span><span class="vc-tag">자동화</span></div>
     </div>
     <div class="vision-card">
       <div class="vc-top"><div class="vc-icon">⚙️</div><span class="badge badge-wip">구현 예정</span></div>
@@ -433,7 +433,7 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:
 
     <!-- PROJECT 01: TC 자동생성 워크플로우 -->
     <div class="proj-card reveal">
-      <div class="proj-num">PROJECT 01 · 구현 완료</div>
+      <div class="proj-num">PROJECT 01 · <span class="badge badge-done" style="font-size:9px;padding:2px 8px">구현 완료</span></div>
       <div class="proj-icon">🤖</div>
       <div class="proj-title">TC 자동생성 워크플로우</div>
       <div class="proj-desc">
@@ -461,13 +461,13 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:
 
     <!-- PROJECT 02: QA 대응 프로세스 + 브랜치 전략 -->
     <div class="proj-card reveal">
-      <div class="proj-num">PROJECT 02 · 구현 완료</div>
+      <div class="proj-num">PROJECT 02 · <span class="badge badge-done" style="font-size:9px;padding:2px 8px">구현 완료</span></div>
       <div class="proj-icon">🔀</div>
       <div class="proj-title">QA 대응 프로세스 + 브랜치 전략</div>
       <div class="proj-desc">
         버그 발생 시 브랜치 전략과 연계한 QA 대응 프로세스를 설계했습니다.
-        main / develop / feature 브랜치 구조에서 QA가 개입해야 하는 시점과 방식을 명확히 정의하고,
-        GitHub MCP를 통해 브랜치 생성·PR·커밋까지 대화로 처리합니다.
+        main / develop / feature 브랜치 구조에서 QA가 개입해야 하는 시점을 정의하고,
+        GitHub MCP로 브랜치 생성·PR·커밋까지 대화로 처리합니다.
       </div>
       <div class="branch-vis">
         <div><span class="branch-main">main</span>     <span class="branch-dim">──●────────────────────●──</span> <span class="branch-dim"># 릴리즈 · QA 최종 승인</span></div>
@@ -480,6 +480,116 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:
         <span class="proj-tag">main / develop / feature</span>
         <span class="proj-tag">QA 대응 프로세스</span>
         <span class="proj-tag">PR 검증</span>
+      </div>
+    </div>
+
+    <!-- PROJECT 03: 오케스트레이션 하네스 -->
+    <div class="proj-card reveal">
+      <div class="proj-num">PROJECT 03 · <span class="badge badge-done" style="font-size:9px;padding:2px 8px">구현 완료</span></div>
+      <div class="proj-icon">⚡</div>
+      <div class="proj-title">오케스트레이션 하네스 구축</div>
+      <div class="proj-desc">
+        여러 MCP 도구를 자유롭게 조합하는 파이프라인 빌더를 구축했습니다.
+        웹 검색 → AI 요약 → 분석 → 문서 작성 → 번역까지 노드를 드래그해 구성하고,
+        Claude-in-Claude 방식으로 각 단계가 이전 결과를 컨텍스트로 받아 체이닝 실행됩니다.
+      </div>
+      <div class="proj-flow">
+        <span class="proj-flow-step">노드 조합</span>
+        <span class="proj-flow-arrow">→</span>
+        <span class="proj-flow-step">파이프라인 실행</span>
+        <span class="proj-flow-arrow">→</span>
+        <span class="proj-flow-step">결과 체이닝</span>
+        <span class="proj-flow-arrow">→</span>
+        <span class="proj-flow-step">JSON/MD 내보내기</span>
+      </div>
+      <div class="proj-tags">
+        <span class="proj-tag proj-tag-p">Claude-in-Claude</span>
+        <span class="proj-tag proj-tag-p">Multi-MCP</span>
+        <span class="proj-tag">파이프라인 빌더</span>
+        <span class="proj-tag">8가지 MCP 노드</span>
+        <span class="proj-tag">프리셋 자동화</span>
+      </div>
+    </div>
+
+    <!-- PROJECT 04: Claude Code 환경 세팅 + Skill 지침 -->
+    <div class="proj-card reveal">
+      <div class="proj-num">PROJECT 04 · <span class="badge badge-done" style="font-size:9px;padding:2px 8px">구현 완료</span></div>
+      <div class="proj-icon">⚙️</div>
+      <div class="proj-title">Claude Code 환경 세팅 + Skill 지침 설정</div>
+      <div class="proj-desc">
+        Claude Code를 QA 환경에 최적화해 구성했습니다.
+        Skill 파일로 반복 작업 패턴을 지침화하고, MCP 서버 연결 설정 및 QA 특화 프롬프트 구조를 정의했습니다.
+        한 번 세팅하면 이후 모든 QA 자동화 작업에 일관된 방식으로 적용됩니다.
+      </div>
+      <div class="proj-flow">
+        <span class="proj-flow-step">Claude Code 설치</span>
+        <span class="proj-flow-arrow">→</span>
+        <span class="proj-flow-step">MCP 서버 연결</span>
+        <span class="proj-flow-arrow">→</span>
+        <span class="proj-flow-step">Skill 지침 정의</span>
+        <span class="proj-flow-arrow">→</span>
+        <span class="proj-flow-step">QA 자동화 적용</span>
+      </div>
+      <div class="proj-tags">
+        <span class="proj-tag proj-tag-p">Claude Code</span>
+        <span class="proj-tag proj-tag-p">Skill 지침</span>
+        <span class="proj-tag">MCP 서버 설정</span>
+        <span class="proj-tag">QA 환경 구성</span>
+        <span class="proj-tag">프롬프트 설계</span>
+      </div>
+    </div>
+
+    <!-- PROJECT 05: Slack MCP + Confluence MCP 문서 자동화 -->
+    <div class="proj-card reveal">
+      <div class="proj-num">PROJECT 05 · <span class="badge badge-wip" style="font-size:9px;padding:2px 8px">구현 예정</span></div>
+      <div class="proj-icon">📢</div>
+      <div class="proj-title">Slack MCP + Confluence MCP 문서 자동화</div>
+      <div class="proj-desc">
+        QA 결과를 Confluence에 자동으로 문서화하고, 주요 지표를 Slack 채널에 실시간 발송합니다.
+        릴리즈 전 TC 통과율, P1 버그 현황, 블로커 이슈를 팀 전체가 즉시 파악할 수 있도록
+        Claude가 중간에서 분석·작성·전송을 모두 처리합니다.
+      </div>
+      <div class="proj-flow">
+        <span class="proj-flow-step">QA 결과 수집</span>
+        <span class="proj-flow-arrow">→</span>
+        <span class="proj-flow-step">Confluence 문서화</span>
+        <span class="proj-flow-arrow">→</span>
+        <span class="proj-flow-step">Slack 알림 발송</span>
+      </div>
+      <div class="proj-tags">
+        <span class="proj-tag proj-tag-p">Slack MCP</span>
+        <span class="proj-tag proj-tag-p">Confluence MCP</span>
+        <span class="proj-tag">문서 자동화</span>
+        <span class="proj-tag">QA 알림 봇</span>
+        <span class="proj-tag">릴리즈 QA</span>
+      </div>
+    </div>
+
+    <!-- PROJECT 06: Jira MCP 버그 분석 -->
+    <div class="proj-card reveal">
+      <div class="proj-num">PROJECT 06 · <span class="badge badge-wip" style="font-size:9px;padding:2px 8px">구현 예정</span></div>
+      <div class="proj-icon">🐛</div>
+      <div class="proj-title">Jira MCP 버그 분석</div>
+      <div class="proj-desc">
+        Jira에 쌓인 버그 데이터를 Claude가 자동으로 가져와 분석합니다.
+        버그 수 · 심각도 분포 · 담당자별 현황 · 반복 패턴을 한눈에 파악하고,
+        "이번 스프린트 P1 버그 현황"처럼 자연어로 물으면 즉시 분석 결과를 받을 수 있습니다.
+      </div>
+      <div class="proj-flow">
+        <span class="proj-flow-step">Jira 데이터 수집</span>
+        <span class="proj-flow-arrow">→</span>
+        <span class="proj-flow-step">심각도/패턴 분석</span>
+        <span class="proj-flow-arrow">→</span>
+        <span class="proj-flow-step">담당자별 현황</span>
+        <span class="proj-flow-arrow">→</span>
+        <span class="proj-flow-step">리포트 생성</span>
+      </div>
+      <div class="proj-tags">
+        <span class="proj-tag proj-tag-p">Jira MCP</span>
+        <span class="proj-tag">버그 수 분석</span>
+        <span class="proj-tag">심각도 분류</span>
+        <span class="proj-tag">담당자 현황</span>
+        <span class="proj-tag">패턴 탐지</span>
       </div>
     </div>
 
