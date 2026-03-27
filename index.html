@@ -4,18 +4,23 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>kihyunqa — QA Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Bebas+Neue&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Bebas+Neue&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg: #0a0a0a;
-      --surface: #111111;
-      --border: #222222;
+      --bg: #060608;
+      --surface: #0e0e12;
+      --surface2: #13131a;
+      --border: #1e1e28;
+      --border2: #2a2a38;
       --accent: #00ff88;
+      --accent-dim: rgba(0,255,136,0.12);
       --accent2: #ff3c6e;
-      --text: #e8e8e8;
-      --muted: #555555;
+      --accent3: #4d9fff;
+      --text: #ececec;
+      --text2: #a0a0b8;
+      --muted: #4a4a60;
       --mono: 'DM Mono', monospace;
       --display: 'Bebas Neue', sans-serif;
       --body: 'Noto Sans KR', sans-serif;
@@ -27,153 +32,304 @@
       background: var(--bg);
       color: var(--text);
       font-family: var(--body);
-      min-height: 100vh;
       overflow-x: hidden;
+      cursor: none;
     }
 
-    /* noise overlay */
-    body::before {
+    /* ── CUSTOM CURSOR ── */
+    .cursor {
+      position: fixed;
+      width: 8px; height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transition: transform 0.15s, opacity 0.15s;
+      transform: translate(-50%, -50%);
+    }
+    .cursor-ring {
+      position: fixed;
+      width: 32px; height: 32px;
+      border: 1px solid rgba(0,255,136,0.4);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9998;
+      transition: transform 0.35s cubic-bezier(0.2,1,0.3,1), width 0.3s, height 0.3s, opacity 0.2s;
+      transform: translate(-50%, -50%);
+    }
+
+    /* ── NOISE ── */
+    body::after {
       content: '';
       position: fixed;
       inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
       pointer-events: none;
-      z-index: 999;
-      opacity: 0.4;
+      z-index: 9990;
+    }
+
+    /* ── GRID OVERLAY ── */
+    .grid-overlay {
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0,255,136,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,255,136,0.025) 1px, transparent 1px);
+      background-size: 80px 80px;
+      pointer-events: none;
+      z-index: 0;
     }
 
     /* ── HEADER ── */
     header {
       position: fixed;
       top: 0; left: 0; right: 0;
-      z-index: 100;
+      z-index: 500;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 20px 48px;
+      padding: 22px 60px;
       border-bottom: 1px solid var(--border);
-      background: rgba(10,10,10,0.85);
-      backdrop-filter: blur(12px);
+      background: rgba(6,6,8,0.88);
+      backdrop-filter: blur(20px);
     }
 
     .logo {
       font-family: var(--mono);
-      font-size: 13px;
+      font-size: 12px;
       color: var(--accent);
-      letter-spacing: 0.1em;
+      letter-spacing: 0.08em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
+    .logo-dot {
+      width: 6px; height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: blink 2.4s ease-in-out infinite;
+    }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.2} }
 
+    nav { display: flex; align-items: center; gap: 40px; }
     nav a {
       font-family: var(--mono);
-      font-size: 11px;
+      font-size: 10px;
       color: var(--muted);
       text-decoration: none;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
-      margin-left: 32px;
       transition: color 0.2s;
+      position: relative;
+    }
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -3px; left: 0;
+      width: 0; height: 1px;
+      background: var(--accent);
+      transition: width 0.3s;
     }
     nav a:hover { color: var(--accent); }
+    nav a:hover::after { width: 100%; }
+
+    .nav-status {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      padding: 6px 14px;
+      border: 1px solid var(--border2);
+    }
+    .nav-status .dot { width:5px;height:5px;border-radius:50%;background:var(--accent);animation:blink 2s infinite; }
 
     /* ── HERO ── */
     .hero {
+      position: relative;
       min-height: 100vh;
+      display: grid;
+      grid-template-rows: 1fr auto;
+      padding: 0 60px;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .hero-center {
       display: flex;
       flex-direction: column;
-      justify-content: flex-end;
-      padding: 0 48px 80px;
-      position: relative;
-      overflow: hidden;
+      justify-content: center;
+      padding-top: 100px;
+      padding-bottom: 40px;
+      max-width: 900px;
     }
 
-    .hero-bg-text {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-family: var(--display);
-      font-size: clamp(120px, 22vw, 320px);
-      color: transparent;
-      -webkit-text-stroke: 1px rgba(255,255,255,0.04);
-      white-space: nowrap;
-      pointer-events: none;
-      user-select: none;
-      letter-spacing: 0.05em;
-    }
-
-    .hero-tag {
+    .hero-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 16px;
       font-family: var(--mono);
       font-size: 11px;
       color: var(--accent);
-      letter-spacing: 0.2em;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
-      margin-bottom: 24px;
+      margin-bottom: 32px;
       opacity: 0;
-      animation: fadeUp 0.8s 0.2s forwards;
+      animation: slideUp 0.7s 0.1s forwards;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      width: 32px; height: 1px;
+      background: var(--accent);
     }
 
     .hero-title {
       font-family: var(--display);
-      font-size: clamp(64px, 10vw, 140px);
-      line-height: 0.92;
-      letter-spacing: 0.02em;
+      font-size: clamp(80px, 12vw, 160px);
+      line-height: 0.9;
+      letter-spacing: 0.03em;
       color: var(--text);
       opacity: 0;
-      animation: fadeUp 0.8s 0.4s forwards;
+      animation: slideUp 0.8s 0.25s forwards;
+    }
+    .hero-title .line2 { color: var(--accent); display: block; }
+    .hero-title .line3 {
+      display: block;
+      -webkit-text-stroke: 1px rgba(236,236,236,0.25);
+      color: transparent;
     }
 
-    .hero-title span { color: var(--accent); }
-
+    .hero-body {
+      display: flex;
+      align-items: flex-start;
+      gap: 60px;
+      margin-top: 48px;
+      opacity: 0;
+      animation: slideUp 0.8s 0.45s forwards;
+    }
     .hero-desc {
-      margin-top: 32px;
       font-size: 15px;
-      color: var(--muted);
+      color: var(--text2);
       font-weight: 300;
-      max-width: 480px;
-      line-height: 1.8;
-      opacity: 0;
-      animation: fadeUp 0.8s 0.6s forwards;
+      line-height: 1.9;
+      max-width: 420px;
+      border-left: 1px solid var(--accent);
+      padding-left: 24px;
+    }
+    .hero-stats {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .stat {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .stat-num {
+      font-family: var(--display);
+      font-size: 36px;
+      color: var(--accent);
+      line-height: 1;
+    }
+    .stat-label {
+      font-family: var(--mono);
+      font-size: 9px;
+      color: var(--muted);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
     }
 
-    .hero-line {
-      position: absolute;
-      bottom: 0; left: 48px;
-      width: 1px;
-      height: 80px;
+    .hero-bottom {
+      padding-bottom: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      opacity: 0;
+      animation: fadeIn 1s 0.9s forwards;
+    }
+    .scroll-hint {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--mono);
+      font-size: 9px;
+      color: var(--muted);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+    .scroll-line {
+      width: 1px; height: 48px;
       background: linear-gradient(to bottom, var(--accent), transparent);
-      opacity: 0;
-      animation: fadeIn 1s 1s forwards;
     }
 
-    /* ── SECTION ── */
-    section {
-      padding: 120px 48px;
-      border-top: 1px solid var(--border);
-    }
-
-    .section-label {
+    .hero-index {
       font-family: var(--mono);
       font-size: 10px;
       color: var(--muted);
+      letter-spacing: 0.15em;
+    }
+
+    /* ── BIG BG TEXT ── */
+    .bg-word {
+      position: absolute;
+      right: -40px; top: 50%;
+      transform: translateY(-50%);
+      font-family: var(--display);
+      font-size: clamp(180px, 28vw, 400px);
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(0,255,136,0.06);
+      pointer-events: none;
+      user-select: none;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      position: relative;
+      z-index: 1;
+      padding: 140px 60px;
+      border-top: 1px solid var(--border);
+    }
+
+    .s-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 80px;
+      gap: 40px;
+    }
+    .s-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--accent);
       letter-spacing: 0.25em;
       text-transform: uppercase;
-      margin-bottom: 64px;
-      display: flex;
-      align-items: center;
-      gap: 16px;
+      margin-bottom: 12px;
     }
-    .section-label::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: var(--border);
-      max-width: 120px;
+    .s-title {
+      font-family: var(--display);
+      font-size: clamp(40px, 6vw, 72px);
+      letter-spacing: 0.04em;
+      line-height: 0.95;
+    }
+    .s-sub {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.12em;
+      max-width: 320px;
+      line-height: 1.7;
+      text-align: right;
     }
 
     /* ── SKILLS ── */
     .skills-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 1px;
       background: var(--border);
       border: 1px solid var(--border);
@@ -181,142 +337,302 @@
 
     .skill-card {
       background: var(--surface);
-      padding: 40px 36px;
+      padding: 48px 40px;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.35s;
+    }
+    .skill-card:hover { background: var(--surface2); }
+    .skill-card:hover .s-bar { width: 100%; }
+    .skill-card:hover .skill-icon { color: var(--accent); transform: scale(1.1); }
+
+    .s-bar {
+      position: absolute;
+      top: 0; left: 0;
+      height: 2px; width: 0;
+      background: linear-gradient(90deg, var(--accent), var(--accent3));
+      transition: width 0.5s ease;
+    }
+
+    .skill-icon {
+      font-size: 28px;
+      margin-bottom: 20px;
+      display: block;
+      transition: color 0.3s, transform 0.3s;
+      color: var(--muted);
+    }
+    .skill-num {
+      font-family: var(--mono);
+      font-size: 9px;
+      color: var(--muted);
+      letter-spacing: 0.2em;
+      margin-bottom: 14px;
+    }
+    .skill-name {
+      font-family: var(--display);
+      font-size: 26px;
+      letter-spacing: 0.06em;
+      margin-bottom: 14px;
+    }
+    .skill-desc {
+      font-size: 13px;
+      color: var(--text2);
+      line-height: 1.75;
+      font-weight: 300;
+      margin-bottom: 24px;
+    }
+    .skill-tools {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .tool-chip {
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      border: 1px solid var(--border2);
+      padding: 3px 9px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .skill-card:hover .tool-chip { border-color: rgba(0,255,136,0.25); color: var(--text2); }
+
+    /* ── EXPERIENCE ── */
+    .exp-list { display: flex; flex-direction: column; gap: 0; }
+
+    .exp-item {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 60px;
+      padding: 52px 0;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+    }
+    .exp-item::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0;
+      width: 0; height: 2px;
+      background: var(--accent);
+      transition: width 0.5s;
+    }
+    .exp-item:hover::before { width: 100%; }
+
+    .exp-meta {}
+    .exp-period {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--accent);
+      letter-spacing: 0.15em;
+      margin-bottom: 6px;
+    }
+    .exp-company {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--text2);
+      letter-spacing: 0.08em;
+    }
+
+    .exp-content {}
+    .exp-role {
+      font-family: var(--display);
+      font-size: 32px;
+      letter-spacing: 0.05em;
+      margin-bottom: 16px;
+    }
+    .exp-desc {
+      font-size: 14px;
+      color: var(--text2);
+      line-height: 1.8;
+      font-weight: 300;
+      max-width: 600px;
+      margin-bottom: 20px;
+    }
+    .exp-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .exp-tag {
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border: 1px solid var(--border2);
+      color: var(--muted);
+    }
+    .exp-tag.green { border-color: rgba(0,255,136,0.35); color: var(--accent); }
+    .exp-tag.red { border-color: rgba(255,60,110,0.35); color: var(--accent2); }
+    .exp-tag.blue { border-color: rgba(77,159,255,0.35); color: var(--accent3); }
+
+    /* ── PROJECTS ── */
+    .proj-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .proj-card {
+      background: var(--surface);
+      padding: 52px 48px;
       position: relative;
       overflow: hidden;
       transition: background 0.3s;
     }
-    .skill-card:hover { background: #161616; }
-    .skill-card:hover .skill-accent { width: 100%; }
-
-    .skill-accent {
-      position: absolute;
-      top: 0; left: 0;
-      height: 2px;
-      width: 0;
-      background: var(--accent);
-      transition: width 0.4s ease;
+    .proj-card.featured {
+      grid-column: span 2;
+      background: var(--surface2);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
     }
+    .proj-card:hover { background: var(--surface2); }
+    .proj-card:hover .proj-arrow { transform: translate(4px, -4px); color: var(--accent); }
 
-    .skill-num {
+    .proj-num {
       font-family: var(--mono);
-      font-size: 10px;
+      font-size: 9px;
       color: var(--muted);
       letter-spacing: 0.2em;
       margin-bottom: 20px;
-    }
-
-    .skill-name {
-      font-family: var(--display);
-      font-size: 28px;
-      letter-spacing: 0.05em;
-      margin-bottom: 12px;
-      color: var(--text);
-    }
-
-    .skill-desc {
-      font-size: 13px;
-      color: var(--muted);
-      line-height: 1.7;
-      font-weight: 300;
-    }
-
-    /* ── PROJECTS ── */
-    .projects-list { display: flex; flex-direction: column; }
-
-    .project-item {
-      display: grid;
-      grid-template-columns: 80px 1fr auto;
-      align-items: center;
-      gap: 40px;
-      padding: 36px 0;
-      border-bottom: 1px solid var(--border);
-      text-decoration: none;
-      color: inherit;
-      transition: padding-left 0.3s;
-      cursor: default;
-    }
-    .project-item:hover { padding-left: 16px; }
-    .project-item:hover .project-arrow { color: var(--accent); transform: translateX(4px); }
-
-    .project-num {
-      font-family: var(--mono);
-      font-size: 11px;
-      color: var(--muted);
-      letter-spacing: 0.15em;
-    }
-
-    .project-info {}
-    .project-title {
-      font-family: var(--display);
-      font-size: 32px;
-      letter-spacing: 0.05em;
-      margin-bottom: 6px;
-    }
-    .project-tags {
       display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px;
     }
-    .tag {
+    .proj-num::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border2);
+      max-width: 60px;
+    }
+
+    .proj-title {
+      font-family: var(--display);
+      font-size: 36px;
+      letter-spacing: 0.04em;
+      margin-bottom: 16px;
+      line-height: 1;
+    }
+    .proj-card.featured .proj-title { font-size: 52px; }
+
+    .proj-desc {
+      font-size: 13px;
+      color: var(--text2);
+      line-height: 1.8;
+      font-weight: 300;
+      margin-bottom: 28px;
+    }
+
+    .proj-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 32px;
+    }
+    .stack-item {
       font-family: var(--mono);
       font-size: 9px;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      padding: 3px 10px;
-      border: 1px solid var(--border);
-      color: var(--muted);
+      letter-spacing: 0.1em;
+      padding: 4px 10px;
+      background: var(--accent-dim);
+      color: var(--accent);
+      border: 1px solid rgba(0,255,136,0.2);
     }
-    .tag.highlight { border-color: var(--accent); color: var(--accent); }
 
-    .project-arrow {
-      font-size: 20px;
+    .proj-arrow {
+      font-size: 18px;
       color: var(--muted);
-      transition: color 0.3s, transform 0.3s;
+      transition: transform 0.3s, color 0.3s;
+      display: inline-block;
+    }
+
+    .proj-visual {
+      background: var(--bg);
+      border: 1px solid var(--border2);
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .proj-visual-text {
+      font-family: var(--display);
+      font-size: 80px;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(0,255,136,0.15);
+      letter-spacing: 0.05em;
+    }
+    .proj-visual-line {
+      position: absolute;
+      top: 50%; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      opacity: 0.3;
     }
 
     /* ── CONTACT ── */
-    .contact-inner {
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-      max-width: 600px;
+    .contact-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
     }
 
     .contact-title {
       font-family: var(--display);
-      font-size: clamp(48px, 6vw, 88px);
-      line-height: 0.95;
+      font-size: clamp(56px, 8vw, 108px);
+      line-height: 0.9;
       letter-spacing: 0.03em;
     }
-    .contact-title span { color: var(--accent2); }
-
-    .contact-links {
-      display: flex;
-      gap: 24px;
-      flex-wrap: wrap;
-      margin-top: 16px;
+    .contact-title .accent { color: var(--accent2); }
+    .contact-title .stroke {
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(236,236,236,0.2);
     }
 
-    .contact-link {
-      font-family: var(--mono);
-      font-size: 12px;
-      letter-spacing: 0.12em;
-      color: var(--text);
-      text-decoration: none;
-      text-transform: uppercase;
+    .contact-right { display: flex; flex-direction: column; gap: 32px; }
+
+    .contact-desc {
+      font-size: 15px;
+      color: var(--text2);
+      font-weight: 300;
+      line-height: 1.8;
+    }
+
+    .contact-links { display: flex; flex-direction: column; gap: 12px; }
+
+    .c-link {
       display: flex;
       align-items: center;
-      gap: 8px;
-      padding: 12px 24px;
-      border: 1px solid var(--border);
-      transition: border-color 0.2s, color 0.2s;
+      justify-content: space-between;
+      padding: 18px 24px;
+      border: 1px solid var(--border2);
+      text-decoration: none;
+      color: var(--text2);
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
     }
-    .contact-link:hover { border-color: var(--accent); color: var(--accent); }
+    .c-link:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--accent-dim);
+    }
+    .c-link span { opacity: 0.4; font-size: 16px; }
 
     /* ── FOOTER ── */
     footer {
-      padding: 32px 48px;
+      z-index: 1;
+      position: relative;
+      padding: 32px 60px;
       border-top: 1px solid var(--border);
       display: flex;
       justify-content: space-between;
@@ -328,176 +644,382 @@
       color: var(--muted);
       letter-spacing: 0.15em;
     }
-
-    /* ── STATUS DOT ── */
-    .status {
+    .footer-right {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
       font-family: var(--mono);
       font-size: 10px;
       color: var(--muted);
-      letter-spacing: 0.12em;
-    }
-    .dot {
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: var(--accent);
-      animation: pulse 2s infinite;
+      letter-spacing: 0.1em;
     }
 
     /* ── ANIMATIONS ── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(32px); }
       to   { opacity: 1; transform: translateY(0); }
     }
     @keyframes fadeIn {
       to { opacity: 1; }
     }
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50%       { opacity: 0.4; transform: scale(0.8); }
-    }
 
     /* ── RESPONSIVE ── */
-    @media (max-width: 768px) {
-      header { padding: 16px 24px; }
-      .hero { padding: 0 24px 64px; }
-      section { padding: 80px 24px; }
-      footer { padding: 24px; flex-direction: column; gap: 12px; text-align: center; }
-      .project-item { grid-template-columns: 1fr auto; }
-      .project-num { display: none; }
+    @media (max-width: 900px) {
+      header, .hero, section, footer { padding-left: 24px; padding-right: 24px; }
+      .skills-grid { grid-template-columns: 1fr 1fr; }
+      .proj-grid { grid-template-columns: 1fr; }
+      .proj-card.featured { grid-column: span 1; grid-template-columns: 1fr; }
+      .proj-visual { display: none; }
+      .contact-wrap { grid-template-columns: 1fr; }
+      .exp-item { grid-template-columns: 1fr; gap: 16px; }
+      .s-header { flex-direction: column; align-items: flex-start; }
+      .s-sub { text-align: left; }
+      .hero-body { flex-direction: column; gap: 32px; }
+      nav .nav-status { display: none; }
+    }
+    @media (max-width: 600px) {
+      .skills-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+  <div class="grid-overlay"></div>
+
+  <!-- HEADER -->
   <header>
-    <div class="logo">kihyunqa.github.io</div>
+    <div class="logo">
+      <div class="logo-dot"></div>
+      kihyunqa.github.io
+    </div>
     <nav>
       <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
       <a href="#projects">Projects</a>
       <a href="#contact">Contact</a>
+      <div class="nav-status"><div class="dot"></div> Open to work</div>
     </nav>
   </header>
 
+  <!-- HERO -->
   <div class="hero">
-    <div class="hero-bg-text">QA</div>
-    <div class="hero-tag">// Quality Assurance Engineer</div>
-    <h1 class="hero-title">
-      TEST.<br>
-      BREAK.<br>
-      <span>IMPROVE.</span>
-    </h1>
-    <p class="hero-desc">
-      소프트웨어 품질을 집요하게 탐구하는 QA 엔지니어입니다.<br>
-      버그를 찾는 것을 넘어, 더 나은 제품을 만드는 것을 목표로 합니다.
-    </p>
-    <div class="hero-line"></div>
+    <div class="bg-word">QUALITY</div>
+    <div class="hero-center">
+      <div class="hero-eyebrow">QA Engineer &amp; Test Automation</div>
+      <h1 class="hero-title">
+        TEST.<br>
+        <span class="line2">BREAK.</span>
+        <span class="line3">IMPROVE.</span>
+      </h1>
+      <div class="hero-body">
+        <p class="hero-desc">
+          소프트웨어 품질을 집요하게 탐구하는 QA 엔지니어입니다.<br><br>
+          버그를 찾는 것을 넘어, 팀과 함께 더 나은 제품을 만드는 문화를 만들어 나갑니다. 수동 테스트부터 자동화, 성능, API까지 — 품질의 전 영역을 다룹니다.
+        </p>
+        <div class="hero-stats">
+          <div class="stat">
+            <span class="stat-num">3+</span>
+            <span class="stat-label">Years in QA</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">500+</span>
+            <span class="stat-label">Test Cases</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">∞</span>
+            <span class="stat-label">Bugs Found</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-bottom">
+      <div class="scroll-hint">
+        <div class="scroll-line"></div>
+        Scroll
+      </div>
+      <div class="hero-index">
+        <span style="color:var(--accent)">01</span> / 04
+      </div>
+    </div>
   </div>
 
+  <!-- SKILLS -->
   <section id="skills">
-    <div class="section-label">01 &nbsp; Skills</div>
+    <div class="s-header">
+      <div>
+        <div class="s-label">01 — Core Skills</div>
+        <div class="s-title">WHAT<br>I DO</div>
+      </div>
+      <div class="s-sub">품질 보증의 전 과정을 커버하는<br>다양한 기술 스택을 보유하고 있습니다.</div>
+    </div>
     <div class="skills-grid">
       <div class="skill-card">
-        <div class="skill-accent"></div>
+        <div class="s-bar"></div>
+        <span class="skill-icon">◈</span>
         <div class="skill-num">001</div>
         <div class="skill-name">TEST PLANNING</div>
-        <div class="skill-desc">테스트 전략 수립, 테스트 케이스 설계, 리스크 기반 테스팅을 통한 효율적인 품질 보증</div>
+        <div class="skill-desc">리스크 기반 테스트 전략 수립, 테스트 케이스 설계, 탐색적 테스팅을 통한 체계적인 품질 보증 프로세스 구축</div>
+        <div class="skill-tools">
+          <span class="tool-chip">TestRail</span>
+          <span class="tool-chip">Jira</span>
+          <span class="tool-chip">Confluence</span>
+          <span class="tool-chip">Mind Map</span>
+        </div>
       </div>
       <div class="skill-card">
-        <div class="skill-accent"></div>
+        <div class="s-bar"></div>
+        <span class="skill-icon">⟳</span>
         <div class="skill-num">002</div>
-        <div class="skill-name">AUTOMATION</div>
-        <div class="skill-desc">Selenium, Playwright, Cypress 등을 활용한 테스트 자동화 및 CI/CD 파이프라인 통합</div>
+        <div class="skill-name">TEST AUTOMATION</div>
+        <div class="skill-desc">E2E, 단위, 통합 테스트 자동화 프레임워크 구축 및 CI/CD 파이프라인 통합으로 지속적인 품질 검증 실현</div>
+        <div class="skill-tools">
+          <span class="tool-chip">Playwright</span>
+          <span class="tool-chip">Selenium</span>
+          <span class="tool-chip">Cypress</span>
+          <span class="tool-chip">GitHub Actions</span>
+        </div>
       </div>
       <div class="skill-card">
-        <div class="skill-accent"></div>
+        <div class="s-bar"></div>
+        <span class="skill-icon">⌘</span>
         <div class="skill-num">003</div>
         <div class="skill-name">API TESTING</div>
-        <div class="skill-desc">Postman, REST Assured를 활용한 API 테스트 및 백엔드 품질 검증</div>
+        <div class="skill-desc">REST / GraphQL API 기능·보안·성능 검증. 자동화된 API 테스트 스위트 구축으로 백엔드 품질 강화</div>
+        <div class="skill-tools">
+          <span class="tool-chip">Postman</span>
+          <span class="tool-chip">Newman</span>
+          <span class="tool-chip">REST Assured</span>
+          <span class="tool-chip">GraphQL</span>
+        </div>
       </div>
       <div class="skill-card">
-        <div class="skill-accent"></div>
+        <div class="s-bar"></div>
+        <span class="skill-icon">◎</span>
         <div class="skill-num">004</div>
-        <div class="skill-name">BUG TRACKING</div>
-        <div class="skill-desc">Jira, TestRail 등을 이용한 체계적인 결함 관리 및 품질 지표 분석</div>
-      </div>
-      <div class="skill-card">
-        <div class="skill-accent"></div>
-        <div class="skill-num">005</div>
         <div class="skill-name">PERFORMANCE</div>
-        <div class="skill-desc">JMeter, k6를 활용한 부하 테스트 및 성능 병목 지점 분석</div>
+        <div class="skill-desc">부하·스트레스·스파이크 테스트를 통한 시스템 한계 탐색 및 성능 병목 구간 분석과 개선 제안</div>
+        <div class="skill-tools">
+          <span class="tool-chip">k6</span>
+          <span class="tool-chip">JMeter</span>
+          <span class="tool-chip">Grafana</span>
+          <span class="tool-chip">Datadog</span>
+        </div>
       </div>
       <div class="skill-card">
-        <div class="skill-accent"></div>
-        <div class="skill-num">006</div>
+        <div class="s-bar"></div>
+        <span class="skill-icon">⬡</span>
+        <div class="skill-num">005</div>
         <div class="skill-name">MOBILE QA</div>
-        <div class="skill-desc">iOS / Android 크로스 플랫폼 테스트 및 디바이스 호환성 검증</div>
+        <div class="skill-desc">iOS / Android 크로스 플랫폼 테스트, 디바이스 호환성 및 사용성 검증, 모바일 자동화 테스트 구현</div>
+        <div class="skill-tools">
+          <span class="tool-chip">Appium</span>
+          <span class="tool-chip">XCTest</span>
+          <span class="tool-chip">Espresso</span>
+          <span class="tool-chip">BrowserStack</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="s-bar"></div>
+        <span class="skill-icon">△</span>
+        <div class="skill-num">006</div>
+        <div class="skill-name">QA PROCESS</div>
+        <div class="skill-desc">애자일 팀 내 QA 프로세스 설계, 결함 관리 체계 구축, 품질 지표 시각화 및 개발팀과의 협업 문화 강화</div>
+        <div class="skill-tools">
+          <span class="tool-chip">Agile / Scrum</span>
+          <span class="tool-chip">Shift-Left</span>
+          <span class="tool-chip">Jira Dashboard</span>
+        </div>
       </div>
     </div>
   </section>
 
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="s-header">
+      <div>
+        <div class="s-label">02 — Experience</div>
+        <div class="s-title">WHERE<br>I'VE BEEN</div>
+      </div>
+      <div class="s-sub">실제 서비스 환경에서 쌓은<br>품질 보증 경험들입니다.</div>
+    </div>
+    <div class="exp-list">
+      <div class="exp-item">
+        <div class="exp-meta">
+          <div class="exp-period">2023 — PRESENT</div>
+          <div class="exp-company">Company Name</div>
+        </div>
+        <div class="exp-content">
+          <div class="exp-role">QA ENGINEER</div>
+          <div class="exp-desc">E2E 테스트 자동화 프레임워크 구축 및 운영. 릴리즈 사이클 단축에 기여하고 주요 기능에 대한 회귀 테스트 커버리지를 80% 이상 확보. 개발팀과 긴밀히 협업하여 Shift-Left 테스팅 문화 도입.</div>
+          <div class="exp-tags">
+            <span class="exp-tag green">Playwright</span>
+            <span class="exp-tag green">TypeScript</span>
+            <span class="exp-tag blue">GitHub Actions</span>
+            <span class="exp-tag">Jira</span>
+            <span class="exp-tag">Agile</span>
+          </div>
+        </div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-meta">
+          <div class="exp-period">2021 — 2023</div>
+          <div class="exp-company">Previous Company</div>
+        </div>
+        <div class="exp-content">
+          <div class="exp-role">QA ANALYST</div>
+          <div class="exp-desc">웹·모바일 서비스 전반의 기능 및 회귀 테스트 수행. API 테스트 스위트 도입으로 백엔드 품질 검증 프로세스 개선. 팀 내 테스트 케이스 작성 가이드라인 수립 및 교육 진행.</div>
+          <div class="exp-tags">
+            <span class="exp-tag green">Postman</span>
+            <span class="exp-tag blue">Selenium</span>
+            <span class="exp-tag red">Mobile Testing</span>
+            <span class="exp-tag">TestRail</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
   <section id="projects">
-    <div class="section-label">02 &nbsp; Projects</div>
-    <div class="projects-list">
-      <div class="project-item">
-        <div class="project-num">001</div>
-        <div class="project-info">
-          <div class="project-title">E2E TEST AUTOMATION</div>
-          <div class="project-tags">
-            <span class="tag highlight">Playwright</span>
-            <span class="tag">TypeScript</span>
-            <span class="tag">GitHub Actions</span>
-          </div>
-        </div>
-        <div class="project-arrow">→</div>
+    <div class="s-header">
+      <div>
+        <div class="s-label">03 — Projects</div>
+        <div class="s-title">WHAT<br>I'VE BUILT</div>
       </div>
-      <div class="project-item">
-        <div class="project-num">002</div>
-        <div class="project-info">
-          <div class="project-title">API TEST FRAMEWORK</div>
-          <div class="project-tags">
-            <span class="tag highlight">Postman</span>
-            <span class="tag">Newman</span>
-            <span class="tag">REST API</span>
+      <div class="s-sub">직접 설계하고 구축한<br>테스트 자동화 프로젝트들입니다.</div>
+    </div>
+    <div class="proj-grid">
+      <div class="proj-card featured">
+        <div>
+          <div class="proj-num">Featured 001</div>
+          <div class="proj-title">E2E TEST<br>AUTOMATION SUITE</div>
+          <div class="proj-desc">Playwright + TypeScript 기반의 E2E 자동화 프레임워크. Page Object Model 패턴 적용, GitHub Actions 연동을 통한 PR 단위 자동 테스트 실행 구현. 300+ 테스트 케이스 운영 중.</div>
+          <div class="proj-stack">
+            <span class="stack-item">Playwright</span>
+            <span class="stack-item">TypeScript</span>
+            <span class="stack-item">GitHub Actions</span>
+            <span class="stack-item">POM Pattern</span>
           </div>
+          <span class="proj-arrow">↗</span>
         </div>
-        <div class="project-arrow">→</div>
+        <div class="proj-visual">
+          <div class="proj-visual-line"></div>
+          <div class="proj-visual-text">E2E</div>
+        </div>
       </div>
-      <div class="project-item">
-        <div class="project-num">003</div>
-        <div class="project-info">
-          <div class="project-title">PERFORMANCE TESTING</div>
-          <div class="project-tags">
-            <span class="tag highlight">k6</span>
-            <span class="tag">Grafana</span>
-            <span class="tag">Load Testing</span>
-          </div>
+      <div class="proj-card">
+        <div class="proj-num">002</div>
+        <div class="proj-title">API TEST FRAMEWORK</div>
+        <div class="proj-desc">Postman Collection + Newman 기반 API 자동화. 150+ 엔드포인트 커버리지, CI 파이프라인 통합 및 슬랙 알림 연동.</div>
+        <div class="proj-stack">
+          <span class="stack-item">Postman</span>
+          <span class="stack-item">Newman</span>
+          <span class="stack-item">Jenkins</span>
         </div>
-        <div class="project-arrow">→</div>
+        <span class="proj-arrow">↗</span>
+      </div>
+      <div class="proj-card">
+        <div class="proj-num">003</div>
+        <div class="proj-title">PERFORMANCE TESTING</div>
+        <div class="proj-desc">k6 기반 부하 테스트 시나리오 설계. Grafana 대시보드 연동으로 실시간 성능 지표 시각화 및 병목 분석.</div>
+        <div class="proj-stack">
+          <span class="stack-item">k6</span>
+          <span class="stack-item">Grafana</span>
+          <span class="stack-item">InfluxDB</span>
+        </div>
+        <span class="proj-arrow">↗</span>
       </div>
     </div>
   </section>
 
+  <!-- CONTACT -->
   <section id="contact">
-    <div class="section-label">03 &nbsp; Contact</div>
-    <div class="contact-inner">
-      <div class="contact-title">LET'S<br><span>TALK.</span></div>
-      <p style="font-size:14px; color:var(--muted); line-height:1.8; font-weight:300;">
-        새로운 기회나 협업 제안이 있으시다면 편하게 연락 주세요.
-      </p>
-      <div class="contact-links">
-        <a class="contact-link" href="https://github.com/kihyunqa" target="_blank">⬡ &nbsp; GitHub</a>
-        <a class="contact-link" href="mailto:">✉ &nbsp; Email</a>
+    <div class="contact-wrap">
+      <div class="contact-title">
+        LET'S<br>
+        <span class="accent">TALK</span><br>
+        <span class="stroke">QA.</span>
+      </div>
+      <div class="contact-right">
+        <p class="contact-desc">
+          새로운 기회, 협업 제안, 혹은 QA 관련 이야기라면 언제든지 편하게 연락 주세요.
+        </p>
+        <div class="contact-links">
+          <a class="c-link" href="https://github.com/kihyunqa" target="_blank">
+            GitHub / kihyunqa
+            <span>→</span>
+          </a>
+          <a class="c-link" href="mailto:">
+            Email
+            <span>→</span>
+          </a>
+          <a class="c-link" href="#">
+            LinkedIn
+            <span>→</span>
+          </a>
+        </div>
       </div>
     </div>
   </section>
 
   <footer>
-    <p>© 2026 kihyunqa — QA Portfolio</p>
-    <div class="status"><div class="dot"></div> Available for opportunities</div>
+    <p>© 2026 kihyunqa — All bugs are belong to us.</p>
+    <div class="footer-right">
+      <div style="width:5px;height:5px;border-radius:50%;background:var(--accent);animation:blink 2s infinite;"></div>
+      Available for opportunities
+    </div>
   </footer>
 
+  <script>
+    // Custom cursor
+    const cursor = document.getElementById('cursor');
+    const ring = document.getElementById('cursorRing');
+    let mx = 0, my = 0, rx = 0, ry = 0;
+    document.addEventListener('mousemove', e => {
+      mx = e.clientX; my = e.clientY;
+      cursor.style.left = mx + 'px';
+      cursor.style.top = my + 'px';
+    });
+    function animateRing() {
+      rx += (mx - rx) * 0.12;
+      ry += (my - ry) * 0.12;
+      ring.style.left = rx + 'px';
+      ring.style.top = ry + 'px';
+      requestAnimationFrame(animateRing);
+    }
+    animateRing();
+
+    document.querySelectorAll('a, button, .skill-card, .proj-card, .exp-item').forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        ring.style.width = '48px';
+        ring.style.height = '48px';
+        ring.style.borderColor = 'rgba(0,255,136,0.6)';
+      });
+      el.addEventListener('mouseleave', () => {
+        ring.style.width = '32px';
+        ring.style.height = '32px';
+        ring.style.borderColor = 'rgba(0,255,136,0.4)';
+      });
+    });
+
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.style.opacity = '1';
+          e.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.skill-card, .exp-item, .proj-card').forEach((el, i) => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(24px)';
+      el.style.transition = `opacity 0.6s ${i * 0.08}s, transform 0.6s ${i * 0.08}s`;
+      observer.observe(el);
+    });
+  </script>
 </body>
 </html>
