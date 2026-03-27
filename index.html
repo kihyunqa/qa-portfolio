@@ -4,6 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>성기현 | QA Engineer</title>
+
+<!-- OG / SNS 공유 메타태그 -->
+<meta property="og:title" content="성기현 | QA Engineer Portfolio">
+<meta property="og:description" content="6년 9개월 QA 경력. Claude MCP로 테스트케이스 자동 생성부터 GitHub 업로드까지 — 코드 없이 QA 파이프라인을 구축했습니다.">
+<meta property="og:url" content="https://kihyunqa.github.io/qa-portfolio">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://kihyunqa.github.io/qa-portfolio/screenshots/github_screenshot.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="성기현 | QA Engineer Portfolio">
+<meta name="twitter:description" content="Claude MCP로 QA 워크플로우를 자동화한 포트폴리오">
+<meta name="description" content="6년 9개월 QA 엔지니어 성기현의 포트폴리오. 테스트 설계, Cypress 자동화, Claude MCP 파이프라인.">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
@@ -14,7 +26,7 @@
     --purple-faint: rgba(180,122,255,0.06);
     --bg: #09080d;
     --bg2: #0f0d16;
-    --bg3: #14112000;
+    --bg3: #141120;
     --text: #ede8f5;
     --text-dim: #8a7aa0;
     --border: rgba(180,122,255,0.12);
@@ -33,91 +45,53 @@
     overflow-x: hidden;
     cursor: none;
   }
-  .cursor {
-    position: fixed; width: 8px; height: 8px;
-    background: var(--purple); border-radius: 50%;
-    pointer-events: none; z-index: 9999;
-    transform: translate(-50%,-50%);
-    transition: transform 0.1s;
-    box-shadow: 0 0 12px var(--purple);
-  }
-  .cursor-ring {
-    position: fixed; width: 32px; height: 32px;
-    border: 1px solid rgba(180,122,255,0.4); border-radius: 50%;
-    pointer-events: none; z-index: 9998;
-    transform: translate(-50%,-50%);
-    transition: all 0.15s ease;
-  }
-  body::before {
-    content: '';
-    position: fixed; inset: 0;
-    background: repeating-linear-gradient(
-      0deg, transparent, transparent 2px,
-      rgba(180,122,255,0.006) 2px, rgba(180,122,255,0.006) 4px
-    );
-    pointer-events: none; z-index: 1;
-  }
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    padding: 20px 60px;
-    display: flex; justify-content: space-between; align-items: center;
-    background: rgba(9,8,13,0.9);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-  }
+
+  /* ── 커서 ── */
+  .cursor { position: fixed; width: 8px; height: 8px; background: var(--purple); border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); transition: transform 0.1s; box-shadow: 0 0 12px var(--purple); }
+  .cursor-ring { position: fixed; width: 32px; height: 32px; border: 1px solid rgba(180,122,255,0.4); border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%,-50%); transition: all 0.15s ease; }
+  body::before { content: ''; position: fixed; inset: 0; background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(180,122,255,0.005) 2px, rgba(180,122,255,0.005) 4px); pointer-events: none; z-index: 1; }
+
+  /* ── NAV ── */
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 18px 60px; display: flex; justify-content: space-between; align-items: center; background: rgba(9,8,13,0.92); backdrop-filter: blur(14px); border-bottom: 1px solid var(--border); }
   .nav-logo { font-family: var(--mono); font-size: 13px; color: var(--purple); letter-spacing: 0.1em; }
   .nav-logo span { color: var(--text-dim); }
   .nav-links { display: flex; gap: 40px; list-style: none; }
   .nav-links a { font-family: var(--mono); font-size: 12px; color: var(--text-dim); text-decoration: none; letter-spacing: 0.08em; transition: color 0.2s; cursor: none; }
   .nav-links a:hover { color: var(--purple); }
 
-  .hero {
-    min-height: 100vh; display: flex; align-items: center;
-    padding: 120px 60px 80px; position: relative; overflow: hidden;
-  }
-  .hero-grid {
-    position: absolute; inset: 0;
-    background-image:
-      linear-gradient(rgba(180,122,255,0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(180,122,255,0.04) 1px, transparent 1px);
-    background-size: 60px 60px;
-    mask-image: radial-gradient(ellipse 80% 80% at 40% 50%, black, transparent);
-  }
+  /* 햄버거 */
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: none; padding: 4px; background: none; border: none; }
+  .hamburger span { display: block; width: 22px; height: 2px; background: var(--text-dim); transition: all 0.3s; }
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); background: var(--purple); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); background: var(--purple); }
+  .mobile-menu { display: none; position: fixed; top: 57px; left: 0; right: 0; background: rgba(9,8,13,0.97); border-bottom: 1px solid var(--border); padding: 20px 0; z-index: 99; backdrop-filter: blur(14px); }
+  .mobile-menu.open { display: block; }
+  .mobile-menu a { display: block; padding: 14px 28px; font-family: var(--mono); font-size: 13px; color: var(--text-dim); text-decoration: none; letter-spacing: 0.08em; border-bottom: 1px solid var(--border); transition: all 0.2s; }
+  .mobile-menu a:last-child { border-bottom: none; }
+  .mobile-menu a:hover { color: var(--purple); background: var(--purple-faint); }
+
+  /* ── HERO ── */
+  .hero { min-height: 100vh; display: flex; align-items: center; padding: 120px 60px 80px; position: relative; overflow: hidden; }
+  .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(180,122,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(180,122,255,0.04) 1px, transparent 1px); background-size: 60px 60px; mask-image: radial-gradient(ellipse 80% 80% at 40% 50%, black, transparent); }
   .hero-content { max-width: 900px; position: relative; z-index: 2; }
-  .hero-tag {
-    font-family: var(--mono); font-size: 12px; color: var(--purple);
-    letter-spacing: 0.2em; margin-bottom: 32px;
-    display: flex; align-items: center; gap: 12px;
-  }
+  .hero-tag { font-family: var(--mono); font-size: 12px; color: var(--purple); letter-spacing: 0.2em; margin-bottom: 32px; display: flex; align-items: center; gap: 12px; }
   .hero-tag::before { content: ''; width: 40px; height: 1px; background: var(--purple); }
-  .hero-name {
-    font-size: clamp(60px, 9vw, 104px); font-weight: 700;
-    line-height: 0.92; letter-spacing: -0.03em; margin-bottom: 28px;
-  }
+  .hero-name { font-size: clamp(60px, 9vw, 104px); font-weight: 700; line-height: 0.92; letter-spacing: -0.03em; margin-bottom: 28px; }
   .hero-name .accent { color: var(--purple); }
-  .hero-title {
-    font-family: var(--mono); font-size: clamp(13px, 1.6vw, 16px);
-    color: var(--text-dim); margin-bottom: 40px;
-    display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
-  }
+  .hero-title { font-family: var(--mono); font-size: clamp(13px, 1.6vw, 16px); color: var(--text-dim); margin-bottom: 40px; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
   .hero-title .sep { color: var(--purple); opacity: 0.4; }
   .hero-desc { font-size: 16px; color: var(--text-dim); max-width: 540px; line-height: 1.9; margin-bottom: 56px; }
   .hero-desc strong { color: var(--text); font-weight: 500; }
   .hero-cta { display: flex; gap: 16px; flex-wrap: wrap; }
-  .btn {
-    font-family: var(--mono); font-size: 12px; letter-spacing: 0.1em;
-    padding: 14px 32px; text-decoration: none; transition: all 0.2s; cursor: none;
-    display: inline-block;
-  }
+  .btn { font-family: var(--mono); font-size: 12px; letter-spacing: 0.1em; padding: 14px 32px; text-decoration: none; transition: all 0.2s; cursor: none; display: inline-block; }
   .btn-primary { background: var(--purple); color: var(--bg); font-weight: 700; }
   .btn-primary:hover { background: #d4aaff; box-shadow: 0 0 40px rgba(180,122,255,0.4); }
   .btn-outline { border: 1px solid var(--border-bright); color: var(--purple); }
   .btn-outline:hover { background: var(--purple-faint); border-color: var(--purple); }
 
-  .stats-bar {
-    border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
-    padding: 36px 60px; display: flex; background: var(--bg2);
-  }
+  /* ── STATS ── */
+  .stats-bar { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 36px 60px; display: flex; background: var(--bg2); }
   .stat { flex: 1; padding: 0 40px; border-right: 1px solid var(--border); }
   .stat:first-child { padding-left: 0; }
   .stat:last-child { border-right: none; }
@@ -125,127 +99,116 @@
   .stat-num small { font-size: 18px; color: var(--text-dim); }
   .stat-label { font-size: 13px; color: var(--text-dim); }
 
+  /* ── SECTION BASE ── */
   section { padding: 100px 60px; }
   .section-tag { font-family: var(--mono); font-size: 11px; color: var(--purple); letter-spacing: 0.25em; margin-bottom: 12px; }
   .section-title { font-size: clamp(30px, 4vw, 48px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 64px; }
 
-  /* MCP */
+  /* ── TIMELINE ── */
+  .timeline-section { background: var(--bg2); border-top: 1px solid var(--border); }
+  .timeline { position: relative; padding-left: 32px; }
+  .timeline::before { content: ''; position: absolute; left: 0; top: 8px; bottom: 0; width: 1px; background: linear-gradient(to bottom, var(--purple), rgba(180,122,255,0.1)); }
+  .tl-item { position: relative; margin-bottom: 52px; }
+  .tl-item:last-child { margin-bottom: 0; }
+  .tl-dot { position: absolute; left: -38px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: var(--purple); box-shadow: 0 0 0 3px rgba(180,122,255,0.2), 0 0 12px rgba(180,122,255,0.4); }
+  .tl-period { font-family: var(--mono); font-size: 11px; color: var(--purple); letter-spacing: 0.12em; margin-bottom: 8px; }
+  .tl-company { font-size: 19px; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 4px; }
+  .tl-role { font-family: var(--mono); font-size: 12px; color: var(--text-dim); margin-bottom: 14px; }
+  .tl-desc { font-size: 14px; color: var(--text-dim); line-height: 1.8; max-width: 680px; }
+  .tl-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+
+  /* ── MCP ── */
   .mcp-section { background: var(--bg); border-top: 1px solid var(--border); position: relative; overflow: hidden; }
-  .mcp-section::after {
-    content: '';
-    position: absolute; top: -300px; right: -300px;
-    width: 700px; height: 700px;
-    background: radial-gradient(circle, rgba(180,122,255,0.05) 0%, transparent 70%);
-    pointer-events: none;
-  }
-  .mcp-badge {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: rgba(180,122,255,0.08); border: 1px solid var(--border-bright);
-    padding: 6px 16px; font-family: var(--mono); font-size: 11px;
-    color: var(--purple); letter-spacing: 0.15em; margin-bottom: 24px;
-  }
-  .mcp-badge::before {
-    content: ''; width: 6px; height: 6px;
-    background: var(--purple); border-radius: 50%;
-    animation: blink 2s infinite;
-  }
-  @keyframes blink {
-    0%,100% { opacity:1; box-shadow: 0 0 0 0 rgba(180,122,255,0.5); }
-    50% { opacity:0.5; box-shadow: 0 0 0 6px rgba(180,122,255,0); }
-  }
+  .mcp-section::after { content: ''; position: absolute; top: -300px; right: -300px; width: 700px; height: 700px; background: radial-gradient(circle, rgba(180,122,255,0.05) 0%, transparent 70%); pointer-events: none; }
+  .mcp-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(180,122,255,0.08); border: 1px solid var(--border-bright); padding: 6px 16px; font-family: var(--mono); font-size: 11px; color: var(--purple); letter-spacing: 0.15em; margin-bottom: 24px; }
+  .mcp-badge::before { content: ''; width: 6px; height: 6px; background: var(--purple); border-radius: 50%; animation: blink 2s infinite; }
+  @keyframes blink { 0%,100% { opacity:1; box-shadow: 0 0 0 0 rgba(180,122,255,0.5); } 50% { opacity:0.5; box-shadow: 0 0 0 6px rgba(180,122,255,0); } }
   .mcp-intro { font-size: 17px; color: var(--text-dim); max-width: 680px; line-height: 1.85; margin-bottom: 64px; }
   .mcp-intro strong { color: var(--text); font-weight: 500; }
 
   .mcp-flow { display: grid; grid-template-columns: repeat(4,1fr); border: 1px solid var(--border); margin-bottom: 56px; }
-  .mcp-step {
-    padding: 36px 28px; border-right: 1px solid var(--border);
-    position: relative; transition: background 0.25s;
-  }
+  .mcp-step { padding: 36px 28px; border-right: 1px solid var(--border); position: relative; transition: background 0.25s; }
   .mcp-step:last-child { border-right: none; }
   .mcp-step:hover { background: var(--purple-faint); }
   .step-num { font-family: var(--mono); font-size: 10px; color: var(--text-dim); letter-spacing: 0.1em; margin-bottom: 16px; }
   .step-icon { font-size: 28px; display: block; margin-bottom: 14px; }
   .step-title { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
   .step-desc { font-size: 12px; color: var(--text-dim); line-height: 1.65; }
-  .step-arrow {
-    position: absolute; right: -11px; top: 50%; transform: translateY(-50%);
-    width: 22px; height: 22px;
-    background: var(--bg2); border: 1px solid var(--border-bright);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 9px; color: var(--purple); z-index: 1; font-family: var(--mono);
-  }
+  .step-arrow { position: absolute; right: -11px; top: 50%; transform: translateY(-50%); width: 22px; height: 22px; background: var(--bg2); border: 1px solid var(--border-bright); display: flex; align-items: center; justify-content: center; font-size: 9px; color: var(--purple); z-index: 1; font-family: var(--mono); }
   .mcp-step:last-child .step-arrow { display: none; }
 
   .terminal { background: #070610; border: 1px solid var(--border); font-family: var(--mono); font-size: 13px; }
-  .terminal-bar {
-    background: var(--bg2); padding: 10px 16px;
-    display: flex; align-items: center; gap: 8px;
-    border-bottom: 1px solid var(--border);
-  }
+  .terminal-bar { background: var(--bg2); padding: 10px 16px; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid var(--border); }
   .tdot { width: 10px; height: 10px; border-radius: 50%; }
   .tdot:nth-child(1){background:#ff5f56}.tdot:nth-child(2){background:#ffbd2e}.tdot:nth-child(3){background:#27c93f}
   .ttitle { font-size: 11px; color: var(--text-dim); margin-left: 8px; }
   .terminal-body { padding: 28px 28px 24px; line-height: 2.1; }
-  .tl { display: flex; gap: 12px; }
+  .tl-t { display: flex; gap: 12px; }
   .tp { color: var(--purple); opacity: 0.5; flex-shrink: 0; }
   .tc { color: var(--text); }
   .to { color: var(--text-dim); padding-left: 20px; }
   .tg { color: var(--purple); padding-left: 20px; }
   .tb { height: 6px; }
 
-  /* Skills */
+  /* ── SKILLS ── */
   .skills-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); }
   .skill-card { background: var(--bg2); padding: 40px 36px; transition: background 0.25s; }
-  .skill-card:hover { background: #16122200; }
+  .skill-card:hover { background: var(--bg3); }
   .skill-icon { font-size: 30px; display: block; margin-bottom: 18px; }
   .skill-name { font-size: 16px; font-weight: 700; margin-bottom: 10px; letter-spacing: -0.01em; }
   .skill-desc { font-size: 13px; color: var(--text-dim); line-height: 1.75; margin-bottom: 20px; }
   .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
-  .tag {
-    font-family: var(--mono); font-size: 10px;
-    padding: 3px 10px; border: 1px solid var(--border); color: var(--text-dim); letter-spacing: 0.05em;
-  }
+  .tag { font-family: var(--mono); font-size: 10px; padding: 3px 10px; border: 1px solid var(--border); color: var(--text-dim); letter-spacing: 0.05em; }
   .tag-p { border-color: rgba(180,122,255,0.3); color: var(--purple); background: rgba(180,122,255,0.04); }
 
-  /* Projects */
+  /* ── PROJECTS ── */
   .projects-list { display: flex; flex-direction: column; gap: 1px; background: var(--border); border: 1px solid var(--border); }
-  .project-item {
-    background: var(--bg); padding: 44px 52px;
-    display: grid; grid-template-columns: 1fr auto; align-items: start; gap: 48px;
-    position: relative; overflow: hidden; transition: background 0.25s;
-  }
-  .project-item::before {
-    content: ''; position: absolute; left: 0; top: 0; bottom: 0;
-    width: 3px; background: var(--purple);
-    transform: scaleY(0); transform-origin: bottom; transition: transform 0.3s;
-  }
+  .project-item { background: var(--bg); padding: 44px 52px; display: grid; grid-template-columns: 1fr auto; align-items: start; gap: 48px; position: relative; overflow: hidden; transition: background 0.25s; }
+  .project-item::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--purple); transform: scaleY(0); transform-origin: bottom; transition: transform 0.3s; }
   .project-item:hover { background: var(--bg2); }
   .project-item:hover::before { transform: scaleY(1); }
   .project-num { font-family: var(--mono); font-size: 11px; color: var(--text-dim); letter-spacing: 0.1em; margin-bottom: 12px; }
   .project-name { font-size: 21px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 12px; }
-  .project-desc { font-size: 14px; color: var(--text-dim); line-height: 1.75; max-width: 580px; }
+  .project-desc { font-size: 14px; color: var(--text-dim); line-height: 1.75; max-width: 580px; margin-bottom: 16px; }
+  .project-link { font-family: var(--mono); font-size: 11px; color: var(--purple); text-decoration: none; letter-spacing: 0.08em; border-bottom: 1px solid rgba(180,122,255,0.3); padding-bottom: 2px; transition: all 0.2s; cursor: none; display: inline-block; }
+  .project-link:hover { border-bottom-color: var(--purple); }
   .project-meta { text-align: right; flex-shrink: 0; }
   .project-type { font-family: var(--mono); font-size: 11px; color: var(--purple); letter-spacing: 0.12em; margin-bottom: 10px; }
   .project-tags { display: flex; flex-direction: column; gap: 5px; align-items: flex-end; }
 
+  /* ── TC PREVIEW ── */
+  .tc-section { background: var(--bg2); border-top: 1px solid var(--border); }
+  .tc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 32px; }
+  .tc-card { border: 1px solid var(--border); padding: 28px 32px; background: var(--bg); transition: border-color 0.25s, background 0.25s; }
+  .tc-card:hover { border-color: var(--border-bright); background: var(--bg3); }
+  .tc-card-label { font-family: var(--mono); font-size: 10px; color: var(--purple); letter-spacing: 0.15em; margin-bottom: 14px; }
+  .tc-list { list-style: none; }
+  .tc-list li { font-size: 13px; color: var(--text-dim); padding: 7px 0; border-bottom: 1px solid var(--border); display: flex; align-items: baseline; gap: 10px; line-height: 1.5; }
+  .tc-list li:last-child { border-bottom: none; }
+  .tc-id { font-family: var(--mono); font-size: 10px; color: var(--purple); flex-shrink: 0; }
+  .tc-cta { display: flex; align-items: center; gap: 20px; }
+  .tc-note { font-size: 13px; color: var(--text-dim); }
+
+  /* ── CONTACT ── */
   .contact-wrap { background: var(--bg2); border-top: 1px solid var(--border); text-align: center; }
   .contact-sub { font-size: 16px; color: var(--text-dim); margin-bottom: 48px; }
   .contact-links { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
 
-  footer {
-    padding: 28px 60px; border-top: 1px solid var(--border); background: var(--bg);
-    display: flex; justify-content: space-between; align-items: center;
-  }
+  /* ── FOOTER ── */
+  footer { padding: 28px 60px; border-top: 1px solid var(--border); background: var(--bg); display: flex; justify-content: space-between; align-items: center; }
   .fl { font-family: var(--mono); font-size: 12px; color: var(--text-dim); }
   .fr { font-family: var(--mono); font-size: 11px; color: var(--text-dim); display: flex; align-items: center; gap: 6px; }
   .fr span { color: var(--purple); }
 
+  /* ── REVEAL ── */
   .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.55s ease, transform 0.55s ease; }
   .reveal.on { opacity: 1; transform: translateY(0); }
 
+  /* ── RESPONSIVE ── */
   @media(max-width:768px){
     nav { padding: 16px 20px; }
     .nav-links { display: none; }
+    .hamburger { display: flex; }
     .hero { padding: 100px 24px 60px; }
     .stats-bar { padding: 28px 20px; flex-wrap: wrap; gap: 24px; }
     .stat { padding: 0 20px; min-width: 140px; }
@@ -255,6 +218,9 @@
     .project-item { grid-template-columns: 1fr; padding: 36px 28px; }
     .project-meta { text-align: left; }
     .project-tags { align-items: flex-start; }
+    .tc-grid { grid-template-columns: 1fr; }
+    .timeline { padding-left: 24px; }
+    .tl-dot { left: -30px; }
     footer { flex-direction: column; gap: 10px; padding: 24px 20px; text-align: center; }
   }
 </style>
@@ -267,23 +233,33 @@
 <nav>
   <div class="nav-logo">KH<span>.</span>QA</div>
   <ul class="nav-links">
+    <li><a href="#career">경력</a></li>
     <li><a href="#mcp">MCP 자동화</a></li>
     <li><a href="#skills">스킬</a></li>
     <li><a href="#projects">프로젝트</a></li>
     <li><a href="#contact">연락처</a></li>
   </ul>
+  <button class="hamburger" id="hamburger" aria-label="메뉴">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#career" onclick="closeMenu()">경력</a>
+  <a href="#mcp" onclick="closeMenu()">MCP 자동화</a>
+  <a href="#skills" onclick="closeMenu()">스킬</a>
+  <a href="#projects" onclick="closeMenu()">프로젝트</a>
+  <a href="#contact" onclick="closeMenu()">연락처</a>
+</div>
 
+<!-- HERO -->
 <section class="hero">
   <div class="hero-grid"></div>
   <div class="hero-content">
     <div class="hero-tag">QA ENGINEER</div>
     <h1 class="hero-name">성<span class="accent">기</span>현</h1>
     <div class="hero-title">
-      <span>품질 보증</span>
-      <span class="sep">/</span>
-      <span>테스트 자동화</span>
-      <span class="sep">/</span>
+      <span>품질 보증</span><span class="sep">/</span>
+      <span>테스트 자동화</span><span class="sep">/</span>
       <span>AI 기반 QA</span>
     </div>
     <p class="hero-desc">
@@ -298,6 +274,7 @@
   </div>
 </section>
 
+<!-- STATS -->
 <div class="stats-bar">
   <div class="stat reveal">
     <div class="stat-num">6.9<small>년</small></div>
@@ -313,11 +290,49 @@
   </div>
 </div>
 
+<!-- CAREER TIMELINE -->
+<section class="timeline-section" id="career">
+  <div class="section-tag reveal">— 경력</div>
+  <h2 class="section-title reveal">Career</h2>
+  <div class="timeline">
+
+    <div class="tl-item reveal">
+      <div class="tl-dot"></div>
+      <div class="tl-period">2022 — 현재</div>
+      <div class="tl-company">카카오 모빌리티</div>
+      <div class="tl-role">QA Engineer</div>
+      <div class="tl-desc">카카오T 플랫폼 및 내부 서비스 품질 검증 담당. Swagger 기반 API 테스트 체계 수립, 신규 기능 TC 설계 및 회귀 테스트 운영. Claude MCP를 활용한 QA 워크플로우 자동화 파이프라인 구축.</div>
+      <div class="tl-tags">
+        <span class="tag tag-p">API 테스트</span>
+        <span class="tag tag-p">Claude MCP</span>
+        <span class="tag">Swagger</span>
+        <span class="tag">회귀 테스트</span>
+        <span class="tag">TC 설계</span>
+      </div>
+    </div>
+
+    <div class="tl-item reveal">
+      <div class="tl-dot"></div>
+      <div class="tl-period">2019 — 2022</div>
+      <div class="tl-company">이전 경력</div>
+      <div class="tl-role">QA Engineer</div>
+      <div class="tl-desc">웹/앱 서비스 품질 보증 업무 수행. 기능 테스트, 탐색적 테스트, 결함 관리 및 릴리즈 QA 총괄. Cypress 기반 E2E 자동화 도입.</div>
+      <div class="tl-tags">
+        <span class="tag tag-p">Cypress</span>
+        <span class="tag">E2E 자동화</span>
+        <span class="tag">Jira</span>
+        <span class="tag">탐색적 테스트</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- MCP SECTION -->
 <section class="mcp-section" id="mcp">
   <div class="mcp-badge">CLAUDE MCP INTEGRATION · LIVE</div>
   <div class="section-tag reveal">— AI 기반 자동화</div>
   <h2 class="section-title reveal">코딩 없이 구현한<br>QA 자동화 파이프라인</h2>
-
   <p class="mcp-intro reveal">
     <strong>Claude MCP(Model Context Protocol)</strong>는 AI가 로컬 파일시스템, GitHub, 브라우저를 직접 조작하게 해주는 프로토콜입니다.
     기능 명세를 입력하면 테스트케이스가 자동 생성되고, 브라우저 테스트 후 스크린샷이 GitHub에 자동으로 올라갑니다.
@@ -360,12 +375,12 @@
       <div class="ttitle">claude-desktop — qa-automation</div>
     </div>
     <div class="terminal-body">
-      <div class="tl"><span class="tp">user $</span><span class="tc">filesystem 도구로 C:/qa-portfolio/testcase_login.md 파일 만들어줘. 로그인 TC, 해피패스·네거티브·엣지케이스 포함</span></div>
+      <div class="tl-t"><span class="tp">user $</span><span class="tc">filesystem 도구로 C:/qa-portfolio/testcase_login.md 파일 만들어줘. 로그인 TC, 해피패스·네거티브·엣지케이스 포함</span></div>
       <div class="tb"></div>
       <div class="tg">✓ filesystem 통합 사용 중...</div>
       <div class="tg">✓ C:/qa-portfolio/testcase_login.md 생성 완료 — 24개 TC</div>
       <div class="tb"></div>
-      <div class="tl"><span class="tp">user $</span><span class="tc">playwright 도구로 github.com 열어서 스크린샷 찍고, github 도구로 레포에 업로드해줘</span></div>
+      <div class="tl-t"><span class="tp">user $</span><span class="tc">playwright 도구로 github.com 열어서 스크린샷 찍고, github 도구로 레포에 업로드해줘</span></div>
       <div class="tb"></div>
       <div class="tg">✓ playwright 통합 사용 중...</div>
       <div class="tg">✓ 브라우저 실행 → 접속 → 스크린샷 저장</div>
@@ -376,7 +391,56 @@
   </div>
 </section>
 
-<section id="skills" style="background:var(--bg2)">
+<!-- TC PREVIEW SECTION -->
+<section class="tc-section" id="tc">
+  <div class="section-tag reveal">— 실제 산출물</div>
+  <h2 class="section-title reveal">TC 샘플 미리보기</h2>
+  <div class="tc-grid reveal">
+    <div class="tc-card">
+      <div class="tc-card-label">✅ HAPPY PATH</div>
+      <ul class="tc-list">
+        <li><span class="tc-id">TC-HP-001</span>정상 이메일/비밀번호로 로그인 성공</li>
+        <li><span class="tc-id">TC-HP-002</span>이메일 대소문자 무관 로그인 성공</li>
+        <li><span class="tc-id">TC-HP-003</span>로그인 성공 후 이전 페이지로 리다이렉트</li>
+        <li><span class="tc-id">TC-HP-004</span>계정 잠금 해제 후 정상 로그인</li>
+      </ul>
+    </div>
+    <div class="tc-card">
+      <div class="tc-card-label">❌ NEGATIVE CASE</div>
+      <ul class="tc-list">
+        <li><span class="tc-id">TC-NG-001</span>존재하지 않는 이메일로 로그인 시도</li>
+        <li><span class="tc-id">TC-NG-007</span>5회 연속 실패 → 계정 잠금</li>
+        <li><span class="tc-id">TC-NG-010</span>비밀번호에 XSS 스크립트 입력</li>
+        <li><span class="tc-id">TC-NG-009</span>탈퇴한 계정으로 로그인 시도</li>
+      </ul>
+    </div>
+    <div class="tc-card">
+      <div class="tc-card-label">⚠️ EDGE CASE</div>
+      <ul class="tc-list">
+        <li><span class="tc-id">TC-EC-001</span>이메일 앞뒤 공백 포함 입력 (trim 처리)</li>
+        <li><span class="tc-id">TC-EC-005</span>동일 계정 동시 다중 로그인 시도</li>
+        <li><span class="tc-id">TC-EC-008</span>SQL Injection 패턴 입력</li>
+        <li><span class="tc-id">TC-EC-007</span>네트워크 단절 상태에서 로그인 시도</li>
+      </ul>
+    </div>
+    <div class="tc-card">
+      <div class="tc-card-label">📊 TC 통계</div>
+      <ul class="tc-list">
+        <li><span class="tc-id">TOTAL</span>24건 테스트케이스</li>
+        <li><span class="tc-id">P1</span>우선순위 최상 14건</li>
+        <li><span class="tc-id">GEN</span>생성 소요시간 약 40초</li>
+        <li><span class="tc-id">CMD</span>자연어 명령 1회</li>
+      </ul>
+    </div>
+  </div>
+  <div class="tc-cta reveal">
+    <a href="https://github.com/kihyunqa/qa-portfolio/blob/main/testcase_login.md" target="_blank" class="btn btn-outline">전체 TC 파일 보기 →</a>
+    <span class="tc-note">해피패스 4건 · 네거티브 10건 · 엣지케이스 10건 포함</span>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" style="background:var(--bg)">
   <div class="section-tag reveal">— 보유 역량</div>
   <h2 class="section-title reveal">Skills</h2>
   <div class="skills-grid">
@@ -384,71 +448,43 @@
       <span class="skill-icon">📝</span>
       <div class="skill-name">테스트 설계 & 실행</div>
       <div class="skill-desc">요구사항 분석부터 TC 설계, 실행, 결함 관리까지 QA 전 사이클. 해피패스는 물론 엣지케이스, 보안 항목까지 꼼꼼하게 커버합니다.</div>
-      <div class="skill-tags">
-        <span class="tag tag-p">TC 설계</span>
-        <span class="tag tag-p">버그 리포팅</span>
-        <span class="tag">회귀 테스트</span>
-        <span class="tag">탐색적 테스트</span>
-      </div>
+      <div class="skill-tags"><span class="tag tag-p">TC 설계</span><span class="tag tag-p">버그 리포팅</span><span class="tag">회귀 테스트</span><span class="tag">탐색적 테스트</span></div>
     </div>
     <div class="skill-card reveal">
       <span class="skill-icon">⚡</span>
       <div class="skill-name">E2E 자동화 (Cypress)</div>
       <div class="skill-desc">핵심 유저 시나리오를 중심으로 Cypress 기반 E2E 자동화를 구성했습니다. 복잡한 스크립트보다 실질적인 커버리지 확보에 집중합니다.</div>
-      <div class="skill-tags">
-        <span class="tag tag-p">Cypress</span>
-        <span class="tag">E2E 테스트</span>
-        <span class="tag">유저 시나리오</span>
-        <span class="tag">회귀 방어</span>
-      </div>
+      <div class="skill-tags"><span class="tag tag-p">Cypress</span><span class="tag">E2E 테스트</span><span class="tag">유저 시나리오</span><span class="tag">회귀 방어</span></div>
     </div>
     <div class="skill-card reveal">
       <span class="skill-icon">🔌</span>
       <div class="skill-name">API 테스트</div>
       <div class="skill-desc">Swagger를 활용한 API 검증 경험. 카카오 모빌리티 환경에서 파라미터 유효성, 응답값, 에러 핸들링을 체계적으로 테스트했습니다.</div>
-      <div class="skill-tags">
-        <span class="tag tag-p">Swagger</span>
-        <span class="tag">API 검증</span>
-        <span class="tag">응답값 검증</span>
-        <span class="tag">에러 케이스</span>
-      </div>
+      <div class="skill-tags"><span class="tag tag-p">Swagger</span><span class="tag">API 검증</span><span class="tag">응답값 검증</span><span class="tag">에러 케이스</span></div>
     </div>
     <div class="skill-card reveal">
       <span class="skill-icon">🤖</span>
       <div class="skill-name">Claude MCP 자동화</div>
-      <div class="skill-desc">Claude Desktop에 MCP 서버를 연동해 QA 워크플로우를 자동화했습니다. 기획서 → TC → 브라우저 테스트 → GitHub까지, 자연어 명령만으로 구현.</div>
-      <div class="skill-tags">
-        <span class="tag tag-p">Claude MCP</span>
-        <span class="tag tag-p">Playwright MCP</span>
-        <span class="tag tag-p">GitHub MCP</span>
-        <span class="tag">AI 워크플로우</span>
-      </div>
+      <div class="skill-desc">Claude Desktop에 MCP 서버를 연동해 QA 워크플로우를 자동화했습니다. 자연어 명령만으로 기획서 → TC → 브라우저 테스트 → GitHub까지 연결.</div>
+      <div class="skill-tags"><span class="tag tag-p">Claude MCP</span><span class="tag tag-p">Playwright MCP</span><span class="tag tag-p">GitHub MCP</span><span class="tag">AI 워크플로우</span></div>
     </div>
     <div class="skill-card reveal">
       <span class="skill-icon">🐛</span>
       <div class="skill-name">결함 관리 & 리포팅</div>
       <div class="skill-desc">재현 절차, 기대값과 실제값 대비, 영향도 분석이 담긴 버그 리포트. 개발팀과의 원활한 커뮤니케이션을 최우선으로 합니다.</div>
-      <div class="skill-tags">
-        <span class="tag">Jira</span>
-        <span class="tag">버그 리포트</span>
-        <span class="tag">우선순위 분류</span>
-        <span class="tag">영향도 분석</span>
-      </div>
+      <div class="skill-tags"><span class="tag">Jira</span><span class="tag">버그 리포트</span><span class="tag">우선순위 분류</span><span class="tag">영향도 분석</span></div>
     </div>
     <div class="skill-card reveal">
       <span class="skill-icon">📊</span>
       <div class="skill-name">품질 지표 & 소통</div>
       <div class="skill-desc">테스트 커버리지, 결함 밀도, 진행률 등 지표 기반 커뮤니케이션. QA가 게이트키퍼가 아닌 팀의 파트너라고 생각합니다.</div>
-      <div class="skill-tags">
-        <span class="tag">커버리지 관리</span>
-        <span class="tag">품질 지표</span>
-        <span class="tag">이해관계자 소통</span>
-      </div>
+      <div class="skill-tags"><span class="tag">커버리지 관리</span><span class="tag">품질 지표</span><span class="tag">이해관계자 소통</span></div>
     </div>
   </div>
 </section>
 
-<section id="projects">
+<!-- PROJECTS -->
+<section id="projects" style="background:var(--bg2)">
   <div class="section-tag reveal">— 프로젝트</div>
   <h2 class="section-title reveal">Projects</h2>
   <div class="projects-list">
@@ -457,14 +493,11 @@
         <div class="project-num">PROJECT 01</div>
         <div class="project-name">Claude MCP QA 자동화 파이프라인</div>
         <div class="project-desc">Claude Desktop에 filesystem, GitHub, Playwright MCP를 연동해 QA 업무 전체를 자동화했습니다. 기능 명세를 입력하면 24개 TC가 생성되고, 브라우저 테스트 스크린샷이 GitHub에 자동 커밋됩니다. 이 포트폴리오 페이지 자체도 그 결과물입니다.</div>
+        <a href="https://github.com/kihyunqa/qa-portfolio" target="_blank" class="project-link">GitHub 레포 보기 →</a>
       </div>
       <div class="project-meta">
         <div class="project-type">MCP · AI 자동화</div>
-        <div class="project-tags">
-          <span class="tag tag-p">Claude MCP</span>
-          <span class="tag tag-p">Playwright</span>
-          <span class="tag">GitHub API</span>
-        </div>
+        <div class="project-tags"><span class="tag tag-p">Claude MCP</span><span class="tag tag-p">Playwright</span><span class="tag">GitHub API</span></div>
       </div>
     </div>
     <div class="project-item reveal">
@@ -475,22 +508,20 @@
       </div>
       <div class="project-meta">
         <div class="project-type">E2E 자동화</div>
-        <div class="project-tags">
-          <span class="tag tag-p">Cypress</span>
-          <span class="tag">E2E</span>
-          <span class="tag">회귀 테스트</span>
-        </div>
+        <div class="project-tags"><span class="tag tag-p">Cypress</span><span class="tag">E2E</span><span class="tag">회귀 테스트</span></div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- CONTACT -->
 <section class="contact-wrap" id="contact">
   <div class="section-tag reveal">— CONTACT</div>
   <h2 class="section-title reveal">함께 일해요</h2>
   <p class="contact-sub reveal">품질에 진심인 팀이라면 어디든 환영합니다.</p>
   <div class="contact-links reveal">
     <a href="https://github.com/kihyunqa/qa-portfolio" target="_blank" class="btn btn-primary">GitHub 포트폴리오</a>
+    <!-- 아래 이메일 주소를 실제 주소로 교체하세요 -->
     <a href="mailto:your@email.com" class="btn btn-outline">이메일 문의</a>
   </div>
 </section>
@@ -501,34 +532,32 @@
 </footer>
 
 <script>
+  // 커서
   const cursor = document.getElementById('cursor');
   const ring = document.getElementById('cursorRing');
   let mx=0,my=0,rx=0,ry=0;
-  document.addEventListener('mousemove', e => {
-    mx=e.clientX; my=e.clientY;
-    cursor.style.left=mx+'px'; cursor.style.top=my+'px';
-  });
-  (function tick(){
-    rx+=(mx-rx)*0.12; ry+=(my-ry)*0.12;
-    ring.style.left=rx+'px'; ring.style.top=ry+'px';
-    requestAnimationFrame(tick);
-  })();
+  document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; cursor.style.left=mx+'px'; cursor.style.top=my+'px'; });
+  (function tick(){ rx+=(mx-rx)*0.12; ry+=(my-ry)*0.12; ring.style.left=rx+'px'; ring.style.top=ry+'px'; requestAnimationFrame(tick); })();
   document.querySelectorAll('a,button').forEach(el=>{
-    el.addEventListener('mouseenter',()=>{
-      cursor.style.transform='translate(-50%,-50%) scale(2)';
-      ring.style.transform='translate(-50%,-50%) scale(1.5)';
-      ring.style.borderColor='rgba(180,122,255,0.7)';
-    });
-    el.addEventListener('mouseleave',()=>{
-      cursor.style.transform='translate(-50%,-50%) scale(1)';
-      ring.style.transform='translate(-50%,-50%) scale(1)';
-      ring.style.borderColor='rgba(180,122,255,0.4)';
-    });
+    el.addEventListener('mouseenter',()=>{ cursor.style.transform='translate(-50%,-50%) scale(2)'; ring.style.transform='translate(-50%,-50%) scale(1.5)'; ring.style.borderColor='rgba(180,122,255,0.7)'; });
+    el.addEventListener('mouseleave',()=>{ cursor.style.transform='translate(-50%,-50%) scale(1)'; ring.style.transform='translate(-50%,-50%) scale(1)'; ring.style.borderColor='rgba(180,122,255,0.4)'; });
   });
+
+  // 햄버거 메뉴
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+  });
+  function closeMenu() {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+  }
+
+  // 스크롤 reveal
   const obs = new IntersectionObserver(entries=>{
-    entries.forEach((e,i)=>{
-      if(e.isIntersecting){ setTimeout(()=>e.target.classList.add('on'), i*70); obs.unobserve(e.target); }
-    });
+    entries.forEach((e,i)=>{ if(e.isIntersecting){ setTimeout(()=>e.target.classList.add('on'), i*70); obs.unobserve(e.target); } });
   },{threshold:0.1});
   document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 </script>
