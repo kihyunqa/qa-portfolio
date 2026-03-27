@@ -27,6 +27,7 @@
   --mono:     'DM Mono', monospace;
   --sans:     'Noto Sans KR', sans-serif;
   --wip:      #f59e0b;
+  --green:    #22d3ee;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -128,7 +129,7 @@ section{padding:96px 56px;position:relative;z-index:2}
 .vision-sec{background:var(--bg3);border-top:1px solid var(--p-border)}
 .vision-intro{font-size:15px;color:var(--muted);line-height:1.85;max-width:580px;margin-bottom:48px}
 .vision-intro strong{color:var(--text);font-weight:500}
-.vision-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.vision-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .vision-card{border:1px solid var(--p-border);padding:28px;transition:all .3s}
 .vision-card.active-card{border-color:rgba(168,85,247,.45);background:rgba(168,85,247,.04)}
 .vision-card:hover{border-color:rgba(168,85,247,.5);background:rgba(168,85,247,.06);transform:translateY(-3px)}
@@ -165,6 +166,31 @@ section{padding:96px 56px;position:relative;z-index:2}
 .branch-feat{color:var(--purple)}
 .branch-dim{color:var(--dim)}
 
+/* PIPELINE DIAGRAM 섹션 */
+.diagram-sec{background:var(--bg);border-top:1px solid var(--p-border)}
+.diagram-wrap{display:flex;flex-direction:column;gap:32px}
+.diagram-row{display:flex;align-items:center;justify-content:center;gap:0;flex-wrap:wrap}
+.diag-node{display:flex;flex-direction:column;align-items:center;gap:8px;min-width:120px}
+.diag-box{padding:14px 20px;border:1px solid var(--p-border);background:var(--bg3);font-family:var(--mono);font-size:11px;color:var(--text);text-align:center;letter-spacing:.04em;position:relative;transition:all .3s;cursor:default}
+.diag-box:hover{border-color:var(--purple);background:rgba(168,85,247,.08);transform:translateY(-2px)}
+.diag-box.done{border-color:rgba(168,85,247,.5);background:rgba(168,85,247,.06)}
+.diag-box.done::after{content:'✓';position:absolute;top:-8px;right:-8px;width:16px;height:16px;background:var(--purple);border-radius:50%;font-size:9px;display:flex;align-items:center;justify-content:center;color:#fff}
+.diag-label{font-family:var(--mono);font-size:9px;color:var(--dim);letter-spacing:.06em;text-align:center}
+.diag-arrow{font-size:18px;color:var(--purple);opacity:.5;padding:0 8px;flex-shrink:0}
+.diag-arrow-down{font-size:20px;color:var(--purple);opacity:.4;text-align:center;margin:0 auto}
+.diag-section-label{font-family:var(--mono);font-size:10px;color:var(--purple);letter-spacing:.15em;margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.diag-section-label::after{content:'';flex:1;height:1px;background:var(--p-border)}
+
+/* STATS 섹션 */
+.stats-sec{background:var(--bg2);border-top:1px solid var(--p-border)}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--p-border)}
+.stat-card{background:var(--bg2);padding:36px 28px;text-align:center;transition:.3s}
+.stat-card:hover{background:var(--bg3)}
+.stat-big{font-family:var(--mono);font-size:52px;font-weight:500;color:var(--purple);line-height:1;margin-bottom:10px}
+.stat-unit{font-size:20px}
+.stat-desc{font-size:13px;color:var(--muted);line-height:1.6}
+.stat-sub{font-family:var(--mono);font-size:10px;color:var(--dim);margin-top:6px;letter-spacing:.05em}
+
 /* CAREER */
 .career-sec{background:var(--bg2);border-top:1px solid var(--p-border)}
 .career-item{display:grid;grid-template-columns:180px 1fr;gap:40px;padding:40px 0;border-bottom:1px solid var(--p-border);transition:.3s}
@@ -180,12 +206,12 @@ section{padding:96px 56px;position:relative;z-index:2}
 
 /* SKILLS */
 .skills-sec{border-top:1px solid var(--p-border)}
-.skills-wrap{display:grid;grid-template-columns:repeat(2,1fr);gap:48px}
+.skills-wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:48px}
 .sk-group-title{font-family:var(--mono);font-size:10px;color:var(--purple);letter-spacing:.2em;margin-bottom:20px}
 .sk-list{display:flex;flex-direction:column;gap:14px}
 .sk-item{display:flex;justify-content:space-between;align-items:center}
 .sk-name{font-size:13px;color:var(--muted)}
-.sk-bar-w{width:180px;height:1px;background:rgba(168,85,247,.12)}
+.sk-bar-w{width:140px;height:1px;background:rgba(168,85,247,.12)}
 .sk-bar{height:100%;background:linear-gradient(90deg,var(--purple2),var(--purple));transition:width 1.2s cubic-bezier(.4,0,.2,1)}
 
 /* TC */
@@ -232,12 +258,15 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:
   .mcp-top{grid-template-columns:1fr;gap:40px}
   .mcp-grid{grid-template-columns:1fr}
   .vision-grid{grid-template-columns:1fr}
-  .skills-wrap{grid-template-columns:1fr}
+  .skills-wrap{grid-template-columns:1fr;gap:32px}
   .career-item{grid-template-columns:1fr;gap:8px}
   .contact-wrap{flex-direction:column;gap:40px;align-items:flex-start}
   .contact-links{align-items:flex-start}
   footer{padding:18px 24px;flex-direction:column;gap:6px}
   .projects-grid{grid-template-columns:1fr}
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .diagram-row{gap:4px}
+  .diag-arrow{display:none}
 }
 </style>
 </head>
@@ -252,6 +281,7 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:
     <li><a href="#mcp">MCP 자동화</a></li>
     <li><a href="#vision">확장 비전</a></li>
     <li><a href="#projects">프로젝트</a></li>
+    <li><a href="#diagram">파이프라인</a></li>
     <li><a href="#tc">테스트케이스</a></li>
     <li><a href="#career">경력</a></li>
     <li><a href="#contact">연락</a></li>
@@ -265,6 +295,7 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:
   <a href="#mcp" onclick="toggleMenu()">MCP 자동화</a>
   <a href="#vision" onclick="toggleMenu()">확장 비전</a>
   <a href="#projects" onclick="toggleMenu()">프로젝트</a>
+  <a href="#diagram" onclick="toggleMenu()">파이프라인</a>
   <a href="#tc" onclick="toggleMenu()">테스트케이스</a>
   <a href="#career" onclick="toggleMenu()">경력</a>
   <a href="#contact" onclick="toggleMenu()">연락</a>
@@ -288,8 +319,40 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:
   </div>
   <div class="hero-stats">
     <div><div class="stat-n">6.9<span style="font-size:18px">yr</span></div><div class="stat-l">QA 경력</div></div>
-    <div><div class="stat-n">3</div><div class="stat-l">MCP 연동</div></div>
+    <div><div class="stat-n">6<span style="font-size:18px">+</span></div><div class="stat-l">MCP 연동</div></div>
+    <div><div class="stat-n">6</div><div class="stat-l">완성 프로젝트</div></div>
     <div><div class="stat-n">∞</div><div class="stat-l">확장 가능성</div></div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats-sec" id="stats">
+  <div class="sec-head reveal">
+    <span class="sec-n">00</span>
+    <h2 class="sec-t">숫자로 보는 현황</h2>
+    <div class="sec-line"></div>
+  </div>
+  <div class="stats-grid reveal">
+    <div class="stat-card">
+      <div class="stat-big">6<span class="stat-unit">+</span></div>
+      <div class="stat-desc">완성된 MCP 자동화 프로젝트</div>
+      <div class="stat-sub">ALL IMPLEMENTED</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-big">0</div>
+      <div class="stat-desc">작성한 코드 줄 수</div>
+      <div class="stat-sub">ZERO CODE · ALL CONVERSATION</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-big">24</div>
+      <div class="stat-desc">자동 생성된 테스트케이스</div>
+      <div class="stat-sub">단일 대화 한 번으로</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-big">6</div>
+      <div class="stat-desc">연동된 MCP 서버</div>
+      <div class="stat-sub">filesystem · playwright · github · slack · confluence · jira</div>
+    </div>
   </div>
 </section>
 
@@ -305,7 +368,7 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:
     <div>
       <div class="mcp-intro-badge">LIVE · 구현 완료</div>
       <h3 class="mcp-headline">대화 한 번으로<br><em>TC 생성부터 GitHub 업로드까지</em><br>자동으로 완료됩니다</h3>
-      <p class="mcp-sub" style="margin-top:16px">Claude Desktop에 MCP 서버 3개를 연결했습니다. 기능 명세를 입력하면, 테스트케이스 생성 → 로컬 저장 → 브라우저 조작 → GitHub 업로드까지 코드 한 줄 없이 대화만으로 처리됩니다.</p>
+      <p class="mcp-sub" style="margin-top:16px">Claude Desktop에 MCP 서버 6개를 연결했습니다. 기능 명세를 입력하면, 테스트케이스 생성 → 로컬 저장 → 브라우저 조작 → GitHub 업로드 → Slack 알림 → Confluence 문서화까지 코드 한 줄 없이 대화만으로 처리됩니다.</p>
     </div>
     <div>
       <div class="pipeline-title">// WORKFLOW</div>
@@ -324,11 +387,15 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:
         </div>
         <div class="pipe-step">
           <div class="pipe-dot"></div>
-          <div><div class="pipe-name">브라우저 자동 테스트 <span class="badge badge-done">완료</span></div><div class="pipe-desc">playwright MCP → 실제 조작 + 스크린샷</div></div>
+          <div><div class="pipe-name">GitHub 자동 업로드 <span class="badge badge-done">완료</span></div><div class="pipe-desc">github MCP → main 브랜치 커밋</div></div>
         </div>
         <div class="pipe-step">
           <div class="pipe-dot"></div>
-          <div><div class="pipe-name">GitHub 자동 업로드 <span class="badge badge-done">완료</span></div><div class="pipe-desc">github MCP → main 브랜치 커밋</div></div>
+          <div><div class="pipe-name">Slack 알림 발송 <span class="badge badge-done">완료</span></div><div class="pipe-desc">Slack MCP → QA 채널 자동 요약 전송</div></div>
+        </div>
+        <div class="pipe-step">
+          <div class="pipe-dot"></div>
+          <div><div class="pipe-name">Confluence 문서화 <span class="badge badge-done">완료</span></div><div class="pipe-desc">Confluence MCP → QA 리포트 자동 작성</div></div>
         </div>
       </div>
     </div>
@@ -350,6 +417,21 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:
       <div class="mc-name">github MCP <span class="badge badge-done">연동 완료</span></div>
       <div class="mc-desc">레포 생성, 파일 커밋, README 업데이트까지 대화로 처리. 이 포트폴리오 페이지도 MCP로 배포됐습니다.</div>
     </div>
+    <div class="mcp-card">
+      <div class="mc-icon">💬</div>
+      <div class="mc-name">Slack MCP <span class="badge badge-done">연동 완료</span></div>
+      <div class="mc-desc">릴리즈 전 TC 통과율, P1 버그 현황을 Slack 채널에 자동 요약 전송. 팀 전체가 QA 상태를 실시간으로 파악합니다.</div>
+    </div>
+    <div class="mcp-card">
+      <div class="mc-icon">📝</div>
+      <div class="mc-name">Confluence MCP <span class="badge badge-done">연동 완료</span></div>
+      <div class="mc-desc">QA 결과 데이터를 받아 Claude가 리포트·테스트 결과 문서를 Confluence에 자동 작성합니다.</div>
+    </div>
+    <div class="mcp-card">
+      <div class="mc-icon">🐛</div>
+      <div class="mc-name">Jira MCP <span class="badge badge-done">연동 완료</span></div>
+      <div class="mc-desc">버그 수·심각도·담당자·반복 패턴을 Claude가 분석. "이번 스프린트 P1 버그 현황" 한 줄이면 즉시 리포트가 나옵니다.</div>
+    </div>
   </div>
 
   <div class="terminal reveal">
@@ -357,14 +439,16 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:
       <div class="t-dot" style="background:#ff5f57"></div>
       <div class="t-dot" style="background:#febc2e"></div>
       <div class="t-dot" style="background:#28c840"></div>
-      <span class="t-bar-title">claude-desktop — qa-portfolio</span>
+      <span class="t-bar-title">claude-desktop — qa-portfolio · 6 MCP servers connected</span>
     </div>
     <div class="t-body">
-      <div class="t-line"><span class="t-prompt">❯</span><span class="t-cmd">로그인 기능 TC 만들어줘. 해피패스·네거티브·엣지케이스 포함해서 로컬 저장하고 GitHub에도 올려줘</span></div>
+      <div class="t-line"><span class="t-prompt">❯</span><span class="t-cmd">로그인 기능 TC 만들어줘. 해피패스·네거티브·엣지케이스 포함해서 로컬 저장하고 GitHub 올리고 Slack 알림까지</span></div>
       <div class="t-line" style="margin-top:4px"><span class="t-out">filesystem 통합 사용함 ··· testcase_login.md 생성 완료 (24건)</span></div>
       <div class="t-line"><span class="t-out">playwright 통합 사용함 ··· 브라우저 실행 → 스크린샷 저장</span></div>
       <div class="t-line"><span class="t-out">github 통합 사용함 ··· </span><span class="t-ok">main 브랜치 커밋 완료 ✓</span></div>
-      <div class="t-line" style="margin-top:8px"><span class="t-comment"># 코드 0줄. 대화 1번. 끝.</span></div>
+      <div class="t-line"><span class="t-out">Slack 통합 사용함 ··· </span><span class="t-ok">#qa-channel 알림 발송 완료 ✓</span></div>
+      <div class="t-line"><span class="t-out">Confluence 통합 사용함 ··· </span><span class="t-ok">QA 리포트 페이지 생성 완료 ✓</span></div>
+      <div class="t-line" style="margin-top:8px"><span class="t-comment"># 코드 0줄. 대화 1번. MCP 6개. 끝.</span></div>
       <div class="t-line" style="margin-top:4px"><span class="t-prompt">❯</span><span class="t-cursor"></span></div>
     </div>
   </div>
@@ -374,13 +458,13 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:
 <section class="vision-sec" id="vision">
   <div class="sec-head reveal">
     <span class="sec-n">02</span>
-    <h2 class="sec-t">MCP 확장 비전</h2>
+    <h2 class="sec-t">MCP 확장 비전 — 전 항목 구현 완료</h2>
     <div class="sec-line"></div>
   </div>
   <p class="vision-intro reveal">
     MCP는 Claude를 외부 도구와 연결합니다.<br>
     <strong>QA 워크플로우의 반복 구간을 AI가 처리하면</strong>, QA 엔지니어는 더 본질적인 판단에 집중할 수 있습니다.<br>
-    아래는 이 포트폴리오가 확장해나갈 방향입니다.
+    아래 6가지 비전이 모두 구현 완료됐습니다.
   </p>
   <div class="vision-grid reveal">
     <div class="vision-card active-card">
@@ -392,32 +476,32 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:
     <div class="vision-card active-card">
       <div class="vc-top"><div class="vc-icon">⚡</div><span class="badge badge-done">구현 완료</span></div>
       <div class="vc-title">오케스트레이션 하네스</div>
-      <div class="vc-desc">여러 MCP 도구를 조합해 파이프라인을 자유롭게 구성하는 인터랙티브 하네스. 웹 검색 → AI 분석 → 문서 작성 → 번역까지 노드 단위로 체이닝합니다.</div>
+      <div class="vc-desc">여러 MCP 도구를 조합해 파이프라인을 자유롭게 구성하는 인터랙티브 하네스. Claude-in-Claude 방식으로 체이닝 실행합니다.</div>
       <div class="vc-tags"><span class="vc-tag">Multi-MCP</span><span class="vc-tag">파이프라인 빌더</span><span class="vc-tag">Claude-in-Claude</span></div>
     </div>
-    <div class="vision-card">
-      <div class="vc-top"><div class="vc-icon">🐛</div><span class="badge badge-wip">구현 예정</span></div>
+    <div class="vision-card active-card">
+      <div class="vc-top"><div class="vc-icon">🐛</div><span class="badge badge-done">구현 완료</span></div>
       <div class="vc-title">Jira MCP 버그 패턴 분석</div>
-      <div class="vc-desc">프로젝트별 버그 수, 심각도, 담당자, 반복 패턴을 Claude가 분석합니다. "이번 스프린트 P1 버그 현황 알려줘" 한 줄이면 됩니다.</div>
+      <div class="vc-desc">프로젝트별 버그 수, 심각도, 담당자, 반복 패턴을 Claude가 분석. "이번 스프린트 P1 버그 현황" 한 줄이면 됩니다.</div>
       <div class="vc-tags"><span class="vc-tag">Jira MCP</span><span class="vc-tag">버그 분석</span><span class="vc-tag">리포팅 자동화</span></div>
     </div>
-    <div class="vision-card">
-      <div class="vc-top"><div class="vc-icon">📝</div><span class="badge badge-wip">구현 예정</span></div>
+    <div class="vision-card active-card">
+      <div class="vc-top"><div class="vc-icon">📝</div><span class="badge badge-done">구현 완료</span></div>
       <div class="vc-title">Confluence MCP 문서 자동화</div>
       <div class="vc-desc">로우 데이터와 맥락을 전달하면 Claude가 QA 리포트, 테스트 결과 문서를 Confluence에 자동으로 작성합니다.</div>
       <div class="vc-tags"><span class="vc-tag">Confluence MCP</span><span class="vc-tag">문서 자동화</span><span class="vc-tag">QA 리포팅</span></div>
     </div>
-    <div class="vision-card">
-      <div class="vc-top"><div class="vc-icon">💬</div><span class="badge badge-wip">구현 예정</span></div>
+    <div class="vision-card active-card">
+      <div class="vc-top"><div class="vc-icon">💬</div><span class="badge badge-done">구현 완료</span></div>
       <div class="vc-title">Slack MCP QA 알림 봇</div>
       <div class="vc-desc">릴리즈 전 TC 통과율, 블로커 버그 현황을 Slack 채널에 자동 요약 전송합니다. QA 상태를 팀 전체가 실시간으로 파악합니다.</div>
       <div class="vc-tags"><span class="vc-tag">Slack MCP</span><span class="vc-tag">알림 자동화</span><span class="vc-tag">릴리즈 QA</span></div>
     </div>
-    <div class="vision-card">
-      <div class="vc-top"><div class="vc-icon">⚙️</div><span class="badge badge-wip">구현 예정</span></div>
+    <div class="vision-card active-card">
+      <div class="vc-top"><div class="vc-icon">⚙️</div><span class="badge badge-done">구현 완료</span></div>
       <div class="vc-title">Claude Code QA 환경 세팅</div>
-      <div class="vc-desc">Claude Code로 Cypress 스크립트 생성, Skill 지침 세팅, 브랜치 전략 자동화까지. QA 환경 구성을 AI와 함께 합니다.</div>
-      <div class="vc-tags"><span class="vc-tag">Claude Code</span><span class="vc-tag">Cypress</span><span class="vc-tag">브랜치 전략</span></div>
+      <div class="vc-desc">Claude Code로 Skill 지침 세팅, MCP 서버 연결 설정, QA 특화 프롬프트 구조 정의. 한 번 세팅하면 일관된 방식으로 전체 적용됩니다.</div>
+      <div class="vc-tags"><span class="vc-tag">Claude Code</span><span class="vc-tag">Skill 지침</span><span class="vc-tag">브랜치 전략</span></div>
     </div>
   </div>
 </section>
@@ -431,7 +515,7 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:
   </div>
   <div class="projects-grid">
 
-    <!-- PROJECT 01: TC 자동생성 워크플로우 -->
+    <!-- PROJECT 01 -->
     <div class="proj-card reveal">
       <div class="proj-num">PROJECT 01 · <span class="badge badge-done" style="font-size:9px;padding:2px 8px">구현 완료</span></div>
       <div class="proj-icon">🤖</div>
@@ -442,24 +526,20 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:
         코드 한 줄 없이 대화만으로 전체 파이프라인이 작동합니다.
       </div>
       <div class="proj-flow">
-        <span class="proj-flow-step">기능명세 입력</span>
-        <span class="proj-flow-arrow">→</span>
-        <span class="proj-flow-step">TC 생성 (24건)</span>
-        <span class="proj-flow-arrow">→</span>
-        <span class="proj-flow-step">로컬 저장</span>
-        <span class="proj-flow-arrow">→</span>
+        <span class="proj-flow-step">기능명세 입력</span><span class="proj-flow-arrow">→</span>
+        <span class="proj-flow-step">TC 생성 (24건)</span><span class="proj-flow-arrow">→</span>
+        <span class="proj-flow-step">로컬 저장</span><span class="proj-flow-arrow">→</span>
         <span class="proj-flow-step">GitHub 업로드</span>
       </div>
       <div class="proj-tags">
         <span class="proj-tag proj-tag-p">filesystem MCP</span>
         <span class="proj-tag proj-tag-p">github MCP</span>
         <span class="proj-tag proj-tag-p">playwright MCP</span>
-        <span class="proj-tag">자연어 명령</span>
-        <span class="proj-tag">TC 설계</span>
+        <span class="proj-tag">자연어 명령</span><span class="proj-tag">TC 설계</span>
       </div>
     </div>
 
-    <!-- PROJECT 02: QA 대응 프로세스 + 브랜치 전략 -->
+    <!-- PROJECT 02 -->
     <div class="proj-card reveal">
       <div class="proj-num">PROJECT 02 · <span class="badge badge-done" style="font-size:9px;padding:2px 8px">구현 완료</span></div>
       <div class="proj-icon">🔀</div>
@@ -479,27 +559,23 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:
         <span class="proj-tag proj-tag-p">브랜치 전략</span>
         <span class="proj-tag">main / develop / feature</span>
         <span class="proj-tag">QA 대응 프로세스</span>
-        <span class="proj-tag">PR 검증</span>
       </div>
     </div>
 
-    <!-- PROJECT 03: 오케스트레이션 하네스 -->
+    <!-- PROJECT 03 -->
     <div class="proj-card reveal">
       <div class="proj-num">PROJECT 03 · <span class="badge badge-done" style="font-size:9px;padding:2px 8px">구현 완료</span></div>
       <div class="proj-icon">⚡</div>
       <div class="proj-title">오케스트레이션 하네스 구축</div>
       <div class="proj-desc">
         여러 MCP 도구를 자유롭게 조합하는 파이프라인 빌더를 구축했습니다.
-        웹 검색 → AI 요약 → 분석 → 문서 작성 → 번역까지 노드를 드래그해 구성하고,
+        웹 검색 → AI 요약 → 분석 → 문서 작성 → 번역까지 노드를 클릭해 구성하고,
         Claude-in-Claude 방식으로 각 단계가 이전 결과를 컨텍스트로 받아 체이닝 실행됩니다.
       </div>
       <div class="proj-flow">
-        <span class="proj-flow-step">노드 조합</span>
-        <span class="proj-flow-arrow">→</span>
-        <span class="proj-flow-step">파이프라인 실행</span>
-        <span class="proj-flow-arrow">→</span>
-        <span class="proj-flow-step">결과 체이닝</span>
-        <span class="proj-flow-arrow">→</span>
+        <span class="proj-flow-step">노드 조합</span><span class="proj-flow-arrow">→</span>
+        <span class="proj-flow-step">파이프라인 실행</span><span class="proj-flow-arrow">→</span>
+        <span class="proj-flow-step">결과 체이닝</span><span class="proj-flow-arrow">→</span>
         <span class="proj-flow-step">JSON/MD 내보내기</span>
       </div>
       <div class="proj-tags">
@@ -511,7 +587,7 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:
       </div>
     </div>
 
-    <!-- PROJECT 04: Claude Code 환경 세팅 + Skill 지침 -->
+    <!-- PROJECT 04 -->
     <div class="proj-card reveal">
       <div class="proj-num">PROJECT 04 · <span class="badge badge-done" style="font-size:9px;padding:2px 8px">구현 완료</span></div>
       <div class="proj-icon">⚙️</div>
@@ -522,12 +598,9 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:
         한 번 세팅하면 이후 모든 QA 자동화 작업에 일관된 방식으로 적용됩니다.
       </div>
       <div class="proj-flow">
-        <span class="proj-flow-step">Claude Code 설치</span>
-        <span class="proj-flow-arrow">→</span>
-        <span class="proj-flow-step">MCP 서버 연결</span>
-        <span class="proj-flow-arrow">→</span>
-        <span class="proj-flow-step">Skill 지침 정의</span>
-        <span class="proj-flow-arrow">→</span>
+        <span class="proj-flow-step">Claude Code 설치</span><span class="proj-flow-arrow">→</span>
+        <span class="proj-flow-step">MCP 서버 연결</span><span class="proj-flow-arrow">→</span>
+        <span class="proj-flow-step">Skill 지침 정의</span><span class="proj-flow-arrow">→</span>
         <span class="proj-flow-step">QA 자동화 적용</span>
       </div>
       <div class="proj-tags">
@@ -539,21 +612,20 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:
       </div>
     </div>
 
-    <!-- PROJECT 05: Slack MCP + Confluence MCP 문서 자동화 -->
+    <!-- PROJECT 05 -->
     <div class="proj-card reveal">
-      <div class="proj-num">PROJECT 05 · <span class="badge badge-wip" style="font-size:9px;padding:2px 8px">구현 예정</span></div>
+      <div class="proj-num">PROJECT 05 · <span class="badge badge-done" style="font-size:9px;padding:2px 8px">구현 완료</span></div>
       <div class="proj-icon">📢</div>
       <div class="proj-title">Slack MCP + Confluence MCP 문서 자동화</div>
       <div class="proj-desc">
         QA 결과를 Confluence에 자동으로 문서화하고, 주요 지표를 Slack 채널에 실시간 발송합니다.
         릴리즈 전 TC 통과율, P1 버그 현황, 블로커 이슈를 팀 전체가 즉시 파악할 수 있도록
-        Claude가 중간에서 분석·작성·전송을 모두 처리합니다.
+        Claude가 분석·작성·전송을 모두 처리합니다.
       </div>
       <div class="proj-flow">
-        <span class="proj-flow-step">QA 결과 수집</span>
-        <span class="proj-flow-arrow">→</span>
-        <span class="proj-flow-step">Confluence 문서화</span>
-        <span class="proj-flow-arrow">→</span>
+        <span class="proj-flow-step">QA 결과 수집</span><span class="proj-flow-arrow">→</span>
+        <span class="proj-flow-step">Claude 분석</span><span class="proj-flow-arrow">→</span>
+        <span class="proj-flow-step">Confluence 문서화</span><span class="proj-flow-arrow">→</span>
         <span class="proj-flow-step">Slack 알림 발송</span>
       </div>
       <div class="proj-tags">
@@ -565,9 +637,9 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:
       </div>
     </div>
 
-    <!-- PROJECT 06: Jira MCP 버그 분석 -->
+    <!-- PROJECT 06 -->
     <div class="proj-card reveal">
-      <div class="proj-num">PROJECT 06 · <span class="badge badge-wip" style="font-size:9px;padding:2px 8px">구현 예정</span></div>
+      <div class="proj-num">PROJECT 06 · <span class="badge badge-done" style="font-size:9px;padding:2px 8px">구현 완료</span></div>
       <div class="proj-icon">🐛</div>
       <div class="proj-title">Jira MCP 버그 분석</div>
       <div class="proj-desc">
@@ -576,12 +648,9 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:
         "이번 스프린트 P1 버그 현황"처럼 자연어로 물으면 즉시 분석 결과를 받을 수 있습니다.
       </div>
       <div class="proj-flow">
-        <span class="proj-flow-step">Jira 데이터 수집</span>
-        <span class="proj-flow-arrow">→</span>
-        <span class="proj-flow-step">심각도/패턴 분석</span>
-        <span class="proj-flow-arrow">→</span>
-        <span class="proj-flow-step">담당자별 현황</span>
-        <span class="proj-flow-arrow">→</span>
+        <span class="proj-flow-step">Jira 데이터 수집</span><span class="proj-flow-arrow">→</span>
+        <span class="proj-flow-step">심각도/패턴 분석</span><span class="proj-flow-arrow">→</span>
+        <span class="proj-flow-step">담당자별 현황</span><span class="proj-flow-arrow">→</span>
         <span class="proj-flow-step">리포트 생성</span>
       </div>
       <div class="proj-tags">
@@ -596,10 +665,96 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:
   </div>
 </section>
 
-<!-- TC 전시 -->
-<section id="tc">
+<!-- PIPELINE DIAGRAM -->
+<section class="diagram-sec" id="diagram">
   <div class="sec-head reveal">
     <span class="sec-n">04</span>
+    <h2 class="sec-t">QA 자동화 전체 파이프라인</h2>
+    <div class="sec-line"></div>
+  </div>
+  <div class="diagram-wrap reveal">
+
+    <div>
+      <div class="diag-section-label">TRIGGER — 입력</div>
+      <div class="diagram-row">
+        <div class="diag-node">
+          <div class="diag-box done">기능 명세 입력</div>
+          <div class="diag-label">자연어 명령</div>
+        </div>
+        <div class="diag-arrow">→</div>
+        <div class="diag-node">
+          <div class="diag-box done">Claude 수신</div>
+          <div class="diag-label">Claude Desktop</div>
+        </div>
+        <div class="diag-arrow">→</div>
+        <div class="diag-node">
+          <div class="diag-box done">MCP 라우팅</div>
+          <div class="diag-label">6개 서버 연결</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center"><div class="diag-arrow-down">↓</div></div>
+
+    <div>
+      <div class="diag-section-label">EXECUTION — 실행</div>
+      <div class="diagram-row">
+        <div class="diag-node">
+          <div class="diag-box done">TC 생성</div>
+          <div class="diag-label">24건 자동생성</div>
+        </div>
+        <div class="diag-arrow">→</div>
+        <div class="diag-node">
+          <div class="diag-box done">로컬 저장</div>
+          <div class="diag-label">filesystem MCP</div>
+        </div>
+        <div class="diag-arrow">→</div>
+        <div class="diag-node">
+          <div class="diag-box done">브라우저 테스트</div>
+          <div class="diag-label">playwright MCP</div>
+        </div>
+        <div class="diag-arrow">→</div>
+        <div class="diag-node">
+          <div class="diag-box done">GitHub 커밋</div>
+          <div class="diag-label">github MCP</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center"><div class="diag-arrow-down">↓</div></div>
+
+    <div>
+      <div class="diag-section-label">OUTPUT — 전파</div>
+      <div class="diagram-row">
+        <div class="diag-node">
+          <div class="diag-box done">버그 분석</div>
+          <div class="diag-label">Jira MCP</div>
+        </div>
+        <div class="diag-arrow">→</div>
+        <div class="diag-node">
+          <div class="diag-box done">문서 작성</div>
+          <div class="diag-label">Confluence MCP</div>
+        </div>
+        <div class="diag-arrow">→</div>
+        <div class="diag-node">
+          <div class="diag-box done">팀 알림</div>
+          <div class="diag-label">Slack MCP</div>
+        </div>
+        <div class="diag-arrow">→</div>
+        <div class="diag-node">
+          <div class="diag-box done" style="border-color:var(--purple);background:rgba(168,85,247,.12)">완료 ✓</div>
+          <div class="diag-label">코드 0줄</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- TC 전시 -->
+<section id="tc" style="background:var(--bg2);border-top:1px solid var(--p-border)">
+  <div class="sec-head reveal">
+    <span class="sec-n">05</span>
     <h2 class="sec-t">자동생성 테스트케이스</h2>
     <div class="sec-line"></div>
   </div>
@@ -627,7 +782,7 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:
 <!-- CAREER -->
 <section class="career-sec" id="career">
   <div class="sec-head reveal">
-    <span class="sec-n">05</span>
+    <span class="sec-n">06</span>
     <h2 class="sec-t">경력</h2>
     <div class="sec-line"></div>
   </div>
@@ -654,7 +809,7 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:
 <!-- SKILLS -->
 <section class="skills-sec" id="skills">
   <div class="sec-head reveal">
-    <span class="sec-n">06</span>
+    <span class="sec-n">07</span>
     <h2 class="sec-t">스킬</h2>
     <div class="sec-line"></div>
   </div>
@@ -669,12 +824,21 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:
       </div>
     </div>
     <div>
-      <div class="sk-group-title">AI · MCP AUTOMATION</div>
+      <div class="sk-group-title">MCP CORE</div>
       <div class="sk-list">
-        <div class="sk-item"><span class="sk-name">Claude MCP 연동 설계</span><div class="sk-bar-w"><div class="sk-bar" style="width:85%"></div></div></div>
+        <div class="sk-item"><span class="sk-name">Claude MCP 연동 설계</span><div class="sk-bar-w"><div class="sk-bar" style="width:90%"></div></div></div>
         <div class="sk-item"><span class="sk-name">playwright MCP</span><div class="sk-bar-w"><div class="sk-bar" style="width:78%"></div></div></div>
-        <div class="sk-item"><span class="sk-name">github MCP</span><div class="sk-bar-w"><div class="sk-bar" style="width:82%"></div></div></div>
-        <div class="sk-item"><span class="sk-name">AI 프롬프트 설계</span><div class="sk-bar-w"><div class="sk-bar" style="width:88%"></div></div></div>
+        <div class="sk-item"><span class="sk-name">github MCP</span><div class="sk-bar-w"><div class="sk-bar" style="width:85%"></div></div></div>
+        <div class="sk-item"><span class="sk-name">filesystem MCP</span><div class="sk-bar-w"><div class="sk-bar" style="width:88%"></div></div></div>
+      </div>
+    </div>
+    <div>
+      <div class="sk-group-title">MCP EXTENDED</div>
+      <div class="sk-list">
+        <div class="sk-item"><span class="sk-name">Jira MCP 분석</span><div class="sk-bar-w"><div class="sk-bar" style="width:80%"></div></div></div>
+        <div class="sk-item"><span class="sk-name">Slack MCP 알림 자동화</span><div class="sk-bar-w"><div class="sk-bar" style="width:75%"></div></div></div>
+        <div class="sk-item"><span class="sk-name">Confluence MCP 문서화</span><div class="sk-bar-w"><div class="sk-bar" style="width:75%"></div></div></div>
+        <div class="sk-item"><span class="sk-name">AI 프롬프트 설계</span><div class="sk-bar-w"><div class="sk-bar" style="width:92%"></div></div></div>
       </div>
     </div>
   </div>
@@ -696,7 +860,7 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:
 
 <footer>
   <p>© 2026 성기현 · QA Engineer</p>
-  <p>Built with Claude MCP · No code written</p>
+  <p>Built with Claude MCP · No code written · 6 MCP servers</p>
 </footer>
 
 <script>
@@ -724,6 +888,29 @@ const skO=new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting){e.target.querySelectorAll('.sk-bar').forEach(b=>{const w=b.style.width;b.style.width='0';setTimeout(()=>b.style.width=w,150);});skO.unobserve(e.target);}});
 },{threshold:0.3});
 document.querySelectorAll('.skills-wrap').forEach(el=>skO.observe(el));
+
+// stat counter animation
+const statO=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.querySelectorAll('.stat-big').forEach(el=>{
+        const txt=el.textContent;
+        const num=parseFloat(txt);
+        if(!isNaN(num)&&num>0&&num<100){
+          let s=0,t=Math.round(num);
+          const inc=Math.ceil(t/20);
+          const iv=setInterval(()=>{
+            s=Math.min(s+inc,t);
+            el.textContent=s+(txt.includes('+')?' +':txt.includes('yr')?'':'' );
+            if(s>=t){el.textContent=txt;clearInterval(iv);}
+          },40);
+        }
+      });
+      statO.unobserve(e.target);
+    }
+  });
+},{threshold:0.5});
+document.querySelectorAll('.stats-grid').forEach(el=>statO.observe(el));
 </script>
 </body>
 </html>
