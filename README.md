@@ -1,75 +1,79 @@
-# 🧪 QA 자동화 포트폴리오
+# 성기현 | QA Engineer Portfolio
 
-> **코딩 없이** Claude MCP로 구현한 QA 자동화 워크플로우
+> 6년 9개월 QA 경력 · Claude MCP로 QA 워크플로우를 자동화한 포트폴리오
 
----
-
-## 📌 프로젝트 소개
-
-이 포트폴리오는 **Claude Desktop + MCP(Model Context Protocol)** 를 활용하여  
-테스트 케이스 생성부터 브라우저 자동화, GitHub 업로드까지  
-**QA 업무 전 과정을 코드 한 줄 없이 자동화**한 실험적 프로젝트입니다.
-
-AI와의 대화만으로 실무 QA 워크플로우를 구축할 수 있음을 직접 증명합니다.
+🌐 **포트폴리오 사이트:** [kihyunqa.github.io/qa-portfolio](https://kihyunqa.github.io/qa-portfolio)
 
 ---
 
-## 🛠️ 사용 도구
+## 👤 소개
 
-| 도구 | 역할 |
-|------|------|
-| **Claude Desktop** | AI 에이전트 — 워크플로우 전체 조율 및 지시 |
-| **MCP · filesystem** | 테스트 케이스 로컬 파일 생성 및 저장 |
-| **MCP · github** | 결과물 GitHub 레포지토리 자동 업로드 |
-| **MCP · playwright** | 브라우저 자동 실행 및 UI 테스트 수행 |
+테스트 설계부터 Cypress E2E 자동화, API 검증까지 경험한 QA 엔지니어입니다.  
+최근에는 **Claude MCP(Model Context Protocol)** 를 활용해 QA 워크플로우 전체를 자동화하는 파이프라인을 구축했습니다.
 
 ---
 
-## ⚙️ 자동화 워크플로우
+## 🤖 Claude MCP 자동화 파이프라인
+
+이 레포지토리는 Claude MCP로 실제 운영 중인 자동화 파이프라인의 결과물입니다.
 
 ```
-① TC 생성          ② 로컬 저장         ③ 브라우저 테스트      ④ GitHub 업로드
-─────────────    ─────────────────    ──────────────────    ─────────────────
-Claude가 테스트  →  filesystem MCP로  →  Playwright MCP로  →  GitHub MCP로
-케이스 자동 작성     로컬에 파일 저장     브라우저 자동 실행      레포에 커밋·푸시
+기능 명세 입력 → TC 자동 생성 → 브라우저 자동 테스트 → GitHub 자동 업로드
 ```
 
-1. **TC 생성** — Claude Desktop과의 대화를 통해 테스트 케이스를 자동으로 작성합니다.
-2. **로컬 저장** — `filesystem` MCP가 생성된 TC를 지정 경로에 파일로 저장합니다.
-3. **브라우저 테스트** — `playwright` MCP가 브라우저를 실행하고 UI 테스트를 자동 수행합니다.
-4. **GitHub 업로드** — `github` MCP가 테스트 결과물을 레포지토리에 커밋하고 푸시합니다.
+| 구성요소 | 역할 |
+|---|---|
+| `filesystem MCP` | 로컬 파일 읽기/쓰기 |
+| `github MCP` | 레포 커밋 및 파일 업로드 |
+| `playwright MCP` | 브라우저 자동화 및 스크린샷 |
 
-> 💡 **이 모든 과정이 코딩 없이, Claude와의 대화만으로 이루어집니다.**
-
----
-
-## 📸 실행 화면
-
-![포트폴리오 테스트 실행 화면](screenshots/portfolio_test.png)
+- 자연어 명령 **1회**로 TC 24건 생성
+- 소요 시간 약 **40초**
+- 작성한 코드 **0줄**
 
 ---
 
-## ✨ 핵심 포인트
-
-- ✅ **No-Code 자동화** — 코드를 직접 작성하지 않고 AI 지시만으로 구현
-- ✅ **MCP 멀티 연동** — filesystem / github / playwright 3개 MCP를 동시 활용
-- ✅ **실무 워크플로우 재현** — TC 작성 → 테스트 실행 → 결과 저장의 실제 QA 사이클 구현
-- ✅ **재현 가능성** — Claude Desktop + MCP 환경만 있으면 누구나 동일하게 재현 가능
-
----
-
-## 📂 프로젝트 구조
+## 📁 레포 구조
 
 ```
 qa-portfolio/
-├── screenshots/
-│   └── portfolio_test.png   # 테스트 실행 스크린샷
-├── docs/                    # 자동 생성된 테스트 케이스 및 결과물
+├── index.html              # 포트폴리오 메인 페이지
+├── testcase_login.md       # 로그인 기능 TC (해피패스·네거티브·엣지케이스)
+├── screenshots/            # Playwright MCP 자동 캡처 스크린샷
 └── README.md
 ```
 
 ---
 
-## 📄 라이선스
+## 🧪 테스트케이스 샘플
 
-MIT License
+[`testcase_login.md`](./testcase_login.md) — 로그인 기능 TC 24건
+
+| 구분 | 건수 |
+|---|---|
+| ✅ 해피패스 | 4건 |
+| ❌ 네거티브 | 10건 |
+| ⚠️ 엣지케이스 | 10건 |
+
+주요 커버리지: 정상 로그인, 계정 잠금, XSS/SQL Injection, 경계값, 동시 접속 등
+
+---
+
+## 🛠 보유 역량
+
+- **테스트 설계 & 실행** — TC 설계, 회귀 테스트, 탐색적 테스트
+- **E2E 자동화** — Cypress
+- **API 테스트** — Swagger
+- **AI 기반 자동화** — Claude MCP, Playwright MCP, GitHub MCP
+- **결함 관리** — Jira, 버그 리포팅, 영향도 분석
+
+---
+
+## 📬 연락처
+
+- GitHub: [github.com/kihyunqa](https://github.com/kihyunqa)
+- Email: your@email.com
+
+---
+
+*Powered by Claude MCP*
