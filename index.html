@@ -3,408 +3,617 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>성기현 | QA Engineer</title>
-<meta property="og:title" content="성기현 | QA Engineer Portfolio">
-<meta property="og:description" content="6년 9개월 QA 경력. Claude MCP로 테스트케이스 자동 생성부터 GitHub 업로드까지 — QA 파이프라인을 자동화했습니다.">
-<meta property="og:url" content="https://kihyunqa.github.io/qa-portfolio">
+<title>성기현 · QA Engineer</title>
+<meta name="description" content="6년 9개월 QA 엔지니어. Claude MCP로 QA 자동화의 새로운 가능성을 설계합니다.">
+<meta property="og:title" content="성기현 · QA Engineer">
+<meta property="og:description" content="Claude MCP로 QA 자동화의 새로운 가능성을 설계합니다.">
 <meta property="og:type" content="website">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="description" content="6년 9개월 QA 엔지니어 성기현의 포트폴리오. 테스트 설계, Cypress 자동화, Claude MCP 파이프라인.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --purple: #b47aff;
-    --purple-dim: #8a4fff;
-    --purple-glow: rgba(180,122,255,0.15);
-    --purple-faint: rgba(180,122,255,0.06);
-    --bg: #09080d;
-    --bg2: #0f0d16;
-    --bg3: #141120;
-    --text: #ede8f5;
-    --text-dim: #8a7aa0;
-    --border: rgba(180,122,255,0.12);
-    --border-bright: rgba(180,122,255,0.35);
-    --mono: 'JetBrains Mono', monospace;
-    --sans: 'Noto Sans KR', sans-serif;
-  }
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body { background: var(--bg); color: var(--text); font-family: var(--sans); font-weight: 300; line-height: 1.7; overflow-x: hidden; cursor: none; }
-  .cursor { position: fixed; width: 8px; height: 8px; background: var(--purple); border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); transition: transform 0.1s; box-shadow: 0 0 12px var(--purple); }
-  .cursor-ring { position: fixed; width: 32px; height: 32px; border: 1px solid rgba(180,122,255,0.4); border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%,-50%); transition: all 0.15s ease; }
-  body::before { content: ''; position: fixed; inset: 0; background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(180,122,255,0.005) 2px, rgba(180,122,255,0.005) 4px); pointer-events: none; z-index: 1; }
-  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 18px 60px; display: flex; justify-content: space-between; align-items: center; background: rgba(9,8,13,0.92); backdrop-filter: blur(14px); border-bottom: 1px solid var(--border); }
-  .nav-logo { font-family: var(--mono); font-size: 13px; color: var(--purple); letter-spacing: 0.1em; }
-  .nav-logo span { color: var(--text-dim); }
-  .nav-links { display: flex; gap: 40px; list-style: none; }
-  .nav-links a { font-family: var(--mono); font-size: 12px; color: var(--text-dim); text-decoration: none; letter-spacing: 0.08em; transition: color 0.2s; cursor: none; }
-  .nav-links a:hover { color: var(--purple); }
-  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: none; padding: 4px; background: none; border: none; }
-  .hamburger span { display: block; width: 22px; height: 2px; background: var(--text-dim); transition: all 0.3s; }
-  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); background: var(--purple); }
-  .hamburger.open span:nth-child(2) { opacity: 0; }
-  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); background: var(--purple); }
-  .mobile-menu { display: none; position: fixed; top: 57px; left: 0; right: 0; background: rgba(9,8,13,0.97); border-bottom: 1px solid var(--border); padding: 20px 0; z-index: 99; backdrop-filter: blur(14px); }
-  .mobile-menu.open { display: block; }
-  .mobile-menu a { display: block; padding: 14px 28px; font-family: var(--mono); font-size: 13px; color: var(--text-dim); text-decoration: none; letter-spacing: 0.08em; border-bottom: 1px solid var(--border); transition: all 0.2s; }
-  .mobile-menu a:last-child { border-bottom: none; }
-  .mobile-menu a:hover { color: var(--purple); background: var(--purple-faint); }
-  .hero { min-height: 100vh; display: flex; align-items: center; padding: 120px 60px 80px; position: relative; overflow: hidden; }
-  .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(180,122,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(180,122,255,0.04) 1px, transparent 1px); background-size: 60px 60px; mask-image: radial-gradient(ellipse 80% 80% at 40% 50%, black, transparent); }
-  .hero-content { max-width: 900px; position: relative; z-index: 2; }
-  .hero-tag { font-family: var(--mono); font-size: 12px; color: var(--purple); letter-spacing: 0.2em; margin-bottom: 32px; display: flex; align-items: center; gap: 12px; }
-  .hero-tag::before { content: ''; width: 40px; height: 1px; background: var(--purple); }
-  .hero-name { font-size: clamp(60px, 9vw, 104px); font-weight: 700; line-height: 0.92; letter-spacing: -0.03em; margin-bottom: 28px; }
-  .hero-name .accent { color: var(--purple); }
-  .hero-title { font-family: var(--mono); font-size: clamp(13px, 1.6vw, 16px); color: var(--text-dim); margin-bottom: 40px; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
-  .hero-title .sep { color: var(--purple); opacity: 0.4; }
-  .hero-desc { font-size: 16px; color: var(--text-dim); max-width: 560px; line-height: 1.9; margin-bottom: 56px; }
-  .hero-desc strong { color: var(--text); font-weight: 500; }
-  .hero-cta { display: flex; gap: 16px; flex-wrap: wrap; }
-  .btn { font-family: var(--mono); font-size: 12px; letter-spacing: 0.1em; padding: 14px 32px; text-decoration: none; transition: all 0.2s; cursor: none; display: inline-block; }
-  .btn-primary { background: var(--purple); color: var(--bg); font-weight: 700; }
-  .btn-primary:hover { background: #d4aaff; box-shadow: 0 0 40px rgba(180,122,255,0.4); }
-  .btn-outline { border: 1px solid var(--border-bright); color: var(--purple); }
-  .btn-outline:hover { background: var(--purple-faint); border-color: var(--purple); }
-  .stats-bar { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 36px 60px; display: flex; background: var(--bg2); }
-  .stat { flex: 1; padding: 0 40px; border-right: 1px solid var(--border); }
-  .stat:first-child { padding-left: 0; }
-  .stat:last-child { border-right: none; }
-  .stat-num { font-family: var(--mono); font-size: 42px; font-weight: 700; color: var(--purple); line-height: 1; margin-bottom: 8px; }
-  .stat-num small { font-size: 18px; color: var(--text-dim); }
-  .stat-label { font-size: 13px; color: var(--text-dim); }
-  section { padding: 100px 60px; }
-  .section-tag { font-family: var(--mono); font-size: 11px; color: var(--purple); letter-spacing: 0.25em; margin-bottom: 12px; }
-  .section-title { font-size: clamp(30px, 4vw, 48px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 64px; }
-  .timeline-section { background: var(--bg2); border-top: 1px solid var(--border); }
-  .timeline { position: relative; padding-left: 32px; }
-  .timeline::before { content: ''; position: absolute; left: 0; top: 8px; bottom: 0; width: 1px; background: linear-gradient(to bottom, var(--purple), rgba(180,122,255,0.08)); }
-  .tl-item { position: relative; margin-bottom: 56px; }
-  .tl-item:last-child { margin-bottom: 0; }
-  .tl-dot { position: absolute; left: -38px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: var(--purple); box-shadow: 0 0 0 3px rgba(180,122,255,0.2), 0 0 12px rgba(180,122,255,0.4); }
-  .tl-period { font-family: var(--mono); font-size: 11px; color: var(--purple); letter-spacing: 0.12em; margin-bottom: 6px; }
-  .tl-company { font-size: 20px; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 3px; }
-  .tl-role { font-family: var(--mono); font-size: 12px; color: var(--text-dim); margin-bottom: 14px; }
-  .tl-desc { font-size: 14px; color: var(--text-dim); line-height: 1.85; max-width: 720px; margin-bottom: 10px; }
-  .tl-projects { margin-top: 12px; }
-  .tl-proj-label { font-family: var(--mono); font-size: 10px; color: var(--purple); letter-spacing: 0.12em; margin-bottom: 8px; }
-  .tl-proj-list { list-style: none; }
-  .tl-proj-list li { font-size: 13px; color: var(--text-dim); padding: 5px 0; padding-left: 14px; position: relative; line-height: 1.6; }
-  .tl-proj-list li::before { content: '—'; position: absolute; left: 0; color: var(--purple); opacity: 0.5; font-family: var(--mono); }
-  .tl-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
-  .mcp-section { background: var(--bg); border-top: 1px solid var(--border); position: relative; overflow: hidden; }
-  .mcp-section::after { content: ''; position: absolute; top: -300px; right: -300px; width: 700px; height: 700px; background: radial-gradient(circle, rgba(180,122,255,0.05) 0%, transparent 70%); pointer-events: none; }
-  .mcp-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(180,122,255,0.08); border: 1px solid var(--border-bright); padding: 6px 16px; font-family: var(--mono); font-size: 11px; color: var(--purple); letter-spacing: 0.15em; margin-bottom: 24px; }
-  .mcp-badge::before { content: ''; width: 6px; height: 6px; background: var(--purple); border-radius: 50%; animation: blink 2s infinite; }
-  @keyframes blink { 0%,100% { opacity:1; box-shadow: 0 0 0 0 rgba(180,122,255,0.5); } 50% { opacity:0.5; box-shadow: 0 0 0 6px rgba(180,122,255,0); } }
-  .mcp-intro { font-size: 17px; color: var(--text-dim); max-width: 680px; line-height: 1.85; margin-bottom: 64px; }
-  .mcp-intro strong { color: var(--text); font-weight: 500; }
-  .mcp-flow { display: grid; grid-template-columns: repeat(4,1fr); border: 1px solid var(--border); margin-bottom: 56px; }
-  .mcp-step { padding: 36px 28px; border-right: 1px solid var(--border); position: relative; transition: background 0.25s; }
-  .mcp-step:last-child { border-right: none; }
-  .mcp-step:hover { background: var(--purple-faint); }
-  .step-num { font-family: var(--mono); font-size: 10px; color: var(--text-dim); letter-spacing: 0.1em; margin-bottom: 16px; }
-  .step-icon { font-size: 28px; display: block; margin-bottom: 14px; }
-  .step-title { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
-  .step-desc { font-size: 12px; color: var(--text-dim); line-height: 1.65; }
-  .step-arrow { position: absolute; right: -11px; top: 50%; transform: translateY(-50%); width: 22px; height: 22px; background: var(--bg2); border: 1px solid var(--border-bright); display: flex; align-items: center; justify-content: center; font-size: 9px; color: var(--purple); z-index: 1; font-family: var(--mono); }
-  .mcp-step:last-child .step-arrow { display: none; }
-  .terminal { background: #070610; border: 1px solid var(--border); font-family: var(--mono); font-size: 13px; }
-  .terminal-bar { background: var(--bg2); padding: 10px 16px; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid var(--border); }
-  .tdot { width: 10px; height: 10px; border-radius: 50%; }
-  .tdot:nth-child(1){background:#ff5f56}.tdot:nth-child(2){background:#ffbd2e}.tdot:nth-child(3){background:#27c93f}
-  .ttitle { font-size: 11px; color: var(--text-dim); margin-left: 8px; }
-  .terminal-body { padding: 28px 28px 24px; line-height: 2.1; }
-  .tl-t { display: flex; gap: 12px; }
-  .tp { color: var(--purple); opacity: 0.5; flex-shrink: 0; }
-  .tc-t { color: var(--text); }
-  .to { color: var(--text-dim); padding-left: 20px; }
-  .tg { color: var(--purple); padding-left: 20px; }
-  .tb { height: 6px; }
-  .skills-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); }
-  .skill-card { background: var(--bg2); padding: 40px 36px; transition: background 0.25s; }
-  .skill-card:hover { background: var(--bg3); }
-  .skill-icon { font-size: 30px; display: block; margin-bottom: 18px; }
-  .skill-name { font-size: 16px; font-weight: 700; margin-bottom: 10px; letter-spacing: -0.01em; }
-  .skill-desc { font-size: 13px; color: var(--text-dim); line-height: 1.75; margin-bottom: 20px; }
-  .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
-  .tag { font-family: var(--mono); font-size: 10px; padding: 3px 10px; border: 1px solid var(--border); color: var(--text-dim); letter-spacing: 0.05em; }
-  .tag-p { border-color: rgba(180,122,255,0.3); color: var(--purple); background: rgba(180,122,255,0.04); }
-  .projects-list { display: flex; flex-direction: column; gap: 1px; background: var(--border); border: 1px solid var(--border); }
-  .project-item { background: var(--bg); padding: 44px 52px; display: grid; grid-template-columns: 1fr auto; align-items: start; gap: 48px; position: relative; overflow: hidden; transition: background 0.25s; }
-  .project-item::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--purple); transform: scaleY(0); transform-origin: bottom; transition: transform 0.3s; }
-  .project-item:hover { background: var(--bg2); }
-  .project-item:hover::before { transform: scaleY(1); }
-  .project-num { font-family: var(--mono); font-size: 11px; color: var(--text-dim); letter-spacing: 0.1em; margin-bottom: 12px; }
-  .project-name { font-size: 21px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 12px; }
-  .project-desc { font-size: 14px; color: var(--text-dim); line-height: 1.75; max-width: 580px; margin-bottom: 16px; }
-  .project-link { font-family: var(--mono); font-size: 11px; color: var(--purple); text-decoration: none; letter-spacing: 0.08em; border-bottom: 1px solid rgba(180,122,255,0.3); padding-bottom: 2px; transition: all 0.2s; cursor: none; display: inline-block; }
-  .project-link:hover { border-bottom-color: var(--purple); }
-  .project-meta { text-align: right; flex-shrink: 0; }
-  .project-type { font-family: var(--mono); font-size: 11px; color: var(--purple); letter-spacing: 0.12em; margin-bottom: 10px; }
-  .project-tags { display: flex; flex-direction: column; gap: 5px; align-items: flex-end; }
-  .tc-section { background: var(--bg2); border-top: 1px solid var(--border); }
-  .tc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 32px; }
-  .tc-card { border: 1px solid var(--border); padding: 28px 32px; background: var(--bg); transition: border-color 0.25s, background 0.25s; }
-  .tc-card:hover { border-color: var(--border-bright); background: var(--bg3); }
-  .tc-card-label { font-family: var(--mono); font-size: 10px; color: var(--purple); letter-spacing: 0.15em; margin-bottom: 14px; }
-  .tc-list { list-style: none; }
-  .tc-list li { font-size: 13px; color: var(--text-dim); padding: 7px 0; border-bottom: 1px solid var(--border); display: flex; align-items: baseline; gap: 10px; line-height: 1.5; }
-  .tc-list li:last-child { border-bottom: none; }
-  .tc-id { font-family: var(--mono); font-size: 10px; color: var(--purple); flex-shrink: 0; }
-  .tc-cta { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
-  .tc-note { font-size: 13px; color: var(--text-dim); }
-  .contact-wrap { background: var(--bg2); border-top: 1px solid var(--border); text-align: center; }
-  .contact-sub { font-size: 16px; color: var(--text-dim); margin-bottom: 48px; }
-  .contact-links { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-  footer { padding: 28px 60px; border-top: 1px solid var(--border); background: var(--bg); display: flex; justify-content: space-between; align-items: center; }
-  .fl { font-family: var(--mono); font-size: 12px; color: var(--text-dim); }
-  .fr { font-family: var(--mono); font-size: 11px; color: var(--text-dim); display: flex; align-items: center; gap: 6px; }
-  .fr span { color: var(--purple); }
-  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.55s ease, transform 0.55s ease; }
-  .reveal.on { opacity: 1; transform: translateY(0); }
-  @media(max-width:768px){
-    nav { padding: 16px 20px; }
-    .nav-links { display: none; }
-    .hamburger { display: flex; }
-    .hero { padding: 100px 24px 60px; }
-    .stats-bar { padding: 28px 20px; flex-wrap: wrap; gap: 24px; }
-    .stat { padding: 0 20px; min-width: 140px; }
-    section { padding: 72px 24px; }
-    .mcp-flow { grid-template-columns: 1fr 1fr; }
-    .skills-grid { grid-template-columns: 1fr; }
-    .project-item { grid-template-columns: 1fr; padding: 36px 28px; }
-    .project-meta { text-align: left; }
-    .project-tags { align-items: flex-start; }
-    .tc-grid { grid-template-columns: 1fr; }
-    .timeline { padding-left: 24px; }
-    .tl-dot { left: -30px; }
-    footer { flex-direction: column; gap: 10px; padding: 24px 20px; text-align: center; }
-  }
+:root {
+  --bg:       #08060f;
+  --bg2:      #0d0a18;
+  --bg3:      #110d1f;
+  --purple:   #a855f7;
+  --purple2:  #7c3aed;
+  --purple3:  #c084fc;
+  --p-glow:   rgba(168,85,247,0.18);
+  --p-border: rgba(168,85,247,0.22);
+  --p-muted:  rgba(168,85,247,0.08);
+  --text:     #f0eaff;
+  --muted:    #7c6f9a;
+  --dim:      #3d3358;
+  --mono:     'DM Mono', monospace;
+  --sans:     'Noto Sans KR', sans-serif;
+  --wip:      #f59e0b;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-weight:300;overflow-x:hidden;cursor:none}
+.cur{position:fixed;width:7px;height:7px;background:var(--purple);border-radius:50%;pointer-events:none;z-index:9999;mix-blend-mode:screen;transition:transform .1s}
+.cur-r{position:fixed;width:28px;height:28px;border:1px solid var(--purple);border-radius:50%;pointer-events:none;z-index:9998;opacity:.4;transition:all .14s ease}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 70% 50% at 15% 10%,rgba(124,58,237,.07) 0%,transparent 55%),radial-gradient(ellipse 50% 70% at 85% 85%,rgba(168,85,247,.05) 0%,transparent 55%);pointer-events:none;z-index:0}
+body::after{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.025) 2px,rgba(0,0,0,.025) 4px);pointer-events:none;z-index:1}
+
+/* NAV - position: fixed, top: 0 */
+nav{position:fixed;top:0;left:0;right:0;padding:18px 56px;display:flex;align-items:center;justify-content:space-between;z-index:1000;background:rgba(8,6,15,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--p-border)}
+.nav-logo{font-family:var(--mono);font-size:12px;color:var(--purple);letter-spacing:.12em}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{font-family:var(--mono);font-size:11px;color:var(--muted);text-decoration:none;letter-spacing:.06em;transition:color .2s}
+.nav-links a:hover{color:var(--purple)}
+.ham{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none}
+.ham span{display:block;width:22px;height:1px;background:var(--muted);transition:.3s}
+.mobile-menu{display:none;position:fixed;inset:0;background:rgba(8,6,15,.97);z-index:99;flex-direction:column;align-items:center;justify-content:center;gap:32px}
+.mobile-menu.open{display:flex}
+.mobile-menu a{font-family:var(--mono);font-size:18px;color:var(--text);text-decoration:none;letter-spacing:.1em}
+.mobile-menu a:hover{color:var(--purple)}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;padding:120px 56px 80px;position:relative;z-index:2}
+.hero-left{flex:1;max-width:720px}
+.hero-tag{font-family:var(--mono);font-size:11px;color:var(--purple);letter-spacing:.2em;margin-bottom:28px;display:flex;align-items:center;gap:12px}
+.hero-tag::before{content:'';width:28px;height:1px;background:var(--purple)}
+h1.hero-name{font-size:clamp(60px,9vw,110px);font-weight:900;line-height:.95;letter-spacing:-.04em;margin-bottom:20px}
+h1.hero-name em{color:var(--purple);font-style:normal;position:relative}
+h1.hero-name em::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--purple),transparent)}
+.hero-role{font-family:var(--mono);font-size:13px;color:var(--muted);letter-spacing:.08em;margin-bottom:36px}
+.hero-desc{font-size:17px;line-height:1.85;color:var(--muted);max-width:520px;margin-bottom:48px}
+.hero-desc strong{color:var(--text);font-weight:500}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+.btn-p{padding:13px 30px;background:var(--purple);color:#fff;font-family:var(--mono);font-size:12px;font-weight:500;text-decoration:none;letter-spacing:.06em;transition:all .2s;clip-path:polygon(0 0,calc(100% - 7px) 0,100% 7px,100% 100%,7px 100%,0 calc(100% - 7px))}
+.btn-p:hover{background:var(--purple3);transform:translateY(-2px)}
+.btn-s{padding:13px 30px;border:1px solid var(--p-border);color:var(--purple);font-family:var(--mono);font-size:12px;text-decoration:none;letter-spacing:.06em;transition:all .2s}
+.btn-s:hover{background:var(--p-muted);border-color:var(--purple)}
+.hero-stats{position:absolute;right:56px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:36px}
+.stat-n{font-family:var(--mono);font-size:38px;font-weight:500;color:var(--purple);line-height:1}
+.stat-l{font-size:11px;color:var(--dim);margin-top:4px;letter-spacing:.06em}
+
+/* SECTION */
+section{padding:96px 56px;position:relative;z-index:2}
+.sec-head{display:flex;align-items:center;gap:14px;margin-bottom:56px}
+.sec-n{font-family:var(--mono);font-size:11px;color:var(--purple);opacity:.5}
+.sec-t{font-size:28px;font-weight:700;letter-spacing:-.02em}
+.sec-line{flex:1;height:1px;background:var(--p-border)}
+
+/* BADGE */
+.badge{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:10px;font-weight:500;padding:4px 12px;letter-spacing:.08em}
+.badge-done{background:rgba(168,85,247,.15);color:var(--purple);border:1px solid var(--p-border)}
+.badge-done::before{content:'';width:5px;height:5px;background:var(--purple);border-radius:50%;animation:pulse 1.5s infinite}
+.badge-wip{background:rgba(245,158,11,.1);color:var(--wip);border:1px solid rgba(245,158,11,.25)}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
+
+/* MCP 섹션 */
+.mcp-sec{background:var(--bg2);border-top:1px solid var(--p-border);border-bottom:1px solid var(--p-border)}
+.mcp-top{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;margin-bottom:64px}
+.mcp-intro-badge{display:inline-flex;align-items:center;gap:8px;background:var(--purple);color:#fff;font-family:var(--mono);font-size:10px;font-weight:500;padding:6px 14px;letter-spacing:.1em;margin-bottom:28px}
+.mcp-intro-badge::before{content:'';width:5px;height:5px;background:#fff;border-radius:50%;animation:pulse 1.2s infinite}
+.mcp-headline{font-size:clamp(24px,3.2vw,40px);font-weight:700;line-height:1.25;letter-spacing:-.025em;margin-bottom:20px}
+.mcp-headline em{color:var(--purple);font-style:normal}
+.mcp-sub{font-size:15px;color:var(--muted);line-height:1.8}
+.pipeline-title{font-family:var(--mono);font-size:11px;color:var(--purple);letter-spacing:.15em;margin-bottom:20px}
+.pipeline{display:flex;flex-direction:column;gap:0}
+.pipe-step{display:flex;align-items:flex-start;gap:14px;padding:14px 0;border-bottom:1px solid var(--p-border)}
+.pipe-step:last-child{border-bottom:none}
+.pipe-dot{width:8px;height:8px;border-radius:50%;background:var(--purple);box-shadow:0 0 8px var(--purple);margin-top:5px;flex-shrink:0}
+.pipe-name{font-size:14px;font-weight:500;margin-bottom:3px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.pipe-desc{font-size:12px;color:var(--muted);line-height:1.6}
+
+/* MCP 카드 */
+.mcp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--p-border);margin-bottom:40px}
+.mcp-card{background:var(--bg2);padding:28px 24px;position:relative;overflow:hidden;transition:all .3s}
+.mcp-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:2px;background:transparent;transition:background .3s}
+.mcp-card:hover{background:var(--bg3)}
+.mcp-card:hover::before{background:var(--purple)}
+.mc-icon{font-size:24px;margin-bottom:14px}
+.mc-name{font-family:var(--mono);font-size:12px;font-weight:500;color:var(--text);margin-bottom:8px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.mc-desc{font-size:13px;color:var(--muted);line-height:1.65}
+
+/* 터미널 */
+.terminal{background:#050309;border:1px solid var(--p-border);font-family:var(--mono);font-size:12px;line-height:1.9;overflow:hidden}
+.t-bar{background:#110d1f;padding:10px 16px;border-bottom:1px solid var(--p-border);display:flex;align-items:center;gap:8px}
+.t-dot{width:10px;height:10px;border-radius:50%}
+.t-bar-title{font-size:10px;color:var(--dim);margin-left:8px;letter-spacing:.05em}
+.t-body{padding:24px 28px}
+.t-line{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
+.t-prompt{color:var(--purple2);user-select:none}
+.t-cmd{color:var(--text)}
+.t-out{color:var(--muted);padding-left:20px}
+.t-ok{color:var(--purple)}
+.t-comment{color:var(--dim)}
+.t-cursor{display:inline-block;width:7px;height:13px;background:var(--purple);animation:blink2 1s infinite;vertical-align:middle}
+@keyframes blink2{0%,49%{opacity:1}50%,100%{opacity:0}}
+
+/* VISION */
+.vision-sec{background:var(--bg3);border-top:1px solid var(--p-border)}
+.vision-intro{font-size:15px;color:var(--muted);line-height:1.85;max-width:580px;margin-bottom:48px}
+.vision-intro strong{color:var(--text);font-weight:500}
+.vision-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.vision-card{border:1px solid var(--p-border);padding:28px;transition:all .3s}
+.vision-card.active-card{border-color:rgba(168,85,247,.45);background:rgba(168,85,247,.04)}
+.vision-card:hover{border-color:rgba(168,85,247,.5);background:rgba(168,85,247,.06);transform:translateY(-3px)}
+.vc-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:12px}
+.vc-icon{font-size:26px}
+.vc-title{font-size:16px;font-weight:700;letter-spacing:-.01em;margin-bottom:8px}
+.vc-desc{font-size:13px;color:var(--muted);line-height:1.7}
+.vc-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.vc-tag{font-family:var(--mono);font-size:10px;padding:3px 10px;border:1px solid var(--dim);color:var(--muted);letter-spacing:.04em}
+
+/* PROJECTS 섹션 */
+.projects-sec{background:var(--bg2);border-top:1px solid var(--p-border)}
+.projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.proj-card{border:1px solid var(--p-border);padding:32px;position:relative;overflow:hidden;transition:all .3s;background:var(--bg)}
+.proj-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--purple);transform:scaleY(0);transform-origin:bottom;transition:transform .35s}
+.proj-card:hover{border-color:rgba(168,85,247,.45);background:rgba(168,85,247,.03);transform:translateY(-4px)}
+.proj-card:hover::before{transform:scaleY(1)}
+.proj-num{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:.15em;margin-bottom:14px}
+.proj-icon{font-size:28px;margin-bottom:14px}
+.proj-title{font-size:18px;font-weight:700;letter-spacing:-.02em;margin-bottom:10px}
+.proj-desc{font-size:13px;color:var(--muted);line-height:1.75;margin-bottom:18px}
+.proj-flow{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-bottom:18px}
+.proj-flow-step{font-family:var(--mono);font-size:10px;padding:4px 10px;background:rgba(168,85,247,.1);border:1px solid var(--p-border);color:var(--purple);letter-spacing:.04em}
+.proj-flow-arrow{color:var(--dim);font-size:12px}
+.proj-tags{display:flex;flex-wrap:wrap;gap:6px}
+.proj-tag{font-family:var(--mono);font-size:10px;padding:3px 10px;border:1px solid var(--p-border);color:var(--muted);letter-spacing:.04em;transition:.2s}
+.proj-tag:hover{border-color:var(--purple);color:var(--purple)}
+.proj-tag-p{border-color:rgba(168,85,247,.35);color:var(--purple);background:rgba(168,85,247,.05)}
+
+/* 브랜치 전략 시각화 */
+.branch-vis{margin:16px 0;padding:16px;background:#050309;border:1px solid var(--p-border);font-family:var(--mono);font-size:11px;line-height:1.9}
+.branch-main{color:#22d3ee}
+.branch-dev{color:#a3e635}
+.branch-feat{color:var(--purple)}
+.branch-dim{color:var(--dim)}
+
+/* CAREER */
+.career-sec{background:var(--bg2);border-top:1px solid var(--p-border)}
+.career-item{display:grid;grid-template-columns:180px 1fr;gap:40px;padding:40px 0;border-bottom:1px solid var(--p-border);transition:.3s}
+.career-item:first-child{border-top:1px solid var(--p-border)}
+.career-item:hover{background:rgba(168,85,247,.02)}
+.c-period{font-family:var(--mono);font-size:11px;color:var(--dim);padding-top:3px;line-height:1.7}
+.c-company{font-size:20px;font-weight:700;letter-spacing:-.01em;margin-bottom:5px}
+.c-role{font-family:var(--mono);font-size:11px;color:var(--purple);letter-spacing:.07em;margin-bottom:14px}
+.c-desc{font-size:14px;color:var(--muted);line-height:1.85;margin-bottom:14px}
+.c-tags{display:flex;flex-wrap:wrap;gap:7px}
+.c-tag{font-family:var(--mono);font-size:10px;padding:4px 11px;border:1px solid var(--p-border);color:var(--muted);letter-spacing:.04em;transition:.2s}
+.c-tag:hover{border-color:var(--purple);color:var(--purple)}
+
+/* SKILLS */
+.skills-sec{border-top:1px solid var(--p-border)}
+.skills-wrap{display:grid;grid-template-columns:repeat(2,1fr);gap:48px}
+.sk-group-title{font-family:var(--mono);font-size:10px;color:var(--purple);letter-spacing:.2em;margin-bottom:20px}
+.sk-list{display:flex;flex-direction:column;gap:14px}
+.sk-item{display:flex;justify-content:space-between;align-items:center}
+.sk-name{font-size:13px;color:var(--muted)}
+.sk-bar-w{width:180px;height:1px;background:rgba(168,85,247,.12)}
+.sk-bar{height:100%;background:linear-gradient(90deg,var(--purple2),var(--purple));transition:width 1.2s cubic-bezier(.4,0,.2,1)}
+
+/* TC */
+.tc-intro{font-size:15px;color:var(--muted);line-height:1.8;max-width:560px;margin-bottom:36px}
+.tc-wrap{overflow-x:auto;border:1px solid var(--p-border)}
+.tc-table{width:100%;border-collapse:collapse;font-size:12px;font-family:var(--mono)}
+.tc-table th{background:var(--bg3);padding:11px 14px;text-align:left;color:var(--purple);font-size:10px;letter-spacing:.1em;border-bottom:1px solid var(--p-border);font-weight:500}
+.tc-table td{padding:11px 14px;border-bottom:1px solid rgba(168,85,247,.07);color:var(--muted);vertical-align:top;line-height:1.5}
+.tc-table tr:hover td{background:var(--p-muted);color:var(--text)}
+.tc-table tr:last-child td{border-bottom:none}
+.tc-type{display:inline-block;font-size:9px;padding:2px 8px;letter-spacing:.06em}
+.tc-type.h{background:rgba(168,85,247,.15);color:var(--purple);border:1px solid var(--p-border)}
+.tc-type.n{background:rgba(239,68,68,.1);color:#f87171;border:1px solid rgba(239,68,68,.2)}
+.tc-type.e{background:rgba(245,158,11,.1);color:var(--wip);border:1px solid rgba(245,158,11,.2)}
+.p1{font-size:9px;padding:2px 6px;background:rgba(239,68,68,.15);color:#f87171}
+.p2{font-size:9px;padding:2px 6px;background:rgba(245,158,11,.12);color:var(--wip)}
+.p3{font-size:9px;padding:2px 6px;background:rgba(168,85,247,.12);color:var(--purple)}
+.tc-link{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;color:var(--purple);text-decoration:none;border:1px solid var(--p-border);padding:10px 20px;margin-top:18px;transition:.2s;letter-spacing:.05em}
+.tc-link:hover{background:var(--p-muted);border-color:var(--purple)}
+
+/* CONTACT */
+.contact-sec{background:var(--bg2);border-top:1px solid var(--p-border)}
+.contact-wrap{display:flex;justify-content:space-between;align-items:flex-end}
+.contact-h{font-size:clamp(40px,6vw,72px);font-weight:900;line-height:.95;letter-spacing:-.04em;margin-bottom:20px}
+.contact-h span{color:var(--purple)}
+.contact-sub{font-size:14px;color:var(--muted);line-height:1.8}
+.contact-links{display:flex;flex-direction:column;gap:14px;align-items:flex-end}
+.c-link{font-family:var(--mono);font-size:12px;color:var(--muted);text-decoration:none;letter-spacing:.06em;transition:.2s;display:flex;align-items:center;gap:8px}
+.c-link:hover{color:var(--purple)}
+
+footer{padding:22px 56px;border-top:1px solid var(--p-border);display:flex;justify-content:space-between;position:relative;z-index:2}
+footer p{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:.05em}
+
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:900px){
+  nav{padding:16px 24px}
+  .nav-links{display:none}
+  .ham{display:flex}
+  .hero{padding:100px 24px 60px}
+  .hero-stats{display:none}
+  section{padding:64px 24px}
+  .mcp-top{grid-template-columns:1fr;gap:40px}
+  .mcp-grid{grid-template-columns:1fr}
+  .vision-grid{grid-template-columns:1fr}
+  .skills-wrap{grid-template-columns:1fr}
+  .career-item{grid-template-columns:1fr;gap:8px}
+  .contact-wrap{flex-direction:column;gap:40px;align-items:flex-start}
+  .contact-links{align-items:flex-start}
+  footer{padding:18px 24px;flex-direction:column;gap:6px}
+  .projects-grid{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body>
-<div class="cursor" id="cursor"></div>
-<div class="cursor-ring" id="cursorRing"></div>
+
+<div class="cur" id="cur"></div>
+<div class="cur-r" id="curR"></div>
+
 <nav>
-  <div class="nav-logo">KH<span>.</span>QA</div>
+  <div class="nav-logo">KH.QA / 2026</div>
   <ul class="nav-links">
-    <li><a href="#career">경력</a></li>
     <li><a href="#mcp">MCP 자동화</a></li>
-    <li><a href="#skills">스킬</a></li>
+    <li><a href="#vision">확장 비전</a></li>
     <li><a href="#projects">프로젝트</a></li>
-    <li><a href="#contact">연락처</a></li>
+    <li><a href="#tc">테스트케이스</a></li>
+    <li><a href="#career">경력</a></li>
+    <li><a href="#contact">연락</a></li>
   </ul>
-  <button class="hamburger" id="hamburger" aria-label="메뉴"><span></span><span></span><span></span></button>
+  <button class="ham" id="ham" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#career" onclick="closeMenu()">경력</a>
-  <a href="#mcp" onclick="closeMenu()">MCP 자동화</a>
-  <a href="#skills" onclick="closeMenu()">스킬</a>
-  <a href="#projects" onclick="closeMenu()">프로젝트</a>
-  <a href="#contact" onclick="closeMenu()">연락처</a>
+  <a href="#mcp" onclick="toggleMenu()">MCP 자동화</a>
+  <a href="#vision" onclick="toggleMenu()">확장 비전</a>
+  <a href="#projects" onclick="toggleMenu()">프로젝트</a>
+  <a href="#tc" onclick="toggleMenu()">테스트케이스</a>
+  <a href="#career" onclick="toggleMenu()">경력</a>
+  <a href="#contact" onclick="toggleMenu()">연락</a>
 </div>
+
+<!-- HERO -->
 <section class="hero">
-  <div class="hero-grid"></div>
-  <div class="hero-content">
-    <div class="hero-tag">QA ENGINEER</div>
-    <h1 class="hero-name">성<span class="accent">기</span>현</h1>
-    <div class="hero-title">
-      <span>품질 보증</span><span class="sep">/</span>
-      <span>테스트 자동화</span><span class="sep">/</span>
-      <span>AI 기반 QA</span>
-    </div>
+  <div class="hero-left">
+    <div class="hero-tag">QA ENGINEER · 6년 9개월</div>
+    <h1 class="hero-name">성<em>기현</em></h1>
+    <p class="hero-role">Quality Assurance Engineer</p>
     <p class="hero-desc">
-      모바일 앱·웹·IoT·AI 음성 시스템까지 다양한 도메인에서 6년 9개월간 QA를 수행했습니다.<br>
-      Swagger API 검증, Cypress E2E 자동화를 직접 구축·운영했으며,<br>
-      최근엔 <strong>Claude MCP로 QA 워크플로우 전체를 자동화</strong>하는 파이프라인을 만들었습니다.
+      서비스의 품질을 지켜왔습니다.<br>
+      이제는 <strong>AI를 도구로 삼아</strong>, QA가 할 수 있는 일의<br>
+      범위를 직접 다시 정의하고 있습니다.
     </p>
     <div class="hero-cta">
-      <a href="#mcp" class="btn btn-primary">MCP 자동화 보기</a>
-      <a href="https://github.com/kihyunqa/qa-portfolio" target="_blank" class="btn btn-outline">GitHub</a>
+      <a href="#mcp" class="btn-p">MCP 자동화 보기</a>
+      <a href="https://github.com/kihyunqa/qa-portfolio" target="_blank" class="btn-s">GitHub ↗</a>
     </div>
+  </div>
+  <div class="hero-stats">
+    <div><div class="stat-n">6.9<span style="font-size:18px">yr</span></div><div class="stat-l">QA 경력</div></div>
+    <div><div class="stat-n">3</div><div class="stat-l">MCP 연동</div></div>
+    <div><div class="stat-n">∞</div><div class="stat-l">확장 가능성</div></div>
   </div>
 </section>
-<div class="stats-bar">
-  <div class="stat reveal"><div class="stat-num">6.9<small>년</small></div><div class="stat-label">QA 경력</div></div>
-  <div class="stat reveal"><div class="stat-num">24<small>건</small></div><div class="stat-label">MCP로 자동 생성된 TC (단 1회 명령)</div></div>
-  <div class="stat reveal"><div class="stat-num">3<small>개</small></div><div class="stat-label">연동된 MCP 서버</div></div>
-</div>
-<section class="timeline-section" id="career">
-  <div class="section-tag reveal">— 경력</div>
-  <h2 class="section-title reveal">Career</h2>
-  <div class="timeline">
-    <div class="tl-item reveal">
-      <div class="tl-dot"></div>
-      <div class="tl-period">2024.11 — 2025.02 · 4개월</div>
-      <div class="tl-company">두플</div>
-      <div class="tl-role">QA 파트장 | 반도체 공정 시뮬레이션 QA</div>
-      <div class="tl-desc">반도체 공정 시뮬레이션 소프트웨어의 QA 파트 리드. 가스 유량·챔버 온도·압력 등 핵심 공정 변수 변동에 따른 시뮬레이션 결과 정합성 분석. 공정 단계별 테스트 케이스 및 QA 체크리스트 작성. Jira 기반 이슈 등록·추적 및 Teams 협업으로 유관 부서 QA 현황 실시간 공유.</div>
-      <div class="tl-tags">
-        <span class="tag tag-p">QA 파트 리드</span>
-        <span class="tag">반도체 시뮬레이션</span>
-        <span class="tag">Jira</span>
-        <span class="tag">Teams</span>
-      </div>
+
+<!-- MCP 자동화 -->
+<section class="mcp-sec" id="mcp">
+  <div class="sec-head reveal">
+    <span class="sec-n">01</span>
+    <h2 class="sec-t">Claude MCP 자동화</h2>
+    <div class="sec-line"></div>
+  </div>
+
+  <div class="mcp-top reveal">
+    <div>
+      <div class="mcp-intro-badge">LIVE · 구현 완료</div>
+      <h3 class="mcp-headline">대화 한 번으로<br><em>TC 생성부터 GitHub 업로드까지</em><br>자동으로 완료됩니다</h3>
+      <p class="mcp-sub" style="margin-top:16px">Claude Desktop에 MCP 서버 3개를 연결했습니다. 기능 명세를 입력하면, 테스트케이스 생성 → 로컬 저장 → 브라우저 조작 → GitHub 업로드까지 코드 한 줄 없이 대화만으로 처리됩니다.</p>
     </div>
-    <div class="tl-item reveal">
-      <div class="tl-dot"></div>
-      <div class="tl-period">2022.03 — 2024.02 · 2년</div>
-      <div class="tl-company">IMS Mobility</div>
-      <div class="tl-role">QA 대리 | 모바일 앱 / 웹 / 백오피스 품질 검증</div>
-      <div class="tl-desc">보험대차·일반렌트 앱(iOS/Android), 관리자 백오피스, 웹 전 영역 기능·회귀 테스트 수행. Swagger 활용 차량 호출·예약·결제 API 직접 호출 및 요청/응답 정합성 검증. Cypress 기반 핵심 시나리오 자동화 구축·운영으로 배포 전 검증 시간 단축. 국내 주요 카드사·간편결제 환경별 케이스 설계 및 승인·취소·환불 전 흐름 커버.</div>
-      <div class="tl-projects">
-        <div class="tl-proj-label">MAIN PROJECTS</div>
-        <ul class="tl-proj-list">
-          <li>차량 그룹·요금 관리 시스템 고도화 — 요금 계산 로직 변경에 따른 케이스 재설계 및 정합성 검증</li>
-          <li>렌톡 API 외부 연동 — 차량 정보 조회·예약 데이터 정합성 검증, 연동 오류 케이스 재현 및 수정 확인</li>
-          <li>글로벌 화이트라벨 (Hertz, 마이리얼트립 등) — 신규 플랫폼 연동 및 현지화 QA, UI/UX 로컬라이징 검증</li>
-          <li>AOS 청구 기능 — 청구 흐름 전반 기능 검증 및 엣지 케이스 테스트</li>
-        </ul>
-      </div>
-      <div class="tl-tags">
-        <span class="tag tag-p">Cypress</span>
-        <span class="tag tag-p">Swagger</span>
-        <span class="tag">iOS/Android</span>
-        <span class="tag">결제 QA</span>
-        <span class="tag">Jira</span>
-        <span class="tag">Notion</span>
-      </div>
-    </div>
-    <div class="tl-item reveal">
-      <div class="tl-dot"></div>
-      <div class="tl-period">2017.09 — 2022.01 · 4년 4개월</div>
-      <div class="tl-company">모비프렌 <small style="font-size:13px;color:var(--text-dim);font-weight:300;">(삼성전자 파트너)</small></div>
-      <div class="tl-role">QA 주임 | IoT / AI 음성 / 삼성 모바일 앱 품질 검증</div>
-      <div class="tl-desc">Mobile·Tablet·Watch·IoT 스피커 멀티 디바이스 환경에서 Bixby ASR 정확도·응답 품질 검증. Wake-up 안정화, 거리·소음·상황별 시나리오 수행 및 타사 모델 비교 테스트. SmartThings 다중 기기 연동 명령 전달·상태 동기화 기능 검증. CMC(주·부 단말 간 통화 전환·메시지·Call log 동기화), Keyboard, Internet 등 삼성 모바일 앱 전반 품질 검증. 릴리즈 전 주요 기능 검증 및 VOC 이슈 재현·수정 확인, Log 추출 후 개발팀 전달.</div>
-      <div class="tl-tags">
-        <span class="tag tag-p">Bixby AI</span>
-        <span class="tag tag-p">SmartThings IoT</span>
-        <span class="tag">삼성 모바일</span>
-        <span class="tag">멀티 디바이스</span>
-        <span class="tag">VOC 대응</span>
+    <div>
+      <div class="pipeline-title">// WORKFLOW</div>
+      <div class="pipeline">
+        <div class="pipe-step">
+          <div class="pipe-dot"></div>
+          <div><div class="pipe-name">기능 명세 입력 <span class="badge badge-done">완료</span></div><div class="pipe-desc">Claude에게 자연어로 명세 전달</div></div>
+        </div>
+        <div class="pipe-step">
+          <div class="pipe-dot"></div>
+          <div><div class="pipe-name">TC 자동 생성 <span class="badge badge-done">완료</span></div><div class="pipe-desc">해피패스 · 네거티브 · 엣지케이스 24건</div></div>
+        </div>
+        <div class="pipe-step">
+          <div class="pipe-dot"></div>
+          <div><div class="pipe-name">로컬 파일 저장 <span class="badge badge-done">완료</span></div><div class="pipe-desc">filesystem MCP → C:/qa-portfolio 자동 저장</div></div>
+        </div>
+        <div class="pipe-step">
+          <div class="pipe-dot"></div>
+          <div><div class="pipe-name">브라우저 자동 테스트 <span class="badge badge-done">완료</span></div><div class="pipe-desc">playwright MCP → 실제 조작 + 스크린샷</div></div>
+        </div>
+        <div class="pipe-step">
+          <div class="pipe-dot"></div>
+          <div><div class="pipe-name">GitHub 자동 업로드 <span class="badge badge-done">완료</span></div><div class="pipe-desc">github MCP → main 브랜치 커밋</div></div>
+        </div>
       </div>
     </div>
   </div>
-</section>
-<section class="mcp-section" id="mcp">
-  <div class="mcp-badge">CLAUDE MCP INTEGRATION · LIVE</div>
-  <div class="section-tag reveal">— AI 기반 자동화</div>
-  <h2 class="section-title reveal">코딩 없이 구현한<br>QA 자동화 파이프라인</h2>
-  <p class="mcp-intro reveal">
-    <strong>Claude MCP(Model Context Protocol)</strong>는 AI가 로컬 파일시스템, GitHub, 브라우저를 직접 조작하게 해주는 프로토콜입니다.
-    기능 명세를 입력하면 테스트케이스가 자동 생성되고, 브라우저 테스트 후 스크린샷이 GitHub에 자동으로 올라갑니다.
-    이 포트폴리오 페이지 자체도 Claude MCP를 통해 만들어졌습니다.
-  </p>
-  <div class="mcp-flow reveal">
-    <div class="mcp-step"><div class="step-num">STEP 01</div><span class="step-icon">📋</span><div class="step-title">기능 명세 입력</div><div class="step-desc">로그인, 결제 등 기능 설명을 Claude에게 전달</div><div class="step-arrow">→</div></div>
-    <div class="mcp-step"><div class="step-num">STEP 02</div><span class="step-icon">🤖</span><div class="step-title">TC 자동 생성</div><div class="step-desc">해피패스·네거티브·엣지케이스 24건 자동 작성</div><div class="step-arrow">→</div></div>
-    <div class="mcp-step"><div class="step-num">STEP 03</div><span class="step-icon">🌐</span><div class="step-title">브라우저 자동 테스트</div><div class="step-desc">Playwright MCP로 실제 브라우저 조작 및 스크린샷</div><div class="step-arrow">→</div></div>
-    <div class="mcp-step"><div class="step-num">STEP 04</div><span class="step-icon">🚀</span><div class="step-title">GitHub 자동 업로드</div><div class="step-desc">TC 파일과 스크린샷이 자동으로 레포에 커밋</div></div>
+
+  <div class="mcp-grid reveal">
+    <div class="mcp-card">
+      <div class="mc-icon">📁</div>
+      <div class="mc-name">filesystem MCP <span class="badge badge-done">연동 완료</span></div>
+      <div class="mc-desc">로컬 파일 시스템 직접 읽기·쓰기. TC 파일을 지정 경로에 자동 저장하고 Claude가 직접 읽어옵니다.</div>
+    </div>
+    <div class="mcp-card">
+      <div class="mc-icon">🎭</div>
+      <div class="mc-name">playwright MCP <span class="badge badge-done">연동 완료</span></div>
+      <div class="mc-desc">Claude가 브라우저를 직접 조작합니다. 페이지 탐색, 클릭, 입력, 스크린샷까지 — 대화로 E2E 테스트를 실행합니다.</div>
+    </div>
+    <div class="mcp-card">
+      <div class="mc-icon">🐙</div>
+      <div class="mc-name">github MCP <span class="badge badge-done">연동 완료</span></div>
+      <div class="mc-desc">레포 생성, 파일 커밋, README 업데이트까지 대화로 처리. 이 포트폴리오 페이지도 MCP로 배포됐습니다.</div>
+    </div>
   </div>
+
   <div class="terminal reveal">
-    <div class="terminal-bar"><div class="tdot"></div><div class="tdot"></div><div class="tdot"></div><div class="ttitle">claude-desktop — qa-automation</div></div>
-    <div class="terminal-body">
-      <div class="tl-t"><span class="tp">user $</span><span class="tc-t">filesystem 도구로 C:/qa-portfolio/testcase_login.md 파일 만들어줘. 로그인 TC, 해피패스·네거티브·엣지케이스 포함</span></div>
-      <div class="tb"></div>
-      <div class="tg">✓ filesystem 통합 사용 중...</div>
-      <div class="tg">✓ C:/qa-portfolio/testcase_login.md 생성 완료 — 24개 TC</div>
-      <div class="tb"></div>
-      <div class="tl-t"><span class="tp">user $</span><span class="tc-t">playwright 도구로 github.com 열어서 스크린샷 찍고, github 도구로 레포에 업로드해줘</span></div>
-      <div class="tb"></div>
-      <div class="tg">✓ playwright 통합 사용 중...</div>
-      <div class="tg">✓ 브라우저 실행 → 접속 → 스크린샷 저장</div>
-      <div class="tg">✓ GitHub 업로드 완료 — kihyunqa/qa-portfolio/screenshots/</div>
-      <div class="tb"></div>
-      <div class="to"># 소요 시간: 약 40초</div>
+    <div class="t-bar">
+      <div class="t-dot" style="background:#ff5f57"></div>
+      <div class="t-dot" style="background:#febc2e"></div>
+      <div class="t-dot" style="background:#28c840"></div>
+      <span class="t-bar-title">claude-desktop — qa-portfolio</span>
+    </div>
+    <div class="t-body">
+      <div class="t-line"><span class="t-prompt">❯</span><span class="t-cmd">로그인 기능 TC 만들어줘. 해피패스·네거티브·엣지케이스 포함해서 로컬 저장하고 GitHub에도 올려줘</span></div>
+      <div class="t-line" style="margin-top:4px"><span class="t-out">filesystem 통합 사용함 ··· testcase_login.md 생성 완료 (24건)</span></div>
+      <div class="t-line"><span class="t-out">playwright 통합 사용함 ··· 브라우저 실행 → 스크린샷 저장</span></div>
+      <div class="t-line"><span class="t-out">github 통합 사용함 ··· </span><span class="t-ok">main 브랜치 커밋 완료 ✓</span></div>
+      <div class="t-line" style="margin-top:8px"><span class="t-comment"># 코드 0줄. 대화 1번. 끝.</span></div>
+      <div class="t-line" style="margin-top:4px"><span class="t-prompt">❯</span><span class="t-cursor"></span></div>
     </div>
   </div>
 </section>
-<section class="tc-section" id="tc">
-  <div class="section-tag reveal">— 실제 산출물</div>
-  <h2 class="section-title reveal">TC 샘플 미리보기</h2>
-  <div class="tc-grid reveal">
-    <div class="tc-card"><div class="tc-card-label">✅ HAPPY PATH</div><ul class="tc-list"><li><span class="tc-id">TC-HP-001</span>정상 이메일/비밀번호로 로그인 성공</li><li><span class="tc-id">TC-HP-002</span>이메일 대소문자 무관 로그인 성공</li><li><span class="tc-id">TC-HP-003</span>로그인 성공 후 이전 페이지로 리다이렉트</li><li><span class="tc-id">TC-HP-004</span>계정 잠금 해제 후 정상 로그인</li></ul></div>
-    <div class="tc-card"><div class="tc-card-label">❌ NEGATIVE CASE</div><ul class="tc-list"><li><span class="tc-id">TC-NG-001</span>존재하지 않는 이메일로 로그인 시도</li><li><span class="tc-id">TC-NG-007</span>5회 연속 실패 → 계정 잠금</li><li><span class="tc-id">TC-NG-010</span>비밀번호에 XSS 스크립트 입력</li><li><span class="tc-id">TC-NG-009</span>탈퇴한 계정으로 로그인 시도</li></ul></div>
-    <div class="tc-card"><div class="tc-card-label">⚠️ EDGE CASE</div><ul class="tc-list"><li><span class="tc-id">TC-EC-001</span>이메일 앞뒤 공백 포함 입력 (trim 처리)</li><li><span class="tc-id">TC-EC-005</span>동일 계정 동시 다중 로그인 시도</li><li><span class="tc-id">TC-EC-008</span>SQL Injection 패턴 입력</li><li><span class="tc-id">TC-EC-007</span>네트워크 단절 상태에서 로그인 시도</li></ul></div>
-    <div class="tc-card"><div class="tc-card-label">📊 TC 통계</div><ul class="tc-list"><li><span class="tc-id">TOTAL</span>24건 테스트케이스</li><li><span class="tc-id">P1</span>우선순위 최상 14건</li><li><span class="tc-id">GEN</span>생성 소요시간 약 40초</li><li><span class="tc-id">CMD</span>자연어 명령 1회</li></ul></div>
+
+<!-- VISION -->
+<section class="vision-sec" id="vision">
+  <div class="sec-head reveal">
+    <span class="sec-n">02</span>
+    <h2 class="sec-t">MCP 확장 비전</h2>
+    <div class="sec-line"></div>
   </div>
-  <div class="tc-cta reveal">
-    <a href="https://github.com/kihyunqa/qa-portfolio/blob/main/testcase_login.md" target="_blank" class="btn btn-outline">전체 TC 파일 보기 →</a>
-    <span class="tc-note">해피패스 4건 · 네거티브 10건 · 엣지케이스 10건 포함</span>
-  </div>
-</section>
-<section id="skills" style="background:var(--bg)">
-  <div class="section-tag reveal">— 보유 역량</div>
-  <h2 class="section-title reveal">Skills</h2>
-  <div class="skills-grid">
-    <div class="skill-card reveal"><span class="skill-icon">📝</span><div class="skill-name">테스트 설계 & 실행</div><div class="skill-desc">요구사항 분석 단계에서 예외·경계 케이스를 미리 도출해 테스트 누락을 방지. 사용자 흐름 기반 시나리오 설계부터 기능·회귀·탐색적 테스트, 결함 관리까지 QA 전 사이클을 수행합니다.</div><div class="skill-tags"><span class="tag tag-p">TC 설계</span><span class="tag tag-p">버그 리포팅</span><span class="tag">회귀 테스트</span><span class="tag">탐색적 테스트</span><span class="tag">경계값 분석</span></div></div>
-    <div class="skill-card reveal"><span class="skill-icon">⚡</span><div class="skill-name">E2E 자동화 (Cypress)</div><div class="skill-desc">계약서 작성 등 핵심 시나리오를 중심으로 Cypress 기반 E2E 자동화를 구축·운영했습니다. 반복 회귀 검증 자동화로 배포 전 검증 시간을 단축했습니다.</div><div class="skill-tags"><span class="tag tag-p">Cypress</span><span class="tag">E2E 테스트</span><span class="tag">유저 시나리오</span><span class="tag">회귀 방어</span></div></div>
-    <div class="skill-card reveal"><span class="skill-icon">🔌</span><div class="skill-name">API 테스트</div><div class="skill-desc">UI 테스트로 확인하기 어려운 서버 응답 이상·데이터 정합성 오류를 Swagger로 직접 API 호출해 검증. 차량 호출·예약·결제 API 파라미터 유효성, 응답값, 에러 핸들링을 체계적으로 테스트했습니다.</div><div class="skill-tags"><span class="tag tag-p">Swagger</span><span class="tag">API 검증</span><span class="tag">응답값 검증</span><span class="tag">에러 케이스</span></div></div>
-    <div class="skill-card reveal"><span class="skill-icon">🤖</span><div class="skill-name">Claude MCP 자동화</div><div class="skill-desc">Claude Desktop에 MCP 서버를 연동해 QA 워크플로우를 자동화했습니다. 자연어 명령만으로 기획서 → TC → 브라우저 테스트 → GitHub까지 연결하는 파이프라인을 구축했습니다.</div><div class="skill-tags"><span class="tag tag-p">Claude MCP</span><span class="tag tag-p">Playwright MCP</span><span class="tag tag-p">GitHub MCP</span><span class="tag">AI 워크플로우</span></div></div>
-    <div class="skill-card reveal"><span class="skill-icon">🐛</span><div class="skill-name">결함 관리 & 리포팅</div><div class="skill-desc">재현 조건·영향 범위·우선순위를 담은 버그 리포트로 개발팀의 빠른 대응을 지원. Jira·Slack·Notion 기반 이슈 트래킹 체계 운영 및 리포트 형식 표준화로 커뮤니케이션 지연 최소화.</div><div class="skill-tags"><span class="tag">Jira</span><span class="tag">Notion</span><span class="tag">버그 리포트</span><span class="tag">우선순위 분류</span><span class="tag">영향도 분석</span></div></div>
-    <div class="skill-card reveal"><span class="skill-icon">🌐</span><div class="skill-name">검증 환경 & 도메인</div><div class="skill-desc">iOS/Android 앱, 웹, 백오피스부터 IoT(SmartThings), AI 음성(Bixby), 반도체 공정 시뮬레이션까지 다양한 도메인 QA 경험을 보유하고 있습니다.</div><div class="skill-tags"><span class="tag tag-p">iOS/Android</span><span class="tag">IoT</span><span class="tag">AI 음성</span><span class="tag">백오피스</span><span class="tag">반도체</span></div></div>
-  </div>
-</section>
-<section id="projects" style="background:var(--bg2)">
-  <div class="section-tag reveal">— 프로젝트</div>
-  <h2 class="section-title reveal">Projects</h2>
-  <div class="projects-list">
-    <div class="project-item reveal">
-      <div>
-        <div class="project-num">PROJECT 01</div>
-        <div class="project-name">Claude MCP QA 자동화 파이프라인</div>
-        <div class="project-desc">Claude Desktop에 filesystem, GitHub, Playwright MCP를 연동해 QA 업무 전체를 자동화했습니다. 기능 명세를 입력하면 24개 TC가 생성되고, 브라우저 테스트 스크린샷이 GitHub에 자동 커밋됩니다. 이 포트폴리오 페이지 자체도 그 결과물입니다.</div>
-        <a href="https://github.com/kihyunqa/qa-portfolio" target="_blank" class="project-link">GitHub 레포 보기 →</a>
-      </div>
-      <div class="project-meta">
-        <div class="project-type">MCP · AI 자동화</div>
-        <div class="project-tags"><span class="tag tag-p">Claude MCP</span><span class="tag tag-p">Playwright</span><span class="tag">GitHub API</span></div>
-      </div>
+  <p class="vision-intro reveal">
+    MCP는 Claude를 외부 도구와 연결합니다.<br>
+    <strong>QA 워크플로우의 반복 구간을 AI가 처리하면</strong>, QA 엔지니어는 더 본질적인 판단에 집중할 수 있습니다.<br>
+    아래는 이 포트폴리오가 확장해나갈 방향입니다.
+  </p>
+  <div class="vision-grid reveal">
+    <div class="vision-card active-card">
+      <div class="vc-top"><div class="vc-icon">🧪</div><span class="badge badge-done">구현 완료</span></div>
+      <div class="vc-title">TC 자동생성 파이프라인</div>
+      <div class="vc-desc">기능 명세 → TC 24건 자동 생성 → 로컬 저장 → GitHub 업로드. 반복 작업을 대화 한 번으로 처리합니다.</div>
+      <div class="vc-tags"><span class="vc-tag">filesystem MCP</span><span class="vc-tag">github MCP</span><span class="vc-tag">playwright MCP</span></div>
     </div>
-    <div class="project-item reveal">
-      <div>
-        <div class="project-num">PROJECT 02</div>
-        <div class="project-name">핵심 유저 시나리오 E2E 자동화 (IMS Mobility)</div>
-        <div class="project-desc">차량 호출·예약·계약서 작성 등 서비스 핵심 플로우를 Cypress로 자동화했습니다. 반복 회귀 검증을 자동화해 배포 전 검증 시간을 단축하고, 주요 경로의 이상 유무를 빠르게 감지할 수 있는 체계를 갖췄습니다.</div>
-      </div>
-      <div class="project-meta">
-        <div class="project-type">E2E 자동화</div>
-        <div class="project-tags"><span class="tag tag-p">Cypress</span><span class="tag">E2E</span><span class="tag">회귀 테스트</span></div>
-      </div>
+    <div class="vision-card">
+      <div class="vc-top"><div class="vc-icon">🐛</div><span class="badge badge-wip">구현 예정</span></div>
+      <div class="vc-title">Jira MCP 버그 패턴 분석</div>
+      <div class="vc-desc">프로젝트별 버그 수, 심각도, 담당자, 반복 패턴을 Claude가 분석합니다. "이번 스프린트 P1 버그 현황 알려줘" 한 줄이면 됩니다.</div>
+      <div class="vc-tags"><span class="vc-tag">Jira MCP</span><span class="vc-tag">버그 분석</span><span class="vc-tag">리포팅 자동화</span></div>
+    </div>
+    <div class="vision-card">
+      <div class="vc-top"><div class="vc-icon">📝</div><span class="badge badge-wip">구현 예정</span></div>
+      <div class="vc-title">Confluence MCP 문서 자동화</div>
+      <div class="vc-desc">로우 데이터와 맥락을 전달하면 Claude가 QA 리포트, 테스트 결과 문서를 Confluence에 자동으로 작성합니다.</div>
+      <div class="vc-tags"><span class="vc-tag">Confluence MCP</span><span class="vc-tag">문서 자동화</span><span class="vc-tag">QA 리포팅</span></div>
+    </div>
+    <div class="vision-card">
+      <div class="vc-top"><div class="vc-icon">💬</div><span class="badge badge-wip">구현 예정</span></div>
+      <div class="vc-title">Slack MCP QA 알림 봇</div>
+      <div class="vc-desc">릴리즈 전 TC 통과율, 블로커 버그 현황을 Slack 채널에 자동 요약 전송합니다. QA 상태를 팀 전체가 실시간으로 파악합니다.</div>
+      <div class="vc-tags"><span class="vc-tag">Slack MCP</span><span class="vc-tag">알림 자동화</span><span class="vc-tag">릴리즈 QA</span></div>
+    </div>
+    <div class="vision-card">
+      <div class="vc-top"><div class="vc-icon">🔀</div><span class="badge badge-wip">구현 예정</span></div>
+      <div class="vc-title">QA 오케스트레이션 하네스</div>
+      <div class="vc-desc">TC 생성 → 실행 → 버그 등록 → 문서화 → 알림까지, 전체 QA 파이프라인을 Claude가 오케스트레이션합니다.</div>
+      <div class="vc-tags"><span class="vc-tag">Multi-MCP</span><span class="vc-tag">파이프라인</span><span class="vc-tag">자동화</span></div>
+    </div>
+    <div class="vision-card">
+      <div class="vc-top"><div class="vc-icon">⚙️</div><span class="badge badge-wip">구현 예정</span></div>
+      <div class="vc-title">Claude Code QA 환경 세팅</div>
+      <div class="vc-desc">Claude Code로 Cypress 스크립트 생성, Skill 지침 세팅, 브랜치 전략 자동화까지. QA 환경 구성을 AI와 함께 합니다.</div>
+      <div class="vc-tags"><span class="vc-tag">Claude Code</span><span class="vc-tag">Cypress</span><span class="vc-tag">브랜치 전략</span></div>
     </div>
   </div>
 </section>
-<section class="contact-wrap" id="contact">
-  <div class="section-tag reveal">— CONTACT</div>
-  <h2 class="section-title reveal">함께 일해요</h2>
-  <p class="contact-sub reveal">품질에 진심인 팀이라면 어디든 환영합니다.</p>
-  <div class="contact-links reveal">
-    <a href="https://github.com/kihyunqa/qa-portfolio" target="_blank" class="btn btn-primary">GitHub 포트폴리오</a>
-    <a href="mailto:kihyun.qa@gmail.com" class="btn btn-outline">kihyun.qa@gmail.com</a>
+
+<!-- PROJECTS -->
+<section class="projects-sec" id="projects">
+  <div class="sec-head reveal">
+    <span class="sec-n">03</span>
+    <h2 class="sec-t">프로젝트 카드</h2>
+    <div class="sec-line"></div>
+  </div>
+  <div class="projects-grid">
+
+    <!-- PROJECT 01: TC 자동생성 워크플로우 -->
+    <div class="proj-card reveal">
+      <div class="proj-num">PROJECT 01 · 구현 완료</div>
+      <div class="proj-icon">🤖</div>
+      <div class="proj-title">TC 자동생성 워크플로우</div>
+      <div class="proj-desc">
+        기능 명세를 자연어로 입력하면 Claude가 해피패스 · 네거티브 · 엣지케이스를 자동으로 분류해 TC를 생성합니다.
+        생성된 파일은 로컬에 즉시 저장되고, GitHub 레포에 자동 커밋까지 완료됩니다.
+        코드 한 줄 없이 대화만으로 전체 파이프라인이 작동합니다.
+      </div>
+      <div class="proj-flow">
+        <span class="proj-flow-step">기능명세 입력</span>
+        <span class="proj-flow-arrow">→</span>
+        <span class="proj-flow-step">TC 생성 (24건)</span>
+        <span class="proj-flow-arrow">→</span>
+        <span class="proj-flow-step">로컬 저장</span>
+        <span class="proj-flow-arrow">→</span>
+        <span class="proj-flow-step">GitHub 업로드</span>
+      </div>
+      <div class="proj-tags">
+        <span class="proj-tag proj-tag-p">filesystem MCP</span>
+        <span class="proj-tag proj-tag-p">github MCP</span>
+        <span class="proj-tag proj-tag-p">playwright MCP</span>
+        <span class="proj-tag">자연어 명령</span>
+        <span class="proj-tag">TC 설계</span>
+      </div>
+    </div>
+
+    <!-- PROJECT 02: QA 대응 프로세스 + 브랜치 전략 -->
+    <div class="proj-card reveal">
+      <div class="proj-num">PROJECT 02 · 구현 완료</div>
+      <div class="proj-icon">🔀</div>
+      <div class="proj-title">QA 대응 프로세스 + 브랜치 전략</div>
+      <div class="proj-desc">
+        버그 발생 시 브랜치 전략과 연계한 QA 대응 프로세스를 설계했습니다.
+        main / develop / feature 브랜치 구조에서 QA가 개입해야 하는 시점과 방식을 명확히 정의하고,
+        GitHub MCP를 통해 브랜치 생성·PR·커밋까지 대화로 처리합니다.
+      </div>
+      <div class="branch-vis">
+        <div><span class="branch-main">main</span>     <span class="branch-dim">──●────────────────────●──</span> <span class="branch-dim"># 릴리즈 · QA 최종 승인</span></div>
+        <div><span class="branch-dev">develop</span>  <span class="branch-dim">────●──────●────●──────</span>   <span class="branch-dim"># 통합 · QA 회귀 검증</span></div>
+        <div><span class="branch-feat">feature</span>  <span class="branch-dim">──────●──●──</span>              <span class="branch-dim"># 기능개발 · QA 선행 검토</span></div>
+      </div>
+      <div class="proj-tags">
+        <span class="proj-tag proj-tag-p">github MCP</span>
+        <span class="proj-tag proj-tag-p">브랜치 전략</span>
+        <span class="proj-tag">main / develop / feature</span>
+        <span class="proj-tag">QA 대응 프로세스</span>
+        <span class="proj-tag">PR 검증</span>
+      </div>
+    </div>
+
   </div>
 </section>
+
+<!-- TC 전시 -->
+<section id="tc">
+  <div class="sec-head reveal">
+    <span class="sec-n">04</span>
+    <h2 class="sec-t">자동생성 테스트케이스</h2>
+    <div class="sec-line"></div>
+  </div>
+  <p class="tc-intro reveal">로그인 기능 명세를 Claude에게 전달하고 자동 생성된 TC 24건 중 일부입니다.<br>해피패스 · 네거티브 · 엣지케이스가 자동으로 분류되어 작성됩니다.</p>
+  <div class="tc-wrap reveal">
+    <table class="tc-table">
+      <thead>
+        <tr><th>TC-ID</th><th>구분</th><th>테스트 제목</th><th>기대 결과</th><th>우선순위</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>TC-HP-001</td><td><span class="tc-type h">해피패스</span></td><td>정상 로그인</td><td>메인 화면으로 이동</td><td><span class="p1">P1</span></td></tr>
+        <tr><td>TC-HP-002</td><td><span class="tc-type h">해피패스</span></td><td>이메일 대소문자 무관 로그인</td><td>로그인 성공</td><td><span class="p2">P2</span></td></tr>
+        <tr><td>TC-NG-001</td><td><span class="tc-type n">네거티브</span></td><td>잘못된 비밀번호 5회 연속 입력</td><td>계정 잠금 처리</td><td><span class="p1">P1</span></td></tr>
+        <tr><td>TC-NG-002</td><td><span class="tc-type n">네거티브</span></td><td>존재하지 않는 이메일 입력</td><td>에러 메시지 표시</td><td><span class="p1">P1</span></td></tr>
+        <tr><td>TC-NG-003</td><td><span class="tc-type n">네거티브</span></td><td>비밀번호 필드 미입력</td><td>필수 입력 안내</td><td><span class="p2">P2</span></td></tr>
+        <tr><td>TC-EC-001</td><td><span class="tc-type e">엣지케이스</span></td><td>SQL Injection 입력값</td><td>차단 및 에러 처리</td><td><span class="p1">P1</span></td></tr>
+        <tr><td>TC-EC-002</td><td><span class="tc-type e">엣지케이스</span></td><td>4회 실패 후 정상 로그인</td><td>실패 카운터 초기화</td><td><span class="p2">P2</span></td></tr>
+        <tr><td>TC-EC-003</td><td><span class="tc-type e">엣지케이스</span></td><td>공백만 입력한 이메일</td><td>trim 후 유효성 검증</td><td><span class="p3">P3</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <a href="https://github.com/kihyunqa/qa-portfolio/blob/main/testcase_login.md" target="_blank" class="tc-link reveal">전체 TC 파일 보기 (24건) ↗</a>
+</section>
+
+<!-- CAREER -->
+<section class="career-sec" id="career">
+  <div class="sec-head reveal">
+    <span class="sec-n">05</span>
+    <h2 class="sec-t">경력</h2>
+    <div class="sec-line"></div>
+  </div>
+  <div class="career-item reveal">
+    <div class="c-period">현재<br>재직 중</div>
+    <div>
+      <div class="c-company">현 소속사</div>
+      <div class="c-role">QA ENGINEER</div>
+      <p class="c-desc">서비스 품질 검증 및 테스트 전략 수립. 기능 명세 기반 테스트케이스 설계, 버그 리포팅, 릴리즈 QA 진행.</p>
+      <div class="c-tags"><span class="c-tag">TC 설계</span><span class="c-tag">버그 리포팅</span><span class="c-tag">릴리즈 QA</span><span class="c-tag">Cypress</span></div>
+    </div>
+  </div>
+  <div class="career-item reveal">
+    <div class="c-period">전직</div>
+    <div>
+      <div class="c-company">이전 회사</div>
+      <div class="c-role">QA ENGINEER</div>
+      <p class="c-desc">사내 Swagger 기반 API 테스트 수행. Cypress를 활용한 핵심 유저 시나리오 E2E 자동화 스크립트 작성 및 운영. 실제 반복되는 플로우를 선별해 안정적인 회귀 테스트 커버리지 확보에 집중.</p>
+      <div class="c-tags"><span class="c-tag">Swagger / API 테스트</span><span class="c-tag">Cypress E2E</span><span class="c-tag">회귀 테스트</span><span class="c-tag">버그 리포팅</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="skills-sec" id="skills">
+  <div class="sec-head reveal">
+    <span class="sec-n">06</span>
+    <h2 class="sec-t">스킬</h2>
+    <div class="sec-line"></div>
+  </div>
+  <div class="skills-wrap reveal">
+    <div>
+      <div class="sk-group-title">TESTING</div>
+      <div class="sk-list">
+        <div class="sk-item"><span class="sk-name">테스트케이스 설계</span><div class="sk-bar-w"><div class="sk-bar" style="width:95%"></div></div></div>
+        <div class="sk-item"><span class="sk-name">버그 리포팅 & 트래킹</span><div class="sk-bar-w"><div class="sk-bar" style="width:92%"></div></div></div>
+        <div class="sk-item"><span class="sk-name">E2E 자동화 (Cypress)</span><div class="sk-bar-w"><div class="sk-bar" style="width:65%"></div></div></div>
+        <div class="sk-item"><span class="sk-name">API 테스트 (Swagger)</span><div class="sk-bar-w"><div class="sk-bar" style="width:70%"></div></div></div>
+      </div>
+    </div>
+    <div>
+      <div class="sk-group-title">AI · MCP AUTOMATION</div>
+      <div class="sk-list">
+        <div class="sk-item"><span class="sk-name">Claude MCP 연동 설계</span><div class="sk-bar-w"><div class="sk-bar" style="width:85%"></div></div></div>
+        <div class="sk-item"><span class="sk-name">playwright MCP</span><div class="sk-bar-w"><div class="sk-bar" style="width:78%"></div></div></div>
+        <div class="sk-item"><span class="sk-name">github MCP</span><div class="sk-bar-w"><div class="sk-bar" style="width:82%"></div></div></div>
+        <div class="sk-item"><span class="sk-name">AI 프롬프트 설계</span><div class="sk-bar-w"><div class="sk-bar" style="width:88%"></div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-sec" id="contact">
+  <div class="contact-wrap reveal">
+    <div>
+      <h2 class="contact-h">함께<br><span>일해요</span></h2>
+      <p class="contact-sub">QA 엔지니어링, AI 자동화 도입에 관심 있는<br>팀이라면 언제든지 연락주세요.</p>
+    </div>
+    <div class="contact-links">
+      <a href="https://github.com/kihyunqa" target="_blank" class="c-link">GitHub ↗</a>
+      <a href="https://github.com/kihyunqa/qa-portfolio" target="_blank" class="c-link">포트폴리오 레포 ↗</a>
+    </div>
+  </div>
+</section>
+
 <footer>
-  <div class="fl">© 2025 성기현 — QA Engineer</div>
-  <div class="fr">Powered by <span>Claude MCP</span></div>
+  <p>© 2026 성기현 · QA Engineer</p>
+  <p>Built with Claude MCP · No code written</p>
 </footer>
+
 <script>
-  const cursor = document.getElementById('cursor');
-  const ring = document.getElementById('cursorRing');
-  let mx=0,my=0,rx=0,ry=0;
-  document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; cursor.style.left=mx+'px'; cursor.style.top=my+'px'; });
-  (function tick(){ rx+=(mx-rx)*0.12; ry+=(my-ry)*0.12; ring.style.left=rx+'px'; ring.style.top=ry+'px'; requestAnimationFrame(tick); })();
-  document.querySelectorAll('a,button').forEach(el=>{
-    el.addEventListener('mouseenter',()=>{ cursor.style.transform='translate(-50%,-50%) scale(2)'; ring.style.transform='translate(-50%,-50%) scale(1.5)'; ring.style.borderColor='rgba(180,122,255,0.7)'; });
-    el.addEventListener('mouseleave',()=>{ cursor.style.transform='translate(-50%,-50%) scale(1)'; ring.style.transform='translate(-50%,-50%) scale(1)'; ring.style.borderColor='rgba(180,122,255,0.4)'; });
-  });
-  const hamburger = document.getElementById('hamburger');
-  const mobileMenu = document.getElementById('mobileMenu');
-  hamburger.addEventListener('click', () => { hamburger.classList.toggle('open'); mobileMenu.classList.toggle('open'); });
-  function closeMenu() { hamburger.classList.remove('open'); mobileMenu.classList.remove('open'); }
-  const obs = new IntersectionObserver(entries=>{ entries.forEach((e,i)=>{ if(e.isIntersecting){ setTimeout(()=>e.target.classList.add('on'), i*70); obs.unobserve(e.target); } }); },{threshold:0.1});
-  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+// cursor
+const cur=document.getElementById('cur'),curR=document.getElementById('curR');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx-3.5+'px';cur.style.top=my-3.5+'px';});
+(function a(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;curR.style.left=rx-14+'px';curR.style.top=ry-14+'px';requestAnimationFrame(a);})();
+document.querySelectorAll('a,button').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cur.style.transform='scale(2.5)';curR.style.transform='scale(1.5)';});
+  el.addEventListener('mouseleave',()=>{cur.style.transform='';curR.style.transform='';});
+});
+
+// hamburger
+function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open');}
+
+// reveal
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*60);obs.unobserve(e.target);}});
+},{threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// skill bar
+const skO=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.querySelectorAll('.sk-bar').forEach(b=>{const w=b.style.width;b.style.width='0';setTimeout(()=>b.style.width=w,150);});skO.unobserve(e.target);}});
+},{threshold:0.3});
+document.querySelectorAll('.skills-wrap').forEach(el=>skO.observe(el));
 </script>
 </body>
 </html>
