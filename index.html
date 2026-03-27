@@ -8,17 +8,17 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --green: #00ff88;
-    --green-dim: #00cc66;
-    --green-glow: rgba(0,255,136,0.15);
-    --green-faint: rgba(0,255,136,0.06);
-    --bg: #080c0a;
-    --bg2: #0d120f;
-    --bg3: #111a14;
-    --text: #e8f0ea;
-    --text-dim: #7a9980;
-    --border: rgba(0,255,136,0.12);
-    --border-bright: rgba(0,255,136,0.35);
+    --purple: #b47aff;
+    --purple-dim: #8a4fff;
+    --purple-glow: rgba(180,122,255,0.15);
+    --purple-faint: rgba(180,122,255,0.06);
+    --bg: #09080d;
+    --bg2: #0f0d16;
+    --bg3: #14112000;
+    --text: #ede8f5;
+    --text-dim: #8a7aa0;
+    --border: rgba(180,122,255,0.12);
+    --border-bright: rgba(180,122,255,0.35);
     --mono: 'JetBrains Mono', monospace;
     --sans: 'Noto Sans KR', sans-serif;
   }
@@ -35,15 +35,15 @@
   }
   .cursor {
     position: fixed; width: 8px; height: 8px;
-    background: var(--green); border-radius: 50%;
+    background: var(--purple); border-radius: 50%;
     pointer-events: none; z-index: 9999;
     transform: translate(-50%,-50%);
     transition: transform 0.1s;
-    box-shadow: 0 0 12px var(--green);
+    box-shadow: 0 0 12px var(--purple);
   }
   .cursor-ring {
     position: fixed; width: 32px; height: 32px;
-    border: 1px solid rgba(0,255,136,0.4); border-radius: 50%;
+    border: 1px solid rgba(180,122,255,0.4); border-radius: 50%;
     pointer-events: none; z-index: 9998;
     transform: translate(-50%,-50%);
     transition: all 0.15s ease;
@@ -53,7 +53,7 @@
     position: fixed; inset: 0;
     background: repeating-linear-gradient(
       0deg, transparent, transparent 2px,
-      rgba(0,255,136,0.008) 2px, rgba(0,255,136,0.008) 4px
+      rgba(180,122,255,0.006) 2px, rgba(180,122,255,0.006) 4px
     );
     pointer-events: none; z-index: 1;
   }
@@ -61,15 +61,15 @@
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     padding: 20px 60px;
     display: flex; justify-content: space-between; align-items: center;
-    background: rgba(8,12,10,0.9);
+    background: rgba(9,8,13,0.9);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border);
   }
-  .nav-logo { font-family: var(--mono); font-size: 13px; color: var(--green); letter-spacing: 0.1em; }
+  .nav-logo { font-family: var(--mono); font-size: 13px; color: var(--purple); letter-spacing: 0.1em; }
   .nav-logo span { color: var(--text-dim); }
   .nav-links { display: flex; gap: 40px; list-style: none; }
   .nav-links a { font-family: var(--mono); font-size: 12px; color: var(--text-dim); text-decoration: none; letter-spacing: 0.08em; transition: color 0.2s; cursor: none; }
-  .nav-links a:hover { color: var(--green); }
+  .nav-links a:hover { color: var(--purple); }
 
   .hero {
     min-height: 100vh; display: flex; align-items: center;
@@ -78,29 +78,29 @@
   .hero-grid {
     position: absolute; inset: 0;
     background-image:
-      linear-gradient(rgba(0,255,136,0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(0,255,136,0.04) 1px, transparent 1px);
+      linear-gradient(rgba(180,122,255,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(180,122,255,0.04) 1px, transparent 1px);
     background-size: 60px 60px;
     mask-image: radial-gradient(ellipse 80% 80% at 40% 50%, black, transparent);
   }
   .hero-content { max-width: 900px; position: relative; z-index: 2; }
   .hero-tag {
-    font-family: var(--mono); font-size: 12px; color: var(--green);
+    font-family: var(--mono); font-size: 12px; color: var(--purple);
     letter-spacing: 0.2em; margin-bottom: 32px;
     display: flex; align-items: center; gap: 12px;
   }
-  .hero-tag::before { content: ''; width: 40px; height: 1px; background: var(--green); }
+  .hero-tag::before { content: ''; width: 40px; height: 1px; background: var(--purple); }
   .hero-name {
     font-size: clamp(60px, 9vw, 104px); font-weight: 700;
     line-height: 0.92; letter-spacing: -0.03em; margin-bottom: 28px;
   }
-  .hero-name .accent { color: var(--green); }
+  .hero-name .accent { color: var(--purple); }
   .hero-title {
     font-family: var(--mono); font-size: clamp(13px, 1.6vw, 16px);
     color: var(--text-dim); margin-bottom: 40px;
     display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
   }
-  .hero-title .sep { color: var(--green); opacity: 0.4; }
+  .hero-title .sep { color: var(--purple); opacity: 0.4; }
   .hero-desc { font-size: 16px; color: var(--text-dim); max-width: 540px; line-height: 1.9; margin-bottom: 56px; }
   .hero-desc strong { color: var(--text); font-weight: 500; }
   .hero-cta { display: flex; gap: 16px; flex-wrap: wrap; }
@@ -109,10 +109,10 @@
     padding: 14px 32px; text-decoration: none; transition: all 0.2s; cursor: none;
     display: inline-block;
   }
-  .btn-primary { background: var(--green); color: var(--bg); font-weight: 700; }
-  .btn-primary:hover { background: #fff; box-shadow: 0 0 40px rgba(0,255,136,0.4); }
-  .btn-outline { border: 1px solid var(--border-bright); color: var(--green); }
-  .btn-outline:hover { background: var(--green-faint); border-color: var(--green); }
+  .btn-primary { background: var(--purple); color: var(--bg); font-weight: 700; }
+  .btn-primary:hover { background: #d4aaff; box-shadow: 0 0 40px rgba(180,122,255,0.4); }
+  .btn-outline { border: 1px solid var(--border-bright); color: var(--purple); }
+  .btn-outline:hover { background: var(--purple-faint); border-color: var(--purple); }
 
   .stats-bar {
     border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
@@ -121,12 +121,12 @@
   .stat { flex: 1; padding: 0 40px; border-right: 1px solid var(--border); }
   .stat:first-child { padding-left: 0; }
   .stat:last-child { border-right: none; }
-  .stat-num { font-family: var(--mono); font-size: 42px; font-weight: 700; color: var(--green); line-height: 1; margin-bottom: 8px; }
+  .stat-num { font-family: var(--mono); font-size: 42px; font-weight: 700; color: var(--purple); line-height: 1; margin-bottom: 8px; }
   .stat-num small { font-size: 18px; color: var(--text-dim); }
   .stat-label { font-size: 13px; color: var(--text-dim); }
 
   section { padding: 100px 60px; }
-  .section-tag { font-family: var(--mono); font-size: 11px; color: var(--green); letter-spacing: 0.25em; margin-bottom: 12px; }
+  .section-tag { font-family: var(--mono); font-size: 11px; color: var(--purple); letter-spacing: 0.25em; margin-bottom: 12px; }
   .section-title { font-size: clamp(30px, 4vw, 48px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 64px; }
 
   /* MCP */
@@ -135,23 +135,23 @@
     content: '';
     position: absolute; top: -300px; right: -300px;
     width: 700px; height: 700px;
-    background: radial-gradient(circle, rgba(0,255,136,0.05) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(180,122,255,0.05) 0%, transparent 70%);
     pointer-events: none;
   }
   .mcp-badge {
     display: inline-flex; align-items: center; gap: 8px;
-    background: rgba(0,255,136,0.08); border: 1px solid var(--border-bright);
+    background: rgba(180,122,255,0.08); border: 1px solid var(--border-bright);
     padding: 6px 16px; font-family: var(--mono); font-size: 11px;
-    color: var(--green); letter-spacing: 0.15em; margin-bottom: 24px;
+    color: var(--purple); letter-spacing: 0.15em; margin-bottom: 24px;
   }
   .mcp-badge::before {
     content: ''; width: 6px; height: 6px;
-    background: var(--green); border-radius: 50%;
+    background: var(--purple); border-radius: 50%;
     animation: blink 2s infinite;
   }
   @keyframes blink {
-    0%,100% { opacity:1; box-shadow: 0 0 0 0 rgba(0,255,136,0.5); }
-    50% { opacity:0.5; box-shadow: 0 0 0 6px rgba(0,255,136,0); }
+    0%,100% { opacity:1; box-shadow: 0 0 0 0 rgba(180,122,255,0.5); }
+    50% { opacity:0.5; box-shadow: 0 0 0 6px rgba(180,122,255,0); }
   }
   .mcp-intro { font-size: 17px; color: var(--text-dim); max-width: 680px; line-height: 1.85; margin-bottom: 64px; }
   .mcp-intro strong { color: var(--text); font-weight: 500; }
@@ -162,7 +162,7 @@
     position: relative; transition: background 0.25s;
   }
   .mcp-step:last-child { border-right: none; }
-  .mcp-step:hover { background: var(--green-faint); }
+  .mcp-step:hover { background: var(--purple-faint); }
   .step-num { font-family: var(--mono); font-size: 10px; color: var(--text-dim); letter-spacing: 0.1em; margin-bottom: 16px; }
   .step-icon { font-size: 28px; display: block; margin-bottom: 14px; }
   .step-title { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
@@ -170,15 +170,15 @@
   .step-arrow {
     position: absolute; right: -11px; top: 50%; transform: translateY(-50%);
     width: 22px; height: 22px;
-    background: var(--bg3); border: 1px solid var(--border-bright);
+    background: var(--bg2); border: 1px solid var(--border-bright);
     display: flex; align-items: center; justify-content: center;
-    font-size: 9px; color: var(--green); z-index: 1; font-family: var(--mono);
+    font-size: 9px; color: var(--purple); z-index: 1; font-family: var(--mono);
   }
   .mcp-step:last-child .step-arrow { display: none; }
 
-  .terminal { background: #070b09; border: 1px solid var(--border); font-family: var(--mono); font-size: 13px; }
+  .terminal { background: #070610; border: 1px solid var(--border); font-family: var(--mono); font-size: 13px; }
   .terminal-bar {
-    background: var(--bg3); padding: 10px 16px;
+    background: var(--bg2); padding: 10px 16px;
     display: flex; align-items: center; gap: 8px;
     border-bottom: 1px solid var(--border);
   }
@@ -187,16 +187,16 @@
   .ttitle { font-size: 11px; color: var(--text-dim); margin-left: 8px; }
   .terminal-body { padding: 28px 28px 24px; line-height: 2.1; }
   .tl { display: flex; gap: 12px; }
-  .tp { color: var(--green); opacity: 0.5; flex-shrink: 0; }
+  .tp { color: var(--purple); opacity: 0.5; flex-shrink: 0; }
   .tc { color: var(--text); }
   .to { color: var(--text-dim); padding-left: 20px; }
-  .tg { color: var(--green); padding-left: 20px; }
+  .tg { color: var(--purple); padding-left: 20px; }
   .tb { height: 6px; }
 
   /* Skills */
   .skills-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); }
   .skill-card { background: var(--bg2); padding: 40px 36px; transition: background 0.25s; }
-  .skill-card:hover { background: var(--bg3); }
+  .skill-card:hover { background: #16122200; }
   .skill-icon { font-size: 30px; display: block; margin-bottom: 18px; }
   .skill-name { font-size: 16px; font-weight: 700; margin-bottom: 10px; letter-spacing: -0.01em; }
   .skill-desc { font-size: 13px; color: var(--text-dim); line-height: 1.75; margin-bottom: 20px; }
@@ -205,7 +205,7 @@
     font-family: var(--mono); font-size: 10px;
     padding: 3px 10px; border: 1px solid var(--border); color: var(--text-dim); letter-spacing: 0.05em;
   }
-  .tag-g { border-color: rgba(0,255,136,0.3); color: var(--green); background: rgba(0,255,136,0.04); }
+  .tag-p { border-color: rgba(180,122,255,0.3); color: var(--purple); background: rgba(180,122,255,0.04); }
 
   /* Projects */
   .projects-list { display: flex; flex-direction: column; gap: 1px; background: var(--border); border: 1px solid var(--border); }
@@ -216,16 +216,16 @@
   }
   .project-item::before {
     content: ''; position: absolute; left: 0; top: 0; bottom: 0;
-    width: 3px; background: var(--green);
+    width: 3px; background: var(--purple);
     transform: scaleY(0); transform-origin: bottom; transition: transform 0.3s;
   }
-  .project-item:hover { background: var(--bg3); }
+  .project-item:hover { background: var(--bg2); }
   .project-item:hover::before { transform: scaleY(1); }
   .project-num { font-family: var(--mono); font-size: 11px; color: var(--text-dim); letter-spacing: 0.1em; margin-bottom: 12px; }
   .project-name { font-size: 21px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 12px; }
   .project-desc { font-size: 14px; color: var(--text-dim); line-height: 1.75; max-width: 580px; }
   .project-meta { text-align: right; flex-shrink: 0; }
-  .project-type { font-family: var(--mono); font-size: 11px; color: var(--green); letter-spacing: 0.12em; margin-bottom: 10px; }
+  .project-type { font-family: var(--mono); font-size: 11px; color: var(--purple); letter-spacing: 0.12em; margin-bottom: 10px; }
   .project-tags { display: flex; flex-direction: column; gap: 5px; align-items: flex-end; }
 
   .contact-wrap { background: var(--bg2); border-top: 1px solid var(--border); text-align: center; }
@@ -238,7 +238,7 @@
   }
   .fl { font-family: var(--mono); font-size: 12px; color: var(--text-dim); }
   .fr { font-family: var(--mono); font-size: 11px; color: var(--text-dim); display: flex; align-items: center; gap: 6px; }
-  .fr span { color: var(--green); }
+  .fr span { color: var(--purple); }
 
   .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.55s ease, transform 0.55s ease; }
   .reveal.on { opacity: 1; transform: translateY(0); }
@@ -311,10 +311,6 @@
     <div class="stat-num">3<small>개</small></div>
     <div class="stat-label">연동된 MCP 서버</div>
   </div>
-  <div class="stat reveal">
-    <div class="stat-num">0<small>줄</small></div>
-    <div class="stat-label">직접 작성한 코드</div>
-  </div>
 </div>
 
 <section class="mcp-section" id="mcp">
@@ -325,7 +321,7 @@
   <p class="mcp-intro reveal">
     <strong>Claude MCP(Model Context Protocol)</strong>는 AI가 로컬 파일시스템, GitHub, 브라우저를 직접 조작하게 해주는 프로토콜입니다.
     기능 명세를 입력하면 테스트케이스가 자동 생성되고, 브라우저 테스트 후 스크린샷이 GitHub에 자동으로 올라갑니다.
-    이 과정에서 코드는 한 줄도 작성하지 않았습니다.
+    이 포트폴리오 페이지 자체도 Claude MCP를 통해 만들어졌습니다.
   </p>
 
   <div class="mcp-flow reveal">
@@ -375,7 +371,7 @@
       <div class="tg">✓ 브라우저 실행 → 접속 → 스크린샷 저장</div>
       <div class="tg">✓ GitHub 업로드 완료 — kihyunqa/qa-portfolio/screenshots/</div>
       <div class="tb"></div>
-      <div class="to"># 작성한 코드: 0줄 / 소요 시간: 약 40초</div>
+      <div class="to"># 소요 시간: 약 40초</div>
     </div>
   </div>
 </section>
@@ -389,8 +385,8 @@
       <div class="skill-name">테스트 설계 & 실행</div>
       <div class="skill-desc">요구사항 분석부터 TC 설계, 실행, 결함 관리까지 QA 전 사이클. 해피패스는 물론 엣지케이스, 보안 항목까지 꼼꼼하게 커버합니다.</div>
       <div class="skill-tags">
-        <span class="tag tag-g">TC 설계</span>
-        <span class="tag tag-g">버그 리포팅</span>
+        <span class="tag tag-p">TC 설계</span>
+        <span class="tag tag-p">버그 리포팅</span>
         <span class="tag">회귀 테스트</span>
         <span class="tag">탐색적 테스트</span>
       </div>
@@ -400,7 +396,7 @@
       <div class="skill-name">E2E 자동화 (Cypress)</div>
       <div class="skill-desc">핵심 유저 시나리오를 중심으로 Cypress 기반 E2E 자동화를 구성했습니다. 복잡한 스크립트보다 실질적인 커버리지 확보에 집중합니다.</div>
       <div class="skill-tags">
-        <span class="tag tag-g">Cypress</span>
+        <span class="tag tag-p">Cypress</span>
         <span class="tag">E2E 테스트</span>
         <span class="tag">유저 시나리오</span>
         <span class="tag">회귀 방어</span>
@@ -411,7 +407,7 @@
       <div class="skill-name">API 테스트</div>
       <div class="skill-desc">Swagger를 활용한 API 검증 경험. 카카오 모빌리티 환경에서 파라미터 유효성, 응답값, 에러 핸들링을 체계적으로 테스트했습니다.</div>
       <div class="skill-tags">
-        <span class="tag tag-g">Swagger</span>
+        <span class="tag tag-p">Swagger</span>
         <span class="tag">API 검증</span>
         <span class="tag">응답값 검증</span>
         <span class="tag">에러 케이스</span>
@@ -420,12 +416,12 @@
     <div class="skill-card reveal">
       <span class="skill-icon">🤖</span>
       <div class="skill-name">Claude MCP 자동화</div>
-      <div class="skill-desc">Claude Desktop에 MCP 서버를 연동해 QA 워크플로우를 자동화했습니다. 기획서 → TC → 브라우저 테스트 → GitHub까지, 코드 없이 구현.</div>
+      <div class="skill-desc">Claude Desktop에 MCP 서버를 연동해 QA 워크플로우를 자동화했습니다. 기획서 → TC → 브라우저 테스트 → GitHub까지, 자연어 명령만으로 구현.</div>
       <div class="skill-tags">
-        <span class="tag tag-g">Claude MCP</span>
-        <span class="tag tag-g">Playwright MCP</span>
-        <span class="tag tag-g">GitHub MCP</span>
-        <span class="tag">No-Code</span>
+        <span class="tag tag-p">Claude MCP</span>
+        <span class="tag tag-p">Playwright MCP</span>
+        <span class="tag tag-p">GitHub MCP</span>
+        <span class="tag">AI 워크플로우</span>
       </div>
     </div>
     <div class="skill-card reveal">
@@ -465,8 +461,8 @@
       <div class="project-meta">
         <div class="project-type">MCP · AI 자동화</div>
         <div class="project-tags">
-          <span class="tag tag-g">Claude MCP</span>
-          <span class="tag tag-g">Playwright</span>
+          <span class="tag tag-p">Claude MCP</span>
+          <span class="tag tag-p">Playwright</span>
           <span class="tag">GitHub API</span>
         </div>
       </div>
@@ -480,24 +476,9 @@
       <div class="project-meta">
         <div class="project-type">E2E 자동화</div>
         <div class="project-tags">
-          <span class="tag tag-g">Cypress</span>
+          <span class="tag tag-p">Cypress</span>
           <span class="tag">E2E</span>
           <span class="tag">회귀 테스트</span>
-        </div>
-      </div>
-    </div>
-    <div class="project-item reveal">
-      <div>
-        <div class="project-num">PROJECT 03</div>
-        <div class="project-name">API 테스트 체계 수립</div>
-        <div class="project-desc">카카오 모빌리티 사내 Swagger 환경에서 API 테스트를 수행했습니다. 파라미터 유효성, 경계값, 에러 응답 핸들링을 포함한 체계적인 API 검증 프로세스를 수립하고 팀 내 공유 문서화까지 진행했습니다.</div>
-      </div>
-      <div class="project-meta">
-        <div class="project-type">API 테스트</div>
-        <div class="project-tags">
-          <span class="tag tag-g">Swagger</span>
-          <span class="tag">API 검증</span>
-          <span class="tag">문서화</span>
         </div>
       </div>
     </div>
@@ -516,7 +497,7 @@
 
 <footer>
   <div class="fl">© 2025 성기현 — QA Engineer</div>
-  <div class="fr">Powered by <span>Claude MCP</span> — 코드 없이 만든 포트폴리오</div>
+  <div class="fr">Powered by <span>Claude MCP</span></div>
 </footer>
 
 <script>
@@ -536,12 +517,12 @@
     el.addEventListener('mouseenter',()=>{
       cursor.style.transform='translate(-50%,-50%) scale(2)';
       ring.style.transform='translate(-50%,-50%) scale(1.5)';
-      ring.style.borderColor='rgba(0,255,136,0.7)';
+      ring.style.borderColor='rgba(180,122,255,0.7)';
     });
     el.addEventListener('mouseleave',()=>{
       cursor.style.transform='translate(-50%,-50%) scale(1)';
       ring.style.transform='translate(-50%,-50%) scale(1)';
-      ring.style.borderColor='rgba(0,255,136,0.4)';
+      ring.style.borderColor='rgba(180,122,255,0.4)';
     });
   });
   const obs = new IntersectionObserver(entries=>{
