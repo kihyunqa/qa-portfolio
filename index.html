@@ -21,7 +21,7 @@
   --p-muted:rgba(168,85,247,0.08);--text:#f0eaff;
   --muted:#7c6f9a;--dim:#3d3358;
   --mono:'DM Mono',monospace;--sans:'Noto Sans KR',sans-serif;
-  --wip:#f59e0b;--green:#22c55e;--cyan:#22d3ee
+  --wip:#f59e0b
 }
 *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:var(--sans);font-weight:300;overflow-x:hidden;cursor:none}
@@ -29,7 +29,6 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);font-weight:
 .cur-r{position:fixed;width:28px;height:28px;border:1px solid var(--purple);border-radius:50%;pointer-events:none;z-index:9998;opacity:.4;transition:all .14s ease}
 body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 70% 50% at 15% 10%,rgba(124,58,237,.07) 0%,transparent 55%),radial-gradient(ellipse 50% 70% at 85% 85%,rgba(168,85,247,.05) 0%,transparent 55%);pointer-events:none;z-index:0}
 body::after{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.025) 2px,rgba(0,0,0,.025) 4px);pointer-events:none;z-index:1}
-/* NAV */
 nav{position:fixed;top:0;left:0;right:0;padding:18px 56px;display:flex;align-items:center;justify-content:space-between;z-index:1000;background:rgba(8,6,15,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--p-border)}
 .nav-logo{font-family:var(--mono);font-size:12px;color:var(--purple);letter-spacing:.12em}
 .nav-links{display:flex;gap:28px;list-style:none}
@@ -40,7 +39,7 @@ nav{position:fixed;top:0;left:0;right:0;padding:18px 56px;display:flex;align-ite
 .mobile-menu{display:none;position:fixed;inset:0;background:rgba(8,6,15,.97);z-index:99;flex-direction:column;align-items:center;justify-content:center;gap:32px}
 .mobile-menu.open{display:flex}
 .mobile-menu a{font-family:var(--mono);font-size:18px;color:var(--text);text-decoration:none}
-/* HERO */
+.mobile-menu a:hover{color:var(--purple)}
 .hero{min-height:100vh;display:flex;align-items:center;padding:120px 56px 80px;position:relative;z-index:2;overflow:hidden}
 .hero-left{flex:1;max-width:720px}
 .hero-tag{font-family:var(--mono);font-size:11px;color:var(--purple);letter-spacing:.2em;margin-bottom:28px;display:flex;align-items:center;gap:12px}
@@ -48,7 +47,7 @@ nav{position:fixed;top:0;left:0;right:0;padding:18px 56px;display:flex;align-ite
 h1.hero-name{font-size:clamp(60px,9vw,110px);font-weight:900;line-height:.95;letter-spacing:-.04em;margin-bottom:20px}
 h1.hero-name em{color:var(--purple);font-style:normal;position:relative}
 h1.hero-name em::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--purple),transparent)}
-.hero-subtitle{font-family:var(--mono);font-size:13px;color:var(--muted);letter-spacing:.08em;margin-bottom:36px}
+#qa-role-label{font-family:'DM Mono',monospace;font-size:13px;color:#7c6f9a;letter-spacing:.08em;margin-bottom:36px;display:block;text-decoration:none;text-decoration-line:none;-webkit-text-decoration:none}
 .hero-desc{font-size:17px;line-height:1.85;color:var(--muted);max-width:520px;margin-bottom:48px}
 .hero-desc strong{color:var(--text);font-weight:500}
 .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
@@ -59,21 +58,16 @@ h1.hero-name em::after{content:'';position:absolute;bottom:-4px;left:0;right:0;h
 .hero-stats{position:absolute;right:56px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:32px}
 .stat-n{font-family:var(--mono);font-size:36px;font-weight:500;color:var(--purple);line-height:1}
 .stat-l{font-size:11px;color:var(--dim);margin-top:4px;letter-spacing:.06em}
-/* FLOATING PARTICLES */
 .hero-bg-grid{position:absolute;inset:0;opacity:.03;background-image:linear-gradient(var(--purple) 1px,transparent 1px),linear-gradient(90deg,var(--purple) 1px,transparent 1px);background-size:60px 60px;pointer-events:none}
-/* SECTIONS */
 section{padding:96px 56px;position:relative;z-index:2}
 .sec-head{display:flex;align-items:center;gap:14px;margin-bottom:56px}
 .sec-n{font-family:var(--mono);font-size:11px;color:var(--purple);opacity:.5}
 .sec-t{font-size:28px;font-weight:700;letter-spacing:-.02em}
 .sec-line{flex:1;height:1px;background:var(--p-border)}
-/* BADGES */
 .badge{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:10px;font-weight:500;padding:4px 12px;letter-spacing:.08em}
 .badge-done{background:rgba(168,85,247,.15);color:var(--purple);border:1px solid var(--p-border)}
 .badge-done::before{content:'';width:5px;height:5px;background:var(--purple);border-radius:50%;animation:pulse 1.5s infinite}
-.badge-wip{background:rgba(245,158,11,.1);color:var(--wip);border:1px solid rgba(245,158,11,.25)}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
-/* MCP */
 .mcp-sec{background:var(--bg2);border-top:1px solid var(--p-border);border-bottom:1px solid var(--p-border)}
 .mcp-top{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;margin-bottom:64px}
 .mcp-intro-badge{display:inline-flex;align-items:center;gap:8px;background:var(--purple);color:#fff;font-family:var(--mono);font-size:10px;font-weight:500;padding:6px 14px;letter-spacing:.1em;margin-bottom:28px}
@@ -96,7 +90,6 @@ section{padding:96px 56px;position:relative;z-index:2}
 .mc-icon{font-size:22px;margin-bottom:12px}
 .mc-name{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--text);margin-bottom:8px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .mc-desc{font-size:12px;color:var(--muted);line-height:1.6}
-/* TERMINAL */
 .terminal{background:#050309;border:1px solid var(--p-border);font-family:var(--mono);font-size:12px;line-height:1.9;overflow:hidden}
 .t-bar{background:#110d1f;padding:10px 16px;border-bottom:1px solid var(--p-border);display:flex;align-items:center;gap:8px}
 .t-dot{width:10px;height:10px;border-radius:50%}
@@ -107,7 +100,6 @@ section{padding:96px 56px;position:relative;z-index:2}
 .t-cmd{color:var(--text)}.t-out{color:var(--muted);padding-left:20px}.t-ok{color:var(--purple)}.t-comment{color:var(--dim)}
 .t-cursor{display:inline-block;width:7px;height:13px;background:var(--purple);animation:blink2 1s infinite;vertical-align:middle}
 @keyframes blink2{0%,49%{opacity:1}50%,100%{opacity:0}}
-/* VISION */
 .vision-sec{background:var(--bg3);border-top:1px solid var(--p-border)}
 .vision-intro{font-size:15px;color:var(--muted);line-height:1.85;max-width:580px;margin-bottom:48px}
 .vision-intro strong{color:var(--text);font-weight:500}
@@ -120,7 +112,6 @@ section{padding:96px 56px;position:relative;z-index:2}
 .vc-desc{font-size:12px;color:var(--muted);line-height:1.65}
 .vc-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:12px}
 .vc-tag{font-family:var(--mono);font-size:9px;padding:2px 8px;border:1px solid var(--dim);color:var(--muted);letter-spacing:.04em}
-/* PROJECTS */
 .projects-sec{background:var(--bg2);border-top:1px solid var(--p-border)}
 .projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .proj-card{border:1px solid var(--p-border);padding:28px;position:relative;overflow:hidden;transition:all .3s;background:var(--bg)}
@@ -143,21 +134,18 @@ section{padding:96px 56px;position:relative;z-index:2}
 .proj-link:hover{background:var(--p-muted);border-color:var(--purple)}
 .branch-vis{margin:12px 0;padding:12px;background:#050309;border:1px solid var(--p-border);font-family:var(--mono);font-size:10px;line-height:1.9}
 .branch-main{color:#22d3ee}.branch-dev{color:#a3e635}.branch-feat{color:var(--purple)}.branch-dim{color:var(--dim)}
-/* TIMELINE */
 .timeline-sec{background:var(--bg);border-top:1px solid var(--p-border)}
 .timeline{position:relative;padding-left:32px}
 .timeline::before{content:'';position:absolute;left:0;top:8px;bottom:8px;width:1px;background:var(--p-border)}
 .tl-item{position:relative;padding:0 0 48px 40px}
 .tl-item:last-child{padding-bottom:0}
 .tl-dot{position:absolute;left:-40px;top:6px;width:10px;height:10px;border-radius:50%;background:var(--purple);box-shadow:0 0 12px var(--purple);border:2px solid var(--bg)}
-.tl-dot.dim{background:var(--dim);box-shadow:none}
 .tl-year{font-family:var(--mono);font-size:10px;color:var(--purple);letter-spacing:.15em;margin-bottom:10px}
 .tl-title{font-size:18px;font-weight:700;margin-bottom:4px}
 .tl-role{font-family:var(--mono);font-size:11px;color:var(--muted);margin-bottom:12px}
 .tl-desc{font-size:13px;color:var(--muted);line-height:1.8}
 .tl-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
 .tl-tag{font-family:var(--mono);font-size:9px;padding:2px 8px;border:1px solid var(--p-border);color:var(--muted)}
-/* DIAGRAM */
 .diagram-sec{background:var(--bg);border-top:1px solid var(--p-border)}
 .diagram-wrap{display:flex;flex-direction:column;gap:32px}
 .diagram-row{display:flex;align-items:center;justify-content:center;flex-wrap:wrap}
@@ -171,7 +159,6 @@ section{padding:96px 56px;position:relative;z-index:2}
 .diag-arrow-down{font-size:20px;color:var(--purple);opacity:.4;text-align:center;margin:0 auto}
 .diag-section-label{font-family:var(--mono);font-size:10px;color:var(--purple);letter-spacing:.15em;margin-bottom:16px;display:flex;align-items:center;gap:10px}
 .diag-section-label::after{content:'';flex:1;height:1px;background:var(--p-border)}
-/* STATS */
 .stats-sec{background:var(--bg2);border-top:1px solid var(--p-border)}
 .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--p-border)}
 .stat-card{background:var(--bg2);padding:36px 28px;text-align:center;transition:.3s;position:relative;overflow:hidden}
@@ -182,19 +169,6 @@ section{padding:96px 56px;position:relative;z-index:2}
 .stat-unit{font-size:20px}
 .stat-desc{font-size:13px;color:var(--muted);line-height:1.6}
 .stat-sub{font-family:var(--mono);font-size:10px;color:var(--dim);margin-top:6px;letter-spacing:.05em}
-/* CAREER */
-.career-sec{background:var(--bg2);border-top:1px solid var(--p-border)}
-.career-item{display:grid;grid-template-columns:180px 1fr;gap:40px;padding:40px 0;border-bottom:1px solid var(--p-border);transition:.3s}
-.career-item:first-child{border-top:1px solid var(--p-border)}
-.career-item:hover{background:rgba(168,85,247,.02)}
-.c-period{font-family:var(--mono);font-size:11px;color:var(--dim);padding-top:3px;line-height:1.7}
-.c-company{font-size:20px;font-weight:700;letter-spacing:-.01em;margin-bottom:5px}
-.c-role{font-family:var(--mono);font-size:11px;color:var(--purple);letter-spacing:.07em;margin-bottom:14px}
-.c-desc{font-size:14px;color:var(--muted);line-height:1.85;margin-bottom:14px}
-.c-tags{display:flex;flex-wrap:wrap;gap:7px}
-.c-tag{font-family:var(--mono);font-size:10px;padding:4px 11px;border:1px solid var(--p-border);color:var(--muted);letter-spacing:.04em;transition:.2s}
-.c-tag:hover{border-color:var(--purple);color:var(--purple)}
-/* SKILLS */
 .skills-sec{border-top:1px solid var(--p-border)}
 .skills-wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:48px}
 .sk-group-title{font-family:var(--mono);font-size:10px;color:var(--purple);letter-spacing:.2em;margin-bottom:20px}
@@ -203,7 +177,6 @@ section{padding:96px 56px;position:relative;z-index:2}
 .sk-name{font-size:13px;color:var(--muted)}
 .sk-bar-w{width:140px;height:2px;background:rgba(168,85,247,.12)}
 .sk-bar{height:100%;background:linear-gradient(90deg,var(--purple2),var(--purple));transition:width 1.2s cubic-bezier(.4,0,.2,1)}
-/* TC */
 .tc-intro{font-size:15px;color:var(--muted);line-height:1.8;max-width:560px;margin-bottom:36px}
 .tc-wrap{overflow-x:auto;border:1px solid var(--p-border)}
 .tc-table{width:100%;border-collapse:collapse;font-size:12px;font-family:var(--mono)}
@@ -220,18 +193,6 @@ section{padding:96px 56px;position:relative;z-index:2}
 .p3{font-size:9px;padding:2px 6px;background:rgba(168,85,247,.12);color:var(--purple)}
 .tc-link{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;color:var(--purple);text-decoration:none;border:1px solid var(--p-border);padding:10px 20px;margin-top:18px;transition:.2s;letter-spacing:.05em}
 .tc-link:hover{background:var(--p-muted);border-color:var(--purple)}
-/* TESTIMONIALS */
-.testi-sec{background:var(--bg3);border-top:1px solid var(--p-border)}
-.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.testi-card{border:1px solid var(--p-border);padding:28px;background:var(--bg2);transition:.3s;position:relative}
-.testi-card::before{content:'\"';position:absolute;top:16px;left:24px;font-size:48px;color:var(--purple);opacity:.2;font-family:Georgia,serif;line-height:1}
-.testi-card:hover{border-color:rgba(168,85,247,.4);transform:translateY(-3px)}
-.testi-text{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:20px;padding-top:20px}
-.testi-author{display:flex;align-items:center;gap:12px}
-.testi-avatar{width:36px;height:36px;border-radius:50%;background:var(--p-muted);border:1px solid var(--p-border);display:flex;align-items:center;justify-content:center;font-size:16px}
-.testi-name{font-size:13px;font-weight:500}
-.testi-title{font-family:var(--mono);font-size:10px;color:var(--muted)}
-/* CONTACT */
 .contact-sec{background:var(--bg2);border-top:1px solid var(--p-border)}
 .contact-wrap{display:flex;justify-content:space-between;align-items:flex-end}
 .contact-h{font-size:clamp(40px,6vw,72px);font-weight:900;line-height:.95;letter-spacing:-.04em;margin-bottom:20px}
@@ -244,22 +205,19 @@ footer{padding:22px 56px;border-top:1px solid var(--p-border);display:flex;justi
 footer p{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:.05em}
 .reveal{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
-/* SCROLL PROGRESS */
 .scroll-bar{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--purple2),var(--purple3));z-index:9999;transition:width .1s}
-@media(max-width:1100px){.projects-grid{grid-template-columns:repeat(2,1fr)}.testi-grid{grid-template-columns:1fr}}
+@media(max-width:1100px){.projects-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:900px){
   nav{padding:16px 24px}.nav-links{display:none}.ham{display:flex}
   .hero{padding:100px 24px 60px}.hero-stats{display:none}
   section{padding:64px 24px}
   .mcp-top{grid-template-columns:1fr;gap:40px}.mcp-grid{grid-template-columns:repeat(2,1fr)}
   .vision-grid{grid-template-columns:repeat(2,1fr)}.skills-wrap{grid-template-columns:1fr;gap:32px}
-  .career-item{grid-template-columns:1fr;gap:8px}
   .contact-wrap{flex-direction:column;gap:40px;align-items:flex-start}
   .contact-links{align-items:flex-start}
   footer{padding:18px 24px;flex-direction:column;gap:6px}
   .projects-grid{grid-template-columns:1fr}.stats-grid{grid-template-columns:repeat(2,1fr)}
-  .diag-arrow{display:none}.testi-grid{grid-template-columns:1fr}
-  .timeline{padding-left:20px}
+  .diag-arrow{display:none}.timeline{padding-left:20px}
 }
 </style>
 </head>
@@ -295,7 +253,7 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:
   <div class="hero-left">
     <div class="hero-tag">QA ENGINEER · 6년 9개월</div>
     <h1 class="hero-name">성<em>기현</em></h1>
-    <p class="hero-subtitle">Quality Assurance Engineer</p>
+    <span id="qa-role-label">Quality Assurance Engineer</span>
     <p class="hero-desc">
       <strong>6년 9개월 QA 경력 위에 Claude MCP 자동화를 더했습니다.</strong><br>
       기능 명세에서 TC 생성, 브라우저 테스트, 버그 리포트, 문서화까지<br>
@@ -458,27 +416,27 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:
   <div class="timeline reveal">
     <div class="tl-item">
       <div class="tl-dot"></div>
-      <div class="tl-year">2024.11 — 2025.02 · 현재</div>
+      <div class="tl-year">2024.11 — 2025.02</div>
       <div class="tl-title">두플</div>
       <div class="tl-role">QA PART LEADER</div>
-      <div class="tl-desc">반도체 공정 시뮬레이션 소프트웨어 QA 리드. 테스트 전략 수립, TC 설계 및 팀 리딩. Claude MCP 기반 QA 자동화 파이프라인 최초 도입.</div>
-      <div class="tl-tags"><span class="tl-tag">QA 리드</span><span class="tl-tag">반도체 시뮬레이션</span><span class="tl-tag">TC 설계</span><span class="tl-tag">팀 리딩</span><span class="tl-tag">MCP 자동화</span></div>
+      <div class="tl-desc">반도체 공정 시뮬레이션 소프트웨어 QA 리드. 테스트 전략 수립, TC 설계 및 팀 리딩.</div>
+      <div class="tl-tags"><span class="tl-tag">QA 리드</span><span class="tl-tag">반도체 공정 시뮬레이션</span><span class="tl-tag">TC 설계</span><span class="tl-tag">팀 리딩</span></div>
     </div>
     <div class="tl-item">
       <div class="tl-dot"></div>
-      <div class="tl-year">2022.03 — 2024.02 · 2년</div>
+      <div class="tl-year">2022.03 — 2024.02</div>
       <div class="tl-title">IMS Mobility</div>
       <div class="tl-role">QA 대리</div>
       <div class="tl-desc">모바일앱 / 웹 / 백오피스 QA 수행. Cypress를 활용한 E2E 자동화 스크립트 작성 및 운영. Swagger 기반 API 검증. 결제 QA 담당.</div>
-      <div class="tl-tags"><span class="tl-tag">모바일앱 QA</span><span class="tl-tag">Cypress 자동화</span><span class="tl-tag">Swagger API</span><span class="tl-tag">결제 QA</span></div>
+      <div class="tl-tags"><span class="tl-tag">모바일앱 QA</span><span class="tl-tag">웹/백오피스 QA</span><span class="tl-tag">Cypress 자동화</span><span class="tl-tag">Swagger API</span><span class="tl-tag">결제 QA</span></div>
     </div>
     <div class="tl-item">
       <div class="tl-dot"></div>
-      <div class="tl-year">2017.09 — 2022.01 · 4년 4개월</div>
+      <div class="tl-year">2017.09 — 2022.01</div>
       <div class="tl-title">모비프렌 <span style="font-size:13px;color:var(--muted);font-weight:400">(삼성전자 파트너)</span></div>
       <div class="tl-role">QA 주임</div>
-      <div class="tl-desc">IoT SmartThings, AI Bixby, 삼성 모바일앱 검증 담당. 다양한 디바이스 환경에서의 QA 수행 및 품질 기준 수립. 글로벌 릴리즈 사이클 QA 경험.</div>
-      <div class="tl-tags"><span class="tl-tag">IoT SmartThings</span><span class="tl-tag">AI Bixby</span><span class="tl-tag">삼성 모바일앱</span><span class="tl-tag">글로벌 릴리즈</span></div>
+      <div class="tl-desc">IoT SmartThings, AI Bixby, 삼성 모바일앱 검증 담당. 다양한 디바이스 환경에서의 QA 수행 및 품질 기준 수립.</div>
+      <div class="tl-tags"><span class="tl-tag">IoT SmartThings</span><span class="tl-tag">AI Bixby</span><span class="tl-tag">삼성 모바일앱</span><span class="tl-tag">디바이스 QA</span></div>
     </div>
   </div>
 </section>
@@ -494,7 +452,6 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:
         <div class="sk-item"><span class="sk-name">버그 리포팅 &amp; 트래킹</span><div class="sk-bar-w"><div class="sk-bar" style="width:92%"></div></div></div>
         <div class="sk-item"><span class="sk-name">E2E 자동화 (Cypress)</span><div class="sk-bar-w"><div class="sk-bar" style="width:65%"></div></div></div>
         <div class="sk-item"><span class="sk-name">API 테스트 (Swagger)</span><div class="sk-bar-w"><div class="sk-bar" style="width:70%"></div></div></div>
-        <div class="sk-item"><span class="sk-name">보안 테스트 (OWASP)</span><div class="sk-bar-w"><div class="sk-bar" style="width:60%"></div></div></div>
       </div>
     </div>
     <div>
@@ -520,25 +477,6 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:
         <div class="sk-item"><span class="sk-name">Gmail MCP</span><div class="sk-bar-w"><div class="sk-bar" style="width:80%"></div></div></div>
         <div class="sk-item"><span class="sk-name">AI 프롬프트 설계</span><div class="sk-bar-w"><div class="sk-bar" style="width:93%"></div></div></div>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- TESTIMONIALS -->
-<section class="testi-sec" id="testimonials">
-  <div class="sec-head reveal"><span class="sec-n">08</span><h2 class="sec-t">함께 일한 분들의 이야기</h2><div class="sec-line"></div></div>
-  <div class="testi-grid reveal">
-    <div class="testi-card">
-      <div class="testi-text">기현님은 QA를 단순 검증에서 자동화 파이프라인으로 끌어올린 분입니다. Claude MCP로 TC 생성부터 Slack 알림까지 자동화하는 모습을 보고 팀 전체가 놀랐습니다. QA 리드로서의 판단력과 AI 도구 활용 능력 모두 최고 수준입니다.</div>
-      <div class="testi-author"><div class="testi-avatar">👨‍💼</div><div><div class="testi-name">이○○ PM</div><div class="testi-title">두플 · 프로덕트 매니저</div></div></div>
-    </div>
-    <div class="testi-card">
-      <div class="testi-text">Cypress 자동화 스크립트 구축부터 결제 QA까지 꼼꼼하게 처리해주셨어요. 특히 경계값·네거티브 케이스를 체계적으로 설계하는 방식이 인상적이었고, 버그를 논리적으로 정리해 개발팀에 전달하는 커뮤니케이션도 탁월했습니다.</div>
-      <div class="testi-author"><div class="testi-avatar">👩‍💻</div><div><div class="testi-name">박○○ 개발팀장</div><div class="testi-title">IMS Mobility · 개발 리드</div></div></div>
-    </div>
-    <div class="testi-card">
-      <div class="testi-text">SmartThings IoT 디바이스 QA는 환경 변수가 워낙 많아서 놓치기 쉬운 부분이 많은데, 기현님은 항상 재현 시나리오를 정확히 잡아내고 명확한 리포트를 작성해주셨습니다. 글로벌 릴리즈 품질을 지켜주는 든든한 파트너였습니다.</div>
-      <div class="testi-author"><div class="testi-avatar">👨‍🔧</div><div><div class="testi-name">김○○ QA 팀장</div><div class="testi-title">모비프렌 · QA 팀장</div></div></div>
     </div>
   </div>
 </section>
@@ -570,33 +508,28 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:
 </footer>
 
 <script>
-// SCROLL PROGRESS
 window.addEventListener('scroll',()=>{
   const s=document.documentElement;
   const p=(s.scrollTop/(s.scrollHeight-s.clientHeight))*100;
   document.getElementById('scrollBar').style.width=p+'%';
 });
-// CURSOR
 const cur=document.getElementById('cur'),curR=document.getElementById('curR');
 let mx=0,my=0,rx=0,ry=0;
 document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx-3.5+'px';cur.style.top=my-3.5+'px';});
 (function a(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;curR.style.left=rx-14+'px';curR.style.top=ry-14+'px';requestAnimationFrame(a);})();
 document.querySelectorAll('a,button').forEach(el=>{
-  el.addEventListener('mouseenter',()=>{cur.style.transform='scale(2.5)';curR.style.transform='scale(1.5)';curR.style.borderColor='var(--purple3)';});
-  el.addEventListener('mouseleave',()=>{cur.style.transform='';curR.style.transform='';curR.style.borderColor='';});
+  el.addEventListener('mouseenter',()=>{cur.style.transform='scale(2.5)';curR.style.transform='scale(1.5)';});
+  el.addEventListener('mouseleave',()=>{cur.style.transform='';curR.style.transform='';});
 });
 function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open');}
-// REVEAL
 const obs=new IntersectionObserver(entries=>{
   entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*60);obs.unobserve(e.target);}});
 },{threshold:0.08});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-// SKILL BARS
 const skO=new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting){e.target.querySelectorAll('.sk-bar').forEach(b=>{const w=b.style.width;b.style.width='0';setTimeout(()=>b.style.width=w,150);});skO.unobserve(e.target);}});
 },{threshold:0.3});
 document.querySelectorAll('.skills-wrap').forEach(el=>skO.observe(el));
-// STAT COUNTER
 const statO=new IntersectionObserver(entries=>{
   entries.forEach(e=>{
     if(e.isIntersecting){
