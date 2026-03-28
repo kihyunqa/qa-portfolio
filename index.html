@@ -42,8 +42,6 @@ nav{position:fixed;top:0;left:0;right:0;padding:18px 56px;display:flex;align-ite
 h1.hero-name{font-size:clamp(60px,9vw,110px);font-weight:900;line-height:.95;letter-spacing:-.04em;margin-bottom:20px}
 h1.hero-name em{color:var(--purple);font-style:normal;position:relative}
 h1.hero-name em::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--purple),transparent)}
-.hero-role{font-family:var(--mono);font-size:13px;color:var(--muted);letter-spacing:.08em;margin-bottom:36px;text-decoration:none;text-decoration-line:none}
-p.hero-role,p.hero-role *{text-decoration:none !important;text-decoration-line:none !important;-webkit-text-decoration:none !important}
 .hero-desc{font-size:17px;line-height:1.85;color:var(--muted);max-width:520px;margin-bottom:48px}
 .hero-desc strong{color:var(--text);font-weight:500}
 .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
@@ -244,7 +242,7 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:
   <div class="hero-left">
     <div class="hero-tag">QA ENGINEER · 6년 9개월</div>
     <h1 class="hero-name">성<em>기현</em></h1>
-    <p class="hero-role" style="text-decoration:none !important;text-decoration-line:none !important;-webkit-text-decoration-line:none !important">Quality Assurance Engineer</p>
+    <p id="hero-role-text" style="font-family:'DM Mono',monospace;font-size:13px;color:#7c6f9a;letter-spacing:.08em;margin-bottom:36px;">Quality Assurance Engineer</p>
     <p class="hero-desc">
       <strong>6년 9개월 QA 경력 위에 Claude MCP 자동화를 더했습니다.</strong><br>
       기능 명세에서 TC 생성, 브라우저 테스트, 버그 리포트, 문서화까지<br>
@@ -531,11 +529,6 @@ const statO=new IntersectionObserver(entries=>{
   });
 },{threshold:0.5});
 document.querySelectorAll('.stats-grid').forEach(el=>statO.observe(el));
-// Force remove strikethrough from hero-role on DOM ready
-document.addEventListener('DOMContentLoaded',function(){
-  var r=document.querySelector('.hero-role');
-  if(r){r.style.setProperty('text-decoration','none','important');r.style.setProperty('text-decoration-line','none','important');}
-});
 </script>
 </body>
 </html>
