@@ -47,7 +47,22 @@ nav{position:fixed;top:0;left:0;right:0;padding:18px 56px;display:flex;align-ite
 h1.hero-name{font-size:clamp(60px,9vw,110px);font-weight:900;line-height:.95;letter-spacing:-.04em;margin-bottom:20px}
 h1.hero-name em{color:var(--purple);font-style:normal;position:relative}
 h1.hero-name em::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--purple),transparent)}
-#qa-role-label{font-family:'DM Mono',monospace;font-size:13px;color:#7c6f9a;letter-spacing:.08em;margin-bottom:36px;display:block;text-decoration:none;text-decoration-line:none;-webkit-text-decoration:none}
+.role-label-wrap{margin-bottom:36px}
+.role-label-wrap div{
+  font-family:'DM Mono',monospace !important;
+  font-size:13px !important;
+  color:#7c6f9a !important;
+  letter-spacing:.08em !important;
+  display:block !important;
+  text-decoration:none !important;
+  text-decoration-line:none !important;
+  text-decoration-style:initial !important;
+  -webkit-text-decoration:none !important;
+  -moz-text-decoration:none !important;
+  border:0 !important;
+  background:none !important;
+  outline:none !important;
+}
 .hero-desc{font-size:17px;line-height:1.85;color:var(--muted);max-width:520px;margin-bottom:48px}
 .hero-desc strong{color:var(--text);font-weight:500}
 .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
@@ -253,7 +268,7 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:
   <div class="hero-left">
     <div class="hero-tag">QA ENGINEER · 6년 9개월</div>
     <h1 class="hero-name">성<em>기현</em></h1>
-    <span id="qa-role-label">Quality Assurance Engineer</span>
+    <div class="role-label-wrap"><div id="role-text">Quality Assurance Engineer</div></div>
     <p class="hero-desc">
       <strong>6년 9개월 QA 경력 위에 Claude MCP 자동화를 더했습니다.</strong><br>
       기능 명세에서 TC 생성, 브라우저 테스트, 버그 리포트, 문서화까지<br>
@@ -508,6 +523,23 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:
 </footer>
 
 <script>
+// 취소선 강제 제거 — JS 보험
+(function(){
+  function killStrikethrough(){
+    var el = document.getElementById('role-text');
+    if(el){
+      el.style.setProperty('text-decoration','none','important');
+      el.style.setProperty('text-decoration-line','none','important');
+      el.style.setProperty('-webkit-text-decoration','none','important');
+      el.style.setProperty('text-decoration-style','initial','important');
+      el.style.setProperty('text-decoration-color','transparent','important');
+    }
+  }
+  killStrikethrough();
+  document.addEventListener('DOMContentLoaded', killStrikethrough);
+  window.addEventListener('load', killStrikethrough);
+})();
+
 window.addEventListener('scroll',()=>{
   const s=document.documentElement;
   const p=(s.scrollTop/(s.scrollHeight-s.clientHeight))*100;
