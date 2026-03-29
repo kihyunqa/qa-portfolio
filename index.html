@@ -48,7 +48,7 @@ h1.hero-name{font-size:clamp(60px,9vw,110px);font-weight:900;line-height:.95;let
 h1.hero-name em{color:var(--purple);font-style:normal;position:relative}
 h1.hero-name em::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--purple),transparent)}
 .role-label-wrap{margin-bottom:36px}
-.role-label-wrap div{
+#role-text{
   font-family:'DM Mono',monospace !important;
   font-size:13px !important;
   color:#7c6f9a !important;
@@ -59,6 +59,7 @@ h1.hero-name em::after{content:'';position:absolute;bottom:-4px;left:0;right:0;h
   text-decoration-style:initial !important;
   -webkit-text-decoration:none !important;
   -moz-text-decoration:none !important;
+  text-decoration-color:transparent !important;
   border:0 !important;
   background:none !important;
   outline:none !important;
@@ -269,7 +270,9 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:
   <div class="hero-left">
     <div class="hero-tag">QA ENGINEER · 6년 9개월</div>
     <h1 class="hero-name">성<em>기현</em></h1>
-    <div class="role-label-wrap"><div id="role-text">Quality Assurance Engineer</div></div>
+    <div class="role-label-wrap">
+      <span id="role-text" style="font-family:'DM Mono',monospace;font-size:13px;color:#7c6f9a;letter-spacing:.08em;display:block;text-decoration:none;text-decoration-line:none;-webkit-text-decoration:none;text-decoration-color:transparent;border:0;background:none;outline:none;">Quality Assurance Engineer</span>
+    </div>
     <p class="hero-desc">
       <strong>6년 9개월 QA 경력 위에 Claude MCP 자동화를 더했습니다.</strong><br>
       TC 생성, E2E 테스트, 버그 분석, Sentry 에러 모니터링, Linear 이슈 관리까지<br>
@@ -296,7 +299,7 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:
     <div class="stat-card"><div class="stat-big">30<span class="stat-unit">+</span></div><div class="stat-desc">완성된 MCP 자동화 프로젝트</div><div class="stat-sub">ALL IMPLEMENTED</div></div>
     <div class="stat-card"><div class="stat-big">0</div><div class="stat-desc">작성한 코드 줄 수</div><div class="stat-sub">ZERO CODE · ALL CONVERSATION</div></div>
     <div class="stat-card"><div class="stat-big">24</div><div class="stat-desc">자동 생성된 테스트케이스</div><div class="stat-sub">단일 대화 한 번으로</div></div>
-    <div class="stat-card"><div class="stat-big">18</div><div class="stat-desc">연동된 MCP 서버</div><div class="stat-sub">filesystem·playwright·github·slack·confluence·jira·calendar·gmail·sentry·linear·figma·datadog·notion·discord·airtable·linear·zapier·testrail</div></div>
+    <div class="stat-card"><div class="stat-big">18</div><div class="stat-desc">연동된 MCP 서버</div><div class="stat-sub">filesystem·playwright·github·slack·confluence·jira·calendar·gmail·sentry·linear·figma·datadog·notion·discord·airtable·zapier·testrail·postman</div></div>
   </div>
 </section>
 
@@ -394,7 +397,6 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:
 <section class="projects-sec" id="projects">
   <div class="sec-head reveal"><span class="sec-n">03</span><h2 class="sec-t">프로젝트 카드 (30개 · 전체 구현 완료)</h2><div class="sec-line"></div></div>
   <div class="projects-grid">
-    <!-- 기존 01~18 -->
     <div class="proj-card reveal"><div class="proj-num">PROJECT 01 · <span class="badge badge-done" style="font-size:9px;padding:2px 8px">구현 완료</span></div><div class="proj-icon">🤖</div><div class="proj-title">TC 자동생성 워크플로우</div><div class="proj-desc">기능 명세 입력 → Claude가 해피패스·네거티브·엣지케이스 24건 자동 생성 → 로컬 저장 → GitHub 커밋.</div><div class="proj-flow"><span class="proj-flow-step">기능명세 입력</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">TC 생성 (24건)</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">로컬 저장</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">GitHub</span></div><div class="proj-tags"><span class="proj-tag proj-tag-p">filesystem MCP</span><span class="proj-tag proj-tag-p">github MCP</span><span class="proj-tag proj-tag-p">playwright MCP</span></div><div class="proj-links"><a href="https://github.com/kihyunqa/qa-portfolio/blob/main/testcase_login.md" target="_blank" class="proj-link">TC 파일 보기 ↗</a></div></div>
     <div class="proj-card reveal"><div class="proj-num">PROJECT 02 · <span class="badge badge-done" style="font-size:9px;padding:2px 8px">구현 완료</span></div><div class="proj-icon">🔀</div><div class="proj-title">QA 대응 프로세스 + 브랜치 전략</div><div class="proj-desc">main / develop / feature 브랜치 구조에서 QA 개입 시점 정의. GitHub MCP로 브랜치·PR·커밋 대화로 처리.</div><div class="branch-vis"><div><span class="branch-main">main</span>    <span class="branch-dim">──●──────────●──</span> <span class="branch-dim"># 릴리즈</span></div><div><span class="branch-dev">develop</span> <span class="branch-dim">────●────●──</span>    <span class="branch-dim"># 회귀 검증</span></div><div><span class="branch-feat">feature</span> <span class="branch-dim">──────●──</span>      <span class="branch-dim"># 선행 검토</span></div></div><div class="proj-tags"><span class="proj-tag proj-tag-p">github MCP</span><span class="proj-tag">브랜치 전략</span><span class="proj-tag">QA 프로세스</span></div></div>
     <div class="proj-card reveal"><div class="proj-num">PROJECT 03 · <span class="badge badge-done" style="font-size:9px;padding:2px 8px">구현 완료</span></div><div class="proj-icon">⚡</div><div class="proj-title">오케스트레이션 하네스 구축</div><div class="proj-desc">여러 MCP 도구를 자유롭게 조합하는 파이프라인 빌더. Claude-in-Claude 방식으로 각 단계가 이전 결과를 컨텍스트로 받아 체이닝 실행.</div><div class="proj-flow"><span class="proj-flow-step">노드 조합</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">파이프라인 실행</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">결과 체이닝</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">내보내기</span></div><div class="proj-tags"><span class="proj-tag proj-tag-p">Claude-in-Claude</span><span class="proj-tag proj-tag-p">Multi-MCP</span><span class="proj-tag">18가지 노드</span></div></div>
@@ -413,8 +415,6 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:
     <div class="proj-card reveal"><div class="proj-num">PROJECT 16 · <span class="badge badge-done" style="font-size:9px;padding:2px 8px">구현 완료</span></div><div class="proj-icon">🔗</div><div class="proj-title">Multi-MCP 통합 파이프라인 — 풀 QA 사이클</div><div class="proj-desc">TC 생성부터 이메일 발송까지 18개 MCP를 단일 대화로 연결. 완전 자동화 QA 사이클.</div><div class="proj-flow"><span class="proj-flow-step">명세 입력</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">18 MCP 체이닝</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">전체 실행</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">완료 알림</span></div><div class="proj-tags"><span class="proj-tag proj-tag-p">Multi-MCP</span><span class="proj-tag">풀 QA 사이클</span></div></div>
     <div class="proj-card reveal"><div class="proj-num">PROJECT 17 · <span class="badge badge-done" style="font-size:9px;padding:2px 8px">구현 완료</span></div><div class="proj-icon">📑</div><div class="proj-title">Notion MCP — QA 스프린트 대시보드</div><div class="proj-desc">스프린트별 TC 통과율·버그 현황·완료 항목을 Notion MCP로 자동 업데이트. PM이 Notion에서 QA 현황 확인.</div><div class="proj-flow"><span class="proj-flow-step">스프린트 데이터</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">Claude 분석</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">Notion 업데이트</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">PM 공유</span></div><div class="proj-tags"><span class="proj-tag proj-tag-p">Notion MCP</span><span class="proj-tag">스프린트 대시보드</span></div></div>
     <div class="proj-card reveal"><div class="proj-num">PROJECT 18 · <span class="badge badge-done" style="font-size:9px;padding:2px 8px">구현 완료</span></div><div class="proj-icon">🛡️</div><div class="proj-title">보안 QA 자동화 — Injection 취약점 검증</div><div class="proj-desc">playwright MCP로 SQL Injection·XSS·CSRF 취약점 시나리오 자동 실행. 보안 QA 결과를 GitHub 커밋 + Slack 알림.</div><div class="proj-flow"><span class="proj-flow-step">보안 시나리오</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">취약점 실행</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">GitHub 커밋</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">Slack 알림</span></div><div class="proj-tags"><span class="proj-tag proj-tag-p">playwright MCP</span><span class="proj-tag proj-tag-p">github MCP</span><span class="proj-tag">보안 QA</span></div></div>
-
-    <!-- 신규 19~30 -->
     <div class="proj-card reveal"><div class="proj-num">PROJECT 19 · <span class="badge badge-done" style="font-size:9px;padding:2px 8px">구현 완료</span></div><div class="proj-icon">🚨</div><div class="proj-title">Sentry MCP — 실시간 에러 QA 자동화</div><div class="proj-desc">Sentry MCP로 프로덕션 에러를 실시간 수집·분석. 에러 빈도·임팩트·스택트레이스를 QA 리포트에 자동 통합. P0 에러 발생 시 즉시 알림.</div><div class="proj-flow"><span class="proj-flow-step">Sentry 수집</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">에러 분류</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">임팩트 분석</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">QA 리포트 연동</span></div><div class="proj-tags"><span class="proj-tag proj-tag-p">Sentry MCP</span><span class="proj-tag">에러 모니터링</span><span class="proj-tag">실시간 분석</span></div></div>
     <div class="proj-card reveal"><div class="proj-num">PROJECT 20 · <span class="badge badge-done" style="font-size:9px;padding:2px 8px">구현 완료</span></div><div class="proj-icon">📊</div><div class="proj-title">Datadog MCP — 성능 QA 자동화</div><div class="proj-desc">Datadog MCP로 응답시간·에러율·트래픽 패턴을 QA 사이클에 통합. 임계치 초과 시 자동 감지 → 버그 이슈 생성.</div><div class="proj-flow"><span class="proj-flow-step">메트릭 수집</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">임계치 비교</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">이슈 생성</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">팀 알림</span></div><div class="proj-tags"><span class="proj-tag proj-tag-p">Datadog MCP</span><span class="proj-tag">성능 모니터링</span><span class="proj-tag">임계치 자동화</span></div></div>
     <div class="proj-card reveal"><div class="proj-num">PROJECT 21 · <span class="badge badge-done" style="font-size:9px;padding:2px 8px">구현 완료</span></div><div class="proj-icon">🎨</div><div class="proj-title">Figma MCP — 디자인 스펙 QA</div><div class="proj-desc">Figma MCP로 디자인 스펙을 읽어 실제 구현과 자동 비교. 간격·색상·폰트·컴포넌트 불일치를 Claude가 감지·리포팅.</div><div class="proj-flow"><span class="proj-flow-step">Figma 스펙 읽기</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">구현 비교</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">불일치 감지</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">리포팅</span></div><div class="proj-tags"><span class="proj-tag proj-tag-p">Figma MCP</span><span class="proj-tag">디자인 QA</span><span class="proj-tag">스펙 검증</span></div></div>
@@ -475,8 +475,8 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:
       <div class="tl-year">2024.11 — 2025.02</div>
       <div class="tl-title">두플</div>
       <div class="tl-role">QA PART LEADER</div>
-      <div class="tl-desc">반도체 공정 시뮬레이션 소프트웨어 QA 리드. 테스트 전략 수립, TC 설계 및 팀 리딩.</div>
-      <div class="tl-tags"><span class="tl-tag">QA 리드</span><span class="tl-tag">반도체 공정 시뮬레이션</span><span class="tl-tag">TC 설계</span><span class="tl-tag">팀 리딩</span></div>
+      <div class="tl-desc">QA Part Leader로 테스트 전략 수립, TC 설계, 팀 리딩 담당. Claude MCP를 활용한 QA 자동화 파이프라인 최초 도입.</div>
+      <div class="tl-tags"><span class="tl-tag">QA 리드</span><span class="tl-tag">TC 설계</span><span class="tl-tag">MCP 자동화 도입</span><span class="tl-tag">팀 리딩</span></div>
     </div>
     <div class="tl-item">
       <div class="tl-dot"></div>
@@ -567,21 +567,6 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:
 </footer>
 
 <script>
-(function(){
-  function killStrikethrough(){
-    var el=document.getElementById('role-text');
-    if(el){
-      el.style.setProperty('text-decoration','none','important');
-      el.style.setProperty('text-decoration-line','none','important');
-      el.style.setProperty('-webkit-text-decoration','none','important');
-      el.style.setProperty('text-decoration-style','initial','important');
-      el.style.setProperty('text-decoration-color','transparent','important');
-    }
-  }
-  killStrikethrough();
-  document.addEventListener('DOMContentLoaded',killStrikethrough);
-  window.addEventListener('load',killStrikethrough);
-})();
 window.addEventListener('scroll',()=>{
   const s=document.documentElement;
   const p=(s.scrollTop/(s.scrollHeight-s.clientHeight))*100;
