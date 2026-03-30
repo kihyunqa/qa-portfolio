@@ -11,13 +11,13 @@ QA 엔지니어 6년 9개월,
 코드 한 줄 없이, 대화만으로.
 
 ✅ 완성한 것들:
-→ TC 30건 자동 생성 → filesystem 저장 → GitHub 자동 커밋
-→ playwright로 E2E 브라우저 4 시나리오 자동 실행
+→ TC 145건+ 자동 생성 → filesystem 저장 → GitHub 자동 커밋
+→ playwright로 E2E 브라우저 12개 spec 자동 실행
 → notion 페이지 자동 문서화
 → slack 새-채널 QA 완료 알림 자동 발송
 → GitHub Actions로 TC 업로드 감지 → Slack 자동 통보
 
-MCP 서버 5개. TC 30건. 코드 0줄.
+MCP 서버 5개. TC 145건+. 코드 0줄.
 
 QA가 할 수 있는 일의 범위를 다시 정의하고 있습니다.
 
@@ -35,7 +35,7 @@ QA가 할 수 있는 일의 범위를 다시 정의하고 있습니다.
 Notion에 문서화하고 Slack으로 알림도 보내줘."
 
 Claude에게 이 말을 했더니,
-TC 30건이 생성되고, 로컬에 저장되고,
+TC 145건+이 생성되고, 로컬에 저장되고,
 GitHub에 커밋되고, Notion 페이지가 생기고,
 Slack 채널에 완료 알림까지 자동으로 갔습니다.
 
@@ -63,8 +63,8 @@ Slack으로 자동 알림까지 갑니다.
 최근 Claude MCP를 활용한 QA 자동화 포트폴리오를 완성했습니다.
 
 주요 구현:
-• TC 자동생성 파이프라인 (filesystem + github MCP)
-• E2E 자동화 시나리오 (playwright MCP)
+• TC 자동생성 파이프라인 145건+ (filesystem + github MCP)
+• E2E 자동화 12개 spec (playwright MCP)
 • TC 결과 자동 문서화 (notion MCP)
 • QA 완료 알림 자동 발송 (slack MCP)
 • GitHub Actions — TC 업로드 감지 → Slack 자동 통보
@@ -77,7 +77,7 @@ https://kihyunqa.github.io/qa-portfolio
 
 ---
 
-## 버전 4 — GitHub Actions 강조형 (신규)
+## 버전 4 — GitHub Actions 강조형
 
 ```
 TC 파일 하나 올렸더니 Slack에 알림이 왔습니다.
@@ -94,6 +94,8 @@ Claude MCP 5개로 만든 QA 자동화 포트폴리오,
 filesystem → github → playwright → notion → slack
 전부 실제 연동, 전부 동작 확인 완료.
 
+TC 145건+ · Playwright 12 spec · GitHub Actions 2개
+
 👉 https://kihyunqa.github.io/qa-portfolio
 
 #GitHub Actions #Slack #QA자동화 #MCP #Claude
@@ -102,3 +104,4 @@ filesystem → github → playwright → notion → slack
 ---
 
 *4가지 버전 중 상황에 맞게 골라서 사용하세요.*
+*수치 최종 업데이트: 2026-03-31 기준 (TC 145건+, Playwright 12 spec)*
