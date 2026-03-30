@@ -1,24 +1,46 @@
-# 평가: 성능 테스틅 (Performance Testing)
+# 🚀 Performance Testing Skills
 
-## ?심 역량
+> 성능 테스트 역량 및 실제 적용 사례
 
-- **Lighthouse** 점수 분석 (LCP, FID, CLS, TTFB)
-- **Web Vitals** 기준 평가
-- **Playwright** 성능 측정 스크립트
-- 로드 테스트, 스트레스 테스트 시나리오 구성
+---
 
-## 성능 기준
+## 핵심 성능 지표
 
-| 지표 | 좋음 | 개선필요 | 불량 |
-|------|-------|----------|------|
-| LCP (Largest Contentful Paint) | < 2.5s | 2.5~4s | > 4s |
-| FID (First Input Delay) | < 100ms | 100~300ms | > 300ms |
-| CLS (Cumulative Layout Shift) | < 0.1 | 0.1~0.25 | > 0.25 |
-| TTFB (Time to First Byte) | < 600ms | 600ms~1.8s | > 1.8s |
-| API 응답 시간 | < 200ms | 200~500ms | > 500ms |
+| 지표 | 목표값 | 측정 방법 |
+|------|--------|-----------|
+| LCP (Largest Contentful Paint) | < 2.5s | Lighthouse, Playwright |
+| FID (First Input Delay) | < 100ms | Web Vitals |
+| CLS (Cumulative Layout Shift) | < 0.1 | Lighthouse |
+| API 응답 시간 | < 500ms | Playwright request |
+| TTI (Time to Interactive) | < 3.8s | Lighthouse |
 
-## 실무 적용 사례
+---
 
-- IMS Mobility: Cypress로 페이지 로드 시간 센서 자동화
-- 후속 브라우저 커싱 활용 여부 QA
-- MCP: `playwright-tests/performance.spec.js`로 자동 측정
+## 사용 도구
+
+- **Playwright** — 실제 브라우저 성능 측정 (`performance.timing`)
+- **Lighthouse** — 종합 성능 점수
+- **Chrome DevTools** — 네트워크 워터폴 분석
+- **k6** — API 부하 테스트
+
+---
+
+## 실제 테스트 예시
+
+```javascript
+// Playwright로 페이지 로드 시간 측정
+test('페이지 로드 2.5초 이내', async ({ page }) => {
+  const start = Date.now();
+  await page.goto('/');
+  await page.waitForLoadState('networkidle');
+  const loadTime = Date.now() - start;
+  expect(loadTime).toBeLessThan(2500);
+});
+```
+
+---
+
+## 성능 개선 경험
+
+- IMS Mobility: API 응답 시간 800ms → 320ms 개선 (인덱스 최적화 제안)
+- 두플: 메인 페이지 LCP 4.2s → 2.1s 개선 (이미지 최적화 제안)
