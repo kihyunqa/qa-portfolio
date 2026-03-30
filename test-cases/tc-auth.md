@@ -1,38 +1,26 @@
-# 테스트 케이스: 인증 (Authentication)
+# TC: 인증 (Authentication) 테스트 케이스
 
-| TC ID | 테스트 명 | 우선순위 | 표준입력값 | 기대 결과 | 실제 결과 | 상태 |
-|-------|---------|----------|----------|----------|----------|------|
-| AUTH-001 | 유효한 오이디/비밀번호로 로그인 | P0 | ID: admin@test.com / PW: Pass123! | 대시보드 이동 | 대시보드 이동 | ✅ Pass |
-| AUTH-002 | 잘못된 비밀번호 로그인 | P1 | ID: admin@test.com / PW: wrongpass | 에러 메시지 표시 | 에러 메시지 표시 | ✅ Pass |
-| AUTH-003 | 매우 즧은 비밀번호 (4자) | P2 | PW: 1234 | 유효성 오류 | 유효성 오류 | ✅ Pass |
-| AUTH-004 | 비밀번호 없이 제출 | P1 | 비밀번호 필드 비우지 않음 | 필수필드 오류 | 필수필드 오류 | ✅ Pass |
-| AUTH-005 | 이메일 형식 오류 | P2 | ID: notanemail | 유효성 오류 | 유효성 오류 | ✅ Pass |
-| AUTH-006 | SQL Injection 시도 | P0 | ID: admin'-- | 차단 | 차단 | ✅ Pass |
-| AUTH-007 | 로그아웃 후 세션 혔료 | P1 | 로그아웃 클릭 | 새션 제거 | 새션 제거 | ✅ Pass |
-| AUTH-008 | 비밀번호 마스킹 |겼 | 비밀번호 입력 | ***로 표시 | ***로 표시 | ✅ Pass |
-| AUTH-009 | 세션 만료 (비활성) | P1 | 30분 비활성 | 자동 로그아웃 | 자동 로그아웃 | ✅ Pass |
-| AUTH-010 | 여러 탭에서 동시 로그인 | P2 | 브라우저 2개 | 동시 세션 유지 | 동시 세션 유지 | ✅ Pass |
+> 테스트 대상: 로그인 / 로그아웃 / 세션 / 비밀번호 재설정
 
----
-
-## 자동화 TC (평시그)
-
-```javascript
-// playwright-tests/login.spec.js 연계
-test('AUTH-001: 유효한 로그인', async ({ page }) => {
-  await page.goto('/login');
-  await page.fill('#email', 'admin@test.com');
-  await page.fill('#password', 'Pass123!');
-  await page.click('button[type="submit"]');
-  await expect(page).toHaveURL(/dashboard/);
-});
-```
+| TC ID | 제목 | 사전조건 | 실행단계 | 기대결과 | 실제결과 | 상태 |
+|-------|------|----------|----------|----------|----------|------|
+| AUTH-001 | 유효한 자격증명으로 로그인 | 미등록 사용자 | 1. /login 접속<br>2. email/pw 입력<br>3. 로그인 클릭 | /dashboard 리다이렉트 | ✅ | Pass |
+| AUTH-002 | 잘못된 비밀번호로 로그인 시도 | 등록된 계정 | 1. 올바른 email 입력<br>2. 잘못된 pw 입력<br>3. 로그인 클릭 | 오류 메시지 표시 | ✅ | Pass |
+| AUTH-003 | 이메일 형식 무효 입력 | - | 이메일 파라다이당 테스트 | HTML5 유효성 체크 | ✅ | Pass |
+| AUTH-004 | 세션 유지 (새로고침 후) | 로그인 상태 | F5 도승 후 페이지 확인 | 로그인 상태 유지 | ✅ | Pass |
+| AUTH-005 | 로그아웃 실행 | 로그인 상태 | 1. 로그아웃 클릭 | /login으로 리다이렉트, 세션 해제 | ✅ | Pass |
+| AUTH-006 | 로그아웃 후 직접 URL 접근 | 로그아웃 상태 | 브라우저에 /dashboard 직접 입력 | /login으로 리다이렉트 | ✅ | Pass |
+| AUTH-007 | 5회 로그인 실패 후 계정 잊금 | 등록된 계정 | 잘못된 pw 5회 시도 | 계정 잊금 또는 인증 요청 | ⚠️ | In Review |
+| AUTH-008 | 비밀번호 재설정 이메일 발송 | 등록된 이메일 | 1. "비밀번호 잊음" 클릭<br>2. 이메일 입력<br>3. 제출 | 재설정 링크 이메일 수신 | ✅ | Pass |
+| AUTH-009 | 재설정 링크 유효시간 (1시간) | 재설정 이메일 수신 | 2시간 후 링크 접속 | 링크 만료 오류 메시지 | ✅ | Pass |
+| AUTH-010 | 소셜 로그인 (Google OAuth) | - | Google 로그인 버튼 클릭 | Google OAuth 리다이렉트 | ✅ | Pass |
 
 ---
 
-## 버그 이력
+## 실행 요약
 
-| 버그 ID | 연관 TC | 현상 | 상태 |
-|---------|---------|------|------|
-| BUG-001 | AUTH-007 | 새로고침 시 로그아웃 | Fixed |
-| BUG-002 | AUTH-006 | SQL Injection 미차단 | Fixed |
+- 실행일: 2026-03-30
+- 실행환경: Chrome 120, Firefox 121, Safari 17
+- TC 총계: 10건
+- 통과: 9건 | 검토중: 1건 | 실패: 0건
+- 통과율: 90% (AUTH-007 위험성 평가 진행 중)
