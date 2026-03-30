@@ -1,6 +1,6 @@
-# 포트폴리오 요약 — 채용담당자용 1페이죀
+# 포트폴리오 요약 — 채용담당자용 1페이지
 
-> 한 솔짜리: **6년 9개월 QA + Claude MCP 5개 실제 연동. 코드 0줄. TC 125건+. 포트폴리오 페이지 자체도 MCP로 구축.**
+> 한 줄 요약: **6년 9개월 QA + Claude MCP 5개 실제 연동. 코드 0줄. TC 145건+. 포트폴리오 페이지 자체도 MCP로 구축.**
 
 ---
 
@@ -12,15 +12,15 @@
 | 이메일 | kihyun.qa@gmail.com |
 | GitHub | github.com/kihyunqa |
 | 포트폴리오 | kihyunqa.github.io/qa-portfolio |
-| 연락가능 | 즈시 |
+| 연락가능 | 즉시 |
 
 ---
 
 ## 핵심 강점 (3줄 요약)
 
 1. **6년 9개월 QA 실무** — 삼성전자 파트너(모비프렌), IMS Mobility, 두플 QA 리더
-2. **Claude MCP 5개 실제 연동** — 테스트 코드 0줄, 대화만으로 TC 125건+ 자동 생성
-3. **풀 QA 파이프라인** — TC 생성 → E2E 테스트 → GitHub 코밋 → Notion 문서화 → Slack 알림, 전부 자동
+2. **Claude MCP 5개 실제 연동** — 테스트 코드 0줄, 대화만으로 TC 145건+ 자동 생성
+3. **풀 QA 파이프라인** — TC 생성 → E2E 테스트 → GitHub 커밋 → Notion 문서화 → Slack 알림, 전부 자동
 
 ---
 
@@ -28,8 +28,8 @@
 
 ```
 ✅ filesystem MCP  — TC 파일 자동 저장
-✅ playwright MCP  — E2E 브라우저 자동 실행 (spec 10개)
-✅ github MCP      — 코밋 + Actions 자동화 (workflow 2개)
+✅ playwright MCP  — E2E 브라우저 자동 실행 (spec 12개)
+✅ github MCP      — 커밋 + Actions 자동화 (workflow 2개)
 ✅ notion MCP      — TC 결과 자동 문서화 [실제 연동]
 ✅ slack MCP       — QA 알림 실제 발송 확인 [실제 연동]
 ```
@@ -41,11 +41,11 @@
 | 지표 | 수치 |
 |------|------|
 | QA 경력 | 6년 9개월 |
-| TC 수 | 125건+ |
-| Playwright spec | 10개 |
+| TC 수 | 145건+ |
+| Playwright spec | 12개 |
 | GitHub Actions | 2개 |
 | 작성한 코드 | 0줄 |
-| 레포 파일수 | 60개+ |
+| 레포 파일수 | 80개+ |
 
 ---
 
@@ -68,3 +68,5 @@
 포트폴리오 사이트: **https://kihyunqa.github.io/qa-portfolio**
 
 GitHub 레포: **https://github.com/kihyunqa/qa-portfolio**
+
+*수치 최종 업데이트: 2026-03-31 (TC 145건+, Playwright 12 spec, Actions 2개, 파일 80개+)*
