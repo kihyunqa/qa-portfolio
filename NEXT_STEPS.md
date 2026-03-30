@@ -2,6 +2,7 @@
 
 > 이 문서를 읽는 Claude에게: 아래 내용을 먼저 읽고 이어서 작업해주세요.
 > 레포: `kihyunqa/qa-portfolio` / 브랜치: `main`
+> **새 대화 시작 명령어**: `kihyunqa/qa-portfolio 레포의 NEXT_STEPS.md를 github MCP로 읽어서 다음 스텝 진행해줘`
 
 ---
 
@@ -10,137 +11,136 @@
 ### 포트폴리오 사이트
 - `index.html` — 보라색 테마 포트폴리오 사이트 (GitHub Pages 배포)
 - URL: `https://kihyunqa.github.io/qa-portfolio`
-- 내용: 경력 타임라인, MCP 자동화 프로젝트, TC 섹션, 실제 연동 증거 섹션
 
 ### 실제 연동 완료된 MCP (5개)
-| MCP | 상태 | 비고 |
-|-----|------|------|
-| filesystem | ✅ 연동 | 로컬 파일 읽기/쓰기 |
-| github | ✅ 연동 | 이 레포 커밋 전부 MCP로 |
-| playwright | ✅ 연동 | E2E 브라우저 테스트 |
-| notion | ✅ 연동 | TC 결과 Notion 자동 생성 확인 |
-| slack | ✅ 연동 | QA 완료 알림 발송 확인 |
+| MCP | 상태 |
+|-----|------|
+| filesystem | ✅ 연동 |
+| github | ✅ 연동 |
+| playwright | ✅ 연동 |
+| notion | ✅ 연동 |
+| slack | ✅ 연동 |
 
-### 레포 주요 파일 구조
-```
-qa-portfolio/
-├── index.html                  ← 포트폴리오 메인 (✅ 숫자 정확하게 업데이트됨)
-├── README.md
-├── PROFILE.md                  ← 링크드인/이력서용
-├── CHANGELOG.md
-├── NEXT_STEPS.md               ← 이 파일
-├── testcase_login.md           ← 로그인 TC (원본)
-├── test-cases/                 ← TC 파일들
-│   ├── tc-auth.md
-│   ├── tc-cart.md
-│   └── tc-search-api.md
-├── playwright-tests/           ← spec 11개 실제 존재 확인됨
-│   ├── login.spec.js
-│   ├── search.spec.js
-│   ├── cart.spec.js
-│   ├── api.spec.js
-│   ├── payment.spec.js
-│   ├── security.spec.js
-│   ├── performance.spec.js
-│   ├── accessibility.spec.js
-│   ├── signup.spec.js
-│   ├── notification.spec.js
-│   ├── portfolio.spec.js       ← (mcp-portfolio.spec.js 포함 총 11개)
-│   └── playwright.config.js
-├── docs/                       ← 커버레터, 로드맵 문서들
-└── .github/workflows/
-    ├── main.yml
-    └── qa-notify.yml
-```
-
-### 현재 index.html 정확한 통계 (2026-03-30 기준)
-- MCP 서버: **5개** (filesystem·playwright·github·notion·slack)
-- Playwright spec: **11개** (실제 파일 수 확인 완료)
+### 현재 정확한 통계 (2026-03-30 기준)
+- MCP 서버: **5개**
+- Playwright spec: **11개**
 - TC: **150건+**
-- GitHub Actions: **2개**
+- GitHub Actions: **2개** (main.yml, qa-notify.yml)
 - 작성한 코드: **0줄**
 
 ---
 
 ## ✅ 완료된 스텝
 
-### STEP 1 — index.html 실제 현황 반영 ✅ 완료 (2026-03-30)
-- Playwright spec 수 8 → 11개로 수정
-- TC 수 125건+ → 150건+로 수정
-- 터미널 바, 파이프라인 설명, 로드맵, 다이어그램, footer 전부 통일
-- 커밋: `fix: update stats to reflect actual repo state (11 specs, 150+ TC)`
+### STEP 1 — index.html 실제 현황 반영 ✅ (2026-03-30)
+- Playwright spec 8 → 11개, TC 125 → 150건+ 수정
+
+### STEP 2 — GitHub Actions 진단 ✅ (2026-03-30)
+**진단 결과:**
+- `qa-notify.yml` ✅ 정상 — 트리거 3개(testcase_*.md, test-cases/**, playwright-tests/**), 변경파일 감지, Slack 알림 완성
+- `main.yml` ⚠️ 문제 — 내용이 qa-notify.yml과 거의 같아서 **Slack 알림이 중복 발송**되는 구조
+
+**main.yml 수정 필요 (직접 해야 함 — workflows 파일은 MCP 권한 없음):**
+1. https://github.com/kihyunqa/qa-portfolio/edit/main/.github/workflows/main.yml 접속
+2. 전체 내용을 아래로 교체:
+
+```yaml
+name: Portfolio Deploy Verify
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'index.html'
+      - 'README.md'
+      - 'docs/**'
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Verify portfolio structure
+        run: |
+          echo "TC files: $(ls testcase_*.md 2>/dev/null | wc -l)"
+          echo "Playwright specs: $(ls playwright-tests/*.spec.js 2>/dev/null | wc -l)"
+          echo "✅ Structure verified"
+
+      - name: Write job summary
+        run: |
+          echo "## 🚀 Portfolio Deploy Summary" >> $GITHUB_STEP_SUMMARY
+          echo "| 항목 | 내용 |" >> $GITHUB_STEP_SUMMARY
+          echo "|------|------|" >> $GITHUB_STEP_SUMMARY
+          echo "| Portfolio URL | https://kihyunqa.github.io/qa-portfolio |" >> $GITHUB_STEP_SUMMARY
+          echo "| TC Files | $(ls testcase_*.md 2>/dev/null | wc -l)개 |" >> $GITHUB_STEP_SUMMARY
+          echo "| Playwright Specs | $(ls playwright-tests/*.spec.js 2>/dev/null | wc -l)개 |" >> $GITHUB_STEP_SUMMARY
+```
+
+3. Commit changes 클릭
 
 ---
 
 ## 🎯 다음 스텝 (우선순위 순)
 
-### STEP 2 — GitHub Actions 실제 작동 확인 [바로 하기]
+### STEP 3 — main.yml 직접 수정 후 Actions 실제 트리거 테스트 [바로 하기]
 ```
 할 일:
-1. .github/workflows/main.yml 내용 확인 (github MCP로 읽기)
-2. .github/workflows/qa-notify.yml 내용 확인
-3. Actions가 실제로 트리거됐는지 확인
-4. 안됐으면 트리거 조건 점검 및 수정
+1. 위 STEP 2의 main.yml 내용으로 직접 수정 (GitHub 웹)
+2. testcase_*.md 파일 하나 아무거나 살짝 수정 후 커밋
+3. Actions 탭에서 qa-notify.yml이 트리거됐는지 확인
+4. Slack 새-채널에 알림 왔는지 확인
+5. 알림 왔으면 스크린샷 찍어서 screenshots/ 폴더에 추가
+   → 이게 "실제 연동 증거"의 핵심 자료!
 
-명령어:
-github:get_file_contents owner=kihyunqa repo=qa-portfolio path=.github/workflows/main.yml
-github:get_file_contents owner=kihyunqa repo=qa-portfolio path=.github/workflows/qa-notify.yml
-```
-
-### STEP 3 — Slack MCP 직접 연동 테스트 [STEP 2 이후]
-```
-현재 상태: qa-notify.yml 워크플로우는 있지만 Slack MCP 직접 연동 재확인 필요
-할 일:
-1. Desktop 앱에서 Slack MCP 연결 상태 확인
-2. 실제로 메시지 발송 테스트
-3. 성공하면 index.html에 이미 "실제 연동" 배지 있으니 OK
+확인 URL:
+- Actions 탭: https://github.com/kihyunqa/qa-portfolio/actions
+- Slack 채널: 새-채널 (channel-id: C0AQFJXC800)
 ```
 
-### STEP 4 — Jira MCP 연동 [PHASE 2]
+### STEP 4 — 실제 연동 스크린샷 추가 [STEP 3 이후 임팩트 최대]
 ```
-docs/jira-mcp-plan.md 에 계획 문서 이미 있음
-Jira Cloud 계정 필요 (없으면 무료 트라이얼 생성)
-토큰 발급 → config에 추가 → 테스트
+현재 proof 섹션이 텍스트만 있고 실제 스크린샷이 없음
+추가할 것:
+- Slack 알림 수신 스크린샷
+- Notion 페이지 생성 스크린샷
+- GitHub Actions 성공 스크린샷
+저장 위치: screenshots/ 폴더
 ```
 
-### STEP 5 — 포트폴리오 공개 공유 [PHASE 3]
+### STEP 5 — PHASE 2: Jira MCP 연동
 ```
-- GitHub Pages 실제 접속 확인: https://kihyunqa.github.io/qa-portfolio
-- 링크드인 게시물: docs/linkedin-post.md 참고
-- 이력서 첨부용: PROFILE.md 활용
+Jira Cloud 무료 계정 생성 → API 토큰 발급
+claude_desktop_config.json에 추가
+테스트: 버그 티켓 자동 생성
+```
+
+### STEP 6 — 포트폴리오 공개 공유
+```
+- GitHub Pages 확인: https://kihyunqa.github.io/qa-portfolio
+- LinkedIn 게시: docs/linkedin-post.md 참고
+- 이력서 첨부: PROFILE.md 활용
 ```
 
 ---
 
 ## 💡 작업 시 주의사항
 
-1. **index.html 수정 전 반드시 SHA 먼저 가져올 것**
-   ```
-   github:get_file_contents → sha 값 복사 → create_or_update_file에 sha 포함
-   ```
-
-2. **숫자는 절대 부풀리지 말 것**
-   - 실제 연동된 MCP만 "연동 완료" 표시
-   - 실제로 작동 확인한 것만 포함
-
-3. **헛짓 패턴 주의**
-   - 새 파일 무한 생성 금지 (이미 파일이 너무 많음)
-   - 포트폴리오 내용 계속 늘리는 것 금지 (정확도가 더 중요)
-   - okogora 레포 건드리지 말 것 (다른 레포임)
-
-4. **토큰 효율 위한 작업 순서**
-   - 큰 파일(index.html) 수정은 한 번에 몰아서
-   - 작은 확인 작업들 먼저 묶어서 처리
-
-5. **이 문서 업데이트 필수**
-   - 스텝 완료 시 반드시 이 문서에 ✅ 표시 후 커밋
+1. **workflows 파일(.github/workflows/*.yml)은 MCP로 수정 불가** — GitHub 웹에서 직접
+2. **index.html은 58KB라 MCP API 한도 초과** — GitHub 웹 편집기에서 Ctrl+H로 수정
+3. **숫자 부풀리지 말 것** — 실제 확인된 것만
+4. **새 파일 무한 생성 금지** — 정확도가 중요
+5. **스텝 완료 시 이 문서 업데이트 필수**
 
 ---
 
-## 📞 현재 연락처/링크
-- GitHub: https://github.com/kihyunqa/qa-portfolio
+## 📞 링크 모음
+- GitHub 레포: https://github.com/kihyunqa/qa-portfolio
 - 포트폴리오: https://kihyunqa.github.io/qa-portfolio
-- 이메일: kihyun.qa@gmail.com
+- Actions 탭: https://github.com/kihyunqa/qa-portfolio/actions
+- main.yml 편집: https://github.com/kihyunqa/qa-portfolio/edit/main/.github/workflows/main.yml
 
 ---
-*최종 업데이트: 2026-03-30 · STEP 1 완료 · 다음: STEP 2 (Actions 확인)*
+*최종 업데이트: 2026-03-30 · STEP 2 완료(진단) · 다음: STEP 3 (main.yml 직접 수정 후 트리거 테스트)*
