@@ -7,7 +7,7 @@
 [![Email](https://img.shields.io/badge/Email-kihyun.qa@gmail.com-ea4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:kihyun.qa@gmail.com)
 
 **6년 9개월 QA 경력 위에 Claude MCP 자동화를 더했습니다.**  
-기능 명세에서 TC 생성, 브라우저 테스트, 버그 리포트, 문서화까지  
+TC 생성부터 Notion 문서화, Slack 알림, GitHub 자동 배포까지  
 **전부 대화만으로 구축했습니다.**
 
 </div>
@@ -20,38 +20,25 @@
 
 | 항목 | 수치 | 설명 |
 |------|------|------|
-| ✅ 완성 프로젝트 | **30개** | 전체 구현 완료 |
+| ✅ 자동 생성된 TC | **30건** | MCP 5개 통합 테스트 |
 | 💻 작성한 코드 줄 수 | **0줄** | 전부 대화로 구축 |
-| 🧪 자동 생성된 TC | **24건** | 단일 대화 한 번 |
-| 🔧 연동된 MCP 서버 | **18개** | 전체 파이프라인 커버 |
+| 🔧 연동된 MCP 서버 | **5개** | 실제 연동 완료 |
+| ⚙️ GitHub Actions | **자동화** | TC 업로드 → Slack 알림 |
 | 📅 QA 경력 | **6년 9개월** | 2017 — 현재 |
 
 </div>
 
 ---
 
-## 🔧 연동된 MCP 서버 (18개 · 전체 완료)
+## 🔧 연동된 MCP 서버 (5개 · 실제 연동 완료)
 
 | MCP 서버 | 역할 | 상태 |
 |----------|------|------|
 | `📁 filesystem` | 로컬 파일 읽기/쓰기, TC 저장 | ✅ |
 | `🎭 playwright` | 브라우저 자동 조작, E2E 테스트 | ✅ |
-| `🐙 github` | 레포 커밋, README 업데이트 | ✅ |
-| `💬 slack` | QA 알림 자동 발송 | ✅ |
-| `📝 confluence` | QA 리포트 자동 문서화 | ✅ |
-| `🐛 jira` | 버그 수집·분석·패턴 탐지 | ✅ |
-| `📅 google-calendar` | 릴리즈 일정 기반 QA 자동화 | ✅ |
-| `✉️ gmail` | QA 리포트 이메일 자동 발송 | ✅ |
-| `🚨 sentry` | 에러 패턴·빈도·임팩트 분석 | ✅ |
-| `📋 linear` | 이슈 트래킹·사이클 관리 | ✅ |
-| `🎨 figma` | 디자인 스펙 QA 검증 | ✅ |
-| `📊 datadog` | 성능·에러율·임계치 모니터링 | ✅ |
-| `📒 notion` | TC 결과 팀 공유 자동화 | ✅ |
-| `🎮 discord` | QA 알림 Discord 채널 발송 | ✅ |
-| `🗄️ airtable` | QA 데이터베이스 자동 기록 | ✅ |
-| `⚡ zapier` | 크로스 툴 워크플로우 자동화 | ✅ |
-| `🧪 testrail` | TC 관리 시스템 연동 | ✅ |
-| `🔍 postman` | API 컬렉션 자동 실행·검증 | ✅ |
+| `🐙 github` | 레포 커밋, 파일 업로드, Actions | ✅ |
+| `📒 notion` | TC 결과 자동 문서화 | ✅ |
+| `💬 slack` | QA 완료 알림 자동 발송 | ✅ |
 
 ---
 
@@ -60,20 +47,48 @@
 ```
 기능 명세 입력
      ↓
-[Claude Desktop + 18 MCP servers]
+[Claude Desktop + 5 MCP servers]
      ↓
-Figma 스펙 QA → TC 생성 (24건) → 로컬 저장 → GitHub 커밋
+TC 생성 (30건) → filesystem 저장 → github 커밋
      ↓
-E2E 브라우저 테스트 (playwright) → API QA (Postman)
+playwright E2E 브라우저 테스트 실행
      ↓
-Sentry 에러 수집 → Datadog 성능 분석
+notion 페이지 자동 문서화
      ↓
-Jira/Linear 버그 분석 → Confluence·Airtable 문서화
+slack 채널 QA 완료 알림 발송
      ↓
-Slack·Discord 알림 → Gmail 발송 → Calendar 일정 반영
+GitHub Actions → TC 업로드 감지 → Slack 자동 통보
      ↓
 완료 🎉 (코드 0줄)
 ```
+
+---
+
+## ⚙️ GitHub Actions: QA Auto Notify
+
+```yaml
+# .github/workflows/qa-notify.yml
+# testcase_*.md 업로드 시 Slack 자동 알림
+name: QA Auto Notify
+on:
+  push:
+    paths:
+      - 'testcase_*.md'
+      - 'test-cases/**'
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: slackapi/slack-github-action@v1.26.0
+        with:
+          channel-id: 'C0AQFJXC800'
+          slack-message: "📋 TC 업데이트: ${{ github.event.head_commit.message }}"
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+```
+
+> 🔑 설정: GitHub 레포 Settings → Secrets → `SLACK_BOT_TOKEN` 추가 필요
 
 ---
 
@@ -91,15 +106,25 @@ Slack·Discord 알림 → Gmail 발송 → Calendar 일정 반영
 
 ```
 qa-portfolio/
-├── index.html                  # 포트폴리오 메인 페이지
-├── README.md                   # 이 파일
-├── PROFILE.md                  # 이력서
-├── testcase_login.md           # 자동생성 TC 24건 (로그인)
-├── qa-automation-report.md     # QA 자동화 리포트
+├── .github/
+│   └── workflows/
+│       └── qa-notify.yml          # TC 업로드 → Slack 자동 알림
+├── index.html                     # 포트폴리오 메인 페이지
+├── README.md                      # 이 파일
+├── PROFILE.md                     # 이력서
+├── testcase_login.md              # 로그인 TC
+├── testcase_mcp-integration.md    # MCP 5개 통합 TC 30건 ← NEW
+├── testcase_e2e-playwright.md     # E2E 브라우저 시나리오 ← NEW
+├── qa-automation-report.md        # QA 자동화 리포트
+├── test-cases/
+│   ├── tc-auth.md
+│   ├── tc-cart.md
+│   └── tc-search-api.md
 ├── e2e-scenarios/
-│   └── login-flow.md           # E2E 시나리오 3개
-└── skills/
-    └── qa-automation.md        # Claude Code Skill 지침 파일
+│   └── login-flow.md
+└── docs/
+    ├── linkedin-post.md
+    └── qa-notify-workflow.md
 ```
 
 ---
@@ -107,7 +132,6 @@ qa-portfolio/
 ## ⚙️ MCP 설정 가이드
 
 ```json
-// claude_desktop_config.json
 {
   "mcpServers": {
     "filesystem": {
@@ -123,10 +147,18 @@ qa-portfolio/
       "command": "npx",
       "args": ["-y", "@executeautomation/playwright-mcp-server"]
     },
+    "notion": {
+      "command": "npx",
+      "args": ["-y", "@notionhq/notion-mcp-server"],
+      "env": { "NOTION_API_KEY": "your_token" }
+    },
     "slack": {
       "command": "npx",
       "args": ["-y", "@modelcontextprotocol/server-slack"],
-      "env": { "SLACK_BOT_TOKEN": "your_token" }
+      "env": {
+        "SLACK_BOT_TOKEN": "your_token",
+        "SLACK_TEAM_ID": "your_team_id"
+      }
     }
   }
 }
@@ -136,7 +168,7 @@ qa-portfolio/
 
 <div align="center">
 
-*Built with Claude MCP · No code written · 18 MCP servers · 30 projects*
+*Built with Claude MCP · No code written · 5 MCP servers · TC 30건 자동 생성*
 
 [![포트폴리오 바로가기](https://img.shields.io/badge/🚀_포트폴리오_바로가기-a855f7?style=for-the-badge&labelColor=08060f)](https://kihyunqa.github.io/qa-portfolio)
 
