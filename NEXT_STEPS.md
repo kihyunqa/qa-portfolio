@@ -41,29 +41,20 @@
 | 스텝 | 내용 | 완료일 |
 |------|------|--------|
 | STEP 1~9 | MCP 연동, TC 생성, spec 작성, docs 작성 등 | ~2026-03-30 |
-| STEP 13 | index.html 수치 최신화 | 2026-03-31 |
-| STEP 14 | linkedin-post.md 수치 최신화 | 2026-03-31 |
-| STEP 14-B | cover-letter.md 오타 수정 | 2026-03-31 |
-| STEP 15 | interview-qa.md 수치 최신화 | 2026-03-31 |
-| STEP 16 | interview-qa-advanced.md 오타/수치 수정 | 2026-03-31 |
-| STEP 17-A | portfolio-summary.md 수치 최신화 | 2026-03-31 |
-| STEP 17-B | test-metrics.md + mcp-architecture.md 오타/수치 수정 | 2026-03-31 |
-| STEP 18 | docs 나머지 5개 파일 수정 완료 ✅ | 2026-03-31 |
-| STEP 19 | 전체 검증 완료 — 모든 수치·파일 재확인 ✅ | 2026-03-31 |
-| STEP 20 | cover-letter.md 버전 확장 — 1종→3종 ✅ | 2026-03-31 |
-| STEP 21 | qa-onboarding.md 보강 — MCP 환경 기준 체크리스트 확장 ✅ | 2026-03-31 |
-| STEP 22 | **ai-qa-vision.md 대폭 보강** — 726→3063 bytes ✅ | 2026-03-31 |
-| STEP 23 | **qa-checklist.md 보강** — 오타 수정 + MCP/보안/크로스브라우저 섹션 추가 ✅ | 2026-03-31 |
+| STEP 13~18 | docs 전체 수치·오타 수정 | 2026-03-31 |
+| STEP 19 | 전체 검증 완료 ✅ | 2026-03-31 |
+| STEP 20 | cover-letter.md 1종→3종 확장 ✅ | 2026-03-31 |
+| STEP 21 | qa-onboarding.md MCP 환경 기준 보강 ✅ | 2026-03-31 |
+| STEP 22 | ai-qa-vision.md 대폭 보강 726→3063 bytes ✅ | 2026-03-31 |
+| STEP 23 | qa-checklist.md 오타 수정 + 섹션 추가 ✅ | 2026-03-31 |
+| STEP 24-A | **qa-kpi-dashboard.md 보강** — 실제 수치·자동화 분리·MCP 가동률 추가 ✅ | 2026-03-31 |
+| STEP 24-B | **qa-notify-workflow.md 보강** — 흐름도·설정 가이드·트러블슈팅 추가 ✅ | 2026-03-31 |
 
-### STEP 22 작업 내역
-| 파일 | 변경 내용 |
-|------|-----------|
-| docs/ai-qa-vision.md | `커뮤니케이션` 오타 수정. "왜 AI QA인가" 도입부 신설. Phase 1 실제 검증 내역 코드블록 추가. "바뀌는 것/바뀌지 않는 것" 철학 섹션 추가. 726 → 3063 bytes |
-
-### STEP 23 작업 내역
-| 파일 | 변경 내용 |
-|------|-----------|
-| docs/qa-checklist.md | `치크리스트`→`체크리스트`, `뺄튼`→`버튼`, `코인`→`계정 잠금`, `0건 다담`→`0건` 오타 수정. MCP 사전확인 섹션 신설. 보안/크로스브라우저 섹션 추가. 1971 → 3560 bytes |
+### STEP 24 작업 내역
+| 파일 | before | after | 주요 변경 |
+|------|--------|-------|-----------|
+| qa-kpi-dashboard.md | 915b | 3016b | 자동화/수동 비율 분리, Playwright spec 상세 테이블, MCP 가동률 테이블, 품질 지표 요약 |
+| qa-notify-workflow.md | 891b | 2906b | 전체 흐름도, 개선된 yaml 코드, 트리거 조건 표, 실제 알림 예시, 트러블슈팅 |
 
 ---
 
@@ -84,23 +75,18 @@
 ★ 포트폴리오의 "실제 연동 증거"를 텍스트→시각 증거로 업그레이드하는 핵심!
 ```
 
-### STEP 24 — 남은 얇은 docs 파일 보강 [Claude 단독 가능]
+### STEP 25 — jira-mcp-plan.md 보강 [Claude 단독 가능 — 남은 마지막 얇은 파일]
 
 ```
-보강 후보 (크기 순):
-  - docs/qa-kpi-dashboard.md (915 bytes) — KPI 지표 실제 수치 반영 필요
-  - docs/qa-notify-workflow.md (891 bytes) — GitHub Actions 알림 흐름 상세화
-  - docs/jira-mcp-plan.md (878 bytes) — Phase 2 계획 구체화
-
-→ 다음 Claude는 위 3개 중 1개 골라 보강하면 됨
-   (qa-kpi-dashboard.md 추천 — 수치 임팩트 큼)
+현재 jira-mcp-plan.md (878 bytes) — docs 중 마지막으로 얇은 파일
+Phase 2 Jira 연동 계획을 구체적인 실행 단계로 상세화 가능
+→ Jira Cloud 계정 생성 → API 토큰 → MCP config → 테스트 플로우
 ```
 
-### STEP 11 — Jira MCP 연동 [PHASE 2 — 사용자 계정 필요]
+### STEP 11 — Jira MCP 실제 연동 [PHASE 2 — 사용자 계정 필요]
 
 ```
-docs/jira-mcp-plan.md 참고
-Jira Cloud 무료 계정 → API 토큰 → config 추가 → 테스트
+Jira Cloud 무료 계정 → API 토큰 → claude_desktop_config.json 추가 → 테스트
 완료 시 index.html 로드맵 PHASE 2 완료 표시
 ```
 
@@ -138,4 +124,4 @@ Jira Cloud 무료 계정 → API 토큰 → config 추가 → 테스트
 
 ---
 
-*최종 업데이트: 2026-03-31 · STEP 23 완료 (qa-checklist 보강·오타수정) · 다음: STEP 24 (qa-kpi-dashboard 보강 추천) or STEP 10 (스크린샷)*
+*최종 업데이트: 2026-03-31 · STEP 24 완료 (qa-kpi-dashboard + qa-notify-workflow 보강) · 다음: STEP 25 (jira-mcp-plan 보강) or STEP 10 (스크린샷)*
