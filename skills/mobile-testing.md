@@ -1,23 +1,32 @@
-# 평가: 모바일 QA (Mobile Testing)
+# 📱 Mobile Testing Skills
 
-## ?심 역량
+> 모바일 QA 역량 및 실제 기기 테스트 경험
 
-- iOS (Safari) / Android (Chrome) 크로스스 QA
-- 반응형 레이아웃 검증 (360px ~ 1440px)
-- 터치 제스처 (스와이프, 핀치쥐, 탭)
-- 디바이스 회전 (Portrait/Landscape)
-- BrowserStack 실무 디바이스 테스트
-- 네트워크 상태별 동작 (3G/LTE/WiFi)
+---
 
-## 주요 체크 포인트
+## 테스트 환경
 
-1. iOS Safari 전용 CSS 이슈 (`-webkit-` prefix)
-2. Android Chrome 주소창 자동숫김 UX
-3. 터치 타겟 크기 (44x44px 최소)
-4. 필요시에만 표시되는 행동 메뉴
-5. 모바일 승인 포틘 UX
+| OS | 버전 | 기기 | 테스트 항목 |
+|----|------|------|----------|
+| iOS | 17.x | iPhone 15, iPhone SE | 레이아웃, 터치, 성능 |
+| Android | 14 | Galaxy S24, Pixel 7 | 레이아웃, 제스처 |
+| iPadOS | 17 | iPad Pro 12.9" | 태블릿 레이아웃 |
 
-## 실무 성과
+---
 
-- 모비프렌 시절: 수십 종 iOS/Android 디바이스 테스트 담당
-- IMS Mobility: 모바일앱 주요 QA (Android/iOS)
+## 핵심 체크 항목
+
+- **반응형 레이아웃** — 375px, 390px, 414px 기준
+- **터치 영역** — 최소 44×44px 보장
+- **가상 키보드** — 입력창 포커스 시 레이아웃 깨짐 없음
+- **스와이프/핀치줌** — 네이티브 제스처 작동
+- **다크모드** — 시스템 설정 연동
+- **접근성** — VoiceOver(iOS), TalkBack(Android)
+
+---
+
+## 삼성전자 파트너 시절 경험
+
+- IoT SmartThings 앱 — 갤럭시/iOS 디바이스 50+종 테스트
+- AI Bixby — 음성 인식 정확도 QA (한국어/영어)
+- 삼성 모바일앱 — 갤럭시 폴드/플립 폼팩터 테스트
