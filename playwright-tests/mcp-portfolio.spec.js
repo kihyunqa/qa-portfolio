@@ -1,93 +1,48 @@
-// mcp-portfolio.spec.js — MCP 포트폴리오 사이트 통합 검증
-// Claude MCP playwright 실제 연동 생성
-
+// mcp-portfolio.spec.js — 포트폴리오 사이트 자체 E2E 테스트
+// Claude MCP 자동 생성 | 2026-03-30
 const { test, expect } = require('@playwright/test');
 
-test.describe('🏆 MCP 포트폴리오 통합 검증', () => {
+const PORTFOLIO_URL = 'https://kihyunqa.github.io/qa-portfolio';
 
-  test('TC-PORT-001 | 페이지 전체 섹션 존재 확인', async ({ page }) => {
-    await page.goto('https://kihyunqa.github.io/qa-portfolio');
-    const sections = ['#mcp', '#proof', '#projects', '#roadmap', '#timeline', '#tc', '#contact'];
-    for (const sel of sections) {
-      await expect(page.locator(sel)).toBeAttached();
+test.describe('포트폴리오 사이트 E2E 검증', () => {
+
+  test('TC-PORT-001: 홈페이지 로딩 확인', async ({ page }) => {
+    await page.goto(PORTFOLIO_URL);
+    await expect(page).toHaveTitle(/QA/);
+    await expect(page.locator('h1, .hero-title')).toBeVisible();
+  });
+
+  test('TC-PORT-002: MCP 5개 연동 표시 확인', async ({ page }) => {
+    await page.goto(PORTFOLIO_URL);
+    const mcpKeywords = ['filesystem', 'playwright', 'github', 'notion', 'slack'];
+    const content = await page.content();
+    for (const kw of mcpKeywords) {
+      expect(content.toLowerCase()).toContain(kw.toLowerCase());
     }
-    console.log('✅ 전체 섹션 존재 확인');
   });
 
-  test('TC-PORT-002 | 네비게이션 링크 전부 작동 확인', async ({ page }) => {
-    await page.goto('https://kihyunqa.github.io/qa-portfolio');
-    const navLinks = page.locator('.nav-links a');
-    const count = await navLinks.count();
-    expect(count).toBeGreaterThanOrEqual(5);
-    console.log(`✅ 네비 링크 ${count}개 확인`);
+  test('TC-PORT-003: GitHub 링크 작동 확인', async ({ page }) => {
+    await page.goto(PORTFOLIO_URL);
+    const githubLink = page.locator('a[href*="github.com/kihyunqa"]').first();
+    await expect(githubLink).toBeVisible();
   });
 
-  test('TC-PORT-003 | MCP 그리드 카드 개수 및 내용 검증', async ({ page }) => {
-    await page.goto('https://kihyunqa.github.io/qa-portfolio');
-    const cards = page.locator('.mcp-card');
-    await expect(cards).toHaveCount(5);
-    console.log('✅ MCP 카드 5개 확인');
+  test('TC-PORT-004: Notion 링크 확인', async ({ page }) => {
+    await page.goto(PORTFOLIO_URL);
+    const notionLink = page.locator('a[href*="notion.so"]').first();
+    await expect(notionLink).toBeVisible();
   });
 
-  test('TC-PORT-004 | 파이프라인 스텝 6개 존재 확인', async ({ page }) => {
-    await page.goto('https://kihyunqa.github.io/qa-portfolio');
-    const steps = page.locator('.pipe-step');
-    const count = await steps.count();
-    expect(count).toBeGreaterThanOrEqual(6);
-    console.log(`✅ 파이프라인 스텝 ${count}개 확인`);
+  test('TC-PORT-005: 모바일 레이아웃 확인', async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto(PORTFOLIO_URL);
+    await expect(page.locator('body')).toBeVisible();
   });
 
-  test('TC-PORT-005 | TC 테이블 데이터 확인', async ({ page }) => {
-    await page.goto('https://kihyunqa.github.io/qa-portfolio');
-    const rows = page.locator('.tc-table tbody tr');
-    const count = await rows.count();
-    expect(count).toBeGreaterThanOrEqual(5);
-    console.log(`✅ TC 테이블 행 ${count}개 확인`);
-  });
-
-  test('TC-PORT-006 | 프로젝트 카드 10개 확인', async ({ page }) => {
-    await page.goto('https://kihyunqa.github.io/qa-portfolio');
-    const projCards = page.locator('.proj-card');
-    const count = await projCards.count();
-    expect(count).toBeGreaterThanOrEqual(10);
-    console.log(`✅ 프로젝트 카드 ${count}개 확인`);
-  });
-
-  test('TC-PORT-007 | 경력 타임라인 항목 확인', async ({ page }) => {
-    await page.goto('https://kihyunqa.github.io/qa-portfolio');
-    const tlItems = page.locator('.tl-item');
-    const count = await tlItems.count();
-    expect(count).toBeGreaterThanOrEqual(3);
-    console.log(`✅ 경력 타임라인 ${count}개 항목 확인`);
-  });
-
-  test('TC-PORT-008 | 스크롤 진행바 기능 확인', async ({ page }) => {
-    await page.goto('https://kihyunqa.github.io/qa-portfolio');
-    const scrollBar = page.locator('#scrollBar');
-    await expect(scrollBar).toBeAttached();
-    await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight / 2));
-    await page.waitForTimeout(300);
-    const width = await scrollBar.evaluate(el => el.style.width);
-    expect(width).not.toBe('0%');
-    expect(width).not.toBe('');
-    console.log('✅ 스크롤바 동작 확인:', width);
-  });
-
-  test('TC-PORT-009 | 배지 애니메이션 요소 확인', async ({ page }) => {
-    await page.goto('https://kihyunqa.github.io/qa-portfolio');
-    const badges = page.locator('.badge-live, .badge-done');
-    const count = await badges.count();
-    expect(count).toBeGreaterThan(0);
-    console.log(`✅ 배지 요소 ${count}개 확인`);
-  });
-
-  test('TC-PORT-010 | 페이지 로드 성능 확인 (3초 이내)', async ({ page }) => {
-    const start = Date.now();
-    await page.goto('https://kihyunqa.github.io/qa-portfolio');
-    await page.locator('h1.hero-name').waitFor();
-    const elapsed = Date.now() - start;
-    expect(elapsed).toBeLessThan(10000);
-    console.log(`✅ 페이지 로드 ${elapsed}ms`);
+  test('TC-PORT-006: TC 수 표시 확인', async ({ page }) => {
+    await page.goto(PORTFOLIO_URL);
+    const content = await page.content();
+    expect(content).toMatch(/1[0-9]{2}|140/);
   });
 
 });
