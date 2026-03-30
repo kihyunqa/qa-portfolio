@@ -49,39 +49,42 @@
 | STEP 17-A | portfolio-summary.md 수치 최신화 | 2026-03-31 |
 | STEP 17-B | test-metrics.md + mcp-architecture.md 오타/수치 수정 | 2026-03-31 |
 | STEP 18 | docs 나머지 5개 파일 수정 완료 ✅ | 2026-03-31 |
-| STEP 19 | **전체 검증 완료** — 모든 수치·파일 재확인 ✅ | 2026-03-31 |
+| STEP 19 | 전체 검증 완료 — 모든 수치·파일 재확인 ✅ | 2026-03-31 |
+| STEP 20 | **cover-letter.md 버전 확장** — 1종→3종 (범용/스타트업/대기업) ✅ | 2026-03-31 |
 
-### STEP 19 검증 내역 (이번 Claude가 직접 확인)
-| 확인 항목 | 결과 |
-|-----------|------|
-| docs/ 파일 수 22개 | ✅ 실제 22개 확인 |
-| playwright-tests/ spec 12개 | ✅ 실제 12개 확인 (config·README 별도) |
-| mcp-setup-guide.md 복구 상태 | ✅ 정상 내용 확인 (temp 덮어씌움 완전 복구됨) |
-| NEXT_STEPS.md 인수인계 갱신 | ✅ 현재 이 커밋 |
+### STEP 20 작업 내역
+| 파일 | 변경 내용 |
+|------|-----------|
+| docs/cover-letter.md | 버전 1개(범용) → 3개(범용·스타트업/IT·대기업/공공) 로 확장. 교체 가이드 테이블 추가. 1039 bytes → 3171 bytes |
 
 ---
 
 ## 🎯 다음 스텝 (우선순위 순)
 
-### STEP 10 — 스크린샷 실제 추가 [임팩트 최대 — 직접 해야 함]
+### STEP 10 — 스크린샷 실제 추가 [임팩트 최대 — 사용자 직접 필요]
 
 ```
-docs/ 수치 최신화 전부 완료! 이제 시각적 증거만 남음.
-사용자가 이미지를 채팅창에 올려주면 Claude가 커밋 가능.
+사용자가 이미지를 채팅창에 붙여넣으면 Claude가 github MCP로 커밋 가능.
 
 캡처할 것:
-  1. Slack 새-채널 QA 알림 수신 화면 (스크린샷)
-  2. GitHub Actions qa-notify.yml 성공 실행 화면 (스크린샷)
-  3. Notion TC 페이지 화면 (스크린샷)
+  1. Slack 새-채널 QA 알림 수신 화면
+  2. GitHub Actions qa-notify.yml 성공 실행 화면
+  3. Notion TC 페이지 화면
 
 저장 위치: screenshots/ 폴더
-업로드 URL: https://github.com/kihyunqa/qa-portfolio/upload/main/screenshots
-또는: 이미지 Claude에게 붙여넣으면 github MCP로 커밋 가능
-
-★ 이게 포트폴리오의 "실제 연동 증거" 섹션을 텍스트→시각 증거로 업그레이드하는 핵심!
+업로드: https://github.com/kihyunqa/qa-portfolio/upload/main/screenshots
+★ 포트폴리오의 "실제 연동 증거"를 텍스트→시각 증거로 업그레이드하는 핵심!
 ```
 
-### STEP 11 — Jira MCP 연동 [PHASE 2]
+### STEP 21 — qa-onboarding.md 또는 qa-checklist.md 보강 [Claude 단독 가능]
+
+```
+현재 qa-onboarding.md(1084 bytes), qa-checklist.md(1971 bytes)가 좀 얇음.
+특히 qa-onboarding.md는 MCP 환경 기준으로 온보딩 가이드가 없음.
+→ MCP 5개 연동된 환경 기준으로 "신규 QA 합류 시 체크리스트" 형태로 보강 가능.
+```
+
+### STEP 11 — Jira MCP 연동 [PHASE 2 — 사용자 계정 필요]
 
 ```
 docs/jira-mcp-plan.md 참고
@@ -92,9 +95,9 @@ Jira Cloud 무료 계정 → API 토큰 → config 추가 → 테스트
 ### STEP 12 — 포트폴리오 공개 공유 [지금 바로 가능]
 
 ```
-모든 docs 수치/오타 최신화 완전 완료! 공유 가능 상태.
 - LinkedIn: docs/linkedin-post.md 버전 1~4 중 선택
 - 이력서 링크: https://kihyunqa.github.io/qa-portfolio
+- 커버레터: docs/cover-letter.md 버전 3종 중 지원사 맞춤 선택
 - 면접 준비: interview-qa.md + interview-qa-advanced.md
 ```
 
@@ -123,4 +126,4 @@ Jira Cloud 무료 계정 → API 토큰 → config 추가 → 테스트
 
 ---
 
-*최종 업데이트: 2026-03-31 · STEP 19 완료 (전체 검증 재확인) · 다음: STEP 10 (스크린샷 추가) → STEP 12 (공유)*
+*최종 업데이트: 2026-03-31 · STEP 20 완료 (cover-letter.md 3종 확장) · 다음: STEP 10 (스크린샷) or STEP 21 (qa-onboarding 보강)*
