@@ -27,7 +27,7 @@
    │         │
 ⬇ Actions   ⬇ Webhook
 💬 Slack   📝 Notion
-  #새-삼널    TC DB
+  #새-채널    TC DB
 ```
 
 ---
@@ -39,13 +39,13 @@
          ↓
 2. Claude가 TC 자동 생성
          ↓
-3. filesystem MCP로 로컈 저장
+3. filesystem MCP로 로컬 저장
          ↓
 4. github MCP로 커밋 & PR
          ↓
 5. GitHub Actions 트리거
          ↓
-6. Slack #새-삼널 알림 자동 발송
+6. Slack #새-채널 알림 자동 발송
          ↓
 7. notion MCP로 TC 결과 DB 저장
          ↓
@@ -93,7 +93,7 @@
 | 증명 항목 | 내용 |
 |---------|------|
 | MCP 실제 연동 | 5개 서버 활성화 확인 |
-| Playwright 코드 | 6개 스펙, 56건 TC 실제 실행 가능 |
+| Playwright 코드 | 12개 스펙, 145건+ TC 실제 실행 가능 |
 | GitHub Actions | TC push → Slack 알림 자동 동작 확인 |
-| Slack 보트 | #새-삼널 메시지 발송 성공 확인 |
-| skills/ 폴더 | 역량 문서 5종 작성 |
+| Slack 봇 | #새-채널 메시지 발송 성공 확인 |
+| skills/ 폴더 | 역량 문서 9종 작성 |
