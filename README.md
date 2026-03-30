@@ -6,8 +6,8 @@
 [![GitHub](https://img.shields.io/badge/GitHub-kihyunqa-181717?style=for-the-badge&logo=github)](https://github.com/kihyunqa)
 [![Email](https://img.shields.io/badge/Email-kihyun.qa@gmail.com-ea4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:kihyun.qa@gmail.com)
 
-**6년 9개월 QA 경력 위에 Claude MCP 자동화를 더했습니다.**  
-TC 생성부터 Notion 문서화, Slack 알림, GitHub 자동 배포까지  
+**6년 9개월 QA 경력 위에 Claude MCP 자동화를 더했습니다.**
+TC 생성부터 Notion 문서화, Slack 알림, GitHub 자동 배포까지
 **전부 대화만으로 구축했습니다.**
 
 </div>
@@ -20,11 +20,11 @@ TC 생성부터 Notion 문서화, Slack 알림, GitHub 자동 배포까지
 
 | 항목 | 수치 | 설명 |
 |------|------|------|
-| 자동 생성된 TC | **210건+** | 14개 파일 누적 |
+| 자동 생성된 TC | **210건+** | 14개 testcase 파일 |
 | 작성한 코드 줄 수 | **0줄** | 전부 대화로 구축 |
 | 연동된 MCP 서버 | **5개** | 실제 연동 완료 |
-| Playwright spec | **13개** | 실제 실행 가능 코드 |
-| GitHub Actions | **운영 중** | TC 업로드 → Slack 알림 |
+| Playwright spec | **13개+** | 실제 실행 가능 코드 |
+| GitHub Actions | **운영 중** | TC push → Slack 자동 알림 |
 | QA 경력 | **6년 9개월** | 2017 — 현재 |
 
 </div>
@@ -35,9 +35,9 @@ TC 생성부터 Notion 문서화, Slack 알림, GitHub 자동 배포까지
 
 | MCP 서버 | 역할 | 상태 |
 |----------|------|------|
-| `filesystem` | 로칼 파일 읽기/쓰기, TC 저장 | ✅ |
+| `filesystem` | 로컬 파일 읽기/쓰기, TC 저장 | ✅ |
 | `playwright` | 브라우저 자동 조작, E2E 테스트 | ✅ |
-| `github` | 레포 커밋, 파일 업로드, Actions | ✅ |
+| `github` | 레포 커밋, 파일 업로드, Actions 트리거 | ✅ |
 | `notion` | TC 결과 자동 문서화 | ✅ |
 | `slack` | QA 완료 알림 자동 발송 | ✅ |
 
@@ -56,37 +56,51 @@ playwright E2E 테스트 실행
      ↓
 notion 페이지 자동 문서화
      ↓
-slack 새-채널 QA 완료 알림 발송
+slack QA 완료 알림 자동 발송
      ↓
-GitHub Actions → TC 업로드 감지 → Slack 자동 통보
+GitHub Actions → TC push 감지 → Slack 자동 통보
      ↓
 완료 (코드 0줄)
 ```
 
 ---
 
-## GitHub Actions: QA Auto Notify
+## GitHub Actions
+
+### qa-notify.yml — TC push → Slack 알림
 
 ```yaml
-# .github/workflows/qa-notify.yml
 name: QA Auto Notify
 on:
   push:
     paths:
       - 'testcase_*.md'
       - 'test-cases/**'
+      - 'playwright-tests/**'
 jobs:
   notify:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Get changed files
+        id: files
+        run: |
+          echo "changed=$(git diff --name-only HEAD~1 HEAD | tr '\n' ', ')" >> $GITHUB_OUTPUT
       - uses: slackapi/slack-github-action@v1.26.0
         with:
           channel-id: 'C0AQFJXC800'
-          slack-message: "TC 업데이트: ${{ github.event.head_commit.message }}"
+          slack-message: |
+            *📋 QA 포트폴리오 TC 업데이트*
+            > *커밋:* ${{ github.event.head_commit.message }}
+            > *작성자:* ${{ github.actor }}
+            > *변경 파일:* ${{ steps.files.outputs.changed }}
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
 ```
+
+### main.yml — GitHub Pages 배포 검증
+
+포트폴리오 사이트(`index.html`) 변경 시 자동으로 구조 검증 후 배포 요약을 Actions 탭에 기록합니다.
 
 ---
 
@@ -100,57 +114,45 @@ jobs:
 
 ---
 
-## 레포 전체 구조
+## 레포 실제 구조
 
 ```
 qa-portfolio/
-├── .github/workflows/qa-notify.yml       # Actions: TC push → Slack 알림
-├── index.html                             # 포트폴리오 메인 페이지
-├── README.md / PROFILE.md / CHANGELOG.md
-├── testcase_login.md                      # 로그인 TC 20건
-├── testcase_mcp-integration.md            # MCP 5개 통합 TC 30건
-├── testcase_e2e-playwright.md             # E2E 시나리오 TC
-├── testcase_api-testing.md               # API TC 20건
-├── testcase_bug-report.md                # 버그 리포트 TC
-├── testcase_performance.md               # 성능 TC
-├── testcase_security.md                  # 보안 TC
-├── testcase_accessibility.md             # 접근성 TC
-├── testcase_regression.md               # 회귀 TC
-├── testcase_mobile.md                    # 모바일 TC
-├── testcase_notification.md              # Slack 알림 TC 20건 ← NEW
-├── testcase_cicd.md                      # CI/CD 파이프라인 TC 20건 ← NEW
-├── testcase_notion.md                    # Notion 연동 TC 20건 ← NEW
-├── playwright-tests/
-│   ├── login.spec.js / search.spec.js / cart.spec.js
-│   ├── api.spec.js / performance.spec.js / accessibility.spec.js
-│   ├── payment.spec.js / security.spec.js / signup.spec.js
-│   ├── notification.spec.js ← NEW
-│   ├── mcp-portfolio.spec.js ← NEW
-│   ├── helpers/ (page-objects.js)
-│   └── playwright.config.js
-├── e2e-scenarios/
-│   ├── login-flow.md / payment-flow.md / search-flow.md
-│   ├── signup-flow.md / checkout-flow.md
-│   ├── mobile-flow.md / accessibility-flow.md
-├── test-cases/
-│   ├── tc-auth.md / tc-cart.md / tc-search-api.md
-├── skills/
-│   ├── manual-testing.md / automation-tools.md / api-testing.md
-│   ├── ci-cd-pipeline.md / qa-automation.md / test-strategy.md
-│   └── mcp-integration.md
-├── docs/
-│   ├── interview-qa.md / interview-qa-advanced.md
-│   ├── linkedin-post.md / portfolio-summary.md ← NEW
-│   ├── cover-letter.md ← NEW
-│   ├── test-metrics.md / bug-report-template.md / qa-strategy.md
-│   ├── mcp-architecture.md / mcp-workflow-diagram.md
-│   └── qa-checklist.md / qa-kpi-dashboard.md
-└── screenshots/README.md
+├── .github/
+│   └── workflows/
+│       ├── main.yml          # 포트폴리오 배포 검증
+│       └── qa-notify.yml     # TC push → Slack 알림
+├── index.html                # 포트폴리오 메인 (GitHub Pages)
+├── README.md
+├── PROFILE.md
+├── CHANGELOG.md
+├── _config.yml
+│
+├── testcase_login.md         # 로그인 TC 20건
+├── testcase_mcp-integration.md  # MCP 통합 TC 30건
+├── testcase_e2e-playwright.md   # E2E Playwright TC
+├── testcase_api-testing.md      # API TC 20건
+├── testcase_bug-report.md       # 버그 리포트 TC
+├── testcase_performance.md      # 성능 TC
+├── testcase_security.md         # 보안 TC
+├── testcase_accessibility.md    # 접근성 TC
+├── testcase_regression.md       # 회귀 TC
+├── testcase_mobile.md           # 모바일 TC
+├── testcase_notification.md     # Slack 알림 TC 20건
+├── testcase_cicd.md             # CI/CD TC 20건
+├── testcase_notion.md           # Notion 연동 TC 20건
+│
+├── playwright-tests/         # E2E 자동화 스크립트
+├── e2e-scenarios/            # E2E 시나리오 문서
+├── test-cases/               # 초기 TC 샘플 (auth/cart/search-api)
+├── skills/                   # QA 역량 문서
+├── docs/                     # 면접준비, 아키텍처, KPI 문서
+└── screenshots/              # 테스트 결과 스크린샷
 ```
 
 ---
 
-## MCP 설정 가이드
+## MCP 설정 가이드 (claude_desktop_config.json)
 
 ```json
 {
