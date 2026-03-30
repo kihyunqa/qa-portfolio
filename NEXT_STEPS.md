@@ -12,7 +12,7 @@
 
 ---
 
-## ✅ 검증 완료된 실제 현황 (2026-03-30 최종)
+## ✅ 검증 완료된 실제 현황 (2026-03-31 최종)
 
 ### 파일 구조 실제 수치 (부풀리기 금지)
 
@@ -27,6 +27,15 @@
 | test-cases/ | **6개** | test-cases/ |
 | GitHub Actions | **2개** | .github/workflows/ |
 | 전체 파일 수 | **80개+** | 전체 레포 |
+
+### index.html 현재 표시 수치 (2026-03-31 업데이트 완료)
+
+| 항목 | 현재 표시값 |
+|------|------------|
+| Playwright spec 수 | **12개** ✅ |
+| TC 건수 | **145건+** ✅ |
+| 파일 수 | **80개+** ✅ |
+| MCP 서버 수 | **5개** ✅ |
 
 ### MCP 5개 연동 — 실제 작동 확인
 
@@ -62,6 +71,7 @@
 | STEP 7 | docs/ai-qa-vision, jira-mcp-plan, qa-onboarding, README 전면 업데이트 | 2026-03-30 |
 | STEP 8 | testcase_regression 20건 전면 보강, screenshots/PROOF.md, weekly-report 템플릿 | 2026-03-30 |
 | STEP 9 | mcp-portfolio.spec.js 강화 (포트폴리오 실제 E2E), cover-letter.md | 2026-03-30 |
+| STEP 13 | index.html 숫자 업데이트: spec 11→12, TC 150→145, 파일 50+→80+ / 두플 태그 "MCP 자동화 도입" 삭제 확인 | 2026-03-31 |
 
 ---
 
@@ -99,19 +109,6 @@ docs/jira-mcp-plan.md 참고
 2. 이력서에 포트폴리오 링크 추가: https://kihyunqa.github.io/qa-portfolio
 3. 커버레터: docs/cover-letter.md 활용
 4. 면접 준비: docs/interview-qa.md + docs/interview-qa-advanced.md
-```
-
-### STEP 13 — 포트폴리오 사이트 개선
-
-```
-현재 미반영 수치:
-  - spec 수: index.html에 "8개"로 표시 → 실제 12개로 업데이트
-  - TC 수: 125건+ → 실제 회귀 TC 20건 추가로 145건+
-  - 파일 수: 70개+ → 80개+로 업데이트
-
-방법: index.html은 60KB라 MCP API 한도 초과됨
-  → GitHub 웹 편집기(연필 아이콘)에서 Ctrl+H 찾기/바꾸기로 수정
-  → 또는 이 Claude가 create_or_update_file 도구로 시도 (성공한 적 있음)
 ```
 
 ---
@@ -158,4 +155,4 @@ slack:slack_get_channel_history(channel_id="C0AQFJXC800", limit=5)
 
 ---
 
-*최종 업데이트: 2026-03-30 · STEP 9까지 완료 · 다음: STEP 10 (스크린샷 PNG 추가) 또는 STEP 11 (Jira MCP)*
+*최종 업데이트: 2026-03-31 · STEP 13까지 완료 · 다음: STEP 10 (스크린샷 PNG 추가) 또는 STEP 11 (Jira MCP)*
