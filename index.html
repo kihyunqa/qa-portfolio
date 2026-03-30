@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>성기현 · QA Engineer</title>
-<meta name="description" content="6년 9개월 QA 엔지니어. Claude MCP 5개 실제 연동 완료. TC 210건+ 자동 생성, Playwright spec 13개, 코드 0줄.">
+<meta name="description" content="6년 9개월 QA 엔지니어. Claude MCP 5개 실제 연동 완료. TC 125건+ 자동 생성, Playwright spec 8개, GitHub Actions 2개 운영. 코드 0줄.">
 <meta property="og:title" content="성기현 · QA Engineer · Claude MCP 자동화">
-<meta property="og:description" content="6년 9개월 QA + Claude MCP 실제 연동. filesystem·playwright·github·notion·slack 5개 서버. TC 210건+. 코드 0줄.">
+<meta property="og:description" content="6년 9개월 QA + Claude MCP 실제 연동. filesystem·playwright·github·notion·slack 5개 서버. TC 125건+. 코드 0줄.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://kihyunqa.github.io/qa-portfolio">
 <meta name="twitter:card" content="summary_large_image">
@@ -112,6 +112,8 @@ section{padding:96px 56px;position:relative;z-index:2}
 .proof-title{font-size:16px;font-weight:700;margin-bottom:8px;display:flex;align-items:center;gap:10px}
 .proof-desc{font-size:13px;color:var(--muted);line-height:1.75;margin-bottom:14px}
 .proof-detail{font-family:var(--mono);font-size:11px;color:var(--green);background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.2);padding:10px 14px;line-height:1.8}
+.proof-link{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:10px;color:var(--purple);text-decoration:none;border:1px solid var(--p-border);padding:6px 12px;margin-top:12px;transition:.2s;letter-spacing:.04em}
+.proof-link:hover{background:var(--p-muted);border-color:var(--purple)}
 .roadmap-sec{background:var(--bg2);border-top:1px solid var(--p-border)}
 .roadmap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .roadmap-card{border:1px solid var(--p-border);padding:24px;transition:all .3s;position:relative}
@@ -281,7 +283,7 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:
   <div class="hero-stats">
     <div><div class="stat-n">6.9<span style="font-size:18px">yr</span></div><div class="stat-l">QA 경력</div></div>
     <div><div class="stat-n">5<span style="font-size:18px">+</span></div><div class="stat-l">MCP 연동</div></div>
-    <div><div class="stat-n">13</div><div class="stat-l">Playwright spec</div></div>
+    <div><div class="stat-n">8</div><div class="stat-l">Playwright spec</div></div>
     <div><div class="stat-n">∞</div><div class="stat-l">확장 가능성</div></div>
   </div>
 </section>
@@ -292,8 +294,8 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:
   <div class="stats-grid reveal">
     <div class="stat-card"><div class="stat-big">5</div><div class="stat-desc">실제 연동된 MCP 서버</div><div class="stat-sub">filesystem·playwright·github·notion·slack</div></div>
     <div class="stat-card"><div class="stat-big">0</div><div class="stat-desc">작성한 코드 줄 수</div><div class="stat-sub">ZERO CODE · ALL CONVERSATION</div></div>
-    <div class="stat-card"><div class="stat-big">210<span class="stat-unit">+</span></div><div class="stat-desc">자동 생성된 테스트케이스</div><div class="stat-sub">14개 파일 · 전 카테고리 커버</div></div>
-    <div class="stat-card"><div class="stat-big">13</div><div class="stat-desc">Playwright spec 파일</div><div class="stat-sub">login·search·cart·api·security·+8</div></div>
+    <div class="stat-card"><div class="stat-big">125<span class="stat-unit">+</span></div><div class="stat-desc">자동 생성된 테스트케이스</div><div class="stat-sub">20개 파일 · 전 카테고리 커버</div></div>
+    <div class="stat-card"><div class="stat-big">2</div><div class="stat-desc">GitHub Actions 운영 중</div><div class="stat-sub">qa-notify.yml · pr-tc-review.yml</div></div>
   </div>
 </section>
 
@@ -311,8 +313,8 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:
       <div class="pipeline">
         <div class="pipe-step"><div class="pipe-dot"></div><div><div class="pipe-name">기능 명세 입력 <span class="badge badge-done">완료</span></div><div class="pipe-desc">Claude에게 자연어로 명세 전달</div></div></div>
         <div class="pipe-step"><div class="pipe-dot"></div><div><div class="pipe-name">TC 자동 생성 + 저장 <span class="badge badge-done">완료</span></div><div class="pipe-desc">filesystem MCP → 해피패스·네거티브·엣지케이스 전 카테고리</div></div></div>
-        <div class="pipe-step"><div class="pipe-dot"></div><div><div class="pipe-name">E2E 브라우저 테스트 <span class="badge badge-done">완료</span></div><div class="pipe-desc">playwright MCP → 13개 spec · 시나리오 실행 + 스크린샷</div></div></div>
-        <div class="pipe-step"><div class="pipe-dot"></div><div><div class="pipe-name">GitHub 자동 커밋 <span class="badge badge-done">완료</span></div><div class="pipe-desc">github MCP → 커밋 + 파일 업로드 + Actions</div></div></div>
+        <div class="pipe-step"><div class="pipe-dot"></div><div><div class="pipe-name">E2E 브라우저 테스트 <span class="badge badge-done">완료</span></div><div class="pipe-desc">playwright MCP → 8개 spec · 시나리오 실행 + 스크린샷</div></div></div>
+        <div class="pipe-step"><div class="pipe-dot"></div><div><div class="pipe-name">GitHub 자동 커밋 <span class="badge badge-done">완료</span></div><div class="pipe-desc">github MCP → 커밋 + 파일 업로드 + Actions 2개 운영</div></div></div>
         <div class="pipe-step"><div class="pipe-dot"></div><div><div class="pipe-name">Notion 문서화 <span class="badge badge-live">실제 연동</span></div><div class="pipe-desc">notion MCP → TC 결과 자동 문서화 + 페이지 자동 생성</div></div></div>
         <div class="pipe-step"><div class="pipe-dot"></div><div><div class="pipe-name">Slack 알림 발송 <span class="badge badge-live">실제 연동</span></div><div class="pipe-desc">slack MCP → QA 완료 알림 채널 자동 전송</div></div></div>
       </div>
@@ -326,15 +328,15 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:
     <div class="mcp-card"><div class="mc-icon">💬</div><div class="mc-name">slack MCP <span class="badge badge-live" style="font-size:9px;padding:2px 6px">실제 연동</span></div><div class="mc-desc">QA 완료 알림 Slack 채널 자동 발송.</div></div>
   </div>
   <div class="terminal reveal">
-    <div class="t-bar"><div class="t-dot" style="background:#ff5f57"></div><div class="t-dot" style="background:#febc2e"></div><div class="t-dot" style="background:#28c840"></div><span class="t-bar-title">claude-desktop — 5 MCP servers · TC 210건+ · Playwright 13 specs</span></div>
+    <div class="t-bar"><div class="t-dot" style="background:#ff5f57"></div><div class="t-dot" style="background:#febc2e"></div><div class="t-dot" style="background:#28c840"></div><span class="t-bar-title">claude-desktop — 5 MCP servers · TC 125건+ · Playwright 8 specs · Actions 2개</span></div>
     <div class="t-body">
       <div class="t-line"><span class="t-prompt">❯</span><span class="t-cmd">TC 만들고 E2E 돌리고 GitHub 커밋하고 Notion에 문서화하고 Slack 알림까지 해줘</span></div>
-      <div class="t-line" style="margin-top:4px"><span class="t-out">filesystem 통합 사용함 ··· TC 14개 카테고리 파일 생성 완료 (210건+)</span></div>
-      <div class="t-line"><span class="t-out">playwright 통합 사용함 ··· 13개 spec 실행 → 스크린샷 저장</span></div>
+      <div class="t-line" style="margin-top:4px"><span class="t-out">filesystem 통합 사용함 ··· TC 20개 파일 생성 완료 (125건+)</span></div>
+      <div class="t-line"><span class="t-out">playwright 통합 사용함 ··· 8개 spec 실행 → 스크린샷 저장</span></div>
       <div class="t-line"><span class="t-out">github 통합 사용함 ··· </span><span class="t-ok">main 브랜치 커밋 완료 ✓</span></div>
       <div class="t-line"><span class="t-out">notion 통합 사용함 ··· QA Portfolio 페이지 TC 자동 기록 완료 ✓</span></div>
       <div class="t-line"><span class="t-out">slack 통합 사용함 ··· 새-채널 QA 완료 알림 발송 완료 ✓</span></div>
-      <div class="t-line" style="margin-top:8px"><span class="t-comment"># 코드 0줄. 대화 1번. MCP 5개. TC 210건+. 전부 실제로 됐다.</span></div>
+      <div class="t-line" style="margin-top:8px"><span class="t-comment"># 코드 0줄. 대화 1번. MCP 5개. TC 125건+. 전부 실제로 됐다.</span></div>
       <div class="t-line" style="margin-top:4px"><span class="t-prompt">❯</span><span class="t-cursor"></span></div>
     </div>
   </div>
@@ -358,28 +360,31 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:
         ✓ 해피패스·네거티브·엣지케이스 분류 기록<br>
         ✓ 코드 0줄 · 대화 1번 · Notion 실제 반영
       </div>
+      <a href="https://github.com/kihyunqa/qa-portfolio/blob/main/testcase_mcp-integration.md" target="_blank" class="proof-link">MCP TC 파일 보기 ↗</a>
     </div>
     <div class="proof-card">
       <div class="proof-icon">🐙</div>
       <div class="proof-title">GitHub MCP 실제 커밋 <span class="badge badge-live">LIVE</span></div>
-      <div class="proof-desc">이 포트폴리오 페이지 자체가 github MCP로 커밋됐습니다. 모든 파일 — index.html, README, TC 14개 파일, spec 13개 — 전부 대화로만 만들어졌습니다.</div>
+      <div class="proof-desc">이 포트폴리오 페이지 자체가 github MCP로 커밋됐습니다. 모든 파일 — index.html, README, TC 20개 파일, spec 8개 — 전부 대화로만 만들어졌습니다.</div>
       <div class="proof-detail">
         ✓ kihyunqa/qa-portfolio 레포 실제 운영 중<br>
         ✓ 파일 50개+ 전부 MCP 커밋<br>
         ✓ GitHub Pages 배포 완료<br>
-        ✓ GitHub Actions 자동화 운영 중
+        ✓ GitHub Actions 2개 자동화 운영 중
       </div>
+      <a href="https://github.com/kihyunqa/qa-portfolio/commits/main" target="_blank" class="proof-link">실제 커밋 히스토리 ↗</a>
     </div>
     <div class="proof-card">
       <div class="proof-icon">🎭</div>
       <div class="proof-title">playwright MCP 실제 실행 <span class="badge badge-live">LIVE</span></div>
-      <div class="proof-desc">playwright MCP를 통해 브라우저를 직접 조작하는 E2E 테스트 시나리오를 실행했습니다. 13개 spec 파일로 로그인·결제·보안·접근성·성능까지 전 영역 커버.</div>
+      <div class="proof-desc">playwright MCP를 통해 브라우저를 직접 조작하는 E2E 테스트 시나리오를 실행했습니다. 8개 spec 파일로 로그인·결제·보안·접근성·성능까지 전 영역 커버.</div>
       <div class="proof-detail">
-        ✓ 13개 spec 실행 가능한 실제 코드<br>
-        ✓ login/search/cart/api/payment/security/signup/notification/mcp-portfolio<br>
-        ✓ helpers/page-objects.js (POM 구조)<br>
+        ✓ 8개 spec 실행 가능한 실제 코드<br>
+        ✓ login/search/cart/api/payment/security/performance/accessibility<br>
+        ✓ playwright.config.js 설정 완료<br>
         ✓ 스크린샷 자동 캡처 설정
       </div>
+      <a href="https://github.com/kihyunqa/qa-portfolio/tree/main/playwright-tests" target="_blank" class="proof-link">spec 파일 직접 보기 ↗</a>
     </div>
     <div class="proof-card">
       <div class="proof-icon">💬</div>
@@ -391,6 +396,7 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:
         ✓ GitHub Actions → Slack 자동 알림 연결<br>
         ✓ SLACK_BOT_TOKEN secret 설정 완료
       </div>
+      <a href="https://github.com/kihyunqa/qa-portfolio/blob/main/.github/workflows/main.yml" target="_blank" class="proof-link">Actions workflow 보기 ↗</a>
     </div>
   </div>
 </section>
@@ -399,14 +405,14 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:
 <section class="projects-sec" id="projects">
   <div class="sec-head reveal"><span class="sec-n">03</span><h2 class="sec-t">프로젝트 카드 (10개 · 전체 구현 완료)</h2><div class="sec-line"></div></div>
   <div class="projects-grid">
-    <div class="proj-card reveal"><div class="proj-num">PROJECT 01 · <span class="badge badge-done" style="font-size:9px;padding:2px 8px">구현 완료</span></div><div class="proj-icon">🤖</div><div class="proj-title">TC 자동생성 워크플로우</div><div class="proj-desc">기능 명세 입력 → Claude가 해피패스·네거티브·엣지케이스 자동 생성 → 로컬 저장 → GitHub 커밋. 현재 210건+ 누적.</div><div class="proj-flow"><span class="proj-flow-step">기능명세 입력</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">TC 자동 생성</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">로컬 저장</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">GitHub</span></div><div class="proj-tags"><span class="proj-tag proj-tag-p">filesystem MCP</span><span class="proj-tag proj-tag-p">github MCP</span></div><div class="proj-links"><a href="https://github.com/kihyunqa/qa-portfolio/blob/main/testcase_login.md" target="_blank" class="proj-link">TC 파일 보기 ↗</a></div></div>
+    <div class="proj-card reveal"><div class="proj-num">PROJECT 01 · <span class="badge badge-done" style="font-size:9px;padding:2px 8px">구현 완료</span></div><div class="proj-icon">🤖</div><div class="proj-title">TC 자동생성 워크플로우</div><div class="proj-desc">기능 명세 입력 → Claude가 해피패스·네거티브·엣지케이스 자동 생성 → 로컬 저장 → GitHub 커밋. 현재 125건+ 누적.</div><div class="proj-flow"><span class="proj-flow-step">기능명세 입력</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">TC 자동 생성</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">로컬 저장</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">GitHub</span></div><div class="proj-tags"><span class="proj-tag proj-tag-p">filesystem MCP</span><span class="proj-tag proj-tag-p">github MCP</span></div><div class="proj-links"><a href="https://github.com/kihyunqa/qa-portfolio/blob/main/testcase_login.md" target="_blank" class="proj-link">TC 파일 보기 ↗</a></div></div>
     <div class="proj-card reveal"><div class="proj-num">PROJECT 02 · <span class="badge badge-done" style="font-size:9px;padding:2px 8px">구현 완료</span></div><div class="proj-icon">🔀</div><div class="proj-title">QA 대응 프로세스 + 브랜치 전략</div><div class="proj-desc">main / develop / feature 브랜치 구조에서 QA 개입 시점 정의. GitHub MCP로 브랜치·PR·커밋 대화로 처리.</div><div class="branch-vis"><div><span class="branch-main">main</span>    <span class="branch-dim">──●──────────●──</span> <span class="branch-dim"># 릴리즈</span></div><div><span class="branch-dev">develop</span> <span class="branch-dim">────●────●──</span>    <span class="branch-dim"># 회귀 검증</span></div><div><span class="branch-feat">feature</span> <span class="branch-dim">──────●──</span>      <span class="branch-dim"># 선행 검토</span></div></div><div class="proj-tags"><span class="proj-tag proj-tag-p">github MCP</span><span class="proj-tag">브랜치 전략</span></div></div>
     <div class="proj-card reveal"><div class="proj-num">PROJECT 03 · <span class="badge badge-done" style="font-size:9px;padding:2px 8px">구현 완료</span></div><div class="proj-icon">⚡</div><div class="proj-title">오케스트레이션 하네스 구축</div><div class="proj-desc">여러 MCP 도구를 자유롭게 조합하는 파이프라인 빌더. Claude-in-Claude 방식으로 각 단계가 이전 결과를 컨텍스트로 받아 체이닝 실행.</div><div class="proj-flow"><span class="proj-flow-step">노드 조합</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">파이프라인 실행</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">결과 체이닝</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">내보내기</span></div><div class="proj-tags"><span class="proj-tag proj-tag-p">Claude-in-Claude</span><span class="proj-tag proj-tag-p">Multi-MCP</span></div></div>
     <div class="proj-card reveal"><div class="proj-num">PROJECT 04 · <span class="badge badge-done" style="font-size:9px;padding:2px 8px">구현 완료</span></div><div class="proj-icon">⚙️</div><div class="proj-title">Claude Code 환경 세팅 + Skill 지침</div><div class="proj-desc">Skill 파일로 반복 패턴을 지침화. MCP 서버 연결 + QA 특화 프롬프트 구조 정의. 한 번으로 전체 적용.</div><div class="proj-flow"><span class="proj-flow-step">Claude Code 설치</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">MCP 연결</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">Skill 정의</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">자동화 적용</span></div><div class="proj-tags"><span class="proj-tag proj-tag-p">Claude Code</span><span class="proj-tag proj-tag-p">Skill 지침</span></div></div>
-    <div class="proj-card reveal"><div class="proj-num">PROJECT 05 · <span class="badge badge-done" style="font-size:9px;padding:2px 8px">구현 완료</span></div><div class="proj-icon">📢</div><div class="proj-title">버그 리포트 + 문서화 파이프라인</div><div class="proj-desc">버그 발견 → Claude 분석 → 버그 리포트 자동 작성 → 파일 저장 → 개발팀 전달.</div><div class="proj-flow"><span class="proj-flow-step">버그 발견</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">Claude 분석</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">리포트 생성</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">파일 저장</span></div><div class="proj-tags"><span class="proj-tag proj-tag-p">filesystem MCP</span><span class="proj-tag">버그 리포트</span></div></div>
+    <div class="proj-card reveal"><div class="proj-num">PROJECT 05 · <span class="badge badge-done" style="font-size:9px;padding:2px 8px">구현 완료</span></div><div class="proj-icon">📢</div><div class="proj-title">버그 리포트 + 문서화 파이프라인</div><div class="proj-desc">버그 발견 → Claude 분석 → 버그 리포트 자동 작성 → 파일 저장 → 개발팀 전달.</div><div class="proj-flow"><span class="proj-flow-step">버그 발견</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">Claude 분석</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">리포트 생성</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">파일 저장</span></div><div class="proj-tags"><span class="proj-tag proj-tag-p">filesystem MCP</span><span class="proj-tag">버그 리포트</span></div><div class="proj-links"><a href="https://github.com/kihyunqa/qa-portfolio/blob/main/docs/bug-report-template.md" target="_blank" class="proj-link">버그 리포트 양식 ↗</a></div></div>
     <div class="proj-card reveal"><div class="proj-num">PROJECT 06 · <span class="badge badge-done" style="font-size:9px;padding:2px 8px">구현 완료</span></div><div class="proj-icon">🐛</div><div class="proj-title">버그 심각도 분류 자동화</div><div class="proj-desc">버그 데이터를 Claude가 자동 분류. P1·P2·P3 심각도 기준 분류 + 재현 경로 분석 + 담당자별 현황 파악.</div><div class="proj-flow"><span class="proj-flow-step">버그 수집</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">심각도 분류</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">담당자 현황</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">리포트</span></div><div class="proj-tags"><span class="proj-tag proj-tag-p">버그 분석</span><span class="proj-tag">심각도 분류</span></div></div>
-    <div class="proj-card reveal"><div class="proj-num">PROJECT 07 · <span class="badge badge-done" style="font-size:9px;padding:2px 8px">구현 완료</span></div><div class="proj-icon">🎭</div><div class="proj-title">playwright E2E 자동화 — 13 spec</div><div class="proj-desc">13개 spec 파일로 로그인·결제·보안·접근성·성능·알림까지 전 영역 E2E 커버. POM(page object model) 구조 적용.</div><div class="proj-flow"><span class="proj-flow-step">시나리오 정의</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">브라우저 조작</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">결과 검증</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">스크린샷</span></div><div class="proj-tags"><span class="proj-tag proj-tag-p">playwright MCP</span><span class="proj-tag">E2E 13 spec</span><span class="proj-tag">POM</span></div><div class="proj-links"><a href="https://github.com/kihyunqa/qa-portfolio/tree/main/playwright-tests" target="_blank" class="proj-link">spec 파일 보기 ↗</a></div></div>
-    <div class="proj-card reveal"><div class="proj-num">PROJECT 08 · <span class="badge badge-done" style="font-size:9px;padding:2px 8px">구현 완료</span></div><div class="proj-icon">📋</div><div class="proj-title">QA 자동화 리포트 + README 문서화</div><div class="proj-desc">github/filesystem MCP로 레포 전체 구조화. README v4.0 + QA 리포트 + CHANGELOG v5.0 자동 작성.</div><div class="proj-flow"><span class="proj-flow-step">레포 설계</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">README 작성</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">QA 리포트</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">CHANGELOG</span></div><div class="proj-tags"><span class="proj-tag proj-tag-p">github MCP</span><span class="proj-tag proj-tag-p">filesystem MCP</span></div><div class="proj-links"><a href="https://github.com/kihyunqa/qa-portfolio/blob/main/README.md" target="_blank" class="proj-link">README ↗</a></div></div>
+    <div class="proj-card reveal"><div class="proj-num">PROJECT 07 · <span class="badge badge-done" style="font-size:9px;padding:2px 8px">구현 완료</span></div><div class="proj-icon">🎭</div><div class="proj-title">playwright E2E 자동화 — 8 spec</div><div class="proj-desc">8개 spec 파일로 로그인·결제·보안·접근성·성능까지 전 영역 E2E 커버. playwright.config.js 설정 완료.</div><div class="proj-flow"><span class="proj-flow-step">시나리오 정의</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">브라우저 조작</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">결과 검증</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">스크린샷</span></div><div class="proj-tags"><span class="proj-tag proj-tag-p">playwright MCP</span><span class="proj-tag">E2E 8 spec</span></div><div class="proj-links"><a href="https://github.com/kihyunqa/qa-portfolio/tree/main/playwright-tests" target="_blank" class="proj-link">spec 파일 보기 ↗</a></div></div>
+    <div class="proj-card reveal"><div class="proj-num">PROJECT 08 · <span class="badge badge-done" style="font-size:9px;padding:2px 8px">구현 완료</span></div><div class="proj-icon">📋</div><div class="proj-title">QA 자동화 리포트 + README 문서화</div><div class="proj-desc">github/filesystem MCP로 레포 전체 구조화. README + QA 리포트 + CHANGELOG v3.0 + QA 전략 문서 자동 작성.</div><div class="proj-flow"><span class="proj-flow-step">레포 설계</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">README 작성</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">QA 리포트</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">CHANGELOG</span></div><div class="proj-tags"><span class="proj-tag proj-tag-p">github MCP</span><span class="proj-tag proj-tag-p">filesystem MCP</span></div><div class="proj-links"><a href="https://github.com/kihyunqa/qa-portfolio/blob/main/README.md" target="_blank" class="proj-link">README ↗</a></div></div>
     <div class="proj-card reveal"><div class="proj-num">PROJECT 09 · <span class="badge badge-live" style="font-size:9px;padding:2px 8px">실제 연동</span></div><div class="proj-icon">📝</div><div class="proj-title">Notion MCP 연동 — TC 결과 자동 문서화</div><div class="proj-desc">Notion MCP로 TC 결과물을 자동 문서화. 테스트 완료 후 Notion 페이지를 자동 생성하여 팀 전체가 QA 현황을 실시간 확인.</div><div class="proj-flow"><span class="proj-flow-step">TC 결과 수집</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">Claude 분석</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">Notion 페이지 생성</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">팀 공유</span></div><div class="proj-tags"><span class="proj-tag proj-tag-g">notion MCP 실제 연동</span><span class="proj-tag">TC 결과 문서화</span></div></div>
     <div class="proj-card reveal"><div class="proj-num">PROJECT 10 · <span class="badge badge-live" style="font-size:9px;padding:2px 8px">실제 연동</span></div><div class="proj-icon">💬</div><div class="proj-title">Slack MCP 연동 — QA 알림 자동화</div><div class="proj-desc">Slack MCP + GitHub Actions 이중 연동. QA 완료 시 새-채널 자동 알림. TC 파일 push 감지 → Actions → Slack 완전 자동 파이프라인.</div><div class="proj-flow"><span class="proj-flow-step">QA 완료</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">MCP 알림</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">GitHub Actions</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">새-채널</span></div><div class="proj-tags"><span class="proj-tag proj-tag-g">slack MCP 실제 연동</span><span class="proj-tag">GitHub Actions</span></div></div>
   </div>
@@ -418,7 +424,7 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:
   <div class="diagram-wrap reveal">
     <div><div class="diag-section-label">TRIGGER — 입력</div><div class="diagram-row"><div class="diag-node"><div class="diag-box done">기능 명세 입력</div><div class="diag-label">자연어 명령</div></div><div class="diag-arrow">→</div><div class="diag-node"><div class="diag-box done">Claude 수신</div><div class="diag-label">Claude Desktop</div></div><div class="diag-arrow">→</div><div class="diag-node"><div class="diag-box done">MCP 라우팅</div><div class="diag-label">5개 서버 연결</div></div></div></div>
     <div style="text-align:center"><div class="diag-arrow-down">↓</div></div>
-    <div><div class="diag-section-label">EXECUTION — 실행</div><div class="diagram-row"><div class="diag-node"><div class="diag-box done">TC 생성</div><div class="diag-label">210건+ 자동생성</div></div><div class="diag-arrow">→</div><div class="diag-node"><div class="diag-box done">E2E 테스트</div><div class="diag-label">playwright 13 spec</div></div><div class="diag-arrow">→</div><div class="diag-node"><div class="diag-box done">GitHub 커밋</div><div class="diag-label">github MCP</div></div></div></div>
+    <div><div class="diag-section-label">EXECUTION — 실행</div><div class="diagram-row"><div class="diag-node"><div class="diag-box done">TC 생성</div><div class="diag-label">125건+ 자동생성</div></div><div class="diag-arrow">→</div><div class="diag-node"><div class="diag-box done">E2E 테스트</div><div class="diag-label">playwright 8 spec</div></div><div class="diag-arrow">→</div><div class="diag-node"><div class="diag-box done">GitHub 커밋</div><div class="diag-label">github MCP</div></div></div></div>
     <div style="text-align:center"><div class="diag-arrow-down">↓</div></div>
     <div><div class="diag-section-label">OUTPUT — 문서화 &amp; 전달</div><div class="diagram-row"><div class="diag-node"><div class="diag-box done">버그 리포트</div><div class="diag-label">재현 분석</div></div><div class="diag-arrow">→</div><div class="diag-node"><div class="diag-box done">심각도 분류</div><div class="diag-label">P1·P2·P3</div></div><div class="diag-arrow">→</div><div class="diag-node"><div class="diag-box done" style="border-color:var(--green);background:rgba(16,185,129,.08)">Notion 문서화 ✓</div><div class="diag-label">notion MCP 실제</div></div><div class="diag-arrow">→</div><div class="diag-node"><div class="diag-box done" style="border-color:var(--purple);background:rgba(168,85,247,.12)">Slack 알림 ✓</div><div class="diag-label">slack MCP 실제</div></div></div></div>
   </div>
@@ -429,7 +435,7 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:
   <div class="sec-head reveal"><span class="sec-n">05</span><h2 class="sec-t">다음 MCP 연동 로드맵</h2><div class="sec-line"></div></div>
   <p style="font-size:15px;color:var(--muted);line-height:1.85;max-width:580px;margin-bottom:40px" class="reveal">실제 연동 완료된 5개를 기반으로 더 많은 MCP를 연결해 나갑니다.</p>
   <div class="roadmap-grid reveal">
-    <div class="roadmap-card done"><div class="rm-num">PHASE 1 · 완료</div><div class="rm-icon">✅</div><div class="rm-title">Core 5 MCP 연동</div><div class="rm-desc">filesystem · playwright · github · notion · slack 실제 연동 완료. TC 210건+ · Playwright 13 spec · GitHub Actions 운영 중.</div></div>
+    <div class="roadmap-card done"><div class="rm-num">PHASE 1 · 완료</div><div class="rm-icon">✅</div><div class="rm-title">Core 5 MCP 연동</div><div class="rm-desc">filesystem · playwright · github · notion · slack 실제 연동 완료. TC 125건+ · Playwright 8 spec · GitHub Actions 2개 운영 중.</div></div>
     <div class="roadmap-card next"><div class="rm-num">PHASE 2 · 진행 예정</div><div class="rm-icon">🔜</div><div class="rm-title">Ticketing MCP</div><div class="rm-desc">Jira MCP 연동 → 버그 티켓 자동 생성 및 스프린트 분석. Linear MCP 연동 → 이슈 트래킹 자동화.</div></div>
     <div class="roadmap-card future"><div class="rm-num">PHASE 3 · 계획</div><div class="rm-icon">🗓️</div><div class="rm-title">Scheduling &amp; Reporting MCP</div><div class="rm-desc">Google Calendar MCP → 릴리즈 QA 일정 자동 배분. Gmail MCP → 이해관계자 QA 리포트 자동 발송.</div></div>
   </div>
@@ -437,24 +443,24 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:
 
 <!-- TC -->
 <section id="tc" style="background:var(--bg2);border-top:1px solid var(--p-border)">
-  <div class="sec-head reveal"><span class="sec-n">06</span><h2 class="sec-t">자동생성 테스트케이스 — 210건+</h2><div class="sec-line"></div></div>
-  <p class="tc-intro reveal">Claude MCP로 자동 생성된 TC 210건+. 로그인·API·보안·성능·접근성·모바일·CI/CD·Notion·Slack 알림 전 카테고리 커버.</p>
+  <div class="sec-head reveal"><span class="sec-n">06</span><h2 class="sec-t">자동생성 테스트케이스 — 125건+</h2><div class="sec-line"></div></div>
+  <p class="tc-intro reveal">Claude MCP로 자동 생성된 TC 125건+. 로그인·API·보안·성능·접근성·장바구니·검색·결제 전 카테고리 커버. test-cases/, playwright-tests/ 두 곳에서 관리.</p>
   <div class="tc-wrap reveal">
     <table class="tc-table">
       <thead><tr><th>TC-ID</th><th>구분</th><th>테스트 제목</th><th>기대 결과</th><th>우선순위</th></tr></thead>
       <tbody>
-        <tr><td>TC-HP-001</td><td><span class="tc-type h">해피패스</span></td><td>정상 로그인</td><td>메인 화면으로 이동</td><td><span class="p1">P1</span></td></tr>
-        <tr><td>TC-HP-002</td><td><span class="tc-type h">해피패스</span></td><td>이메일 대소문자 무관 로그인</td><td>로그인 성공</td><td><span class="p2">P2</span></td></tr>
-        <tr><td>TC-NG-001</td><td><span class="tc-type n">네거티브</span></td><td>잘못된 비밀번호 5회 연속 입력</td><td>계정 잠금 처리</td><td><span class="p1">P1</span></td></tr>
-        <tr><td>TC-NG-002</td><td><span class="tc-type n">네거티브</span></td><td>존재하지 않는 이메일 입력</td><td>에러 메시지 표시</td><td><span class="p1">P1</span></td></tr>
+        <tr><td>AUTH-001</td><td><span class="tc-type h">해피패스</span></td><td>유효한 자격증명으로 로그인</td><td>/dashboard 리다이렉트</td><td><span class="p1">P1</span></td></tr>
+        <tr><td>AUTH-005</td><td><span class="tc-type h">해피패스</span></td><td>로그아웃 실행</td><td>/login 리다이렉트, 세션 해제</td><td><span class="p1">P1</span></td></tr>
+        <tr><td>AUTH-007</td><td><span class="tc-type n">네거티브</span></td><td>5회 로그인 실패 후 계정 잠금</td><td>계정 잠금 또는 인증 요청</td><td><span class="p1">P1</span></td></tr>
+        <tr><td>CART-001</td><td><span class="tc-type h">해피패스</span></td><td>상품 장바구니 추가</td><td>장바구니 아이콘 숫자 +1</td><td><span class="p1">P1</span></td></tr>
+        <tr><td>API-S-006</td><td><span class="tc-type e">엣지케이스</span></td><td>특수문자 검색</td><td>안전 처리된 결과</td><td><span class="p1">P1</span></td></tr>
         <tr><td>TC-NOTIF-HP-001</td><td><span class="tc-type h">해피패스</span></td><td>QA 완료 Slack 알림 정상 발송</td><td>새-채널에 메시지 수신 확인</td><td><span class="p1">P1</span></td></tr>
         <tr><td>TC-CICD-HP-001</td><td><span class="tc-type h">해피패스</span></td><td>TC push 시 Actions 자동 트리거</td><td>workflow run 생성 확인</td><td><span class="p1">P1</span></td></tr>
-        <tr><td>TC-NOTION-HP-001</td><td><span class="tc-type h">해피패스</span></td><td>TC 결과 페이지 자동 생성</td><td>로그인 기능 TC 페이지 생성됨</td><td><span class="p1">P1</span></td></tr>
-        <tr><td>TC-EC-001</td><td><span class="tc-type e">엣지케이스</span></td><td>SQL Injection 입력값</td><td>차단 및 에러 처리</td><td><span class="p1">P1</span></td></tr>
+        <tr><td>TC-SEC-002</td><td><span class="tc-type n">네거티브</span></td><td>SQL Injection 차단</td><td>로그인 성공 차단, 에러 메시지</td><td><span class="p1">P1</span></td></tr>
       </tbody>
     </table>
   </div>
-  <a href="https://github.com/kihyunqa/qa-portfolio" target="_blank" class="tc-link reveal">전체 TC 파일 보기 (210건+) ↗</a>
+  <a href="https://github.com/kihyunqa/qa-portfolio" target="_blank" class="tc-link reveal">전체 TC 파일 보기 (125건+) ↗</a>
 </section>
 
 <!-- CAREER TIMELINE -->
@@ -551,7 +557,7 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:
 
 <footer>
   <p>© 2026 성기현 · QA Engineer · kihyun.qa@gmail.com</p>
-  <p>Built with Claude MCP · No code written · 5 MCP servers · TC 210건+ · Playwright 13 spec</p>
+  <p>Built with Claude MCP · No code written · 5 MCP servers · TC 125건+ · Playwright 8 spec · Actions 2개</p>
 </footer>
 
 <script>
