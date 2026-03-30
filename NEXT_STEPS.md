@@ -11,7 +11,7 @@
 
 ---
 
-## ✅ 검증 완료된 실제 현황 (2026-03-31 재확인)
+## ✅ 검증 완료된 실제 현황 (2026-03-31 기준)
 
 ### 정확한 수치 (부풀리기 금지)
 
@@ -50,12 +50,13 @@
 | STEP 17-B | test-metrics.md + mcp-architecture.md 오타/수치 수정 | 2026-03-31 |
 | STEP 18 | docs 나머지 5개 파일 수정 완료 ✅ | 2026-03-31 |
 | STEP 19 | 전체 검증 완료 — 모든 수치·파일 재확인 ✅ | 2026-03-31 |
-| STEP 20 | **cover-letter.md 버전 확장** — 1종→3종 (범용/스타트업/대기업) ✅ | 2026-03-31 |
+| STEP 20 | cover-letter.md 버전 확장 — 1종→3종 (범용/스타트업/대기업) ✅ | 2026-03-31 |
+| STEP 21 | **qa-onboarding.md 보강** — MCP 환경 기준 체크리스트 확장, 오타 수정 ✅ | 2026-03-31 |
 
-### STEP 20 작업 내역
+### STEP 21 작업 내역
 | 파일 | 변경 내용 |
 |------|-----------|
-| docs/cover-letter.md | 버전 1개(범용) → 3개(범용·스타트업/IT·대기업/공공) 로 확장. 교체 가이드 테이블 추가. 1039 bytes → 3171 bytes |
+| docs/qa-onboarding.md | `참교`→`참고` 오타 수정. Day1 MCP 세팅 체크리스트 상세화. Week1 Playwright 실행 절차 추가. Week2 실전 기여 섹션 신설. MCP 5개 역할 요약 테이블 추가. 1084 bytes → 3583 bytes |
 
 ---
 
@@ -76,12 +77,20 @@
 ★ 포트폴리오의 "실제 연동 증거"를 텍스트→시각 증거로 업그레이드하는 핵심!
 ```
 
-### STEP 21 — qa-onboarding.md 또는 qa-checklist.md 보강 [Claude 단독 가능]
+### STEP 22 — qa-checklist.md 보강 [Claude 단독 가능]
 
 ```
-현재 qa-onboarding.md(1084 bytes), qa-checklist.md(1971 bytes)가 좀 얇음.
-특히 qa-onboarding.md는 MCP 환경 기준으로 온보딩 가이드가 없음.
-→ MCP 5개 연동된 환경 기준으로 "신규 QA 합류 시 체크리스트" 형태로 보강 가능.
+현재 qa-checklist.md (1971 bytes)가 얇음.
+릴리스 전/후 체크리스트를 MCP 파이프라인 흐름에 맞게 상세화 가능.
+→ 기능테스트 / 회귀 / 성능 / 보안 / 접근성 카테고리별로 나누기
+```
+
+### STEP 23 — ai-qa-vision.md 보강 [Claude 단독 가능]
+
+```
+현재 ai-qa-vision.md (726 bytes) — 가장 얇은 docs 파일.
+AI QA 비전/방향성 문서인데 내용이 너무 짧아 포트폴리오 임팩트가 약함.
+→ MCP 5개 도입 경험 기반으로 "QA + AI의 미래" 관점 내용 보강 가능.
 ```
 
 ### STEP 11 — Jira MCP 연동 [PHASE 2 — 사용자 계정 필요]
@@ -126,4 +135,4 @@ Jira Cloud 무료 계정 → API 토큰 → config 추가 → 테스트
 
 ---
 
-*최종 업데이트: 2026-03-31 · STEP 20 완료 (cover-letter.md 3종 확장) · 다음: STEP 10 (스크린샷) or STEP 21 (qa-onboarding 보강)*
+*최종 업데이트: 2026-03-31 · STEP 21 완료 (qa-onboarding.md 보강) · 다음: STEP 22 (qa-checklist 보강) or STEP 23 (ai-qa-vision 보강) or STEP 10 (스크린샷)*
