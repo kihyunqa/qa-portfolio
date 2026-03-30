@@ -1,55 +1,26 @@
-// @ts-check
+// playwright.config.js — Claude MCP 자동 생성
 const { defineConfig, devices } = require('@playwright/test');
 
-/**
- * Playwright Configuration
- * MCP Portfolio - kihyunqa
- * @see https://playwright.dev/docs/test-configuration
- */
-
 module.exports = defineConfig({
-  testDir: './',
-  fullyParallel: true,
-  forbidOnly: !!process.env.CI,
+  testDir: './playwright-tests',
+  timeout: 30000,
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 1 : undefined,
-
   reporter: [
-    ['list'],
-    ['html', { outputFolder: '../test-results/html-report', open: 'never' }],
-    ['json', { outputFile: '../test-results/results.json' }],
+    ['html', { outputFolder: 'playwright-report' }],
+    ['json', { outputFile: 'test-results/results.json' }],
+    ['list']
   ],
-
   use: {
-    trace: 'on-first-retry',
+    baseURL: process.env.BASE_URL || 'http://localhost:3000',
+    headless: true,
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
-    actionTimeout: 10000,
-    navigationTimeout: 30000,
+    trace: 'on-first-retry',
   },
-
   projects: [
-    {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
-    },
-    {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-    },
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
-    },
-    {
-      name: 'mobile-chrome',
-      use: { ...devices['Pixel 5'] },
-    },
-    {
-      name: 'mobile-safari',
-      use: { ...devices['iPhone 13'] },
-    },
+    { name: 'chromium', use: { ...devices['Desktop Chrome'] } },
+    { name: 'firefox', use: { ...devices['Desktop Firefox'] } },
+    { name: 'mobile', use: { ...devices['iPhone 13'] } },
   ],
-
-  outputDir: '../test-results/artifacts/',
 });
