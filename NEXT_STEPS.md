@@ -26,7 +26,6 @@
 | TC 건수 | **145건+** | testcase_*.md 합산 |
 
 ### MCP 5개 — 실제 작동 확인
-
 | MCP | 상태 |
 |-----|------|
 | filesystem | ✅ |
@@ -43,32 +42,31 @@
 |------|------|--------|
 | STEP 1~9 | MCP 연동, TC 생성, spec 작성, docs 작성 등 | ~2026-03-30 |
 | STEP 13 | index.html 수치 최신화 (12 spec, 145건+, 80개+) | 2026-03-31 |
-| STEP 14 | linkedin-post.md 수치 최신화 ✅ 검증 완료 | 2026-03-31 |
+| STEP 14 | linkedin-post.md 수치 최신화 | 2026-03-31 |
 | STEP 14-B | cover-letter.md 오타 수정 + 수치 반영 | 2026-03-31 |
-| STEP 15 | interview-qa.md 수치 최신화 (TC 30→145건+, spec 4→12개) | 2026-03-31 |
-| STEP 16 | interview-qa-advanced.md 오타 대량 수정 + 수치 최신화 | 2026-03-31 |
-| STEP 17-A | portfolio-summary.md 오타 수정 + 수치 최신화 (TC 125→145건+, spec 10→12개, 파일 60→80개+) | 2026-03-31 |
+| STEP 15 | interview-qa.md 수치 최신화 | 2026-03-31 |
+| STEP 16 | interview-qa-advanced.md 오타 수정 + 수치 최신화 | 2026-03-31 |
+| STEP 17-A | portfolio-summary.md 수치 최신화 | 2026-03-31 |
+| STEP 17-B | test-metrics.md (100건→145건+, spec 최신화) + mcp-architecture.md (오타 수정: 로컈→로컬, #새-삼널→#새-채널, 56건→12개spec/145건+) | 2026-03-31 |
 
 ---
 
 ## 🎯 다음 스텝 (우선순위 순)
 
-### STEP 17-B — docs 나머지 파일 수치 점검 [바로 시작 가능]
+### STEP 18 — docs 나머지 파일 점검 완료 확인 [빠르게 처리 가능]
 
 ```
-아직 확인 안 된 docs/ 파일들 (아래 순서로 get_file_contents 후 수정):
-  1. docs/qa-strategy.md
-  2. docs/test-metrics.md
-  3. docs/qa-kpi-dashboard.md
-  4. docs/mcp-architecture.md
+아래 파일들은 아직 점검 안 됨 (get_file_contents 후 수치/오타 확인):
+  - docs/mcp-setup-guide.md
+  - docs/mcp-workflow-diagram.md
+  - docs/weekly-qa-report-template.md
+  - docs/regression-checklist.md
+  - docs/tools-comparison.md
 
 확인 항목:
-  - "125건" 또는 "150건" → "145건+"
-  - "10개 spec" 또는 "8개 spec" → "12개 spec"
-  - "60개+" → "80개+"
-  - 오타 (코밋→커밋, 즈시→즉시 등)
-
-한 번에 읽고 문제 있으면 수정, 없으면 NEXT_STEPS에 ✅ 표시만
+  - 구 수치 (125건, 150건, 10개 spec, 8개 spec) → 145건+, 12개 spec
+  - 오타 (코밋→커밋, 즈시→즉시, #새-삼널→#새-채널 등)
+  - 문제 없으면 NEXT_STEPS에 ✅ 표시만
 ```
 
 ### STEP 10 — 스크린샷 실제 추가 [임팩트 최대 — 직접 해야 함]
@@ -124,4 +122,4 @@ Jira Cloud 무료 계정 → API 토큰 → config 추가 → 테스트
 
 ---
 
-*최종 업데이트: 2026-03-31 · STEP 17-A 완료 · 다음: STEP 17-B (qa-strategy 등 docs 나머지 점검) → STEP 10 (스크린샷) → STEP 12 (공유)*
+*최종 업데이트: 2026-03-31 · STEP 17-B 완료 · 다음: STEP 18 (docs 나머지 점검) → STEP 10 (스크린샷) → STEP 12 (공유)*
