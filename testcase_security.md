@@ -1,23 +1,30 @@
-# 🔒 Security Test Cases
+# 🔒 보안 테스트 케이스
 
-> MCP Portfolio - kihyunqa | 보안 테스트 케이스
+> QA Portfolio - kihyunqa | Security TC 전체
 
-| TC ID | 테스트 시나리오 | 입력 | 예상 결과 | 심각도 | 상태 |
-|-------|---------------|------|----------|--------|------|
-| TC-SEC-001 | SQL Injection 로그인 시도 | `' OR '1'='1` | 차단 + 에러 | Critical | ✅ PASS |
-| TC-SEC-002 | XSS 스크립트 입력 | `<script>alert(1)</script>` | 필터링 | Critical | ✅ PASS |
-| TC-SEC-003 | 검색상자 XSS 방어 | `<img src=x onerror=alert(1)>` | alert 미발생 | Critical | ✅ PASS |
-| TC-SEC-004 | HTTPS 접속 여부 | HTTP 접속 시도 | HTTPS 리다이렉트 | High | ✅ PASS |
-| TC-SEC-005 | 인증 없이 API 접근 | 토큰 없이 GET | 401 Unauthorized | High | ✅ PASS |
-| TC-SEC-006 | 비밀번호 5회 실패 코인 | 오류 5회 | 코인 측정 | High | ✅ PASS |
-| TC-SEC-007 | 세션 만료 시 자동 로그아웃 | 30분 경과 | 세션 종료 | Medium | ✅ PASS |
-| TC-SEC-008 | URL 직접 접근 (인증 우회) | /dashboard 직접 | 로그인 유도 | High | ✅ PASS |
-| TC-SEC-009 | CORS 헤더 확인 | API 응답 헤더 | Access-Control 헤더 | Medium | ✅ PASS |
-| TC-SEC-010 | 엁울한 계정 접근 차단 | 타 사용자 세션 | 접근 거부 | High | ✅ PASS |
-| TC-SEC-011 | JWT 토큰 만료 | 만료 토큰 사용 | 401 반환 | High | ✅ PASS |
-| TC-SEC-012 | 엁울한 JWT 토큰 | 조작된 토큰 | 401 반환 | Critical | ✅ PASS |
-| TC-SEC-013 | Rate Limiting 확인 | 100회 이상 요청 | 429 Too Many | High | ✅ PASS |
-| TC-SEC-014 | 비밀번호 평문 노출 여부 | 로그 확인 | *** 마스킹 | High | ✅ PASS |
-| TC-SEC-015 | 카드정보 암호화 저장 | DB 조회 | 암호화 확인 | Critical | ✅ PASS |
+## 테스트 케이스 (TC-SEC-001 ~ 020)
 
-**PASS율: 15/15 (100%)**
+| TC ID | 쭴릴 | 테스트 포인트 | 예상 결과 | 우선 | 분류 |
+|-------|------|------------|----------|------|------|
+| TC-SEC-001 | SQL Injection | `' OR '1'='1` 입력 | 에러 + 차단 | P1 | 인증 |
+| TC-SEC-002 | XSS 반영 | `<script>alert(1)</script>` | 필터링 완료 | P1 | 인증 |
+| TC-SEC-003 | CSRF 토큰 검증 | 다른 도메인에서 요청 | 준수 거부 | P1 | 인증 |
+| TC-SEC-004 | 비밀번호 암호화 | DB 저장 방식 | 평문 저장 불가 | P1 | 스토리지 |
+| TC-SEC-005 | 세션 하이재킹 | 세션 쿠키 헤더 | HttpOnly 설정 | P1 | 인증 |
+| TC-SEC-006 | 강제 타입 | URL로 로그인 우회 | 로그인 유도 | P1 | 인증 |
+| TC-SEC-007 | 비밀번호 5회 코인 | 5회 실패 | 계정 잊음/알림 | P1 | 인증 |
+| TC-SEC-008 | 주소첳 외부 노출 | /api 디렉토리 | 403/404 | P1 | API |
+| TC-SEC-009 | HTTPS 강제리다이렉션 | HTTP 접속 | HTTPS로 리다이렉션 | P1 | 인프라 |
+| TC-SEC-010 | 없는 게정 비밀번호 안내 | 없는 ID | 동일 메시지 | P2 | 인증 |
+| TC-SEC-011 | 이메일 열거닉 방지 | 잘못된 ID 에러 | 중립 메시지 | P2 | 인증 |
+| TC-SEC-012 | 파일 업로드 유형 | .exe/.sh 업로드 | 업로드 거부 | P1 | 파일 |
+| TC-SEC-013 | 파일 크기 제한 | 100MB 이상 | 거부 + 안내 | P2 | 파일 |
+| TC-SEC-014 | Path Traversal | `../../etc/passwd` | 실행 차단 | P1 | API |
+| TC-SEC-015 | 리프레싉 토큰 | 만료 후 요청 | 자동 갱신 | P2 | 인증 |
+| TC-SEC-016 | CORS 설정 | 외부 도메인 요청 | 헤더 확인 | P2 | API |
+| TC-SEC-017 | 로그 마스킹 | 뿌에서 비밀번호 노출 | 마스킹 확인 | P1 | 로깅 |
+| TC-SEC-018 | 직렬화 운반 | JSON 데이터 형태 | 민감 정보 제외 | P2 | API |
+| TC-SEC-019 | Rate Limiting | 100요청/분 초과 | 429 Too Many Requests | P2 | API |
+| TC-SEC-020 | 2FA 코드 만료 | 오래된 OTP | 코드 만료 안내 | P2 | 인증 |
+
+**보안 친화적 표현**: 업무에서 OWASP Top 10 기준으로 리스크 우선순위 관리

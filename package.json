@@ -1,35 +1,40 @@
 {
   "name": "qa-portfolio",
   "version": "1.0.0",
-  "description": "QA Portfolio - kihyunqa | Claude MCP 5개 연동 자동화 포트폴리오",
+  "description": "QA Automation Portfolio - kihyunqa | MCP 5-server integration with Playwright E2E",
+  "author": "kihyunqa <kihyun.qa@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://kihyunqa.github.io/qa-portfolio",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kihyunqa/qa-portfolio"
+  },
   "scripts": {
     "test": "npx playwright test",
-    "test:login": "npx playwright test playwright-tests/login.spec.js",
-    "test:search": "npx playwright test playwright-tests/search.spec.js",
-    "test:cart": "npx playwright test playwright-tests/cart.spec.js",
-    "test:api": "npx playwright test playwright-tests/api.spec.js",
-    "test:a11y": "npx playwright test playwright-tests/accessibility.spec.js",
-    "test:perf": "npx playwright test playwright-tests/performance.spec.js",
-    "test:headed": "npx playwright test --headed",
+    "test:login": "npx playwright test login.spec.js",
+    "test:search": "npx playwright test search.spec.js",
+    "test:cart": "npx playwright test cart.spec.js",
+    "test:api": "npx playwright test api.spec.js",
+    "test:a11y": "npx playwright test accessibility.spec.js",
+    "test:perf": "npx playwright test performance.spec.js",
     "test:ui": "npx playwright test --ui",
-    "report": "npx playwright show-report",
-    "test:chrome": "npx playwright test --project=chromium",
+    "test:headed": "npx playwright test --headed",
+    "test:chromium": "npx playwright test --project=chromium",
     "test:firefox": "npx playwright test --project=firefox",
-    "test:safari": "npx playwright test --project=webkit",
-    "test:mobile": "npx playwright test --project=mobile-chrome"
+    "test:mobile": "npx playwright test --project=mobile-chrome",
+    "report": "npx playwright show-report",
+    "install:playwright": "npx playwright install --with-deps"
   },
   "devDependencies": {
-    "@playwright/test": "^1.44.0"
+    "@playwright/test": "^1.49.0"
   },
   "keywords": [
     "qa",
-    "playwright",
-    "e2e",
     "automation",
+    "playwright",
     "mcp",
+    "e2e",
     "testing",
     "portfolio"
-  ],
-  "author": "kihyunqa",
-  "license": "MIT"
+  ]
 }
