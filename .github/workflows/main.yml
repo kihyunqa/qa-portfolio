@@ -1,0 +1,17 @@
+name: QA Auto Notify
+on:
+  push:
+    paths:
+      - 'testcase_*.md'
+      - 'test-cases/**'
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: slackapi/slack-github-action@v1.26.0
+        with:
+          channel-id: 'C0AQFJXC800'
+          slack-message: "📋 TC 업데이트: ${{ github.event.head_commit.message }}"
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
