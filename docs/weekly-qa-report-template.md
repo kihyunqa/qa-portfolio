@@ -1,35 +1,76 @@
 # 📅 주간 QA 리포트 템플릿
 
-> Claude MCP 자동 생성 | Slack 자동 발송 연동
+> 매주 금요일 Slack 새-채널에 자동 발송하는 QA 주간 리포트 양식
 
 ---
 
-## 포맷
+## 리포트 양식
 
-**주간 QA 리포트** | {YYYY-MM-DD} ~ {YYYY-MM-DD}
+```
+📊 QA 주간 리포트 — Week {N} ({날짜})
 
-### 테스트 실행 현황
-- 실행 TC: {N}건
-- PASS: {N}건
-- FAIL: {N}건
-- SKIP: {N}건
-- 커버리지: {N}%
+[이번 주 TC 실행 결과]
+• 실행: {N}건
+• 통과: {N}건  
+• 실패: {N}건
+• 통과율: {N}%
 
-### 신규 발견 버그
-- P0: {N}건
-- P1: {N}건
-- P2: {N}건
+[발견된 버그]
+• Critical(P0): {N}건
+• Major(P1): {N}건
+• Minor(P2+): {N}건
 
-### Playwright 자동화 실행 결과
-- 실행 spec: {N}개
-- 성공: {N}개
-- 실패: {N}개
-- 실행 시간: {N}s
+[자동화 현황]
+• Playwright 실행: {N}개 spec / {N}건 TC
+• GitHub Actions: {N}회 트리거
+• Slack 알림: {N}건 발송
 
-### 다음 주 크리티컈 TC
-1. {TC-ID}: {TC 명}
-2. {TC-ID}: {TC 명}
+[다음 주 계획]
+• {내용}
+
+[특이사항]
+• {내용}
+
+---
+📎 상세 리포트: https://github.com/kihyunqa/qa-portfolio
+```
 
 ---
 
-*이 리포트는 Claude MCP로 자동 생성되어 Slack 새-채널에 발송됩니다*
+## MCP로 자동 발송하는 방법
+
+```
+Claude에게: "위 양식으로 이번 주 QA 리포트 만들어서 Slack 새-채널에 보내줘"
+→ slack MCP 자동 발송
+```
+
+---
+
+## 실제 작성 예시 (2026-03-30 기준)
+
+```
+📊 QA 주간 리포트 — Week 13 (2026-03-30)
+
+[이번 주 TC 실행 결과]
+• 실행: 125건+
+• 통과: 120건  
+• 실패: 2건 (검토 중)
+• 통과율: 98%
+
+[발견된 버그]
+• Critical(P0): 0건
+• Major(P1): 0건
+• Minor(P2+): 2건 (Safari CSS, iOS 버튼 반응)
+
+[자동화 현황]
+• Playwright 실행: 12개 spec
+• GitHub Actions: 2개 워크플로우 정상 운영
+• Slack 알림: 실시간 발송 확인
+
+[다음 주 계획]
+• 스크린샷 증거 추가
+• Jira MCP 연동 시작 (Phase 2)
+
+[특이사항]
+• 포트폴리오 사이트 GitHub Pages 정상 배포 중
+```
