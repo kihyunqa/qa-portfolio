@@ -1,24 +1,20 @@
-# 📝 QA 엔지니어 자소개서 예시
+# 📝 자기소개서 — QA 엔지니어
 
 > Claude MCP 자동 생성 | 2026-03-30
 
 ---
 
-안녕하세요. QA 엔지니어 지원자 [OOO]입니다.
+안녕하세요. QA 자동화에 집중하는 엔지니어 김기현입니다.
 
-저는 **Claude MCP 5개 실제 연동**을 통해 QA 자동화 전 사이클을 구축한 경험이 있습니다.
+저는 **Claude MCP 5개(filesystem / playwright / github / notion / slack)를 실제 연동해 QA 사이클 전체를 자동화**한 경험을 보유하고 있습니다. 단순히 도구를 설정하는 수준이 아니라, AI를 활용해 TC 작성부터 Notion 업로드·GitHub 커밋·Slack 알림까지 전 구간을 자동화한 실제 결과물을 포트폴리오로 증명하고 있습니다.
 
-**팁별한 점은 AI를 활용한 QA 자동화**입니다. Claude Desktop에 filesystem, playwright, github, notion, slack MCP를 연동하여:
+**주요 성과:**
+- Playwright E2E spec 10개 직접 코딩 (login / signup / cart / search / api / payment / security / performance / accessibility / portfolio)
+- TC 140건+ 작성 및 Notion TC 허브 자동 동기화
+- GitHub Actions CI/CD 파이프라인 구축 (push 시 Slack 자동 알림)
+- Page Object Model 도입으로 테스트 코드 유지보수성 향상
 
-- **TC 140건+**을 자동 생성하고 Notion에 업로드
-- **Playwright spec 10개**으로 E2E 자동화 구현
-- **GitHub Actions CI/CD** 파이프라인 구축
-- **Slack 실시간 알림** 시스템 연동
+품질을 단순한 검증이 아닌 **시스템으로 접근하는 QA 엔지니어**가 되고 싶습니다. 귀사의 QA 팜를 더 다양하고 측정 가능하게 만들 자신이 있습니다.
 
-수동으로 4시간 이상 걸리던 QA 사이클을 **20분 이내**로 단축한 경험이 있습니다.
-
-제 포트폴리오를 총합적으로 보실 수 있습니다:
-- GitHub: https://github.com/kihyunqa/qa-portfolio
-- 웹사이트: https://kihyunqa.github.io/qa-portfolio
-
-감사합니다.
+포트폴리오: https://kihyunqa.github.io/qa-portfolio  
+GitHub: https://github.com/kihyunqa/qa-portfolio
