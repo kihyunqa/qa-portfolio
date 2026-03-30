@@ -18,20 +18,20 @@
 
 | 항목 | 실제 수 | 위치 |
 |------|---------|------|
-| testcase_*.md | **17개** | 루트 (login, api-testing, bug-report, mcp-integration, e2e-playwright, security, performance, accessibility, notification, notion, cicd, cross-browser, mobile, payment, signup, regression) |
-| playwright spec | **12개** (config 제외) | playwright-tests/ (login, search, cart, api, accessibility, performance, payment, security, signup, notification, portfolio, mcp-portfolio) |
-| playwright helpers | **2개** | playwright-tests/helpers/ (page-objects.js, test-data.js) |
+| testcase_*.md | **17개** | 루트 |
+| playwright spec | **12개** (config 제외) | playwright-tests/ |
+| playwright helpers | **2개** | playwright-tests/helpers/ |
 | skills/ 문서 | **9개** | skills/ |
-| docs/ 문서 | **15개+** | docs/ |
+| docs/ 문서 | **22개** | docs/ |
 | e2e-scenarios/ | **6개** | e2e-scenarios/ |
 | test-cases/ | **6개** | test-cases/ |
 | GitHub Actions | **2개** | .github/workflows/ |
 | 전체 파일 수 | **80개+** | 전체 레포 |
 
-### index.html 현재 표시 수치 (2026-03-31 업데이트 완료)
+### index.html 현재 표시 수치 (최신 — 변경 금지)
 
-| 항목 | 현재 표시값 |
-|------|------------|
+| 항목 | 현재값 |
+|------|--------|
 | Playwright spec 수 | **12개** ✅ |
 | TC 건수 | **145건+** ✅ |
 | 파일 수 | **80개+** ✅ |
@@ -71,7 +71,10 @@
 | STEP 7 | docs/ai-qa-vision, jira-mcp-plan, qa-onboarding, README 전면 업데이트 | 2026-03-30 |
 | STEP 8 | testcase_regression 20건 전면 보강, screenshots/PROOF.md, weekly-report 템플릿 | 2026-03-30 |
 | STEP 9 | mcp-portfolio.spec.js 강화 (포트폴리오 실제 E2E), cover-letter.md | 2026-03-30 |
-| STEP 13 | index.html 숫자 업데이트: spec 11→12, TC 150→145, 파일 50+→80+ / 두플 태그 "MCP 자동화 도입" 삭제 확인 | 2026-03-31 |
+| STEP 13 | index.html 숫자 업데이트: spec 11→12, TC 150→145, 파일 50+→80+ | 2026-03-31 |
+| STEP 13-B | 두플 태그 "MCP 자동화 도입" 삭제 확인 (이미 완료된 상태였음) | 2026-03-31 |
+| STEP 14 | docs/linkedin-post.md TC 수치 30→145건+ 업데이트 (4개 버전 전부) | 2026-03-31 |
+| STEP 14-B | docs/cover-letter.md 오타 수정 ("답명동안"→"동안" 등) + 수치 145건+ 반영 | 2026-03-31 |
 
 ---
 
@@ -105,10 +108,20 @@ docs/jira-mcp-plan.md 참고
 ### STEP 12 — 포트폴리오 공개 공유
 
 ```
-1. LinkedIn 게시: docs/linkedin-post.md의 버전 1 또는 2 사용
+1. LinkedIn 게시: docs/linkedin-post.md의 버전 1~4 중 선택 (수치 최신화 완료)
 2. 이력서에 포트폴리오 링크 추가: https://kihyunqa.github.io/qa-portfolio
-3. 커버레터: docs/cover-letter.md 활용
+3. 커버레터: docs/cover-letter.md 활용 (오타 수정 완료)
 4. 면접 준비: docs/interview-qa.md + docs/interview-qa-advanced.md
+```
+
+### STEP 15 — interview-qa.md / interview-qa-advanced.md 수치 점검
+
+```
+현재 수치가 오래됐을 가능성 있음 (STEP 10 이전에 만들어진 파일들)
+확인 필요 항목:
+  - "11개 spec" 언급 → "12개 spec"으로 수정
+  - "125건" 또는 "150건" 언급 → "145건+"로 수정
+방법: get_file_contents로 내용 읽은 뒤 push_files로 한 번에 수정
 ```
 
 ---
@@ -155,4 +168,4 @@ slack:slack_get_channel_history(channel_id="C0AQFJXC800", limit=5)
 
 ---
 
-*최종 업데이트: 2026-03-31 · STEP 13까지 완료 · 다음: STEP 10 (스크린샷 PNG 추가) 또는 STEP 11 (Jira MCP)*
+*최종 업데이트: 2026-03-31 · STEP 14까지 완료 · 다음: STEP 10 (스크린샷 PNG) / STEP 11 (Jira MCP) / STEP 15 (interview-qa 수치 점검)*
