@@ -1,58 +1,45 @@
-# E2E 자동화 시나리오 — 로그인 플로우
+# 🔐 로그인 플로우 E2E 시나리오
 
-> 생성: playwright MCP (Claude 자동화)  
-> 대상: 로그인 페이지  
+> Playwright 실제 실행 파일: `playwright-tests/login.spec.js`
 
----
+## 시나리오 개요
 
-## 시나리오 01 · 정상 로그인 플로우
+| 항목 | 내용 |
+|------|------|
+| 목적 | 로그인 전체 플로우 검증 |
+| 대상 | 인증 모듈 전반 |
+| 실행 환경 | Chrome / Firefox / Safari / Mobile |
+| TC 수 | 10건 (TC-LOGIN-001~010) |
 
-```
-[STEP 1] playwright: navigate → https://example.com/login
-         ✓ 페이지 로딩 완료
-
-[STEP 2] playwright: fill → input[name=email] → "test@example.com"
-         ✓ 이메일 입력 완료
-
-[STEP 3] playwright: fill → input[name=password] → "password123"
-         ✓ 비밀번호 입력 완료
-
-[STEP 4] playwright: click → button[type=submit]
-         ✓ 로그인 버튼 클릭
-
-[STEP 5] playwright: screenshot → login-success.png
-         ✓ 스크린샷 저장
-
-[RESULT] 메인 화면으로 이동 확인 ✅
-```
-
----
-
-## 시나리오 02 · 비밀번호 5회 실패 → 계정 잠금
+## 플로우 다이어그램
 
 ```
-[STEP 1-5] 잘못된 비밀번호 5회 반복 입력
-           playwright: fill → click (×5)
-
-[STEP 6]   playwright: screenshot → account-locked.png
-           ✓ 계정 잠금 메시지 확인
-
-[RESULT]   "계정이 잠겼습니다" 메시지 표시 ✅
+[로그인 페이지 접속]
+        ↓
+[ID/PW 입력]
+    ↙        ↘
+[정상 입력]  [오류 입력]
+    ↓              ↓
+[로그인 성공]  [에러 메시지]
+    ↓
+[대시보드 이동]
+    ↓
+[로그아웃]
+    ↓
+[로그인 페이지 복귀]
 ```
 
----
+## 커버 TC
 
-## 시나리오 03 · SQL Injection 차단
-
-```
-[STEP 1] playwright: fill → input[name=email] → "' OR 1=1 --"
-[STEP 2] playwright: fill → input[name=password] → "anything"
-[STEP 3] playwright: click → button[type=submit]
-[STEP 4] playwright: screenshot → sql-injection-blocked.png
-
-[RESULT] 에러 처리 확인 ✅ (SQL 실행 없음)
-```
-
----
-
-*Claude Desktop + playwright MCP로 자동 생성된 시나리오입니다.*
+| TC ID | 시나리오 | 예상 결과 |
+|-------|---------|----------|
+| TC-LOGIN-001 | 유효한 자격 로그인 | 대시보드 이동 |
+| TC-LOGIN-002 | 잘못된 비밀번호 | 에러 메시지 |
+| TC-LOGIN-003 | 빈 이메일 | 필수 입력 안내 |
+| TC-LOGIN-004 | 빈 비밀번호 | 필수 입력 안내 |
+| TC-LOGIN-005 | 로그아웃 | 로그인 페이지 복귀 |
+| TC-LOGIN-006 | UI 요소 확인 | 모든 요소 visible |
+| TC-LOGIN-007 | 없는 계정 | 에러 메시지 |
+| TC-LOGIN-008 | 페이지 타이틀 | 정확한 타이틀 |
+| TC-LOGIN-009 | 스크린샷 캡처 | 파일 저장 성공 |
+| TC-LOGIN-010 | 네트워크 200 OK | 정상 응답 코드 |
