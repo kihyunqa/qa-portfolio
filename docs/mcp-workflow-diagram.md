@@ -26,7 +26,7 @@
 ## 실제 실행 순서
 
 1. Claude Desktop에서 명령 입력
-2. **Notion MCP** → TC 30건 자동 생성 및 업로드
+2. **Notion MCP** → TC 자동 생성 및 업로드
 3. **GitHub MCP** → 레포에 TC 파일 커밋
 4. **GitHub Actions** → push 감지 → 워크플로우 실행
 5. **Slack MCP** → 결과 알림 자동 발송
@@ -40,7 +40,7 @@
 | MCP | 실제로 만들어진 것 |
 |-----|------------------|
 | filesystem | 로컬 TC 파일 생성 |
-| playwright | login/cart/search/api/security spec.js 8개 |
-| github | 50+ 파일 자동 커밋 |
-| notion | TC Hub + 30건 페이지 자동 생성 |
+| playwright | login/search/cart/api/accessibility/performance spec 12개 (145건+) |
+| github | 80개+ 파일 자동 커밋 |
+| notion | TC Hub + TC 결과 페이지 자동 생성 |
 | slack | 새-채널 실시간 알림 메시지 |
