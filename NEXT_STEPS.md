@@ -50,13 +50,20 @@
 | STEP 17-B | test-metrics.md + mcp-architecture.md 오타/수치 수정 | 2026-03-31 |
 | STEP 18 | docs 나머지 5개 파일 수정 완료 ✅ | 2026-03-31 |
 | STEP 19 | 전체 검증 완료 — 모든 수치·파일 재확인 ✅ | 2026-03-31 |
-| STEP 20 | cover-letter.md 버전 확장 — 1종→3종 (범용/스타트업/대기업) ✅ | 2026-03-31 |
-| STEP 21 | **qa-onboarding.md 보강** — MCP 환경 기준 체크리스트 확장, 오타 수정 ✅ | 2026-03-31 |
+| STEP 20 | cover-letter.md 버전 확장 — 1종→3종 ✅ | 2026-03-31 |
+| STEP 21 | qa-onboarding.md 보강 — MCP 환경 기준 체크리스트 확장 ✅ | 2026-03-31 |
+| STEP 22 | **ai-qa-vision.md 대폭 보강** — 726→3063 bytes ✅ | 2026-03-31 |
+| STEP 23 | **qa-checklist.md 보강** — 오타 수정 + MCP/보안/크로스브라우저 섹션 추가 ✅ | 2026-03-31 |
 
-### STEP 21 작업 내역
+### STEP 22 작업 내역
 | 파일 | 변경 내용 |
 |------|-----------|
-| docs/qa-onboarding.md | `참교`→`참고` 오타 수정. Day1 MCP 세팅 체크리스트 상세화. Week1 Playwright 실행 절차 추가. Week2 실전 기여 섹션 신설. MCP 5개 역할 요약 테이블 추가. 1084 bytes → 3583 bytes |
+| docs/ai-qa-vision.md | `커뮤니케이션` 오타 수정. "왜 AI QA인가" 도입부 신설. Phase 1 실제 검증 내역 코드블록 추가. "바뀌는 것/바뀌지 않는 것" 철학 섹션 추가. 726 → 3063 bytes |
+
+### STEP 23 작업 내역
+| 파일 | 변경 내용 |
+|------|-----------|
+| docs/qa-checklist.md | `치크리스트`→`체크리스트`, `뺄튼`→`버튼`, `코인`→`계정 잠금`, `0건 다담`→`0건` 오타 수정. MCP 사전확인 섹션 신설. 보안/크로스브라우저 섹션 추가. 1971 → 3560 bytes |
 
 ---
 
@@ -77,20 +84,16 @@
 ★ 포트폴리오의 "실제 연동 증거"를 텍스트→시각 증거로 업그레이드하는 핵심!
 ```
 
-### STEP 22 — qa-checklist.md 보강 [Claude 단독 가능]
+### STEP 24 — 남은 얇은 docs 파일 보강 [Claude 단독 가능]
 
 ```
-현재 qa-checklist.md (1971 bytes)가 얇음.
-릴리스 전/후 체크리스트를 MCP 파이프라인 흐름에 맞게 상세화 가능.
-→ 기능테스트 / 회귀 / 성능 / 보안 / 접근성 카테고리별로 나누기
-```
+보강 후보 (크기 순):
+  - docs/qa-kpi-dashboard.md (915 bytes) — KPI 지표 실제 수치 반영 필요
+  - docs/qa-notify-workflow.md (891 bytes) — GitHub Actions 알림 흐름 상세화
+  - docs/jira-mcp-plan.md (878 bytes) — Phase 2 계획 구체화
 
-### STEP 23 — ai-qa-vision.md 보강 [Claude 단독 가능]
-
-```
-현재 ai-qa-vision.md (726 bytes) — 가장 얇은 docs 파일.
-AI QA 비전/방향성 문서인데 내용이 너무 짧아 포트폴리오 임팩트가 약함.
-→ MCP 5개 도입 경험 기반으로 "QA + AI의 미래" 관점 내용 보강 가능.
+→ 다음 Claude는 위 3개 중 1개 골라 보강하면 됨
+   (qa-kpi-dashboard.md 추천 — 수치 임팩트 큼)
 ```
 
 ### STEP 11 — Jira MCP 연동 [PHASE 2 — 사용자 계정 필요]
@@ -135,4 +138,4 @@ Jira Cloud 무료 계정 → API 토큰 → config 추가 → 테스트
 
 ---
 
-*최종 업데이트: 2026-03-31 · STEP 21 완료 (qa-onboarding.md 보강) · 다음: STEP 22 (qa-checklist 보강) or STEP 23 (ai-qa-vision 보강) or STEP 10 (스크린샷)*
+*최종 업데이트: 2026-03-31 · STEP 23 완료 (qa-checklist 보강·오타수정) · 다음: STEP 24 (qa-kpi-dashboard 보강 추천) or STEP 10 (스크린샷)*
