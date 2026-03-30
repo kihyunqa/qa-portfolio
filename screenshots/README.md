@@ -1,39 +1,51 @@
 # 📸 Screenshots
 
-> MCP Portfolio - kihyunqa | 테스트 실행 증거 스크린샷 아카이브
+> QA 자동화 테스트 실행 증거 스크린샷 모음
 
----
+## 스크린샷 수집 방식
 
-## 화면 목록
-
-| 파일명 | 설명 | 관련 TC |
-|--------|------|----------|
-| login-success.png | 로그인 성공 화면 | TC-LOGIN-009 |
-| search-result.png | 검색 결과 화면 | TC-SEARCH-010 |
-| checkout-complete.png | 주문 완료 화면 | TC-CART-010 |
-| accessibility-login.png | 접근성 로그인 화면 | TC-A11Y-008 |
-| performance-baseline.png | 성능 측정 기준 화면 | TC-PERF-008 |
-
----
-
-## 스크린샷 생성 방법
-
-스크린샷은 Playwright 테스트 실행 시 자동 생성됩니다:
+Playwright의 `page.screenshot()` 메서드를 통해 자동으로 수집됩니다.
 
 ```javascript
-// 성공 시 스크린샷
-await page.screenshot({ path: 'screenshots/login-success.png', fullPage: true });
-
-// 실패 시 자동 캐쳐 (playwright.config.js 설정)
-screenshot: 'only-on-failure'
+// playwright.config.js
+export default {
+  use: {
+    screenshot: 'only-on-failure',  // 실패 시자동 캐츪
+    video: 'retain-on-failure',
+  }
+};
 ```
 
-## 실행 방법
+## 폴더 구조
 
-```bash
-# 전체 테스트 실행 (스크린샷 자동 저장)
-npx playwright test --project=chromium
-
-# 특정 스펙만
-npx playwright test login.spec.js
 ```
+screenshots/
+├── login/
+│   ├── login-success.png          # 로그인 성공
+│   ├── login-fail-wrong-pw.png    # 잘못된 비밀번호
+│   └── login-fail-empty.png       # 빈 입력
+├── search/
+│   ├── search-results.png         # 검색 결과
+│   └── search-empty.png           # 결과 없음
+├── cart/
+│   ├── cart-add.png               # 장바구니 추가
+│   ├── cart-remove.png            # 상품 제거
+│   └── cart-empty.png             # 빈 장바구니
+├── payment/
+│   ├── checkout-form.png          # 결제 폼
+│   ├── payment-success.png        # 결제 성공
+│   └── payment-fail.png           # 결제 실패
+└── slack/
+    └── slack-notification.png     # Slack 알림 증거
+```
+
+## 수집 예정 스크린샷
+
+| 파일명 | 내용 | 수집 도구 |
+|---------|------|----------|
+| login-success.png | 로그인 성공 화면 | Playwright screenshot() |
+| slack-notification.png | Slack 알림 수신 | 명령만 |
+| github-actions.png | Actions 실행 결과 | GitHub UI |
+
+> 스크린샷은 Playwright 실행 시 자동 생성됩니다.
+> 로컈에서 `npx playwright test --reporter=html` 실행 후 `playwright-report/` 폴더 확인
