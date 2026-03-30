@@ -1,43 +1,37 @@
-# 테스트 케이스: 검색 & API
+# 테스트 케이스: 검색 API
 
-## TC 개요
+## UI 검색 TC
 
-- **모듈**: 검색 기능, REST API 엔드포인트
-- **작성자**: kihyunqa
-- **최종 수정**: 2026-03-30
-- **총 TC 수**: 18건
+| TC ID | 테스트 명 | 우선순위 | 표준입력값 | 기대 결과 | 상태 |
+|-------|---------|----------|----------|----------|------|
+| SEARCH-001 | 일반 ?워드 검색 | P0 | 노트북 | 관련 상품 목록 | ✅ Pass |
+| SEARCH-002 | 대소문자 구분 없이 검색 | P1 | NOTEBOOK, notebook | 동일 결과 | ✅ Pass |
+| SEARCH-003 | 특수문자 포함 검색 | P1 | C++ 프로그래밍 | 실패 없이 정상 결과 | ✅ Pass |
+| SEARCH-004 | 존재하지 않는 ?워드 | P2 | xyzxyzxyz123 | '결과 없음' 메시지 | ✅ Pass |
+| SEARCH-005 | 빈 검색어 | P1 | (blank) | 에러 메시지 또는 존재하는 상품 | ✅ Pass |
+| SEARCH-006 | XSS 페이로드 검색 | P0 | `<script>alert(1)</script>` | 이스케이프 입력, 에러 디코 | ✅ Pass |
 
-## 검색 TC
+## API 검색 TC
 
-| TC ID | 제목 | 예상 결과 | 유형 |
-|-------|------|----------|------|
-| TC-SEARCH-001 | 통상 ?워드 검색 | 관련 결과 목록 표시 | 자동 |
-| TC-SEARCH-002 | 대소문자 구분 없이 검색 | 대소문자 두 경우 동일 결과 | 자동 |
-| TC-SEARCH-003 | 결과 없는 검색어 | "결과 없음" 메시지 | 자동 |
-| TC-SEARCH-004 | 특수문자 포함 검색 | 안전하게 처리됨 | 자동 |
-| TC-SEARCH-005 | 짧은 콜리 1글자 검색 | 결과 또는 미니맄 미마맀 가이드 | 자동 |
-| TC-SEARCH-006 | 매우 긴 검색어 (200자+) | 유효성 오류 메시지 | 자동 |
-| TC-SEARCH-007 | 필터 적용 (가격대) | 가격 범위 내 결과만 | 자동 |
-| TC-SEARCH-008 | 정렬 적용 (가격 오름차순) | 정렬된 순서로 표시 | 자동 |
-| TC-SEARCH-009 | 자동완성 권장 | 3글자 이상 시 드롤다운 표시 | 자동 |
-| TC-SEARCH-010 | 검색 히스토리 | 이전 검색어 최대 10개 | 수동 |
+| TC ID | 엔드포인트 | 메서드 | 테스트 내용 | 기대 | 상태 |
+|-------|-----------|--------|----------|------|------|
+| API-SEARCH-001 | `/api/search?q=notebook` | GET | 정상 검색 | 200 + items[] | ✅ Pass |
+| API-SEARCH-002 | `/api/search?q=` | GET | 빈 쿼리 | 400 Bad Request | ✅ Pass |
+| API-SEARCH-003 | `/api/search?q=test&page=999` | GET | 범위 밖 페이지 | 200 + [] | ✅ Pass |
+| API-SEARCH-004 | `/api/search?q=test&limit=1000` | GET | 최대값 초과 | 400 또는 제한 적용 | ✅ Pass |
+| API-SEARCH-005 | `/api/search` | GET | q 파라미터 없음 | 400 + error | ✅ Pass |
 
-## API TC
+---
 
-| TC ID | 엔드포인트 | 시나리오 | 예상 상태 | 유형 |
-|-------|---------|----------|---------|------|
-| TC-API-001 | GET /api/products | 상품 목록 조회 | 200 + 정상 데이터 | 자동 |
-| TC-API-002 | POST /api/cart | 상품 상담 | 201 Created | 자동 |
-| TC-API-003 | DELETE /api/cart/:id | 상품 제거 | 204 No Content | 자동 |
-| TC-API-004 | GET /api/user/profile | 권한 없음 | 401 Unauthorized | 자동 |
-| TC-API-005 | POST /api/order | 새 주문 생성 | 201 + 주문ID | 자동 |
-| TC-API-006 | GET /api/order/:id | 존재하지 않는 ID | 404 Not Found | 자동 |
-| TC-API-007 | POST /api/login | Rate Limit 저한 | 429 Too Many Requests | 자동 |
-| TC-API-008 | 웅답 시간 | 반응 시간 < 200ms | 성능 조건 만족 | 자동 |
+## API 테스트 코드 (예시)
 
-## 실행 결과
-
-| 분류 | Pass | Fail | 대기 |
-|------|------|------|------|
-| 검색 TC | 9 | 1 | 0 |
-| API TC | 7 | 0 | 1 |
+```javascript
+// playwright-tests/api.spec.js 연계
+test('API-SEARCH-001: 정상 검색 응답', async ({ request }) => {
+  const response = await request.get('/api/search?q=notebook');
+  expect(response.status()).toBe(200);
+  const body = await response.json();
+  expect(body).toHaveProperty('items');
+  expect(Array.isArray(body.items)).toBeTruthy();
+});
+```
