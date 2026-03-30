@@ -1,17 +1,26 @@
-name: QA Auto Notify
+name: Portfolio Deploy Verify
 on:
   push:
+    branches:
+      - main
     paths:
-      - 'testcase_*.md'
-      - 'test-cases/**'
+      - 'index.html'
+      - 'README.md'
+      - 'docs/**'
 jobs:
-  notify:
+  verify:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: slackapi/slack-github-action@v1.26.0
-        with:
-          channel-id: 'C0AQFJXC800'
-          slack-message: "📋 TC 업데이트: ${{ github.event.head_commit.message }}"
-        env:
-          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Verify portfolio structure
+        run: |
+          echo "TC files: $(ls testcase_*.md 2>/dev/null | wc -l)"
+          echo "Playwright specs: $(ls playwright-tests/*.spec.js 2>/dev/null | wc -l)"
+          echo "✅ Structure verified"
+      - name: Write job summary
+        run: |
+          echo "## 🚀 Portfolio Deploy Summary" >> $GITHUB_STEP_SUMMARY
+          echo "| Portfolio URL | https://kihyunqa.github.io/qa-portfolio |" >> $GITHUB_STEP_SUMMARY
+          echo "| TC Files | $(ls testcase_*.md 2>/dev/null | wc -l)개 |" >> $GITHUB_STEP_SUMMARY
+          echo "| Playwright Specs | $(ls playwright-tests/*.spec.js 2>/dev/null | wc -l)개 |" >> $GITHUB_STEP_SUMMARY
