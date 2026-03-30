@@ -1,0 +1,29 @@
+name: QA Auto Notify
+on:
+  push:
+    paths:
+      - 'testcase_*.md'
+      - 'test-cases/**'
+      - 'playwright-tests/**'
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Get changed files
+        id: files
+        run: |
+          echo "changed=$(git diff --name-only HEAD~1 HEAD | tr '\n' ', ')" >> $GITHUB_OUTPUT
+      - name: Slack Notification
+        uses: slackapi/slack-github-action@v1.26.0
+        with:
+          channel-id: 'C0AQFJXC800'
+          slack-message: |
+            *📋 QA 포트폴리오 TC 업데이트*
+            > *커밋:* ${{ github.event.head_commit.message }}
+            > *작성자:* ${{ github.actor }}
+            > *변경 파일:* ${{ steps.files.outputs.changed }}
+            > *링크:* ${{ github.event.head_commit.url }}
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
