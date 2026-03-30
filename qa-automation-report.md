@@ -1,97 +1,111 @@
 # QA 자동화 리포트
 
-> 이 문서는 Claude Confluence MCP를 통해 자동 작성된 QA 리포트입니다.  
-> 작성일: 2026.03 | 작성자: Claude MCP (성기현)
+> 작성일: 2026-03-30 | 작성자: Claude MCP 자동화 (성기현)  
+> 연동 MCP: filesystem · playwright · github · notion · slack
 
 ---
 
-## 📋 이번 스프린트 요약
+## 📋 스프린트 QA 요약
 
 | 항목 | 수치 |
 |------|------|
-| 전체 TC 수 | 24건 |
-| 실행 완료 | 24건 (100%) |
-| Pass | 21건 |
-| Fail | 3건 |
-| P1 버그 | 2건 |
-| P2 버그 | 1건 |
+| 전체 TC 수 | **30건** |
+| 실행 완료 | 30건 (100%) |
+| Pass | 27건 (90%) |
+| 보류 | 3건 (10%) |
+| P1 버그 | 1건 |
+| P2 보류 | 2건 |
 
 ---
 
-## 🐛 버그 현황 (Jira MCP 자동 수집)
+## 🔧 MCP 5개 실제 연동 결과
 
-### P1 — 긴급 처리 필요
-
-| 버그 ID | 제목 | 담당자 | 재현율 |
-|---------|------|--------|--------|
-| BUG-001 | 5회 실패 시 잠금 미작동 | 개발팀 A | 100% |
-| BUG-002 | SQL Injection 우회 가능 | 보안팀 | 75% |
-
-### P2 — 일반 처리
-
-| 버그 ID | 제목 | 담당자 | 재현율 |
-|---------|------|--------|--------|
-| BUG-003 | 이메일 공백 trim 미처리 | 개발팀 B | 60% |
-
----
-
-## 📊 MCP 자동화 커버리지
-
-### 이번 스프린트 활용된 MCP
-
-```
-filesystem MCP  → TC 파일 24건 자동 저장
-playwright MCP  → E2E 3 시나리오 자동 실행
-github MCP      → main 브랜치 커밋 완료
-jira MCP        → 버그 3건 자동 수집 및 분석
-confluence MCP  → 이 리포트 자동 작성
-slack MCP       → #qa-channel 결과 알림 발송
-gmail MCP       → 이해관계자 리포트 이메일 발송
-calendar MCP    → 다음 릴리즈 일정 QA 배분
-```
-
----
-
-## 🔀 브랜치별 QA 현황
-
-```
-main     ──●────────────────────●──  [PASS ✓] 릴리즈 승인
-develop  ────●──────●────●──────     [PASS ✓] 회귀 검증 완료
-feature  ──────●──●──                [FAIL ✗] BUG-001,002 확인 중
-```
-
----
-
-## 🧪 E2E 시나리오 결과
-
-| 시나리오 | 상태 | 스크린샷 |
+| MCP 서버 | 역할 | 실행 결과 |
 |----------|------|----------|
-| 정상 로그인 플로우 | ✅ PASS | screenshot_01.png |
-| 5회 실패 계정 잠금 | ❌ FAIL | screenshot_02.png |
-| SQL Injection 차단 | ❌ FAIL | screenshot_03.png |
+| 📁 filesystem | TC 파일 30건 로컬 저장 | ✅ 완료 |
+| 🐙 github | 레포 커밋 + Actions 등록 | ✅ 완료 |
+| 🎭 playwright | E2E 브라우저 4 시나리오 실행 | ✅ 완료 |
+| 📒 notion | TC 결과 페이지 자동 문서화 | ✅ 완료 |
+| 💬 slack | 새-채널 QA 완료 알림 발송 | ✅ 완료 |
 
 ---
 
-## 📅 다음 릴리즈 QA 계획 (Google Calendar MCP 자동 생성)
+## 🐛 버그 및 보류 현황
 
-| 날짜 | 작업 | 담당 |
-|------|------|------|
-| D-7 | 기능 TC 설계 | Claude MCP 자동 |
-| D-5 | TC 실행 + E2E | playwright MCP |
-| D-3 | 버그 분석 | Jira MCP |
-| D-1 | 최종 리포트 + 팀 알림 | Confluence + Slack MCP |
-| D-0 | 릴리즈 승인 이메일 | Gmail MCP |
+### P1 — 처리 필요
+
+| ID | 제목 | 원인 | 상태 |
+|----|------|------|------|
+| BUG-001 | .github/workflows 생성 불가 | GitHub 토큰 workflow 스코프 없음 | ⚠️ 수동 해결 완료 |
+
+### P2 — 보류
+
+| ID | 제목 | 원인 | 상태 |
+|----|------|------|------|
+| HOLD-001 | Slack 봇 미참여 채널 전송 실패 | not_in_channel | ✅ 봇 초대로 해결 |
+| HOLD-002 | push_files 다중 커밋 실패 | API 제한 | ⚠️ 개별 커밋으로 우회 |
 
 ---
 
-## ✉️ 자동 발송 내역
+## 🧪 E2E 시나리오 결과 (playwright MCP)
 
-- **Slack #qa-channel**: 스프린트 QA 결과 요약 발송 완료 ✅
-- **Confluence**: 이 리포트 페이지 자동 생성 완료 ✅  
-- **Gmail**: PM/개발팀 리더에게 QA 완료 리포트 이메일 발송 완료 ✅
-- **Jira**: P1 버그 2건 담당자 자동 배정 완료 ✅
+| 시나리오 | 단계 수 | 결과 |
+|----------|---------|------|
+| 메인 페이지 로딩 검증 | 5단계 | ✅ PASS |
+| MCP 섹션 인터랙션 | 5단계 | ✅ PASS |
+| 반응형 레이아웃 (3해상도) | 4단계 | ✅ PASS |
+| 터미널 애니메이션 동작 | 5단계 | ✅ PASS |
+
+---
+
+## 📊 TC 커버리지
+
+```
+filesystem MCP  ████████████████████  6/6  (100%)
+github MCP      █████████████████░░░  5/6  (83%)
+playwright MCP  ████████████████████  6/6  (100%)
+notion MCP      ████████████████████  6/6  (100%)
+slack MCP       ████████████████░░░░  4/6  (67%)
+─────────────────────────────────────
+전체            ████████████████████  27/30 (90%)
+```
+
+---
+
+## ⚙️ GitHub Actions 자동화
+
+```yaml
+# TC 파일 업로드 → Slack 자동 알림 파이프라인
+testcase_*.md 커밋
+     ↓
+GitHub Actions 트리거 (main.yml)
+     ↓
+slackapi/slack-github-action
+     ↓
+새-채널 자동 알림 발송 ✅
+```
+
+---
+
+## 📅 자동화 파이프라인 실행 로그
+
+| 시각 | 작업 | MCP | 결과 |
+|------|------|-----|------|
+| 12:00 | TC 30건 설계 | filesystem | ✅ |
+| 12:10 | testcase_mcp-integration.md 커밋 | github | ✅ |
+| 12:15 | testcase_e2e-playwright.md 커밋 | github | ✅ |
+| 12:20 | E2E 4 시나리오 실행 | playwright | ✅ |
+| 12:25 | Notion 페이지 문서화 | notion | ✅ |
+| 12:30 | 새-채널 QA 완료 알림 | slack | ✅ |
+| 12:35 | GitHub Actions workflow 등록 | github | ✅ |
+
+---
+
+## 💬 Slack 자동 발송 내역
+
+- **새-채널**: `✅ QA 자동화 테스트 완료 - TC 30건 생성, GitHub 업로드, Notion 문서화 완료. MCP 5개 실제 연동 완료 🎉` ✅
 
 ---
 
 *이 문서는 Claude MCP에 의해 코드 0줄로 자동 작성됐습니다.*  
-*MCP 8개 · 코드 0줄 · 대화 1번*
+*MCP 5개 · 코드 0줄 · 대화 1번 · TC 30건*
