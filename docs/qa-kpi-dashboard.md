@@ -120,7 +120,7 @@
 |------|----------|------|
 | 2026-03-30 | GitHub Actions qa-notify.yml 구축 | TC 공유 자동화 |
 | 2026-03-30 | Playwright spec 12개 완성 | E2E 자동화 88건 확보 |
-| 2026-03-31 | docs 24개 전체 수치·내용 검증 | 포트폴리오 신뢰도 향상 |
+| 2026-03-31 | docs 25개 전체 수치·내용 검증 | 포트폴리오 신뢰도 향상 |
 | 2026-03-31 | interview-prep-advanced.md 보강 | 면접 준비 Q&A 10개로 확대 |
 | 2026-03-31 | ai-qa-vision.md 보강 | 비전 문서 + 트러블슈팅 기록 |
 | 2026-03-31 | testcase 수 17→16개 정정 (실제 카운트) | 포트폴리오 신뢰도 향상 |
@@ -128,4 +128,4 @@
 
 ---
 
-*수치 기준: 2026-03-31 · STEP 63 · https://kihyunqa.github.io/qa-portfolio*
+*수치 기준: 2026-03-31 · STEP 76-2 · https://kihyunqa.github.io/qa-portfolio*
