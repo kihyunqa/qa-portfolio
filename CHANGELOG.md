@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## v6.0.0 — 2026-03-31
+
+### 문서 보강 (STEP 31~33)
+- docs/linkedin-post.md — 버전 5 (구직 중 공개용) 추가, 게시 타이밍 가이드 신설 (2974b→5108b)
+- docs/cover-letter.md — 버전 4 (AI·테크 특화) 추가, 버전 선택 매트릭스 신설 (3171b→5345b)
+- docs/portfolio-summary.md — 커버레터 3종→4종 수정, 수치 최신화 (4071b→4126b)
+- docs/qa-notify-workflow.md — 내용 점검 완료 (보강 불필요)
+- docs/qa-onboarding.md — 내용 점검 완료 (보강 불필요)
+
+### 인수인계
+- NEXT_STEPS.md — STEP 33 완료 기록, STEP 34 신규 추가, 작업 규칙 7번 추가
+
 ## v5.0.0 — 2026-03-30
 
 ### 추가
