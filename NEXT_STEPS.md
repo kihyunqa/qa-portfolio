@@ -43,16 +43,37 @@
 | STEP 1~9 | MCP 연동, TC 생성, spec 작성, docs 작성 등 | ~2026-03-30 |
 | STEP 13~27 | docs 전체 수치·오타·내용 수정 및 보강 | 2026-03-31 |
 | STEP 28 | docs 5개 점검 → 3개 보강 완료 ✅ | 2026-03-31 |
-| STEP 29 | **interview-prep-advanced.md 보강** ✅ | 2026-03-31 |
+| STEP 29 | interview-prep-advanced.md 보강 (2203b→6664b) ✅ | 2026-03-31 |
+| STEP 30 | **ai-qa-vision.md + qa-kpi-dashboard.md 보강** ✅ | 2026-03-31 |
 
-### STEP 29 작업 내역
+### STEP 30 작업 내역
 | 파일 | 전 | 후 | 주요 추가 내용 |
 |------|----|----|----------------|
-| docs/interview-prep-advanced.md | 2203b (Q8개) | 6664b (Q10개+표) | MCP별 실제 연동 경험, Flaky Test 해결법, 성능 기준표, 실제 성과 수치 테이블 |
+| docs/ai-qa-vision.md | 3063b | 5419b | MCP 아키텍처 다이어그램, 트러블슈팅 테이블, 실제 성과 수치, Phase 5 로드맵, 실무 적용 의미 |
+| docs/qa-kpi-dashboard.md | 3016b | 4440b | 성능 기준 지표표, 보안 커버리지 테이블 (OWASP 18건), 주요 개선 이력 테이블 |
 
 ---
 
 ## 🎯 다음 스텝 (우선순위 순)
+
+### STEP 31 — linkedin-post.md 최신화 [Claude 단독 가능]
+
+```
+현재 상태: 2974b — 수치 최신화 여부 확인 필요
+파일 경로: docs/linkedin-post.md
+내용 확인 후:
+  - TC 145건+, spec 12개 등 최신 수치 반영 여부 체크
+  - 포트폴리오 URL 정확한지 확인
+  - 버전 4개 중 최신 버전 내용 보강
+```
+
+### STEP 32 — cover-letter.md 최신화 [Claude 단독 가능]
+
+```
+현재 상태: 3171b — 3버전 중 최신 수치 반영 여부 확인
+파일 경로: docs/cover-letter.md
+내용 확인 후 수치 최신화 (TC 145건+, MCP 5개, spec 12개 등)
+```
 
 ### STEP 10 — 스크린샷 실제 추가 [임팩트 최대 — 사용자 직접 필요]
 
@@ -67,16 +88,6 @@
 저장 위치: screenshots/ 폴더
 업로드: https://github.com/kihyunqa/qa-portfolio/upload/main/screenshots
 ★ 포트폴리오의 "실제 연동 증거"를 텍스트→시각 증거로 업그레이드하는 핵심!
-```
-
-### STEP 30 — docs/ 나머지 파일 점검 [Claude 단독 가능]
-
-```
-아직 점검 안 된 docs 파일들 확인 후 필요 시 보강:
-- docs/linkedin-post.md — 최신 수치 반영 여부 확인
-- docs/cover-letter.md — 3버전 내용 최신화 여부 확인
-- docs/qa-checklist.md — 체크리스트 항목 완성도 확인
-진행 방법: 파일별 size 확인 후 2000b 미만 파일 우선 보강
 ```
 
 ### STEP 11 — Jira MCP 실제 연동 [PHASE 2 — 사용자 계정 필요]
@@ -96,7 +107,7 @@ jira-mcp-plan.md의 실행 단계 참고:
 - LinkedIn: docs/linkedin-post.md 버전 1~4 중 선택
 - 이력서 링크: https://kihyunqa.github.io/qa-portfolio
 - 커버레터: docs/cover-letter.md 버전 3종 중 지원사 맞춤 선택
-- 면접 준비: interview-qa.md + interview-qa-advanced.md (STEP 29 보강 완료!)
+- 면접 준비: interview-qa.md + interview-prep-advanced.md (STEP 29 보강 완료!)
 ```
 
 ---
@@ -124,4 +135,4 @@ jira-mcp-plan.md의 실행 단계 참고:
 
 ---
 
-*최종 업데이트: 2026-03-31 · STEP 29 완료 (interview-prep-advanced 보강: 2203b→6664b) · 다음: STEP 30 (docs 나머지 점검) or STEP 10 (스크린샷 추가)*
+*최종 업데이트: 2026-03-31 · STEP 30 완료 (ai-qa-vision 3063→5419b, qa-kpi-dashboard 3016→4440b) · 다음: STEP 31 (linkedin-post 최신화) or STEP 10 (스크린샷)*
