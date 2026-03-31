@@ -42,13 +42,7 @@
 | 스텝 | 내용 | 완료일 |
 |------|------|--------|
 | STEP 1~9 | MCP 연동, TC 생성, spec 작성, docs 작성 등 | ~2026-03-30 |
-| STEP 13~27 | docs 전체 수치·오타·내용 수정 및 보강 | 2026-03-31 |
-| STEP 28 | docs 5개 점검 → 3개 보강 완료 ✅ | 2026-03-31 |
-| STEP 29 | interview-prep-advanced.md 보강 ✅ | 2026-03-31 |
-| STEP 30 | ai-qa-vision.md + qa-kpi-dashboard.md 보강 ✅ | 2026-03-31 |
-| STEP 31 | linkedin-post.md 버전 5 추가 ✅ | 2026-03-31 |
-| STEP 32 | cover-letter.md 버전 4 추가 ✅ | 2026-03-31 |
-| STEP 33 | docs/ 잔여 점검 + portfolio-summary 수정 ✅ | 2026-03-31 |
+| STEP 13~33 | docs 보강, 수치·오타 수정, 커버레터·LinkedIn 버전 추가 | 2026-03-31 |
 | STEP 34 | CHANGELOG.md v6 추가 ✅ | 2026-03-31 |
 | STEP 35 | README.md 수치 9곳 최신화 ✅ | 2026-03-31 |
 | STEP 36 | PROFILE.md 수치 최신화 ✅ | 2026-03-31 |
@@ -56,11 +50,15 @@
 | STEP 38 | skills/ 9개 파일 점검 + 2개 수정 ✅ | 2026-03-31 |
 | STEP 12 | 공유 준비 + share-action-plan.md 신규 생성 ✅ | 2026-03-31 |
 | STEP 39 | portfolio-summary.md docs 수 22→23개 수정 ✅ | 2026-03-31 |
-| STEP 40 | CHANGELOG.md v7 추가 (오늘 전체 이력) ✅ | 2026-03-31 |
+| STEP 40 | CHANGELOG.md v7 추가 ✅ | 2026-03-31 |
+| STEP 41 | README.md docs 수 22→23개, 주요 문서 목록 2개 추가 ✅ | 2026-03-31 |
+| STEP 42 | qa-strategy.md docs 수 22→23개 수정 ✅ | 2026-03-31 |
 
-### STEP 39~40 작업 내역
-- **portfolio-summary.md**: docs/ 수 `22→23개`, 핵심 문서 목록에 `linkedin-post.md`, `share-action-plan.md` 추가
-- **CHANGELOG.md v7**: STEP 34~39 + STEP 12 전체 이력 및 최종 수치 현황 표 추가
+### STEP 41~42 작업 내역
+- **README.md**: docs/ `22→23개`, 주요 문서 바로가기에 `share-action-plan.md`, `linkedin-post.md` 추가
+- **qa-strategy.md**: 성과 수치 표의 docs 문서 `22→23개` 수정
+- **PROFILE.md**: docs 수 별도 표기 없음 — 이상 없음 확인 ✅
+- **mcp-architecture.md**: 수치 이상 없음 확인 ✅
 
 ---
 
@@ -68,11 +66,12 @@
 
 | 파일 | TC 수 | spec 수 | 파일 수 | docs 수 |
 |------|-------|---------|---------|---------|
-| README.md | 145건+ ✅ | 12개 ✅ | 80개+ ✅ | — |
+| README.md | 145건+ ✅ | 12개 ✅ | 80개+ ✅ | 23개 ✅ |
 | PROFILE.md | 145건+ ✅ | 12개 ✅ | — | — |
 | CHANGELOG.md | v7까지 ✅ | — | — | — |
 | portfolio-summary.md | 145건+ ✅ | 12개 ✅ | 80개+ ✅ | 23개 ✅ |
 | qa-automation-report.md | 30건(스프린트) ✅ | — | — | — |
+| qa-strategy.md | 145건+ ✅ | 12개 ✅ | — | 23개 ✅ |
 | NEXT_STEPS.md | 145건+ ✅ | 12개 ✅ | 80개+ ✅ | 23개 ✅ |
 | skills/mcp-integration.md | — | 12개 ✅ | 80개+ ✅ | — |
 | skills/test-strategy.md | — | 12개 ✅ | — | — |
@@ -82,6 +81,22 @@
 ---
 
 ## 🎯 다음 스텝 (우선순위 순)
+
+### STEP 43 — 나머지 docs 파일 docs 수 점검 [Claude 단독 가능, 소규모]
+
+```
+아직 열어보지 않은 docs 파일들 중 수치 포함 가능성:
+  - docs/ai-qa-vision.md
+  - docs/qa-kpi-dashboard.md
+  - docs/mcp-workflow-diagram.md
+  - docs/release-qa-process.md
+  - docs/tools-comparison.md
+  - docs/interview-prep-advanced.md
+  - docs/interview-qa-advanced.md
+
+위 파일들을 열어서 "22개" 표기 검색 후 "23개"로 수정.
+한 번에 여러 파일 확인 가능 — 수정 필요한 것만 커밋.
+```
 
 ### STEP 10 — 스크린샷 실제 추가 [임팩트 최대 — 사용자 직접 필요]
 
@@ -94,15 +109,6 @@
   3. Notion TC 페이지 화면
 
 저장 위치: screenshots/ 폴더
-업로드: https://github.com/kihyunqa/qa-portfolio/upload/main/screenshots
-★ 포트폴리오의 "실제 연동 증거"를 텍스트→시각 증거로 업그레이드하는 핵심!
-```
-
-### STEP 41 — README.md CHANGELOG 버전 표기 업데이트 [소규모, Claude 단독 가능]
-
-```
-README.md 내에 CHANGELOG v6 언급이 있다면 v7로 수정 필요.
-현재 README.md를 읽어서 버전 표기 확인 후 필요 시 수정.
 ```
 
 ### STEP 11 — Jira MCP 실제 연동 [PHASE 2 — 사용자 계정 필요]
@@ -112,15 +118,6 @@ README.md 내에 CHANGELOG v6 언급이 있다면 v7로 수정 필요.
 2. API 토큰 발급
 3. claude_desktop_config.json에 jira MCP 추가
 4. Claude Desktop 재시작 후 연동 확인
-```
-
-### 실행 액션 (사용자) — 지금 바로!
-
-```
-docs/share-action-plan.md 참고:
-1. LinkedIn 프로필에 포트폴리오 URL 추가
-2. 채용 플랫폼 이력서 URL 업데이트
-3. LinkedIn 버전 1 포스트 게시 (화~목 오전 추천)
 ```
 
 ---
@@ -150,4 +147,4 @@ docs/share-action-plan.md 참고:
 
 ---
 
-*최종 업데이트: 2026-03-31 · STEP 39+40 완료 (portfolio-summary docs 수 수정, CHANGELOG v7 추가) · 다음: STEP 10 (스크린샷) or STEP 41 (README 버전 확인)*
+*최종 업데이트: 2026-03-31 · STEP 41+42 완료 (README·qa-strategy docs 수 23개 수정, PROFILE·mcp-architecture 점검 이상없음) · 다음: STEP 43 (나머지 docs 파일 22→23 점검)*
