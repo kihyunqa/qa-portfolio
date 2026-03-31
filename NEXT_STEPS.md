@@ -20,7 +20,7 @@
 | testcase_*.md | **16개** | 루트 |
 | playwright spec | **12개** (config·README 제외) | playwright-tests/ |
 | skills/ 문서 | **9개** | skills/ (전체 오타 점검 완료) |
-| docs/ 문서 | **25개** | docs/ (self-introduction.md 신규 추가) |
+| docs/ 문서 | **25개** | docs/ (self-introduction.md 포함) |
 | GitHub Actions | **2개** | .github/workflows/ |
 | 전체 파일 수 | **80개+** | 전체 레포 |
 | TC 건수 | **145건+** | testcase_*.md 합산 |
@@ -50,17 +50,20 @@
 | STEP 57 | index.html 전체 점검 완료 — TC 테이블 ID 오류 수정 ✅ | 2026-03-31 |
 | STEP 58 | CHANGELOG v12 업데이트 완료 ✅ | 2026-03-31 |
 | STEP 59 | interview-qa.md Q9~Q12 추가, linkedin-post.md 버전 6 추가 ✅ | 2026-03-31 |
-| STEP 60 | **cover-letter.md 버전 5 추가 (AI 프로덕트 스타트업 특화)** ✅ | 2026-03-31 |
-| STEP 61 | **docs/self-introduction.md 신규 생성 (국내 기업 자기소개서 4항목)** ✅ | 2026-03-31 |
+| STEP 60 | cover-letter.md 버전 5 추가 (AI 프로덕트 스타트업 특화) ✅ | 2026-03-31 |
+| STEP 61 | docs/self-introduction.md 신규 생성 (국내 기업 자기소개서 4항목) ✅ | 2026-03-31 |
+| STEP 63 | docs 수 24→25개 반영 — README, portfolio-summary, qa-kpi-dashboard, qa-strategy 4개 파일 수정 ✅ | 2026-03-31 |
 
-### STEP 60~61 작업 내역 (취업 서류 패키지 완성)
+### STEP 63 작업 내역 (docs 수 수정)
 
 | 파일 | 작업 내역 |
 |------|----------|
-| docs/cover-letter.md | 버전 5 추가 — "AI 도구를 쓰는 게 아니라 파이프라인 자체를 구축"이라는 관점 강조. 고성장 스타트업 QA 첫 채용 포지션 특화 |
-| docs/self-introduction.md | 신규 생성 — 성장과정/직무역량/장단점/입사포부 4항목, 700자 내외, 국내 중견기업 공채·경력직 수시채용 대응 |
+| README.md | `docs/ 24개` → `docs/ 25개` 수정 |
+| docs/portfolio-summary.md | `docs/ 문서 24개` → `25개` 수정, 커버레터 4종→5종 수정 |
+| docs/qa-kpi-dashboard.md | `docs 문서 수 24개` → `25개` 수정, 개선이력 추가 |
+| docs/qa-strategy.md | `docs 문서 24개` → `25개` 수정 |
 
-**→ 커버레터 5버전 + 자기소개서 4항목 완성. 취업 서류 패키지 전체 완성** 🎉
+**→ STEP 61에서 신규 생성된 self-introduction.md 반영 완료** 🎉
 
 ---
 
@@ -112,16 +115,16 @@ docs/jira-mcp-plan.md 참고:
   - interview-qa.md(기초)와 중복 없이 심화 내용으로 보완
 ```
 
-### STEP 63 — docs 수 업데이트 반영 [Claude 단독 가능]
+### STEP 64 — CHANGELOG v15 업데이트 [Claude 단독 가능]
 
 ```
-self-introduction.md 신규 추가로 docs 수가 24→25개로 변경.
-아래 파일들의 "docs 24개" 표기를 "25개"로 수정 필요:
-  - README.md
-  - docs/portfolio-summary.md
-  - docs/qa-kpi-dashboard.md
-  - docs/qa-strategy.md
-주의: 수치 부풀리기 금지 — 실제 확인 후 수정
+STEP 59~63 작업 내역을 CHANGELOG에 반영:
+  - v15로 버전업
+  - STEP 59: interview-qa.md Q9~Q12, linkedin-post.md v6
+  - STEP 60: cover-letter.md v5 (AI 스타트업 특화)
+  - STEP 61: self-introduction.md 신규 생성
+  - STEP 63: docs 수 25개 반영 (4개 파일 수정)
+현재 CHANGELOG: v14 → v15로 업데이트 필요
 ```
 
 ---
@@ -150,4 +153,4 @@ self-introduction.md 신규 추가로 docs 수가 24→25개로 변경.
 
 ---
 
-*최종 업데이트: 2026-03-31 · STEP 61 완료 (self-introduction.md 신규 생성, cover-letter 버전 5 추가) · 다음: STEP 10 (스크린샷, 사용자 직접), STEP 12 (LinkedIn 공유, 버전 6 추천), STEP 62 (interview-qa-advanced 점검), STEP 63 (docs 수 25개 반영)*
+*최종 업데이트: 2026-03-31 · STEP 63 완료 (docs 수 25개 반영 — README/portfolio-summary/qa-kpi-dashboard/qa-strategy 4개 파일) · 다음: STEP 62 (interview-qa-advanced 점검), STEP 64 (CHANGELOG v15), STEP 10 (스크린샷, 사용자 직접), STEP 12 (LinkedIn 공유)*
