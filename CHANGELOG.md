@@ -1,45 +1,50 @@
 # CHANGELOG
 
+## v20.0.0 — 2026-03-31
+
+### 레포 전체 최종 점검 완료 (STEP 78~79) — 포트폴리오 정합성 작업 100% 마무리
+
+#### 점검 완료 파일 전체
+
+| 파일/폴더 | 결과 |
+|-----------|------|
+| index.html (59KB) | ✅ TC 145건+, spec 12개, MCP 5개, Actions 2개 전부 정확 |
+| README.md | ✅ 수치 이상 없음 |
+| PROFILE.md | ✅ 수치 이상 없음 |
+| qa-automation-report.md | ✅ 스프린트 30건 / 전체 145건+ 분리 표기 정확 |
+| skills/ 9개 전체 | ✅ 수정 불필요 |
+| docs/ 25개 전체 | ✅ STEP 76 완전 완료 (수정 2개, 이상 없음 23개) |
+| CHANGELOG.md | ✅ v20 최신 |
+| NEXT_STEPS.md | ✅ 최종 인수인계 완료 |
+
+**→ 레포 전체 수치 정합성 100% 완료. Claude 단독 작업 전부 마무리.** 🎉
+
+### 최종 확정 수치 (v20 · 변경 없음)
+
+| 항목 | 수치 |
+|------|------|
+| TC | **145건+** |
+| Playwright spec | **12개** |
+| testcase_*.md | **16개** |
+| docs/ 문서 | **25개** |
+| skills/ 문서 | **9개** |
+| 레포 파일 수 | **80개+** |
+| GitHub Actions | **2개** |
+| MCP 연동 | **5개** |
+| 커버레터 | **5종** |
+| LinkedIn 포스트 | **6버전** |
+| 면접 Q&A 기초 | **12문항** |
+| 면접 Q&A 심화 | **11문항** |
+| CHANGELOG | **v20** |
+
+---
+
 ## v19.0.0 — 2026-03-31
 
 ### docs 25개 전체 수치 점검 완전 완료 (STEP 76)
 
-#### 수정 파일 (2개)
-
-| 파일 | 수정 내용 |
-|------|----------|
-| docs/weekly-qa-report-template.md | 실제 작성 예시 내 "docs/ 22개" → **"docs/ 25개"** |
-| docs/qa-kpi-dashboard.md | 주요 개선 이력 "docs 24개 전체 수치 검증" → **"docs 25개 전체 수치 검증"** |
-
-#### 점검 완료 (수정 불필요, 23개)
-
-mcp-architecture, tools-comparison, mcp-setup-guide, mcp-workflow-diagram,
-interview-prep-advanced, regression-checklist, qa-notify-workflow,
-linkedin-post (버전 6 정확), cover-letter (5종 정확),
-interview-qa (12문항 정확), interview-qa-advanced (11문항 정확),
-jira-mcp-plan, jira-integration-plan, bug-report-template, self-introduction,
-ai-qa-vision (v67), share-action-plan (v68), portfolio-summary (v71),
-test-metrics (v70), qa-onboarding (v72), qa-strategy (v73),
-release-qa-process (v74), qa-checklist (v75)
-
-**→ docs/ 25개 전체 수치 점검 완전 완료** ✅
-
-### 최종 수치 현황 (v19 기준 · 확정)
-
-| 항목 | 수치 |
-|------|------|
-| TC | 145건+ |
-| Playwright spec | 12개 |
-| testcase_*.md | 16개 |
-| docs/ 문서 | **25개** |
-| skills/ 문서 | 9개 |
-| 레포 파일 수 | 80개+ |
-| GitHub Actions | 2개 |
-| MCP 연동 | 5개 |
-| 커버레터 | 5종 |
-| LinkedIn 포스트 | 6버전 |
-| 면접 Q&A | 12문항 (기초) + 11문항 (심화) |
-| CHANGELOG | **v19** |
+수정 파일 2개: weekly-qa-report-template(docs 22→25), qa-kpi-dashboard(이력 24→25)
+점검 완료 23개: 수정 불필요 확인
 
 ---
 
@@ -47,46 +52,8 @@ release-qa-process (v74), qa-checklist (v75)
 
 ### 남은 docs 전체 점검 완료 (STEP 72~75)
 
-#### STEP 72 — docs/qa-onboarding.md 수정
-
-| 항목 | 수정 내용 |
-|------|----------|
-| testcase 파일 수 | "17개" → **"16개"** |
-| docs 문서 수 | "22개" → **"25개"** |
-| CHANGELOG 히스토리 | "v1~v5" → **"v1~v17"** |
-| interview-qa 설명 | **"12문항"** 명시 |
-| ai-qa-vision.md 링크 | 주요 참고 문서에 **신규 추가** |
-
-#### STEP 73 — docs/qa-strategy.md 점검
-
-- docs 25개, TC 145건+, spec 12개, MCP 5개 → **정상, 수정 불필요** ✅
-
-#### STEP 74 — docs/release-qa-process.md 점검
-
-- Playwright spec 12개, MCP 5개 → **정상, 수정 불필요** ✅
-
-#### STEP 75 — docs/qa-checklist.md 점검
-
-- TC 145건+, Playwright spec 12개 → **정상, 수정 불필요** ✅
-
-**→ docs/ 25개 전체 수치 점검 사실상 완료** ✅
-
-### 최종 수치 현황 (v18 기준 · 확정)
-
-| 항목 | 수치 |
-|------|------|
-| TC | 145건+ |
-| Playwright spec | 12개 |
-| testcase_*.md | 16개 |
-| docs/ 문서 | **25개** |
-| skills/ 문서 | 9개 |
-| 레포 파일 수 | 80개+ |
-| GitHub Actions | 2개 |
-| MCP 연동 | 5개 |
-| 커버레터 | 5종 |
-| LinkedIn 포스트 | 6버전 |
-| 면접 Q&A | 12문항 (기초) + 11문항 (심화) |
-| CHANGELOG | **v18** |
+- qa-onboarding.md: TC 17→16개, docs 22→25개, CHANGELOG v1~v17 수정
+- qa-strategy, release-qa-process, qa-checklist: 수정 불필요
 
 ---
 
@@ -94,9 +61,8 @@ release-qa-process (v74), qa-checklist (v75)
 
 ### README + portfolio-summary 수치 정합성 완료 (STEP 69~71)
 
-- README.md: 커버레터 4→5종, LinkedIn 1~5→1~6, self-introduction/interview-qa 업데이트
-- test-metrics.md: 수치 정상 확인, 수정 불필요
-- portfolio-summary.md: 커버레터 4→5종, LinkedIn 5→6버전, self-introduction.md 신규 추가
+- README.md: 커버레터 4→5종, LinkedIn 1~5→1~6
+- portfolio-summary.md: 커버레터 4→5종, LinkedIn 5→6버전
 
 ---
 
@@ -104,8 +70,8 @@ release-qa-process (v74), qa-checklist (v75)
 
 ### ai-qa-vision 수치 수정 + share-action-plan 최신화 (STEP 67~68)
 
-- ai-qa-vision.md: TC 17→16개 파일 수정, 2026 AI 트렌드 섹션 추가
-- share-action-plan.md: LinkedIn v6 추천, cover-letter v5 매트릭스, self-introduction.md 반영
+- ai-qa-vision.md: TC 17→16개, 2026 AI 트렌드 섹션 추가
+- share-action-plan.md: LinkedIn v6 추천, cover-letter v5 매트릭스
 
 ---
 
@@ -114,7 +80,7 @@ release-qa-process (v74), qa-checklist (v75)
 ### 면접 심화 보강 + docs 수 정합성 완료 (STEP 62~64)
 
 - interview-qa-advanced.md: Q10 심화 + Q11 신규 (AI 시대 QA 역할)
-- docs 수 24→25개 반영 — README, portfolio-summary, qa-kpi-dashboard, qa-strategy
+- docs 수 24→25개 반영
 
 ---
 
@@ -188,20 +154,24 @@ release-qa-process (v74), qa-checklist (v75)
 - testcase_regression.md, testcase_mobile.md 추가
 
 ## v4.0.0 — 2026-03-30
+
 - signup.spec.js, helpers/page-objects.js, playwright.config.js 추가
 - test-cases 3개 (auth/cart/search-api)
 - docs/portfolio-summary.md, docs/mcp-workflow-diagram.md
 
 ## v3.0.0 — 2026-03-29
+
 - MCP 5개 연동 완료 (filesystem/playwright/github/notion/slack)
 - TC 125건+ 추가
 - GitHub Actions 2개 워크플로우
 - Playwright spec 8개
 
 ## v2.0.0 — 2026-03-29
+
 - Notion TC 허브 자동 업로드
 - GitHub MCP 토큰 교체
 
 ## v1.0.0 — 2026-03-29
+
 - 초기 포트폴리오 생성
 - index.html 배포
