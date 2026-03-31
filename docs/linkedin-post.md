@@ -1,8 +1,11 @@
 # 링크드인 게시물 초안
 
+> **사용 팁**: 버전별 특징을 보고 상황에 맞게 선택하세요.  
+> URL은 항상 포함, 해시태그는 5~7개가 알고리즘 최적 범위입니다.
+
 ---
 
-## 버전 1 — 임팩트형
+## 버전 1 — 임팩트형 ⚡ (숫자로 압도)
 
 ```
 QA 엔지니어 6년 9개월,
@@ -12,9 +15,9 @@ QA 엔지니어 6년 9개월,
 
 ✅ 완성한 것들:
 → TC 145건+ 자동 생성 → filesystem 저장 → GitHub 자동 커밋
-→ playwright로 E2E 브라우저 12개 spec 자동 실행
-→ notion 페이지 자동 문서화
-→ slack 새-채널 QA 완료 알림 자동 발송
+→ Playwright로 E2E 브라우저 12개 spec 자동 실행
+→ Notion 페이지 자동 문서화
+→ Slack 새-채널 QA 완료 알림 자동 발송
 → GitHub Actions로 TC 업로드 감지 → Slack 자동 통보
 
 MCP 서버 5개. TC 145건+. 코드 0줄.
@@ -23,12 +26,14 @@ QA가 할 수 있는 일의 범위를 다시 정의하고 있습니다.
 
 👉 전체 포트폴리오: https://kihyunqa.github.io/qa-portfolio
 
-#QA #클로드 #MCP #자동화 #QAEngineer #AI자동화
+#QA #MCP #테스트자동화 #QAEngineer #AI자동화 #Playwright #Claude
 ```
+
+> 🎯 **추천 상황**: 처음 포트폴리오를 공개할 때, 최대한 많은 사람에게 닿고 싶을 때
 
 ---
 
-## 버전 2 — 스토리형
+## 버전 2 — 스토리형 📖 (공감·몰입 유도)
 
 ```
 "TC 만들어줘, 저장하고 GitHub에도 올려줘,
@@ -45,17 +50,19 @@ Slack 채널에 완료 알림까지 자동으로 갔습니다.
 TC 작성, 버그 리포팅, 문서화, 팀 공유 —
 이걸 Claude MCP 5개로 전부 자동화했습니다.
 
-심지어 TC 파일 업로드하면 GitHub Actions가 트리거돼서
+TC 업로드 하나에 GitHub Actions가 트리거돼서
 Slack으로 자동 알림까지 갑니다.
 
 👉 https://kihyunqa.github.io/qa-portfolio
 
-#QA자동화 #Claude #MCP #AI #테스트자동화
+#QA자동화 #Claude #MCP #AI #테스트자동화 #GitHub
 ```
+
+> 🎯 **추천 상황**: 스토리텔링으로 공감을 얻고 싶을 때, 같은 QA 직군 네트워크 대상
 
 ---
 
-## 버전 3 — 채용담당자용 (간결)
+## 버전 3 — 채용담당자용 📋 (간결·스펙 중심)
 
 ```
 📋 QA Engineer | 6년 9개월 경력
@@ -64,7 +71,7 @@ Slack으로 자동 알림까지 갑니다.
 
 주요 구현:
 • TC 자동생성 파이프라인 145건+ (filesystem + github MCP)
-• E2E 자동화 12개 spec (playwright MCP)
+• E2E 자동화 12개 spec (Playwright MCP)
 • TC 결과 자동 문서화 (notion MCP)
 • QA 완료 알림 자동 발송 (slack MCP)
 • GitHub Actions — TC 업로드 감지 → Slack 자동 통보
@@ -73,11 +80,16 @@ Slack으로 자동 알림까지 갑니다.
 
 포트폴리오 ↓
 https://kihyunqa.github.io/qa-portfolio
+kihyun.qa@gmail.com
+
+#QA #SDET #QAEngineer #채용 #자동화 #Playwright
 ```
+
+> 🎯 **추천 상황**: 채용담당자·헤드헌터 DM, 짧게 핵심만 전달하고 싶을 때
 
 ---
 
-## 버전 4 — GitHub Actions 강조형
+## 버전 4 — GitHub Actions 강조형 ⚙️ (기술력 어필)
 
 ```
 TC 파일 하나 올렸더니 Slack에 알림이 왔습니다.
@@ -98,10 +110,53 @@ TC 145건+ · Playwright 12 spec · GitHub Actions 2개
 
 👉 https://kihyunqa.github.io/qa-portfolio
 
-#GitHub Actions #Slack #QA자동화 #MCP #Claude
+#GitHubActions #Slack #QA자동화 #MCP #Claude #CI #DevOps
 ```
+
+> 🎯 **추천 상황**: 개발자·DevOps 네트워크에 공유할 때, CI/CD 역량 어필이 필요할 때
 
 ---
 
-*4가지 버전 중 상황에 맞게 골라서 사용하세요.*
-*수치 최종 업데이트: 2026-03-31 기준 (TC 145건+, Playwright 12 spec)*
+## 버전 5 — 면접 준비 완료 강조형 🎯 (구직 활동 중 공개용)
+
+```
+QA 엔지니어 6년 9개월,
+이제 다음 스텝을 준비하고 있습니다.
+
+포트폴리오를 만들면서 Claude MCP로 QA 자동화 파이프라인을 직접 구축했습니다.
+
+📁 담긴 것들:
+→ TC 145건+ (기능·보안·성능·접근성·회귀)
+→ Playwright E2E 12개 spec
+→ GitHub Actions CI 파이프라인 2개
+→ Notion TC Hub 자동 동기화
+→ Slack 실시간 QA 알림
+
+면접 Q&A부터 커버레터까지, 포트폴리오 안에 전부 담았습니다.
+
+관심 있으신 분들의 연락을 기다립니다.
+kihyun.qa@gmail.com
+
+👉 https://kihyunqa.github.io/qa-portfolio
+
+#QAEngineer #구직 #이직 #QA #테스트자동화 #MCP #Playwright
+```
+
+> 🎯 **추천 상황**: 적극적으로 이직 중임을 알리고 싶을 때, 채용 시장 오픈 신호를 줄 때
+
+---
+
+## 게시 타이밍 가이드
+
+| 상황 | 추천 버전 |
+|------|----------|
+| 포트폴리오 첫 공개 | 버전 1 (임팩트) |
+| 네트워킹 활성화 | 버전 2 (스토리) |
+| 채용담당자 눈에 띄고 싶을 때 | 버전 3 (채용담당자용) |
+| 개발자/DevOps 커뮤니티 공유 | 버전 4 (GitHub Actions) |
+| 이직 의사 공개 표명 | 버전 5 (구직 중) |
+
+---
+
+*수치 기준: 2026-03-31 (TC 145건+, Playwright 12 spec, MCP 5개, GitHub Actions 2개)*  
+*최종 업데이트: STEP 31 — 버전 5 추가, 게시 타이밍 가이드 추가*
