@@ -22,8 +22,8 @@
 
 ### Claude MCP 자동화 (현재 포트폴리오 구현)
 - **MCP 5개 연동**: filesystem · playwright · github · slack · notion
-- **Playwright 실제 코드**: login / search / cart / API / accessibility / performance 스펙 총 56건
-- **TC 자동생성**: 명세 입력 → TC 생성 → 로컈 저장 → GitHub 커밋
+- **Playwright 실제 코드**: login / search / cart / API / accessibility / performance 등 12 spec / TC 145건+
+- **TC 자동생성**: 명세 입력 → TC 생성 → 로컬 저장 → GitHub 커밋
 - **전체 QA 파이프라인**: TC → E2E 코드 → GitHub Actions → Slack 알림
 
 ---
@@ -38,16 +38,22 @@
 
 ---
 
-## Playwright 실제 코드 (TC 56건)
+## Playwright 실제 코드 (12 spec · TC 145건+)
 
-| 스펙 | TC 수 | 설명 |
-|------|-------|------|
-| login.spec.js | 10 | 로그인/로그아웃, XSS 방어, 스크린샷 |
-| search.spec.js | 10 | 검색, 필터, XSS 입력 방어 |
-| cart.spec.js | 10 | 장바구니, 결제 3단계 추주 |
-| api.spec.js | 10 | REST API (GET/POST/PUT/PATCH/DELETE) |
-| accessibility.spec.js | 8 | A11y, Tab 키보드, lang 속성 |
-| performance.spec.js | 8 | 로드타임, Navigation Timing API |
+| 스펙 | 설명 |
+|------|------|
+| login.spec.js | 로그인/로그아웃, XSS 방어, 스크린샷 |
+| search.spec.js | 검색, 필터, XSS 입력 방어 |
+| cart.spec.js | 장바구니, 결제 3단계 |
+| api.spec.js | REST API (GET/POST/PUT/PATCH/DELETE) |
+| payment.spec.js | 결제 E2E |
+| security.spec.js | 보안 (XSS/SQLi/RateLimit) |
+| signup.spec.js | 회원가입 E2E |
+| notification.spec.js | MCP 파이프라인 검증 |
+| performance.spec.js | 로드타임, Navigation Timing API |
+| accessibility.spec.js | A11y, Tab 키보드, lang 속성 |
+| portfolio.spec.js | 포트폴리오 사이트 자체 E2E |
+| (helpers) | page-objects.js, test-data.js |
 
 ---
 
@@ -56,7 +62,7 @@
 | # | 프로젝트 | 사용 MCP | 상태 |
 |---|---------|---------|------|
 | 01 | TC 자동생성 워크플로우 | filesystem · github · playwright | ✅ 완료 |
-| 02 | Playwright 실제 E2E 코드 (56건) | playwright | ✅ 완료 |
+| 02 | Playwright E2E 코드 (12 spec / TC 145건+) | playwright | ✅ 완료 |
 | 03 | GitHub Actions CI/CD 연동 | github | ✅ 완료 |
 | 04 | Slack 알림 자동화 | slack | ✅ 완료 |
 | 05 | Notion TC 결과 문서화 | notion | ✅ 완료 |
@@ -70,7 +76,7 @@
 
 ```
 성기현 | QA Engineer | 6년 9개월
-Claude MCP 5개 연동, Playwright E2E 56건 실제 코드, CI/CD GitHub Actions 파이프라인 구현
+Claude MCP 5개 연동, Playwright 12 spec / TC 145건+, CI/CD GitHub Actions 파이프라인 구현
 TC 자동생성 → E2E 코드 → GitHub 커밋 → Slack 알림 전 파이프라인 대화만으로 구축
 포트폴리오: https://kihyunqa.github.io/qa-portfolio
 ```
@@ -86,7 +92,7 @@ TC 설계, E2E 자동화, API 테스트, 릴리즈 QA까지 —
 그 위에 Claude MCP 자동화를 직접 구축했습니다.
 
 ✅ 구현한 것들:
-• Playwright E2E 실제 코드 56건 (login/search/cart/API/A11y/성능)
+• Playwright E2E 12 spec / TC 145건+ (login/search/cart/API/A11y/성능 등)
 • GitHub Actions CI/CD 파이프라인 (TC push → Slack 자동 알림)
 • REST API 테스트 (GET/POST/PUT/PATCH/DELETE) 코드 작성
 • 접근성(A11y) 테스트 코드 작성
@@ -97,4 +103,4 @@ TC 설계, E2E 자동화, API 테스트, 릴리즈 QA까지 —
 
 ---
 
-*Built with Claude MCP · Playwright · GitHub Actions*
+*Built with Claude MCP · Playwright · GitHub Actions · TC 145건+ · spec 12개*
