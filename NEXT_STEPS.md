@@ -50,7 +50,16 @@ weekly-qa-report-template → 합계 **25개** ✅
 | qa-strategy | ✅ STEP 73 점검 완료 (수정 불필요) |
 | release-qa-process | ✅ STEP 74 점검 완료 (수정 불필요) |
 | qa-checklist | ✅ STEP 75 점검 완료 (수정 불필요) |
-| 나머지 17개 | ✅ 이전 STEP 53~66에서 점검/수정 완료 |
+| mcp-architecture | ✅ STEP 76 점검 완료 (수정 불필요) |
+| tools-comparison | ✅ STEP 76 점검 완료 (수정 불필요) |
+| weekly-qa-report-template | ✅ STEP 76-1 수정 완료 (docs 22→25개) |
+| qa-notify-workflow | ✅ STEP 76 점검 완료 (수정 불필요) |
+| qa-kpi-dashboard | ✅ STEP 76-2 수정 완료 (개선 이력 docs 24→25개) |
+| mcp-workflow-diagram | ✅ STEP 76 점검 완료 (수정 불필요) |
+| interview-prep-advanced | ✅ STEP 76 점검 완료 (수정 불필요) |
+| regression-checklist | ✅ STEP 76 점검 완료 (수정 불필요) |
+| mcp-setup-guide | ✅ STEP 76 점검 완료 (수정 불필요) |
+| 나머지 8개 | ⏳ 다음 Claude가 점검 (linkedin-post, cover-letter, interview-qa, interview-qa-advanced, jira-mcp-plan, jira-integration-plan, bug-report-template, self-introduction) |
 
 ### MCP 5개 — 실제 작동 확인
 | MCP | 상태 |
@@ -86,10 +95,29 @@ weekly-qa-report-template → 합계 **25개** ✅
 | STEP 74 | release-qa-process.md 점검 → 수정 불필요 ✅ | 2026-03-31 |
 | STEP 75 | qa-checklist.md 점검 → 수정 불필요 ✅ | 2026-03-31 |
 | CHANGELOG | v17 → **v18** 업데이트 완료 ✅ | 2026-03-31 |
+| STEP 76-1 | weekly-qa-report-template.md 수정 — docs 22→25개 ✅ | 2026-03-31 |
+| STEP 76-2 | qa-kpi-dashboard.md 수정 — 개선 이력 docs 24→25개 ✅ | 2026-03-31 |
+| STEP 76 점검 | mcp-architecture, tools-comparison, mcp-setup-guide, mcp-workflow-diagram, interview-prep-advanced, regression-checklist, qa-notify-workflow → 수정 불필요 ✅ | 2026-03-31 |
 
 ---
 
 ## 🎯 다음 스텝 (우선순위 순)
+
+### STEP 76 잔여 — docs 남은 8개 파일 점검 [다음 Claude 단독 가능]
+
+```
+아직 이번 세션에서 열지 않은 파일들:
+  - docs/linkedin-post.md    ← LinkedIn 6버전 정확한지 확인
+  - docs/cover-letter.md     ← 커버레터 5종 정확한지 확인
+  - docs/interview-qa.md     ← 12문항 확인
+  - docs/interview-qa-advanced.md ← 11문항 확인
+  - docs/jira-mcp-plan.md    ← 수치 점검
+  - docs/jira-integration-plan.md ← 수치 점검
+  - docs/bug-report-template.md   ← 수치 점검
+  - docs/self-introduction.md     ← 내용 점검
+
+점검 포인트: 최신 수치(TC 16개, docs 25개, LinkedIn 6버전, 커버레터 5종) 반영 여부
+```
 
 ### STEP 10 — 스크린샷 실제 추가 [임팩트 최대 — 사용자 직접 필요]
 
@@ -127,30 +155,6 @@ docs/jira-mcp-plan.md 참고:
 - 면접 준비: docs/interview-qa.md (12문항) + docs/interview-qa-advanced.md (11문항)
 ```
 
-### STEP 76 — docs 남은 파일 추가 점검 [Claude 단독 가능, 선택적]
-
-```
-아직 이번 세션에서 직접 열지 않은 파일들 (이전 세션에서 점검 완료된 것들):
-  - docs/mcp-architecture.md
-  - docs/mcp-setup-guide.md
-  - docs/tools-comparison.md
-  - docs/weekly-qa-report-template.md
-  - docs/jira-mcp-plan.md
-  - docs/jira-integration-plan.md
-  - docs/interview-prep-advanced.md
-  - docs/linkedin-post.md
-  - docs/cover-letter.md
-  - docs/qa-notify-workflow.md
-  - docs/regression-checklist.md
-  - docs/qa-kpi-dashboard.md
-  - docs/mcp-workflow-diagram.md
-  - docs/bug-report-template.md
-  - docs/interview-qa.md
-  - docs/interview-qa-advanced.md
-  - docs/self-introduction.md
-점검 포인트: 최신 수치(TC 16개, docs 25개, LinkedIn 6버전, 커버레터 5종) 반영 여부
-```
-
 ---
 
 ## ⚠️ 작업 규칙 (매번 확인)
@@ -177,4 +181,4 @@ docs/jira-mcp-plan.md 참고:
 
 ---
 
-*최종 업데이트: 2026-03-31 · STEP 72~75 완료 (qa-onboarding 수정, qa-strategy/release-qa-process/qa-checklist 점검 완료) · CHANGELOG v18 · docs 25개 전체 수치 점검 완료 · 다음: STEP 10 (스크린샷), STEP 12 (LinkedIn 공유), STEP 76 (남은 docs 추가 점검)*
+*최종 업데이트: 2026-03-31 · STEP 76 진행 중 (mcp-architecture, tools-comparison, mcp-setup-guide, mcp-workflow-diagram, interview-prep-advanced, regression-checklist, qa-notify-workflow 점검 완료·수정 불필요 / weekly-qa-report-template·qa-kpi-dashboard 수정 완료) · 남은 docs 8개 점검 필요 · 다음: STEP 76 잔여 → STEP 10 (스크린샷), STEP 12 (LinkedIn 공유)*
