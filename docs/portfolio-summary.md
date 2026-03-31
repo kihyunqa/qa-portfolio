@@ -123,4 +123,4 @@
 
 ---
 
-*수치 최종 업데이트: 2026-03-31 · STEP 49 · TC 145건+, Playwright 12 spec, docs 24개, testcase 16개, 파일 80개+, 커버레터 4종*
+*수치 최종 업데이트: 2026-03-31 · STEP 50~52 · TC 145건+, Playwright 12 spec, docs 24개, testcase 16개, 파일 80개+, 커버레터 4종 · index.html 수치 이중 검증 완료*
