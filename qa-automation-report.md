@@ -1,7 +1,8 @@
 # QA 자동화 리포트
 
 > 작성일: 2026-03-30 | 작성자: Claude MCP 자동화 (성기현)  
-> 연동 MCP: filesystem · playwright · github · notion · slack
+> 연동 MCP: filesystem · playwright · github · notion · slack  
+> **※ 이 문서는 MCP 5개 첫 연동 검증 스프린트의 실행 리포트입니다. (포트폴리오 전체 TC 145건+, spec 12개와 별도 집계)**
 
 ---
 
@@ -9,7 +10,7 @@
 
 | 항목 | 수치 |
 |------|------|
-| 전체 TC 수 | **30건** |
+| 전체 TC 수 | **30건** (이 스프린트 기준) |
 | 실행 완료 | 30건 (100%) |
 | Pass | 27건 (90%) |
 | 보류 | 3건 (10%) |
@@ -108,4 +109,4 @@ slackapi/slack-github-action
 ---
 
 *이 문서는 Claude MCP에 의해 코드 0줄로 자동 작성됐습니다.*  
-*MCP 5개 · 코드 0줄 · 대화 1번 · TC 30건*
+*스프린트 기준: MCP 5개 · 코드 0줄 · 대화 1번 · TC 30건 | 포트폴리오 누적: TC 145건+ · spec 12개*
