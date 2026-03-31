@@ -81,7 +81,7 @@
 | Playwright spec | **12개** |
 | 평균 TC 실행 시간 | **< 2분** (playwright test 기준) |
 | 버그 발견율 (포트폴리오 내) | 오타·수치 오류 **10건+** 수정 완료 |
-| docs 문서 수 | **24개** |
+| docs 문서 수 | **25개** |
 | CI 파이프라인 | **2개** (playwright + qa-notify) |
 
 ---
@@ -124,7 +124,8 @@
 | 2026-03-31 | interview-prep-advanced.md 보강 | 면접 준비 Q&A 10개로 확대 |
 | 2026-03-31 | ai-qa-vision.md 보강 | 비전 문서 + 트러블슈팅 기록 |
 | 2026-03-31 | testcase 수 17→16개 정정 (실제 카운트) | 포트폴리오 신뢰도 향상 |
+| 2026-03-31 | self-introduction.md 신규 생성 → docs 25개 | 취업 서류 패키지 완성 |
 
 ---
 
-*수치 기준: 2026-03-31 · https://kihyunqa.github.io/qa-portfolio*
+*수치 기준: 2026-03-31 · STEP 63 · https://kihyunqa.github.io/qa-portfolio*
