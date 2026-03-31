@@ -69,7 +69,7 @@
 `Claude MCP` `Playwright` `GitHub Actions` `Notion` `Slack` `Jira (예정)` `CI/CD`
 
 ### 협업 & 문서화
-`TC 설계 문서` `릴리스 QA 프로세스` `주간 QA 리포트` `면접 대비 문서` `커버레터 4종`
+`TC 설계 문서` `릴리스 QA 프로세스` `주간 QA 리포트` `면접 대비 문서` `커버레터 5종`
 
 ---
 
@@ -101,12 +101,13 @@
 
 | 문서 | 용도 |
 |------|------|
-| `docs/cover-letter.md` | 지원사 맞춤 커버레터 4종 (버전 선택 매트릭스 포함) |
-| `docs/linkedin-post.md` | LinkedIn 포스트 5버전 + 게시 타이밍 가이드 |
+| `docs/cover-letter.md` | 지원사 맞춤 커버레터 5종 (버전 선택 매트릭스 포함) |
+| `docs/self-introduction.md` | 국내 기업 공채·수시채용 자기소개서 4항목 |
+| `docs/linkedin-post.md` | LinkedIn 포스트 6버전 + 게시 타이밍 가이드 |
 | `docs/share-action-plan.md` | 공유 액션 플랜 — 플랫폼별 실행 가이드 |
-| `docs/interview-qa.md` | QA 면접 질문 & 모범 답변 |
-| `docs/interview-qa-advanced.md` | 심화 면접 대비 |
-| `docs/ai-qa-vision.md` | AI+QA 비전 에세이 |
+| `docs/interview-qa.md` | QA 면접 질문 & 모범 답변 12문항 |
+| `docs/interview-qa-advanced.md` | AI 시대 QA 심화 면접 대비 11문항 |
+| `docs/ai-qa-vision.md` | AI+QA 비전 에세이 (2026 트렌드 반영) |
 | `docs/mcp-architecture.md` | MCP 기술 아키텍처 |
 | `docs/qa-kpi-dashboard.md` | KPI 실제 수치 대시보드 |
 
@@ -123,4 +124,4 @@
 
 ---
 
-*수치 최종 업데이트: 2026-03-31 · STEP 63 · TC 145건+, Playwright 12 spec, docs 25개, testcase 16개, 파일 80개+, 커버레터 5종*
+*수치 최종 업데이트: 2026-03-31 · STEP 71 · TC 145건+, Playwright 12 spec, docs 25개, testcase 16개, 파일 80개+, 커버레터 5종, LinkedIn 6버전*
