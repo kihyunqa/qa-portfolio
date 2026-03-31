@@ -26,6 +26,16 @@
 | TC 건수 | **145건+** | testcase_*.md 합산 |
 | CHANGELOG | **v8** | CHANGELOG.md |
 
+### index.html 수치 현황 (STEP 45 검증 완료)
+| 항목 | 표기값 | 상태 |
+|------|--------|------|
+| MCP 서버 수 | 5 | ✅ 정확 |
+| TC 건수 | 145건+ | ✅ 정확 |
+| Playwright spec | 12개 | ✅ 정확 |
+| GitHub Actions | 2개 | ✅ 정확 |
+| 코드 줄 수 | 0 | ✅ 정확 |
+| docs 수 / CHANGELOG 버전 | 표기 없음 | ✅ 수정 불필요 |
+
 ### MCP 5개 — 실제 작동 확인
 | MCP | 상태 |
 |-----|------|
@@ -55,10 +65,13 @@
 | STEP 42 | qa-strategy.md docs 수 22→23개 수정 ✅ | 2026-03-31 |
 | STEP 43 | docs 7개 파일 점검 → qa-kpi-dashboard.md 22→23개 수정 ✅ | 2026-03-31 |
 | STEP 44 | CHANGELOG.md v8 추가 ✅ | 2026-03-31 |
+| STEP 45 | index.html 수치 전수 점검 → 수정 불필요 확인 ✅ | 2026-03-31 |
 
-### STEP 43~44 작업 내역 (직전 Claude 세션이 완료)
-- **STEP 43**: docs/ 7개 파일 전수 점검 — `qa-kpi-dashboard.md`만 "22개" 발견, 23개로 수정
-- **STEP 44**: CHANGELOG.md v8 추가 — STEP 43 완료 내역 및 docs 수치 정합성 최종 완료 기록
+### STEP 45 작업 내역 (이 Claude 세션이 완료)
+- **index.html (59,936 bytes)** GitHub MCP로 직접 로드 성공
+- 전수 검색: "22개", "23개", "v7", "v8", "docs 수" 표기 → 모두 없음
+- 수치 5종 (MCP 5, TC 145건+, spec 12개, Actions 2개, 코드 0줄) 모두 정확 ✅
+- **수정 커밋 불필요** — index.html 이상 없음 최종 확인
 
 ---
 
@@ -76,12 +89,13 @@
 | skills/mcp-integration.md | — | 12개 ✅ | 80개+ ✅ | — |
 | skills/test-strategy.md | — | 12개 ✅ | — | — |
 | docs/qa-kpi-dashboard.md | 145건+ ✅ | 12개 ✅ | — | 23개 ✅ |
+| index.html | 145건+ ✅ | 12개 ✅ | — | 표기없음 ✅ |
 
-**→ 모든 주요 파일 수치 정합성 확인 완료 ✅**
+**→ 레포 전체 (index.html 포함) 수치 정합성 완전 완료 ✅**
 
 ---
 
-## 🎯 다음 스텝 (우선순위 순)
+## 🎯 다음 스텝 (Claude 단독 가능 작업 모두 완료)
 
 ### STEP 10 — 스크린샷 실제 추가 [임팩트 최대 — 사용자 직접 필요]
 
@@ -105,20 +119,16 @@
 4. Claude Desktop 재시작 후 연동 확인
 ```
 
-### STEP 45 — index.html CHANGELOG 버전 표기 점검 [선택]
-
-```
-index.html (58KB)에 v7 이하 버전 표기가 있을 수 있음.
-단, index.html은 MCP API 한도 초과 가능 → GitHub 웹에서 Ctrl+H로 확인 권장.
-사용자가 직접 확인 후 필요시 수정.
-```
+> 💡 **다음 Claude에게**: STEP 43~45까지 Claude 단독 작업은 모두 완료됐습니다.
+> 남은 작업은 전부 사용자 직접 개입이 필요합니다.
+> 새 대화 시작 시 사용자에게 STEP 10(스크린샷)이나 STEP 11(Jira)을 준비할 수 있는지 먼저 확인하세요.
 
 ---
 
 ## ⚠️ 작업 규칙 (매번 확인)
 
 1. **workflows 파일** → MCP 수정 불가, GitHub 웹에서만
-2. **index.html (58KB)** → MCP API 한도 초과 가능, GitHub 웹 Ctrl+H 사용
+2. **index.html (58KB)** → MCP API로 읽기 가능 확인됨 (STEP 45에서 성공). 수정 시엔 전체 내용 교체 필요하므로 신중하게.
 3. **숫자 부풀리기 금지** — 실제 확인 후 기재
 4. **새 파일 무분별 생성 금지** — 기존 파일 업데이트 우선
 5. **push_files 테스트용 임시 내용 사용 절대 금지** — 항상 실제 내용으로만
@@ -140,4 +150,4 @@ index.html (58KB)에 v7 이하 버전 표기가 있을 수 있음.
 
 ---
 
-*최종 업데이트: 2026-03-31 · STEP 44 완료 (CHANGELOG.md v8 추가, docs 전체 수치 정합성 완전 완료) · 다음: STEP 10(스크린샷, 사용자 직접) 또는 STEP 11(Jira MCP, 사용자 계정 필요)*
+*최종 업데이트: 2026-03-31 · STEP 45 완료 (index.html 수치 전수 점검, 이상 없음 확인) · Claude 단독 가능 작업 전부 완료 · 다음: STEP 10(스크린샷, 사용자 직접) 또는 STEP 11(Jira MCP, 사용자 계정 필요)*
