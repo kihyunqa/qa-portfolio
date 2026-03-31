@@ -53,12 +53,19 @@
 | STEP 40 | CHANGELOG.md v7 추가 ✅ | 2026-03-31 |
 | STEP 41 | README.md docs 수 22→23개, 주요 문서 목록 2개 추가 ✅ | 2026-03-31 |
 | STEP 42 | qa-strategy.md docs 수 22→23개 수정 ✅ | 2026-03-31 |
+| STEP 43 | docs 7개 파일 점검 → qa-kpi-dashboard.md 22→23개 수정 ✅ | 2026-03-31 |
 
-### STEP 41~42 작업 내역
-- **README.md**: docs/ `22→23개`, 주요 문서 바로가기에 `share-action-plan.md`, `linkedin-post.md` 추가
-- **qa-strategy.md**: 성과 수치 표의 docs 문서 `22→23개` 수정
-- **PROFILE.md**: docs 수 별도 표기 없음 — 이상 없음 확인 ✅
-- **mcp-architecture.md**: 수치 이상 없음 확인 ✅
+### STEP 43 작업 내역 (이 Claude가 완료)
+점검한 docs 파일 7개:
+- **ai-qa-vision.md**: "22개" 없음 ✅
+- **qa-kpi-dashboard.md**: "22개" 2곳 발견 → **23개로 수정 완료** ✅ (품질 지표 요약 + 주요 개선 이력)
+- **mcp-workflow-diagram.md**: "22개" 없음 ✅
+- **release-qa-process.md**: "22개" 없음 ✅
+- **tools-comparison.md**: "22개" 없음 ✅
+- **interview-prep-advanced.md**: "22개" 없음 ✅
+- **interview-qa-advanced.md**: "22개" 없음 ✅
+
+**→ STEP 43 완전 완료. docs/ 전체 파일 수치 정합성 최종 완료 ✅**
 
 ---
 
@@ -75,28 +82,13 @@
 | NEXT_STEPS.md | 145건+ ✅ | 12개 ✅ | 80개+ ✅ | 23개 ✅ |
 | skills/mcp-integration.md | — | 12개 ✅ | 80개+ ✅ | — |
 | skills/test-strategy.md | — | 12개 ✅ | — | — |
+| docs/qa-kpi-dashboard.md | 145건+ ✅ | 12개 ✅ | — | 23개 ✅ |
 
 **→ 모든 주요 파일 수치 정합성 확인 완료 ✅**
 
 ---
 
 ## 🎯 다음 스텝 (우선순위 순)
-
-### STEP 43 — 나머지 docs 파일 docs 수 점검 [Claude 단독 가능, 소규모]
-
-```
-아직 열어보지 않은 docs 파일들 중 수치 포함 가능성:
-  - docs/ai-qa-vision.md
-  - docs/qa-kpi-dashboard.md
-  - docs/mcp-workflow-diagram.md
-  - docs/release-qa-process.md
-  - docs/tools-comparison.md
-  - docs/interview-prep-advanced.md
-  - docs/interview-qa-advanced.md
-
-위 파일들을 열어서 "22개" 표기 검색 후 "23개"로 수정.
-한 번에 여러 파일 확인 가능 — 수정 필요한 것만 커밋.
-```
 
 ### STEP 10 — 스크린샷 실제 추가 [임팩트 최대 — 사용자 직접 필요]
 
@@ -118,6 +110,14 @@
 2. API 토큰 발급
 3. claude_desktop_config.json에 jira MCP 추가
 4. Claude Desktop 재시작 후 연동 확인
+```
+
+### STEP 44 — CHANGELOG.md v8 추가 [Claude 단독 가능]
+
+```
+STEP 43 완료 내역을 CHANGELOG에 v8로 추가:
+  - docs/qa-kpi-dashboard.md 수치 정합성 수정
+  - docs/ 7개 파일 수치 일관성 검증 완료
 ```
 
 ---
@@ -147,4 +147,4 @@
 
 ---
 
-*최종 업데이트: 2026-03-31 · STEP 41+42 완료 (README·qa-strategy docs 수 23개 수정, PROFILE·mcp-architecture 점검 이상없음) · 다음: STEP 43 (나머지 docs 파일 22→23 점검)*
+*최종 업데이트: 2026-03-31 · STEP 43 완료 (docs 7개 파일 22개 표기 점검, qa-kpi-dashboard.md 23개 수정) · 다음: STEP 10(스크린샷) 또는 STEP 44(CHANGELOG v8)*
