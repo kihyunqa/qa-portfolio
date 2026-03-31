@@ -33,7 +33,7 @@ API 테스트                   ████████░░░░░░░░
 | MCP 도구 | 테스트 수 | 자동화율 | 비고 |
 |---------|----------|---------|------|
 | GitHub (filesystem) | 15건 | 100% | Actions 연동 |
-| Playwright (browser) | 56건 | 100% | spec 12개 실행 |
+| Playwright (browser) | 88건 | 100% | spec 12개 실행 |
 | Slack (notification) | 10건 | 100% | 알림 파이프라인 |
 | Notion (docs) | 10건 | 80% | 문서 자동화 |
 | filesystem (local) | 10건 | 100% | 로컬 파일 검증 |
@@ -90,3 +90,7 @@ API 테스트                   ████████░░░░░░░░
 | Week 4 | 145 | 143 | 2 | 98.6% |
 
 > 📈 4주 연속 통과율 상승 중
+
+---
+
+*수치 기준: 2026-03-31 · TC 145건+ · Playwright spec 12개 · https://kihyunqa.github.io/qa-portfolio*
