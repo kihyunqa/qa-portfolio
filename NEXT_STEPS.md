@@ -45,14 +45,18 @@
 | STEP 28 | docs 5개 점검 → 3개 보강 완료 ✅ | 2026-03-31 |
 | STEP 29 | interview-prep-advanced.md 보강 (2203b→6664b) ✅ | 2026-03-31 |
 | STEP 30 | ai-qa-vision.md + qa-kpi-dashboard.md 보강 ✅ | 2026-03-31 |
-| STEP 31 | **linkedin-post.md 보강 (버전 5 추가)** ✅ | 2026-03-31 |
-| STEP 32 | **cover-letter.md 보강 (버전 4 추가)** ✅ | 2026-03-31 |
+| STEP 31 | linkedin-post.md 보강 (버전 5 추가) ✅ | 2026-03-31 |
+| STEP 32 | cover-letter.md 보강 (버전 4 추가) ✅ | 2026-03-31 |
+| STEP 33 | **docs/ 잔여 3개 파일 점검 + portfolio-summary 수정 완료** ✅ | 2026-03-31 |
 
-### STEP 31~32 작업 내역
-| 파일 | 전 | 후 | 주요 추가 내용 |
-|------|----|----|----------------|
-| docs/linkedin-post.md | 2974b (버전 4) | 5108b (버전 5) | 버전 5 (구직 중 공개용) 추가, 각 버전 사용 팁·해시태그 보강, 게시 타이밍 가이드 신설 |
-| docs/cover-letter.md | 3171b (버전 3) | 5345b (버전 4) | 버전 4 (AI·테크 특화) 추가, 버전 선택 매트릭스 신설, 태그 교체 가이드 보강 |
+### STEP 33 작업 내역
+| 파일 | 상태 | 조치 |
+|------|------|------|
+| docs/qa-notify-workflow.md (2906b) | ✅ 내용 충실, 보강 불필요 | 확인만 |
+| docs/qa-onboarding.md (3583b) | ✅ 내용 탄탄, 보강 불필요 | 확인만 |
+| docs/portfolio-summary.md (4071b→4126b) | ⚠️ "커버레터 3종" → "커버레터 4종" 수정 | 수정 완료 |
+
+> ⚠️ **주의**: 이 세션에서 portfolio-summary.md를 수정 중 내용이 잠깐 깨짐(206b) → 즉시 복구 완료(4126b). 커밋 이력: `828669f` (오류) → `222f154` (복구+수정)
 
 ---
 
@@ -73,15 +77,16 @@
 ★ 포트폴리오의 "실제 연동 증거"를 텍스트→시각 증거로 업그레이드하는 핵심!
 ```
 
-### STEP 33 — docs/ 남은 파일 점검 [Claude 단독 가능]
+### STEP 34 — CHANGELOG.md 최신화 [Claude 단독 가능]
 
 ```
-아직 내용 미확인 docs 파일:
-- docs/qa-notify-workflow.md (2906b) — 내용 확인 후 보강 필요 시 진행
-- docs/qa-onboarding.md (3583b) — 내용 확인 후 보강 필요 시 진행
-- docs/portfolio-summary.md (4071b) — 수치 최신화 여부 확인
+현재 CHANGELOG.md에 STEP 31~33 내역이 없음.
+v5 항목 추가 필요:
+- linkedin-post 버전 5 추가 (STEP 31)
+- cover-letter 버전 4 + 매트릭스 추가 (STEP 32)
+- docs 잔여 파일 점검 + portfolio-summary 수정 (STEP 33)
 
-진행 방법: 각 파일 읽고 → 수치 최신화 + 섹션 부족 시 보강
+CHANGELOG.md SHA 먼저 확인 후 업데이트.
 ```
 
 ### STEP 11 — Jira MCP 실제 연동 [PHASE 2 — 사용자 계정 필요]
@@ -118,6 +123,7 @@ jira-mcp-plan.md의 실행 단계 참고:
 4. **새 파일 무분별 생성 금지** — 기존 파일 업데이트 우선
 5. **push_files 테스트용 임시 내용 사용 절대 금지** — 항상 실제 내용으로만
 6. **NEXT_STEPS.md 업데이트 필수** — SHA 먼저 확인 후 업데이트
+7. **create_or_update_file content 파라미터** → 반드시 실제 텍스트 내용만 넣기 (base64 섞으면 파일 깨짐!)
 
 ---
 
@@ -133,4 +139,4 @@ jira-mcp-plan.md의 실행 단계 참고:
 
 ---
 
-*최종 업데이트: 2026-03-31 · STEP 32 완료 (linkedin-post 버전5 추가, cover-letter 버전4+매트릭스 추가) · 다음: STEP 33 (docs 잔여 파일 점검) or STEP 10 (스크린샷) or STEP 12 (공유 시작!)*
+*최종 업데이트: 2026-03-31 · STEP 33 완료 (docs 잔여 3개 점검, portfolio-summary 커버레터 4종 수정) · 다음: STEP 34 (CHANGELOG 최신화) or STEP 10 (스크린샷) or STEP 12 (공유 시작!)*
