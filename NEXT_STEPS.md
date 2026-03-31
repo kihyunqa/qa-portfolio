@@ -45,20 +45,20 @@
 | STEP 19 | 전체 검증 완료 ✅ | 2026-03-31 |
 | STEP 20 | cover-letter.md 1종→3종 확장 ✅ | 2026-03-31 |
 | STEP 21 | qa-onboarding.md MCP 환경 기준 보강 ✅ | 2026-03-31 |
-| STEP 22 | ai-qa-vision.md 대폭 보강 726→3063 bytes ✅ | 2026-03-31 |
+| STEP 22 | ai-qa-vision.md 726→3063 bytes ✅ | 2026-03-31 |
 | STEP 23 | qa-checklist.md 오타 수정 + 섹션 추가 ✅ | 2026-03-31 |
 | STEP 24-A | qa-kpi-dashboard.md 보강 ✅ | 2026-03-31 |
 | STEP 24-B | qa-notify-workflow.md 보강 ✅ | 2026-03-31 |
-| STEP 25 | **jira-mcp-plan.md 대폭 보강** 878→5457 bytes ✅ | 2026-03-31 |
-| STEP 26 | **얇은 docs 4개 동시 보강** ✅ | 2026-03-31 |
+| STEP 25 | jira-mcp-plan.md 878→5457 bytes ✅ | 2026-03-31 |
+| STEP 26 | 얇은 docs 4개 동시 보강 ✅ | 2026-03-31 |
+| STEP 27 | **얇은 docs 3개 추가 보강** ✅ | 2026-03-31 |
 
-### STEP 26 작업 내역
+### STEP 27 작업 내역
 | 파일 | before | after | 주요 변경 |
 |------|--------|-------|-----------|
-| docs/mcp-workflow-diagram.md | 1380b | 4500+b | ASCII 아키텍처 다이어그램, MCP별 역할 상세, 시나리오별 자동화 흐름 |
-| docs/release-qa-process.md | 1363b | 4000+b | 스프린트 주차별 MCP 활용 표, 입/출 기준 테이블, 롤백 기준, 관련 문서 링크 |
-| docs/weekly-qa-report-template.md | 1531b | 4500+b | 이모지 슬랙 양식, GitHub Actions yaml, 실제 작성 예시, 발송 주기 테이블 |
-| docs/regression-checklist.md | 1868b | 5479b | 영역별 자동화 여부 표, 전체 자동화 커버리지 통계 테이블 |
+| docs/jira-integration-plan.md | 1170b | 5000+b | PHASE 2+3 통합 설계, 자동 생성 이슈 구조, MCP 조합 시나리오, Jira 라벨 전략, PHASE 2 체크리스트 |
+| docs/portfolio-summary.md | 2035b | 3500+b | 경력 테이블, TC 도메인 커버 현황 17개 파일별 테이블, 주요 스킬 3개 카테고리 분류, 핵심 문서 링크 테이블 |
+| docs/tools-comparison.md | 2044b | 5018b | MCP 생태계 비교 테이블, CI/CD 도구 비교, QA 매니저 관점 도구 선택 기준, 접근성·성능 도구 추가 |
 
 ---
 
@@ -79,16 +79,17 @@
 ★ 포트폴리오의 "실제 연동 증거"를 텍스트→시각 증거로 업그레이드하는 핵심!
 ```
 
-### STEP 27 — 남은 얇은 docs 보강 [Claude 단독 가능]
+### STEP 28 — 남은 docs 파일 점검 [Claude 단독 가능]
 
 ```
-현재 남은 1000~2000bytes 대 파일:
-- docs/jira-integration-plan.md (1170b) — jira-mcp-plan과 중복 정리 or 보강
-- docs/mcp-workflow-diagram.md (✅ 완료)
-- docs/portfolio-summary.md (2035b) — 전체 포트폴리오 요약 보강
+docs/ 22개 파일 중 아직 점검하지 않은 파일:
+- docs/mcp-architecture.md (2826b) — 내용 확인 후 보강 여부 판단
+- docs/mcp-setup-guide.md (2581b) — 내용 확인 후 보강 여부 판단
+- docs/test-metrics.md (2925b) — 내용 확인 후 보강 여부 판단
+- docs/qa-strategy.md (2781b) — 내용 확인 후 보강 여부 판단
+- docs/bug-report-template.md (2800b) — 내용 확인 후 보강 여부 판단
 
-확인 후 jira-integration-plan.md가 jira-mcp-plan.md와 중복이면
-→ jira-integration-plan.md를 PHASE 3(Calendar/Gmail MCP) 계획서로 전환 가능
+위 5개 파일 내용 확인 → 얇거나 내용 부실한 파일 보강
 ```
 
 ### STEP 11 — Jira MCP 실제 연동 [PHASE 2 — 사용자 계정 필요]
@@ -96,7 +97,7 @@
 ```
 jira-mcp-plan.md의 실행 단계 참고:
 1. Jira Cloud 무료 계정 생성
-2. API 토큰 발급 (https://id.atlassian.com/manage-profile/security/api-tokens)
+2. API 토큰 발급
 3. claude_desktop_config.json에 jira MCP 추가
 4. Claude Desktop 재시작 후 연동 확인
 완료 시 index.html 로드맵 PHASE 2 완료 표시
@@ -136,4 +137,4 @@ jira-mcp-plan.md의 실행 단계 참고:
 
 ---
 
-*최종 업데이트: 2026-03-31 · STEP 26 완료 (얇은 docs 4개 보강) · 다음: STEP 27 (jira-integration-plan 정리/보강) or STEP 10 (스크린샷)*
+*최종 업데이트: 2026-03-31 · STEP 27 완료 (jira-integration-plan·portfolio-summary·tools-comparison 보강) · 다음: STEP 28 (나머지 docs 점검) or STEP 10 (스크린샷)*
