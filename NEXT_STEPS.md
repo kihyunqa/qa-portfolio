@@ -45,21 +45,42 @@
 | STEP 13~52 | docs 보강, 수치 정합성 3차 최종 점검 완료 | 2026-03-31 |
 | STEP 53 | skills/ 9개 점검 — ci-cd-pipeline.md 오타 3개 수정 | 2026-03-31 |
 | STEP 54 | **skills/ 나머지 5개 점검 — 오타 다수 수정 완료** ✅ | 2026-03-31 |
+| STEP 55 | **testcase 4개 점검, 3개 파일 오타 9개 수정 완료** ✅ | 2026-03-31 |
 
-### STEP 54 작업 내역
+### STEP 55 작업 내역
 | 파일 | 점검 결과 | 조치 |
 |------|----------|------|
-| skills/automation-tools.md | ❌ 오타 3개 (로컈→로컬, 컨플리원스→완료 알림, 추체→주체) | **수정 완료** |
-| skills/manual-testing.md | ❌ 오타 다수 (입퇀→입구, 감지뾯이→정상적으로, 코된→잠금 등) | **수정 완료** |
-| skills/test-strategy.md | ❌ 오타 1개 (컴플리언스 알림→완료 알림) | **수정 완료** |
-| skills/mobile-testing.md | ✅ 이상 없음 | 패스 |
-| skills/performance-testing.md | ✅ 이상 없음 | 패스 |
+| testcase_regression.md | ✅ 이상 없음 | 패스 |
+| testcase_mobile.md | ❌ 오타 4개 (커합→확인, 엁→기기, 종스크롭→종스크롤, 핀치쥐→핀치줌) | **수정 완료** |
+| testcase_cross-browser.md | ❌ 오타 2개 (컨버집→차이, 쾜릭→클릭) | **수정 완료** |
+| testcase_signup.md | ❌ 오타 3개 (뱄시워드→패스워드, 가입려시도→가입 시도, XSS 크립트→XSS 스크립트) | **수정 완료** |
 
-**→ skills/ 9개 파일 전체 오타 점검 및 수정 완료 ✅**
+**→ skills/ + testcase 총 4개 파일 오타 9개 수정 완료 ✅**
 
 ---
 
 ## 🎯 다음 스텝 (우선순위 순)
+
+### STEP 56 — testcase_*.md 나머지 12개 점검 [Claude 단독 가능 — 최우선]
+
+```
+아직 점검하지 않은 testcase 파일들 오타/내용 점검:
+- testcase_login.md (6488b — 가장 큰 파일, 중요)
+- testcase_accessibility.md
+- testcase_api-testing.md
+- testcase_bug-report.md
+- testcase_cicd.md
+- testcase_e2e-playwright.md
+- testcase_mcp-integration.md
+- testcase_notification.md
+- testcase_notion.md
+- testcase_payment.md
+- testcase_performance.md
+- testcase_security.md
+
+방법: github:get_file_contents로 읽기 → 오타/잘못된 수치 수정
+한 번에 너무 많으면 4~6개씩 나눠서 진행 (토큰 절약)
+```
 
 ### STEP 10 — 스크린샷 실제 추가 [임팩트 최대 — 사용자 직접 필요]
 
@@ -74,17 +95,6 @@
 저장 위치: screenshots/ 폴더
 업로드: https://github.com/kihyunqa/qa-portfolio/upload/main/screenshots
 ★ 포트폴리오의 "실제 연동 증거"를 텍스트→시각 증거로 업그레이드하는 핵심!
-```
-
-### STEP 55 — testcase_*.md 16개 내용 점검 [Claude 단독 가능]
-
-```
-testcase_*.md 16개 파일 중 수치/오타 오류 있는 파일 점검.
-특히 크기가 작은 파일들(1000b 이하):
-- testcase_regression.md
-- testcase_mobile.md
-
-방법: github:get_file_contents로 읽기 → 오타/잘못된 수치 수정
 ```
 
 ### STEP 11 — Jira MCP 실제 연동 [PHASE 2 — 사용자 계정 필요]
@@ -132,4 +142,4 @@ docs/jira-mcp-plan.md 참고:
 
 ---
 
-*최종 업데이트: 2026-03-31 · STEP 54 완료 (skills 나머지 5개 점검, 오타 3개 파일 수정) · skills/ 전체 9개 오타 점검 완료 · 다음: STEP 10 (스크린샷, 사용자 직접) 또는 STEP 55 (testcase 파일 점검)*
+*최종 업데이트: 2026-03-31 · STEP 55 완료 (testcase 4개 점검, 3개 파일 오타 9개 수정) · 다음: STEP 56 (나머지 12개 testcase 점검, Claude 단독 가능) 또는 STEP 10 (스크린샷, 사용자 직접)*
