@@ -43,7 +43,7 @@
 | QA 경력 | 6년 9개월 | 삼성전자 파트너 포함 |
 | TC 수 | 145건+ | 16개 도메인 커버 |
 | Playwright spec | 12개 | E2E 자동화 |
-| docs/ 문서 | 24개 | QA 전 영역 커버 |
+| docs/ 문서 | 25개 | QA 전 영역 커버 |
 | GitHub Actions | 2개 | CI/CD 자동화 |
 | 작성한 코드 | 0줄 | 전부 Claude 대화로 생성 |
 | 레포 파일 수 | 80개+ | 전체 포트폴리오 |
@@ -123,4 +123,4 @@
 
 ---
 
-*수치 최종 업데이트: 2026-03-31 · STEP 50~52 · TC 145건+, Playwright 12 spec, docs 24개, testcase 16개, 파일 80개+, 커버레터 4종 · index.html 수치 이중 검증 완료*
+*수치 최종 업데이트: 2026-03-31 · STEP 63 · TC 145건+, Playwright 12 spec, docs 25개, testcase 16개, 파일 80개+, 커버레터 5종*
