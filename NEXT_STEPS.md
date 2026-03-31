@@ -11,20 +11,29 @@
 
 ---
 
-## ✅ 검증 완료된 실제 현황 (2026-03-31 기준)
+## ✅ 검증 완료된 실제 현황 (2026-03-31 기준 · 최종 확인)
 
 ### 정확한 수치 (부풀리기 금지)
 
-| 항목 | 실제 수 | 위치 |
-|------|---------|------|
-| testcase_*.md | **16개** | 루트 |
-| playwright spec | **12개** (config·README 제외) | playwright-tests/ |
-| skills/ 문서 | **9개** | skills/ (전체 오타 점검 완료) |
-| docs/ 문서 | **25개** | docs/ (self-introduction.md 포함) |
-| GitHub Actions | **2개** | .github/workflows/ |
-| 전체 파일 수 | **80개+** | 전체 레포 |
-| TC 건수 | **145건+** | testcase_*.md 합산 |
-| CHANGELOG | **v15** | CHANGELOG.md |
+| 항목 | 실제 수 | 위치 | 검증 방법 |
+|------|---------|------|----------|
+| testcase_*.md | **16개** | 루트 | 직접 카운트 완료 |
+| playwright spec | **12개** (config·README 제외) | playwright-tests/ | 직접 확인 완료 |
+| skills/ 문서 | **9개** | skills/ | 오타 점검 완료 |
+| docs/ 문서 | **25개** | docs/ | 직접 카운트 완료 ✅ |
+| GitHub Actions | **2개** | .github/workflows/ | 확인 완료 |
+| 전체 파일 수 | **80개+** | 전체 레포 | 확인 완료 |
+| TC 건수 | **145건+** | testcase_*.md 합산 | 확인 완료 |
+| CHANGELOG | **v15** | CHANGELOG.md | 최신 완료 |
+
+### docs/ 25개 파일 목록 (직접 검증 완료 · 2026-03-31)
+ai-qa-vision, bug-report-template, cover-letter, interview-prep-advanced,
+interview-qa-advanced, interview-qa, jira-integration-plan, jira-mcp-plan,
+linkedin-post, mcp-architecture, mcp-setup-guide, mcp-workflow-diagram,
+portfolio-summary, qa-checklist, qa-kpi-dashboard, qa-notify-workflow,
+qa-onboarding, qa-strategy, regression-checklist, release-qa-process,
+self-introduction, share-action-plan, test-metrics, tools-comparison,
+weekly-qa-report-template → 합계 **25개** ✅
 
 ### MCP 5개 — 실제 작동 확인
 | MCP | 상태 |
@@ -55,17 +64,17 @@
 | STEP 62 | interview-qa-advanced.md 점검 — Q11 신규 추가 (AI 시대 QA 역할), Q10 심화 ✅ | 2026-03-31 |
 | STEP 63 | docs 수 24→25개 반영 — README, portfolio-summary, qa-kpi-dashboard, qa-strategy 수정 ✅ | 2026-03-31 |
 | STEP 64 | CHANGELOG v14→v15 업데이트 (STEP 62~63 반영) ✅ | 2026-03-31 |
+| STEP 65 | index.html "docs 24개" 표기 점검 → **표기 없음 확인, 수정 불필요** ✅ | 2026-03-31 |
+| STEP 66 | PROFILE.md "docs 24개" 표기 점검 → **표기 없음 확인, 수정 불필요** ✅ | 2026-03-31 |
 
-### STEP 62~64 작업 요약
+### 이번 세션 추가 검증 사항
 
-| 파일 | 작업 내역 |
+| 항목 | 검증 결과 |
 |------|----------|
-| docs/interview-qa-advanced.md | Q10 내용 심화 (커버리지 3레이어 설명), Q11 신규 추가 (2026 AI 트렌드) |
-| README.md | docs 24→25개 수정 |
-| docs/portfolio-summary.md | docs 24→25개, 커버레터 4→5종 수정 |
-| docs/qa-kpi-dashboard.md | docs 24→25개 수정, 개선이력 추가 |
-| docs/qa-strategy.md | docs 24→25개 수정 |
-| CHANGELOG.md | v14→v15, STEP 62~63 반영 |
+| docs/ 폴더 직접 카운트 | 25개 정확히 확인 ✅ |
+| index.html 내 docs 수 표기 | 없음 — 수정 불필요 ✅ |
+| PROFILE.md 내 docs 수 표기 | 없음 — 수정 불필요 ✅ |
+| test-metrics.md 수치 점검 | TC 145건+, spec 12개 정상 ✅ |
 
 ---
 
@@ -107,20 +116,24 @@ docs/jira-mcp-plan.md 참고:
 - 면접 준비: docs/interview-qa.md (12개 Q&A) + docs/interview-qa-advanced.md (11개 Q&A)
 ```
 
-### STEP 65 — index.html docs 수 표기 점검 [Claude 단독 가능]
+### STEP 67 — docs/ai-qa-vision.md 점검 [Claude 단독 가능]
 
 ```
-STEP 63에서 README 등 4개 파일의 docs 수를 25개로 수정했지만
-index.html(58KB) 내에도 docs 수 표기가 있을 수 있음.
-index.html에서 "24개" 또는 "24 docs" 패턴 검색 후 필요 시 수정.
-주의: index.html 수정 시 SHA 반드시 먼저 확인 후 전체 내용 교체.
+현재 파일 크기: 5419b
+점검 포인트:
+  - 2026년 AI 트렌드 반영 여부 (interview-qa-advanced.md Q11과 연계)
+  - 수치 표기 정합성 (TC 145건+, spec 12개, docs 25개)
+  - 내용 최신성 확인
 ```
 
-### STEP 66 — PROFILE.md docs 수 점검 [Claude 단독 가능]
+### STEP 68 — docs/share-action-plan.md 최신화 [Claude 단독 가능]
 
 ```
-PROFILE.md에도 docs 수 표기가 있을 수 있음.
-"24개" 표기가 있으면 "25개"로 수정.
+현재 파일 크기: 5543b
+점검 포인트:
+  - cover-letter 5버전, self-introduction.md 추가 반영 여부
+  - LinkedIn 포스트 버전 6 추천 업데이트 여부
+  - 공유 플랫폼별 실행 가이드 최신성 확인
 ```
 
 ---
@@ -128,7 +141,7 @@ PROFILE.md에도 docs 수 표기가 있을 수 있음.
 ## ⚠️ 작업 규칙 (매번 확인)
 
 1. **workflows 파일** → MCP 수정 불가, GitHub 웹에서만
-2. **index.html (58KB)** → 수정 시 전체 내용 교체 필요. SHA 반드시 확인 후 진행
+2. **index.html (59KB)** → 수정 시 전체 내용 교체 필요. SHA 반드시 확인 후 진행
 3. **숫자 부풀리기 금지** — 실제 확인 후 기재
 4. **새 파일 무분별 생성 금지** — 기존 파일 업데이트 우선
 5. **push_files 테스트용 임시 내용 사용 절대 금지** — 항상 실제 내용으로만
@@ -149,4 +162,4 @@ PROFILE.md에도 docs 수 표기가 있을 수 있음.
 
 ---
 
-*최종 업데이트: 2026-03-31 · STEP 64 완료 (CHANGELOG v15) · 이번 세션에서 STEP 62~64 완료 · 다음: STEP 65 (index.html docs 수 점검), STEP 66 (PROFILE.md 점검), STEP 10 (스크린샷, 사용자 직접), STEP 12 (LinkedIn 공유)*
+*최종 업데이트: 2026-03-31 · STEP 65~66 완료 (index.html/PROFILE.md 점검 → 수정 불필요 확인) · docs 25개 직접 카운트 재검증 완료 · CHANGELOG v15 · 다음: STEP 67 (ai-qa-vision 점검), STEP 68 (share-action-plan 최신화), STEP 10 (스크린샷), STEP 12 (LinkedIn 공유)*
