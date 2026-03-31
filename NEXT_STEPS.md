@@ -24,7 +24,7 @@
 | GitHub Actions | **2개** | .github/workflows/ |
 | 전체 파일 수 | **80개+** | 전체 레포 |
 | TC 건수 | **145건+** | testcase_*.md 합산 |
-| CHANGELOG | **v7** | CHANGELOG.md |
+| CHANGELOG | **v8** | CHANGELOG.md |
 
 ### MCP 5개 — 실제 작동 확인
 | MCP | 상태 |
@@ -54,18 +54,11 @@
 | STEP 41 | README.md docs 수 22→23개, 주요 문서 목록 2개 추가 ✅ | 2026-03-31 |
 | STEP 42 | qa-strategy.md docs 수 22→23개 수정 ✅ | 2026-03-31 |
 | STEP 43 | docs 7개 파일 점검 → qa-kpi-dashboard.md 22→23개 수정 ✅ | 2026-03-31 |
+| STEP 44 | CHANGELOG.md v8 추가 ✅ | 2026-03-31 |
 
-### STEP 43 작업 내역 (이 Claude가 완료)
-점검한 docs 파일 7개:
-- **ai-qa-vision.md**: "22개" 없음 ✅
-- **qa-kpi-dashboard.md**: "22개" 2곳 발견 → **23개로 수정 완료** ✅ (품질 지표 요약 + 주요 개선 이력)
-- **mcp-workflow-diagram.md**: "22개" 없음 ✅
-- **release-qa-process.md**: "22개" 없음 ✅
-- **tools-comparison.md**: "22개" 없음 ✅
-- **interview-prep-advanced.md**: "22개" 없음 ✅
-- **interview-qa-advanced.md**: "22개" 없음 ✅
-
-**→ STEP 43 완전 완료. docs/ 전체 파일 수치 정합성 최종 완료 ✅**
+### STEP 43~44 작업 내역 (직전 Claude 세션이 완료)
+- **STEP 43**: docs/ 7개 파일 전수 점검 — `qa-kpi-dashboard.md`만 "22개" 발견, 23개로 수정
+- **STEP 44**: CHANGELOG.md v8 추가 — STEP 43 완료 내역 및 docs 수치 정합성 최종 완료 기록
 
 ---
 
@@ -75,7 +68,7 @@
 |------|-------|---------|---------|---------|
 | README.md | 145건+ ✅ | 12개 ✅ | 80개+ ✅ | 23개 ✅ |
 | PROFILE.md | 145건+ ✅ | 12개 ✅ | — | — |
-| CHANGELOG.md | v7까지 ✅ | — | — | — |
+| CHANGELOG.md | v8까지 ✅ | — | — | — |
 | portfolio-summary.md | 145건+ ✅ | 12개 ✅ | 80개+ ✅ | 23개 ✅ |
 | qa-automation-report.md | 30건(스프린트) ✅ | — | — | — |
 | qa-strategy.md | 145건+ ✅ | 12개 ✅ | — | 23개 ✅ |
@@ -112,12 +105,12 @@
 4. Claude Desktop 재시작 후 연동 확인
 ```
 
-### STEP 44 — CHANGELOG.md v8 추가 [Claude 단독 가능]
+### STEP 45 — index.html CHANGELOG 버전 표기 점검 [선택]
 
 ```
-STEP 43 완료 내역을 CHANGELOG에 v8로 추가:
-  - docs/qa-kpi-dashboard.md 수치 정합성 수정
-  - docs/ 7개 파일 수치 일관성 검증 완료
+index.html (58KB)에 v7 이하 버전 표기가 있을 수 있음.
+단, index.html은 MCP API 한도 초과 가능 → GitHub 웹에서 Ctrl+H로 확인 권장.
+사용자가 직접 확인 후 필요시 수정.
 ```
 
 ---
@@ -147,4 +140,4 @@ STEP 43 완료 내역을 CHANGELOG에 v8로 추가:
 
 ---
 
-*최종 업데이트: 2026-03-31 · STEP 43 완료 (docs 7개 파일 22개 표기 점검, qa-kpi-dashboard.md 23개 수정) · 다음: STEP 10(스크린샷) 또는 STEP 44(CHANGELOG v8)*
+*최종 업데이트: 2026-03-31 · STEP 44 완료 (CHANGELOG.md v8 추가, docs 전체 수치 정합성 완전 완료) · 다음: STEP 10(스크린샷, 사용자 직접) 또는 STEP 11(Jira MCP, 사용자 계정 필요)*
