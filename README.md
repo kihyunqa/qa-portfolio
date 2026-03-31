@@ -135,12 +135,14 @@ qa-portfolio/
 |------|------|
 | [포트폴리오 요약](docs/portfolio-summary.md) | 채용담당자용 1페이지 요약 |
 | [공유 액션 플랜](docs/share-action-plan.md) | LinkedIn·채용플랫폼·DM 실행 가이드 |
-| [커버레터 4종](docs/cover-letter.md) | 상황별 커버레터 + 버전 선택 매트릭스 |
-| [LinkedIn 포스트](docs/linkedin-post.md) | 버전 1~5 + 게시 타이밍 가이드 |
+| [커버레터 5종](docs/cover-letter.md) | 상황별 커버레터 + 버전 선택 매트릭스 |
+| [자기소개서](docs/self-introduction.md) | 국내 기업 공채·수시채용 4항목 |
+| [LinkedIn 포스트](docs/linkedin-post.md) | 버전 1~6 + 게시 타이밍 가이드 |
 | [MCP 세팅 가이드](docs/mcp-setup-guide.md) | MCP 5개 설치/설정 전체 |
 | [QA 전략 문서](docs/qa-strategy.md) | 테스트 전략 및 방법론 |
 | [버그 리포트 양식](docs/bug-report-template.md) | 실제 예시 3건 포함 |
-| [면접 Q&A](docs/interview-qa.md) | QA 면접 준비 8문항 |
+| [면접 Q&A](docs/interview-qa.md) | QA 면접 준비 12문항 |
+| [면접 Q&A 심화](docs/interview-qa-advanced.md) | AI 시대 QA 심화 11문항 |
 | [회귀 체크리스트](docs/regression-checklist.md) | 릴리즈 전 필수 확인 목록 |
 | [AI QA 비전](docs/ai-qa-vision.md) | MCP 기반 QA 자동화 미래 |
 
