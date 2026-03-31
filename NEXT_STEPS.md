@@ -20,11 +20,11 @@
 | testcase_*.md | **16개** | 루트 |
 | playwright spec | **12개** (config·README 제외) | playwright-tests/ |
 | skills/ 문서 | **9개** | skills/ (전체 오타 점검 완료) |
-| docs/ 문서 | **24개** | docs/ |
+| docs/ 문서 | **25개** | docs/ (self-introduction.md 신규 추가) |
 | GitHub Actions | **2개** | .github/workflows/ |
 | 전체 파일 수 | **80개+** | 전체 레포 |
 | TC 건수 | **145건+** | testcase_*.md 합산 |
-| CHANGELOG | **v13** | CHANGELOG.md |
+| CHANGELOG | **v14** | CHANGELOG.md |
 
 ### MCP 5개 — 실제 작동 확인
 | MCP | 상태 |
@@ -44,21 +44,23 @@
 | STEP 1~9 | MCP 연동, TC 생성, spec 작성, docs 작성 등 | ~2026-03-30 |
 | STEP 13~52 | docs 보강, 수치 정합성 3차 최종 점검 완료 | 2026-03-31 |
 | STEP 53 | skills/ 9개 점검 — ci-cd-pipeline.md 오타 3개 수정 | 2026-03-31 |
-| STEP 54 | **skills/ 나머지 5개 점검 — 오타 다수 수정 완료** ✅ | 2026-03-31 |
-| STEP 55 | **testcase 4개 점검, 3개 파일 오타 9개 수정 완료** ✅ | 2026-03-31 |
-| STEP 56 | **testcase 나머지 12개 전체 점검 — 오타 1개 수정** ✅ | 2026-03-31 |
-| STEP 57 | **index.html 전체 점검 완료 — TC 테이블 ID 오류 수정** ✅ | 2026-03-31 |
-| STEP 58 | **CHANGELOG v12 업데이트 완료 — STEP 56~58 기록** ✅ | 2026-03-31 |
-| STEP 59 | **interview-qa.md Q9~Q12 추가, linkedin-post.md 버전 6 추가** ✅ | 2026-03-31 |
+| STEP 54 | skills/ 나머지 5개 점검 — 오타 다수 수정 완료 ✅ | 2026-03-31 |
+| STEP 55 | testcase 4개 점검, 3개 파일 오타 9개 수정 완료 ✅ | 2026-03-31 |
+| STEP 56 | testcase 나머지 12개 전체 점검 — 오타 1개 수정 ✅ | 2026-03-31 |
+| STEP 57 | index.html 전체 점검 완료 — TC 테이블 ID 오류 수정 ✅ | 2026-03-31 |
+| STEP 58 | CHANGELOG v12 업데이트 완료 ✅ | 2026-03-31 |
+| STEP 59 | interview-qa.md Q9~Q12 추가, linkedin-post.md 버전 6 추가 ✅ | 2026-03-31 |
+| STEP 60 | **cover-letter.md 버전 5 추가 (AI 프로덕트 스타트업 특화)** ✅ | 2026-03-31 |
+| STEP 61 | **docs/self-introduction.md 신규 생성 (국내 기업 자기소개서 4항목)** ✅ | 2026-03-31 |
 
-### STEP 59 작업 내역 (취업 공개 콘텐츠 강화)
+### STEP 60~61 작업 내역 (취업 서류 패키지 완성)
 
 | 파일 | 작업 내역 |
 |------|----------|
-| docs/interview-qa.md | Q9(코드 0줄 QA 자동화 정당성), Q10(팀 환경 도입), Q11(커버리지 측정), Q12(포트폴리오 제작 어려움) 4개 신규 추가 → 총 12개 Q&A |
-| docs/linkedin-post.md | 버전 6 추가 — AI 생산성 콘텐츠형 (타임라인 포맷, 바이럴 노출 최적화) |
+| docs/cover-letter.md | 버전 5 추가 — "AI 도구를 쓰는 게 아니라 파이프라인 자체를 구축"이라는 관점 강조. 고성장 스타트업 QA 첫 채용 포지션 특화 |
+| docs/self-introduction.md | 신규 생성 — 성장과정/직무역량/장단점/입사포부 4항목, 700자 내외, 국내 중견기업 공채·경력직 수시채용 대응 |
 
-**→ 면접 대비 Q&A 8→12개로 강화, 링크드인 게시 옵션 5→6개로 확장** 🎉
+**→ 커버레터 5버전 + 자기소개서 4항목 완성. 취업 서류 패키지 전체 완성** 🎉
 
 ---
 
@@ -95,17 +97,31 @@ docs/jira-mcp-plan.md 참고:
 - LinkedIn: docs/linkedin-post.md 버전 1~6 중 선택
   - 버전 6 (AI 생산성형) 특히 추천 — 바이럴 가능성 높음
 - 이력서 링크: https://kihyunqa.github.io/qa-portfolio
-- 커버레터: docs/cover-letter.md 버전 3종 중 지원사 맞춤 선택
+- 커버레터: docs/cover-letter.md 버전 1~5 중 지원사 맞춤 선택
+- 자기소개서: docs/self-introduction.md (국내 기업 공채·수시채용)
 - 면접 준비: docs/interview-qa.md (12개 Q&A) + docs/interview-qa-advanced.md
 ```
 
-### STEP 60 — cover-letter.md 버전 5 추가 [Claude 단독 가능]
+### STEP 62 — interview-qa-advanced.md 점검 및 보강 [Claude 단독 가능]
 
 ```
-현재 커버레터 4버전 있음.
-추가 가능한 버전:
-  - 버전 5: AI 도입 경험 강조형 (기술 스타트업 지원 특화)
-  - 자기소개서 형식 1장 요약본 (국내 중견기업 지원용)
+현재 파일 크기: 5957b
+점검 포인트:
+  - 기존 Q&A 내용 중 2026년 트렌드와 맞지 않는 항목 업데이트
+  - "AI 시대 QA 엔지니어의 역할 변화" 관련 질문 보강 여부 확인
+  - interview-qa.md(기초)와 중복 없이 심화 내용으로 보완
+```
+
+### STEP 63 — docs 수 업데이트 반영 [Claude 단독 가능]
+
+```
+self-introduction.md 신규 추가로 docs 수가 24→25개로 변경.
+아래 파일들의 "docs 24개" 표기를 "25개"로 수정 필요:
+  - README.md
+  - docs/portfolio-summary.md
+  - docs/qa-kpi-dashboard.md
+  - docs/qa-strategy.md
+주의: 수치 부풀리기 금지 — 실제 확인 후 수정
 ```
 
 ---
@@ -134,4 +150,4 @@ docs/jira-mcp-plan.md 참고:
 
 ---
 
-*최종 업데이트: 2026-03-31 · STEP 59 완료 (interview-qa Q9~Q12 추가, linkedin-post 버전 6 추가) · 다음: STEP 10 (스크린샷, 사용자 직접), STEP 12 (LinkedIn 공유, 버전 6 추천), STEP 60 (cover-letter 버전 5, Claude 단독 가능)*
+*최종 업데이트: 2026-03-31 · STEP 61 완료 (self-introduction.md 신규 생성, cover-letter 버전 5 추가) · 다음: STEP 10 (스크린샷, 사용자 직접), STEP 12 (LinkedIn 공유, 버전 6 추천), STEP 62 (interview-qa-advanced 점검), STEP 63 (docs 수 25개 반영)*
