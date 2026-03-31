@@ -114,7 +114,7 @@ qa-portfolio/
 ├── e2e-scenarios/             # E2E 시나리오
 ├── test-cases/                # 상세 TC (auth/cart/search/payment/signup)
 ├── skills/                    # QA 역량 문서 9개
-└── docs/                      # 전략/면접/KPI/온보딩 문서 22개
+└── docs/                      # 전략/면접/KPI/온보딩 문서 23개
 ```
 
 ---
@@ -134,13 +134,15 @@ qa-portfolio/
 | 문서 | 설명 |
 |------|------|
 | [포트폴리오 요약](docs/portfolio-summary.md) | 채용담당자용 1페이지 요약 |
+| [공유 액션 플랜](docs/share-action-plan.md) | LinkedIn·채용플랫폼·DM 실행 가이드 |
+| [커버레터 4종](docs/cover-letter.md) | 상황별 커버레터 + 버전 선택 매트릭스 |
+| [LinkedIn 포스트](docs/linkedin-post.md) | 버전 1~5 + 게시 타이밍 가이드 |
 | [MCP 세팅 가이드](docs/mcp-setup-guide.md) | MCP 5개 설치/설정 전체 |
 | [QA 전략 문서](docs/qa-strategy.md) | 테스트 전략 및 방법론 |
 | [버그 리포트 양식](docs/bug-report-template.md) | 실제 예시 3건 포함 |
 | [면접 Q&A](docs/interview-qa.md) | QA 면접 준비 8문항 |
 | [회귀 체크리스트](docs/regression-checklist.md) | 릴리즈 전 필수 확인 목록 |
 | [AI QA 비전](docs/ai-qa-vision.md) | MCP 기반 QA 자동화 미래 |
-| [커버레터 4종](docs/cover-letter.md) | 상황별 커버레터 + 버전 선택 매트릭스 |
 
 ---
 
