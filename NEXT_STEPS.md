@@ -42,16 +42,13 @@
 |------|------|--------|
 | STEP 1~9 | MCP 연동, TC 생성, spec 작성, docs 작성 등 | ~2026-03-30 |
 | STEP 13~27 | docs 전체 수치·오타·내용 수정 및 보강 | 2026-03-31 |
-| STEP 28 | **docs 5개 점검 → 3개 보강 완료** ✅ | 2026-03-31 |
+| STEP 28 | docs 5개 점검 → 3개 보강 완료 ✅ | 2026-03-31 |
+| STEP 29 | **interview-prep-advanced.md 보강** ✅ | 2026-03-31 |
 
-### STEP 28 작업 내역
-| 파일 | 조치 | 주요 추가 내용 |
-|------|------|----------------|
-| docs/mcp-setup-guide.md | 보강 (2581→4500+b) | MCP별 연동 확인 테스트 명령어, PHASE 2 Jira 설정 예시, Troubleshooting 보강 |
-| docs/qa-strategy.md | 보강 (2781→4800+b) | 실제 성과 수치 테이블, MCP별 실적 추가, PHASE 2 전략, 테스트 사이클 다이어그램 |
-| docs/mcp-architecture.md | 보강 (2826→4700+b) | 실제 구현 플로우 8단계, GitHub Actions 연동 구조, PHASE 2 확장 계획 |
-| docs/test-metrics.md | 패스 (내용 충실) | — |
-| docs/bug-report-template.md | 패스 (예시 3개, 충분) | — |
+### STEP 29 작업 내역
+| 파일 | 전 | 후 | 주요 추가 내용 |
+|------|----|----|----------------|
+| docs/interview-prep-advanced.md | 2203b (Q8개) | 6664b (Q10개+표) | MCP별 실제 연동 경험, Flaky Test 해결법, 성능 기준표, 실제 성과 수치 테이블 |
 
 ---
 
@@ -72,13 +69,14 @@
 ★ 포트폴리오의 "실제 연동 증거"를 텍스트→시각 증거로 업그레이드하는 핵심!
 ```
 
-### STEP 29 — interview-prep-advanced.md 보강 [Claude 단독 가능]
+### STEP 30 — docs/ 나머지 파일 점검 [Claude 단독 가능]
 
 ```
-현재 상태: 2203b로 가장 얇은 파일 중 하나
-내용 확인 후 보강:
-- 파일 경로: docs/interview-prep-advanced.md
-- 추가할 내용: MCP 구체적 면접 답변, 실제 연동 경험 기반 Q&A
+아직 점검 안 된 docs 파일들 확인 후 필요 시 보강:
+- docs/linkedin-post.md — 최신 수치 반영 여부 확인
+- docs/cover-letter.md — 3버전 내용 최신화 여부 확인
+- docs/qa-checklist.md — 체크리스트 항목 완성도 확인
+진행 방법: 파일별 size 확인 후 2000b 미만 파일 우선 보강
 ```
 
 ### STEP 11 — Jira MCP 실제 연동 [PHASE 2 — 사용자 계정 필요]
@@ -98,7 +96,7 @@ jira-mcp-plan.md의 실행 단계 참고:
 - LinkedIn: docs/linkedin-post.md 버전 1~4 중 선택
 - 이력서 링크: https://kihyunqa.github.io/qa-portfolio
 - 커버레터: docs/cover-letter.md 버전 3종 중 지원사 맞춤 선택
-- 면접 준비: interview-qa.md + interview-qa-advanced.md
+- 면접 준비: interview-qa.md + interview-qa-advanced.md (STEP 29 보강 완료!)
 ```
 
 ---
@@ -126,4 +124,4 @@ jira-mcp-plan.md의 실행 단계 참고:
 
 ---
 
-*최종 업데이트: 2026-03-31 · STEP 28 완료 (mcp-setup-guide·qa-strategy·mcp-architecture 보강) · 다음: STEP 29 (interview-prep-advanced 보강) or STEP 10 (스크린샷)*
+*최종 업데이트: 2026-03-31 · STEP 29 완료 (interview-prep-advanced 보강: 2203b→6664b) · 다음: STEP 30 (docs 나머지 점검) or STEP 10 (스크린샷 추가)*
