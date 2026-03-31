@@ -20,7 +20,7 @@
 | testcase_*.md | **17개** | 루트 |
 | playwright spec | **12개** (config·README 제외) | playwright-tests/ |
 | skills/ 문서 | **9개** | skills/ |
-| docs/ 문서 | **22개** | docs/ |
+| docs/ 문서 | **23개** | docs/ (share-action-plan.md 추가) |
 | GitHub Actions | **2개** | .github/workflows/ |
 | 전체 파일 수 | **80개+** | 전체 레포 |
 | TC 건수 | **145건+** | testcase_*.md 합산 |
@@ -53,35 +53,38 @@
 | STEP 36 | PROFILE.md 수치 최신화 (spec 12개, TC 145건+) ✅ | 2026-03-31 |
 | STEP 37 | qa-automation-report.md 맥락 명확화 완료 ✅ | 2026-03-31 |
 | STEP 38 | skills/ 9개 파일 전체 점검 + 2개 수정 완료 ✅ | 2026-03-31 |
+| STEP 12 | 포트폴리오 공개 공유 준비 완료 ✅ | 2026-03-31 |
 
-### STEP 38 작업 내역 — skills/ 수치 점검 및 수정
+### STEP 12 작업 내역 — 포트폴리오 공개 공유 준비
 
-**점검 결과 (9개 파일):**
-| 파일 | 수치 이슈 | 처리 |
-|------|-----------|------|
-| api-testing.md | 없음 (API-030 독립 수치, 문제없음) | 유지 |
-| automation-tools.md | 없음 | 유지 |
-| bug-reporting.md | 없음 | 유지 |
-| ci-cd-pipeline.md | 없음 | 유지 |
-| manual-testing.md | 없음 (TC-020 독립 수치) | 유지 |
-| mcp-integration.md | spec 9개 → **12개**, 60+ → **80개+** 수정 ✅ | 수정완료 |
-| mobile-testing.md | 없음 | 유지 |
-| performance-testing.md | 없음 | 유지 |
-| qa-automation.md | 없음 (템플릿 파일) | 유지 |
-| test-strategy.md | Playwright 56건 → **E2E spec 12개** 수정 ✅ | 수정완료 |
+**점검 내용:**
+- `docs/linkedin-post.md` — 버전 1~5, 수치 최신, 게시 타이밍 가이드 ✅
+- `docs/cover-letter.md` — 버전 1~4, 선택 매트릭스 ✅
+- `docs/portfolio-summary.md` — 채용담당자용 1페이지 요약 ✅
+
+**신규 생성:**
+- `docs/share-action-plan.md` — 공유 액션 플랜 신규 생성 ✅
+  - 공유 전 체크리스트
+  - LinkedIn 포스트 단계별 가이드 + 최적 게시 타이밍
+  - 원티드/잡플래닛/사람인 등 채용 플랫폼별 입력 위치
+  - 직접 지원 이메일 제목 템플릿
+  - 헤드헌터/채용담당자 DM 템플릿
+  - 커뮤니티 공유 메시지
+  - 공유 후 트래킹 항목
+  - 권장 실행 타임라인 (오늘~다음 주)
 
 ---
 
 ## 🎉 레포 전체 수치 일관성 — 최종 완료 상태
 
-| 파일 | TC 수 | spec 수 | 파일 수 | 커버레터 |
+| 파일 | TC 수 | spec 수 | 파일 수 | docs 수 |
 |------|-------|---------|---------|---------|
-| README.md | 145건+ ✅ | 12개 ✅ | 80개+ ✅ | 4종 ✅ |
+| README.md | 145건+ ✅ | 12개 ✅ | 80개+ ✅ | — |
 | PROFILE.md | 145건+ ✅ | 12개 ✅ | — | — |
 | CHANGELOG.md | v6까지 ✅ | — | — | — |
-| portfolio-summary.md | 145건+ ✅ | 12개 ✅ | 80개+ ✅ | 4종 ✅ |
+| portfolio-summary.md | 145건+ ✅ | 12개 ✅ | 80개+ ✅ | 22개 ✅ |
 | qa-automation-report.md | 30건(스프린트) ✅ | — | — | — |
-| NEXT_STEPS.md | 145건+ ✅ | 12개 ✅ | 80개+ ✅ | — |
+| NEXT_STEPS.md | 145건+ ✅ | 12개 ✅ | 80개+ ✅ | 23개 ✅ |
 | skills/mcp-integration.md | — | 12개 ✅ | 80개+ ✅ | — |
 | skills/test-strategy.md | — | 12개 ✅ | — | — |
 
@@ -106,16 +109,12 @@
 ★ 포트폴리오의 "실제 연동 증거"를 텍스트→시각 증거로 업그레이드하는 핵심!
 ```
 
-### STEP 12 — 포트폴리오 공개 공유 [지금 바로 가능!]
+### STEP 39 — portfolio-summary.md의 docs 수 업데이트 [소규모 수정]
 
 ```
-모든 핵심 문서 보강 + 수치 정합성 완료 — 공유 준비 100%!
-
-- LinkedIn: docs/linkedin-post.md 버전 1~5 중 선택
-  (이직 의사 공개 → 버전 5 / 처음 공개 → 버전 1)
-- 커버레터: docs/cover-letter.md 버전 선택 매트릭스 참고
-- 면접 준비: docs/interview-prep-advanced.md
-- 포트폴리오: https://kihyunqa.github.io/qa-portfolio
+portfolio-summary.md에 docs/ 문서 수가 22개로 표기되어 있음.
+share-action-plan.md 추가로 실제 23개가 됨.
+해당 수치 1건 수정 필요 (Claude 단독 가능).
 ```
 
 ### STEP 11 — Jira MCP 실제 연동 [PHASE 2 — 사용자 계정 필요]
@@ -125,6 +124,15 @@
 2. API 토큰 발급
 3. claude_desktop_config.json에 jira MCP 추가
 4. Claude Desktop 재시작 후 연동 확인
+```
+
+### 실행 액션 (사용자) — 지금 바로!
+
+```
+docs/share-action-plan.md 참고하여:
+1. LinkedIn 프로필에 포트폴리오 URL 추가
+2. 채용 플랫폼 이력서 URL 업데이트
+3. LinkedIn 버전 1 포스트 게시 (화~목 오전 추천)
 ```
 
 ---
@@ -149,8 +157,9 @@
 | GitHub 레포 | https://github.com/kihyunqa/qa-portfolio |
 | Actions 탭 | https://github.com/kihyunqa/qa-portfolio/actions |
 | screenshots 업로드 | https://github.com/kihyunqa/qa-portfolio/upload/main/screenshots |
+| 공유 액션 플랜 | docs/share-action-plan.md |
 | 이메일 | kihyun.qa@gmail.com |
 
 ---
 
-*최종 업데이트: 2026-03-31 · STEP 38 완료 (skills/ 9개 전체 점검, mcp-integration + test-strategy 수치 수정) · 다음: STEP 10 (스크린샷) or STEP 12 (공유!)*
+*최종 업데이트: 2026-03-31 · STEP 12 완료 (share-action-plan.md 신규 생성, 공유 준비 100%) · 다음: STEP 10 (스크린샷) or STEP 39 (portfolio-summary docs 수 수정)*
