@@ -46,25 +46,20 @@
 | STEP 53 | skills/ 9개 점검 — ci-cd-pipeline.md 오타 3개 수정 | 2026-03-31 |
 | STEP 54 | **skills/ 나머지 5개 점검 — 오타 다수 수정 완료** ✅ | 2026-03-31 |
 | STEP 55 | **testcase 4개 점검, 3개 파일 오타 9개 수정 완료** ✅ | 2026-03-31 |
-| STEP 56 | **testcase 나머지 12개 전체 점검 완료 — 오타 1개 수정** ✅ | 2026-03-31 |
+| STEP 56 | **testcase 나머지 12개 전체 점검 — 오타 1개 수정** ✅ | 2026-03-31 |
+| STEP 57 | **index.html 전체 점검 완료 — TC 테이블 ID 오류 수정** ✅ | 2026-03-31 |
 
-### STEP 56 전체 점검 결과 (12개)
-| 파일 | 결과 |
+### STEP 57 작업 내역 (index.html 점검)
+| 항목 | 결과 |
 |------|------|
-| testcase_login.md | ✅ 이상 없음 (24건 TC) |
-| testcase_accessibility.md | ✅ 이상 없음 (20건 TC) |
-| testcase_api-testing.md | ✅ 이상 없음 (20건 TC) |
-| testcase_bug-report.md | ✅ 이상 없음 (3건 버그 리포트) |
-| testcase_cicd.md | ✅ 이상 없음 (20건 TC) |
-| testcase_e2e-playwright.md | ✅ 이상 없음 (19건 시나리오) |
-| testcase_mcp-integration.md | ✅ 이상 없음 (30건 TC) |
-| testcase_notification.md | ✅ 이상 없음 (20건 TC) |
-| testcase_notion.md | ❌ 오타 1개 (운용→운영) **수정 완료** ✅ |
-| testcase_payment.md | ✅ 이상 없음 (10건 TC) |
-| testcase_performance.md | ✅ 이상 없음 (20건 TC) |
-| testcase_security.md | ✅ 이상 없음 (20건 TC) |
+| meta 수치 (MCP 5개, TC 145건+, spec 12개, Actions 2개) | ✅ 정확 |
+| 경력 타임라인 (3개 회사, 날짜) | ✅ PROFILE.md와 일치 |
+| 프로젝트 카드 10개 | ✅ 이상 없음 |
+| TC 샘플 테이블 TC-ID | ❌ `TC-SEC-002`가 "SQL Injection 차단"으로 잘못 표기 → **`TC-SEC-001`로 수정 완료** |
+| footer 수치 | ✅ 이상 없음 |
+| 링크 전체 (GitHub, proof, spec) | ✅ 이상 없음 |
 
-**→ testcase_*.md 16개 전체 점검 완료! 오타 총 10개 수정 (STEP 55: 9개 + STEP 56: 1개)** 🎉
+**→ index.html 전체 점검 완료. TC-ID 불일치 1건 수정.** 🎉
 
 ---
 
@@ -104,14 +99,13 @@ docs/jira-mcp-plan.md 참고:
 - 면접 준비: docs/interview-qa.md + docs/interview-qa-advanced.md
 ```
 
-### STEP 57 — index.html 포트폴리오 완성도 체크 [선택적 — Claude 단독 가능]
+### STEP 58 — CHANGELOG.md 업데이트 [선택적 — Claude 단독 가능]
 
 ```
-index.html (58KB) 내용 점검:
-- 포트폴리오 사이트 텍스트 내용, 수치, 링크 확인
-- testcase 수 등 실제 현황과 맞는지 확인
-방법: github:get_file_contents로 읽기 (용량 크므로 응답이 길 수 있음)
-주의: 수정 시 전체 파일 교체 필요
+현재 v11 기준. 이번 세션에서 수행한 작업들을 CHANGELOG에 기록:
+- STEP 56: testcase_*.md 16개 전체 점검 완료 (오타 10개 수정)
+- STEP 57: index.html TC 샘플 테이블 ID 오류 수정
+방법: github:get_file_contents로 CHANGELOG.md 읽기 → v12로 업데이트
 ```
 
 ---
@@ -119,7 +113,7 @@ index.html (58KB) 내용 점검:
 ## ⚠️ 작업 규칙 (매번 확인)
 
 1. **workflows 파일** → MCP 수정 불가, GitHub 웹에서만
-2. **index.html (58KB)** → MCP API로 읽기 가능. 수정 시 전체 내용 교체 필요
+2. **index.html (58KB)** → 수정 시 전체 내용 교체 필요. SHA 반드시 확인 후 진행
 3. **숫자 부풀리기 금지** — 실제 확인 후 기재
 4. **새 파일 무분별 생성 금지** — 기존 파일 업데이트 우선
 5. **push_files 테스트용 임시 내용 사용 절대 금지** — 항상 실제 내용으로만
@@ -140,4 +134,4 @@ index.html (58KB) 내용 점검:
 
 ---
 
-*최종 업데이트: 2026-03-31 · STEP 56 완료 (testcase 12개 전체 점검, 오타 1개 수정) · testcase_*.md 16개 전체 점검 완료! · 다음: STEP 10 (스크린샷, 사용자 직접) 또는 STEP 12 (공개 공유) 또는 STEP 57 (index.html 점검, Claude 단독 가능)*
+*최종 업데이트: 2026-03-31 · STEP 57 완료 (index.html 전체 점검, TC-ID 오류 1건 수정) · 다음: STEP 10 (스크린샷, 사용자 직접), STEP 12 (공개 공유), STEP 58 (CHANGELOG v12, Claude 단독 가능)*
