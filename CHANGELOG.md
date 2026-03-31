@@ -1,5 +1,35 @@
 # CHANGELOG
 
+## v15.0.0 — 2026-03-31
+
+### 면접 심화 보강 + docs 수 정합성 완료 (STEP 62~64)
+
+#### STEP 62 — interview-qa-advanced.md 점검 및 보강
+
+| 항목 | 내용 |
+|------|------|
+| Q10 내용 심화 | 커버리지 100% 관련 답변을 기능/경로/리스크 3가지 레이어로 구체화 |
+| Q11 신규 추가 | "AI 시대 QA 엔지니어의 역할 변화" — 2026년 트렌드 반영 |
+| 파일 크기 | 5,957b → 7,780b (Q10 심화 + Q11 신규로 증가) |
+
+- Q11 핵심: AI 코딩 도구 확산 → QA 검증 역할 더 중요 / TC 설계·파이프라인 구축 능력이 핵심
+- 기초편(interview-qa.md Q12)과 중복 없이 심화 내용으로 보완 완료
+
+#### STEP 63 — docs 수 24→25개 반영
+
+| 파일 | 수정 내용 |
+|------|----------|
+| README.md | `docs/ 24개` → `25개` |
+| docs/portfolio-summary.md | `docs/ 문서 24개` → `25개`, 커버레터 4종→5종 수정 |
+| docs/qa-kpi-dashboard.md | `docs 문서 수 24개` → `25개`, 개선이력 추가 |
+| docs/qa-strategy.md | `docs 문서 24개` → `25개` |
+
+- STEP 61 self-introduction.md 신규 생성분 전체 반영 완료
+
+**→ 수치 정합성 완료 + 면접 심화편 2026 트렌드 반영 완료** ✅
+
+---
+
 ## v14.0.0 — 2026-03-31
 
 ### 취업 서류 패키지 완성 (STEP 60~61)
@@ -68,13 +98,13 @@
 - testcase 수 17→16개 정정
 - README.md, docs/portfolio-summary.md, docs/qa-kpi-dashboard.md 수정
 
-### 최종 수치 현황 (v10 기준)
+### 최종 수치 현황 (v15 기준)
 | 항목 | 수치 |
 |------|------|
 | TC | 145건+ |
 | Playwright spec | 12개 |
 | testcase_*.md | 16개 |
-| docs/ 문서 | 24개 (v14에서 25개로 변경) |
+| docs/ 문서 | **25개** |
 | skills/ 문서 | 9개 |
 | 레포 파일 수 | 80개+ |
 | GitHub Actions | 2개 |
