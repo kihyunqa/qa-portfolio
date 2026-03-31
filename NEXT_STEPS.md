@@ -44,36 +44,19 @@
 | STEP 13~27 | docs 전체 수치·오타·내용 수정 및 보강 | 2026-03-31 |
 | STEP 28 | docs 5개 점검 → 3개 보강 완료 ✅ | 2026-03-31 |
 | STEP 29 | interview-prep-advanced.md 보강 (2203b→6664b) ✅ | 2026-03-31 |
-| STEP 30 | **ai-qa-vision.md + qa-kpi-dashboard.md 보강** ✅ | 2026-03-31 |
+| STEP 30 | ai-qa-vision.md + qa-kpi-dashboard.md 보강 ✅ | 2026-03-31 |
+| STEP 31 | **linkedin-post.md 보강 (버전 5 추가)** ✅ | 2026-03-31 |
+| STEP 32 | **cover-letter.md 보강 (버전 4 추가)** ✅ | 2026-03-31 |
 
-### STEP 30 작업 내역
+### STEP 31~32 작업 내역
 | 파일 | 전 | 후 | 주요 추가 내용 |
 |------|----|----|----------------|
-| docs/ai-qa-vision.md | 3063b | 5419b | MCP 아키텍처 다이어그램, 트러블슈팅 테이블, 실제 성과 수치, Phase 5 로드맵, 실무 적용 의미 |
-| docs/qa-kpi-dashboard.md | 3016b | 4440b | 성능 기준 지표표, 보안 커버리지 테이블 (OWASP 18건), 주요 개선 이력 테이블 |
+| docs/linkedin-post.md | 2974b (버전 4) | 5108b (버전 5) | 버전 5 (구직 중 공개용) 추가, 각 버전 사용 팁·해시태그 보강, 게시 타이밍 가이드 신설 |
+| docs/cover-letter.md | 3171b (버전 3) | 5345b (버전 4) | 버전 4 (AI·테크 특화) 추가, 버전 선택 매트릭스 신설, 태그 교체 가이드 보강 |
 
 ---
 
 ## 🎯 다음 스텝 (우선순위 순)
-
-### STEP 31 — linkedin-post.md 최신화 [Claude 단독 가능]
-
-```
-현재 상태: 2974b — 수치 최신화 여부 확인 필요
-파일 경로: docs/linkedin-post.md
-내용 확인 후:
-  - TC 145건+, spec 12개 등 최신 수치 반영 여부 체크
-  - 포트폴리오 URL 정확한지 확인
-  - 버전 4개 중 최신 버전 내용 보강
-```
-
-### STEP 32 — cover-letter.md 최신화 [Claude 단독 가능]
-
-```
-현재 상태: 3171b — 3버전 중 최신 수치 반영 여부 확인
-파일 경로: docs/cover-letter.md
-내용 확인 후 수치 최신화 (TC 145건+, MCP 5개, spec 12개 등)
-```
 
 ### STEP 10 — 스크린샷 실제 추가 [임팩트 최대 — 사용자 직접 필요]
 
@@ -90,6 +73,17 @@
 ★ 포트폴리오의 "실제 연동 증거"를 텍스트→시각 증거로 업그레이드하는 핵심!
 ```
 
+### STEP 33 — docs/ 남은 파일 점검 [Claude 단독 가능]
+
+```
+아직 내용 미확인 docs 파일:
+- docs/qa-notify-workflow.md (2906b) — 내용 확인 후 보강 필요 시 진행
+- docs/qa-onboarding.md (3583b) — 내용 확인 후 보강 필요 시 진행
+- docs/portfolio-summary.md (4071b) — 수치 최신화 여부 확인
+
+진행 방법: 각 파일 읽고 → 수치 최신화 + 섹션 부족 시 보강
+```
+
 ### STEP 11 — Jira MCP 실제 연동 [PHASE 2 — 사용자 계정 필요]
 
 ```
@@ -101,13 +95,17 @@ jira-mcp-plan.md의 실행 단계 참고:
 완료 시 index.html 로드맵 PHASE 2 완료 표시
 ```
 
-### STEP 12 — 포트폴리오 공개 공유 [지금 바로 가능]
+### STEP 12 — 포트폴리오 공개 공유 [지금 바로 가능!]
 
 ```
-- LinkedIn: docs/linkedin-post.md 버전 1~4 중 선택
+모든 문서 보강 완료 — 지금 바로 공유 가능한 상태!
+
+- LinkedIn: docs/linkedin-post.md 버전 1~5 중 상황에 맞게 선택
+  (이직 의사 공개 → 버전 5 / 처음 공개 → 버전 1)
 - 이력서 링크: https://kihyunqa.github.io/qa-portfolio
-- 커버레터: docs/cover-letter.md 버전 3종 중 지원사 맞춤 선택
-- 면접 준비: interview-qa.md + interview-prep-advanced.md (STEP 29 보강 완료!)
+- 커버레터: docs/cover-letter.md 버전 선택 매트릭스 참고
+  (AI 스타트업 → 버전 4 / 대기업 → 버전 3)
+- 면접 준비: docs/interview-prep-advanced.md (STEP 29 보강 완료)
 ```
 
 ---
@@ -135,4 +133,4 @@ jira-mcp-plan.md의 실행 단계 참고:
 
 ---
 
-*최종 업데이트: 2026-03-31 · STEP 30 완료 (ai-qa-vision 3063→5419b, qa-kpi-dashboard 3016→4440b) · 다음: STEP 31 (linkedin-post 최신화) or STEP 10 (스크린샷)*
+*최종 업데이트: 2026-03-31 · STEP 32 완료 (linkedin-post 버전5 추가, cover-letter 버전4+매트릭스 추가) · 다음: STEP 33 (docs 잔여 파일 점검) or STEP 10 (스크린샷) or STEP 12 (공유 시작!)*
