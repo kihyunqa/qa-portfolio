@@ -24,7 +24,7 @@
 | GitHub Actions | **2개** | .github/workflows/ | 확인 완료 |
 | 전체 파일 수 | **80개+** | 전체 레포 | 확인 완료 |
 | TC 건수 | **145건+** | testcase_*.md 합산 | 확인 완료 |
-| CHANGELOG | **v15** | CHANGELOG.md | 최신 완료 |
+| CHANGELOG | **v16** | CHANGELOG.md | 최신 완료 |
 
 ### docs/ 25개 파일 목록 (직접 검증 완료 · 2026-03-31)
 ai-qa-vision, bug-report-template, cover-letter, interview-prep-advanced,
@@ -66,15 +66,9 @@ weekly-qa-report-template → 합계 **25개** ✅
 | STEP 64 | CHANGELOG v14→v15 업데이트 (STEP 62~63 반영) ✅ | 2026-03-31 |
 | STEP 65 | index.html "docs 24개" 표기 점검 → **표기 없음 확인, 수정 불필요** ✅ | 2026-03-31 |
 | STEP 66 | PROFILE.md "docs 24개" 표기 점검 → **표기 없음 확인, 수정 불필요** ✅ | 2026-03-31 |
-
-### 이번 세션 추가 검증 사항
-
-| 항목 | 검증 결과 |
-|------|----------|
-| docs/ 폴더 직접 카운트 | 25개 정확히 확인 ✅ |
-| index.html 내 docs 수 표기 | 없음 — 수정 불필요 ✅ |
-| PROFILE.md 내 docs 수 표기 | 없음 — 수정 불필요 ✅ |
-| test-metrics.md 수치 점검 | TC 145건+, spec 12개 정상 ✅ |
+| STEP 67 | ai-qa-vision.md 수치 수정 (TC 17→16개 파일) + 2026 AI 트렌드 섹션 신규 추가 ✅ | 2026-03-31 |
+| STEP 68 | share-action-plan.md 최신화 — LinkedIn v6 추천, cover-letter v5 매트릭스, self-introduction.md 반영 ✅ | 2026-03-31 |
+| CHANGELOG | v15 → **v16** 업데이트 완료 ✅ | 2026-03-31 |
 
 ---
 
@@ -116,24 +110,20 @@ docs/jira-mcp-plan.md 참고:
 - 면접 준비: docs/interview-qa.md (12개 Q&A) + docs/interview-qa-advanced.md (11개 Q&A)
 ```
 
-### STEP 67 — docs/ai-qa-vision.md 점검 [Claude 단독 가능]
+### STEP 69 — README.md CHANGELOG 버전 표기 점검 [Claude 단독 가능]
 
 ```
-현재 파일 크기: 5419b
-점검 포인트:
-  - 2026년 AI 트렌드 반영 여부 (interview-qa-advanced.md Q11과 연계)
-  - 수치 표기 정합성 (TC 145건+, spec 12개, docs 25개)
-  - 내용 최신성 확인
+README.md에 CHANGELOG 버전이 v15로 표기되어 있을 수 있음 → v16으로 수정 필요 여부 확인
 ```
 
-### STEP 68 — docs/share-action-plan.md 최신화 [Claude 단독 가능]
+### STEP 70 — docs/test-metrics.md 최신 수치 점검 [Claude 단독 가능]
 
 ```
-현재 파일 크기: 5543b
-점검 포인트:
-  - cover-letter 5버전, self-introduction.md 추가 반영 여부
-  - LinkedIn 포스트 버전 6 추천 업데이트 여부
-  - 공유 플랫폼별 실행 가이드 최신성 확인
+현재 파일의 수치 점검:
+  - TC 건수 145건+ 표기 여부
+  - testcase_*.md 16개 표기 여부
+  - docs 25개 표기 여부
+  - CHANGELOG v16 반영 여부
 ```
 
 ---
@@ -162,4 +152,4 @@ docs/jira-mcp-plan.md 참고:
 
 ---
 
-*최종 업데이트: 2026-03-31 · STEP 65~66 완료 (index.html/PROFILE.md 점검 → 수정 불필요 확인) · docs 25개 직접 카운트 재검증 완료 · CHANGELOG v15 · 다음: STEP 67 (ai-qa-vision 점검), STEP 68 (share-action-plan 최신화), STEP 10 (스크린샷), STEP 12 (LinkedIn 공유)*
+*최종 업데이트: 2026-03-31 · STEP 67~68 완료 (ai-qa-vision 수치 수정·트렌드 보강 / share-action-plan 최신화) · CHANGELOG v16 · 다음: STEP 69 (README 버전 표기 점검), STEP 70 (test-metrics 수치 점검), STEP 10 (스크린샷), STEP 12 (LinkedIn 공유)*
