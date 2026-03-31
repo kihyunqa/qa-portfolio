@@ -1,5 +1,48 @@
 # CHANGELOG
 
+## v19.0.0 — 2026-03-31
+
+### docs 25개 전체 수치 점검 완전 완료 (STEP 76)
+
+#### 수정 파일 (2개)
+
+| 파일 | 수정 내용 |
+|------|----------|
+| docs/weekly-qa-report-template.md | 실제 작성 예시 내 "docs/ 22개" → **"docs/ 25개"** |
+| docs/qa-kpi-dashboard.md | 주요 개선 이력 "docs 24개 전체 수치 검증" → **"docs 25개 전체 수치 검증"** |
+
+#### 점검 완료 (수정 불필요, 23개)
+
+mcp-architecture, tools-comparison, mcp-setup-guide, mcp-workflow-diagram,
+interview-prep-advanced, regression-checklist, qa-notify-workflow,
+linkedin-post (버전 6 정확), cover-letter (5종 정확),
+interview-qa (12문항 정확), interview-qa-advanced (11문항 정확),
+jira-mcp-plan, jira-integration-plan, bug-report-template, self-introduction,
+ai-qa-vision (v67), share-action-plan (v68), portfolio-summary (v71),
+test-metrics (v70), qa-onboarding (v72), qa-strategy (v73),
+release-qa-process (v74), qa-checklist (v75)
+
+**→ docs/ 25개 전체 수치 점검 완전 완료** ✅
+
+### 최종 수치 현황 (v19 기준 · 확정)
+
+| 항목 | 수치 |
+|------|------|
+| TC | 145건+ |
+| Playwright spec | 12개 |
+| testcase_*.md | 16개 |
+| docs/ 문서 | **25개** |
+| skills/ 문서 | 9개 |
+| 레포 파일 수 | 80개+ |
+| GitHub Actions | 2개 |
+| MCP 연동 | 5개 |
+| 커버레터 | 5종 |
+| LinkedIn 포스트 | 6버전 |
+| 면접 Q&A | 12문항 (기초) + 11문항 (심화) |
+| CHANGELOG | **v19** |
+
+---
+
 ## v18.0.0 — 2026-03-31
 
 ### 남은 docs 전체 점검 완료 (STEP 72~75)
