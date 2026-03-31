@@ -1,5 +1,42 @@
 # CHANGELOG
 
+## v8.0.0 — 2026-03-31
+
+### docs 수치 정합성 최종 완료 (STEP 43)
+
+#### STEP 43 — docs/ 7개 파일 "22개" 표기 전수 점검
+
+점검 대상 및 결과:
+
+| 파일 | 결과 |
+|------|------|
+| docs/ai-qa-vision.md | 이상 없음 ✅ |
+| docs/qa-kpi-dashboard.md | **22→23개 수정 완료** ✅ |
+| docs/mcp-workflow-diagram.md | 이상 없음 ✅ |
+| docs/release-qa-process.md | 이상 없음 ✅ |
+| docs/tools-comparison.md | 이상 없음 ✅ |
+| docs/interview-prep-advanced.md | 이상 없음 ✅ |
+| docs/interview-qa-advanced.md | 이상 없음 ✅ |
+
+수정 내역 (qa-kpi-dashboard.md):
+- 품질 지표 요약 표: `docs 문서 수 22개 → 23개`
+- 주요 개선 이력: `docs 22개 전체 수치 검증 → docs 23개 전체 수치 검증`
+
+### 최종 수치 현황 (v8 기준)
+| 항목 | 수치 |
+|------|------|
+| TC | 145건+ |
+| Playwright spec | 12개 |
+| docs/ 문서 | 23개 |
+| skills/ 문서 | 9개 |
+| 레포 파일 수 | 80개+ |
+| GitHub Actions | 2개 |
+| MCP 연동 | 5개 |
+
+**→ 레포 전체 docs 수치 "23개" 정합성 완전 완료 ✅**
+
+---
+
 ## v7.0.0 — 2026-03-31
 
 ### 수치 정합성 전체 완료 (STEP 34~39 + STEP 12)
