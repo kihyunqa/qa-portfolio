@@ -20,10 +20,11 @@
 | testcase_*.md | **17개** | 루트 |
 | playwright spec | **12개** (config·README 제외) | playwright-tests/ |
 | skills/ 문서 | **9개** | skills/ |
-| docs/ 문서 | **23개** | docs/ (share-action-plan.md 추가) |
+| docs/ 문서 | **23개** | docs/ |
 | GitHub Actions | **2개** | .github/workflows/ |
 | 전체 파일 수 | **80개+** | 전체 레포 |
 | TC 건수 | **145건+** | testcase_*.md 합산 |
+| CHANGELOG | **v7** | CHANGELOG.md |
 
 ### MCP 5개 — 실제 작동 확인
 | MCP | 상태 |
@@ -43,35 +44,23 @@
 | STEP 1~9 | MCP 연동, TC 생성, spec 작성, docs 작성 등 | ~2026-03-30 |
 | STEP 13~27 | docs 전체 수치·오타·내용 수정 및 보강 | 2026-03-31 |
 | STEP 28 | docs 5개 점검 → 3개 보강 완료 ✅ | 2026-03-31 |
-| STEP 29 | interview-prep-advanced.md 보강 (2203b→6664b) ✅ | 2026-03-31 |
+| STEP 29 | interview-prep-advanced.md 보강 ✅ | 2026-03-31 |
 | STEP 30 | ai-qa-vision.md + qa-kpi-dashboard.md 보강 ✅ | 2026-03-31 |
-| STEP 31 | linkedin-post.md 보강 (버전 5 추가) ✅ | 2026-03-31 |
-| STEP 32 | cover-letter.md 보강 (버전 4 추가) ✅ | 2026-03-31 |
-| STEP 33 | docs/ 잔여 3개 파일 점검 + portfolio-summary 커버레터 4종 수정 ✅ | 2026-03-31 |
+| STEP 31 | linkedin-post.md 버전 5 추가 ✅ | 2026-03-31 |
+| STEP 32 | cover-letter.md 버전 4 추가 ✅ | 2026-03-31 |
+| STEP 33 | docs/ 잔여 점검 + portfolio-summary 수정 ✅ | 2026-03-31 |
 | STEP 34 | CHANGELOG.md v6 추가 ✅ | 2026-03-31 |
-| STEP 35 | README.md 수치 9곳 최신화 + 커버레터 링크 추가 ✅ | 2026-03-31 |
-| STEP 36 | PROFILE.md 수치 최신화 (spec 12개, TC 145건+) ✅ | 2026-03-31 |
-| STEP 37 | qa-automation-report.md 맥락 명확화 완료 ✅ | 2026-03-31 |
-| STEP 38 | skills/ 9개 파일 전체 점검 + 2개 수정 완료 ✅ | 2026-03-31 |
-| STEP 12 | 포트폴리오 공개 공유 준비 완료 ✅ | 2026-03-31 |
+| STEP 35 | README.md 수치 9곳 최신화 ✅ | 2026-03-31 |
+| STEP 36 | PROFILE.md 수치 최신화 ✅ | 2026-03-31 |
+| STEP 37 | qa-automation-report.md 맥락 명확화 ✅ | 2026-03-31 |
+| STEP 38 | skills/ 9개 파일 점검 + 2개 수정 ✅ | 2026-03-31 |
+| STEP 12 | 공유 준비 + share-action-plan.md 신규 생성 ✅ | 2026-03-31 |
+| STEP 39 | portfolio-summary.md docs 수 22→23개 수정 ✅ | 2026-03-31 |
+| STEP 40 | CHANGELOG.md v7 추가 (오늘 전체 이력) ✅ | 2026-03-31 |
 
-### STEP 12 작업 내역 — 포트폴리오 공개 공유 준비
-
-**점검 내용:**
-- `docs/linkedin-post.md` — 버전 1~5, 수치 최신, 게시 타이밍 가이드 ✅
-- `docs/cover-letter.md` — 버전 1~4, 선택 매트릭스 ✅
-- `docs/portfolio-summary.md` — 채용담당자용 1페이지 요약 ✅
-
-**신규 생성:**
-- `docs/share-action-plan.md` — 공유 액션 플랜 신규 생성 ✅
-  - 공유 전 체크리스트
-  - LinkedIn 포스트 단계별 가이드 + 최적 게시 타이밍
-  - 원티드/잡플래닛/사람인 등 채용 플랫폼별 입력 위치
-  - 직접 지원 이메일 제목 템플릿
-  - 헤드헌터/채용담당자 DM 템플릿
-  - 커뮤니티 공유 메시지
-  - 공유 후 트래킹 항목
-  - 권장 실행 타임라인 (오늘~다음 주)
+### STEP 39~40 작업 내역
+- **portfolio-summary.md**: docs/ 수 `22→23개`, 핵심 문서 목록에 `linkedin-post.md`, `share-action-plan.md` 추가
+- **CHANGELOG.md v7**: STEP 34~39 + STEP 12 전체 이력 및 최종 수치 현황 표 추가
 
 ---
 
@@ -81,8 +70,8 @@
 |------|-------|---------|---------|---------|
 | README.md | 145건+ ✅ | 12개 ✅ | 80개+ ✅ | — |
 | PROFILE.md | 145건+ ✅ | 12개 ✅ | — | — |
-| CHANGELOG.md | v6까지 ✅ | — | — | — |
-| portfolio-summary.md | 145건+ ✅ | 12개 ✅ | 80개+ ✅ | 22개 ✅ |
+| CHANGELOG.md | v7까지 ✅ | — | — | — |
+| portfolio-summary.md | 145건+ ✅ | 12개 ✅ | 80개+ ✅ | 23개 ✅ |
 | qa-automation-report.md | 30건(스프린트) ✅ | — | — | — |
 | NEXT_STEPS.md | 145건+ ✅ | 12개 ✅ | 80개+ ✅ | 23개 ✅ |
 | skills/mcp-integration.md | — | 12개 ✅ | 80개+ ✅ | — |
@@ -109,12 +98,11 @@
 ★ 포트폴리오의 "실제 연동 증거"를 텍스트→시각 증거로 업그레이드하는 핵심!
 ```
 
-### STEP 39 — portfolio-summary.md의 docs 수 업데이트 [소규모 수정]
+### STEP 41 — README.md CHANGELOG 버전 표기 업데이트 [소규모, Claude 단독 가능]
 
 ```
-portfolio-summary.md에 docs/ 문서 수가 22개로 표기되어 있음.
-share-action-plan.md 추가로 실제 23개가 됨.
-해당 수치 1건 수정 필요 (Claude 단독 가능).
+README.md 내에 CHANGELOG v6 언급이 있다면 v7로 수정 필요.
+현재 README.md를 읽어서 버전 표기 확인 후 필요 시 수정.
 ```
 
 ### STEP 11 — Jira MCP 실제 연동 [PHASE 2 — 사용자 계정 필요]
@@ -129,7 +117,7 @@ share-action-plan.md 추가로 실제 23개가 됨.
 ### 실행 액션 (사용자) — 지금 바로!
 
 ```
-docs/share-action-plan.md 참고하여:
+docs/share-action-plan.md 참고:
 1. LinkedIn 프로필에 포트폴리오 URL 추가
 2. 채용 플랫폼 이력서 URL 업데이트
 3. LinkedIn 버전 1 포스트 게시 (화~목 오전 추천)
@@ -162,4 +150,4 @@ docs/share-action-plan.md 참고하여:
 
 ---
 
-*최종 업데이트: 2026-03-31 · STEP 12 완료 (share-action-plan.md 신규 생성, 공유 준비 100%) · 다음: STEP 10 (스크린샷) or STEP 39 (portfolio-summary docs 수 수정)*
+*최종 업데이트: 2026-03-31 · STEP 39+40 완료 (portfolio-summary docs 수 수정, CHANGELOG v7 추가) · 다음: STEP 10 (스크린샷) or STEP 41 (README 버전 확인)*
