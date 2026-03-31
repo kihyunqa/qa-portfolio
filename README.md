@@ -20,13 +20,13 @@ TC 생성부터 Notion 문서화, Slack 알림, GitHub 자동 배포까지
 
 | 항목 | 수치 | 설명 |
 |------|------|------|
-| 자동 생성된 TC | **125건+** | 20개 testcase 파일 |
+| 자동 생성된 TC | **145건+** | 17개 testcase 파일 |
 | 작성한 코드 줄 수 | **0줄** | 전부 대화로 구축 |
 | 연동된 MCP 서버 | **5개** | 실제 연동 완료 |
-| Playwright spec | **10개** | 실제 실행 가능 코드 + POM |
+| Playwright spec | **12개** | 실제 실행 가능 코드 + POM |
 | GitHub Actions | **2개 운영 중** | TC push → Slack 자동 알림 |
 | QA 경력 | **6년 9개월** | 2017 — 현재 |
-| 총 레포 파일 수 | **70개+** | TC, 코드, 문서 전체 |
+| 총 레포 파일 수 | **80개+** | TC, 코드, 문서 전체 |
 
 </div>
 
@@ -53,7 +53,7 @@ TC 생성부터 Notion 문서화, Slack 알림, GitHub 자동 배포까지
      ↓
 TC 생성 → filesystem 저장 → github 커밋
      ↓
-playwright E2E 테스트 실행 (10 spec)
+playwright E2E 테스트 실행 (12 spec)
      ↓
 notion 페이지 자동 문서화
      ↓
@@ -83,6 +83,7 @@ playwright-tests/
 ├── notification.spec.js   # MCP 파이프라인 검증
 ├── performance.spec.js    # 성능 테스트
 ├── accessibility.spec.js  # 접근성 테스트
+├── portfolio.spec.js      # 포트폴리오 사이트 E2E
 └── playwright.config.js   # 설정
 ```
 
@@ -108,12 +109,12 @@ qa-portfolio/
 ├── index.html                 # 포트폴리오 메인 페이지
 ├── README.md / PROFILE.md / CHANGELOG.md
 │
-├── testcase_*.md              # TC 파일 15개 (125건+)
-├── playwright-tests/          # E2E 코드 10개 spec + helpers
-├── e2e-scenarios/             # E2E 시나리오 5개
+├── testcase_*.md              # TC 파일 17개 (145건+)
+├── playwright-tests/          # E2E 코드 12개 spec + helpers
+├── e2e-scenarios/             # E2E 시나리오
 ├── test-cases/                # 상세 TC (auth/cart/search/payment/signup)
 ├── skills/                    # QA 역량 문서 9개
-└── docs/                      # 전략/면접/KPI/온보딩 문서 11개
+└── docs/                      # 전략/면접/KPI/온보딩 문서 22개
 ```
 
 ---
@@ -139,12 +140,13 @@ qa-portfolio/
 | [면접 Q&A](docs/interview-qa.md) | QA 면접 준비 8문항 |
 | [회귀 체크리스트](docs/regression-checklist.md) | 릴리즈 전 필수 확인 목록 |
 | [AI QA 비전](docs/ai-qa-vision.md) | MCP 기반 QA 자동화 미래 |
+| [커버레터 4종](docs/cover-letter.md) | 상황별 커버레터 + 버전 선택 매트릭스 |
 
 ---
 
 <div align="center">
 
-*Built with Claude MCP · No code written · 5 MCP servers · TC 125건+ · spec 10개 · Actions 2개*
+*Built with Claude MCP · No code written · 5 MCP servers · TC 145건+ · spec 12개 · Actions 2개*
 
 [![포트폴리오 바로가기](https://img.shields.io/badge/포트폴리오_바로가기-a855f7?style=for-the-badge&labelColor=08060f)](https://kihyunqa.github.io/qa-portfolio)
 
