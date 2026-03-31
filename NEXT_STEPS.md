@@ -46,36 +46,29 @@
 | STEP 53 | skills/ 9개 점검 — ci-cd-pipeline.md 오타 3개 수정 | 2026-03-31 |
 | STEP 54 | **skills/ 나머지 5개 점검 — 오타 다수 수정 완료** ✅ | 2026-03-31 |
 | STEP 55 | **testcase 4개 점검, 3개 파일 오타 9개 수정 완료** ✅ | 2026-03-31 |
-| STEP 56-1차 | **testcase 6개 점검 완료 — 전부 이상 없음** ✅ | 2026-03-31 |
+| STEP 56 | **testcase 나머지 12개 전체 점검 완료 — 오타 1개 수정** ✅ | 2026-03-31 |
 
-### STEP 56-1차 점검 결과 (6개)
+### STEP 56 전체 점검 결과 (12개)
 | 파일 | 결과 |
 |------|------|
 | testcase_login.md | ✅ 이상 없음 (24건 TC) |
-| testcase_accessibility.md | ✅ 이상 없음 (20건 TC, WCAG 기준 정확) |
+| testcase_accessibility.md | ✅ 이상 없음 (20건 TC) |
 | testcase_api-testing.md | ✅ 이상 없음 (20건 TC) |
 | testcase_bug-report.md | ✅ 이상 없음 (3건 버그 리포트) |
 | testcase_cicd.md | ✅ 이상 없음 (20건 TC) |
 | testcase_e2e-playwright.md | ✅ 이상 없음 (19건 시나리오) |
+| testcase_mcp-integration.md | ✅ 이상 없음 (30건 TC) |
+| testcase_notification.md | ✅ 이상 없음 (20건 TC) |
+| testcase_notion.md | ❌ 오타 1개 (운용→운영) **수정 완료** ✅ |
+| testcase_payment.md | ✅ 이상 없음 (10건 TC) |
+| testcase_performance.md | ✅ 이상 없음 (20건 TC) |
+| testcase_security.md | ✅ 이상 없음 (20건 TC) |
+
+**→ testcase_*.md 16개 전체 점검 완료! 오타 총 10개 수정 (STEP 55: 9개 + STEP 56: 1개)** 🎉
 
 ---
 
 ## 🎯 다음 스텝 (우선순위 순)
-
-### STEP 56-2차 — testcase_*.md 나머지 6개 점검 [Claude 단독 가능 — 최우선]
-
-```
-아직 점검하지 않은 testcase 파일들 오타/내용 점검:
-- testcase_mcp-integration.md
-- testcase_notification.md
-- testcase_notion.md
-- testcase_payment.md
-- testcase_performance.md
-- testcase_security.md
-
-방법: github:get_file_contents로 읽기 → 오타/잘못된 수치 수정
-완료 후 NEXT_STEPS.md 업데이트 필수
-```
 
 ### STEP 10 — 스크린샷 실제 추가 [임팩트 최대 — 사용자 직접 필요]
 
@@ -111,6 +104,16 @@ docs/jira-mcp-plan.md 참고:
 - 면접 준비: docs/interview-qa.md + docs/interview-qa-advanced.md
 ```
 
+### STEP 57 — index.html 포트폴리오 완성도 체크 [선택적 — Claude 단독 가능]
+
+```
+index.html (58KB) 내용 점검:
+- 포트폴리오 사이트 텍스트 내용, 수치, 링크 확인
+- testcase 수 등 실제 현황과 맞는지 확인
+방법: github:get_file_contents로 읽기 (용량 크므로 응답이 길 수 있음)
+주의: 수정 시 전체 파일 교체 필요
+```
+
 ---
 
 ## ⚠️ 작업 규칙 (매번 확인)
@@ -137,4 +140,4 @@ docs/jira-mcp-plan.md 참고:
 
 ---
 
-*최종 업데이트: 2026-03-31 · STEP 56-1차 완료 (testcase 6개 점검, 전부 이상 없음) · 다음: STEP 56-2차 (나머지 6개 testcase 점검, Claude 단독 가능) 또는 STEP 10 (스크린샷, 사용자 직접)*
+*최종 업데이트: 2026-03-31 · STEP 56 완료 (testcase 12개 전체 점검, 오타 1개 수정) · testcase_*.md 16개 전체 점검 완료! · 다음: STEP 10 (스크린샷, 사용자 직접) 또는 STEP 12 (공개 공유) 또는 STEP 57 (index.html 점검, Claude 단독 가능)*
