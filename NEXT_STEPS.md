@@ -47,14 +47,18 @@
 | STEP 21 | qa-onboarding.md MCP 환경 기준 보강 ✅ | 2026-03-31 |
 | STEP 22 | ai-qa-vision.md 대폭 보강 726→3063 bytes ✅ | 2026-03-31 |
 | STEP 23 | qa-checklist.md 오타 수정 + 섹션 추가 ✅ | 2026-03-31 |
-| STEP 24-A | **qa-kpi-dashboard.md 보강** — 실제 수치·자동화 분리·MCP 가동률 추가 ✅ | 2026-03-31 |
-| STEP 24-B | **qa-notify-workflow.md 보강** — 흐름도·설정 가이드·트러블슈팅 추가 ✅ | 2026-03-31 |
+| STEP 24-A | qa-kpi-dashboard.md 보강 ✅ | 2026-03-31 |
+| STEP 24-B | qa-notify-workflow.md 보강 ✅ | 2026-03-31 |
 | STEP 25 | **jira-mcp-plan.md 대폭 보강** 878→5457 bytes ✅ | 2026-03-31 |
+| STEP 26 | **얇은 docs 4개 동시 보강** ✅ | 2026-03-31 |
 
-### STEP 25 작업 내역
+### STEP 26 작업 내역
 | 파일 | before | after | 주요 변경 |
 |------|--------|-------|-----------|
-| docs/jira-mcp-plan.md | 878b | 5457b | Jira Cloud 계정 설정, API 토큰 발급 절차, claude_desktop_config.json 설정, GitHub Actions workflow yaml, PHASE 2 완료 기준 테이블, 전체 로드맵 다이어그램 |
+| docs/mcp-workflow-diagram.md | 1380b | 4500+b | ASCII 아키텍처 다이어그램, MCP별 역할 상세, 시나리오별 자동화 흐름 |
+| docs/release-qa-process.md | 1363b | 4000+b | 스프린트 주차별 MCP 활용 표, 입/출 기준 테이블, 롤백 기준, 관련 문서 링크 |
+| docs/weekly-qa-report-template.md | 1531b | 4500+b | 이모지 슬랙 양식, GitHub Actions yaml, 실제 작성 예시, 발송 주기 테이블 |
+| docs/regression-checklist.md | 1868b | 5479b | 영역별 자동화 여부 표, 전체 자동화 커버리지 통계 테이블 |
 
 ---
 
@@ -73,6 +77,18 @@
 저장 위치: screenshots/ 폴더
 업로드: https://github.com/kihyunqa/qa-portfolio/upload/main/screenshots
 ★ 포트폴리오의 "실제 연동 증거"를 텍스트→시각 증거로 업그레이드하는 핵심!
+```
+
+### STEP 27 — 남은 얇은 docs 보강 [Claude 단독 가능]
+
+```
+현재 남은 1000~2000bytes 대 파일:
+- docs/jira-integration-plan.md (1170b) — jira-mcp-plan과 중복 정리 or 보강
+- docs/mcp-workflow-diagram.md (✅ 완료)
+- docs/portfolio-summary.md (2035b) — 전체 포트폴리오 요약 보강
+
+확인 후 jira-integration-plan.md가 jira-mcp-plan.md와 중복이면
+→ jira-integration-plan.md를 PHASE 3(Calendar/Gmail MCP) 계획서로 전환 가능
 ```
 
 ### STEP 11 — Jira MCP 실제 연동 [PHASE 2 — 사용자 계정 필요]
@@ -120,4 +136,4 @@ jira-mcp-plan.md의 실행 단계 참고:
 
 ---
 
-*최종 업데이트: 2026-03-31 · STEP 25 완료 (jira-mcp-plan 878→5457 bytes 보강) · 다음: STEP 10 (스크린샷) or STEP 11 (Jira MCP 실제 연동)*
+*최종 업데이트: 2026-03-31 · STEP 26 완료 (얇은 docs 4개 보강) · 다음: STEP 27 (jira-integration-plan 정리/보강) or STEP 10 (스크린샷)*
