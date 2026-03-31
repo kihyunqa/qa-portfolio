@@ -17,14 +17,19 @@
 
 | 항목 | 실제 수 | 위치 |
 |------|---------|------|
-| testcase_*.md | **17개** | 루트 |
+| testcase_*.md | **16개** | 루트 ← STEP 49에서 직접 카운트로 정정 (17→16) |
 | playwright spec | **12개** (config·README 제외) | playwright-tests/ |
 | skills/ 문서 | **9개** | skills/ |
-| docs/ 문서 | **24개** | docs/ ← STEP 46에서 실제 카운트로 정정, STEP 47에서 전파 완료 |
+| docs/ 문서 | **24개** | docs/ |
 | GitHub Actions | **2개** | .github/workflows/ |
 | 전체 파일 수 | **80개+** | 전체 레포 |
 | TC 건수 | **145건+** | testcase_*.md 합산 |
-| CHANGELOG | **v9** | CHANGELOG.md |
+| CHANGELOG | **v10** | CHANGELOG.md |
+
+### testcase_*.md 16개 목록 (STEP 49에서 직접 확인)
+accessibility, api-testing, bug-report, cicd, cross-browser, e2e-playwright,
+login, mcp-integration, mobile, notification, notion, payment, performance,
+regression, security, signup
 
 ### index.html 수치 현황 (STEP 45 검증 완료)
 | 항목 | 표기값 | 상태 |
@@ -34,7 +39,6 @@
 | Playwright spec | 12개 | ✅ 정확 |
 | GitHub Actions | 2개 | ✅ 정확 |
 | 코드 줄 수 | 0 | ✅ 정확 |
-| docs 수 / CHANGELOG 버전 | 표기 없음 | ✅ 수정 불필요 |
 
 ### MCP 5개 — 실제 작동 확인
 | MCP | 상태 |
@@ -53,29 +57,23 @@
 |------|------|--------|
 | STEP 1~9 | MCP 연동, TC 생성, spec 작성, docs 작성 등 | ~2026-03-30 |
 | STEP 13~33 | docs 보강, 수치·오타 수정, 커버레터·LinkedIn 버전 추가 | 2026-03-31 |
-| STEP 34 | CHANGELOG.md v6 추가 ✅ | 2026-03-31 |
-| STEP 35 | README.md 수치 9곳 최신화 ✅ | 2026-03-31 |
-| STEP 36 | PROFILE.md 수치 최신화 ✅ | 2026-03-31 |
-| STEP 37 | qa-automation-report.md 맥락 명확화 ✅ | 2026-03-31 |
-| STEP 38 | skills/ 9개 파일 점검 + 2개 수정 ✅ | 2026-03-31 |
-| STEP 12 | 공유 준비 + share-action-plan.md 신규 생성 ✅ | 2026-03-31 |
-| STEP 39 | portfolio-summary.md docs 수 22→23개 수정 ✅ | 2026-03-31 |
-| STEP 40 | CHANGELOG.md v7 추가 ✅ | 2026-03-31 |
-| STEP 41 | README.md docs 수 22→23개, 주요 문서 목록 2개 추가 ✅ | 2026-03-31 |
-| STEP 42 | qa-strategy.md docs 수 22→23개 수정 ✅ | 2026-03-31 |
-| STEP 43 | docs 7개 파일 점검 → qa-kpi-dashboard.md 22→23개 수정 ✅ | 2026-03-31 |
-| STEP 44 | CHANGELOG.md v8 추가 ✅ | 2026-03-31 |
+| STEP 34~44 | CHANGELOG v6~v8, README·PROFILE·skills 수치 최신화 | 2026-03-31 |
 | STEP 45 | index.html 수치 전수 점검 → 수정 불필요 확인 ✅ | 2026-03-31 |
 | STEP 46 | docs 실제 카운트 → 24개 확인, test-metrics 수정, README 24개 반영 ✅ | 2026-03-31 |
 | STEP 47 | qa-kpi-dashboard·qa-strategy·portfolio-summary 23→24개 수정 ✅ | 2026-03-31 |
 | STEP 48 | CHANGELOG.md v9 추가 ✅ | 2026-03-31 |
+| STEP 49 | 포트폴리오 전체 최종 점검 → testcase 17→16개 정정, CHANGELOG v10 ✅ | 2026-03-31 |
 
-### STEP 47~48 작업 내역 (이 Claude 세션이 완료)
-- **docs/qa-kpi-dashboard.md**: 품질 지표 요약 `docs 문서 수 23개 → 24개` 수정 ✅
-- **docs/qa-strategy.md**: 실제 성과 수치 표 `docs 문서 23개 → 24개` 수정 ✅
-- **docs/portfolio-summary.md**: 수치 표 + footer `docs/ 문서 23개 → 24개` 수정 ✅
-- **CHANGELOG.md**: v9 추가 (STEP 46~47 완료 내역 기록) ✅
-- **docs 수 "24개" 정합성 전 파일 완전 완료** ✅
+### STEP 49 작업 내역 (이 Claude 세션이 완료)
+- **README.md 점검**: 수치 전반 이상 없음. testcase `17개` → `16개` 수정 ✅
+- **PROFILE.md 점검**: 수치 이상 없음 ✅
+- **testcase_*.md 직접 카운트**: 실제 **16개** 확인 (portfolio-summary의 가짜 17번째 행이 원인)
+- **docs/ 직접 카운트**: 24개 재확인 ✅
+- **수정 파일** (3개 한 번에 커밋):
+  - `docs/portfolio-summary.md`: 가짜 "버그 리포트2 (포함)" 행 제거, `17개` → `16개` ✅
+  - `docs/qa-kpi-dashboard.md`: `testcase_*.md 17개` 2곳 → `16개` ✅
+  - `README.md`: `17개 testcase 파일` → `16개` ✅
+- **CHANGELOG.md v10** 추가 ✅
 
 ---
 
@@ -103,15 +101,13 @@
 4. Claude Desktop 재시작 후 연동 확인
 ```
 
-### STEP 49 — 포트폴리오 전체 최종 점검 [Claude 단독 가능]
+### STEP 50 — index.html 내 testcase 수치 점검 [Claude 단독 가능]
 
 ```
-이제 docs 수치 정합성이 24개로 완전히 통일됐으므로,
-레포 전체를 한 번 더 훑으며 빠진 수정 없는지 확인:
-  - README.md 전체 점검 (docs 24개 외 다른 수치 이상 없는지)
-  - PROFILE.md 전체 점검
-  - index.html 수치 재확인 (STEP 45에서 OK였으나 재확인)
-  - testcase_*.md 신규 누락 없는지 확인 (현재 17개)
+index.html(58KB)에서 testcase 관련 수치 표기 확인:
+  - "17개 testcase" 등의 표기가 있으면 16개로 수정
+  - 단, STEP 45에서 이미 이상 없음 확인됐으므로 빠르게 점검 후 이상 없으면 종료
+  ※ index.html 전체 내용 교체 방식이라 수정 시 신중하게
 ```
 
 ---
@@ -141,4 +137,4 @@
 
 ---
 
-*최종 업데이트: 2026-03-31 · STEP 47~48 완료 (docs 수 24개 전파 완료, CHANGELOG v9 추가) · 다음: STEP 10 (스크린샷 추가, 사용자 직접 필요) 또는 STEP 49 (전체 최종 점검)*
+*최종 업데이트: 2026-03-31 · STEP 49 완료 (testcase 17→16개 정정, 전체 수치 정합성 최종 완료, CHANGELOG v10) · 다음: STEP 10 (스크린샷, 사용자 직접 필요) 또는 STEP 50 (index.html testcase 수치 점검)*
