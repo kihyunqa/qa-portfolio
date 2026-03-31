@@ -1,5 +1,33 @@
 # CHANGELOG
 
+## v13.0.0 — 2026-03-31
+
+### 취업 콘텐츠 강화 (STEP 59)
+
+#### STEP 59 — interview-qa.md 신규 Q4개 추가
+
+| 추가 Q&A | 핵심 포인트 |
+|----------|------------|
+| Q9. 코드 0줄인데 QA 자동화인가? | 파이프라인 설계 역량이 핵심, 직접 타이핑 여부가 아님 |
+| Q10. 팀 환경 MCP 도입 방법 | 파일럿→표준화→파이프라인 확장 3단계 접근 |
+| Q11. 테스트 커버리지 측정 방법 | 기능·경로·E2E 3레이어로 측정, P1·P2 실제 실행이 핵심 |
+| Q12. 포트폴리오 제작 중 가장 어려웠던 점 | 수치 정합성 유지, CHANGELOG·NEXT_STEPS 인수인계 구조화 |
+
+- interview-qa.md: 8개 → **12개 Q&A**로 강화
+
+#### STEP 59 — linkedin-post.md 버전 6 추가
+
+| 버전 | 특징 |
+|------|------|
+| 버전 6 (신규) | AI 생산성 콘텐츠형. 타임라인 포맷(오전 10시~10시 12분). 바이럴 노출 최적화. AI·생산성 커뮤니티 대상. |
+
+- linkedin-post.md: 5버전 → **6버전**으로 확장
+- 버전 6은 숫자+타임라인 포맷으로 LinkedIn 알고리즘 반응 최적화
+
+**→ 면접 대비 Q&A 4개 추가, 링크드인 게시물 바이럴 버전 신규 추가** 🎉
+
+---
+
 ## v12.0.0 — 2026-03-31
 
 ### testcase 전체 점검 + index.html TC-ID 수정 (STEP 56~58)
@@ -64,7 +92,6 @@
 - index.html 전체를 직접 읽어 `17개` testcase 표기가 없음을 확인
 - STEP 45(초기 점검) → STEP 50(재검증) 두 차례 확인으로 index.html 수치 정합성 보장 완료
 - **수정 파일 없음** — 이미 정확한 상태 ✅
-- NEXT_STEPS.md STEP 50 완료 기록 및 STEP 51·52 다음 스텝 추가 ✅
 
 **→ 포트폴리오 전체 수치 정합성 이중 검증 완료 ✅**
 
@@ -74,25 +101,9 @@
 
 ### 포트폴리오 전체 최종 점검 (STEP 49)
 
-#### STEP 49 — 전체 점검 결과
-
-| 파일 | 점검 결과 |
-|------|----------|
-| README.md | 파일 전체 확인 → testcase 17개 오기로 발견 → 16개로 수정 ✅ |
-| PROFILE.md | 수치 이상 없음 ✅ |
-| testcase_*.md | 직접 카운트 → **실제 16개** (17개 오기로 발견) |
-| docs/ 폴더 | 24개 재확인 ✅ |
-
-#### 주요 발견: testcase 수 17→16개 정정
-
-- 루트 `testcase_*.md` 직접 카운트 결과 **16개** (accessibility, api-testing, bug-report, cicd, cross-browser, e2e-playwright, login, mcp-integration, mobile, notification, notion, payment, performance, regression, security, signup)
-- `portfolio-summary.md`의 가짜 17번째 행 `버그 리포트2 (포함)` 제거
-- 모든 문서의 `testcase 17개` 표기 → `16개`로 수정
-
-**수정 파일:**
-- `docs/portfolio-summary.md`: TC 17개 도메인 커버 헤더 및 합계 16개로 수정, 가짜 행 제거 ✅
-- `docs/qa-kpi-dashboard.md`: `testcase_*.md 16개` (2곳) → 수정 ✅
-- `README.md`: `16개 testcase 파일`, 레포 구조 `TC 파일 16개` 수정 ✅
+- README.md: testcase 17개 오기 → 16개로 수정 ✅
+- docs/portfolio-summary.md: 가짜 17번째 행 제거, 16개로 수정 ✅
+- docs/qa-kpi-dashboard.md: testcase_*.md 16개 수정 ✅
 
 ### 최종 수치 현황 (v10 기준)
 | 항목 | 수치 |
@@ -106,28 +117,15 @@
 | GitHub Actions | 2개 |
 | MCP 연동 | 5개 |
 
-**→ 레포 전체 수치 정합성 최종 완료 ✅**
-
 ---
 
 ## v9.0.0 — 2026-03-31
 
 ### docs 실제 수 23→24개 정정 완료 (STEP 46~47)
 
-#### STEP 46 — docs/ 폴더 직접 카운트 및 수치 정정
-
-- docs/ 폴더 파일을 직접 카운트한 결과 **24개** 확인 (이전까지 23개로 잘못 기재)
-- **interview-qa.md** (5203b): 정상 파일, 수치 이상 없음 ✅
-- **test-metrics.md** (2925b): Playwright TC 수 `56건 → 88건(spec 12개)` 수정 ✅
-- **README.md**: docs 수 `23→24개` 수정 ✅
-
-#### STEP 47 — 나머지 파일 docs 수 24개 반영
-
-| 파일 | 수정 내역 |
-|------|----------|
-| docs/qa-kpi-dashboard.md | 품질 지표 요약: `docs 문서 수 23개 → 24개` ✅ |
-| docs/qa-strategy.md | 실제 성과 수치 표: `docs 문서 23개 → 24개` ✅ |
-| docs/portfolio-summary.md | 수치 표 + footer: `docs/ 문서 23개 → 24개` ✅ |
+- docs/ 폴더 직접 카운트 결과 **24개** 확인 (이전 23개 오기)
+- test-metrics.md: Playwright TC 수 56건 → 88건 수정
+- README.md, qa-kpi-dashboard.md, qa-strategy.md, portfolio-summary.md: docs 수 24개로 일괄 반영
 
 ---
 
@@ -135,15 +133,8 @@
 
 ### docs 수치 정합성 최종 완료 (STEP 43)
 
-| 파일 | 결과 |
-|------|------|
-| docs/ai-qa-vision.md | 이상 없음 ✅ |
-| docs/qa-kpi-dashboard.md | **22→23개 수정 완료** ✅ |
-| docs/mcp-workflow-diagram.md | 이상 없음 ✅ |
-| docs/release-qa-process.md | 이상 없음 ✅ |
-| docs/tools-comparison.md | 이상 없음 ✅ |
-| docs/interview-prep-advanced.md | 이상 없음 ✅ |
-| docs/interview-qa-advanced.md | 이상 없음 ✅ |
+- docs/qa-kpi-dashboard.md: 22→23개 수정
+- 나머지 docs 7개 파일: 이상 없음 확인
 
 ---
 
@@ -151,26 +142,24 @@
 
 ### 수치 정합성 전체 완료 (STEP 34~39 + STEP 12)
 
-- STEP 35: README.md 수치 9곳 업데이트
-- STEP 36: PROFILE.md 수치 반영
-- STEP 37: qa-automation-report.md 맥락 명확화
-- STEP 38: skills/ 9개 파일 전체 점검 + 2개 수정
-- STEP 12: docs/share-action-plan.md 신규 생성
-- STEP 39: portfolio-summary.md docs 수 22→23개
+- README.md 수치 9곳 업데이트
+- PROFILE.md 수치 반영
+- skills/ 9개 파일 전체 점검 + 2개 수정
+- docs/share-action-plan.md 신규 생성
+- portfolio-summary.md docs 수 22→23개
 
 ---
 
 ## v6.0.0 — 2026-03-31
 
-### 문서 보강 (STEP 31~33)
-- docs/linkedin-post.md — 버전 5 추가, 게시 타이밍 가이드 신설
-- docs/cover-letter.md — 버전 4 (인공지능·테크 특화) 추가, 버전 선택 매트릭스 신설
-- docs/share-action-plan.md 신규 생성 (플랫폼별 공유 액션 가이드)
+- docs/linkedin-post.md 버전 5 추가, 게시 타이밍 가이드 신설
+- docs/cover-letter.md 버전 4 (인공지능·테크 특화) 추가
+- docs/share-action-plan.md 신규 생성
 
 ## v5.0.0 — 2026-03-30
 
-- playwright-tests/portfolio.spec.js, accessibility.spec.js 추가
-- docs/cover-letter.md, jira-mcp-plan.md, weekly-qa-report-template.md, ai-qa-vision.md 추가
+- playwright-tests 추가 (portfolio.spec.js, accessibility.spec.js)
+- docs 추가 (cover-letter, jira-mcp-plan, weekly-qa-report-template, ai-qa-vision)
 - testcase_regression.md, testcase_mobile.md 추가
 - docs/qa-kpi-dashboard.md, skills/mcp-integration.md 추가
 

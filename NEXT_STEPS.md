@@ -24,7 +24,7 @@
 | GitHub Actions | **2개** | .github/workflows/ |
 | 전체 파일 수 | **80개+** | 전체 레포 |
 | TC 건수 | **145건+** | testcase_*.md 합산 |
-| CHANGELOG | **v12** | CHANGELOG.md |
+| CHANGELOG | **v13** | CHANGELOG.md |
 
 ### MCP 5개 — 실제 작동 확인
 | MCP | 상태 |
@@ -49,15 +49,16 @@
 | STEP 56 | **testcase 나머지 12개 전체 점검 — 오타 1개 수정** ✅ | 2026-03-31 |
 | STEP 57 | **index.html 전체 점검 완료 — TC 테이블 ID 오류 수정** ✅ | 2026-03-31 |
 | STEP 58 | **CHANGELOG v12 업데이트 완료 — STEP 56~58 기록** ✅ | 2026-03-31 |
+| STEP 59 | **interview-qa.md Q9~Q12 추가, linkedin-post.md 버전 6 추가** ✅ | 2026-03-31 |
 
-### STEP 58 작업 내역 (CHANGELOG v12)
-| 항목 | 결과 |
-|------|------|
-| STEP 56~57 작업 내역 CHANGELOG 기록 | ✅ |
-| v12로 버전 업데이트 커밋 | ✅ |
-| NEXT_STEPS.md v58 완료 기록 | ✅ (현재 이 업데이트) |
+### STEP 59 작업 내역 (취업 공개 콘텐츠 강화)
 
-**→ STEP 56~58 전체 문서화 완료. 포트폴리오 전체 최종 점검 완료.** 🎉
+| 파일 | 작업 내역 |
+|------|----------|
+| docs/interview-qa.md | Q9(코드 0줄 QA 자동화 정당성), Q10(팀 환경 도입), Q11(커버리지 측정), Q12(포트폴리오 제작 어려움) 4개 신규 추가 → 총 12개 Q&A |
+| docs/linkedin-post.md | 버전 6 추가 — AI 생산성 콘텐츠형 (타임라인 포맷, 바이럴 노출 최적화) |
+
+**→ 면접 대비 Q&A 8→12개로 강화, 링크드인 게시 옵션 5→6개로 확장** 🎉
 
 ---
 
@@ -91,10 +92,20 @@ docs/jira-mcp-plan.md 참고:
 ### STEP 12 — 포트폴리오 공개 공유 [지금 바로 가능]
 
 ```
-- LinkedIn: docs/linkedin-post.md 버전 1~4 중 선택
+- LinkedIn: docs/linkedin-post.md 버전 1~6 중 선택
+  - 버전 6 (AI 생산성형) 특히 추천 — 바이럴 가능성 높음
 - 이력서 링크: https://kihyunqa.github.io/qa-portfolio
 - 커버레터: docs/cover-letter.md 버전 3종 중 지원사 맞춤 선택
-- 면접 준비: docs/interview-qa.md + docs/interview-qa-advanced.md
+- 면접 준비: docs/interview-qa.md (12개 Q&A) + docs/interview-qa-advanced.md
+```
+
+### STEP 60 — cover-letter.md 버전 5 추가 [Claude 단독 가능]
+
+```
+현재 커버레터 4버전 있음.
+추가 가능한 버전:
+  - 버전 5: AI 도입 경험 강조형 (기술 스타트업 지원 특화)
+  - 자기소개서 형식 1장 요약본 (국내 중견기업 지원용)
 ```
 
 ---
@@ -123,4 +134,4 @@ docs/jira-mcp-plan.md 참고:
 
 ---
 
-*최종 업데이트: 2026-03-31 · STEP 58 완료 (CHANGELOG v12 업데이트) · 다음: STEP 10 (스크린샷, 사용자 직접), STEP 11 (Jira MCP, 사용자 계정 필요), STEP 12 (포트폴리오 공개 공유, 지금 바로 가능)*
+*최종 업데이트: 2026-03-31 · STEP 59 완료 (interview-qa Q9~Q12 추가, linkedin-post 버전 6 추가) · 다음: STEP 10 (스크린샷, 사용자 직접), STEP 12 (LinkedIn 공유, 버전 6 추천), STEP 60 (cover-letter 버전 5, Claude 단독 가능)*
