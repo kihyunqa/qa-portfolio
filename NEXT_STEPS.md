@@ -24,7 +24,7 @@
 | GitHub Actions | **2개** | .github/workflows/ |
 | 전체 파일 수 | **80개+** | 전체 레포 |
 | TC 건수 | **145건+** | testcase_*.md 합산 |
-| CHANGELOG | **v14** | CHANGELOG.md |
+| CHANGELOG | **v15** | CHANGELOG.md |
 
 ### MCP 5개 — 실제 작동 확인
 | MCP | 상태 |
@@ -52,18 +52,20 @@
 | STEP 59 | interview-qa.md Q9~Q12 추가, linkedin-post.md 버전 6 추가 ✅ | 2026-03-31 |
 | STEP 60 | cover-letter.md 버전 5 추가 (AI 프로덕트 스타트업 특화) ✅ | 2026-03-31 |
 | STEP 61 | docs/self-introduction.md 신규 생성 (국내 기업 자기소개서 4항목) ✅ | 2026-03-31 |
-| STEP 63 | docs 수 24→25개 반영 — README, portfolio-summary, qa-kpi-dashboard, qa-strategy 4개 파일 수정 ✅ | 2026-03-31 |
+| STEP 62 | interview-qa-advanced.md 점검 — Q11 신규 추가 (AI 시대 QA 역할), Q10 심화 ✅ | 2026-03-31 |
+| STEP 63 | docs 수 24→25개 반영 — README, portfolio-summary, qa-kpi-dashboard, qa-strategy 수정 ✅ | 2026-03-31 |
+| STEP 64 | CHANGELOG v14→v15 업데이트 (STEP 62~63 반영) ✅ | 2026-03-31 |
 
-### STEP 63 작업 내역 (docs 수 수정)
+### STEP 62~64 작업 요약
 
 | 파일 | 작업 내역 |
 |------|----------|
-| README.md | `docs/ 24개` → `docs/ 25개` 수정 |
-| docs/portfolio-summary.md | `docs/ 문서 24개` → `25개` 수정, 커버레터 4종→5종 수정 |
-| docs/qa-kpi-dashboard.md | `docs 문서 수 24개` → `25개` 수정, 개선이력 추가 |
-| docs/qa-strategy.md | `docs 문서 24개` → `25개` 수정 |
-
-**→ STEP 61에서 신규 생성된 self-introduction.md 반영 완료** 🎉
+| docs/interview-qa-advanced.md | Q10 내용 심화 (커버리지 3레이어 설명), Q11 신규 추가 (2026 AI 트렌드) |
+| README.md | docs 24→25개 수정 |
+| docs/portfolio-summary.md | docs 24→25개, 커버레터 4→5종 수정 |
+| docs/qa-kpi-dashboard.md | docs 24→25개 수정, 개선이력 추가 |
+| docs/qa-strategy.md | docs 24→25개 수정 |
+| CHANGELOG.md | v14→v15, STEP 62~63 반영 |
 
 ---
 
@@ -102,29 +104,23 @@ docs/jira-mcp-plan.md 참고:
 - 이력서 링크: https://kihyunqa.github.io/qa-portfolio
 - 커버레터: docs/cover-letter.md 버전 1~5 중 지원사 맞춤 선택
 - 자기소개서: docs/self-introduction.md (국내 기업 공채·수시채용)
-- 면접 준비: docs/interview-qa.md (12개 Q&A) + docs/interview-qa-advanced.md
+- 면접 준비: docs/interview-qa.md (12개 Q&A) + docs/interview-qa-advanced.md (11개 Q&A)
 ```
 
-### STEP 62 — interview-qa-advanced.md 점검 및 보강 [Claude 단독 가능]
+### STEP 65 — index.html docs 수 표기 점검 [Claude 단독 가능]
 
 ```
-현재 파일 크기: 5957b
-점검 포인트:
-  - 기존 Q&A 내용 중 2026년 트렌드와 맞지 않는 항목 업데이트
-  - "AI 시대 QA 엔지니어의 역할 변화" 관련 질문 보강 여부 확인
-  - interview-qa.md(기초)와 중복 없이 심화 내용으로 보완
+STEP 63에서 README 등 4개 파일의 docs 수를 25개로 수정했지만
+index.html(58KB) 내에도 docs 수 표기가 있을 수 있음.
+index.html에서 "24개" 또는 "24 docs" 패턴 검색 후 필요 시 수정.
+주의: index.html 수정 시 SHA 반드시 먼저 확인 후 전체 내용 교체.
 ```
 
-### STEP 64 — CHANGELOG v15 업데이트 [Claude 단독 가능]
+### STEP 66 — PROFILE.md docs 수 점검 [Claude 단독 가능]
 
 ```
-STEP 59~63 작업 내역을 CHANGELOG에 반영:
-  - v15로 버전업
-  - STEP 59: interview-qa.md Q9~Q12, linkedin-post.md v6
-  - STEP 60: cover-letter.md v5 (AI 스타트업 특화)
-  - STEP 61: self-introduction.md 신규 생성
-  - STEP 63: docs 수 25개 반영 (4개 파일 수정)
-현재 CHANGELOG: v14 → v15로 업데이트 필요
+PROFILE.md에도 docs 수 표기가 있을 수 있음.
+"24개" 표기가 있으면 "25개"로 수정.
 ```
 
 ---
@@ -153,4 +149,4 @@ STEP 59~63 작업 내역을 CHANGELOG에 반영:
 
 ---
 
-*최종 업데이트: 2026-03-31 · STEP 63 완료 (docs 수 25개 반영 — README/portfolio-summary/qa-kpi-dashboard/qa-strategy 4개 파일) · 다음: STEP 62 (interview-qa-advanced 점검), STEP 64 (CHANGELOG v15), STEP 10 (스크린샷, 사용자 직접), STEP 12 (LinkedIn 공유)*
+*최종 업데이트: 2026-03-31 · STEP 64 완료 (CHANGELOG v15) · 이번 세션에서 STEP 62~64 완료 · 다음: STEP 65 (index.html docs 수 점검), STEP 66 (PROFILE.md 점검), STEP 10 (스크린샷, 사용자 직접), STEP 12 (LinkedIn 공유)*
