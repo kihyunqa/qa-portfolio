@@ -1,5 +1,39 @@
 # CHANGELOG
 
+## v9.0.0 — 2026-03-31
+
+### docs 실제 수 23→24개 정정 완료 (STEP 46~47)
+
+#### STEP 46 — docs/ 폴더 직접 카운트 및 수치 정정
+
+- docs/ 폴더 파일을 직접 카운트한 결과 **24개** 확인 (이전까지 23개로 잘못 기재)
+- **interview-qa.md** (5203b): 정상 파일, 수치 이상 없음 ✅
+- **test-metrics.md** (2925b): Playwright TC 수 `56건 → 88건(spec 12개)` 수정 ✅
+- **README.md**: docs 수 `23→24개` 수정 ✅
+
+#### STEP 47 — 나머지 파일 docs 수 24개 반영
+
+| 파일 | 수정 내역 |
+|------|----------|
+| docs/qa-kpi-dashboard.md | 품질 지표 요약: `docs 문서 수 23개 → 24개` ✅ |
+| docs/qa-strategy.md | 실제 성과 수치 표: `docs 문서 23개 → 24개` ✅ |
+| docs/portfolio-summary.md | 수치 표 + footer: `docs/ 문서 23개 → 24개` ✅ |
+
+### 최종 수치 현황 (v9 기준)
+| 항목 | 수치 |
+|------|------|
+| TC | 145건+ |
+| Playwright spec | 12개 |
+| docs/ 문서 | **24개** |
+| skills/ 문서 | 9개 |
+| 레포 파일 수 | 80개+ |
+| GitHub Actions | 2개 |
+| MCP 연동 | 5개 |
+
+**→ 레포 전체 docs 수치 "24개" 정합성 완전 완료 ✅**
+
+---
+
 ## v8.0.0 — 2026-03-31
 
 ### docs 수치 정합성 최종 완료 (STEP 43)
