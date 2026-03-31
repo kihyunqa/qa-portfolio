@@ -11,7 +11,7 @@
 - API 테스트 (`request` context)
 - 접근성(A11y) 테스트
 - 성능 Navigation Timing API 연동
-- 스크린샷/비디오 캐쳐
+- 스크린샷/비디오 캡처
 
 ### 실제 작성 코드
 ```javascript
@@ -61,11 +61,11 @@ jobs:
 
 | MCP | 역할 | 실제 활용 |
 |-----|------|----------|
-| filesystem | 로컈 파일 저장 | TC 파일 생성/저장 |
+| filesystem | 로컬 파일 저장 | TC 파일 생성/저장 |
 | github | 레포 관리 | 커밋, 파일 업데이트 |
 | playwright | E2E 브라우저 | 실제 테스트 실행 |
 | notion | 문서화 | TC 결과 DB 저장 |
-| slack | 알림 | QA 컨플리원스 자동 발송 |
+| slack | 알림 | QA 완료 알림 자동 발송 |
 
 ---
 
@@ -78,7 +78,7 @@ jobs:
 | 설치 난이도 | 하 | 중 | 하 |
 | API 테스트 | 내장 | 백엔드 필요 | 내장 |
 | 병렬 실행 | ✅ | ✅ | 무료 플랜 제한 |
-| 도구 추체 | DevTools | WebDriver | DevTools |
+| 도구 주체 | DevTools | WebDriver | DevTools |
 
 ---
 
