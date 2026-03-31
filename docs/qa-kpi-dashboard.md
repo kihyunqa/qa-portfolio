@@ -62,7 +62,7 @@
 ## MCP 파이프라인 가동률
 
 | MCP | 연동 상태 | 주요 성과 |
-|-----|-----------|-----------|
+|-----|-----------|-----------| 
 | filesystem | ✅ 정상 | TC 파일 17개 로컬 생성·관리 |
 | github | ✅ 정상 | 80개+ 파일 자동 커밋 |
 | playwright | ✅ 정상 | E2E spec 12개 자동 실행 |
@@ -83,5 +83,47 @@
 | 버그 발견율 (포트폴리오 내) | 오타·수치 오류 **10건+** 수정 완료 |
 | docs 문서 수 | **22개** |
 | CI 파이프라인 | **2개** (playwright + qa-notify) |
+
+---
+
+## 성능 기준 지표
+
+| 항목 | 목표 기준 | 측정 방법 |
+|------|-----------|----------|
+| API 응답 시간 | 200ms 미만 | Playwright `waitForResponse` 타임스탬프 |
+| 페이지 로드 (LCP) | 3초 미만 | `performance.timing.loadEventEnd` |
+| Time to Interactive | 2초 미만 | `waitForLoadState('networkidle')` |
+| 동시 요청 처리 | 100개 | `Promise.all` 병렬 실행 |
+| 에러율 | 1% 미만 | 전체 요청 대비 5xx 응답 비율 |
+
+---
+
+## 보안 커버리지
+
+| 취약점 유형 | 테스트 항목 수 | 자동화 |
+|------------|--------------|--------|
+| XSS (크로스 사이트 스크립팅) | 4건 | ✅ spec |
+| SQL Injection | 3건 | ✅ spec |
+| CSRF | 2건 | ✅ spec |
+| 인증 우회 | 4건 | ✅ spec |
+| Rate Limiting | 2건 | ✅ spec |
+| 미인가 접근 제어 | 3건 | ✅ spec |
+| **합계** | **18건** | **100%** |
+
+> OWASP Top 10 주요 항목 커버
+
+---
+
+## 주요 개선 이력
+
+| 날짜 | 개선 항목 | 효과 |
+|------|----------|------|
+| 2026-03-30 | GitHub Actions qa-notify.yml 구축 | TC 공유 자동화 |
+| 2026-03-30 | Playwright spec 12개 완성 | E2E 자동화 88건 확보 |
+| 2026-03-31 | docs 22개 전체 수치·내용 검증 | 포트폴리오 신뢰도 향상 |
+| 2026-03-31 | interview-prep-advanced.md 보강 | 면접 준비 Q&A 10개로 확대 |
+| 2026-03-31 | ai-qa-vision.md 보강 | 비전 문서 + 트러블슈팅 기록 |
+
+---
 
 *수치 기준: 2026-03-31 · https://kihyunqa.github.io/qa-portfolio*
