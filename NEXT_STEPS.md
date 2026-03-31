@@ -41,24 +41,17 @@
 | 스텝 | 내용 | 완료일 |
 |------|------|--------|
 | STEP 1~9 | MCP 연동, TC 생성, spec 작성, docs 작성 등 | ~2026-03-30 |
-| STEP 13~18 | docs 전체 수치·오타 수정 | 2026-03-31 |
-| STEP 19 | 전체 검증 완료 ✅ | 2026-03-31 |
-| STEP 20 | cover-letter.md 1종→3종 확장 ✅ | 2026-03-31 |
-| STEP 21 | qa-onboarding.md MCP 환경 기준 보강 ✅ | 2026-03-31 |
-| STEP 22 | ai-qa-vision.md 726→3063 bytes ✅ | 2026-03-31 |
-| STEP 23 | qa-checklist.md 오타 수정 + 섹션 추가 ✅ | 2026-03-31 |
-| STEP 24-A | qa-kpi-dashboard.md 보강 ✅ | 2026-03-31 |
-| STEP 24-B | qa-notify-workflow.md 보강 ✅ | 2026-03-31 |
-| STEP 25 | jira-mcp-plan.md 878→5457 bytes ✅ | 2026-03-31 |
-| STEP 26 | 얇은 docs 4개 동시 보강 ✅ | 2026-03-31 |
-| STEP 27 | **얇은 docs 3개 추가 보강** ✅ | 2026-03-31 |
+| STEP 13~27 | docs 전체 수치·오타·내용 수정 및 보강 | 2026-03-31 |
+| STEP 28 | **docs 5개 점검 → 3개 보강 완료** ✅ | 2026-03-31 |
 
-### STEP 27 작업 내역
-| 파일 | before | after | 주요 변경 |
-|------|--------|-------|-----------|
-| docs/jira-integration-plan.md | 1170b | 5000+b | PHASE 2+3 통합 설계, 자동 생성 이슈 구조, MCP 조합 시나리오, Jira 라벨 전략, PHASE 2 체크리스트 |
-| docs/portfolio-summary.md | 2035b | 3500+b | 경력 테이블, TC 도메인 커버 현황 17개 파일별 테이블, 주요 스킬 3개 카테고리 분류, 핵심 문서 링크 테이블 |
-| docs/tools-comparison.md | 2044b | 5018b | MCP 생태계 비교 테이블, CI/CD 도구 비교, QA 매니저 관점 도구 선택 기준, 접근성·성능 도구 추가 |
+### STEP 28 작업 내역
+| 파일 | 조치 | 주요 추가 내용 |
+|------|------|----------------|
+| docs/mcp-setup-guide.md | 보강 (2581→4500+b) | MCP별 연동 확인 테스트 명령어, PHASE 2 Jira 설정 예시, Troubleshooting 보강 |
+| docs/qa-strategy.md | 보강 (2781→4800+b) | 실제 성과 수치 테이블, MCP별 실적 추가, PHASE 2 전략, 테스트 사이클 다이어그램 |
+| docs/mcp-architecture.md | 보강 (2826→4700+b) | 실제 구현 플로우 8단계, GitHub Actions 연동 구조, PHASE 2 확장 계획 |
+| docs/test-metrics.md | 패스 (내용 충실) | — |
+| docs/bug-report-template.md | 패스 (예시 3개, 충분) | — |
 
 ---
 
@@ -79,17 +72,13 @@
 ★ 포트폴리오의 "실제 연동 증거"를 텍스트→시각 증거로 업그레이드하는 핵심!
 ```
 
-### STEP 28 — 남은 docs 파일 점검 [Claude 단독 가능]
+### STEP 29 — interview-prep-advanced.md 보강 [Claude 단독 가능]
 
 ```
-docs/ 22개 파일 중 아직 점검하지 않은 파일:
-- docs/mcp-architecture.md (2826b) — 내용 확인 후 보강 여부 판단
-- docs/mcp-setup-guide.md (2581b) — 내용 확인 후 보강 여부 판단
-- docs/test-metrics.md (2925b) — 내용 확인 후 보강 여부 판단
-- docs/qa-strategy.md (2781b) — 내용 확인 후 보강 여부 판단
-- docs/bug-report-template.md (2800b) — 내용 확인 후 보강 여부 판단
-
-위 5개 파일 내용 확인 → 얇거나 내용 부실한 파일 보강
+현재 상태: 2203b로 가장 얇은 파일 중 하나
+내용 확인 후 보강:
+- 파일 경로: docs/interview-prep-advanced.md
+- 추가할 내용: MCP 구체적 면접 답변, 실제 연동 경험 기반 Q&A
 ```
 
 ### STEP 11 — Jira MCP 실제 연동 [PHASE 2 — 사용자 계정 필요]
@@ -137,4 +126,4 @@ jira-mcp-plan.md의 실행 단계 참고:
 
 ---
 
-*최종 업데이트: 2026-03-31 · STEP 27 완료 (jira-integration-plan·portfolio-summary·tools-comparison 보강) · 다음: STEP 28 (나머지 docs 점검) or STEP 10 (스크린샷)*
+*최종 업데이트: 2026-03-31 · STEP 28 완료 (mcp-setup-guide·qa-strategy·mcp-architecture 보강) · 다음: STEP 29 (interview-prep-advanced 보강) or STEP 10 (스크린샷)*
