@@ -26,7 +26,7 @@ jobs:
       - uses: slackapi/slack-github-action@v1.26.0
         with:
           channel-id: 'C0AQFJXC800'
-          slack-message: "\ud83d\udccb TC \uc5c5\ub370\uc774\ud2b8: ${{ github.event.head_commit.message }}"
+          slack-message: "📋 TC 업데이트: ${{ github.event.head_commit.message }}"
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
 ```
@@ -44,7 +44,7 @@ jobs:
 └─────────┘    └─────────┘    └─────────┘    └─────────┘
         ↓                                           ↑
   filesystem MCP                              claude-mcp bot
-  (TC 저장)                                   (#새-삼너)
+  (TC 저장)                                   (#새-채널)
 ```
 
 ---
@@ -62,6 +62,6 @@ jobs:
 
 | 이벤트 | Workflow 실행 | 대상 |
 |--------|--------------|------|
-| TC 파일 push | QA 알림 | Slack #새-삼널 |
+| TC 파일 push | QA 알림 | Slack #새-채널 |
 | PR 오픈 | 코드 리뷰 안내 | 담당자 |
-| 주간별 cron | 주간 리포트 | 팅 알림 |
+| 주간별 cron | 주간 리포트 | 팀 알림 |
