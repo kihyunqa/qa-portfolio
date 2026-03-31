@@ -51,12 +51,24 @@
 | STEP 34 | CHANGELOG.md v6 추가 ✅ | 2026-03-31 |
 | STEP 35 | README.md 수치 9곳 최신화 + 커버레터 링크 추가 ✅ | 2026-03-31 |
 | STEP 36 | PROFILE.md 수치 최신화 (spec 12개, TC 145건+) ✅ | 2026-03-31 |
-| STEP 37 | **qa-automation-report.md 맥락 명확화 완료** ✅ | 2026-03-31 |
+| STEP 37 | qa-automation-report.md 맥락 명확화 완료 ✅ | 2026-03-31 |
+| STEP 38 | skills/ 9개 파일 전체 점검 + 2개 수정 완료 ✅ | 2026-03-31 |
 
-### STEP 37 작업 내역 — qa-automation-report.md (3520b → 3779b)
-- 이 파일은 **첫 연동 검증 스프린트의 실행 리포트** (TC 30건은 오류가 아니라 스프린트 당시 실제 수치)
-- header에 "포트폴리오 전체 TC 145건+, spec 12개와 별도 집계" 맥락 주석 추가
-- footer에 "스프린트 기준 TC 30건 | 포트폴리오 누적 TC 145건+ · spec 12개" 병기
+### STEP 38 작업 내역 — skills/ 수치 점검 및 수정
+
+**점검 결과 (9개 파일):**
+| 파일 | 수치 이슈 | 처리 |
+|------|-----------|------|
+| api-testing.md | 없음 (API-030 독립 수치, 문제없음) | 유지 |
+| automation-tools.md | 없음 | 유지 |
+| bug-reporting.md | 없음 | 유지 |
+| ci-cd-pipeline.md | 없음 | 유지 |
+| manual-testing.md | 없음 (TC-020 독립 수치) | 유지 |
+| mcp-integration.md | spec 9개 → **12개**, 60+ → **80개+** 수정 ✅ | 수정완료 |
+| mobile-testing.md | 없음 | 유지 |
+| performance-testing.md | 없음 | 유지 |
+| qa-automation.md | 없음 (템플릿 파일) | 유지 |
+| test-strategy.md | Playwright 56건 → **E2E spec 12개** 수정 ✅ | 수정완료 |
 
 ---
 
@@ -70,6 +82,8 @@
 | portfolio-summary.md | 145건+ ✅ | 12개 ✅ | 80개+ ✅ | 4종 ✅ |
 | qa-automation-report.md | 30건(스프린트) ✅ | — | — | — |
 | NEXT_STEPS.md | 145건+ ✅ | 12개 ✅ | 80개+ ✅ | — |
+| skills/mcp-integration.md | — | 12개 ✅ | 80개+ ✅ | — |
+| skills/test-strategy.md | — | 12개 ✅ | — | — |
 
 **→ 모든 주요 파일 수치 정합성 확인 완료 ✅**
 
@@ -90,15 +104,6 @@
 저장 위치: screenshots/ 폴더
 업로드: https://github.com/kihyunqa/qa-portfolio/upload/main/screenshots
 ★ 포트폴리오의 "실제 연동 증거"를 텍스트→시각 증거로 업그레이드하는 핵심!
-```
-
-### STEP 38 — skills/ 문서 수치 점검 [Claude 단독 가능]
-
-```
-skills/ 폴더 9개 파일 중 수치 포함 파일 확인:
-  - 구버전 수치(125건, 56건, 10 spec 등) 남아있을 수 있음
-  - 목록 먼저 조회 후 수치 포함된 파일만 선별해서 수정
-  진행: github MCP로 skills/ 폴더 목록 조회 → 각 파일 확인
 ```
 
 ### STEP 12 — 포트폴리오 공개 공유 [지금 바로 가능!]
@@ -148,4 +153,4 @@ skills/ 폴더 9개 파일 중 수치 포함 파일 확인:
 
 ---
 
-*최종 업데이트: 2026-03-31 · STEP 37 완료 (qa-automation-report 맥락 명확화, 전체 수치 정합성 완료) · 다음: STEP 38 (skills/ 점검) or STEP 10 (스크린샷) or STEP 12 (공유!)*
+*최종 업데이트: 2026-03-31 · STEP 38 완료 (skills/ 9개 전체 점검, mcp-integration + test-strategy 수치 수정) · 다음: STEP 10 (스크린샷) or STEP 12 (공유!)*
