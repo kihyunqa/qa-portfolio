@@ -48,19 +48,30 @@
 | STEP 31 | linkedin-post.md 보강 (버전 5 추가) ✅ | 2026-03-31 |
 | STEP 32 | cover-letter.md 보강 (버전 4 추가) ✅ | 2026-03-31 |
 | STEP 33 | docs/ 잔여 3개 파일 점검 + portfolio-summary 커버레터 4종 수정 ✅ | 2026-03-31 |
-| STEP 34 | CHANGELOG.md v6 추가 (STEP 31~34 전체 내역) ✅ | 2026-03-31 |
+| STEP 34 | CHANGELOG.md v6 추가 ✅ | 2026-03-31 |
 | STEP 35 | README.md 수치 9곳 최신화 + 커버레터 링크 추가 ✅ | 2026-03-31 |
-| STEP 36 | **PROFILE.md 수치 최신화 완료** ✅ | 2026-03-31 |
+| STEP 36 | PROFILE.md 수치 최신화 (spec 12개, TC 145건+) ✅ | 2026-03-31 |
+| STEP 37 | **qa-automation-report.md 맥락 명확화 완료** ✅ | 2026-03-31 |
 
-### STEP 36 작업 내역 — PROFILE.md (3792b → 4082b)
-| 항목 | 수정 전 | 수정 후 |
-|------|---------|---------|
-| 핵심 역량 spec 수 | "총 56건" | **12 spec / TC 145건+** |
-| MCP 프로젝트 02 | "E2E 코드 56건" | **12 spec / TC 145건+** |
-| 이력서 요약 | "56건" | **12 spec / TC 145건+** |
-| LinkedIn 소개글 | "56건" | **12 spec / TC 145건+** |
-| Playwright 표 | 6개 스펙만 기재 | **12개 전체 목록으로 확장** |
-| footer | "spec" 미기재 | **TC 145건+ · spec 12개** |
+### STEP 37 작업 내역 — qa-automation-report.md (3520b → 3779b)
+- 이 파일은 **첫 연동 검증 스프린트의 실행 리포트** (TC 30건은 오류가 아니라 스프린트 당시 실제 수치)
+- header에 "포트폴리오 전체 TC 145건+, spec 12개와 별도 집계" 맥락 주석 추가
+- footer에 "스프린트 기준 TC 30건 | 포트폴리오 누적 TC 145건+ · spec 12개" 병기
+
+---
+
+## 🎉 레포 전체 수치 일관성 — 최종 완료 상태
+
+| 파일 | TC 수 | spec 수 | 파일 수 | 커버레터 |
+|------|-------|---------|---------|---------|
+| README.md | 145건+ ✅ | 12개 ✅ | 80개+ ✅ | 4종 ✅ |
+| PROFILE.md | 145건+ ✅ | 12개 ✅ | — | — |
+| CHANGELOG.md | v6까지 ✅ | — | — | — |
+| portfolio-summary.md | 145건+ ✅ | 12개 ✅ | 80개+ ✅ | 4종 ✅ |
+| qa-automation-report.md | 30건(스프린트) ✅ | — | — | — |
+| NEXT_STEPS.md | 145건+ ✅ | 12개 ✅ | 80개+ ✅ | — |
+
+**→ 모든 주요 파일 수치 정합성 확인 완료 ✅**
 
 ---
 
@@ -81,44 +92,34 @@
 ★ 포트폴리오의 "실제 연동 증거"를 텍스트→시각 증거로 업그레이드하는 핵심!
 ```
 
-### STEP 37 — 레포 전체 수치 일관성 최종 점검 [Claude 단독 가능]
+### STEP 38 — skills/ 문서 수치 점검 [Claude 단독 가능]
 
 ```
-README / PROFILE / CHANGELOG / portfolio-summary / NEXT_STEPS 5개 파일 수치가
-모두 동일한지 교차 확인:
-  - TC 145건+  ✅ (모두 수정 완료)
-  - spec 12개  ✅ (모두 수정 완료)
-  - 파일 80개+ ✅ (모두 수정 완료)
-  - 커버레터 4종 ✅ (모두 수정 완료)
-
-추가로 확인할 파일:
-  - docs/qa-automation-report.md (루트에 있는 3520b 파일) — 수치 확인 필요
-  - qa-automation-report.md (루트, 3520b) — 내용 확인
-이 파일들에 125건 / 56건 / 70개 같은 구버전 수치가 남아있을 수 있음.
-```
-
-### STEP 11 — Jira MCP 실제 연동 [PHASE 2 — 사용자 계정 필요]
-
-```
-jira-mcp-plan.md의 실행 단계 참고:
-1. Jira Cloud 무료 계정 생성
-2. API 토큰 발급
-3. claude_desktop_config.json에 jira MCP 추가
-4. Claude Desktop 재시작 후 연동 확인
-완료 시 index.html 로드맵 PHASE 2 완료 표시
+skills/ 폴더 9개 파일 중 수치 포함 파일 확인:
+  - 구버전 수치(125건, 56건, 10 spec 등) 남아있을 수 있음
+  - 목록 먼저 조회 후 수치 포함된 파일만 선별해서 수정
+  진행: github MCP로 skills/ 폴더 목록 조회 → 각 파일 확인
 ```
 
 ### STEP 12 — 포트폴리오 공개 공유 [지금 바로 가능!]
 
 ```
-모든 문서 보강 완료 — 지금 바로 공유 가능한 상태!
+모든 핵심 문서 보강 + 수치 정합성 완료 — 공유 준비 100%!
 
-- LinkedIn: docs/linkedin-post.md 버전 1~5 중 상황에 맞게 선택
+- LinkedIn: docs/linkedin-post.md 버전 1~5 중 선택
   (이직 의사 공개 → 버전 5 / 처음 공개 → 버전 1)
-- 이력서 링크: https://kihyunqa.github.io/qa-portfolio
 - 커버레터: docs/cover-letter.md 버전 선택 매트릭스 참고
-  (AI 스타트업 → 버전 4 / 대기업 → 버전 3)
-- 면접 준비: docs/interview-prep-advanced.md (STEP 29 보강 완료)
+- 면접 준비: docs/interview-prep-advanced.md
+- 포트폴리오: https://kihyunqa.github.io/qa-portfolio
+```
+
+### STEP 11 — Jira MCP 실제 연동 [PHASE 2 — 사용자 계정 필요]
+
+```
+1. Jira Cloud 무료 계정 생성
+2. API 토큰 발급
+3. claude_desktop_config.json에 jira MCP 추가
+4. Claude Desktop 재시작 후 연동 확인
 ```
 
 ---
@@ -131,7 +132,7 @@ jira-mcp-plan.md의 실행 단계 참고:
 4. **새 파일 무분별 생성 금지** — 기존 파일 업데이트 우선
 5. **push_files 테스트용 임시 내용 사용 절대 금지** — 항상 실제 내용으로만
 6. **NEXT_STEPS.md 업데이트 필수** — SHA 먼저 확인 후 업데이트
-7. **create_or_update_file content 파라미터** → 반드시 실제 텍스트 내용만 넣기 (base64 혼입 시 파일 깨짐!)
+7. **create_or_update_file content 파라미터** → 반드시 실제 텍스트 내용만 (base64 혼입 시 파일 깨짐!)
 
 ---
 
@@ -147,4 +148,4 @@ jira-mcp-plan.md의 실행 단계 참고:
 
 ---
 
-*최종 업데이트: 2026-03-31 · STEP 36 완료 (PROFILE.md spec 12개/TC 145건+ 전면 수정) · 다음: STEP 37 (qa-automation-report.md 수치 확인) or STEP 10 (스크린샷) or STEP 12 (공유!)*
+*최종 업데이트: 2026-03-31 · STEP 37 완료 (qa-automation-report 맥락 명확화, 전체 수치 정합성 완료) · 다음: STEP 38 (skills/ 점검) or STEP 10 (스크린샷) or STEP 12 (공유!)*
