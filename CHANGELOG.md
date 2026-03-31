@@ -1,38 +1,34 @@
 # CHANGELOG
 
-## v17.0.0 — 2026-03-31
+## v18.0.0 — 2026-03-31
 
-### README + portfolio-summary 수치 정합성 완료 (STEP 69~71)
+### 남은 docs 전체 점검 완료 (STEP 72~75)
 
-#### STEP 69 — README.md 수정
-
-| 항목 | 수정 내용 |
-|------|----------|
-| 커버레터 링크 | "커버레터 4종" → **"5종"** |
-| LinkedIn 링크 | "버전 1~5" → **"버전 1~6"** |
-| self-introduction.md | 주요 문서 바로가기에 **신규 링크 추가** |
-| interview-qa | "8문항" → **"12문항"** |
-| interview-qa-advanced | **"11문항"** 명시 추가 |
-
-#### STEP 70 — docs/test-metrics.md 점검
-
-- TC 145건+, Playwright spec 12개 수치 확인 → **정상, 수정 불필요** ✅
-
-#### STEP 71 — docs/portfolio-summary.md 수정
+#### STEP 72 — docs/qa-onboarding.md 수정
 
 | 항목 | 수정 내용 |
 |------|----------|
-| 스킬 섹션 | "커버레터 4종" → **"5종"** |
-| 핵심 문서 표 | cover-letter.md "4종" → **"5종"** |
-| 핵심 문서 표 | linkedin-post.md "5버전" → **"6버전"** |
-| 핵심 문서 표 | self-introduction.md **신규 행 추가** |
-| interview-qa | "8문항" → **"12문항"** |
-| interview-qa-advanced | **"11문항"** 명시 추가 |
-| ai-qa-vision.md | "(2026 트렌드 반영)" 설명 추가 |
+| testcase 파일 수 | "17개" → **"16개"** |
+| docs 문서 수 | "22개" → **"25개"** |
+| CHANGELOG 히스토리 | "v1~v5" → **"v1~v17"** |
+| interview-qa 설명 | **"12문항"** 명시 |
+| ai-qa-vision.md 링크 | 주요 참고 문서에 **신규 추가** |
 
-**→ 전체 문서 간 수치 정합성 완성** ✅
+#### STEP 73 — docs/qa-strategy.md 점검
 
-### 최종 수치 현황 (v17 기준)
+- docs 25개, TC 145건+, spec 12개, MCP 5개 → **정상, 수정 불필요** ✅
+
+#### STEP 74 — docs/release-qa-process.md 점검
+
+- Playwright spec 12개, MCP 5개 → **정상, 수정 불필요** ✅
+
+#### STEP 75 — docs/qa-checklist.md 점검
+
+- TC 145건+, Playwright spec 12개 → **정상, 수정 불필요** ✅
+
+**→ docs/ 25개 전체 수치 점검 사실상 완료** ✅
+
+### 최종 수치 현황 (v18 기준 · 확정)
 
 | 항목 | 수치 |
 |------|------|
@@ -47,6 +43,17 @@
 | 커버레터 | 5종 |
 | LinkedIn 포스트 | 6버전 |
 | 면접 Q&A | 12문항 (기초) + 11문항 (심화) |
+| CHANGELOG | **v18** |
+
+---
+
+## v17.0.0 — 2026-03-31
+
+### README + portfolio-summary 수치 정합성 완료 (STEP 69~71)
+
+- README.md: 커버레터 4→5종, LinkedIn 1~5→1~6, self-introduction/interview-qa 업데이트
+- test-metrics.md: 수치 정상 확인, 수정 불필요
+- portfolio-summary.md: 커버레터 4→5종, LinkedIn 5→6버전, self-introduction.md 신규 추가
 
 ---
 
@@ -54,30 +61,8 @@
 
 ### ai-qa-vision 수치 수정 + share-action-plan 최신화 (STEP 67~68)
 
-#### STEP 67 — docs/ai-qa-vision.md 점검 및 보강
-
-| 항목 | 내용 |
-|------|------|
-| 수치 수정 | TC 17개 파일 → **16개 파일** (실제 수치로 정정) |
-| 신규 섹션 | "2026년 AI QA 트렌드와 나의 포지션" 추가 |
-| 트렌드 매트릭스 | LLM 기반 TC 생성, Agent 자동화, 자연어→코드 등 5개 트렌드 반영 |
-| interview-qa-advanced Q11 연계 | AI 시대 QA 역할 변화 내용 연결 강화 |
-
-- ai-qa-vision.md: 5,419b → **6,681b** (AI 트렌드 섹션 추가)
-
-#### STEP 68 — docs/share-action-plan.md 최신화
-
-| 항목 | 내용 |
-|------|------|
-| LinkedIn 버전 6 추가 | 버전 선택 매트릭스에 버전 6 (AI 생산성형) 추천 표시 ⭐ |
-| 타임라인 업데이트 | 내일 LinkedIn 게시 → 버전 6 추천으로 변경 |
-| cover-letter 매트릭스 | 5버전 전체 매트릭스 표로 정리 (버전 5 AI 스타트업 강조) |
-| self-introduction.md 반영 | 공유 전 체크리스트 및 Step 3에 자기소개서 추가 |
-| 커버레터 섹션 재구성 | "커버레터 & 자기소개서 발송"으로 통합 |
-
-- share-action-plan.md: 5,543b → **6,895b** (v6 추천, 자기소개서 반영)
-
-**→ 전체 수치 정합성 완료 + 취업 액션 플랜 최신화** ✅
+- ai-qa-vision.md: TC 17→16개 파일 수정, 2026 AI 트렌드 섹션 추가
+- share-action-plan.md: LinkedIn v6 추천, cover-letter v5 매트릭스, self-introduction.md 반영
 
 ---
 
