@@ -24,7 +24,7 @@
 | GitHub Actions | **2개** | .github/workflows/ |
 | 전체 파일 수 | **80개+** | 전체 레포 |
 | TC 건수 | **145건+** | testcase_*.md 합산 |
-| CHANGELOG | **v11** | CHANGELOG.md |
+| CHANGELOG | **v12** | CHANGELOG.md |
 
 ### MCP 5개 — 실제 작동 확인
 | MCP | 상태 |
@@ -48,18 +48,16 @@
 | STEP 55 | **testcase 4개 점검, 3개 파일 오타 9개 수정 완료** ✅ | 2026-03-31 |
 | STEP 56 | **testcase 나머지 12개 전체 점검 — 오타 1개 수정** ✅ | 2026-03-31 |
 | STEP 57 | **index.html 전체 점검 완료 — TC 테이블 ID 오류 수정** ✅ | 2026-03-31 |
+| STEP 58 | **CHANGELOG v12 업데이트 완료 — STEP 56~58 기록** ✅ | 2026-03-31 |
 
-### STEP 57 작업 내역 (index.html 점검)
+### STEP 58 작업 내역 (CHANGELOG v12)
 | 항목 | 결과 |
 |------|------|
-| meta 수치 (MCP 5개, TC 145건+, spec 12개, Actions 2개) | ✅ 정확 |
-| 경력 타임라인 (3개 회사, 날짜) | ✅ PROFILE.md와 일치 |
-| 프로젝트 카드 10개 | ✅ 이상 없음 |
-| TC 샘플 테이블 TC-ID | ❌ `TC-SEC-002`가 "SQL Injection 차단"으로 잘못 표기 → **`TC-SEC-001`로 수정 완료** |
-| footer 수치 | ✅ 이상 없음 |
-| 링크 전체 (GitHub, proof, spec) | ✅ 이상 없음 |
+| STEP 56~57 작업 내역 CHANGELOG 기록 | ✅ |
+| v12로 버전 업데이트 커밋 | ✅ |
+| NEXT_STEPS.md v58 완료 기록 | ✅ (현재 이 업데이트) |
 
-**→ index.html 전체 점검 완료. TC-ID 불일치 1건 수정.** 🎉
+**→ STEP 56~58 전체 문서화 완료. 포트폴리오 전체 최종 점검 완료.** 🎉
 
 ---
 
@@ -99,15 +97,6 @@ docs/jira-mcp-plan.md 참고:
 - 면접 준비: docs/interview-qa.md + docs/interview-qa-advanced.md
 ```
 
-### STEP 58 — CHANGELOG.md 업데이트 [선택적 — Claude 단독 가능]
-
-```
-현재 v11 기준. 이번 세션에서 수행한 작업들을 CHANGELOG에 기록:
-- STEP 56: testcase_*.md 16개 전체 점검 완료 (오타 10개 수정)
-- STEP 57: index.html TC 샘플 테이블 ID 오류 수정
-방법: github:get_file_contents로 CHANGELOG.md 읽기 → v12로 업데이트
-```
-
 ---
 
 ## ⚠️ 작업 규칙 (매번 확인)
@@ -134,4 +123,4 @@ docs/jira-mcp-plan.md 참고:
 
 ---
 
-*최종 업데이트: 2026-03-31 · STEP 57 완료 (index.html 전체 점검, TC-ID 오류 1건 수정) · 다음: STEP 10 (스크린샷, 사용자 직접), STEP 12 (공개 공유), STEP 58 (CHANGELOG v12, Claude 단독 가능)*
+*최종 업데이트: 2026-03-31 · STEP 58 완료 (CHANGELOG v12 업데이트) · 다음: STEP 10 (스크린샷, 사용자 직접), STEP 11 (Jira MCP, 사용자 계정 필요), STEP 12 (포트폴리오 공개 공유, 지금 바로 가능)*
