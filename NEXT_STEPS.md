@@ -46,31 +46,26 @@
 | STEP 53 | skills/ 9개 점검 — ci-cd-pipeline.md 오타 3개 수정 | 2026-03-31 |
 | STEP 54 | **skills/ 나머지 5개 점검 — 오타 다수 수정 완료** ✅ | 2026-03-31 |
 | STEP 55 | **testcase 4개 점검, 3개 파일 오타 9개 수정 완료** ✅ | 2026-03-31 |
+| STEP 56-1차 | **testcase 6개 점검 완료 — 전부 이상 없음** ✅ | 2026-03-31 |
 
-### STEP 55 작업 내역
-| 파일 | 점검 결과 | 조치 |
-|------|----------|------|
-| testcase_regression.md | ✅ 이상 없음 | 패스 |
-| testcase_mobile.md | ❌ 오타 4개 (커합→확인, 엁→기기, 종스크롭→종스크롤, 핀치쥐→핀치줌) | **수정 완료** |
-| testcase_cross-browser.md | ❌ 오타 2개 (컨버집→차이, 쾜릭→클릭) | **수정 완료** |
-| testcase_signup.md | ❌ 오타 3개 (뱄시워드→패스워드, 가입려시도→가입 시도, XSS 크립트→XSS 스크립트) | **수정 완료** |
-
-**→ skills/ + testcase 총 4개 파일 오타 9개 수정 완료 ✅**
+### STEP 56-1차 점검 결과 (6개)
+| 파일 | 결과 |
+|------|------|
+| testcase_login.md | ✅ 이상 없음 (24건 TC) |
+| testcase_accessibility.md | ✅ 이상 없음 (20건 TC, WCAG 기준 정확) |
+| testcase_api-testing.md | ✅ 이상 없음 (20건 TC) |
+| testcase_bug-report.md | ✅ 이상 없음 (3건 버그 리포트) |
+| testcase_cicd.md | ✅ 이상 없음 (20건 TC) |
+| testcase_e2e-playwright.md | ✅ 이상 없음 (19건 시나리오) |
 
 ---
 
 ## 🎯 다음 스텝 (우선순위 순)
 
-### STEP 56 — testcase_*.md 나머지 12개 점검 [Claude 단독 가능 — 최우선]
+### STEP 56-2차 — testcase_*.md 나머지 6개 점검 [Claude 단독 가능 — 최우선]
 
 ```
 아직 점검하지 않은 testcase 파일들 오타/내용 점검:
-- testcase_login.md (6488b — 가장 큰 파일, 중요)
-- testcase_accessibility.md
-- testcase_api-testing.md
-- testcase_bug-report.md
-- testcase_cicd.md
-- testcase_e2e-playwright.md
 - testcase_mcp-integration.md
 - testcase_notification.md
 - testcase_notion.md
@@ -79,7 +74,7 @@
 - testcase_security.md
 
 방법: github:get_file_contents로 읽기 → 오타/잘못된 수치 수정
-한 번에 너무 많으면 4~6개씩 나눠서 진행 (토큰 절약)
+완료 후 NEXT_STEPS.md 업데이트 필수
 ```
 
 ### STEP 10 — 스크린샷 실제 추가 [임팩트 최대 — 사용자 직접 필요]
@@ -142,4 +137,4 @@ docs/jira-mcp-plan.md 참고:
 
 ---
 
-*최종 업데이트: 2026-03-31 · STEP 55 완료 (testcase 4개 점검, 3개 파일 오타 9개 수정) · 다음: STEP 56 (나머지 12개 testcase 점검, Claude 단독 가능) 또는 STEP 10 (스크린샷, 사용자 직접)*
+*최종 업데이트: 2026-03-31 · STEP 56-1차 완료 (testcase 6개 점검, 전부 이상 없음) · 다음: STEP 56-2차 (나머지 6개 testcase 점검, Claude 단독 가능) 또는 STEP 10 (스크린샷, 사용자 직접)*
