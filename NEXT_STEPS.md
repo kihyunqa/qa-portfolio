@@ -48,12 +48,21 @@
 | STEP 31 | linkedin-post.md 보강 (버전 5 추가) ✅ | 2026-03-31 |
 | STEP 32 | cover-letter.md 보강 (버전 4 추가) ✅ | 2026-03-31 |
 | STEP 33 | docs/ 잔여 3개 파일 점검 + portfolio-summary 커버레터 4종 수정 ✅ | 2026-03-31 |
-| STEP 34 | **CHANGELOG.md v6 추가 (STEP 31~34 전체 내역)** ✅ | 2026-03-31 |
+| STEP 34 | CHANGELOG.md v6 추가 (STEP 31~34 전체 내역) ✅ | 2026-03-31 |
+| STEP 35 | **README.md 수치 최신화 완료** ✅ | 2026-03-31 |
 
-### STEP 34 작업 내역
-| 파일 | 전 | 후 | 내용 |
-|------|----|----|------|
-| CHANGELOG.md | 1176b (v5까지) | 1815b (v6 추가) | v6 항목: linkedin-post 버전5, cover-letter 버전4, portfolio-summary 수정, NEXT_STEPS 업데이트 내역 |
+### STEP 35 작업 내역 — README.md (5244b → 5404b)
+| 항목 | 수정 전 | 수정 후 |
+|------|---------|---------|
+| TC 수 | 125건+ | **145건+** |
+| testcase 파일 수 | 20개 | **17개** |
+| Playwright spec | 10개 | **12개** |
+| 총 파일 수 | 70개+ | **80개+** |
+| docs 문서 수 | 11개 | **22개** |
+| pipeline 내 spec 수 | 10 spec | **12 spec** |
+| footer | spec 10개 | **spec 12개** |
+| 주요 문서 링크 | 커버레터 없음 | **커버레터 4종 링크 추가** |
+| portfolio.spec.js | 트리에 없음 | **트리에 추가** |
 
 ---
 
@@ -74,14 +83,16 @@
 ★ 포트폴리오의 "실제 연동 증거"를 텍스트→시각 증거로 업그레이드하는 핵심!
 ```
 
-### STEP 35 — README.md 수치 최신화 확인 [Claude 단독 가능]
+### STEP 36 — PROFILE.md 수치 확인 [Claude 단독 가능]
 
 ```
-README.md (5244b) 내 수치가 현재 현황과 맞는지 확인:
-- TC 145건+ / Playwright spec 12개 / docs 22개 / 파일 80개+
-- 커버레터 4종 (이전엔 3종이었을 수 있음)
-- CHANGELOG v6 반영 여부
-확인 후 틀린 수치만 수정. 크게 손댈 것 없으면 NEXT_STEPS에 ✅ 확인 완료만 기록.
+PROFILE.md (3792b) — README와 동일한 수치 오류가 있을 수 있음.
+확인할 항목:
+  - TC 수 (125건+ → 145건+)
+  - Playwright spec 수 (10개 → 12개)
+  - 파일 수 (70개+ → 80개+)
+  - 커버레터 3종 → 4종
+읽어서 오류 있으면 수정, 없으면 ✅ 확인 완료만 기록.
 ```
 
 ### STEP 11 — Jira MCP 실제 연동 [PHASE 2 — 사용자 계정 필요]
@@ -134,4 +145,4 @@ jira-mcp-plan.md의 실행 단계 참고:
 
 ---
 
-*최종 업데이트: 2026-03-31 · STEP 34 완료 (CHANGELOG v6 추가) · 다음: STEP 35 (README 수치 확인) or STEP 10 (스크린샷) or STEP 12 (공유 시작!)*
+*최종 업데이트: 2026-03-31 · STEP 35 완료 (README 수치 9곳 수정, 커버레터 링크 추가) · 다음: STEP 36 (PROFILE.md 확인) or STEP 10 (스크린샷) or STEP 12 (공유 시작!)*
