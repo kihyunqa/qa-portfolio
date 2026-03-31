@@ -49,20 +49,18 @@
 | STEP 32 | cover-letter.md 보강 (버전 4 추가) ✅ | 2026-03-31 |
 | STEP 33 | docs/ 잔여 3개 파일 점검 + portfolio-summary 커버레터 4종 수정 ✅ | 2026-03-31 |
 | STEP 34 | CHANGELOG.md v6 추가 (STEP 31~34 전체 내역) ✅ | 2026-03-31 |
-| STEP 35 | **README.md 수치 최신화 완료** ✅ | 2026-03-31 |
+| STEP 35 | README.md 수치 9곳 최신화 + 커버레터 링크 추가 ✅ | 2026-03-31 |
+| STEP 36 | **PROFILE.md 수치 최신화 완료** ✅ | 2026-03-31 |
 
-### STEP 35 작업 내역 — README.md (5244b → 5404b)
+### STEP 36 작업 내역 — PROFILE.md (3792b → 4082b)
 | 항목 | 수정 전 | 수정 후 |
 |------|---------|---------|
-| TC 수 | 125건+ | **145건+** |
-| testcase 파일 수 | 20개 | **17개** |
-| Playwright spec | 10개 | **12개** |
-| 총 파일 수 | 70개+ | **80개+** |
-| docs 문서 수 | 11개 | **22개** |
-| pipeline 내 spec 수 | 10 spec | **12 spec** |
-| footer | spec 10개 | **spec 12개** |
-| 주요 문서 링크 | 커버레터 없음 | **커버레터 4종 링크 추가** |
-| portfolio.spec.js | 트리에 없음 | **트리에 추가** |
+| 핵심 역량 spec 수 | "총 56건" | **12 spec / TC 145건+** |
+| MCP 프로젝트 02 | "E2E 코드 56건" | **12 spec / TC 145건+** |
+| 이력서 요약 | "56건" | **12 spec / TC 145건+** |
+| LinkedIn 소개글 | "56건" | **12 spec / TC 145건+** |
+| Playwright 표 | 6개 스펙만 기재 | **12개 전체 목록으로 확장** |
+| footer | "spec" 미기재 | **TC 145건+ · spec 12개** |
 
 ---
 
@@ -83,16 +81,20 @@
 ★ 포트폴리오의 "실제 연동 증거"를 텍스트→시각 증거로 업그레이드하는 핵심!
 ```
 
-### STEP 36 — PROFILE.md 수치 확인 [Claude 단독 가능]
+### STEP 37 — 레포 전체 수치 일관성 최종 점검 [Claude 단독 가능]
 
 ```
-PROFILE.md (3792b) — README와 동일한 수치 오류가 있을 수 있음.
-확인할 항목:
-  - TC 수 (125건+ → 145건+)
-  - Playwright spec 수 (10개 → 12개)
-  - 파일 수 (70개+ → 80개+)
-  - 커버레터 3종 → 4종
-읽어서 오류 있으면 수정, 없으면 ✅ 확인 완료만 기록.
+README / PROFILE / CHANGELOG / portfolio-summary / NEXT_STEPS 5개 파일 수치가
+모두 동일한지 교차 확인:
+  - TC 145건+  ✅ (모두 수정 완료)
+  - spec 12개  ✅ (모두 수정 완료)
+  - 파일 80개+ ✅ (모두 수정 완료)
+  - 커버레터 4종 ✅ (모두 수정 완료)
+
+추가로 확인할 파일:
+  - docs/qa-automation-report.md (루트에 있는 3520b 파일) — 수치 확인 필요
+  - qa-automation-report.md (루트, 3520b) — 내용 확인
+이 파일들에 125건 / 56건 / 70개 같은 구버전 수치가 남아있을 수 있음.
 ```
 
 ### STEP 11 — Jira MCP 실제 연동 [PHASE 2 — 사용자 계정 필요]
@@ -145,4 +147,4 @@ jira-mcp-plan.md의 실행 단계 참고:
 
 ---
 
-*최종 업데이트: 2026-03-31 · STEP 35 완료 (README 수치 9곳 수정, 커버레터 링크 추가) · 다음: STEP 36 (PROFILE.md 확인) or STEP 10 (스크린샷) or STEP 12 (공유 시작!)*
+*최종 업데이트: 2026-03-31 · STEP 36 완료 (PROFILE.md spec 12개/TC 145건+ 전면 수정) · 다음: STEP 37 (qa-automation-report.md 수치 확인) or STEP 10 (스크린샷) or STEP 12 (공유!)*
