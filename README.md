@@ -20,7 +20,7 @@ TC 생성부터 Notion 문서화, Slack 알림, GitHub 자동 배포까지
 
 | 항목 | 수치 | 설명 |
 |------|------|------|
-| 자동 생성된 TC | **145건+** | 17개 testcase 파일 |
+| 자동 생성된 TC | **145건+** | 16개 testcase 파일 |
 | 작성한 코드 줄 수 | **0줄** | 전부 대화로 구축 |
 | 연동된 MCP 서버 | **5개** | 실제 연동 완료 |
 | Playwright spec | **12개** | 실제 실행 가능 코드 + POM |
@@ -109,7 +109,7 @@ qa-portfolio/
 ├── index.html                 # 포트폴리오 메인 페이지
 ├── README.md / PROFILE.md / CHANGELOG.md
 │
-├── testcase_*.md              # TC 파일 17개 (145건+)
+├── testcase_*.md              # TC 파일 16개 (145건+)
 ├── playwright-tests/          # E2E 코드 12개 spec + helpers
 ├── e2e-scenarios/             # E2E 시나리오
 ├── test-cases/                # 상세 TC (auth/cart/search/payment/signup)
