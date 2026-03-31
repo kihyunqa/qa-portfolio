@@ -114,7 +114,7 @@ qa-portfolio/
 ├── e2e-scenarios/             # E2E 시나리오
 ├── test-cases/                # 상세 TC (auth/cart/search/payment/signup)
 ├── skills/                    # QA 역량 문서 9개
-└── docs/                      # 전략/면접/KPI/온보딩 문서 23개
+└── docs/                      # 전략/면접/KPI/온보딩 문서 24개
 ```
 
 ---
