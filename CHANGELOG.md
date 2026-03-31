@@ -1,5 +1,51 @@
 # CHANGELOG
 
+## v12.0.0 — 2026-03-31
+
+### testcase 전체 점검 + index.html TC-ID 수정 (STEP 56~58)
+
+#### STEP 56 — testcase_*.md 나머지 12개 전체 점검
+
+| 파일 | 결과 |
+|------|------|
+| testcase_api-testing.md | 이상 없음 ✅ |
+| testcase_bug-report.md | 이상 없음 ✅ |
+| testcase_cicd.md | 이상 없음 ✅ |
+| testcase_cross-browser.md | 이상 없음 ✅ |
+| testcase_e2e-playwright.md | 이상 없음 ✅ |
+| testcase_login.md | 이상 없음 ✅ |
+| testcase_mcp-integration.md | 이상 없음 ✅ |
+| testcase_mobile.md | 이상 없음 ✅ |
+| testcase_notification.md | 이상 없음 ✅ |
+| testcase_notion.md | 이상 없음 ✅ |
+| testcase_payment.md | 이상 없음 ✅ |
+| testcase_performance.md | 이상 없음 ✅ |
+
+- 나머지 12개 점검 완료, 오타 1개(testcase_regression.md) 수정
+- 전체 16개 testcase_*.md 점검 완료
+
+#### STEP 57 — index.html 전체 점검
+
+| 항목 | 결과 |
+|------|------|
+| meta 수치 (MCP 5개, TC 145건+, spec 12개, Actions 2개) | ✅ 정확 |
+| 경력 타임라인 (3개 회사, 날짜) | ✅ PROFILE.md와 일치 |
+| 프로젝트 카드 10개 | ✅ 이상 없음 |
+| TC 샘플 테이블 TC-ID | ❌ TC-SEC-002가 "SQL Injection 차단"으로 잘못 표기 → **TC-SEC-001로 수정 완료** |
+| footer 수치 | ✅ 이상 없음 |
+| 링크 전체 | ✅ 이상 없음 |
+
+**→ index.html 전체 점검 완료. TC-ID 불일치 1건 수정.** ✅
+
+#### STEP 58 — CHANGELOG v12 업데이트
+
+- STEP 56~57 작업 내역 CHANGELOG에 기록
+- v12로 버전 업데이트
+
+**→ 포트폴리오 전체 최종 점검 및 문서 정합성 완료** 🎉
+
+---
+
 ## v11.0.0 — 2026-03-31
 
 ### index.html 전체 수치 재점검 (STEP 50)
