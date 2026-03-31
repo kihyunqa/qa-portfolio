@@ -29,14 +29,14 @@
 - [ ] `README.md` 읽기 — 전체 구조 파악
 - [ ] 폴더 구조 이해
   ```
-  testcase_*.md     → TC 문서 17개 (로그인/결제/API/E2E 등)
+  testcase_*.md     → TC 문서 16개 (로그인/결제/API/E2E 등)
   playwright-tests/ → 자동화 spec 12개
-  docs/             → 전략·가이드·템플릿 22개
+  docs/             → 전략·가이드·템플릿 25개
   skills/           → MCP 활용 스킬 문서 9개
   screenshots/      → 실제 연동 증거 스크린샷
   .github/workflows → GitHub Actions 2개
   ```
-- [ ] `CHANGELOG.md` 로 v1~v5 히스토리 파악
+- [ ] `CHANGELOG.md` 로 v1~v17 히스토리 파악
 - [ ] `testcase_login.md` 부터 TC 구조 이해
 
 ---
@@ -81,7 +81,8 @@
 | `docs/regression-checklist.md` | 릴리스 전 회귀 체크리스트 |
 | `docs/test-metrics.md` | KPI 및 측정 지표 |
 | `docs/mcp-workflow-diagram.md` | MCP 자동화 흐름 다이어그램 |
-| `docs/interview-qa.md` | QA 면접 Q&A (팀 내 지식 공유용) |
+| `docs/interview-qa.md` | QA 면접 Q&A 12문항 (팀 내 지식 공유용) |
+| `docs/ai-qa-vision.md` | AI+QA 비전 — 2026 트렌드 반영 |
 
 ---
 
@@ -95,4 +96,4 @@
 | notion | TC 결과 자동 문서화 |
 | slack | QA 완료 알림 자동 발송 |
 
-*수치 기준: 2026-03-31 (TC 145건+, Playwright 12 spec, MCP 5개)*
+*수치 기준: 2026-03-31 (TC 145건+, Playwright 12 spec, testcase 16개, docs 25개, MCP 5개)*
