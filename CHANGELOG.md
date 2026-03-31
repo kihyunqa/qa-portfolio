@@ -1,5 +1,55 @@
 # CHANGELOG
 
+## v17.0.0 — 2026-03-31
+
+### README + portfolio-summary 수치 정합성 완료 (STEP 69~71)
+
+#### STEP 69 — README.md 수정
+
+| 항목 | 수정 내용 |
+|------|----------|
+| 커버레터 링크 | "커버레터 4종" → **"5종"** |
+| LinkedIn 링크 | "버전 1~5" → **"버전 1~6"** |
+| self-introduction.md | 주요 문서 바로가기에 **신규 링크 추가** |
+| interview-qa | "8문항" → **"12문항"** |
+| interview-qa-advanced | **"11문항"** 명시 추가 |
+
+#### STEP 70 — docs/test-metrics.md 점검
+
+- TC 145건+, Playwright spec 12개 수치 확인 → **정상, 수정 불필요** ✅
+
+#### STEP 71 — docs/portfolio-summary.md 수정
+
+| 항목 | 수정 내용 |
+|------|----------|
+| 스킬 섹션 | "커버레터 4종" → **"5종"** |
+| 핵심 문서 표 | cover-letter.md "4종" → **"5종"** |
+| 핵심 문서 표 | linkedin-post.md "5버전" → **"6버전"** |
+| 핵심 문서 표 | self-introduction.md **신규 행 추가** |
+| interview-qa | "8문항" → **"12문항"** |
+| interview-qa-advanced | **"11문항"** 명시 추가 |
+| ai-qa-vision.md | "(2026 트렌드 반영)" 설명 추가 |
+
+**→ 전체 문서 간 수치 정합성 완성** ✅
+
+### 최종 수치 현황 (v17 기준)
+
+| 항목 | 수치 |
+|------|------|
+| TC | 145건+ |
+| Playwright spec | 12개 |
+| testcase_*.md | 16개 |
+| docs/ 문서 | **25개** |
+| skills/ 문서 | 9개 |
+| 레포 파일 수 | 80개+ |
+| GitHub Actions | 2개 |
+| MCP 연동 | 5개 |
+| 커버레터 | 5종 |
+| LinkedIn 포스트 | 6버전 |
+| 면접 Q&A | 12문항 (기초) + 11문항 (심화) |
+
+---
+
 ## v16.0.0 — 2026-03-31
 
 ### ai-qa-vision 수치 수정 + share-action-plan 최신화 (STEP 67~68)
@@ -35,29 +85,8 @@
 
 ### 면접 심화 보강 + docs 수 정합성 완료 (STEP 62~64)
 
-#### STEP 62 — interview-qa-advanced.md 점검 및 보강
-
-| 항목 | 내용 |
-|------|------|
-| Q10 내용 심화 | 커버리지 100% 관련 답변을 기능/경로/리스크 3가지 레이어로 구체화 |
-| Q11 신규 추가 | "AI 시대 QA 엔지니어의 역할 변화" — 2026년 트렌드 반영 |
-| 파일 크기 | 5,957b → 7,780b (Q10 심화 + Q11 신규로 증가) |
-
-- Q11 핵심: AI 코딩 도구 확산 → QA 검증 역할 더 중요 / TC 설계·파이프라인 구축 능력이 핵심
-- 기초편(interview-qa.md Q12)과 중복 없이 심화 내용으로 보완 완료
-
-#### STEP 63 — docs 수 24→25개 반영
-
-| 파일 | 수정 내용 |
-|------|----------|
-| README.md | `docs/ 24개` → `25개` |
-| docs/portfolio-summary.md | `docs/ 문서 24개` → `25개`, 커버레터 4종→5종 수정 |
-| docs/qa-kpi-dashboard.md | `docs 문서 수 24개` → `25개`, 개선이력 추가 |
-| docs/qa-strategy.md | `docs 문서 24개` → `25개` |
-
-- STEP 61 self-introduction.md 신규 생성분 전체 반영 완료
-
-**→ 수치 정합성 완료 + 면접 심화편 2026 트렌드 반영 완료** ✅
+- interview-qa-advanced.md: Q10 심화 + Q11 신규 (AI 시대 QA 역할)
+- docs 수 24→25개 반영 — README, portfolio-summary, qa-kpi-dashboard, qa-strategy
 
 ---
 
@@ -65,29 +94,9 @@
 
 ### 취업 서류 패키지 완성 (STEP 60~61)
 
-#### STEP 60 — cover-letter.md 버전 5 추가
-
-| 항목 | 내용 |
-|------|------|
-| 버전 5 타이틀 | AI 프로덕트 스타트업 특화 (제품 감각·주도성 강조) |
-| 핵심 메시지 | "어떤 도구를 쓰느냐보다 무엇을 자동화할지 설계하는 능력" |
-| 추천 대상 | 시리즈 A~B 고성장 팀 / QA 리드 첫 채용 포지션 |
-| 버전 선택 매트릭스 | AI 프로덕트(소~중 규모) → 버전 5 추가 |
-
-- cover-letter.md: 4버전 → **5버전**으로 확장
-
-#### STEP 61 — docs/self-introduction.md 신규 생성
-
-| 항목 | 내용 |
-|------|------|
-| 파일 위치 | docs/self-introduction.md (신규) |
-| 구성 항목 | 성장과정/지원동기, 직무역량, 장단점, 입사포부 4항목 |
-| 분량 | 각 항목 700자 내외 (조절 가능) |
-| 사용 가이드 | 공채/수시채용/AI기업별 추천 구성 매트릭스 포함 |
-
-- docs/ 문서 수: **24개 → 25개**
-
-**→ 커버레터 5버전 + 자기소개서 4항목 완성. 취업 서류 패키지 전체 완성** 🎉
+- cover-letter.md: 4버전 → 5버전 (AI 프로덕트 스타트업 특화)
+- docs/self-introduction.md 신규 생성 (국내 기업 자기소개서 4항목)
+- docs/ 문서 수: 24개 → **25개**
 
 ---
 
@@ -95,66 +104,38 @@
 
 ### 취업 콘텐츠 강화 (STEP 59)
 
-- docs/interview-qa.md: 8개 → **12개 Q&A** (Q9~Q12 신규 추가)
-  - Q9: 코드 0줄 QA 자동화 정당성
-  - Q10: 팀 환경 MCP 도입 방법
-  - Q11: 테스트 커버리지 측정 방법
-  - Q12: 포트폴리오 제작 중 어려웠던 점
-- docs/linkedin-post.md: 5버전 → **6버전** (AI 생산성 콘텐츠형, 바이럴 최적화)
+- interview-qa.md: 8개 → **12개 Q&A** (Q9~Q12 추가)
+- linkedin-post.md: 5버전 → **6버전** (AI 생산성형, 바이럴 최적화)
 
 ---
 
 ## v12.0.0 — 2026-03-31
 
-### testcase 전체 점검 + index.html TC-ID 수정 (STEP 56~58)
-
-- testcase_*.md 16개 전체 점검 완료, 오타 1개 수정
-- index.html TC 샘플 테이블 TC-SEC-002 → TC-SEC-001 수정
-- CHANGELOG v12 업데이트
+- testcase_*.md 16개 전체 점검, 오타 수정
+- index.html TC-ID 오류 수정
 
 ---
 
 ## v11.0.0 — 2026-03-31
 
-### index.html 전체 수치 재점검 (STEP 50)
-
-- index.html 전체 수치 이중 검증 완료 — 수정 파일 없음
+- index.html 전체 수치 이중 검증 완료
 
 ---
 
 ## v10.0.0 — 2026-03-31
 
-### 포트폴리오 전체 최종 점검 (STEP 49)
-
 - testcase 수 17→16개 정정
 - README.md, docs/portfolio-summary.md, docs/qa-kpi-dashboard.md 수정
-
-### 최종 수치 현황 (v16 기준)
-| 항목 | 수치 |
-|------|------|
-| TC | 145건+ |
-| Playwright spec | 12개 |
-| testcase_*.md | 16개 |
-| docs/ 문서 | **25개** |
-| skills/ 문서 | 9개 |
-| 레포 파일 수 | 80개+ |
-| GitHub Actions | 2개 |
-| MCP 연동 | 5개 |
 
 ---
 
 ## v9.0.0 — 2026-03-31
 
-### docs 실제 수 23→24개 정정 완료 (STEP 46~47)
-
 - docs/ 폴더 직접 카운트 결과 24개 확인
-- test-metrics.md, README.md 등 수치 반영
 
 ---
 
 ## v8.0.0 — 2026-03-31
-
-### docs 수치 정합성 최종 완료 (STEP 43)
 
 - docs/qa-kpi-dashboard.md: 22→23개 수정
 
@@ -171,7 +152,6 @@
 
 - docs/linkedin-post.md 버전 5 추가
 - docs/cover-letter.md 버전 4 추가
-- docs/share-action-plan.md 신규 생성
 
 ## v5.0.0 — 2026-03-30
 
