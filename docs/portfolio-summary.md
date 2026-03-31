@@ -43,7 +43,7 @@
 | QA 경력 | 6년 9개월 | 삼성전자 파트너 포함 |
 | TC 수 | 145건+ | 17개 도메인 커버 |
 | Playwright spec | 12개 | E2E 자동화 |
-| docs/ 문서 | 22개 | QA 전 영역 커버 |
+| docs/ 문서 | 23개 | QA 전 영역 커버 |
 | GitHub Actions | 2개 | CI/CD 자동화 |
 | 작성한 코드 | 0줄 | 전부 Claude 대화로 생성 |
 | 레포 파일 수 | 80개+ | 전체 포트폴리오 |
@@ -103,6 +103,8 @@
 | 문서 | 용도 |
 |------|------|
 | `docs/cover-letter.md` | 지원사 맞춤 커버레터 4종 (버전 선택 매트릭스 포함) |
+| `docs/linkedin-post.md` | LinkedIn 포스트 5버전 + 게시 타이밍 가이드 |
+| `docs/share-action-plan.md` | 공유 액션 플랜 — 플랫폼별 실행 가이드 |
 | `docs/interview-qa.md` | QA 면접 질문 & 모범 답변 |
 | `docs/interview-qa-advanced.md` | 심화 면접 대비 |
 | `docs/ai-qa-vision.md` | AI+QA 비전 에세이 |
@@ -117,8 +119,9 @@
 |------|-----|
 | 포트폴리오 사이트 | **https://kihyunqa.github.io/qa-portfolio** |
 | GitHub 레포 | **https://github.com/kihyunqa/qa-portfolio** |
+| 공유 액션 플랜 | **docs/share-action-plan.md** |
 | 이메일 | kihyun.qa@gmail.com |
 
 ---
 
-*수치 최종 업데이트: 2026-03-31 · STEP 33 보강 · TC 145건+, Playwright 12 spec, docs 22개, 파일 80개+, 커버레터 4종*
+*수치 최종 업데이트: 2026-03-31 · STEP 39 · TC 145건+, Playwright 12 spec, docs 23개, 파일 80개+, 커버레터 4종*
