@@ -11,25 +11,25 @@
 
 ---
 
-## 🏁 현재 상태 (2026-04-01) — STEP 86 완료
+## 🏁 현재 상태 (2026-04-01) — STEP 87 완료
 
 ---
 
-## ✅ 확정 수치 (v22 기준)
+## ✅ 확정 수치 (v23 기준)
 
 | 항목 | 수치 | 검증 |
 |------|------|------|
 | testcase_*.md | **16개** | ✅ |
 | playwright spec | **12개** | ✅ |
 | skills/ 문서 | **9개** | ✅ |
-| docs/ 문서 | **28개** | ✅ (bug-stories.md 포함) |
+| docs/ 문서 | **28개** | ✅ 전체 파일 일치 |
 | GitHub Actions | **2개** | ✅ |
 | 전체 파일 수 | **80개+** | ✅ |
 | TC 건수 | **145건+** | ✅ |
-| CHANGELOG | **v22** | ✅ |
+| CHANGELOG | **v23** | ✅ |
 | Jira 연동 | **완료** | ✅ FULL ACCESS |
 | index.html | **최신** | ✅ STEP 86 완료 |
-| 버그 스토리 | **3건** | ✅ 신규 |
+| 버그 스토리 | **3건** | ✅ |
 | 버그 리포트 | **8건** | ✅ |
 
 ---
@@ -41,31 +41,34 @@
 | STEP 1~83 | 포트폴리오 전체 구축 완료 | ~2026-04-01 |
 | STEP 84 | 전체 수치 검증 | 2026-04-01 |
 | STEP 85 | docs/bug-stories.md 신규 + testcase_bug-report.md 3건→8건 강화 | 2026-04-01 |
-| **STEP 86** | **index.html Hero 강화 + docs 28개 반영 + bug-stories 링크 추가 + CHANGELOG v22** | **2026-04-01** |
+| STEP 86 | index.html Hero 강화 + docs 28개 반영 + bug-stories 링크 추가 + CHANGELOG v22 | 2026-04-01 |
+| **STEP 87** | **README.md + portfolio-summary.md docs 27→28 수치 동기화 + CHANGELOG v23** | **2026-04-01** |
 
 ---
 
-## ✅ 반영 완료된 파일 (STEP 86 기준)
+## ✅ 반영 완료된 파일 (STEP 87 기준)
 
 | 파일 | 상태 |
 |------|------|
 | `docs/bug-stories.md` | ✅ QA 판단력 버그 스토리 3건 |
 | `testcase_bug-report.md` | ✅ 8건, 발견 방법 다양화 |
 | `index.html` | ✅ Hero 메시지 강화, docs 28개, bug-stories 링크 |
-| `CHANGELOG.md` | ✅ v22 |
-| `NEXT_STEPS.md` | ✅ STEP 86 반영 |
+| `README.md` | ✅ docs 28개, bug-stories 링크 추가 |
+| `docs/portfolio-summary.md` | ✅ docs 28개, 버그 스토리 수치 반영, v23 |
+| `CHANGELOG.md` | ✅ v23 |
+| `NEXT_STEPS.md` | ✅ STEP 87 반영 |
 
 ---
 
 ## 🎯 다음 Claude가 할 수 있는 것 (선택적)
 
-포트폴리오 핵심 보완은 완료 상태입니다.
+포트폴리오 핵심 보완은 **완료 상태**입니다. 모든 수치 정합성도 완료.
 
 1. **screenshots 실제 PNG 업로드** ← 가장 효과적인 남은 작업
    - 사용자 직접 업로드: https://github.com/kihyunqa/qa-portfolio/upload/main/screenshots
    - Claude가 직접 PNG 파일 생성은 불가
-2. **portfolio-summary.md + README.md** — docs 27→28 수치 반영 (선택)
-3. **면접 준비** — interview-qa.md, interview-simulation.md 활용
+2. **면접 준비** — interview-qa.md, interview-simulation.md 활용
+3. **LinkedIn/채용 플랫폼 공유** — share-action-plan.md 참고
 
 ---
 
@@ -106,5 +109,5 @@
 
 ---
 
-*최종 업데이트: 2026-04-01 · STEP 86 완료 · v22*
-*포트폴리오 완성 + 아쉬운 점 3가지 전부 보완 완료 🎉*
+*최종 업데이트: 2026-04-01 · STEP 87 완료 · v23*
+*포트폴리오 완성 + 수치 전체 정합성 완료 🎉*
