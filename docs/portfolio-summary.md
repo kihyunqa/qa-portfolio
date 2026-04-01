@@ -44,11 +44,13 @@
 | QA 경력 | 6년 9개월 | 삼성전자 파트너 포함 |
 | TC 수 | 145건+ | 16개 도메인 커버 |
 | Playwright spec | 12개 | E2E 자동화 |
-| docs/ 문서 | **27개** | QA 전 영역 커버 |
+| docs/ 문서 | **28개** | QA 전 영역 커버 (bug-stories 포함) |
 | GitHub Actions | 2개 | CI/CD 자동화 |
 | 작성한 코드 | 0줄 | 전부 Claude 대화로 생성 |
 | 레포 파일 수 | 80개+ | 전체 포트폴리오 |
 | Jira 연동 | ✅ | GitHub 이슈 트래킹 |
+| 버그 스토리 | 3건 | QA 판단력 실증 사례 |
+| 버그 리포트 | 8건 | 발견 방법 다양화 |
 
 ---
 
@@ -110,6 +112,7 @@
 | `docs/interview-qa.md` | QA 면접 질문 & 모범 답변 12문항 |
 | `docs/interview-qa-advanced.md` | AI 시대 QA 심화 면접 대비 11문항 |
 | `docs/interview-simulation.md` | 실전 면접 돌발 질문 대응 가이드 |
+| `docs/bug-stories.md` | QA 판단력 실증 버그 스토리 3건 (신규) |
 | `docs/jira-github-integration.md` | Jira + GitHub 연동 완료 기록 |
 | `docs/ai-qa-vision.md` | AI+QA 비전 에세이 (2026 트렌드 반영) |
 | `docs/mcp-architecture.md` | MCP 기술 아키텍처 |
@@ -128,4 +131,4 @@
 
 ---
 
-*수치 최종 업데이트: 2026-04-01 · v21 · TC 145건+, Playwright 12 spec, docs 27개, testcase 16개, 파일 80개+, 커버레터 5종, LinkedIn 6버전, Jira 연동 완료*
+*수치 최종 업데이트: 2026-04-01 · v23 · TC 145건+, Playwright 12 spec, docs 28개, testcase 16개, 파일 80개+, 커버레터 5종, LinkedIn 6버전, Jira 연동 완료, 버그 스토리 3건*
