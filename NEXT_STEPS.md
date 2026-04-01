@@ -11,24 +11,24 @@
 
 ---
 
-## 🏁 현재 상태 (2026-04-01 기준) — 포트폴리오 완성 ✅
+## 🏁 현재 상태 (2026-04-01 기준)
 
 ---
 
-## ✅ 확정 수치 (v21 기준 · 전체 검증 완료)
+## ✅ 확정 수치 (STEP 85 기준)
 
 | 항목 | 수치 | 검증 |
 |------|------|------|
 | testcase_*.md | **16개** | ✅ |
 | playwright spec | **12개** | ✅ |
 | skills/ 문서 | **9개** | ✅ |
-| docs/ 문서 | **27개** | ✅ |
+| docs/ 문서 | **28개** | ✅ (bug-stories.md 신규 추가) |
 | GitHub Actions | **2개** | ✅ |
 | 전체 파일 수 | **80개+** | ✅ |
 | TC 건수 | **145건+** | ✅ |
 | CHANGELOG | **v21** | ✅ |
 | Jira 연동 | **완료** | ✅ FULL ACCESS |
-| index.html | **최신** | ✅ STEP 83 업데이트 완료 |
+| index.html | **업데이트 필요** | ⚠️ docs 27→28 반영 안 됨 |
 
 ---
 
@@ -36,42 +36,37 @@
 
 | 스텝 | 내용 | 완료일 |
 |------|------|--------|
-| STEP 1~79 | MCP 연동, TC 생성, docs 작성·점검 전체 완료 | ~2026-03-31 |
-| STEP 80 | share-action-plan.md 타임라인 날짜 구체화 | 2026-04-01 |
-| STEP 81 | docs/interview-simulation.md 신규 생성 | 2026-04-01 |
-| STEP 10 | 스크린샷 4장 캡처 + screenshots/README.md 커밋 | 2026-04-01 |
-| STEP 11 | Jira + GitHub 연동 완료 + docs/jira-github-integration.md | 2026-04-01 |
-| STEP 12 | LinkedIn 게시 — 사용자 판단으로 스킵 | 2026-04-01 |
-| STEP 82 | CHANGELOG v21 + portfolio-summary + README 수치 전체 반영 | 2026-04-01 |
-| **STEP 83** | **index.html 전체 업데이트 — Jira 연동, docs 27개, Phase 2 완료 반영** | **2026-04-01** |
-| **STEP 84** | **현재 상태 전체 검증 완료 — docs 27개/testcase 16개/CHANGELOG v21 전부 실제 수치와 일치 확인** | **2026-04-01** |
+| STEP 1~83 | 포트폴리오 전체 구축 완료 | ~2026-04-01 |
+| STEP 84 | 전체 수치 검증 완료 | 2026-04-01 |
+| **STEP 85** | **아쉬운 점 보완 — bug-stories.md 신규 + testcase_bug-report.md 강화 (3건→8건)** | **2026-04-01** |
 
 ---
 
-## ✅ 반영 완료된 파일 전체 (STEP 84 기준)
+## ⚠️ 다음 Claude가 할 것 (우선순위 순)
+
+### 1순위 — index.html 업데이트 (docs 27→28 반영)
+- `docs/bug-stories.md` 신규 추가됨 → index.html에 반영 필요
+- **주의: index.html은 61KB, SHA 먼저 확인 후 전체 교체**
+- 포트폴리오 사이트 첫 화면 임팩트 강화도 함께 검토
+
+### 2순위 — CHANGELOG v22 작성
+- STEP 85 내용 반영
+
+### 3순위 — screenshots 실제 PNG 업로드 (사용자 직접)
+- URL: https://github.com/kihyunqa/qa-portfolio/upload/main/screenshots
+- Claude가 직접 PNG 업로드는 불가, 사용자 수동 업로드 필요
+
+---
+
+## ✅ 반영 완료된 파일 (STEP 85 기준)
 
 | 파일 | 상태 |
 |------|------|
-| `index.html` | ✅ Jira, docs 27개, Phase 2 done, 스킬, footer 전체 최신화 |
-| `CHANGELOG.md` | ✅ v21 |
-| `README.md` | ✅ docs 27개, Jira 반영 |
-| `docs/portfolio-summary.md` | ✅ docs 27개, Jira 반영 |
-| `docs/jira-github-integration.md` | ✅ 신규 |
-| `docs/interview-simulation.md` | ✅ 신규 |
-| `screenshots/README.md` | ✅ 스크린샷 4장 설명 |
-| `NEXT_STEPS.md` | ✅ STEP 84 반영 |
-
----
-
-## 🎯 다음 Claude가 할 수 있는 것 (선택적)
-
-현재 포트폴리오는 완성 상태입니다. 사용자와 상의 후 진행:
-
-1. **새 콘텐츠 추가** — 면접 대비 강화, 새 TC 도메인 추가
-2. **screenshots 실제 PNG 업로드** — 사용자가 수동으로 드래그 업로드
-   - URL: https://github.com/kihyunqa/qa-portfolio/upload/main/screenshots
-3. **CHANGELOG v22** — 이후 추가 작업 발생 시
-4. **LinkedIn 게시** — 이전에 스킵했던 항목, 사용자 의사 재확인 필요
+| `docs/bug-stories.md` | ✅ 신규 생성 — QA 판단력 버그 스토리 3건 (보안/결제/알림) |
+| `testcase_bug-report.md` | ✅ 3건 → 8건 확장, 발견 방법 다양화, 인사이트 추가 |
+| `NEXT_STEPS.md` | ✅ STEP 85 반영 |
+| `index.html` | ⚠️ 미반영 — 다음 Claude가 처리 |
+| `CHANGELOG.md` | ⚠️ 미반영 — 다음 Claude가 처리 |
 
 ---
 
@@ -111,5 +106,5 @@
 
 ---
 
-*최종 업데이트: 2026-04-01 · STEP 84 완료 · 전체 수치 검증 완료*
-*포트폴리오 완성 상태 — 면접 준비 완료 🎉*
+*최종 업데이트: 2026-04-01 · STEP 85 완료*
+*남은 작업: index.html docs 수 반영 + CHANGELOG v22*
