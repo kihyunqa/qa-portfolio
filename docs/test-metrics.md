@@ -43,7 +43,7 @@ API 테스트                   ████████░░░░░░░░
 ## 4. 주간 QA 리포트 포맷
 
 ```
-📅 Week: 2026-03-31
+📅 Week: 2026-04-01
 
 [신규 TC]   +12건  (누적: 145건+)
 [자동화]    +5건   (자동화율: 75%)
@@ -93,4 +93,4 @@ API 테스트                   ████████░░░░░░░░
 
 ---
 
-*수치 기준: 2026-03-31 · TC 145건+ · Playwright spec 12개 · https://kihyunqa.github.io/qa-portfolio*
+*수치 기준: 2026-04-01 · TC 145건+ · Playwright spec 12개 · https://kihyunqa.github.io/qa-portfolio*
