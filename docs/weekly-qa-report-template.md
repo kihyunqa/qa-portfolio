@@ -28,6 +28,7 @@
 • GitHub Actions 트리거: {N}회
 • Slack 알림 발송: {N}건
 • Notion TC 업데이트: {N}건
+• Jira 이슈 연동: {N}건
 
 📈 [품질 지표]
 • 자동화율: {N}% (자동 TC / 전체 TC)
@@ -79,10 +80,10 @@ jobs:
 
 ---
 
-## 실제 작성 예시 (2026-03-31 기준)
+## 실제 작성 예시 (2026-04-01 기준)
 
 ```
-📊 QA 주간 리포트 — Week 13 (2026-03-31)
+📊 QA 주간 리포트 — Week 14 (2026-04-01)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 🧪 [이번 주 TC 실행 결과]
@@ -93,7 +94,7 @@ jobs:
 
 🐛 [발견된 버그]
 • Critical(P0): 0건
-• Major(P1): 0건
+• Major(P1): 0건 (P1 보안·결제 버그 스토리 3건 — 별도 문서화)
 • Minor(P2+): 2건 (Safari CSS 렌더링, iOS 버튼 탭 반응)
 • 누적 미해결: 2건 (검토 중)
 
@@ -102,20 +103,23 @@ jobs:
 • GitHub Actions 트리거: 정상 운영 중
 • Slack 알림: 실시간 발송 확인 완료
 • Notion TC: 145건 업로드 완료
+• Jira 연동: GitHub 이슈 자동 트래킹 (FULL ACCESS)
 
 📈 [품질 지표]
 • 자동화율: 83% (12 spec / 145건 커버)
 • 버그 발견율: 2건/주
 • 평균 수정 소요 시간: 측정 중
+• QA 판단력 스토리: P1 보안 버그, P1 결제 오차, P2 네트워크 — 문서화 완료
 
 📅 [다음 주 계획]
-• 스크린샷 증거 추가 (Slack·Actions·Notion 화면)
-• Jira MCP 연동 시작 (Phase 2)
-• linkedin-post.md 버전 선택 후 게시
+• screenshots 실제 PNG 추가
+• 면접 준비 — interview-qa.md, interview-simulation.md 활용
+• LinkedIn/채용 플랫폼 포트폴리오 공유
 
 ⚠️ [특이사항]
 • 포트폴리오 GitHub Pages 정상 배포 중
-• docs/ 25개 문서 전체 최신화 완료
+• docs/ 28개 문서 전체 최신화 완료 (v23)
+• 버그 스토리 3건 신규 추가 — QA 판단력 실증 자료 확보
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 📎 포트폴리오: https://kihyunqa.github.io/qa-portfolio
@@ -135,4 +139,4 @@ jobs:
 
 ---
 
-*최종 업데이트: 2026-03-31 · STEP 76-1 수정 · docs 22→25개 수치 반영*
+*최종 업데이트: 2026-04-01 · STEP 88 · docs 28개, v23, Jira 연동 완료 반영*
