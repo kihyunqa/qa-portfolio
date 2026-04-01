@@ -119,7 +119,7 @@ qa-portfolio/
 ├── test-cases/                # 상세 TC (auth/cart/search/payment/signup)
 ├── skills/                    # QA 역량 문서 9개
 ├── screenshots/               # 실제 동작 스크린샷
-└── docs/                      # 전략/면접/KPI/온보딩 문서 27개
+└── docs/                      # 전략/면접/KPI/온보딩 문서 28개
 ```
 
 ---
@@ -146,6 +146,7 @@ qa-portfolio/
 | [MCP 세팅 가이드](docs/mcp-setup-guide.md) | MCP 5개 설치/설정 전체 |
 | [QA 전략 문서](docs/qa-strategy.md) | 테스트 전략 및 방법론 |
 | [버그 리포트 양식](docs/bug-report-template.md) | 실제 예시 3건 포함 |
+| [버그 판단력 스토리](docs/bug-stories.md) | QA 판단력 실증 사례 3건 |
 | [면접 Q&A](docs/interview-qa.md) | QA 면접 준비 12문항 |
 | [면접 Q&A 심화](docs/interview-qa-advanced.md) | AI 시대 QA 심화 11문항 |
 | [면접 시뮬레이션](docs/interview-simulation.md) | 실전 돌발 질문 대응 가이드 |
@@ -157,7 +158,7 @@ qa-portfolio/
 
 <div align="center">
 
-*Built with Claude MCP · No code written · 5 MCP servers · TC 145건+ · spec 12개 · Actions 2개 · Jira 연동 완료 · docs 27개*
+*Built with Claude MCP · No code written · 5 MCP servers · TC 145건+ · spec 12개 · Actions 2개 · Jira 연동 완료 · docs 28개*
 
 [![포트폴리오 바로가기](https://img.shields.io/badge/포트폴리오_바로가기-a855f7?style=for-the-badge&labelColor=08060f)](https://kihyunqa.github.io/qa-portfolio)
 
