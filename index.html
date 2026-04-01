@@ -59,6 +59,10 @@ h1.hero-name em{color:var(--purple);font-style:normal}
 .stat-n{font-family:var(--mono);font-size:36px;font-weight:500;color:var(--purple);line-height:1}
 .stat-l{font-size:11px;color:var(--dim);margin-top:4px;letter-spacing:.06em}
 .hero-bg-grid{position:absolute;inset:0;opacity:.03;background-image:linear-gradient(var(--purple) 1px,transparent 1px),linear-gradient(90deg,var(--purple) 1px,transparent 1px);background-size:60px 60px;pointer-events:none}
+/* hero 강조 박스 */
+.hero-proof{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:36px}
+.hero-proof-item{font-family:var(--mono);font-size:10px;padding:5px 12px;border:1px solid var(--p-border);color:var(--purple);background:var(--p-muted);letter-spacing:.06em;display:flex;align-items:center;gap:6px}
+.hero-proof-item::before{content:'✓';color:var(--green)}
 section{padding:96px 56px;position:relative;z-index:2}
 .sec-head{display:flex;align-items:center;gap:14px;margin-bottom:56px}
 .sec-n{font-family:var(--mono);font-size:11px;color:var(--purple);opacity:.5}
@@ -266,18 +270,26 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:
 <section class="hero">
   <div class="hero-bg-grid"></div>
   <div class="hero-left">
-    <div class="hero-tag">QA ENGINEER · 6년 9개월</div>
+    <div class="hero-tag">QA ENGINEER · 6년 9개월 · 삼성전자 파트너 포함</div>
     <h1 class="hero-name">성<em>기현</em></h1>
     <p class="hero-role">Quality Assurance Engineer</p>
     <p class="hero-desc">
-      <strong>6년 9개월 QA 경력 위에 Claude MCP 자동화를 더했습니다.</strong><br>
-      TC 생성, E2E 테스트, Notion 문서화, GitHub 자동화, Jira 연동까지<br>
-      전부 대화만으로 구축했습니다.
+      <strong>보안 토큰 허점을 잡고, 결제 1원 오차를 P1으로 에스컬레이션하고,</strong><br>
+      <strong>저속 네트워크 시뮬레이션으로 알림 중복을 발견하는 QA입니다.</strong><br>
+      여기에 Claude MCP 자동화를 더해 TC부터 Jira 트래킹까지 전부 구축했습니다.
     </p>
+    <div class="hero-proof">
+      <span class="hero-proof-item">보안 버그 P1 2건 발견·해결</span>
+      <span class="hero-proof-item">결제 오차 에스컬레이션</span>
+      <span class="hero-proof-item">네트워크 시뮬레이션 테스트</span>
+      <span class="hero-proof-item">MCP 5개 실제 연동</span>
+      <span class="hero-proof-item">TC 145건+ 자동 생성</span>
+      <span class="hero-proof-item">코드 0줄</span>
+    </div>
     <div class="hero-cta">
-      <a href="#mcp" class="btn-p">MCP 자동화 보기</a>
-      <a href="#proof" class="btn-s">실제 연동 증거 ↓</a>
-      <a href="https://github.com/kihyunqa/qa-portfolio" target="_blank" class="btn-s">GitHub ↗</a>
+      <a href="#proof" class="btn-p">실제 증거 보기</a>
+      <a href="#mcp" class="btn-s">MCP 자동화 ↓</a>
+      <a href="https://github.com/kihyunqa/qa-portfolio/blob/main/docs/bug-stories.md" target="_blank" class="btn-s">버그 스토리 ↗</a>
     </div>
   </div>
   <div class="hero-stats">
@@ -412,10 +424,10 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:
     <div class="proj-card reveal"><div class="proj-num">PROJECT 02 · <span class="badge badge-done" style="font-size:9px;padding:2px 8px">구현 완료</span></div><div class="proj-icon">🔀</div><div class="proj-title">QA 대응 프로세스 + 브랜치 전략</div><div class="proj-desc">main / develop / feature 브랜치 구조에서 QA 개입 시점 정의. GitHub MCP로 브랜치·PR·커밋 대화로 처리.</div><div class="branch-vis"><div><span class="branch-main">main</span>    <span class="branch-dim">──●──────────●──</span> <span class="branch-dim"># 릴리즈</span></div><div><span class="branch-dev">develop</span> <span class="branch-dim">────●────●──</span>    <span class="branch-dim"># 회귀 검증</span></div><div><span class="branch-feat">feature</span> <span class="branch-dim">──────●──</span>      <span class="branch-dim"># 선행 검토</span></div></div><div class="proj-tags"><span class="proj-tag proj-tag-p">github MCP</span><span class="proj-tag">브랜치 전략</span></div></div>
     <div class="proj-card reveal"><div class="proj-num">PROJECT 03 · <span class="badge badge-done" style="font-size:9px;padding:2px 8px">구현 완료</span></div><div class="proj-icon">⚡</div><div class="proj-title">오케스트레이션 하네스 구축</div><div class="proj-desc">여러 MCP 도구를 자유롭게 조합하는 파이프라인 빌더. Claude-in-Claude 방식으로 각 단계가 이전 결과를 컨텍스트로 받아 체이닝 실행.</div><div class="proj-flow"><span class="proj-flow-step">노드 조합</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">파이프라인 실행</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">결과 체이닝</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">내보내기</span></div><div class="proj-tags"><span class="proj-tag proj-tag-p">Claude-in-Claude</span><span class="proj-tag proj-tag-p">Multi-MCP</span></div></div>
     <div class="proj-card reveal"><div class="proj-num">PROJECT 04 · <span class="badge badge-done" style="font-size:9px;padding:2px 8px">구현 완료</span></div><div class="proj-icon">⚙️</div><div class="proj-title">Claude Code 환경 세팅 + Skill 지침</div><div class="proj-desc">Skill 파일로 반복 패턴을 지침화. MCP 서버 연결 + QA 특화 프롬프트 구조 정의. 한 번으로 전체 적용.</div><div class="proj-flow"><span class="proj-flow-step">Claude Code 설치</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">MCP 연결</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">Skill 정의</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">자동화 적용</span></div><div class="proj-tags"><span class="proj-tag proj-tag-p">Claude Code</span><span class="proj-tag proj-tag-p">Skill 지침</span></div></div>
-    <div class="proj-card reveal"><div class="proj-num">PROJECT 05 · <span class="badge badge-done" style="font-size:9px;padding:2px 8px">구현 완료</span></div><div class="proj-icon">📢</div><div class="proj-title">버그 리포트 + 문서화 파이프라인</div><div class="proj-desc">버그 발견 → Claude 분석 → 버그 리포트 자동 작성 → 파일 저장 → 개발팀 전달.</div><div class="proj-flow"><span class="proj-flow-step">버그 발견</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">Claude 분석</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">리포트 생성</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">파일 저장</span></div><div class="proj-tags"><span class="proj-tag proj-tag-p">filesystem MCP</span><span class="proj-tag">버그 리포트</span></div><div class="proj-links"><a href="https://github.com/kihyunqa/qa-portfolio/blob/main/docs/bug-report-template.md" target="_blank" class="proj-link">버그 리포트 양식 ↗</a></div></div>
+    <div class="proj-card reveal"><div class="proj-num">PROJECT 05 · <span class="badge badge-done" style="font-size:9px;padding:2px 8px">구현 완료</span></div><div class="proj-icon">📢</div><div class="proj-title">버그 리포트 + 판단력 스토리</div><div class="proj-desc">버그 발견 → 심각도 판단 → 영향 분석 → 개발팀 설득. 보안 토큰 허점(P1), 결제 1원 오차(P1 에스컬레이션), 저속 네트워크 알림 중복(P2) 실제 케이스 포함.</div><div class="proj-flow"><span class="proj-flow-step">버그 발견</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">영향 분석</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">심각도 판단</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">해결</span></div><div class="proj-tags"><span class="proj-tag proj-tag-p">버그 스토리</span><span class="proj-tag">P1 보안</span><span class="proj-tag">결제 QA</span></div><div class="proj-links"><a href="https://github.com/kihyunqa/qa-portfolio/blob/main/docs/bug-stories.md" target="_blank" class="proj-link">버그 스토리 ↗</a><a href="https://github.com/kihyunqa/qa-portfolio/blob/main/testcase_bug-report.md" target="_blank" class="proj-link">버그 리포트 ↗</a></div></div>
     <div class="proj-card reveal"><div class="proj-num">PROJECT 06 · <span class="badge badge-done" style="font-size:9px;padding:2px 8px">구현 완료</span></div><div class="proj-icon">🐛</div><div class="proj-title">버그 심각도 분류 자동화</div><div class="proj-desc">버그 데이터를 Claude가 자동 분류. P1·P2·P3 심각도 기준 분류 + 재현 경로 분석 + 담당자별 현황 파악.</div><div class="proj-flow"><span class="proj-flow-step">버그 수집</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">심각도 분류</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">담당자 현황</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">리포트</span></div><div class="proj-tags"><span class="proj-tag proj-tag-p">버그 분석</span><span class="proj-tag">심각도 분류</span></div></div>
     <div class="proj-card reveal"><div class="proj-num">PROJECT 07 · <span class="badge badge-done" style="font-size:9px;padding:2px 8px">구현 완료</span></div><div class="proj-icon">🎭</div><div class="proj-title">playwright E2E 자동화 — 12 spec</div><div class="proj-desc">12개 spec 파일로 로그인·결제·보안·접근성·성능·알림까지 전 영역 E2E 커버. playwright.config.js 설정 완료.</div><div class="proj-flow"><span class="proj-flow-step">시나리오 정의</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">브라우저 조작</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">결과 검증</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">스크린샷</span></div><div class="proj-tags"><span class="proj-tag proj-tag-p">playwright MCP</span><span class="proj-tag">E2E 12 spec</span></div><div class="proj-links"><a href="https://github.com/kihyunqa/qa-portfolio/tree/main/playwright-tests" target="_blank" class="proj-link">spec 파일 보기 ↗</a></div></div>
-    <div class="proj-card reveal"><div class="proj-num">PROJECT 08 · <span class="badge badge-done" style="font-size:9px;padding:2px 8px">구현 완료</span></div><div class="proj-icon">📋</div><div class="proj-title">QA 자동화 리포트 + README 문서화</div><div class="proj-desc">github/filesystem MCP로 레포 전체 구조화. README + QA 리포트 + CHANGELOG + QA 전략 문서 자동 작성. docs 27개.</div><div class="proj-flow"><span class="proj-flow-step">레포 설계</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">README 작성</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">QA 리포트</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">CHANGELOG</span></div><div class="proj-tags"><span class="proj-tag proj-tag-p">github MCP</span><span class="proj-tag proj-tag-p">filesystem MCP</span></div><div class="proj-links"><a href="https://github.com/kihyunqa/qa-portfolio/blob/main/README.md" target="_blank" class="proj-link">README ↗</a></div></div>
+    <div class="proj-card reveal"><div class="proj-num">PROJECT 08 · <span class="badge badge-done" style="font-size:9px;padding:2px 8px">구현 완료</span></div><div class="proj-icon">📋</div><div class="proj-title">QA 자동화 리포트 + README 문서화</div><div class="proj-desc">github/filesystem MCP로 레포 전체 구조화. README + QA 리포트 + CHANGELOG + QA 전략 문서 자동 작성. docs 28개.</div><div class="proj-flow"><span class="proj-flow-step">레포 설계</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">README 작성</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">QA 리포트</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">CHANGELOG</span></div><div class="proj-tags"><span class="proj-tag proj-tag-p">github MCP</span><span class="proj-tag proj-tag-p">filesystem MCP</span></div><div class="proj-links"><a href="https://github.com/kihyunqa/qa-portfolio/blob/main/README.md" target="_blank" class="proj-link">README ↗</a></div></div>
     <div class="proj-card reveal"><div class="proj-num">PROJECT 09 · <span class="badge badge-live" style="font-size:9px;padding:2px 8px">실제 연동</span></div><div class="proj-icon">📝</div><div class="proj-title">Notion MCP 연동 — TC 결과 자동 문서화</div><div class="proj-desc">Notion MCP로 TC 결과물을 자동 문서화. 테스트 완료 후 Notion 페이지를 자동 생성하여 팀 전체가 QA 현황을 실시간 확인.</div><div class="proj-flow"><span class="proj-flow-step">TC 결과 수집</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">Claude 분석</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">Notion 페이지 생성</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">팀 공유</span></div><div class="proj-tags"><span class="proj-tag proj-tag-g">notion MCP 실제 연동</span><span class="proj-tag">TC 결과 문서화</span></div></div>
     <div class="proj-card reveal"><div class="proj-num">PROJECT 10 · <span class="badge badge-live" style="font-size:9px;padding:2px 8px">실제 연동</span></div><div class="proj-icon">💬</div><div class="proj-title">Slack MCP 연동 — QA 알림 자동화</div><div class="proj-desc">Slack MCP + GitHub Actions 이중 연동. QA 완료 시 새-채널 자동 알림. TC 파일 push 감지 → Actions → Slack 완전 자동 파이프라인.</div><div class="proj-flow"><span class="proj-flow-step">QA 완료</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">MCP 알림</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">GitHub Actions</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">새-채널</span></div><div class="proj-tags"><span class="proj-tag proj-tag-g">slack MCP 실제 연동</span><span class="proj-tag">GitHub Actions</span></div></div>
   </div>
@@ -453,13 +465,13 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:
       <thead><tr><th>TC-ID</th><th>구분</th><th>테스트 제목</th><th>기대 결과</th><th>우선순위</th></tr></thead>
       <tbody>
         <tr><td>AUTH-001</td><td><span class="tc-type h">해피패스</span></td><td>유효한 자격증명으로 로그인</td><td>/dashboard 리다이렉트</td><td><span class="p1">P1</span></td></tr>
-        <tr><td>AUTH-005</td><td><span class="tc-type h">해피패스</span></td><td>로그아웃 실행</td><td>/login 리다이렉트, 세션 해제</td><td><span class="p1">P1</span></td></tr>
+        <tr><td>AUTH-005</td><td><span class="tc-type h">해피패스</span></td><td>로그아웃 실행 + 토큰 무효화 검증</td><td>401 Unauthorized (API 직접 호출 시)</td><td><span class="p1">P1</span></td></tr>
         <tr><td>AUTH-007</td><td><span class="tc-type n">네거티브</span></td><td>5회 로그인 실패 후 계정 잠금</td><td>계정 잠금 또는 인증 요청</td><td><span class="p1">P1</span></td></tr>
         <tr><td>CART-001</td><td><span class="tc-type h">해피패스</span></td><td>상품 장바구니 추가</td><td>장바구니 아이콘 숫자 +1</td><td><span class="p1">P1</span></td></tr>
-        <tr><td>API-S-006</td><td><span class="tc-type e">엣지케이스</span></td><td>특수문자 검색</td><td>안전 처리된 결과</td><td><span class="p1">P1</span></td></tr>
+        <tr><td>PAY-012</td><td><span class="tc-type e">엣지케이스</span></td><td>다중 상품 + 할인 조합 소수점 오차</td><td>합산 후 할인 1회 적용, 오차 0원</td><td><span class="p1">P1</span></td></tr>
+        <tr><td>API-S-006</td><td><span class="tc-type e">엣지케이스</span></td><td>특수문자 / SQL 패턴 검색</td><td>안전 처리된 결과 (500 없음)</td><td><span class="p1">P1</span></td></tr>
         <tr><td>TC-NOTIF-HP-001</td><td><span class="tc-type h">해피패스</span></td><td>QA 완료 Slack 알림 정상 발송</td><td>새-채널에 메시지 수신 확인</td><td><span class="p1">P1</span></td></tr>
         <tr><td>TC-CICD-HP-001</td><td><span class="tc-type h">해피패스</span></td><td>TC push 시 Actions 자동 트리거</td><td>workflow run 생성 확인</td><td><span class="p1">P1</span></td></tr>
-        <tr><td>TC-SEC-001</td><td><span class="tc-type n">네거티브</span></td><td>SQL Injection 차단</td><td>에러 + 쿼리 조작 차단</td><td><span class="p1">P1</span></td></tr>
       </tbody>
     </table>
   </div>
@@ -562,7 +574,7 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:
 
 <footer>
   <p>© 2026 성기현 · QA Engineer · kihyun.qa@gmail.com</p>
-  <p>Built with Claude MCP · No code written · 5 MCP servers · TC 145건+ · Playwright 12 spec · Actions 2개 · Jira 연동 완료 · docs 27개</p>
+  <p>Built with Claude MCP · No code written · 5 MCP servers · TC 145건+ · Playwright 12 spec · Actions 2개 · Jira 연동 완료 · docs 28개</p>
 </footer>
 
 <script>
