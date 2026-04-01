@@ -13,9 +13,6 @@
 
 ## 🏁 현재 상태 (2026-04-01 기준)
 
-**Claude 단독으로 할 수 있는 작업은 전부 끝났습니다.**  
-남은 것은 전부 사용자 액션이 필요한 것들입니다.
-
 ---
 
 ## ✅ 확정 수치 (부풀리기 금지 · 전체 검증 완료)
@@ -25,7 +22,7 @@
 | testcase_*.md | **16개** | ✅ 직접 카운트 |
 | playwright spec | **12개** | ✅ 직접 확인 |
 | skills/ 문서 | **9개** | ✅ 직접 확인 |
-| docs/ 문서 | **25개** | ✅ 직접 카운트 |
+| docs/ 문서 | **26개** | ✅ STEP 81에서 1개 추가됨 |
 | GitHub Actions | **2개** | ✅ 확인 완료 |
 | 전체 파일 수 | **80개+** | ✅ 확인 완료 |
 | TC 건수 | **145건+** | ✅ 합산 완료 |
@@ -34,6 +31,7 @@
 | LinkedIn 포스트 | **6버전** | ✅ 내용 직접 확인 |
 | 면접 Q&A 기초 | **12문항** | ✅ 내용 직접 확인 |
 | 면접 Q&A 심화 | **11문항** | ✅ 내용 직접 확인 |
+| 면접 시뮬레이션 | **신규** | ✅ STEP 81 생성 |
 
 ## ✅ 전체 파일 점검 완료 현황
 
@@ -42,13 +40,25 @@
 | index.html (59KB) | ✅ TC 145건+, spec 12개, MCP 5개, Actions 2개 정확 |
 | README.md | ✅ 이상 없음 |
 | PROFILE.md | ✅ 이상 없음 |
-| CHANGELOG.md | ✅ v20 최신 |
-| qa-automation-report.md | ✅ 스프린트 30건 / 전체 145건+ 분리 표기 정확 |
+| CHANGELOG.md | ✅ v20 (v21 업데이트 필요 — 다음 Claude 할 일) |
+| qa-automation-report.md | ✅ 이상 없음 |
 | skills/ 9개 | ✅ 전체 확인, 수정 불필요 |
-| docs/ 25개 | ✅ 전체 점검 완료 |
-| share-action-plan.md | ✅ STEP 80 — 타임라인 날짜 2026-04-01 기준으로 구체화 |
-| portfolio-summary.md | ✅ 수치 및 내용 정확 |
+| docs/ 26개 | ✅ 25개 전체 점검 완료 + interview-simulation.md 신규 추가 |
+| share-action-plan.md | ✅ STEP 80 — 날짜 구체화 완료 |
+| interview-simulation.md | ✅ STEP 81 신규 생성 |
 | testcase_*.md 16개 | ✅ 이상 없음 |
+
+## ⚠️ 다음 Claude가 해야 할 것 (Claude 단독 가능)
+
+### 우선순위 1 — CHANGELOG v21 업데이트
+STEP 80(share-action-plan 날짜 구체화)과 STEP 81(interview-simulation.md 신규 생성)을 v21로 기록해야 합니다.
+
+### 우선순위 2 — docs 수 25→26개 반영
+interview-simulation.md가 추가돼서 docs가 26개가 됐습니다.
+수정이 필요한 파일들:
+- `README.md` — "docs 25개" 언급 부분
+- `docs/portfolio-summary.md` — "docs/ 문서 25개" 테이블
+- `docs/qa-onboarding.md` — docs 수 언급 부분 (있다면)
 
 ## ✅ MCP 5개 — 실제 작동 확인
 
@@ -62,7 +72,7 @@
 
 ---
 
-## 🎯 남은 스텝 — 전부 사용자 액션 필요
+## 🎯 남은 스텝 — 사용자 액션 필요
 
 ### STEP 10 ⭐ 최우선 — 스크린샷 추가
 
@@ -76,29 +86,20 @@
 
 저장 위치: screenshots/ 폴더
 직접 업로드: https://github.com/kihyunqa/qa-portfolio/upload/main/screenshots
-★ "실제 연동 증거"를 텍스트 → 시각 증거로 업그레이드하는 핵심!
 ```
 
 ### STEP 12 ⭐ 지금 바로 가능 — LinkedIn 공유
 
 ```
-docs/share-action-plan.md 참고 — 타임라인 구체화 완료 (4/1~4/7)
 docs/linkedin-post.md 버전 6 (AI 생산성형) 추천
-
 포트폴리오: https://kihyunqa.github.io/qa-portfolio
-커버레터: docs/cover-letter.md 버전 1~5
-자기소개서: docs/self-introduction.md
-면접 준비: docs/interview-qa.md (12문항) + docs/interview-qa-advanced.md (11문항)
+타임라인: docs/share-action-plan.md 참고 (4/1~4/7 구체화 완료)
 ```
 
 ### STEP 11 — Jira MCP 연동 [PHASE 2 · 계정 필요]
 
 ```
-docs/jira-mcp-plan.md 참고:
-1. https://www.atlassian.com/software/jira/free 계정 생성
-2. API 토큰 발급
-3. claude_desktop_config.json에 jira MCP 추가
-4. Claude Desktop 재시작 후 연동 확인
+docs/jira-mcp-plan.md 참고
 ```
 
 ---
@@ -107,13 +108,9 @@ docs/jira-mcp-plan.md 참고:
 
 | 구간 | 내용 | 완료일 |
 |------|------|--------|
-| STEP 1~9 | MCP 연동, TC 생성, spec 작성, docs 작성 등 | ~2026-03-30 |
-| STEP 13~75 | docs 보강·점검, 수치 정합성, 취업 서류 패키지 완성 | 2026-03-31 |
-| STEP 76 | docs 25개 전체 점검 완전 완료 (수정 2개) | 2026-03-31 |
-| STEP 77 | CHANGELOG v19 | 2026-03-31 |
-| STEP 78 | 레포 전체 최종 점검 (index.html, README, PROFILE, skills, qa-automation-report) | 2026-03-31 |
-| STEP 79 | CHANGELOG v20 · NEXT_STEPS.md 최종 인수인계 | 2026-03-31 |
-| **STEP 80** | **share-action-plan.md 타임라인 날짜 2026-04-01 기준으로 구체화** | **2026-04-01** |
+| STEP 1~79 | MCP 연동, TC 생성, docs 작성·점검, 수치 정합성 전체 완료 | ~2026-03-31 |
+| STEP 80 | share-action-plan.md 타임라인 날짜 2026-04-01 기준으로 구체화 | 2026-04-01 |
+| **STEP 81** | **docs/interview-simulation.md 신규 생성** — 돌발 질문 대응 가이드 | **2026-04-01** |
 
 ---
 
@@ -140,5 +137,5 @@ docs/jira-mcp-plan.md 참고:
 
 ---
 
-*최종 업데이트: 2026-04-01 · STEP 80 완료 · share-action-plan.md 타임라인 구체화*  
-*다음 Claude: 사용자에게 STEP 10 (스크린샷 캡처) → STEP 12 (LinkedIn 4/2 게시) 안내부터 시작하세요.*
+*최종 업데이트: 2026-04-01 · STEP 81 완료*
+*다음 Claude 할 일: CHANGELOG v21 업데이트 → docs 25→26개 수치 반영 (README, portfolio-summary 등)*
