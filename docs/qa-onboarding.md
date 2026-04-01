@@ -13,6 +13,7 @@
 - [ ] Notion 배포란/TC 허브 페이지 접근 권한 확인
 - [ ] Slack `#qa-팀` 채널 입장 및 봇 알림 테스트
 - [ ] GitHub 레포 `kihyunqa/qa-portfolio` Clone
+- [ ] Jira 프로젝트 접근 권한 확인 (kihyunqa-1775011951168.atlassian.net)
 
 ### Claude MCP 세팅
 - [ ] Claude Desktop 설치 (https://claude.ai/download)
@@ -31,13 +32,14 @@
   ```
   testcase_*.md     → TC 문서 16개 (로그인/결제/API/E2E 등)
   playwright-tests/ → 자동화 spec 12개
-  docs/             → 전략·가이드·템플릿 25개
+  docs/             → 전략·가이드·템플릿 28개
   skills/           → MCP 활용 스킬 문서 9개
   screenshots/      → 실제 연동 증거 스크린샷
   .github/workflows → GitHub Actions 2개
   ```
-- [ ] `CHANGELOG.md` 로 v1~v17 히스토리 파악
+- [ ] `CHANGELOG.md` 로 v1~v23 히스토리 파악
 - [ ] `testcase_login.md` 부터 TC 구조 이해
+- [ ] `docs/bug-stories.md` 읽기 — QA 판단력 실증 사례 3건 파악
 
 ---
 
@@ -46,6 +48,7 @@
 ### 수동 테스트
 - [ ] `testcase_login.md` 기준으로 로그인 시나리오 1회 수동 실행
 - [ ] 버그 발견 시 `docs/bug-report-template.md` 양식으로 리포트 작성
+- [ ] `testcase_bug-report.md` 의 8건 사례 참고 — 발견 방법 다양화
 - [ ] Notion TC 허브 페이지에 결과 업데이트
 
 ### Playwright 자동화
@@ -68,6 +71,7 @@
 - [ ] Claude MCP로 TC → GitHub 자동 커밋 → Slack 알림 흐름 1회 직접 실행
 - [ ] `docs/qa-strategy.md` 읽고 팀 QA 방향 파악
 - [ ] `docs/regression-checklist.md` 기준으로 릴리스 전 체크리스트 1회 실행
+- [ ] Jira에서 이슈 생성 후 GitHub 커밋과 연동 확인
 
 ---
 
@@ -77,10 +81,12 @@
 |------|------|
 | `docs/mcp-setup-guide.md` | MCP 5개 설치·설정 전체 가이드 |
 | `docs/bug-report-template.md` | 버그 리포트 표준 양식 |
+| `docs/bug-stories.md` | QA 판단력 실증 버그 스토리 3건 |
 | `docs/qa-strategy.md` | QA 전략 및 방향성 |
 | `docs/regression-checklist.md` | 릴리스 전 회귀 체크리스트 |
 | `docs/test-metrics.md` | KPI 및 측정 지표 |
 | `docs/mcp-workflow-diagram.md` | MCP 자동화 흐름 다이어그램 |
+| `docs/jira-github-integration.md` | Jira + GitHub 연동 완료 기록 |
 | `docs/interview-qa.md` | QA 면접 Q&A 12문항 (팀 내 지식 공유용) |
 | `docs/ai-qa-vision.md` | AI+QA 비전 — 2026 트렌드 반영 |
 
@@ -96,4 +102,4 @@
 | notion | TC 결과 자동 문서화 |
 | slack | QA 완료 알림 자동 발송 |
 
-*수치 기준: 2026-03-31 (TC 145건+, Playwright 12 spec, testcase 16개, docs 25개, MCP 5개)*
+*수치 기준: 2026-04-01 · v23 (TC 145건+, Playwright 12 spec, testcase 16개, docs 28개, MCP 5개, Jira 연동 완료)*
