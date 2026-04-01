@@ -173,4 +173,4 @@ AI는 QA를 대체하지 않는다.
 
 ---
 
-*작성: 성기현 · 최종 업데이트: 2026-03-31 (STEP 67 보강 — 수치 수정 16개, 2026 AI 트렌드 섹션 추가) · https://kihyunqa.github.io/qa-portfolio*
+*작성: 성기현 · 최종 업데이트: 2026-04-01 (STEP 89 — 날짜 동기화) · https://kihyunqa.github.io/qa-portfolio*
