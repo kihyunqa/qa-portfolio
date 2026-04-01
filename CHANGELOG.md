@@ -1,5 +1,64 @@
 # CHANGELOG
 
+## v22.0.0 — 2026-04-01
+
+### STEP 85~86 완료 — 포트폴리오 아쉬운 점 3가지 보완
+
+#### 문제 인식
+- 포트폴리오가 "성실하게 많이 만들었다"는 보이지만 "이 사람이 QA로서 어떤 판단을 했나"가 안 보임
+- 첫 화면 메시지가 약함 — 기술 나열 위주, 임팩트 부족
+- 버그 리포트가 MCP 도구 오류 3건뿐 — 실제 QA 판단력 미노출
+
+#### STEP 85 — 버그 스토리 & 버그 리포트 강화
+
+| 작업 | 내용 | 상태 |
+|------|------|------|
+| docs/bug-stories.md 신규 | QA 판단력 스토리 3건 | ✅ |
+| testcase_bug-report.md 강화 | 3건 → 8건 확장 | ✅ |
+
+**bug-stories.md 수록 케이스:**
+- STORY-001: 로그아웃 후 토큰 여전히 유효 (P1 보안 — API 레벨 검증으로 발견)
+- STORY-002: 결제 소수점 1원 오차 누적 (P1 — 계산 순서 설계 문제로 에스컬레이션)
+- STORY-003: 저속 네트워크 알림 중복 (P2 — Chrome Slow 3G 시뮬레이션으로 발견)
+
+**testcase_bug-report.md 추가 케이스:**
+- BUG-004: 비밀번호 재설정 링크 만료 후 200 반환
+- BUG-005: 다중 탭 세션 충돌
+- BUG-008: 특수문자 검색 500 에러 (SQL Injection 취약점)
+
+#### STEP 86 — index.html 전체 강화
+
+| 변경 항목 | 내용 |
+|-----------|------|
+| Hero 메시지 | "MCP 연동 완료" 나열 → 구체적 QA 판단 사례 중심으로 교체 |
+| Hero 증거 뱃지 | 보안 버그 P1, 결제 오차 에스컬레이션, 네트워크 시뮬레이션 등 6개 추가 |
+| CTA 버튼 | "버그 스토리 ↗" 버튼 추가 (bug-stories.md 직링크) |
+| PROJECT 05 | "버그 리포트" → "버그 리포트 + 판단력 스토리"로 내용 강화, 링크 2개 |
+| PROJECT 08 | docs 27개 → 28개 반영 |
+| TC 테이블 | AUTH-005 설명 강화, PAY-012 결제 소수점 케이스 추가 |
+| footer | docs 27개 → 28개 반영 |
+
+---
+
+### 확정 수치 (v22)
+
+| 항목 | 수치 |
+|------|------|
+| TC | **145건+** |
+| Playwright spec | **12개** |
+| testcase_*.md | **16개** |
+| docs/ 문서 | **28개** (bug-stories.md 추가) |
+| skills/ 문서 | **9개** |
+| 레포 파일 수 | **80개+** |
+| GitHub Actions | **2개** |
+| MCP 연동 | **5개** |
+| Jira 연동 | **완료** |
+| 커버레터 | **5종** |
+| 버그 스토리 | **3건** (신규) |
+| 버그 리포트 | **8건** |
+
+---
+
 ## v21.0.0 — 2026-04-01
 
 ### STEP 10/11/12 완료 — 실증 자료 확보 및 외부 연동 마무리
@@ -10,12 +69,6 @@
 | STEP 11 | Jira + GitHub 연동 완료 + docs/jira-github-integration.md 커밋 | ✅ |
 | STEP 12 | LinkedIn 게시 — 사용자 판단으로 스킵 | ➡️ 스킵 |
 
-#### STEP 10 상세 — 스크린샷 4장
-- Slack `#새-채널` QA 알림 수신 화면 ✅
-- GitHub Actions QA Auto Notify #7 **Success** 화면 ✅
-- notify job 전체 스텝 성공 로그 (Set up / Checkout / Slack Notification 등) ✅
-- Notion Test Case Hub 전체 TC 목록 (50+ / 자동화율 100%) ✅
-
 #### STEP 11 상세 — Jira + GitHub 연동
 - Jira 인스턴스: kihyunqa-1775011951168.atlassian.net
 - 프로젝트: **QA Portfolio**
@@ -23,7 +76,7 @@
 - Permissions: **FULL ACCESS** / Backfill: IN PROGRESS → 완료
 - 신규 파일: `docs/jira-github-integration.md`
 
-#### STEP 81 상세 (v20에서 누락된 항목 보완)
+#### STEP 81 상세
 - `docs/interview-simulation.md` 신규 생성 — 돌발 질문 대응 가이드 5카테고리
 
 ### 확정 수치 (v21)
@@ -51,8 +104,6 @@
 
 ### 레포 전체 최종 점검 완료 (STEP 78~79) — 포트폴리오 정합성 작업 100% 마무리
 
-#### 점검 완료 파일 전체
-
 | 파일/폴더 | 결과 |
 |-----------|------|
 | index.html (59KB) | ✅ TC 145건+, spec 12개, MCP 5개, Actions 2개 전부 정확 |
@@ -60,7 +111,7 @@
 | PROFILE.md | ✅ 수치 이상 없음 |
 | qa-automation-report.md | ✅ 스프린트 30건 / 전체 145건+ 분리 표기 정확 |
 | skills/ 9개 전체 | ✅ 수정 불필요 |
-| docs/ 25개 전체 | ✅ STEP 76 완전 완료 (수정 2개, 이상 없음 23개) |
+| docs/ 25개 전체 | ✅ STEP 76 완전 완료 |
 | CHANGELOG.md | ✅ v20 최신 |
 | NEXT_STEPS.md | ✅ 최종 인수인계 완료 |
 
@@ -125,8 +176,8 @@
 
 ### 취업 콘텐츠 강화 (STEP 59)
 
-- interview-qa.md: 8개 → **12개 Q&A** (Q9~Q12 추가)
-- linkedin-post.md: 5버전 → **6버전** (AI 생산성형, 바이럴 최적화)
+- interview-qa.md: 8개 → **12개 Q&A**
+- linkedin-post.md: 5버전 → **6버전**
 
 ---
 
