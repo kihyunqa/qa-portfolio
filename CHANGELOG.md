@@ -1,5 +1,40 @@
 # CHANGELOG
 
+## v23.0.0 — 2026-04-01
+
+### STEP 87 완료 — 수치 정합성 최종 마무리
+
+#### 작업 내용
+
+| 파일 | 변경 내용 | 상태 |
+|------|-----------|------|
+| `README.md` | docs 27개 → **28개** 수정, bug-stories 링크 추가, footer 수치 반영 | ✅ |
+| `docs/portfolio-summary.md` | docs 27개 → **28개** 수정, 버그 스토리/버그 리포트 수치 추가, v21 → v23 | ✅ |
+
+#### 배경
+- STEP 86에서 index.html의 docs 수치는 28개로 업데이트됐으나
+- README.md와 portfolio-summary.md는 "선택적" 작업으로 남아있었음
+- 이번 STEP 87에서 두 파일 모두 28개로 일치 완료
+
+#### 확정 수치 (v23)
+
+| 항목 | 수치 |
+|------|------|
+| TC | **145건+** |
+| Playwright spec | **12개** |
+| testcase_*.md | **16개** |
+| docs/ 문서 | **28개** |
+| skills/ 문서 | **9개** |
+| 레포 파일 수 | **80개+** |
+| GitHub Actions | **2개** |
+| MCP 연동 | **5개** |
+| Jira 연동 | **완료** |
+| 커버레터 | **5종** |
+| 버그 스토리 | **3건** |
+| 버그 리포트 | **8건** |
+
+---
+
 ## v22.0.0 — 2026-04-01
 
 ### STEP 85~86 완료 — 포트폴리오 아쉬운 점 3가지 보완
@@ -234,7 +269,7 @@
 ## v4.0.0 — 2026-03-30
 
 - signup.spec.js, helpers/page-objects.js, playwright.config.js 추가
-- test-cases 3개 (auth/cart/search-api)
+- test-cases 3개 (auth/cart/search/payment/signup)
 - docs/portfolio-summary.md, docs/mcp-workflow-diagram.md
 
 ## v3.0.0 — 2026-03-29
