@@ -44,10 +44,11 @@
 | STEP 12 | LinkedIn 게시 — 사용자 판단으로 스킵 | 2026-04-01 |
 | STEP 82 | CHANGELOG v21 + portfolio-summary + README 수치 전체 반영 | 2026-04-01 |
 | **STEP 83** | **index.html 전체 업데이트 — Jira 연동, docs 27개, Phase 2 완료 반영** | **2026-04-01** |
+| **STEP 84** | **현재 상태 전체 검증 완료 — docs 27개/testcase 16개/CHANGELOG v21 전부 실제 수치와 일치 확인** | **2026-04-01** |
 
 ---
 
-## ✅ 반영 완료된 파일 전체 (STEP 83 기준)
+## ✅ 반영 완료된 파일 전체 (STEP 84 기준)
 
 | 파일 | 상태 |
 |------|------|
@@ -58,18 +59,19 @@
 | `docs/jira-github-integration.md` | ✅ 신규 |
 | `docs/interview-simulation.md` | ✅ 신규 |
 | `screenshots/README.md` | ✅ 스크린샷 4장 설명 |
-| `NEXT_STEPS.md` | ✅ 이 문서 |
+| `NEXT_STEPS.md` | ✅ STEP 84 반영 |
 
 ---
 
 ## 🎯 다음 Claude가 할 수 있는 것 (선택적)
 
-현재 포트폴리오는 완성 상태입니다. 추가로 할 수 있는 것들:
+현재 포트폴리오는 완성 상태입니다. 사용자와 상의 후 진행:
 
 1. **새 콘텐츠 추가** — 면접 대비 강화, 새 TC 도메인 추가
 2. **screenshots 실제 PNG 업로드** — 사용자가 수동으로 드래그 업로드
    - URL: https://github.com/kihyunqa/qa-portfolio/upload/main/screenshots
 3. **CHANGELOG v22** — 이후 추가 작업 발생 시
+4. **LinkedIn 게시** — 이전에 스킵했던 항목, 사용자 의사 재확인 필요
 
 ---
 
@@ -109,5 +111,5 @@
 
 ---
 
-*최종 업데이트: 2026-04-01 · STEP 83 완료 · index.html 포함 전체 정합성 완료*
+*최종 업데이트: 2026-04-01 · STEP 84 완료 · 전체 수치 검증 완료*
 *포트폴리오 완성 상태 — 면접 준비 완료 🎉*
