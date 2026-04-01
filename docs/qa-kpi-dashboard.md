@@ -1,6 +1,6 @@
 # 📊 QA KPI 대시보드
 
-> 포트폴리오 기준 QA 지표 — 2026-03-31 최종 업데이트
+> 포트폴리오 기준 QA 지표 — 2026-04-01 최종 업데이트
 
 ---
 
@@ -62,13 +62,14 @@
 ## MCP 파이프라인 가동률
 
 | MCP | 연동 상태 | 주요 성과 |
-|-----|-----------|-----------| 
+|-----|-----------|-----------|
 | filesystem | ✅ 정상 | TC 파일 16개 로컬 생성·관리 |
 | github | ✅ 정상 | 80개+ 파일 자동 커밋 |
 | playwright | ✅ 정상 | E2E spec 12개 자동 실행 |
 | notion | ✅ 정상 | TC 허브 페이지 자동 동기화 |
 | slack | ✅ 정상 | 새-채널 실시간 알림 발송 |
 | GitHub Actions | ✅ 정상 | TC 커밋 감지 → Slack 자동 통보 (2개 워크플로우) |
+| Jira | ✅ 정상 | GitHub 이슈 트래킹 연동 (FULL ACCESS) |
 
 ---
 
@@ -81,7 +82,9 @@
 | Playwright spec | **12개** |
 | 평균 TC 실행 시간 | **< 2분** (playwright test 기준) |
 | 버그 발견율 (포트폴리오 내) | 오타·수치 오류 **10건+** 수정 완료 |
-| docs 문서 수 | **25개** |
+| 버그 리포트 케이스 | **8건** (보안·세션·결제·SQL Injection 등) |
+| 버그 판단력 스토리 | **3건** (P1 보안, P1 결제 오차, P2 네트워크) |
+| docs 문서 수 | **28개** |
 | CI 파이프라인 | **2개** (playwright + qa-notify) |
 
 ---
@@ -125,7 +128,12 @@
 | 2026-03-31 | ai-qa-vision.md 보강 | 비전 문서 + 트러블슈팅 기록 |
 | 2026-03-31 | testcase 수 17→16개 정정 (실제 카운트) | 포트폴리오 신뢰도 향상 |
 | 2026-03-31 | self-introduction.md 신규 생성 → docs 25개 | 취업 서류 패키지 완성 |
+| 2026-04-01 | Jira + GitHub 연동 완료 (FULL ACCESS) | 이슈 트래킹 자동화 |
+| 2026-04-01 | docs/bug-stories.md 신규 생성 | QA 판단력 실증 사례 3건 추가 |
+| 2026-04-01 | testcase_bug-report.md 3건→8건 강화 | 버그 발견 방법 다양화 |
+| 2026-04-01 | index.html Hero 메시지 강화 | QA 판단 사례 중심으로 전면 개편 |
+| 2026-04-01 | 전체 수치 정합성 완료 (docs 28개) | README·portfolio-summary·KPI 전체 동기화 |
 
 ---
 
-*수치 기준: 2026-03-31 · STEP 76-2 · https://kihyunqa.github.io/qa-portfolio*
+*수치 기준: 2026-04-01 · v23 · https://kihyunqa.github.io/qa-portfolio*
