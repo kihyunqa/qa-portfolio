@@ -7,7 +7,7 @@
 [![Email](https://img.shields.io/badge/Email-kihyun.qa@gmail.com-ea4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:kihyun.qa@gmail.com)
 
 **6년 9개월 QA 경력 위에 Claude MCP 자동화를 더했습니다.**  
-TC 생성부터 Notion 문서화, Slack 알림, GitHub 자동 배포까지  
+TC 생성부터 Notion 문서화, Slack 알림, GitHub 자동 배포, Jira 연동까지  
 **전부 대화만으로 구축했습니다.**
 
 </div>
@@ -27,6 +27,7 @@ TC 생성부터 Notion 문서화, Slack 알림, GitHub 자동 배포까지
 | GitHub Actions | **2개 운영 중** | TC push → Slack 자동 알림 |
 | QA 경력 | **6년 9개월** | 2017 — 현재 |
 | 총 레포 파일 수 | **80개+** | TC, 코드, 문서 전체 |
+| Jira 연동 | **완료** | GitHub 이슈 트래킹 자동화 |
 
 </div>
 
@@ -41,6 +42,7 @@ TC 생성부터 Notion 문서화, Slack 알림, GitHub 자동 배포까지
 | `github` | 레포 커밋, 파일 업로드, Actions 트리거 | ✅ |
 | `notion` | TC 결과 자동 문서화 | ✅ 실제 연동 |
 | `slack` | QA 완료 알림 자동 발송 | ✅ 실제 연동 |
+| `Jira` | GitHub 이슈 트래킹 연동 | ✅ FULL ACCESS |
 
 ---
 
@@ -60,6 +62,8 @@ notion 페이지 자동 문서화
 slack QA 완료 알림 자동 발송
      ↓
 GitHub Actions → TC push 감지 → Slack 자동 통보
+     ↓
+Jira 이슈 자동 연동 (커밋 메시지 기반)
      ↓
 완료 (코드 0줄)
 ```
@@ -114,7 +118,8 @@ qa-portfolio/
 ├── e2e-scenarios/             # E2E 시나리오
 ├── test-cases/                # 상세 TC (auth/cart/search/payment/signup)
 ├── skills/                    # QA 역량 문서 9개
-└── docs/                      # 전략/면접/KPI/온보딩 문서 25개
+├── screenshots/               # 실제 동작 스크린샷
+└── docs/                      # 전략/면접/KPI/온보딩 문서 27개
 ```
 
 ---
@@ -143,6 +148,8 @@ qa-portfolio/
 | [버그 리포트 양식](docs/bug-report-template.md) | 실제 예시 3건 포함 |
 | [면접 Q&A](docs/interview-qa.md) | QA 면접 준비 12문항 |
 | [면접 Q&A 심화](docs/interview-qa-advanced.md) | AI 시대 QA 심화 11문항 |
+| [면접 시뮬레이션](docs/interview-simulation.md) | 실전 돌발 질문 대응 가이드 |
+| [Jira 연동](docs/jira-github-integration.md) | Jira + GitHub 연동 완료 기록 |
 | [회귀 체크리스트](docs/regression-checklist.md) | 릴리즈 전 필수 확인 목록 |
 | [AI QA 비전](docs/ai-qa-vision.md) | MCP 기반 QA 자동화 미래 |
 
@@ -150,7 +157,7 @@ qa-portfolio/
 
 <div align="center">
 
-*Built with Claude MCP · No code written · 5 MCP servers · TC 145건+ · spec 12개 · Actions 2개*
+*Built with Claude MCP · No code written · 5 MCP servers · TC 145건+ · spec 12개 · Actions 2개 · Jira 연동 완료 · docs 27개*
 
 [![포트폴리오 바로가기](https://img.shields.io/badge/포트폴리오_바로가기-a855f7?style=for-the-badge&labelColor=08060f)](https://kihyunqa.github.io/qa-portfolio)
 
