@@ -11,11 +11,11 @@
 
 ---
 
-## 🏁 현재 상태 (2026-04-01) — STEP 87 완료
+## 🏁 현재 상태 (2026-04-01) — STEP 88 완료
 
 ---
 
-## ✅ 확정 수치 (v23 기준)
+## ✅ 확정 수치 (v24 기준)
 
 | 항목 | 수치 | 검증 |
 |------|------|------|
@@ -26,7 +26,7 @@
 | GitHub Actions | **2개** | ✅ |
 | 전체 파일 수 | **80개+** | ✅ |
 | TC 건수 | **145건+** | ✅ |
-| CHANGELOG | **v23** | ✅ |
+| CHANGELOG | **v24** | ✅ |
 | Jira 연동 | **완료** | ✅ FULL ACCESS |
 | index.html | **최신** | ✅ STEP 86 완료 |
 | 버그 스토리 | **3건** | ✅ |
@@ -42,11 +42,12 @@
 | STEP 84 | 전체 수치 검증 | 2026-04-01 |
 | STEP 85 | docs/bug-stories.md 신규 + testcase_bug-report.md 3건→8건 강화 | 2026-04-01 |
 | STEP 86 | index.html Hero 강화 + docs 28개 반영 + bug-stories 링크 추가 + CHANGELOG v22 | 2026-04-01 |
-| **STEP 87** | **README.md + portfolio-summary.md docs 27→28 수치 동기화 + CHANGELOG v23** | **2026-04-01** |
+| STEP 87 | README.md + portfolio-summary.md docs 27→28 수치 동기화 + CHANGELOG v23 | 2026-04-01 |
+| **STEP 88** | **qa-kpi-dashboard + qa-onboarding + weekly-qa-report-template 내부 수치 전체 동기화 (docs 25→28, Jira, 버그 스토리 반영) + CHANGELOG v24** | **2026-04-01** |
 
 ---
 
-## ✅ 반영 완료된 파일 (STEP 87 기준)
+## ✅ 반영 완료된 파일 (STEP 88 기준)
 
 | 파일 | 상태 |
 |------|------|
@@ -55,20 +56,25 @@
 | `index.html` | ✅ Hero 메시지 강화, docs 28개, bug-stories 링크 |
 | `README.md` | ✅ docs 28개, bug-stories 링크 추가 |
 | `docs/portfolio-summary.md` | ✅ docs 28개, 버그 스토리 수치 반영, v23 |
-| `CHANGELOG.md` | ✅ v23 |
-| `NEXT_STEPS.md` | ✅ STEP 87 반영 |
+| `docs/qa-kpi-dashboard.md` | ✅ docs 28개, Jira 행 추가, 개선 이력 최신화 |
+| `docs/qa-onboarding.md` | ✅ docs 28개, CHANGELOG v23, Jira 체크리스트, bug-stories 링크 |
+| `docs/weekly-qa-report-template.md` | ✅ docs 28개, 실제 예시 2026-04-01 갱신, Jira 항목 |
+| `CHANGELOG.md` | ✅ v24 |
+| `NEXT_STEPS.md` | ✅ STEP 88 반영 |
 
 ---
 
 ## 🎯 다음 Claude가 할 수 있는 것 (선택적)
 
-포트폴리오 핵심 보완은 **완료 상태**입니다. 모든 수치 정합성도 완료.
+포트폴리오 핵심 보완 + docs 내부 수치 정합성 모두 **완료 상태**입니다.
 
 1. **screenshots 실제 PNG 업로드** ← 가장 효과적인 남은 작업
    - 사용자 직접 업로드: https://github.com/kihyunqa/qa-portfolio/upload/main/screenshots
    - Claude가 직접 PNG 파일 생성은 불가
-2. **면접 준비** — interview-qa.md, interview-simulation.md 활용
-3. **LinkedIn/채용 플랫폼 공유** — share-action-plan.md 참고
+2. **나머지 docs 파일 수치 점검** ← 아직 확인 안 한 파일들
+   - 점검 대상 후보: `docs/ai-qa-vision.md`, `docs/share-action-plan.md`, `docs/test-metrics.md` 등 (2026-03-31 날짜 기준 파일들)
+3. **면접 준비** — interview-qa.md, interview-simulation.md 활용
+4. **LinkedIn/채용 플랫폼 공유** — share-action-plan.md 참고
 
 ---
 
@@ -109,5 +115,5 @@
 
 ---
 
-*최종 업데이트: 2026-04-01 · STEP 87 완료 · v23*
-*포트폴리오 완성 + 수치 전체 정합성 완료 🎉*
+*최종 업데이트: 2026-04-01 · STEP 88 완료 · v24*
+*포트폴리오 완성 + docs 내부 수치 전체 정합성 완료 🎉*
