@@ -20,7 +20,7 @@
 
 1. **6년 9개월 QA 실무** — 삼성전자 파트너(모비프렌), IMS Mobility, 두플 QA 리더
 2. **Claude MCP 5개 실제 연동** — 테스트 코드 0줄, 대화만으로 TC 145건+ 자동 생성
-3. **풀 QA 파이프라인** — TC 생성 → E2E → GitHub 커밋 → Notion 문서화 → Slack 알림, 전부 자동
+3. **풀 QA 파이프라인** — TC 생성 → E2E → GitHub 커밋 → Notion 문서화 → Slack 알림 → Jira 연동, 전부 자동
 
 ---
 
@@ -32,6 +32,7 @@
 ✅ github MCP      — 커밋 + Actions 자동화 (workflow 2개 / 파일 80개+)
 ✅ notion MCP      — TC 결과 자동 문서화 [실제 연동 확인]
 ✅ slack MCP       — QA 알림 실제 발송 확인 [#새-채널 운영 중]
+✅ Jira            — GitHub 연동 완료 (FULL ACCESS)
 ```
 
 ---
@@ -43,10 +44,11 @@
 | QA 경력 | 6년 9개월 | 삼성전자 파트너 포함 |
 | TC 수 | 145건+ | 16개 도메인 커버 |
 | Playwright spec | 12개 | E2E 자동화 |
-| docs/ 문서 | 25개 | QA 전 영역 커버 |
+| docs/ 문서 | **27개** | QA 전 영역 커버 |
 | GitHub Actions | 2개 | CI/CD 자동화 |
 | 작성한 코드 | 0줄 | 전부 Claude 대화로 생성 |
 | 레포 파일 수 | 80개+ | 전체 포트폴리오 |
+| Jira 연동 | ✅ | GitHub 이슈 트래킹 |
 
 ---
 
@@ -66,7 +68,7 @@
 `TC 설계` `E2E 자동화` `API 테스트` `버그 리포트` `회귀 테스트` `접근성 테스트` `성능 테스트` `보안 TC`
 
 ### 자동화 & 도구
-`Claude MCP` `Playwright` `GitHub Actions` `Notion` `Slack` `Jira (예정)` `CI/CD`
+`Claude MCP` `Playwright` `GitHub Actions` `Notion` `Slack` `Jira` `CI/CD`
 
 ### 협업 & 문서화
 `TC 설계 문서` `릴리스 QA 프로세스` `주간 QA 리포트` `면접 대비 문서` `커버레터 5종`
@@ -107,6 +109,8 @@
 | `docs/share-action-plan.md` | 공유 액션 플랜 — 플랫폼별 실행 가이드 |
 | `docs/interview-qa.md` | QA 면접 질문 & 모범 답변 12문항 |
 | `docs/interview-qa-advanced.md` | AI 시대 QA 심화 면접 대비 11문항 |
+| `docs/interview-simulation.md` | 실전 면접 돌발 질문 대응 가이드 |
+| `docs/jira-github-integration.md` | Jira + GitHub 연동 완료 기록 |
 | `docs/ai-qa-vision.md` | AI+QA 비전 에세이 (2026 트렌드 반영) |
 | `docs/mcp-architecture.md` | MCP 기술 아키텍처 |
 | `docs/qa-kpi-dashboard.md` | KPI 실제 수치 대시보드 |
@@ -119,9 +123,9 @@
 |------|-----|
 | 포트폴리오 사이트 | **https://kihyunqa.github.io/qa-portfolio** |
 | GitHub 레포 | **https://github.com/kihyunqa/qa-portfolio** |
-| 공유 액션 플랜 | **docs/share-action-plan.md** |
+| Jira 프로젝트 | **https://kihyunqa-1775011951168.atlassian.net** |
 | 이메일 | kihyun.qa@gmail.com |
 
 ---
 
-*수치 최종 업데이트: 2026-03-31 · STEP 71 · TC 145건+, Playwright 12 spec, docs 25개, testcase 16개, 파일 80개+, 커버레터 5종, LinkedIn 6버전*
+*수치 최종 업데이트: 2026-04-01 · v21 · TC 145건+, Playwright 12 spec, docs 27개, testcase 16개, 파일 80개+, 커버레터 5종, LinkedIn 6버전, Jira 연동 완료*

@@ -1,5 +1,52 @@
 # CHANGELOG
 
+## v21.0.0 — 2026-04-01
+
+### STEP 10/11/12 완료 — 실증 자료 확보 및 외부 연동 마무리
+
+| 작업 | 내용 | 상태 |
+|------|------|------|
+| STEP 10 | 스크린샷 4장 캡처 + screenshots/README.md 커밋 | ✅ |
+| STEP 11 | Jira + GitHub 연동 완료 + docs/jira-github-integration.md 커밋 | ✅ |
+| STEP 12 | LinkedIn 게시 — 사용자 판단으로 스킵 | ➡️ 스킵 |
+
+#### STEP 10 상세 — 스크린샷 4장
+- Slack `#새-채널` QA 알림 수신 화면 ✅
+- GitHub Actions QA Auto Notify #7 **Success** 화면 ✅
+- notify job 전체 스텝 성공 로그 (Set up / Checkout / Slack Notification 등) ✅
+- Notion Test Case Hub 전체 TC 목록 (50+ / 자동화율 100%) ✅
+
+#### STEP 11 상세 — Jira + GitHub 연동
+- Jira 인스턴스: kihyunqa-1775011951168.atlassian.net
+- 프로젝트: **QA Portfolio**
+- GitHub for Atlassian 앱 설치 + kihyunqa 계정 연결
+- Permissions: **FULL ACCESS** / Backfill: IN PROGRESS → 완료
+- 신규 파일: `docs/jira-github-integration.md`
+
+#### STEP 81 상세 (v20에서 누락된 항목 보완)
+- `docs/interview-simulation.md` 신규 생성 — 돌발 질문 대응 가이드 5카테고리
+
+### 확정 수치 (v21)
+
+| 항목 | 수치 |
+|------|------|
+| TC | **145건+** |
+| Playwright spec | **12개** |
+| testcase_*.md | **16개** |
+| docs/ 문서 | **27개** |
+| skills/ 문서 | **9개** |
+| 레포 파일 수 | **80개+** |
+| GitHub Actions | **2개** |
+| MCP 연동 | **5개** |
+| Jira 연동 | **추가됨** |
+| 커버레터 | **5종** |
+| LinkedIn 포스트 | **6버전** |
+| 면접 Q&A 기초 | **12문항** |
+| 면접 Q&A 심화 | **11문항** |
+| 면접 시뮬레이션 | **1개** |
+
+---
+
 ## v20.0.0 — 2026-03-31
 
 ### 레포 전체 최종 점검 완료 (STEP 78~79) — 포트폴리오 정합성 작업 100% 마무리
@@ -16,26 +63,6 @@
 | docs/ 25개 전체 | ✅ STEP 76 완전 완료 (수정 2개, 이상 없음 23개) |
 | CHANGELOG.md | ✅ v20 최신 |
 | NEXT_STEPS.md | ✅ 최종 인수인계 완료 |
-
-**→ 레포 전체 수치 정합성 100% 완료. Claude 단독 작업 전부 마무리.** 🎉
-
-### 최종 확정 수치 (v20 · 변경 없음)
-
-| 항목 | 수치 |
-|------|------|
-| TC | **145건+** |
-| Playwright spec | **12개** |
-| testcase_*.md | **16개** |
-| docs/ 문서 | **25개** |
-| skills/ 문서 | **9개** |
-| 레포 파일 수 | **80개+** |
-| GitHub Actions | **2개** |
-| MCP 연동 | **5개** |
-| 커버레터 | **5종** |
-| LinkedIn 포스트 | **6버전** |
-| 면접 Q&A 기초 | **12문항** |
-| 면접 Q&A 심화 | **11문항** |
-| CHANGELOG | **v20** |
 
 ---
 
