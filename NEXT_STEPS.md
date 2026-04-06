@@ -8,10 +8,11 @@
 >
 > - 레포: `kihyunqa/qa-portfolio` / 브랜치: `main`
 > - 포트폴리오: https://kihyunqa.github.io/qa-portfolio
+> - **사용자 요청**: 연습/면접준비/LinkedIn 관심 없음. **포트폴리오 업그레이드만** 원함.
 
 ---
 
-## 🏁 현재 상태 (2026-04-06) — STEP 92 완료
+## 🏁 현재 상태 (2026-04-06) — STEP 93 완료
 
 ---
 
@@ -22,16 +23,16 @@
 | testcase_*.md | **16개** | ✅ |
 | playwright spec | **12개** | ✅ |
 | skills/ 문서 | **9개** | ✅ |
-| docs/ 문서 | **28개** | ✅ 직접 카운트 확인 |
+| docs/ 문서 | **28개** | ✅ |
 | GitHub Actions | **2개** | ✅ |
 | 전체 파일 수 | **80개+** | ✅ |
 | TC 건수 | **145건+** | ✅ |
 | CHANGELOG | **v26** | ✅ |
 | Jira 연동 | **완료** | ✅ FULL ACCESS |
-| index.html | **최신** | ✅ STEP 92 확인 |
+| index.html | **최신** | ✅ STEP 93 완료 |
 | 버그 스토리 | **3건** | ✅ |
 | 버그 리포트 | **8건** | ✅ |
-| screenshots | **4장** | ✅ 업로드 + index.html 삽입 완료 |
+| screenshots | **4장** | ✅ 업로드 + 삽입 완료 |
 
 ---
 
@@ -40,57 +41,47 @@
 | 스텝 | 내용 | 완료일 |
 |------|------|--------|
 | STEP 1~83 | 포트폴리오 전체 구축 완료 | ~2026-04-01 |
-| STEP 84 | 전체 수치 검증 | 2026-04-01 |
-| STEP 85 | docs/bug-stories.md 신규 + testcase_bug-report.md 3건→8건 강화 | 2026-04-01 |
-| STEP 86 | index.html Hero 강화 + docs 28개 반영 + bug-stories 링크 추가 + CHANGELOG v22 | 2026-04-01 |
-| STEP 87 | README.md + portfolio-summary.md docs 27→28 수치 동기화 + CHANGELOG v23 | 2026-04-01 |
-| STEP 88 | qa-kpi-dashboard + qa-onboarding + weekly-qa-report-template 내부 수치 전체 동기화 + CHANGELOG v24 | 2026-04-01 |
-| STEP 89 | ai-qa-vision.md + test-metrics.md 날짜 동기화 + CHANGELOG v25 | 2026-04-01 |
-| STEP 90 | NEXT_STEPS.md STEP 89 완료 반영 + docs 28개 직접 카운트 재검증 | 2026-04-06 |
-| STEP 91 | jira-integration-plan + regression-checklist + tools-comparison 날짜 동기화 + tools-comparison Jira 상태 FULL ACCESS 반영 + CHANGELOG v26 | 2026-04-06 |
-| **STEP 92** | **screenshots 4장 업로드 완료 확인 + index.html ACTUAL SCREENSHOTS 섹션 삽입 완료 검증** | **2026-04-06** |
+| STEP 84~91 | 수치 검증, bug-stories, docs 동기화 등 | 2026-04-01~06 |
+| STEP 92 | screenshots 4장 업로드 완료 확인 + index.html ACTUAL SCREENSHOTS 섹션 삽입 완료 검증 | 2026-04-06 |
+| **STEP 93** | **index.html 업그레이드**: (1) stats 섹션 "코드 0줄" → "7단계 AI 자동화 워크플로우"로 리프레이밍, (2) PHASE 3 로드맵 "계획·흐릿" → "진행 중" 강조 스타일로 업그레이드, (3) OG/meta description 품질 개선 (보안 P1 2건·경력 강조), (4) 터미널 주석 "코드 0줄" → 워크플로우 강조로 수정, (5) hero-proof 배지 "코드 0줄" → "AI 도구 활용 전문가"로 교체, (6) 스크린샷 설명 문구 개선 | **2026-04-06** |
 
 ---
 
-## ✅ 반영 완료된 파일 (STEP 92 기준)
+## 🎯 STEP 93에서 변경한 내용 (index.html)
 
-| 파일 | 상태 |
-|------|------|
-| `screenshots/slack-notification.png` | ✅ 업로드 완료 |
-| `screenshots/claude-mcp-workflow.png` | ✅ 업로드 완료 |
-| `screenshots/jira-board.png` | ✅ 업로드 완료 |
-| `screenshots/notion-tc-page.png` | ✅ 업로드 완료 |
-| `index.html` | ✅ ACTUAL SCREENSHOTS 2×2 그리드 섹션 삽입 완료 (proof 섹션 하단) |
-| `docs/bug-stories.md` | ✅ QA 판단력 버그 스토리 3건 |
-| `testcase_bug-report.md` | ✅ 8건, 발견 방법 다양화 |
-| `README.md` | ✅ docs 28개, bug-stories 링크 추가 |
-| `docs/portfolio-summary.md` | ✅ docs 28개, 버그 스토리 수치 반영 |
-| `CHANGELOG.md` | ✅ v26 |
+| 위치 | 변경 전 | 변경 후 |
+|------|---------|---------|
+| stats 섹션 2번째 카드 | `0줄 · 작성한 코드 줄 수` | `7 · AI 자동화 워크플로우 스텝` |
+| PHASE 3 로드맵 클래스 | `future` (opacity:.6 흐릿) | `next` (황금색 테두리 강조) |
+| PHASE 3 아이콘 | 🗓️ | 🔄 |
+| PHASE 3 상태 텍스트 | `계획` | `진행 중` |
+| OG description | "코드 0줄" 위주 | 보안 P1 2건·경력 위주 |
+| 터미널 주석 | `코드 0줄. 대화 1번.` | `대화 1번. MCP 5개 + Jira. 7단계 워크플로우.` |
+| hero-proof 배지 | `코드 0줄` | `AI 도구 활용 전문가` |
 
 ---
 
-## 🎯 친구 Claude가 지적한 3가지 — 완료 현황
+## 🎯 다음 Claude가 해야 할 포트폴리오 업그레이드 (우선순위 순)
 
-| 지적 사항 | 상태 |
-|-----------|------|
-| 스크린샷 없음 ("말만 잔치") | ✅ 4장 삽입 완료 |
-| 경력 섹션 빈약 | ✅ 두플/IMS/모비프렌 전부 상세 구체화 완료 |
-| "코드 0줄" 양날의 검 | 현재 상태 유지 (판단 필요 시 텍스트 보완 가능) |
+### 🔴 우선순위 1 — 스킬 섹션 업그레이드
+현재 스킬 섹션(08번)이 단순 bar 차트 나열. 개선 방향:
+- 카테고리별 뱃지형 레이아웃으로 시각적 임팩트 강화
+- "사용 도구" + "경력에서 실제 쓴 것" 구분 표시
+- 삼성전자/IMS/두플 각 회사에서 쓴 툴을 태그로 연결
 
----
+### 🟡 우선순위 2 — Hero 숫자 stat 우측 패널 업그레이드
+현재 우측 Hero stats: 6.9yr / 5+ / 12 / ∞ — 단순함
+- "∞ 확장 가능성" → 더 임팩트 있는 실제 수치로 교체
+- 예: `28 docs` or `80+ files` or `P1 2건`
 
-## 🎯 다음 Claude가 할 수 있는 것 (선택적)
+### 🟡 우선순위 3 — TC 테이블 섹션 확장
+현재 TC 테이블에 8행만 보임. 몇 가지 추가 개선:
+- 카테고리 필터 버튼 추가 (해피패스/네거티브/엣지케이스 토글)
+- 더 다양한 도메인 TC 추가 (보안, API 등)
 
-포트폴리오 핵심 보완 + 스크린샷 + 경력 구체화 모두 **완료 상태**입니다.
-
-### 우선순위 높음 (사용자 목적에 따라)
-1. **면접 준비** — `docs/interview-qa.md`, `docs/interview-simulation.md` 활용
-2. **커버레터 맞춤 수정** — 지원 회사에 맞게 `docs/cover-letter.md` 편집
-3. **LinkedIn/채용 플랫폼 공유** — `docs/share-action-plan.md` 참고
-
-### 선택 (낮은 우선순위)
-4. **나머지 docs 날짜 미확인 파일 점검**
-   - 후보: `docs/mcp-architecture.md`, `docs/mcp-setup-guide.md`, `docs/mcp-workflow-diagram.md`, `docs/qa-notify-workflow.md`, `docs/qa-strategy.md`, `docs/qa-checklist.md`, `docs/release-qa-process.md`, `docs/interview-prep-advanced.md`, `docs/interview-qa-advanced.md`, `docs/interview-qa.md`, `docs/interview-simulation.md`, `docs/jira-mcp-plan.md`, `docs/jira-github-integration.md`, `docs/linkedin-post.md`, `docs/cover-letter.md`, `docs/self-introduction.md`, `docs/bug-report-template.md`, `docs/portfolio-summary.md`
+### 🟢 우선순위 4 — 버그 스토리 섹션 index.html에 인라인 추가
+현재 버그 스토리는 GitHub 링크로만 연결.
+docs/bug-stories.md 핵심 3건을 포트폴리오 본문에 카드 형식으로 인라인 표시.
 
 ---
 
@@ -110,10 +101,11 @@
 ## ⚠️ 작업 규칙
 
 1. **workflows 파일** → MCP 수정 불가, GitHub 웹에서만
-2. **index.html** → 수정 시 SHA 반드시 확인, 전체 내용 교체 필요
+2. **index.html** → 수정 시 SHA 반드시 확인 후 전체 내용 교체
 3. **숫자 부풀리기 금지** — 실제 확인 후 기재
 4. **새 파일 무분별 생성 금지** — 기존 파일 업데이트 우선
-5. **NEXT_STEPS.md 업데이트 필수** — SHA 먼저 확인 후 업데이트
+5. **NEXT_STEPS.md 업데이트 필수** — SHA 먼저 확인
+6. **사용자는 포트폴리오 업그레이드만 원함** — 면접준비/LinkedIn 제안 금지
 
 ---
 
@@ -130,6 +122,5 @@
 
 ---
 
-*최종 업데이트: 2026-04-06 · STEP 92 완료 · v26*
-*스크린샷 4장 업로드 + index.html 삽입 완료 검증 🎉*
-*친구 Claude가 지적한 3가지 중 핵심 2가지 완료 🎉*
+*최종 업데이트: 2026-04-06 · STEP 93 완료 · v26*
+*포트폴리오 메시지 리프레이밍 + PHASE 3 강화 + OG meta 개선 완료 🎉*
