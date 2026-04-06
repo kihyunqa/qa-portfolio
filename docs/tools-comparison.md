@@ -62,7 +62,7 @@
 | **Notion** | TC 결과 DB | ✅ notion MCP | TC 145건+ 자동 업로드 |
 | **GitHub** | 코드 & 변경 이력 | ✅ github MCP | 80개+ 파일 자동 커밋 |
 | **Slack** | 실시간 알림 | ✅ slack MCP | #새-채널 자동 발송 |
-| **Jira** | 버그 트래킹 | 🔜 PHASE 2 | 버그 이슈 자동 등록 예정 |
+| **Jira** | 버그 트래킹 | ✅ FULL ACCESS | Jira + GitHub 연동 완료 |
 | Confluence | 기술 문서 | 가능 | Notion 대체 사용 중 |
 | Linear | 이슈 트래킹 | 가능 | 스타트업 선호 도구 |
 
@@ -90,7 +90,7 @@
 | github | GitHub API | 커밋/파일 관리 | ✅ 운영 |
 | notion | Notion API | 페이지/DB 관리 | ✅ 운영 |
 | slack | Slack API | 메시지 발송 | ✅ 운영 |
-| jira | Jira Cloud API | 이슈 관리 | 🔜 PHASE 2 |
+| jira | Jira Cloud API | 이슈 관리 | ✅ FULL ACCESS |
 | calendar | Google Calendar | 일정 관리 | 📅 PHASE 3 |
 | gmail | Gmail API | 이메일 발송 | 📅 PHASE 3 |
 
@@ -114,4 +114,4 @@ Playwright + GitHub Actions + Notion + Slack + Claude MCP
 
 ---
 
-*최종 업데이트: 2026-03-31 · STEP 27 보강 · 2044 → 4500+ bytes*
+*최종 업데이트: 2026-04-06 · STEP 91 날짜 동기화 + Jira 상태 FULL ACCESS 반영*
