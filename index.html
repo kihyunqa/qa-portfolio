@@ -178,15 +178,22 @@ section{padding:96px 56px;position:relative;z-index:2}
 .timeline-sec{background:var(--bg);border-top:1px solid var(--p-border)}
 .timeline{position:relative;padding-left:32px}
 .timeline::before{content:'';position:absolute;left:0;top:8px;bottom:8px;width:1px;background:var(--p-border)}
-.tl-item{position:relative;padding:0 0 48px 40px}
+.tl-item{position:relative;padding:0 0 56px 40px}
 .tl-item:last-child{padding-bottom:0}
 .tl-dot{position:absolute;left:-40px;top:6px;width:10px;height:10px;border-radius:50%;background:var(--purple);box-shadow:0 0 12px var(--purple);border:2px solid var(--bg)}
 .tl-year{font-family:var(--mono);font-size:10px;color:var(--purple);letter-spacing:.15em;margin-bottom:10px}
-.tl-title{font-size:18px;font-weight:700;margin-bottom:4px}
-.tl-role{font-family:var(--mono);font-size:11px;color:var(--muted);margin-bottom:12px}
-.tl-desc{font-size:13px;color:var(--muted);line-height:1.8}
-.tl-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
-.tl-tag{font-family:var(--mono);font-size:9px;padding:2px 8px;border:1px solid var(--p-border);color:var(--muted)}
+.tl-title{font-size:20px;font-weight:700;margin-bottom:4px}
+.tl-role{font-family:var(--mono);font-size:11px;color:var(--muted);margin-bottom:16px}
+.tl-desc{font-size:13px;color:var(--muted);line-height:1.9}
+.tl-desc strong{color:var(--text);font-weight:500;display:block;margin-top:16px;margin-bottom:6px;font-size:12px;letter-spacing:.04em}
+.tl-bullet{padding-left:0;list-style:none;display:flex;flex-direction:column;gap:6px;margin-bottom:4px}
+.tl-bullet li{font-size:12px;color:var(--muted);line-height:1.75;padding-left:16px;position:relative}
+.tl-bullet li::before{content:'·';position:absolute;left:0;color:var(--purple)}
+.tl-proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:8px}
+.tl-proj{background:var(--bg2);border:1px solid var(--p-border);padding:12px 14px;font-size:11px;color:var(--muted);line-height:1.6}
+.tl-proj-title{font-family:var(--mono);font-size:10px;color:var(--purple);margin-bottom:5px;letter-spacing:.04em}
+.tl-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
+.tl-tag{font-family:var(--mono);font-size:9px;padding:3px 10px;border:1px solid var(--p-border);color:var(--muted)}
 .skills-sec{border-top:1px solid var(--p-border)}
 .skills-wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:48px}
 .sk-group-title{font-family:var(--mono);font-size:10px;color:var(--purple);letter-spacing:.2em;margin-bottom:20px}
@@ -238,6 +245,7 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:
   .diag-arrow{display:none}.timeline{padding-left:20px}
   .proof-grid{grid-template-columns:1fr}
   .roadmap-grid{grid-template-columns:1fr}
+  .tl-proj-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -482,30 +490,96 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:
 <section class="timeline-sec" id="timeline">
   <div class="sec-head reveal"><span class="sec-n">07</span><h2 class="sec-t">경력 타임라인</h2><div class="sec-line"></div></div>
   <div class="timeline reveal">
+
+    <!-- 두플 -->
     <div class="tl-item">
       <div class="tl-dot"></div>
-      <div class="tl-year">2024.11 — 2025.02</div>
+      <div class="tl-year">2024.11 — 2025.02 · 4개월</div>
       <div class="tl-title">두플</div>
-      <div class="tl-role">QA PART LEADER</div>
-      <div class="tl-desc">QA Part Leader로 테스트 전략 수립, TC 설계, 팀 리딩 담당.</div>
-      <div class="tl-tags"><span class="tl-tag">QA 리드</span><span class="tl-tag">TC 설계</span><span class="tl-tag">팀 리딩</span></div>
+      <div class="tl-role">QA 파트장 · 반도체 공정 시뮬레이션 QA</div>
+      <div class="tl-desc">
+        반도체 공정 시뮬레이션 소프트웨어의 QA 파트 리드. 공정 단계별 품질 기준을 정의하고 테스트 케이스·체크리스트를 직접 작성하며 유관 부서와의 협업 체계를 구축했습니다.
+        <strong>주요 업무</strong>
+        <ul class="tl-bullet">
+          <li>QA 파트 리드로서 공정 단계별 테스트 케이스·체크리스트 작성 및 QA 기준 정의</li>
+          <li>가스 유량·챔버 온도·압력 등 핵심 공정 변수 변동에 따른 시뮬레이션 결과 정합성 분석·검증</li>
+          <li>Jira 기반 이슈 등록·추적 및 Teams 협업으로 유관 부서에 QA 현황 실시간 공유</li>
+        </ul>
+      </div>
+      <div class="tl-tags">
+        <span class="tl-tag">QA 파트 리딩</span>
+        <span class="tl-tag">TC 설계</span>
+        <span class="tl-tag">공정 변수 검증</span>
+        <span class="tl-tag">Jira</span>
+        <span class="tl-tag">Teams</span>
+      </div>
     </div>
+
+    <!-- IMS Mobility -->
     <div class="tl-item">
       <div class="tl-dot"></div>
-      <div class="tl-year">2022.03 — 2024.02</div>
+      <div class="tl-year">2022.03 — 2024.02 · 2년</div>
       <div class="tl-title">IMS Mobility</div>
-      <div class="tl-role">QA 대리</div>
-      <div class="tl-desc">모바일앱 / 웹 / 백오피스 QA 수행. Cypress를 활용한 E2E 자동화 스크립트 작성 및 운영. Swagger 기반 API 검증. 결제 QA 담당.</div>
-      <div class="tl-tags"><span class="tl-tag">모바일앱 QA</span><span class="tl-tag">웹/백오피스 QA</span><span class="tl-tag">Cypress 자동화</span><span class="tl-tag">Swagger API</span><span class="tl-tag">결제 QA</span></div>
+      <div class="tl-role">QA 대리 · 모바일 앱 / 웹 / 백오피스 품질 검증</div>
+      <div class="tl-desc">
+        보험대차·일반렌트 서비스의 iOS/Android 앱, 관리자 백오피스, 웹 전 영역 기능·회귀 테스트 주도. 사용자 흐름 기반 시나리오 설계부터 Swagger API 직접 검증, Cypress 자동화 구축까지 QA 전 과정을 수행하며 격주 릴리즈 주기 내 품질 안정화에 기여했습니다.
+        <strong>주요 업무</strong>
+        <ul class="tl-bullet">
+          <li>iOS/Android 앱·백오피스·웹 기능 및 회귀 테스트 — 상품 조회·예약·결제·취소/반납 전 흐름 시나리오 설계·검증</li>
+          <li>Swagger 활용 예약·결제 API 직접 호출, 요청/응답 데이터 정합성 검증 — UI 테스트로 잡기 어려운 서버 응답 이상 사전 차단</li>
+          <li>Cypress 기반 계약서 작성 등 핵심 시나리오 자동화 케이스 구축·운영 — 반복 회귀 검증 자동화로 배포 전 검증 시간 단축</li>
+          <li>국내 주요 카드사·간편결제 환경별 케이스 설계, 승인·취소·환불 전 흐름 커버 — 이커머스 클레임/환불 플로우와 동일 구조의 QA 수행 경험</li>
+          <li>Jira·Slack·Notion 기반 이슈 트래킹 체계 운영, 리포트 형식 표준화로 기획·개발·운영 팀 간 커뮤니케이션 지연 최소화</li>
+          <li>VOC 이슈 재현 경로 확보, 재현 조건·영향 범위·우선순위를 담은 상세 리포트 개발팀 전달 및 수정 후 검증 완료</li>
+        </ul>
+        <strong>주요 프로젝트</strong>
+        <div class="tl-proj-grid">
+          <div class="tl-proj"><div class="tl-proj-title">① 차량 그룹·요금 관리 시스템 고도화</div>요금 계산 로직 변경에 따른 케이스 전면 재설계. 백오피스 요금 적용 케이스 중심으로 테스트 범위 설계, 로직 오적용으로 인한 결함 사전 차단.</div>
+          <div class="tl-proj"><div class="tl-proj-title">② 렌톡 API 외부 연동</div>외부 시스템 API 연동 도입에 따른 차량 정보 조회·예약 데이터 정합성 검증. 연동 오류 케이스 재현 및 수정 확인으로 안정성 확보.</div>
+          <div class="tl-proj"><div class="tl-proj-title">③ 글로벌 화이트라벨 (Hertz, 마이리얼트립 등)</div>해외 파트너사 브랜드 적용 플랫폼 현지화 QA. UI/UX 로컬라이징 검증 및 신규 플랫폼 연동 테스트.</div>
+          <div class="tl-proj"><div class="tl-proj-title">④ AOS 청구 기능 신규 도입</div>Android 앱 청구 흐름 전반 기능 검증. 경계값·예외 상황 중심 케이스 도출로 신규 기능 안정적 출시에 기여.</div>
+        </div>
+      </div>
+      <div class="tl-tags">
+        <span class="tl-tag">iOS/Android QA</span>
+        <span class="tl-tag">웹/백오피스 QA</span>
+        <span class="tl-tag">Cypress 자동화</span>
+        <span class="tl-tag">Swagger API 검증</span>
+        <span class="tl-tag">결제 QA</span>
+        <span class="tl-tag">Jira·Slack·Notion</span>
+        <span class="tl-tag">글로벌 화이트라벨</span>
+      </div>
     </div>
+
+    <!-- 모비프렌 -->
     <div class="tl-item">
       <div class="tl-dot"></div>
-      <div class="tl-year">2017.09 — 2022.01</div>
-      <div class="tl-title">모비프렌 <span style="font-size:13px;color:var(--muted);font-weight:400">(삼성전자 파트너)</span></div>
-      <div class="tl-role">QA 주임</div>
-      <div class="tl-desc">IoT SmartThings, AI Bixby, 삼성 모바일앱 검증 담당. 다양한 디바이스 환경에서의 QA 수행 및 품질 기준 수립.</div>
-      <div class="tl-tags"><span class="tl-tag">IoT SmartThings</span><span class="tl-tag">AI Bixby</span><span class="tl-tag">삼성 모바일앱</span><span class="tl-tag">디바이스 QA</span></div>
+      <div class="tl-year">2017.09 — 2022.01 · 4년 4개월</div>
+      <div class="tl-title">모비프렌 <span style="font-size:14px;color:var(--muted);font-weight:400">(삼성전자 파트너)</span></div>
+      <div class="tl-role">QA 주임 · IoT / AI / 삼성 모바일 앱 품질 검증</div>
+      <div class="tl-desc">
+        삼성전자 파트너사로서 Bixby AI 음성 인식, SmartThings IoT, CMC, 키보드, 인터넷 브라우저 등 삼성 모바일 핵심 기능의 QA 수행. 멀티 디바이스 환경에서 시나리오를 설계하고 품질 기준을 정량 평가했습니다.
+        <strong>주요 업무</strong>
+        <ul class="tl-bullet">
+          <li>Bixby — Mobile/Tablet/Watch/IoT 스피커 멀티 디바이스 환경에서 ASR 정확도·응답 품질 검증. Wake-up 안정화, 거리·소음·상황별 시나리오 수행 및 타사 모델 비교 테스트로 품질 기준 정량 평가</li>
+          <li>SmartThings IoT — 다중 기기 연동 시나리오에서 명령 전달·상태 동기화 기능 검증, 음성 제어 환경 안정성 시나리오 설계 및 수행</li>
+          <li>CMC — 주·부 단말 간 통화 전환, 메시지 동기화, Call log 동기화 기능 검증 및 다양한 기본 기능 연계 동작 안정성 확인</li>
+          <li>Keyboard — 스마트폰 전 앱 환경 다양한 입력 방식·기능 검증, 래깅 이슈 및 입력 동작 오류 포함. BT 키보드·Samsung DeX 액세서리 연동 환경 동작 확인</li>
+          <li>Internet — Menu Tree UI 가이드 기반 TC 작성 및 메뉴 구현·진입 검증. 앱 업그레이드 시 데이터 마이그레이션(북마크·Quick Access·설정) 유지 검증</li>
+          <li>릴리즈 전 주요 기능 검증 및 VOC 이슈 재현·수정 확인, Log 추출 후 개발팀 전달</li>
+        </ul>
+      </div>
+      <div class="tl-tags">
+        <span class="tl-tag">AI Bixby</span>
+        <span class="tl-tag">SmartThings IoT</span>
+        <span class="tl-tag">CMC</span>
+        <span class="tl-tag">Keyboard</span>
+        <span class="tl-tag">Internet Browser</span>
+        <span class="tl-tag">멀티 디바이스 QA</span>
+        <span class="tl-tag">정량 평가</span>
+      </div>
     </div>
+
   </div>
 </section>
 
