@@ -11,22 +11,22 @@
 
 ---
 
-## 🏁 현재 상태 (2026-04-01) — STEP 88 완료
+## 🏁 현재 상태 (2026-04-06) — STEP 90 완료
 
 ---
 
-## ✅ 확정 수치 (v24 기준)
+## ✅ 확정 수치 (v25 기준)
 
 | 항목 | 수치 | 검증 |
 |------|------|------|
 | testcase_*.md | **16개** | ✅ |
 | playwright spec | **12개** | ✅ |
 | skills/ 문서 | **9개** | ✅ |
-| docs/ 문서 | **28개** | ✅ 전체 파일 일치 |
+| docs/ 문서 | **28개** | ✅ 직접 카운트 확인 |
 | GitHub Actions | **2개** | ✅ |
 | 전체 파일 수 | **80개+** | ✅ |
 | TC 건수 | **145건+** | ✅ |
-| CHANGELOG | **v24** | ✅ |
+| CHANGELOG | **v25** | ✅ |
 | Jira 연동 | **완료** | ✅ FULL ACCESS |
 | index.html | **최신** | ✅ STEP 86 완료 |
 | 버그 스토리 | **3건** | ✅ |
@@ -43,11 +43,13 @@
 | STEP 85 | docs/bug-stories.md 신규 + testcase_bug-report.md 3건→8건 강화 | 2026-04-01 |
 | STEP 86 | index.html Hero 강화 + docs 28개 반영 + bug-stories 링크 추가 + CHANGELOG v22 | 2026-04-01 |
 | STEP 87 | README.md + portfolio-summary.md docs 27→28 수치 동기화 + CHANGELOG v23 | 2026-04-01 |
-| **STEP 88** | **qa-kpi-dashboard + qa-onboarding + weekly-qa-report-template 내부 수치 전체 동기화 (docs 25→28, Jira, 버그 스토리 반영) + CHANGELOG v24** | **2026-04-01** |
+| STEP 88 | qa-kpi-dashboard + qa-onboarding + weekly-qa-report-template 내부 수치 전체 동기화 + CHANGELOG v24 | 2026-04-01 |
+| **STEP 89** | **ai-qa-vision.md + test-metrics.md 날짜 동기화 (2026-03-31→2026-04-01), share-action-plan.md 이상 없음 확인 + CHANGELOG v25** | **2026-04-01** |
+| **STEP 90** | **NEXT_STEPS.md STEP 89 완료 반영 + docs 28개 직접 카운트 재검증 ✅** | **2026-04-06** |
 
 ---
 
-## ✅ 반영 완료된 파일 (STEP 88 기준)
+## ✅ 반영 완료된 파일 (STEP 90 기준)
 
 | 파일 | 상태 |
 |------|------|
@@ -59,8 +61,11 @@
 | `docs/qa-kpi-dashboard.md` | ✅ docs 28개, Jira 행 추가, 개선 이력 최신화 |
 | `docs/qa-onboarding.md` | ✅ docs 28개, CHANGELOG v23, Jira 체크리스트, bug-stories 링크 |
 | `docs/weekly-qa-report-template.md` | ✅ docs 28개, 실제 예시 2026-04-01 갱신, Jira 항목 |
-| `CHANGELOG.md` | ✅ v24 |
-| `NEXT_STEPS.md` | ✅ STEP 88 반영 |
+| `docs/ai-qa-vision.md` | ✅ 날짜 2026-04-01 동기화 (STEP 89) |
+| `docs/test-metrics.md` | ✅ 날짜 2026-04-01 동기화 (STEP 89) |
+| `docs/share-action-plan.md` | ✅ 이상 없음 확인 (STEP 89) |
+| `CHANGELOG.md` | ✅ v25 |
+| `NEXT_STEPS.md` | ✅ STEP 90 반영 |
 
 ---
 
@@ -68,13 +73,19 @@
 
 포트폴리오 핵심 보완 + docs 내부 수치 정합성 모두 **완료 상태**입니다.
 
+### 우선순위 높음
 1. **screenshots 실제 PNG 업로드** ← 가장 효과적인 남은 작업
    - 사용자 직접 업로드: https://github.com/kihyunqa/qa-portfolio/upload/main/screenshots
-   - Claude가 직접 PNG 파일 생성은 불가
-2. **나머지 docs 파일 수치 점검** ← 아직 확인 안 한 파일들
-   - 점검 대상 후보: `docs/ai-qa-vision.md`, `docs/share-action-plan.md`, `docs/test-metrics.md` 등 (2026-03-31 날짜 기준 파일들)
-3. **면접 준비** — interview-qa.md, interview-simulation.md 활용
-4. **LinkedIn/채용 플랫폼 공유** — share-action-plan.md 참고
+   - Claude가 직접 PNG 파일 생성은 불가 (사용자 action 필요)
+
+### 우선순위 중간
+2. **면접 준비 활용** — `docs/interview-qa.md`, `docs/interview-simulation.md` 참고
+3. **커버레터 맞춤 수정** — 지원 회사에 맞게 `docs/cover-letter.md` 편집
+4. **LinkedIn/채용 플랫폼 공유** — `docs/share-action-plan.md` 참고
+
+### 우선순위 낮음 (선택)
+5. **나머지 docs 파일 날짜 동기화 점검** — 아직 2026-03-31 기재된 파일 있을 수 있음
+   - 대상 후보: `docs/jira-integration-plan.md`, `docs/regression-checklist.md`, `docs/tools-comparison.md` 등
 
 ---
 
@@ -115,5 +126,5 @@
 
 ---
 
-*최종 업데이트: 2026-04-01 · STEP 88 완료 · v24*
-*포트폴리오 완성 + docs 내부 수치 전체 정합성 완료 🎉*
+*최종 업데이트: 2026-04-06 · STEP 90 완료 · v25*
+*포트폴리오 완성 + docs 28개 수치 직접 검증 완료 🎉*
