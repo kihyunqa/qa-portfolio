@@ -11,7 +11,7 @@
 
 ---
 
-## 🏁 현재 상태 (2026-04-06) — STEP 91 완료
+## 🏁 현재 상태 (2026-04-06) — STEP 92 완료
 
 ---
 
@@ -28,9 +28,10 @@
 | TC 건수 | **145건+** | ✅ |
 | CHANGELOG | **v26** | ✅ |
 | Jira 연동 | **완료** | ✅ FULL ACCESS |
-| index.html | **최신** | ✅ STEP 86 완료 |
+| index.html | **최신** | ✅ STEP 92 확인 |
 | 버그 스토리 | **3건** | ✅ |
 | 버그 리포트 | **8건** | ✅ |
+| screenshots | **4장** | ✅ 업로드 + index.html 삽입 완료 |
 
 ---
 
@@ -46,49 +47,49 @@
 | STEP 88 | qa-kpi-dashboard + qa-onboarding + weekly-qa-report-template 내부 수치 전체 동기화 + CHANGELOG v24 | 2026-04-01 |
 | STEP 89 | ai-qa-vision.md + test-metrics.md 날짜 동기화 + CHANGELOG v25 | 2026-04-01 |
 | STEP 90 | NEXT_STEPS.md STEP 89 완료 반영 + docs 28개 직접 카운트 재검증 | 2026-04-06 |
-| **STEP 91** | **jira-integration-plan + regression-checklist + tools-comparison 날짜 동기화 + tools-comparison Jira 상태 FULL ACCESS 반영 + CHANGELOG v26** | **2026-04-06** |
+| STEP 91 | jira-integration-plan + regression-checklist + tools-comparison 날짜 동기화 + tools-comparison Jira 상태 FULL ACCESS 반영 + CHANGELOG v26 | 2026-04-06 |
+| **STEP 92** | **screenshots 4장 업로드 완료 확인 + index.html ACTUAL SCREENSHOTS 섹션 삽입 완료 검증** | **2026-04-06** |
 
 ---
 
-## ✅ 반영 완료된 파일 (STEP 91 기준)
+## ✅ 반영 완료된 파일 (STEP 92 기준)
 
 | 파일 | 상태 |
 |------|------|
+| `screenshots/slack-notification.png` | ✅ 업로드 완료 |
+| `screenshots/claude-mcp-workflow.png` | ✅ 업로드 완료 |
+| `screenshots/jira-board.png` | ✅ 업로드 완료 |
+| `screenshots/notion-tc-page.png` | ✅ 업로드 완료 |
+| `index.html` | ✅ ACTUAL SCREENSHOTS 2×2 그리드 섹션 삽입 완료 (proof 섹션 하단) |
 | `docs/bug-stories.md` | ✅ QA 판단력 버그 스토리 3건 |
 | `testcase_bug-report.md` | ✅ 8건, 발견 방법 다양화 |
-| `index.html` | ✅ Hero 메시지 강화, docs 28개, bug-stories 링크 |
 | `README.md` | ✅ docs 28개, bug-stories 링크 추가 |
 | `docs/portfolio-summary.md` | ✅ docs 28개, 버그 스토리 수치 반영 |
-| `docs/qa-kpi-dashboard.md` | ✅ docs 28개, Jira 행 추가 |
-| `docs/qa-onboarding.md` | ✅ docs 28개, Jira 체크리스트, bug-stories 링크 |
-| `docs/weekly-qa-report-template.md` | ✅ docs 28개, 실제 예시 2026-04-01 갱신 |
-| `docs/ai-qa-vision.md` | ✅ 날짜 2026-04-01 동기화 |
-| `docs/test-metrics.md` | ✅ 날짜 2026-04-01 동기화 |
-| `docs/share-action-plan.md` | ✅ 이상 없음 확인 |
-| `docs/jira-integration-plan.md` | ✅ 날짜 2026-04-06 동기화 |
-| `docs/regression-checklist.md` | ✅ 날짜 2026-04-06 동기화 |
-| `docs/tools-comparison.md` | ✅ 날짜 2026-04-06 동기화 + Jira FULL ACCESS 반영 |
 | `CHANGELOG.md` | ✅ v26 |
-| `NEXT_STEPS.md` | ✅ STEP 91 반영 |
+
+---
+
+## 🎯 친구 Claude가 지적한 3가지 — 완료 현황
+
+| 지적 사항 | 상태 |
+|-----------|------|
+| 스크린샷 없음 ("말만 잔치") | ✅ 4장 삽입 완료 |
+| 경력 섹션 빈약 | ✅ 두플/IMS/모비프렌 전부 상세 구체화 완료 |
+| "코드 0줄" 양날의 검 | 현재 상태 유지 (판단 필요 시 텍스트 보완 가능) |
 
 ---
 
 ## 🎯 다음 Claude가 할 수 있는 것 (선택적)
 
-포트폴리오 핵심 보완 + docs 내부 수치 및 날짜 정합성 모두 **완료 상태**입니다.
+포트폴리오 핵심 보완 + 스크린샷 + 경력 구체화 모두 **완료 상태**입니다.
 
-### 우선순위 높음
-1. **screenshots 실제 PNG 업로드** ← 가장 효과적인 남은 작업
-   - 사용자 직접 업로드: https://github.com/kihyunqa/qa-portfolio/upload/main/screenshots
-   - Claude가 직접 PNG 파일 생성은 불가 (사용자 action 필요)
-
-### 우선순위 중간
-2. **면접 준비 활용** — `docs/interview-qa.md`, `docs/interview-simulation.md` 참고
-3. **커버레터 맞춤 수정** — 지원 회사에 맞게 `docs/cover-letter.md` 편집
-4. **LinkedIn/채용 플랫폼 공유** — `docs/share-action-plan.md` 참고
+### 우선순위 높음 (사용자 목적에 따라)
+1. **면접 준비** — `docs/interview-qa.md`, `docs/interview-simulation.md` 활용
+2. **커버레터 맞춤 수정** — 지원 회사에 맞게 `docs/cover-letter.md` 편집
+3. **LinkedIn/채용 플랫폼 공유** — `docs/share-action-plan.md` 참고
 
 ### 선택 (낮은 우선순위)
-5. **나머지 docs 날짜 미확인 파일 점검** — 아직 검토 안 한 파일들
+4. **나머지 docs 날짜 미확인 파일 점검**
    - 후보: `docs/mcp-architecture.md`, `docs/mcp-setup-guide.md`, `docs/mcp-workflow-diagram.md`, `docs/qa-notify-workflow.md`, `docs/qa-strategy.md`, `docs/qa-checklist.md`, `docs/release-qa-process.md`, `docs/interview-prep-advanced.md`, `docs/interview-qa-advanced.md`, `docs/interview-qa.md`, `docs/interview-simulation.md`, `docs/jira-mcp-plan.md`, `docs/jira-github-integration.md`, `docs/linkedin-post.md`, `docs/cover-letter.md`, `docs/self-introduction.md`, `docs/bug-report-template.md`, `docs/portfolio-summary.md`
 
 ---
@@ -125,10 +126,10 @@
 | bug-stories | https://github.com/kihyunqa/qa-portfolio/blob/main/docs/bug-stories.md |
 | Actions 탭 | https://github.com/kihyunqa/qa-portfolio/actions |
 | Jira | https://kihyunqa-1775011951168.atlassian.net |
-| screenshots 업로드 | https://github.com/kihyunqa/qa-portfolio/upload/main/screenshots |
 | 이메일 | kihyun.qa@gmail.com |
 
 ---
 
-*최종 업데이트: 2026-04-06 · STEP 91 완료 · v26*
-*docs 날짜 동기화 전체 완료 (3/31 기재 파일 전부 갱신) 🎉*
+*최종 업데이트: 2026-04-06 · STEP 92 완료 · v26*
+*스크린샷 4장 업로드 + index.html 삽입 완료 검증 🎉*
+*친구 Claude가 지적한 3가지 중 핵심 2가지 완료 🎉*
