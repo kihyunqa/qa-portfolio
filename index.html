@@ -397,10 +397,59 @@ section{padding:96px 56px;position:relative;z-index:2}
 .skills-wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:48px}
 .sk-group-title{font-family:var(--mono);font-size:10px;color:var(--purple);letter-spacing:.2em;margin-bottom:20px}
 .sk-list{display:flex;flex-direction:column;gap:14px}
-.sk-item{display:flex;justify-content:space-between;align-items:center}
-.sk-name{font-size:13px;color:var(--muted)}
+.sk-item{display:flex;justify-content:space-between;align-items:center;position:relative;cursor:default}
+.sk-name{font-size:13px;color:var(--muted);transition:color .2s}
+.sk-item:hover .sk-name{color:var(--text)}
 .sk-bar-w{width:140px;height:2px;background:rgba(168,85,247,.12)}
 .sk-bar{height:100%;background:linear-gradient(90deg,var(--purple2),var(--purple));transition:width 1.2s cubic-bezier(.4,0,.2,1)}
+
+/* =====================================================
+   SKILL TOOLTIP — STEP 123
+   스킬 바 hover 시 경험 맥락 툴팁
+   ===================================================== */
+.sk-tooltip{
+  position:fixed;
+  z-index:8000;
+  background:var(--bg3);
+  border:1px solid var(--p-border);
+  padding:10px 14px;
+  font-family:var(--mono);
+  font-size:10px;
+  color:var(--muted);
+  line-height:1.7;
+  pointer-events:none;
+  opacity:0;
+  transform:translateY(4px);
+  transition:opacity .18s ease, transform .18s ease;
+  max-width:220px;
+  white-space:pre-line;
+  box-shadow:0 8px 24px rgba(0,0,0,.5);
+}
+.sk-tooltip.visible{
+  opacity:1;
+  transform:translateY(0);
+}
+.sk-tooltip-title{
+  color:var(--purple);
+  font-weight:500;
+  margin-bottom:4px;
+  letter-spacing:.06em;
+}
+.sk-tooltip-tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:4px;
+  margin-top:6px;
+}
+.sk-tooltip-tag{
+  font-size:9px;
+  padding:1px 6px;
+  border:1px solid var(--p-border);
+  color:var(--purple);
+  background:var(--p-muted);
+  letter-spacing:.04em;
+}
+
 .tc-intro{font-size:15px;color:var(--muted);line-height:1.8;max-width:560px;margin-bottom:36px}
 
 /* =====================================================
@@ -671,6 +720,7 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
 .commit-stats-row{grid-template-columns:repeat(2,1fr)}
 #hero-canvas{display:none}
 .sec-stat-badge{display:none}
+.sk-tooltip{display:none}
 }
 </style>
 </head>
@@ -678,6 +728,13 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
 <div class="scroll-bar" id="scrollBar"></div>
 <div class="cur" id="cur"></div>
 <div class="cur-r" id="curR"></div>
+
+<!-- SKILL TOOLTIP 엘리먼트 — STEP 123 -->
+<div class="sk-tooltip" id="skTooltip">
+  <div class="sk-tooltip-title" id="skTipTitle"></div>
+  <div id="skTipBody"></div>
+  <div class="sk-tooltip-tags" id="skTipTags"></div>
+</div>
 
 <!-- DOT NAVIGATION (우측 고정) — div 태그 사용 -->
 <div id="dot-nav" aria-label="섹션 네비게이션">
@@ -1099,40 +1156,41 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
   </div>
 </div>
 
+<!-- SKILLS WRAP — STEP 123: data-tip 속성 추가 -->
 <div class="skills-wrap reveal">
 <div>
 <div class="sk-group-title">TESTING &amp; QA</div>
 <div class="sk-list">
-<div class="sk-item"><span class="sk-name">테스트케이스 설계</span><div class="sk-bar-w"><div class="sk-bar" style="width:95%"></div></div></div>
-<div class="sk-item"><span class="sk-name">버그 리포팅 &amp; 트래킹</span><div class="sk-bar-w"><div class="sk-bar" style="width:92%"></div></div></div>
-<div class="sk-item"><span class="sk-name">E2E 자동화 (Cypress/Playwright)</span><div class="sk-bar-w"><div class="sk-bar" style="width:82%"></div></div></div>
-<div class="sk-item"><span class="sk-name">API 테스트 (Swagger)</span><div class="sk-bar-w"><div class="sk-bar" style="width:70%"></div></div></div>
-<div class="sk-item"><span class="sk-name">버그 심각도 분류</span><div class="sk-bar-w"><div class="sk-bar" style="width:90%"></div></div></div>
-<div class="sk-item"><span class="sk-name">릴리즈 QA 리딩</span><div class="sk-bar-w"><div class="sk-bar" style="width:88%"></div></div></div>
+<div class="sk-item" data-tip-title="테스트케이스 설계" data-tip-body="6.9년 경력 · 145건+ TC 설계" data-tip-tags="두플 리드|IMS Mobility|모비프렌"><span class="sk-name">테스트케이스 설계</span><div class="sk-bar-w"><div class="sk-bar" style="width:95%"></div></div></div>
+<div class="sk-item" data-tip-title="버그 리포팅 & 트래킹" data-tip-body="P1 보안 버그 2건 발견 · Jira 연동" data-tip-tags="P1 에스컬레이션|결제 1원 오차|보안 토큰 허점"><span class="sk-name">버그 리포팅 &amp; 트래킹</span><div class="sk-bar-w"><div class="sk-bar" style="width:92%"></div></div></div>
+<div class="sk-item" data-tip-title="E2E 자동화" data-tip-body="Cypress (IMS) + Playwright MCP · 12 spec" data-tip-tags="Cypress|Playwright|spec 12개"><span class="sk-name">E2E 자동화 (Cypress/Playwright)</span><div class="sk-bar-w"><div class="sk-bar" style="width:82%"></div></div></div>
+<div class="sk-item" data-tip-title="API 테스트" data-tip-body="Swagger 기반 API 검증 · IMS Mobility 2년" data-tip-tags="Swagger|REST API|결제 API"><span class="sk-name">API 테스트 (Swagger)</span><div class="sk-bar-w"><div class="sk-bar" style="width:70%"></div></div></div>
+<div class="sk-item" data-tip-title="버그 심각도 분류" data-tip-body="P1·P2·P3 기준 수립 · 개발팀 설득 경험" data-tip-tags="P1 판단|심각도 기준|영향 분석"><span class="sk-name">버그 심각도 분류</span><div class="sk-bar-w"><div class="sk-bar" style="width:90%"></div></div></div>
+<div class="sk-item" data-tip-title="릴리즈 QA 리딩" data-tip-body="두플 QA Part Leader · 전략 수립·팀 리딩" data-tip-tags="두플 리드|테스트 전략|팀 리딩"><span class="sk-name">릴리즈 QA 리딩</span><div class="sk-bar-w"><div class="sk-bar" style="width:88%"></div></div></div>
 </div>
 </div>
 <div>
 <div class="sk-group-title">MCP CORE &amp; AI</div>
 <div class="sk-list">
-<div class="sk-item"><span class="sk-name">Claude MCP 연동 설계</span><div class="sk-bar-w"><div class="sk-bar" style="width:95%"></div></div></div>
-<div class="sk-item"><span class="sk-name">playwright MCP</span><div class="sk-bar-w"><div class="sk-bar" style="width:88%"></div></div></div>
-<div class="sk-item"><span class="sk-name">github MCP</span><div class="sk-bar-w"><div class="sk-bar" style="width:88%"></div></div></div>
-<div class="sk-item"><span class="sk-name">filesystem MCP</span><div class="sk-bar-w"><div class="sk-bar" style="width:90%"></div></div></div>
-<div class="sk-item"><span class="sk-name">notion MCP</span><div class="sk-bar-w"><div class="sk-bar" style="width:85%"></div></div></div>
-<div class="sk-item"><span class="sk-name">slack MCP</span><div class="sk-bar-w"><div class="sk-bar" style="width:83%"></div></div></div>
-<div class="sk-item"><span class="sk-name">Jira 연동</span><div class="sk-bar-w"><div class="sk-bar" style="width:80%"></div></div></div>
-<div class="sk-item"><span class="sk-name">Prompt Engineering</span><div class="sk-bar-w"><div class="sk-bar" style="width:92%"></div></div></div>
+<div class="sk-item" data-tip-title="Claude MCP 연동 설계" data-tip-body="5개 MCP 서버 직접 설계·운영 · 코드 0줄" data-tip-tags="5 MCP 서버|자동화 설계|코드 0줄"><span class="sk-name">Claude MCP 연동 설계</span><div class="sk-bar-w"><div class="sk-bar" style="width:95%"></div></div></div>
+<div class="sk-item" data-tip-title="playwright MCP" data-tip-body="E2E spec 12개 · 스크린샷 자동 캡처" data-tip-tags="12 spec|브라우저 자동화|스크린샷"><span class="sk-name">playwright MCP</span><div class="sk-bar-w"><div class="sk-bar" style="width:88%"></div></div></div>
+<div class="sk-item" data-tip-title="github MCP" data-tip-body="파일 80개+ 커밋 · GitHub Pages 배포 · Actions 2개" data-tip-tags="80개+ 파일|Actions|Pages 배포"><span class="sk-name">github MCP</span><div class="sk-bar-w"><div class="sk-bar" style="width:88%"></div></div></div>
+<div class="sk-item" data-tip-title="filesystem MCP" data-tip-body="TC 파일 자동 저장·읽기 · 로컬 리포트 관리" data-tip-tags="TC 저장|QA 리포트|로컬 관리"><span class="sk-name">filesystem MCP</span><div class="sk-bar-w"><div class="sk-bar" style="width:90%"></div></div></div>
+<div class="sk-item" data-tip-title="notion MCP" data-tip-body="TC 결과 자동 문서화 · Notion 페이지 생성 실제 연동" data-tip-tags="실제 연동|TC 문서화|팀 공유"><span class="sk-name">notion MCP</span><div class="sk-bar-w"><div class="sk-bar" style="width:85%"></div></div></div>
+<div class="sk-item" data-tip-title="slack MCP" data-tip-body="QA 완료 알림 실제 발송 · 새-채널 연동 확인" data-tip-tags="실제 연동|새-채널|Actions 연결"><span class="sk-name">slack MCP</span><div class="sk-bar-w"><div class="sk-bar" style="width:83%"></div></div></div>
+<div class="sk-item" data-tip-title="Jira 연동" data-tip-body="GitHub for Atlassian · FULL ACCESS · 이슈 자동 연결" data-tip-tags="FULL ACCESS|이슈 트래킹|커밋 연동"><span class="sk-name">Jira 연동</span><div class="sk-bar-w"><div class="sk-bar" style="width:80%"></div></div></div>
+<div class="sk-item" data-tip-title="Prompt Engineering" data-tip-body="QA 특화 프롬프트 · TC·버그리포트·문서화 전 영역" data-tip-tags="QA 프롬프트|Skill 정의|자동화 설계"><span class="sk-name">Prompt Engineering</span><div class="sk-bar-w"><div class="sk-bar" style="width:92%"></div></div></div>
 </div>
 </div>
 <div>
 <div class="sk-group-title">QA DOCUMENTATION</div>
 <div class="sk-list">
-<div class="sk-item"><span class="sk-name">QA 리포트 작성</span><div class="sk-bar-w"><div class="sk-bar" style="width:92%"></div></div></div>
-<div class="sk-item"><span class="sk-name">버그 리포트 문서화</span><div class="sk-bar-w"><div class="sk-bar" style="width:90%"></div></div></div>
-<div class="sk-item"><span class="sk-name">TC 결과 정리</span><div class="sk-bar-w"><div class="sk-bar" style="width:88%"></div></div></div>
-<div class="sk-item"><span class="sk-name">README / 가이드 작성</span><div class="sk-bar-w"><div class="sk-bar" style="width:85%"></div></div></div>
-<div class="sk-item"><span class="sk-name">QA 프로세스 정의</span><div class="sk-bar-w"><div class="sk-bar" style="width:82%"></div></div></div>
-<div class="sk-item"><span class="sk-name">GitHub 레포 구조화</span><div class="sk-bar-w"><div class="sk-bar" style="width:85%"></div></div></div>
+<div class="sk-item" data-tip-title="QA 리포트 작성" data-tip-body="qa-automation-report.md · 전 프로젝트 리포트 산출" data-tip-tags="리포트 산출|자동화 기록|문서화"><span class="sk-name">QA 리포트 작성</span><div class="sk-bar-w"><div class="sk-bar" style="width:92%"></div></div></div>
+<div class="sk-item" data-tip-title="버그 리포트 문서화" data-tip-body="bug-stories.md · 재현 경로·영향·해결책 기록" data-tip-tags="bug-stories|재현 경로|개발팀 설득"><span class="sk-name">버그 리포트 문서화</span><div class="sk-bar-w"><div class="sk-bar" style="width:90%"></div></div></div>
+<div class="sk-item" data-tip-title="TC 결과 정리" data-tip-body="145건+ TC · 카테고리별 분류·정리 완료" data-tip-tags="145건+|카테고리 분류|Notion 기록"><span class="sk-name">TC 결과 정리</span><div class="sk-bar-w"><div class="sk-bar" style="width:88%"></div></div></div>
+<div class="sk-item" data-tip-title="README / 가이드 작성" data-tip-body="docs 28개 · mcp-setup-guide · 릴리즈 QA 프로세스" data-tip-tags="docs 28개|가이드|프로세스 정의"><span class="sk-name">README / 가이드 작성</span><div class="sk-bar-w"><div class="sk-bar" style="width:85%"></div></div></div>
+<div class="sk-item" data-tip-title="QA 프로세스 정의" data-tip-body="릴리즈·회귀·선행 검토 프로세스 수립" data-tip-tags="릴리즈 QA|회귀 테스트|브랜치 전략"><span class="sk-name">QA 프로세스 정의</span><div class="sk-bar-w"><div class="sk-bar" style="width:82%"></div></div></div>
+<div class="sk-item" data-tip-title="GitHub 레포 구조화" data-tip-body="80개+ 파일 · 레포 전체 구조 설계 · CHANGELOG v38" data-tip-tags="80개+ 파일|CHANGELOG|레포 설계"><span class="sk-name">GitHub 레포 구조화</span><div class="sk-bar-w"><div class="sk-bar" style="width:85%"></div></div></div>
 </div>
 </div>
 </div>
@@ -1266,6 +1324,51 @@ function updateDotNav(){
   updateBreadcrumb(current);
 }
 updateDotNav();
+
+/* =====================================================
+   SKILL TOOLTIP — STEP 123
+   스킬 바 hover 시 경험 맥락 툴팁
+   ===================================================== */
+const skTooltip = document.getElementById('skTooltip');
+const skTipTitle = document.getElementById('skTipTitle');
+const skTipBody = document.getElementById('skTipBody');
+const skTipTags = document.getElementById('skTipTags');
+
+let tooltipTimer = null;
+
+document.querySelectorAll('.sk-item[data-tip-title]').forEach(item => {
+  item.addEventListener('mouseenter', function(e) {
+    clearTimeout(tooltipTimer);
+    const title = this.dataset.tipTitle || '';
+    const body = this.dataset.tipBody || '';
+    const tags = (this.dataset.tipTags || '').split('|').filter(Boolean);
+
+    skTipTitle.textContent = title;
+    skTipBody.textContent = body;
+    skTipTags.innerHTML = tags.map(t => `<span class="sk-tooltip-tag">${t}</span>`).join('');
+
+    const rect = this.getBoundingClientRect();
+    let top = rect.top + window.scrollY - 10;
+    let left = rect.left + rect.width / 2;
+
+    skTooltip.style.left = left + 'px';
+    skTooltip.style.top = top + 'px';
+    skTooltip.style.transform = 'translate(-50%, -100%)';
+
+    skTooltip.classList.add('visible');
+  });
+
+  item.addEventListener('mouseleave', function() {
+    tooltipTimer = setTimeout(() => {
+      skTooltip.classList.remove('visible');
+    }, 120);
+  });
+});
+
+skTooltip.addEventListener('mouseenter', () => clearTimeout(tooltipTimer));
+skTooltip.addEventListener('mouseleave', () => {
+  tooltipTimer = setTimeout(() => skTooltip.classList.remove('visible'), 120);
+});
 
 /* =====================================================
    HERO CANVAS PARTICLE — STEP 117
