@@ -1,5 +1,42 @@
 # CHANGELOG
 
+## v37.0.0 — 2026-04-07
+
+### STEP 119 완료 — TC 섹션 행 확장 8행 → 20행
+
+#### 작업 내용
+
+| 항목 | 변경 내용 | 상태 |
+|------|-----------|------|
+| `index.html` | `#tcBody` 행 8개 → 20개로 확장 | ✅ |
+| 해피패스 | 8건 (AUTH, CART, PAY, NOTIF, CICD, ACCESS) | ✅ |
+| 네거티브 | 7건 (검색 빈 결과, 세션 만료, API 타임아웃, 잔액 부족, 만료 JWT, XSS) | ✅ |
+| 엣지케이스 | 5건 (소수점 오차, SQL 패턴, 모바일 뷰포트, 저속 네트워크, 부하) | ✅ |
+| TC 분류 통계 바 | `// TC 분류 현황` 헤더 배지 추가 (해피패스 8건·네거티브 7건·엣지케이스 5건) | ✅ |
+| CSS `.tc-stat-bar` | TC 섹션 상단 분류 비율 표시 스타일 추가 | ✅ |
+
+#### 추가된 TC 목록 (12건)
+```
+SEARCH-N-001  네거티브  검색 결과 0건 빈 상태 표시
+AUTH-N-008    네거티브  세션 만료 후 보호 페이지 접근
+MOB-E-001     엣지케이스 모바일 320px 뷰포트 레이아웃 검증
+API-N-010     네거티브  API 응답 타임아웃 (30s 초과)
+PAY-HP-001    해피패스  정상 카드로 결제 완료
+PAY-N-005     네거티브  잔액 부족 카드 결제 시도
+NOTIF-E-003   엣지케이스 저속 네트워크(3G) 알림 중복 발송
+SEC-N-002     네거티브  만료된 JWT 토큰으로 API 호출
+ACCESS-HP-001 해피패스  키보드만으로 전체 폼 입력 및 제출
+SEARCH-N-004  네거티브  XSS 패턴 검색어 입력
+CART-HP-003   해피패스  장바구니 수량 변경 후 합계 갱신
+PERF-E-001    엣지케이스 동시 100개 요청 부하 테스트
+```
+
+#### 변경된 SHA
+- **index.html**: `bb34a83ef80dff2af84f2be4e84b6f7dd3cdeedf` (STEP 119)
+- **CHANGELOG.md**: 이 커밋 후 새 SHA
+
+---
+
 ## v36.0.0 — 2026-04-07
 
 ### STEP 117 완료 — Hero 섹션 Canvas 파티클 배경 효과 추가
@@ -18,34 +55,11 @@
 | IntersectionObserver | Hero 섹션 뷰포트 밖 나가면 animLoop 일시 정지 (성능 최적화) | ✅ |
 | 모바일 대응 | `@media(max-width:900px)` → `#hero-canvas{display:none}` | ✅ |
 
-#### 구조
-```
-.hero (section)
-  ├── .hero-bg-grid    (기존 격자 배경)
-  ├── #hero-canvas     (Canvas 파티클 — STEP 117 신규)
-  └── .hero-left       (텍스트 콘텐츠)
-```
-
-#### 변경된 SHA
-- **index.html**: `d933d6a48b7b888e7c1d216f175ff7360870552c` (STEP 117)
-- **CHANGELOG.md**: 이 커밋 후 새 SHA
-
 ---
 
 ## v35.0.0 — 2026-04-07
 
 ### STEP 115 완료 — 커밋 히스토리 시각화 카드 추가
-
-#### 작업 내용
-
-| 항목 | 변경 내용 | 상태 |
-|------|-----------|------|
-| `index.html` | proof 섹션 `.proof-grid` 아래에 `.commit-card` 추가 | ✅ |
-| GitHub API | `https://api.github.com/repos/kihyunqa/qa-portfolio/commits?per_page=100` 실시간 fetch | ✅ |
-| 카운트업 | 총 커밋 수 · 활동 기간(일) 카운트업 애니메이션 | ✅ |
-| 미니 바 차트 | 최근 14일 커밋 빈도 바 차트 (hover tooltip) | ✅ |
-| fallback | API 실패 시 100+ / 30+d 표시 | ✅ |
-| IntersectionObserver | 카드가 뷰포트 진입 시 1회만 API 호출 | ✅ |
 
 ---
 
@@ -94,40 +108,6 @@
 ## v27.0.0 — 2026-04-06
 
 ### STEP 96 완료 — 버그 스토리 인라인 카드 섹션 추가
-
----
-
-## v26.0.0 — 2026-04-06
-
-### STEP 91 완료 — 잔여 docs 3개 날짜 동기화
-
----
-
-## v25.0.0 — 2026-04-01
-
-### STEP 89 완료 — 잔여 docs 날짜 동기화
-
----
-
-## v24.0.0 — 2026-04-01
-
-### STEP 88 완료 — docs 내부 수치 전체 동기화
-
----
-
-## v23.0.0 — 2026-04-01
-
-### STEP 87 완료 — 수치 정합성 최종 마무리
-
----
-
-## v22.0.0 — 2026-04-01
-
-### STEP 85~86 완료 — 포트폴리오 아쉬운 점 3가지 보완
-
-- docs/bug-stories.md 신규: QA 판단력 스토리 3건
-- testcase_bug-report.md 강화: 3건 → 8건 확장
-- Hero 메시지: 구체적 QA 판단 사례 중심으로 교체
 
 ---
 
