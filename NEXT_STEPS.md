@@ -12,11 +12,11 @@
 
 ---
 
-## 🏁 현재 상태 (2026-04-07) — STEP 109 완료
+## 🏁 현재 상태 (2026-04-07) — STEP 112 완료
 
 ---
 
-## ✅ 확정 수치 (v32 기준)
+## ✅ 확정 수치 (v33 기준)
 
 | 항목 | 수치 | 검증 |
 |------|------|------|
@@ -27,11 +27,12 @@
 | GitHub Actions | **2개** | ✅ |
 | 전체 파일 수 | **80개+** | ✅ |
 | TC 건수 | **145건+** | ✅ |
-| CHANGELOG | **v32** | ✅ |
+| CHANGELOG | **v33** | ✅ |
 | Jira 연동 | **완료** | ✅ FULL ACCESS |
-| index.html | **최신** | ✅ STEP 109 완료 |
+| index.html | **최신** | ✅ STEP 111 완료 |
 | dot-nav | **완전 수정** | ✅ STEP 107 |
 | breadcrumb | **추가 완료** | ✅ STEP 109 |
+| 레이더 차트 | **추가 완료** | ✅ STEP 111 |
 
 ---
 
@@ -48,44 +49,50 @@
 | STEP 105 | 프로젝트 카드 링크 강화 | 2026-04-07 |
 | STEP 106 | dot nav 버그 수정 시도 (nav 태그 충돌 미해결) | 2026-04-07 |
 | STEP 107 | dot-nav 완전 수정 — `<nav>` → `<div>` 태그 변경 | 2026-04-07 |
-| STEP 108 | CHANGELOG v32 업데이트 — STEP 106/107 기록 | 2026-04-07 |
-| **STEP 109** | **좌측 하단 섹션 breadcrumb 인터랙션 추가 — 스크롤 시 `KH.QA / 00 · 숫자 현황` 형태로 현재 섹션 표시. fade in/out 애니메이션, 모노 폰트, Hero 섹션에선 숨김** | **2026-04-07** |
+| STEP 108 | CHANGELOG v32 업데이트 | 2026-04-07 |
+| STEP 109 | 좌측 하단 섹션 breadcrumb 인터랙션 추가 | 2026-04-07 |
+| STEP 110 | CHANGELOG v32 기반 정리 (이전 세션) | 2026-04-07 |
+| **STEP 111** | **QA 스킬 레이더 차트 추가 — 스킬 섹션 상단에 SVG 방사형 차트. 8개 축(TC설계/버그리포팅/E2E자동화/API테스트/MCP연동/Prompt Eng./QA문서화/QA리딩). 섹션 진입 시 easeInOut 애니메이션, hover 인터랙션 범례** | **2026-04-07** |
+| **STEP 112** | **CHANGELOG v33 업데이트 — STEP 111 레이더 차트 기록** | **2026-04-07** |
 
 ---
 
-## 🎯 STEP 109에서 변경한 내용 (index.html)
+## 🎯 STEP 111에서 변경한 내용 (index.html)
 
-### breadcrumb 구현 내용
+### 레이더 차트 구현 내용
 | 항목 | 내용 |
 |------|------|
-| HTML | `<div id="breadcrumb">` — `KH.QA / {섹션명}` 구조 |
-| CSS | `position:fixed; bottom:28px; left:56px` 좌측 하단 고정 |
-| CSS | `opacity:0 → 1` + `translateY(6px → 0)` fade-in 트랜지션 |
-| JS | `bcMap` 객체로 섹션 id → 표시 텍스트 매핑 |
-| JS | `updateBreadcrumb()` — `updateDotNav()`와 동일 스크롤 이벤트에서 호출 |
-| 동작 | Hero에 있을 때 숨김, 섹션 진입 시 표시, 섹션 이동 시 텍스트 전환 |
-| 모바일 | `left:24px; bottom:20px` 로 조정 |
+| 위치 | 스킬 섹션 (id=skills) `.sec-head` 바로 아래, `.skills-wrap` 위 |
+| HTML | `.radar-wrap` — 2컬럼 (SVG 340px + 범례) |
+| SVG | `#radarSvg` 280×280 — polygon grid + axes + data + dots + labels |
+| CSS | `.radar-wrap`, `.radar-svg-container`, `.radar-legend-item` 등 |
+| JS | `drawRadar(animated)` 함수 — SVG 렌더링 + 애니메이션 |
+| JS | `radarObs` IntersectionObserver — 섹션 진입 시 트리거 |
+| 데이터 | `radarSkills` 배열 — 8개 스킬 (name, val, color) |
+| 인터랙션 | 범례 hover → 해당 dot 크기 + 색상 강조 |
+| 모바일 | `grid-template-columns:1fr` 단일 컬럼 처리 |
 
 ### 변경된 SHA
-- **index.html**: `ba6fbde15426e5f33dc45b9ba6c3d38a7c44a139` (STEP 109)
-- **CHANGELOG.md**: `95af7469dcaaa82b7d5aa264818a4e56c24df11b` (v32)
+- **index.html**: `24047e42d7eb464cd21222f5437950ae4bb91a66` (STEP 111)
+- **CHANGELOG.md**: `d5cf0d914c8f40e81b0f992c52563e92df40bf45` (v33)
 
 ---
 
 ## 🎯 다음 Claude가 해야 할 포트폴리오 업그레이드 (우선순위 순)
 
-### 🟡 우선순위 1 — CHANGELOG v33 업데이트
-- STEP 109 breadcrumb 추가 내용 기록
-- CHANGELOG.md SHA: `95af7469dcaaa82b7d5aa264818a4e56c24df11b` (v32)
+### 🟡 우선순위 1 — 섹션 진입 타이핑 효과
+- Hero 섹션 `.hero-role` (Quality Assurance Engineer) 에 타이핑 커서 애니메이션
+- 또는 Hero의 `.hero-tag` 텍스트 타이핑 효과
+- 순수 JS + CSS로 구현 (외부 라이브러리 없이)
 
-### 🟡 우선순위 2 — QA 스킬 레이더 차트 시각화
-- 스킬 섹션에 SVG 방사형 차트로 강점 시각화
-- 외부 의존성 없이 순수 SVG + JS로 구현
-- index.html CSS + HTML + JS 추가
+### 🟡 우선순위 2 — TC 필터 버튼 복원
+- 현재 index.html에 TC 테이블 필터 버튼이 빠져 있을 수 있음 (STEP 111 때 index.html 전체 교체 과정에서)
+- get_file_contents로 현재 index.html의 TC 섹션 확인 후 필요하면 필터 버튼 재추가
+- 필터 버튼: 전체 / 해피패스 / 네거티브 / 엣지케이스
 
-### 🟡 우선순위 3 — 섹션 진입 시 카운터 강화
-- 숫자 현황 섹션의 stat 카드에 더 임팩트 있는 애니메이션
-- 또는 Hero 섹션에 타이핑 효과 추가
+### 🟡 우선순위 3 — 커밋 히스토리 시각화
+- "실제 증거" 섹션에 GitHub 커밋 수 강조 (289 commits → 카운트업 숫자 카드)
+- 또는 커밋 날짜 타임라인 미니 차트 추가
 
 ---
 
@@ -97,8 +104,8 @@
 4. **새 파일 무분별 생성 금지** — 기존 파일 업데이트 우선
 5. **NEXT_STEPS.md 업데이트 필수** — SHA 먼저 확인
 6. **사용자는 포트폴리오 업그레이드만 원함** — 면접준비/LinkedIn 제안 금지
-7. **index.html 현재 SHA**: `ba6fbde15426e5f33dc45b9ba6c3d38a7c44a139` (STEP 109)
-8. **CHANGELOG.md 현재 SHA**: `95af7469dcaaa82b7d5aa264818a4e56c24df11b` (v32)
+7. **index.html 현재 SHA**: `24047e42d7eb464cd21222f5437950ae4bb91a66` (STEP 111)
+8. **CHANGELOG.md 현재 SHA**: `d5cf0d914c8f40e81b0f992c52563e92df40bf45` (v33)
 9. **NEXT_STEPS.md 현재 SHA**: 이 커밋 후 새 SHA — 다음 Claude가 get_file_contents로 확인
 
 ---
@@ -129,5 +136,5 @@
 
 ---
 
-*최종 업데이트: 2026-04-07 · STEP 109 완료*
-*breadcrumb 인터랙션 추가 완료. 다음: CHANGELOG v33 → QA 스킬 레이더 차트 시각화*
+*최종 업데이트: 2026-04-07 · STEP 112 완료*
+*QA 스킬 레이더 차트 추가 완료 (STEP 111) + CHANGELOG v33. 다음: Hero 타이핑 효과 → TC 필터 버튼 확인 → 커밋 히스토리 시각화*
