@@ -400,6 +400,29 @@ section{padding:96px 56px;position:relative;z-index:2}
   border-color:var(--purple);
 }
 
+/* =====================================================
+   TC 통계 바 — STEP 119
+   TC 섹션 상단 분류 비율 표시
+   ===================================================== */
+.tc-stat-bar{
+  display:flex;
+  gap:20px;
+  align-items:center;
+  margin-bottom:24px;
+  font-family:var(--mono);
+  font-size:10px;
+  color:var(--muted);
+  flex-wrap:wrap;
+}
+.tc-stat-item{
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+.tc-stat-dot{
+  width:7px;height:7px;border-radius:50%;flex-shrink:0;
+}
+
 .tc-wrap{overflow-x:auto;border:1px solid var(--p-border)}
 .tc-table{width:100%;border-collapse:collapse;font-size:12px;font-family:var(--mono)}
 .tc-table th{background:var(--bg3);padding:11px 14px;text-align:left;color:var(--purple);font-size:10px;letter-spacing:.1em;border-bottom:1px solid var(--p-border);font-weight:500}
@@ -899,10 +922,19 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
 <div class="roadmap-card future"><div class="rm-num">PHASE 3 · 계획</div><div class="rm-icon">🗓️</div><div class="rm-title">Scheduling &amp; Reporting MCP</div><div class="rm-desc">Google Calendar MCP → 릴리즈 QA 일정 자동 배분. Gmail MCP → 이해관계자 QA 리포트 자동 발송.</div></div>
 </div>
 </section>
-<!-- TC -->
+<!-- TC — STEP 119: 행 8 → 20으로 확장 -->
 <section id="tc" style="background:var(--bg2);border-top:1px solid var(--p-border)">
 <div class="sec-head reveal"><span class="sec-n">06</span><h2 class="sec-t">자동생성 테스트케이스 — 145건+</h2><div class="sec-line"></div></div>
 <p class="tc-intro reveal">Claude MCP로 자동 생성된 TC 145건+. 로그인·API·보안·성능·접근성·장바구니·검색·결제 전 카테고리 커버. test-cases/, playwright-tests/ 두 곳에서 관리.</p>
+
+<!-- TC 분류 통계 바 — STEP 119 -->
+<div class="tc-stat-bar reveal">
+  <span style="color:var(--dim);letter-spacing:.12em">// TC 분류 현황</span>
+  <span class="tc-stat-item"><span class="tc-stat-dot" style="background:var(--purple)"></span>해피패스 8건</span>
+  <span class="tc-stat-item"><span class="tc-stat-dot" style="background:#f87171"></span>네거티브 7건</span>
+  <span class="tc-stat-item"><span class="tc-stat-dot" style="background:var(--wip)"></span>엣지케이스 5건</span>
+  <span style="color:var(--dim)">· 전체 20건 표시 (145건+ 중 대표)</span>
+</div>
 
 <!-- TC 필터 버튼 — STEP 113 -->
 <div class="tc-filter reveal" id="tcFilter">
@@ -916,6 +948,7 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
 <table class="tc-table" id="tcTable">
 <thead><tr><th>TC-ID</th><th>구분</th><th>테스트 제목</th><th>기대 결과</th><th>우선순위</th></tr></thead>
 <tbody id="tcBody">
+<!-- 기존 8행 -->
 <tr data-type="h"><td>AUTH-001</td><td><span class="tc-type h">해피패스</span></td><td>유효한 자격증명으로 로그인</td><td>/dashboard 리다이렉트</td><td><span class="p1">P1</span></td></tr>
 <tr data-type="h"><td>AUTH-005</td><td><span class="tc-type h">해피패스</span></td><td>로그아웃 실행 + 토큰 무효화 검증</td><td>401 Unauthorized (API 직접 호출 시)</td><td><span class="p1">P1</span></td></tr>
 <tr data-type="n"><td>AUTH-007</td><td><span class="tc-type n">네거티브</span></td><td>5회 로그인 실패 후 계정 잠금</td><td>계정 잠금 또는 인증 요청</td><td><span class="p1">P1</span></td></tr>
@@ -924,6 +957,19 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
 <tr data-type="e"><td>API-S-006</td><td><span class="tc-type e">엣지케이스</span></td><td>특수문자 / SQL 패턴 검색</td><td>안전 처리된 결과 (500 없음)</td><td><span class="p1">P1</span></td></tr>
 <tr data-type="h"><td>TC-NOTIF-HP-001</td><td><span class="tc-type h">해피패스</span></td><td>QA 완료 Slack 알림 정상 발송</td><td>새-채널에 메시지 수신 확인</td><td><span class="p1">P1</span></td></tr>
 <tr data-type="h"><td>TC-CICD-HP-001</td><td><span class="tc-type h">해피패스</span></td><td>TC push 시 Actions 자동 트리거</td><td>workflow run 생성 확인</td><td><span class="p1">P1</span></td></tr>
+<!-- STEP 119 추가 12행 -->
+<tr data-type="n"><td>SEARCH-N-001</td><td><span class="tc-type n">네거티브</span></td><td>검색 결과 0건 빈 상태 표시</td><td>"결과 없음" 메시지 노출, 500 오류 없음</td><td><span class="p2">P2</span></td></tr>
+<tr data-type="n"><td>AUTH-N-008</td><td><span class="tc-type n">네거티브</span></td><td>세션 만료 후 보호 페이지 접근</td><td>로그인 페이지 리다이렉트, 401 반환</td><td><span class="p1">P1</span></td></tr>
+<tr data-type="e"><td>MOB-E-001</td><td><span class="tc-type e">엣지케이스</span></td><td>모바일 320px 뷰포트 레이아웃 검증</td><td>가로 스크롤 없음, 버튼 터치 영역 44px+</td><td><span class="p2">P2</span></td></tr>
+<tr data-type="n"><td>API-N-010</td><td><span class="tc-type n">네거티브</span></td><td>API 응답 타임아웃 (30s 초과)</td><td>타임아웃 에러 메시지 노출, 무한 로딩 없음</td><td><span class="p1">P1</span></td></tr>
+<tr data-type="h"><td>PAY-HP-001</td><td><span class="tc-type h">해피패스</span></td><td>정상 카드로 결제 완료</td><td>주문 완료 페이지 이동, 이메일 발송</td><td><span class="p1">P1</span></td></tr>
+<tr data-type="n"><td>PAY-N-005</td><td><span class="tc-type n">네거티브</span></td><td>잔액 부족 카드 결제 시도</td><td>결제 실패 메시지, 주문 미생성 확인</td><td><span class="p1">P1</span></td></tr>
+<tr data-type="e"><td>NOTIF-E-003</td><td><span class="tc-type e">엣지케이스</span></td><td>저속 네트워크(3G) 환경 알림 중복 발송</td><td>알림 1회만 수신, 중복 없음</td><td><span class="p2">P2</span></td></tr>
+<tr data-type="n"><td>SEC-N-002</td><td><span class="tc-type n">네거티브</span></td><td>만료된 JWT 토큰으로 API 호출</td><td>403 Forbidden 반환, 데이터 노출 없음</td><td><span class="p1">P1</span></td></tr>
+<tr data-type="h"><td>ACCESS-HP-001</td><td><span class="tc-type h">해피패스</span></td><td>키보드만으로 전체 폼 입력 및 제출</td><td>Tab 순서 정상, Enter 제출 동작</td><td><span class="p2">P2</span></td></tr>
+<tr data-type="n"><td>SEARCH-N-004</td><td><span class="tc-type n">네거티브</span></td><td>XSS 패턴 검색어 입력</td><td>스크립트 미실행, 인코딩 처리 확인</td><td><span class="p1">P1</span></td></tr>
+<tr data-type="h"><td>CART-HP-003</td><td><span class="tc-type h">해피패스</span></td><td>장바구니 수량 변경 후 합계 갱신</td><td>실시간 금액 재계산, 오차 0원</td><td><span class="p2">P2</span></td></tr>
+<tr data-type="e"><td>PERF-E-001</td><td><span class="tc-type e">엣지케이스</span></td><td>동시 100개 요청 부하 테스트</td><td>응답 시간 2s 이내, 서버 500 없음</td><td><span class="p2">P2</span></td></tr>
 </tbody>
 </table>
 </div>
