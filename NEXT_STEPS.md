@@ -12,11 +12,11 @@
 
 ---
 
-## 🏁 현재 상태 (2026-04-07) — STEP 103 완료
+## 🏁 현재 상태 (2026-04-07) — STEP 105 완료
 
 ---
 
-## ✅ 확정 수치 (v30 기준)
+## ✅ 확정 수치 (v31 기준)
 
 | 항목 | 수치 | 검증 |
 |------|------|------|
@@ -27,9 +27,9 @@
 | GitHub Actions | **2개** | ✅ |
 | 전체 파일 수 | **80개+** | ✅ |
 | TC 건수 | **145건+** | ✅ |
-| CHANGELOG | **v30** | ✅ |
+| CHANGELOG | **v31** | ✅ |
 | Jira 연동 | **완료** | ✅ FULL ACCESS |
-| index.html | **최신** | ✅ STEP 103 완료 |
+| index.html | **최신** | ✅ STEP 105 완료 |
 | 버그 스토리 | **3건** | ✅ |
 | 버그 리포트 | **8건** | ✅ |
 | screenshots | **4장** | ✅ |
@@ -37,8 +37,9 @@
 | Hero 시각 강화 | **완료** | ✅ STEP 99 |
 | 섹션 divider | **완료** | ✅ STEP 100 |
 | 점 네비게이션 | **완료** | ✅ STEP 101 |
-| CHANGELOG v30 | **완료** | ✅ STEP 102 |
+| CHANGELOG v31 | **완료** | ✅ STEP 104 |
 | TC stat bar | **완료** | ✅ STEP 103 |
+| 프로젝트 카드 링크 | **완료** | ✅ STEP 105 |
 
 ---
 
@@ -59,39 +60,41 @@
 | STEP 100 | 섹션 간 divider 강화 — 각 주요 섹션 상단에 보라 gradient fade overlay | 2026-04-06 |
 | STEP 101 | 우측 사이드 점 네비게이션 추가 — 12개 섹션 인디케이터, 호버 레이블, 스크롤 연동 | 2026-04-07 |
 | STEP 102 | CHANGELOG v30 업데이트 — STEP 101 점 네비게이션 기록 | 2026-04-07 |
-| **STEP 103** | **TC 섹션 stat bar 추가 — 145건+/16파일/12spec/8카테고리 숫자 크게 강조. 카운트업 애니메이션 포함** | **2026-04-07** |
+| STEP 103 | TC 섹션 stat bar 추가 — 145건+/16파일/12spec/8카테고리 숫자 크게 강조. 카운트업 애니메이션 포함 | 2026-04-07 |
+| STEP 104 | CHANGELOG v31 업데이트 — STEP 103 TC stat bar 기록 | 2026-04-07 |
+| **STEP 105** | **프로젝트 카드 링크 강화 — PROJECT 02/03/04/06에 실제 docs 링크 연결** | **2026-04-07** |
 
 ---
 
-## 🎯 STEP 103에서 변경한 내용 (index.html)
+## 🎯 STEP 105에서 변경한 내용 (index.html)
 
-### 추가된 요소
-| 요소 | 내용 |
-|------|------|
-| CSS `.tc-stat-bar` | 4칸 그리드 stat 바 — `.stats-grid` 스타일과 동일한 패턴 |
-| CSS `.tc-stat-item` | 각 stat 칸 — hover 시 하단 보라 라인 + 배경 변화 |
-| CSS `.tc-stat-item.highlight` | 첫 번째 칸(145건+) 강조 — 보라3 컬러 + 배경 tint |
-| HTML `.tc-stat-bar` | 4개 수치: 145건+, 16파일, 12 spec, 8카테고리 |
-| JS `tcStatO` | IntersectionObserver — 진입 시 숫자 카운트업 애니메이션 |
-| 위치 | TC 섹션 `sec-head` 바로 아래, `tc-intro` 위 |
+### 추가된 링크
+| 카드 | 추가 링크 |
+|------|----------|
+| PROJECT 02 (브랜치 전략) | `docs/release-qa-process.md` — 릴리즈 QA 프로세스 ↗ |
+| PROJECT 03 (오케스트레이션) | `docs/mcp-architecture.md` + `docs/mcp-workflow-diagram.md` |
+| PROJECT 04 (Claude Code Skill) | `docs/mcp-setup-guide.md` + `skills/` 폴더 링크 |
+| PROJECT 06 (버그 심각도 분류) | `testcase_bug-report.md` + `docs/bug-report-template.md` |
 
 ### 변경된 SHA
-- **index.html**: `153613193dc3331df7b11e09d95018cb62f22836` (STEP 103)
+- **index.html**: `8ad8a14bd6e14b17669b9097b4553ffc6f13d5bf` (STEP 105)
+- **CHANGELOG.md**: `e45e30ec38495072997eeb8bb2293453765caedc` (v31)
 
 ---
 
 ## 🎯 다음 Claude가 해야 할 포트폴리오 업그레이드 (우선순위 순)
 
-### 🟢 우선순위 1 — CHANGELOG v31 업데이트
-- STEP 103 TC stat bar 추가 내용 기록
-- CHANGELOG.md 현재 SHA: `000f4301ffcaa95f3aa069abac5062f098ea2bac` (v30)
+### 🟡 우선순위 1 — 섹션 breadcrumb 인터랙션
+- 스크롤 시 상단(혹은 좌측)에 현재 섹션명이 표시되는 breadcrumb 스타일 인디케이터
+- index.html CSS + JS 추가
 
-### 🟡 우선순위 2 — 프로젝트 카드 링크 강화
-- 빈 `proj-link`(href="#") 있는 카드들에 실제 링크 또는 관련 문서 링크 연결
-- index.html 수정 필요
+### 🟡 우선순위 2 — QA 스킬 레이더 차트 또는 시각화
+- 스킬 섹션에 육각형/방사형 차트로 강점 시각화
+- SVG 또는 Canvas 활용 (외부 의존성 없이)
 
-### 🟡 우선순위 3 — 추가 인터랙션
-- 섹션 진입 시 상단에 현재 섹션명 표시 (breadcrumb 스타일)
+### 🟡 우선순위 3 — CHANGELOG v32 업데이트
+- STEP 104/105 내용 기록 (이번 세션 변경분)
+- CHANGELOG.md SHA: `e45e30ec38495072997eeb8bb2293453765caedc` (v31)
 
 ---
 
@@ -103,8 +106,8 @@
 4. **새 파일 무분별 생성 금지** — 기존 파일 업데이트 우선
 5. **NEXT_STEPS.md 업데이트 필수** — SHA 먼저 확인
 6. **사용자는 포트폴리오 업그레이드만 원함** — 면접준비/LinkedIn 제안 금지
-7. **index.html 현재 SHA**: `153613193dc3331df7b11e09d95018cb62f22836` (STEP 103)
-8. **CHANGELOG.md 현재 SHA**: `000f4301ffcaa95f3aa069abac5062f098ea2bac` (v30)
+7. **index.html 현재 SHA**: `8ad8a14bd6e14b17669b9097b4553ffc6f13d5bf` (STEP 105)
+8. **CHANGELOG.md 현재 SHA**: `e45e30ec38495072997eeb8bb2293453765caedc` (v31)
 9. **NEXT_STEPS.md 현재 SHA**: 이 커밋 후 새 SHA — 다음 Claude가 get_file_contents로 확인
 
 ---
@@ -135,5 +138,5 @@
 
 ---
 
-*최종 업데이트: 2026-04-07 · STEP 103 완료 · v30*
-*TC 섹션 stat bar 추가 완료 (145건+/16파일/12spec/8카테고리, 카운트업 애니메이션). 다음: CHANGELOG v31 업데이트*
+*최종 업데이트: 2026-04-07 · STEP 105 완료 · v31*
+*프로젝트 카드 링크 강화 (PROJECT 02/03/04/06). 다음: breadcrumb 인터랙션 또는 CHANGELOG v32*
