@@ -1,5 +1,41 @@
 # CHANGELOG
 
+## v30.0.0 — 2026-04-07
+
+### STEP 101 완료 — 우측 사이드 점 네비게이션 추가
+
+#### 작업 내용
+
+| 항목 | 변경 내용 | 상태 |
+|------|-----------|------|
+| `index.html` | 우측 고정 점 네비게이션 (`dot-nav`) 추가 | ✅ |
+| CSS `.dot-nav` | 우측 고정 세로 점 목록 컨테이너 (z-index:998) | ✅ |
+| CSS `.dot-nav-item` | 6px 원형 점, 기본 보라 테두리, active 시 보라 채움+glow | ✅ |
+| CSS `.dot-label` | hover 시 오른쪽에서 슬라이드인 되는 섹션 이름 레이블 | ✅ |
+| HTML `<nav class="dot-nav">` | hero/stats/mcp/proof/projects/diagram/roadmap/bug-stories/tc/timeline/skills/contact 12개 | ✅ |
+| JS `initDotNav()` | scroll + offsetTop 방식으로 현재 섹션 감지, `.active` 토글 | ✅ |
+| `id="hero"` | `<section class="hero">` 에 id 추가 | ✅ |
+| 모바일 처리 | `max-width:900px` 에서 `.dot-nav { display:none }` | ✅ |
+
+#### 점 네비게이션 섹션 목록 (12개)
+
+| 순서 | 섹션 id | 레이블 |
+|------|---------|--------|
+| 1 | `#hero` | Hero |
+| 2 | `#stats` | Stats |
+| 3 | `#mcp` | MCP |
+| 4 | `#proof` | Proof |
+| 5 | `#projects` | Projects |
+| 6 | `#diagram` | Diagram |
+| 7 | `#roadmap` | Roadmap |
+| 8 | `#bug-stories` | Bug Stories |
+| 9 | `#tc` | Test Cases |
+| 10 | `#timeline` | Timeline |
+| 11 | `#skills` | Skills |
+| 12 | `#contact` | Contact |
+
+---
+
 ## v29.0.0 — 2026-04-06
 
 ### STEP 100 완료 — 섹션 간 divider 강화
