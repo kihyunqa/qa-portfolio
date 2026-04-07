@@ -159,6 +159,20 @@ section{padding:96px 56px;position:relative;z-index:2}
    섹션 divider 끝 (STEP 100)
    ============================ */
 
+/* ============================
+   STEP 101 — 섹션 점 네비게이션 (우측 사이드 인디케이터)
+   ============================ */
+.dot-nav{position:fixed;right:22px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:10px;z-index:998;pointer-events:none;}
+.dot-nav-item{width:6px;height:6px;border-radius:50%;border:1px solid rgba(168,85,247,.4);background:transparent;cursor:pointer;pointer-events:all;transition:all .25s ease;position:relative;}
+.dot-nav-item:hover{background:var(--p-muted);border-color:var(--purple);transform:scale(1.4);}
+.dot-nav-item.active{background:var(--purple);border-color:var(--purple);box-shadow:0 0 8px rgba(168,85,247,.6);}
+.dot-nav-item .dot-label{position:absolute;right:16px;top:50%;transform:translateY(-50%);font-family:var(--mono);font-size:9px;color:var(--purple);white-space:nowrap;opacity:0;transition:opacity .2s;letter-spacing:.06em;background:rgba(8,6,15,.9);padding:3px 8px;border:1px solid var(--p-border);}
+.dot-nav-item:hover .dot-label{opacity:1;}
+@media(max-width:900px){.dot-nav{display:none;}}
+/* ============================
+   점 네비게이션 끝 (STEP 101)
+   ============================ */
+
 .mcp-top{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;margin-bottom:64px}
 .mcp-intro-badge{display:inline-flex;align-items:center;gap:8px;background:var(--purple);color:#fff;font-family:var(--mono);font-size:10px;font-weight:500;padding:6px 14px;letter-spacing:.1em;margin-bottom:28px}
 .mcp-intro-badge::before{content:'';width:5px;height:5px;background:#fff;border-radius:50%;animation:pulse 1.2s infinite}
@@ -428,6 +442,23 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:
 <div class="scroll-bar" id="scrollBar"></div>
 <div class="cur" id="cur"></div>
 <div class="cur-r" id="curR"></div>
+
+<!-- STEP 101: 섹션 점 네비게이션 -->
+<nav class="dot-nav" id="dotNav">
+  <a class="dot-nav-item" href="#hero" data-section="hero"><span class="dot-label">HERO</span></a>
+  <a class="dot-nav-item" href="#stats" data-section="stats"><span class="dot-label">00 · 숫자 현황</span></a>
+  <a class="dot-nav-item" href="#mcp" data-section="mcp"><span class="dot-label">01 · MCP 자동화</span></a>
+  <a class="dot-nav-item" href="#proof" data-section="proof"><span class="dot-label">02 · 연동 증거</span></a>
+  <a class="dot-nav-item" href="#projects" data-section="projects"><span class="dot-label">03 · 프로젝트</span></a>
+  <a class="dot-nav-item" href="#diagram" data-section="diagram"><span class="dot-label">04 · 파이프라인</span></a>
+  <a class="dot-nav-item" href="#roadmap" data-section="roadmap"><span class="dot-label">05 · 로드맵</span></a>
+  <a class="dot-nav-item" href="#bug-stories" data-section="bug-stories"><span class="dot-label">06 · 버그 스토리</span></a>
+  <a class="dot-nav-item" href="#tc" data-section="tc"><span class="dot-label">07 · 테스트케이스</span></a>
+  <a class="dot-nav-item" href="#timeline" data-section="timeline"><span class="dot-label">08 · 경력</span></a>
+  <a class="dot-nav-item" href="#skills" data-section="skills"><span class="dot-label">09 · 스킬</span></a>
+  <a class="dot-nav-item" href="#contact" data-section="contact"><span class="dot-label">연락</span></a>
+</nav>
+
 <nav>
   <div class="nav-logo">KH.QA / 2026</div>
   <ul class="nav-links">
@@ -452,7 +483,7 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:
   <a href="#contact" onclick="toggleMenu()">연락</a>
 </div>
 
-<section class="hero">
+<section class="hero" id="hero">
   <!-- STEP 99: 배경 레이어들 -->
   <div class="hero-bg-grid"></div>
   <div class="hero-orb hero-orb-1"></div>
@@ -833,6 +864,26 @@ function tcFilter(btn, filter) {
   const noResult = document.getElementById('tcNoResult');
   noResult.style.display = visible === 0 ? 'block' : 'none';
 }
+
+// 점 네비게이션 — STEP 101
+(function initDotNav() {
+  const sections = ['hero','stats','mcp','proof','projects','diagram','roadmap','bug-stories','tc','timeline','skills','contact'];
+  const dots = document.querySelectorAll('.dot-nav-item');
+  function updateDots() {
+    const scrollY = window.scrollY + window.innerHeight * 0.4;
+    let current = sections[0];
+    sections.forEach(id => {
+      const el = document.getElementById(id);
+      if (el && el.offsetTop <= scrollY) current = id;
+    });
+    dots.forEach(dot => {
+      const active = dot.dataset.section === current;
+      dot.classList.toggle('active', active);
+    });
+  }
+  window.addEventListener('scroll', updateDots, {passive:true});
+  updateDots();
+})();
 </script>
 </body>
 </html>
