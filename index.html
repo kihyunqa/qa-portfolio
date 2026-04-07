@@ -363,6 +363,24 @@ section{padding:96px 56px;position:relative;z-index:2}
 .tc-link:hover{background:var(--p-muted);border-color:var(--purple)}
 
 /* ============================
+   TC STAT BAR — STEP 103
+   TC 섹션 상단 수치 강조 바
+   ============================ */
+.tc-stat-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--p-border);margin-bottom:36px;border:1px solid var(--p-border)}
+.tc-stat-item{background:var(--bg2);padding:20px 24px;text-align:center;position:relative;overflow:hidden;transition:background .3s}
+.tc-stat-item:hover{background:var(--bg3)}
+.tc-stat-item::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--purple),transparent);opacity:0;transition:.3s}
+.tc-stat-item:hover::after{opacity:1}
+.tc-stat-num{font-family:var(--mono);font-size:36px;font-weight:500;color:var(--purple);line-height:1;margin-bottom:6px}
+.tc-stat-unit{font-size:16px}
+.tc-stat-label{font-size:12px;color:var(--muted);margin-bottom:4px}
+.tc-stat-sub{font-family:var(--mono);font-size:9px;color:var(--dim);letter-spacing:.06em}
+.tc-stat-item.highlight .tc-stat-num{color:var(--purple3)}
+.tc-stat-item.highlight{background:rgba(168,85,247,.06)}
+@media(max-width:900px){.tc-stat-bar{grid-template-columns:repeat(2,1fr)}}
+/* TC STAT BAR 끝 (STEP 103) */
+
+/* ============================
    BUG STORY 섹션 — STEP 96
    ============================ */
 .bug-intro{font-size:15px;color:var(--muted);line-height:1.85;max-width:600px;margin-bottom:48px}
@@ -717,9 +735,35 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:
   </div>
 </section>
 
-<!-- TC — STEP 97: 필터 버튼 추가 -->
+<!-- TC — STEP 97: 필터 버튼 + STEP 103: 수치 강조 stat bar 추가 -->
 <section id="tc" style="background:var(--bg);border-top:1px solid var(--p-border)">
   <div class="sec-head reveal"><span class="sec-n">07</span><h2 class="sec-t">자동생성 테스트케이스 — 145건+</h2><div class="sec-line"></div></div>
+
+  <!-- STEP 103: TC 수치 강조 stat bar -->
+  <div class="tc-stat-bar reveal">
+    <div class="tc-stat-item highlight">
+      <div class="tc-stat-num">145<span class="tc-stat-unit">+</span></div>
+      <div class="tc-stat-label">전체 테스트케이스</div>
+      <div class="tc-stat-sub">MCP 자동 생성 · 전 카테고리</div>
+    </div>
+    <div class="tc-stat-item">
+      <div class="tc-stat-num">16</div>
+      <div class="tc-stat-label">testcase_*.md 파일</div>
+      <div class="tc-stat-sub">로그인·결제·보안·접근성 등</div>
+    </div>
+    <div class="tc-stat-item">
+      <div class="tc-stat-num">12</div>
+      <div class="tc-stat-label">Playwright E2E Spec</div>
+      <div class="tc-stat-sub">실행 가능한 자동화 코드</div>
+    </div>
+    <div class="tc-stat-item">
+      <div class="tc-stat-num">8</div>
+      <div class="tc-stat-label">카테고리 커버</div>
+      <div class="tc-stat-sub">AUTH·CART·PAY·API·SEC·NOTIF·CI/CD·PERF</div>
+    </div>
+  </div>
+  <!-- STEP 103 stat bar 끝 -->
+
   <p class="tc-intro reveal">Claude MCP로 자동 생성된 TC 145건+. 로그인·API·보안·성능·접근성·장바구니·검색·결제 전 카테고리 커버. test-cases/, playwright-tests/ 두 곳에서 관리.</p>
   <div class="tc-filter-bar reveal">
     <span class="tc-filter-label">FILTER</span>
@@ -839,6 +883,29 @@ const statO=new IntersectionObserver(entries=>{
   });
 },{threshold:0.5});
 document.querySelectorAll('.stats-grid').forEach(el=>statO.observe(el));
+
+// TC stat 숫자 카운트업 — STEP 103
+const tcStatO=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.querySelectorAll('.tc-stat-num').forEach(el=>{
+        const txt=el.innerHTML;
+        const num=parseFloat(txt.replace(/[^0-9]/g,''));
+        const hasPlus=txt.includes('+');
+        const unit=el.querySelector('.tc-stat-unit')?el.querySelector('.tc-stat-unit').outerHTML:'';
+        if(!isNaN(num)&&num>0){
+          let s=0;const inc=Math.ceil(num/24);
+          const iv=setInterval(()=>{
+            s=Math.min(s+inc,num);
+            el.innerHTML=s+(hasPlus?'<span class="tc-stat-unit">+</span>':unit&&!hasPlus?unit:'');
+            if(s>=num){el.innerHTML=txt;clearInterval(iv);}
+          },40);
+        }
+      });tcStatO.unobserve(e.target);
+    }
+  });
+},{threshold:0.4});
+document.querySelectorAll('.tc-stat-bar').forEach(el=>tcStatO.observe(el));
 
 // TC 필터 기능 — STEP 97
 function tcFilter(btn, filter) {
