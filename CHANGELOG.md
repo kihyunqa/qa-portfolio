@@ -1,5 +1,30 @@
 # CHANGELOG
 
+## v39.0.0 — 2026-04-07
+
+### STEP 123 완료 — Skills 스킬 바 hover 툴팁 추가
+
+#### 작업 내용
+
+| 항목 | 변경 내용 | 상태 |
+|------|-----------|------|
+| `index.html` | `.sk-item`에 `data-tip-title`, `data-tip-body`, `data-tip-tags` 속성 추가 | ✅ |
+| CSS `.sk-tooltip` | fixed 포지션 툴팁 컨테이너 — bg3 배경, p-border 테두리, fade+slide 트랜지션 | ✅ |
+| CSS `.sk-tooltip-title` | 퍼플 컬러 타이틀 | ✅ |
+| CSS `.sk-tooltip-tags` | 태그 flex wrap 레이아웃 | ✅ |
+| CSS `.sk-tooltip-tag` | 미니 p-muted 배경 태그 | ✅ |
+| JS 툴팁 로직 | mouseenter → 위치 계산 → visible 클래스 추가, mouseleave → 120ms 딜레이 hide | ✅ |
+| TESTING & QA 6개 | 각 스킬별 경력 맥락 + 태그 3개 | ✅ |
+| MCP CORE & AI 8개 | 각 MCP 스킬별 실제 사용 내용 + 태그 3개 | ✅ |
+| QA DOCUMENTATION 6개 | 각 문서화 스킬별 산출물 + 태그 3개 | ✅ |
+| 모바일 대응 | `@media(max-width:900px)` → `.sk-tooltip{display:none}` | ✅ |
+
+#### 변경된 SHA
+- **index.html**: `6c9bc11f6f4342ea7419f5dacdb8acc8baf09131` (STEP 123)
+- **CHANGELOG.md**: 이 커밋 후 새 SHA
+
+---
+
 ## v38.0.0 — 2026-04-07
 
 ### STEP 121 완료 — 섹션별 통계 배지 추가
@@ -22,25 +47,11 @@
 | 08 스킬 | `20개 스킬` 배지 | ✅ |
 | 모바일 대응 | `@media(max-width:900px)` → `.sec-stat-badge{display:none}` | ✅ |
 
-#### 변경된 SHA
-- **index.html**: `03fef91c78570e096a772a681a55b1d66e826c7a` (STEP 121)
-- **CHANGELOG.md**: 이 커밋 후 새 SHA
-
 ---
 
 ## v37.0.0 — 2026-04-07
 
 ### STEP 119 완료 — TC 섹션 행 확장 8행 → 20행
-
-#### 작업 내용
-
-| 항목 | 변경 내용 | 상태 |
-|------|-----------|------|
-| `index.html` | `#tcBody` 행 8개 → 20개로 확장 | ✅ |
-| 해피패스 | 8건 (AUTH, CART, PAY, NOTIF, CICD, ACCESS) | ✅ |
-| 네거티브 | 7건 (검색 빈 결과, 세션 만료, API 타임아웃, 잔액 부족, 만료 JWT, XSS) | ✅ |
-| 엣지케이스 | 5건 (소수점 오차, SQL 패턴, 모바일 뷰포트, 저속 네트워크, 부하) | ✅ |
-| TC 분류 통계 바 | `// TC 분류 현황` 헤더 배지 추가 | ✅ |
 
 ---
 
@@ -89,18 +100,6 @@
 ## v29.0.0 — 2026-04-06
 
 ### STEP 100 완료 — 섹션 간 divider 강화
-
----
-
-## v28.0.0 — 2026-04-06
-
-### STEP 97 완료 — TC 테이블 필터 버튼 추가 (최초)
-
----
-
-## v27.0.0 — 2026-04-06
-
-### STEP 96 완료 — 버그 스토리 인라인 카드 섹션 추가
 
 ---
 
