@@ -80,8 +80,6 @@ h1.hero-name em{color:var(--purple);font-style:normal}
 
 /* =====================================================
    HERO CANVAS PARTICLE — STEP 117
-   Hero 섹션 배경 Canvas 파티클 효과
-   별빛처럼 떠다니는 글로우 포인트
    ===================================================== */
 #hero-canvas{
   position:absolute;
@@ -101,6 +99,39 @@ section{padding:96px 56px;position:relative;z-index:2}
 .sec-n{font-family:var(--mono);font-size:11px;color:var(--purple);opacity:.5}
 .sec-t{font-size:28px;font-weight:700;letter-spacing:-.02em}
 .sec-line{flex:1;height:1px;background:var(--p-border)}
+
+/* =====================================================
+   SECTION STAT BADGE — STEP 121
+   각 섹션 헤드 우측 고정 숫자 뱃지
+   ===================================================== */
+.sec-stat-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  font-family:var(--mono);
+  font-size:10px;
+  padding:4px 12px;
+  background:rgba(168,85,247,0.1);
+  border:1px solid rgba(168,85,247,0.3);
+  color:var(--purple);
+  letter-spacing:.08em;
+  white-space:nowrap;
+  flex-shrink:0;
+}
+.sec-stat-badge .ssb-num{
+  font-size:13px;
+  font-weight:500;
+  color:var(--purple3);
+}
+.sec-stat-badge.ssb-green{
+  background:rgba(16,185,129,0.08);
+  border-color:rgba(16,185,129,0.28);
+  color:var(--green);
+}
+.sec-stat-badge.ssb-green .ssb-num{
+  color:var(--green);
+}
+
 .badge{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:10px;font-weight:500;padding:4px 12px;letter-spacing:.08em}
 .badge-done{background:rgba(168,85,247,.15);color:var(--purple);border:1px solid var(--p-border)}
 .badge-done::before{content:'';width:5px;height:5px;background:var(--purple);border-radius:50%;animation:pulse 1.5s infinite}
@@ -154,7 +185,6 @@ section{padding:96px 56px;position:relative;z-index:2}
 
 /* =====================================================
    COMMIT HISTORY CARD — STEP 115
-   실제 증거 섹션 하단 커밋 히스토리 시각화
    ===================================================== */
 .commit-card{
   background:var(--bg2);
@@ -219,7 +249,6 @@ section{padding:96px 56px;position:relative;z-index:2}
   margin-top:4px;
   letter-spacing:.05em;
 }
-/* 미니 바 차트 — 날짜별 커밋 활동 */
 .commit-bar-area{
   margin-bottom:16px;
 }
@@ -402,7 +431,6 @@ section{padding:96px 56px;position:relative;z-index:2}
 
 /* =====================================================
    TC 통계 바 — STEP 119
-   TC 섹션 상단 분류 비율 표시
    ===================================================== */
 .tc-stat-bar{
   display:flex;
@@ -453,7 +481,6 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:
 
 /* =====================================================
    DOT NAVIGATION — 우측 고정 (STEP 107)
-   div 태그 사용으로 nav CSS 충돌 완전 해결
    ===================================================== */
 #dot-nav{
   position:fixed;
@@ -510,7 +537,6 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:
 
 /* =====================================================
    SECTION BREADCRUMB — 좌측 하단 고정 (STEP 109)
-   스크롤 시 현재 섹션명을 모노 폰트로 표시
    ===================================================== */
 #breadcrumb{
   position:fixed;
@@ -644,6 +670,7 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
 .radar-svg-container{width:100%}
 .commit-stats-row{grid-template-columns:repeat(2,1fr)}
 #hero-canvas{display:none}
+.sec-stat-badge{display:none}
 }
 </style>
 </head>
@@ -731,7 +758,13 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
 </section>
 <!-- STATS -->
 <section class="stats-sec" id="stats">
-<div class="sec-head reveal"><span class="sec-n">00</span><h2 class="sec-t">숫자로 보는 현황</h2><div class="sec-line"></div></div>
+<div class="sec-head reveal">
+  <span class="sec-n">00</span>
+  <h2 class="sec-t">숫자로 보는 현황</h2>
+  <div class="sec-line"></div>
+  <!-- STEP 121: 섹션 통계 배지 -->
+  <span class="sec-stat-badge"><span class="ssb-num">4</span>개 지표</span>
+</div>
 <div class="stats-grid reveal">
 <div class="stat-card"><div class="stat-big">5</div><div class="stat-desc">실제 연동된 MCP 서버</div><div class="stat-sub">filesystem·playwright·github·notion·slack</div></div>
 <div class="stat-card"><div class="stat-big">7</div><div class="stat-desc">AI 자동화 워크플로우 스텝</div><div class="stat-sub">명세 입력 → TC → E2E → 커밋 → Notion → Slack → Jira</div></div>
@@ -741,7 +774,13 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
 </section>
 <!-- MCP 자동화 -->
 <section class="mcp-sec" id="mcp">
-<div class="sec-head reveal"><span class="sec-n">01</span><h2 class="sec-t">Claude MCP 자동화 — 5개 서버 연동</h2><div class="sec-line"></div></div>
+<div class="sec-head reveal">
+  <span class="sec-n">01</span>
+  <h2 class="sec-t">Claude MCP 자동화 — 5개 서버 연동</h2>
+  <div class="sec-line"></div>
+  <!-- STEP 121: 섹션 통계 배지 -->
+  <span class="sec-stat-badge ssb-green"><span class="ssb-num">5</span>MCP 실제 연동</span>
+</div>
 <div class="mcp-top reveal">
 <div>
 <div class="mcp-intro-badge">LIVE · 5 MCP 실제 연동</div>
@@ -786,7 +825,13 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
 </section>
 <!-- PROOF -->
 <section class="proof-sec" id="proof">
-<div class="sec-head reveal"><span class="sec-n">02</span><h2 class="sec-t">실제 연동 증거</h2><div class="sec-line"></div></div>
+<div class="sec-head reveal">
+  <span class="sec-n">02</span>
+  <h2 class="sec-t">실제 연동 증거</h2>
+  <div class="sec-line"></div>
+  <!-- STEP 121: 섹션 통계 배지 -->
+  <span class="sec-stat-badge ssb-green"><span class="ssb-num">4</span>개 실제 확인</span>
+</div>
 <p style="font-size:15px;color:var(--muted);line-height:1.85;max-width:580px;margin-bottom:40px" class="reveal">
 말로만 하는 포트폴리오가 아닙니다.<br>
 <strong style="color:var(--text)">실제로 연결하고, 실제로 실행하고, 실제로 결과물이 만들어졌습니다.</strong>
@@ -844,7 +889,6 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
 
 <!-- =====================================================
      COMMIT HISTORY CARD — STEP 115
-     GitHub API로 실제 커밋 수 fetch + 카운트업 + 미니 바 차트
      ===================================================== -->
 <div class="commit-card reveal" id="commitCard">
   <div class="commit-card-head">
@@ -887,7 +931,13 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
 </section>
 <!-- PROJECTS -->
 <section class="projects-sec" id="projects">
-<div class="sec-head reveal"><span class="sec-n">03</span><h2 class="sec-t">프로젝트 카드 (10개 · 전체 구현 완료)</h2><div class="sec-line"></div></div>
+<div class="sec-head reveal">
+  <span class="sec-n">03</span>
+  <h2 class="sec-t">프로젝트 카드 (10개 · 전체 구현 완료)</h2>
+  <div class="sec-line"></div>
+  <!-- STEP 121: 섹션 통계 배지 -->
+  <span class="sec-stat-badge"><span class="ssb-num">10</span>개 프로젝트</span>
+</div>
 <div class="projects-grid">
 <div class="proj-card reveal"><div class="proj-num">PROJECT 01 · <span class="badge badge-done" style="font-size:9px;padding:2px 8px">구현 완료</span></div><div class="proj-icon">🤖</div><div class="proj-title">TC 자동생성 워크플로우</div><div class="proj-desc">기능 명세 입력 → Claude가 해피패스·네거티브·엣지케이스 자동 생성 → 로컬 저장 → GitHub 커밋. 현재 145건+ 누적.</div><div class="proj-flow"><span class="proj-flow-step">기능명세 입력</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">TC 자동 생성</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">로컬 저장</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">GitHub</span></div><div class="proj-tags"><span class="proj-tag proj-tag-p">filesystem MCP</span><span class="proj-tag proj-tag-p">github MCP</span></div><div class="proj-links"><a href="https://github.com/kihyunqa/qa-portfolio/blob/main/testcase_login.md" target="_blank" class="proj-link">TC 파일 보기 ↗</a></div></div>
 <div class="proj-card reveal"><div class="proj-num">PROJECT 02 · <span class="badge badge-done" style="font-size:9px;padding:2px 8px">구현 완료</span></div><div class="proj-icon">🔀</div><div class="proj-title">QA 대응 프로세스 + 브랜치 전략</div><div class="proj-desc">main / develop / feature 브랜치 구조에서 QA 개입 시점 정의. GitHub MCP로 브랜치·PR·커밋 대화로 처리.</div><div class="branch-vis"><div><span class="branch-main">main</span> <span class="branch-dim">──●──────────●──</span> <span class="branch-dim"># 릴리즈</span></div><div><span class="branch-dev">develop</span> <span class="branch-dim">────●────●──</span> <span class="branch-dim"># 회귀 검증</span></div><div><span class="branch-feat">feature</span> <span class="branch-dim">──────●──</span> <span class="branch-dim"># 선행 검토</span></div></div><div class="proj-tags"><span class="proj-tag proj-tag-p">github MCP</span><span class="proj-tag">브랜치 전략</span></div><div class="proj-links"><a href="https://github.com/kihyunqa/qa-portfolio/blob/main/docs/release-qa-process.md" target="_blank" class="proj-link">릴리즈 QA 프로세스 ↗</a></div></div>
@@ -903,7 +953,13 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
 </section>
 <!-- PIPELINE DIAGRAM -->
 <section class="diagram-sec" id="diagram">
-<div class="sec-head reveal"><span class="sec-n">04</span><h2 class="sec-t">QA 자동화 전체 파이프라인</h2><div class="sec-line"></div></div>
+<div class="sec-head reveal">
+  <span class="sec-n">04</span>
+  <h2 class="sec-t">QA 자동화 전체 파이프라인</h2>
+  <div class="sec-line"></div>
+  <!-- STEP 121: 섹션 통계 배지 -->
+  <span class="sec-stat-badge"><span class="ssb-num">7</span>스텝 파이프라인</span>
+</div>
 <div class="diagram-wrap reveal">
 <div><div class="diag-section-label">TRIGGER — 입력</div><div class="diagram-row"><div class="diag-node"><div class="diag-box done">기능 명세 입력</div><div class="diag-label">자연어 명령</div></div><div class="diag-arrow">→</div><div class="diag-node"><div class="diag-box done">Claude 수신</div><div class="diag-label">Claude Desktop</div></div><div class="diag-arrow">→</div><div class="diag-node"><div class="diag-box done">MCP 라우팅</div><div class="diag-label">5개 서버 연결</div></div></div></div>
 <div style="text-align:center"><div class="diag-arrow-down">↓</div></div>
@@ -914,7 +970,13 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
 </section>
 <!-- ROADMAP -->
 <section class="roadmap-sec" id="roadmap">
-<div class="sec-head reveal"><span class="sec-n">05</span><h2 class="sec-t">MCP 연동 로드맵</h2><div class="sec-line"></div></div>
+<div class="sec-head reveal">
+  <span class="sec-n">05</span>
+  <h2 class="sec-t">MCP 연동 로드맵</h2>
+  <div class="sec-line"></div>
+  <!-- STEP 121: 섹션 통계 배지 -->
+  <span class="sec-stat-badge ssb-green"><span class="ssb-num">2</span>PHASE 완료</span>
+</div>
 <p style="font-size:15px;color:var(--muted);line-height:1.85;max-width:580px;margin-bottom:40px" class="reveal">실제 연동 완료된 5개 MCP + Jira를 기반으로 더 많은 연동을 확장해 나갑니다.</p>
 <div class="roadmap-grid reveal">
 <div class="roadmap-card done"><div class="rm-num">PHASE 1 · 완료</div><div class="rm-icon">✅</div><div class="rm-title">Core 5 MCP 연동</div><div class="rm-desc">filesystem · playwright · github · notion · slack 실제 연동 완료. TC 145건+ · Playwright 12 spec · GitHub Actions 2개 운영 중.</div></div>
@@ -924,7 +986,13 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
 </section>
 <!-- TC — STEP 119: 행 8 → 20으로 확장 -->
 <section id="tc" style="background:var(--bg2);border-top:1px solid var(--p-border)">
-<div class="sec-head reveal"><span class="sec-n">06</span><h2 class="sec-t">자동생성 테스트케이스 — 145건+</h2><div class="sec-line"></div></div>
+<div class="sec-head reveal">
+  <span class="sec-n">06</span>
+  <h2 class="sec-t">자동생성 테스트케이스 — 145건+</h2>
+  <div class="sec-line"></div>
+  <!-- STEP 121: 섹션 통계 배지 -->
+  <span class="sec-stat-badge"><span class="ssb-num">20</span>건 표시</span>
+</div>
 <p class="tc-intro reveal">Claude MCP로 자동 생성된 TC 145건+. 로그인·API·보안·성능·접근성·장바구니·검색·결제 전 카테고리 커버. test-cases/, playwright-tests/ 두 곳에서 관리.</p>
 
 <!-- TC 분류 통계 바 — STEP 119 -->
@@ -948,7 +1016,6 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
 <table class="tc-table" id="tcTable">
 <thead><tr><th>TC-ID</th><th>구분</th><th>테스트 제목</th><th>기대 결과</th><th>우선순위</th></tr></thead>
 <tbody id="tcBody">
-<!-- 기존 8행 -->
 <tr data-type="h"><td>AUTH-001</td><td><span class="tc-type h">해피패스</span></td><td>유효한 자격증명으로 로그인</td><td>/dashboard 리다이렉트</td><td><span class="p1">P1</span></td></tr>
 <tr data-type="h"><td>AUTH-005</td><td><span class="tc-type h">해피패스</span></td><td>로그아웃 실행 + 토큰 무효화 검증</td><td>401 Unauthorized (API 직접 호출 시)</td><td><span class="p1">P1</span></td></tr>
 <tr data-type="n"><td>AUTH-007</td><td><span class="tc-type n">네거티브</span></td><td>5회 로그인 실패 후 계정 잠금</td><td>계정 잠금 또는 인증 요청</td><td><span class="p1">P1</span></td></tr>
@@ -957,7 +1024,6 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
 <tr data-type="e"><td>API-S-006</td><td><span class="tc-type e">엣지케이스</span></td><td>특수문자 / SQL 패턴 검색</td><td>안전 처리된 결과 (500 없음)</td><td><span class="p1">P1</span></td></tr>
 <tr data-type="h"><td>TC-NOTIF-HP-001</td><td><span class="tc-type h">해피패스</span></td><td>QA 완료 Slack 알림 정상 발송</td><td>새-채널에 메시지 수신 확인</td><td><span class="p1">P1</span></td></tr>
 <tr data-type="h"><td>TC-CICD-HP-001</td><td><span class="tc-type h">해피패스</span></td><td>TC push 시 Actions 자동 트리거</td><td>workflow run 생성 확인</td><td><span class="p1">P1</span></td></tr>
-<!-- STEP 119 추가 12행 -->
 <tr data-type="n"><td>SEARCH-N-001</td><td><span class="tc-type n">네거티브</span></td><td>검색 결과 0건 빈 상태 표시</td><td>"결과 없음" 메시지 노출, 500 오류 없음</td><td><span class="p2">P2</span></td></tr>
 <tr data-type="n"><td>AUTH-N-008</td><td><span class="tc-type n">네거티브</span></td><td>세션 만료 후 보호 페이지 접근</td><td>로그인 페이지 리다이렉트, 401 반환</td><td><span class="p1">P1</span></td></tr>
 <tr data-type="e"><td>MOB-E-001</td><td><span class="tc-type e">엣지케이스</span></td><td>모바일 320px 뷰포트 레이아웃 검증</td><td>가로 스크롤 없음, 버튼 터치 영역 44px+</td><td><span class="p2">P2</span></td></tr>
@@ -977,7 +1043,13 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
 </section>
 <!-- CAREER TIMELINE -->
 <section class="timeline-sec" id="timeline">
-<div class="sec-head reveal"><span class="sec-n">07</span><h2 class="sec-t">경력 타임라인</h2><div class="sec-line"></div></div>
+<div class="sec-head reveal">
+  <span class="sec-n">07</span>
+  <h2 class="sec-t">경력 타임라인</h2>
+  <div class="sec-line"></div>
+  <!-- STEP 121: 섹션 통계 배지 -->
+  <span class="sec-stat-badge"><span class="ssb-num">6.9</span>yr 경력</span>
+</div>
 <div class="timeline reveal">
 <div class="tl-item">
 <div class="tl-dot"></div>
@@ -1007,7 +1079,13 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
 </section>
 <!-- SKILLS -->
 <section class="skills-sec" id="skills">
-<div class="sec-head reveal"><span class="sec-n">08</span><h2 class="sec-t">스킬</h2><div class="sec-line"></div></div>
+<div class="sec-head reveal">
+  <span class="sec-n">08</span>
+  <h2 class="sec-t">스킬</h2>
+  <div class="sec-line"></div>
+  <!-- STEP 121: 섹션 통계 배지 -->
+  <span class="sec-stat-badge"><span class="ssb-num">20</span>개 스킬</span>
+</div>
 
 <!-- RADAR CHART — STEP 111 -->
 <div class="radar-wrap reveal" id="radarWrap">
@@ -1191,8 +1269,6 @@ updateDotNav();
 
 /* =====================================================
    HERO CANVAS PARTICLE — STEP 117
-   Hero 섹션 배경에 별빛 파티클 효과
-   Canvas API, 순수 JS, 60fps rAF 루프
    ===================================================== */
 (function initHeroParticles() {
   const canvas = document.getElementById('hero-canvas');
@@ -1201,10 +1277,10 @@ updateDotNav();
 
   const PARTICLE_COUNT = 80;
   const COLOR_PALETTE = [
-    'rgba(168,85,247,',   // --purple
-    'rgba(124,58,237,',   // --purple2
-    'rgba(192,132,252,',  // --purple3
-    'rgba(240,234,255,',  // --text (white-ish)
+    'rgba(168,85,247,',
+    'rgba(124,58,237,',
+    'rgba(192,132,252,',
+    'rgba(240,234,255,',
   ];
 
   let W, H, particles = [];
@@ -1248,16 +1324,13 @@ updateDotNav();
     ctx.clearRect(0, 0, W, H);
 
     particles.forEach((p, i) => {
-      // Alpha 펄스
       p.alpha += p.alphaDir * p.alphaSpeed;
       if (p.alpha >= p.alphaMax) { p.alpha = p.alphaMax; p.alphaDir = -1; }
       if (p.alpha <= p.alphaMin) { p.alpha = p.alphaMin; p.alphaDir = 1; }
 
-      // 이동
       p.x += p.vx;
       p.y += p.vy;
 
-      // 경계 처리 — 위로 벗어나면 아래에서 재생성
       if (p.y < -4) {
         particles[i] = createParticle(H + 4);
         return;
@@ -1265,7 +1338,6 @@ updateDotNav();
       if (p.x < -4) p.x = W + 4;
       if (p.x > W + 4) p.x = -4;
 
-      // 글로우 파티클
       if (p.glowing) {
         const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 5);
         grad.addColorStop(0, p.color + (p.alpha * 0.9).toFixed(3) + ')');
@@ -1276,7 +1348,6 @@ updateDotNav();
         ctx.fill();
       }
 
-      // 코어 점
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
       ctx.fillStyle = p.color + p.alpha.toFixed(3) + ')';
@@ -1286,7 +1357,6 @@ updateDotNav();
     requestAnimationFrame(draw);
   }
 
-  // 히어로 섹션이 뷰포트에 없으면 중단 (성능)
   let heroVisible = true;
   const heroObs = new IntersectionObserver(entries => {
     heroVisible = entries[0].isIntersecting;
@@ -1295,7 +1365,6 @@ updateDotNav();
 
   function animLoop() {
     if (heroVisible) draw();
-    // heroVisible 아닐 땐 다음 프레임 예약만
     requestAnimationFrame(animLoop);
   }
 
@@ -1307,8 +1376,6 @@ updateDotNav();
 
 /* =====================================================
    HERO TYPING EFFECT — STEP 113
-   hero-role에 타이핑 애니메이션 구현
-   순수 JS, 외부 라이브러리 없음
    ===================================================== */
 const heroRoleEl = document.getElementById('heroRoleText');
 const heroCursorEl = document.getElementById('heroCursor');
@@ -1328,22 +1395,18 @@ function typeStep() {
   const currentText = typingTexts[typeIdx];
 
   if (!isDeleting) {
-    // 타이핑
     charIdx++;
     heroRoleEl.textContent = currentText.slice(0, charIdx);
     if (charIdx === currentText.length) {
-      // 완성 — 잠시 대기 후 삭제 시작
       isDeleting = true;
       typingTimer = setTimeout(typeStep, 2200);
       return;
     }
     typingTimer = setTimeout(typeStep, 55);
   } else {
-    // 삭제
     charIdx--;
     heroRoleEl.textContent = currentText.slice(0, charIdx);
     if (charIdx === 0) {
-      // 삭제 완료 — 다음 텍스트로
       isDeleting = false;
       typeIdx = (typeIdx + 1) % typingTexts.length;
       typingTimer = setTimeout(typeStep, 350);
@@ -1353,19 +1416,16 @@ function typeStep() {
   }
 }
 
-// 페이지 로드 후 600ms 딜레이 후 시작
 setTimeout(typeStep, 600);
 
 /* =====================================================
    TC 필터 버튼 — STEP 113
-   전체 / 해피패스 / 네거티브 / 엣지케이스 필터
    ===================================================== */
 const tcFilterBtns = document.querySelectorAll('.tc-filter-btn');
 const tcRows = document.querySelectorAll('#tcBody tr');
 
 tcFilterBtns.forEach(btn => {
   btn.addEventListener('click', () => {
-    // active 클래스 토글
     tcFilterBtns.forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
 
@@ -1405,7 +1465,6 @@ function drawRadar(animated) {
     return { x: cx + r * Math.cos(angle), y: cy + r * Math.sin(angle) };
   }
 
-  // Grid levels
   for (let l = 1; l <= levels; l++) {
     const r = R * l / levels;
     let pts = '';
@@ -1418,7 +1477,6 @@ function drawRadar(animated) {
     svg.appendChild(poly);
   }
 
-  // Axes
   for (let i = 0; i < n; i++) {
     const p = toXY(i, R);
     const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
@@ -1429,7 +1487,6 @@ function drawRadar(animated) {
     svg.appendChild(line);
   }
 
-  // Data polygon
   let dataPts = '';
   const finalVals = radarSkills.map(s => s.val / 100);
   const animVals = animated ? radarSkills.map(() => 0) : finalVals;
@@ -1445,7 +1502,6 @@ function drawRadar(animated) {
   dataPoly.setAttribute('stroke-width', '1.5');
   svg.appendChild(dataPoly);
 
-  // Data dots
   for (let i = 0; i < n; i++) {
     const p = toXY(i, R * (animated ? 0 : finalVals[i]));
     const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
@@ -1458,7 +1514,6 @@ function drawRadar(animated) {
     svg.appendChild(circle);
   }
 
-  // Labels
   for (let i = 0; i < n; i++) {
     const p = toXY(i, R + 18);
     const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
@@ -1473,7 +1528,6 @@ function drawRadar(animated) {
     svg.appendChild(text);
   }
 
-  // Animate if needed
   if (animated) {
     let progress = 0;
     const duration = 80;
@@ -1494,7 +1548,6 @@ function drawRadar(animated) {
     requestAnimationFrame(step);
   }
 
-  // Legend
   const legend = document.getElementById('radarLegend');
   if (legend) {
     legend.innerHTML = '';
@@ -1519,7 +1572,6 @@ function drawRadar(animated) {
   }
 }
 
-// Observe radar wrap for animated entry
 const radarObs = new IntersectionObserver(entries => {
   entries.forEach(e => {
     if (e.isIntersecting) {
@@ -1533,8 +1585,6 @@ if (radarWrap) radarObs.observe(radarWrap);
 
 /* =====================================================
    COMMIT HISTORY CARD — STEP 115
-   GitHub API로 실제 커밋 데이터 fetch
-   카운트업 애니메이션 + 미니 바 차트
    ===================================================== */
 function countUp(el, target, suffix) {
   let current = 0;
@@ -1553,28 +1603,23 @@ async function loadCommitData() {
   const cStatDays = document.getElementById('cStatDays');
 
   try {
-    // GitHub API — 커밋 목록 (최대 100개, per_page)
     const res = await fetch('https://api.github.com/repos/kihyunqa/qa-portfolio/commits?per_page=100');
     if (!res.ok) throw new Error('API ' + res.status);
     const commits = await res.json();
 
     if (!Array.isArray(commits) || commits.length === 0) throw new Error('no data');
 
-    // 총 커밋 수 (최소 실제 확인된 수)
     const totalCommits = commits.length;
 
-    // 첫 커밋 날짜 — 배열 마지막이 가장 오래된 것
     const firstDate = new Date(commits[commits.length - 1].commit.author.date);
     const today = new Date();
     const diffDays = Math.floor((today - firstDate) / (1000 * 60 * 60 * 24));
 
-    // 카운트업 애니메이션
     cStatTotal.innerHTML = '';
     countUp(cStatTotal, totalCommits, '+');
     cStatDays.innerHTML = '';
     countUp(cStatDays, diffDays, 'd');
 
-    // 미니 바 차트 — 최근 14일 커밋 빈도
     const barArea = document.getElementById('commitBarArea');
     const barsEl = document.getElementById('commitBars');
     const buckets = {};
@@ -1594,7 +1639,7 @@ async function loadCommitData() {
     barsEl.innerHTML = '';
     Object.entries(buckets).forEach(([date, count]) => {
       const heightPct = Math.max(4, Math.round((count / maxVal) * 100));
-      const shortDate = date.slice(5); // MM-DD
+      const shortDate = date.slice(5);
       const bar = document.createElement('div');
       bar.className = 'commit-bar-item';
       bar.style.height = heightPct + '%';
@@ -1604,12 +1649,10 @@ async function loadCommitData() {
     });
     barArea.style.display = '';
 
-    // 로딩 표시 숨기기
     loadingEl.style.display = 'none';
     footerNote.textContent = `// GitHub API · ${totalCommits}+ commits · ${diffDays}일간 활동 · 2026-04-07 기준`;
 
   } catch (err) {
-    // API 실패 시 fallback 수치 표시
     loadingEl.style.display = 'none';
     cStatTotal.textContent = '100+';
     cStatDays.textContent = '30+d';
@@ -1617,7 +1660,6 @@ async function loadCommitData() {
   }
 }
 
-// IntersectionObserver — 카드가 뷰포트에 들어올 때 한 번만 로드
 const commitObs = new IntersectionObserver(entries => {
   entries.forEach(e => {
     if (e.isIntersecting) {
