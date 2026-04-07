@@ -1,5 +1,33 @@
 # CHANGELOG
 
+## v38.0.0 — 2026-04-07
+
+### STEP 121 완료 — 섹션별 통계 배지 추가
+
+#### 작업 내용
+
+| 항목 | 변경 내용 | 상태 |
+|------|-----------|------|
+| `index.html` | 각 섹션 `sec-head` 우측에 `.sec-stat-badge` 추가 | ✅ |
+| CSS `.sec-stat-badge` | mono 폰트, 퍼플 테두리, 숫자 강조 `.ssb-num` | ✅ |
+| CSS `.sec-stat-badge.ssb-green` | 그린 컬러 변형 (실제 연동 섹션용) | ✅ |
+| 00 숫자 현황 | `4개 지표` 배지 | ✅ |
+| 01 MCP 자동화 | `5 MCP 실제 연동` (그린) 배지 | ✅ |
+| 02 실제 증거 | `4개 실제 확인` (그린) 배지 | ✅ |
+| 03 프로젝트 | `10개 프로젝트` 배지 | ✅ |
+| 04 파이프라인 | `7스텝 파이프라인` 배지 | ✅ |
+| 05 로드맵 | `2 PHASE 완료` (그린) 배지 | ✅ |
+| 06 TC | `20건 표시` 배지 | ✅ |
+| 07 경력 | `6.9yr 경력` 배지 | ✅ |
+| 08 스킬 | `20개 스킬` 배지 | ✅ |
+| 모바일 대응 | `@media(max-width:900px)` → `.sec-stat-badge{display:none}` | ✅ |
+
+#### 변경된 SHA
+- **index.html**: `03fef91c78570e096a772a681a55b1d66e826c7a` (STEP 121)
+- **CHANGELOG.md**: 이 커밋 후 새 SHA
+
+---
+
 ## v37.0.0 — 2026-04-07
 
 ### STEP 119 완료 — TC 섹션 행 확장 8행 → 20행
@@ -12,48 +40,13 @@
 | 해피패스 | 8건 (AUTH, CART, PAY, NOTIF, CICD, ACCESS) | ✅ |
 | 네거티브 | 7건 (검색 빈 결과, 세션 만료, API 타임아웃, 잔액 부족, 만료 JWT, XSS) | ✅ |
 | 엣지케이스 | 5건 (소수점 오차, SQL 패턴, 모바일 뷰포트, 저속 네트워크, 부하) | ✅ |
-| TC 분류 통계 바 | `// TC 분류 현황` 헤더 배지 추가 (해피패스 8건·네거티브 7건·엣지케이스 5건) | ✅ |
-| CSS `.tc-stat-bar` | TC 섹션 상단 분류 비율 표시 스타일 추가 | ✅ |
-
-#### 추가된 TC 목록 (12건)
-```
-SEARCH-N-001  네거티브  검색 결과 0건 빈 상태 표시
-AUTH-N-008    네거티브  세션 만료 후 보호 페이지 접근
-MOB-E-001     엣지케이스 모바일 320px 뷰포트 레이아웃 검증
-API-N-010     네거티브  API 응답 타임아웃 (30s 초과)
-PAY-HP-001    해피패스  정상 카드로 결제 완료
-PAY-N-005     네거티브  잔액 부족 카드 결제 시도
-NOTIF-E-003   엣지케이스 저속 네트워크(3G) 알림 중복 발송
-SEC-N-002     네거티브  만료된 JWT 토큰으로 API 호출
-ACCESS-HP-001 해피패스  키보드만으로 전체 폼 입력 및 제출
-SEARCH-N-004  네거티브  XSS 패턴 검색어 입력
-CART-HP-003   해피패스  장바구니 수량 변경 후 합계 갱신
-PERF-E-001    엣지케이스 동시 100개 요청 부하 테스트
-```
-
-#### 변경된 SHA
-- **index.html**: `bb34a83ef80dff2af84f2be4e84b6f7dd3cdeedf` (STEP 119)
-- **CHANGELOG.md**: 이 커밋 후 새 SHA
+| TC 분류 통계 바 | `// TC 분류 현황` 헤더 배지 추가 | ✅ |
 
 ---
 
 ## v36.0.0 — 2026-04-07
 
 ### STEP 117 완료 — Hero 섹션 Canvas 파티클 배경 효과 추가
-
-#### 작업 내용
-
-| 항목 | 변경 내용 | 상태 |
-|------|-----------|------|
-| `index.html` | Hero 섹션 내 `<canvas id="hero-canvas">` 추가 (`.hero-bg-grid` 바로 뒤) | ✅ |
-| CSS `#hero-canvas` | `position:absolute;inset:0;pointer-events:none;z-index:0;opacity:.7` | ✅ |
-| JS `initHeroParticles()` | Canvas API 80개 파티클, 60fps rAF 루프 | ✅ |
-| 파티클 종류 | 코어 점 + 글로우 RadialGradient 혼합 (72% 확률로 글로우) | ✅ |
-| 색상 팔레트 | --purple / --purple2 / --purple3 / --text 4색 | ✅ |
-| 알파 펄스 | 각 파티클 개별 alphaMin~alphaMax 랜덤 펄스 | ✅ |
-| 이동 방향 | 위쪽(-vy) + 좌우 미세 drift, 경계 순환 | ✅ |
-| IntersectionObserver | Hero 섹션 뷰포트 밖 나가면 animLoop 일시 정지 (성능 최적화) | ✅ |
-| 모바일 대응 | `@media(max-width:900px)` → `#hero-canvas{display:none}` | ✅ |
 
 ---
 
