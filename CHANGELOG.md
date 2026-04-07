@@ -1,5 +1,37 @@
 # CHANGELOG
 
+## v33.0.0 — 2026-04-07
+
+### STEP 110~111 완료 — CHANGELOG v33 + QA 스킬 레이더 차트 시각화
+
+#### 작업 내용
+
+| 항목 | 변경 내용 | 상태 |
+|------|-----------|------|
+| `index.html` | STEP 111: 스킬 섹션 상단에 SVG 레이더(방사형) 차트 추가 | ✅ |
+| CSS `.radar-wrap` | 340px SVG + 범례 2컬럼 레이아웃, 보라 border box | ✅ |
+| CSS `.radar-legend-item` | hover 시 border + background 변화 | ✅ |
+| SVG 레이더 | 8개 스킬 축 (TC설계/버그리포팅/E2E자동화/API테스트/MCP연동/Prompt Eng./QA문서화/QA리딩) | ✅ |
+| JS `drawRadar()` | SVG polygon + grid + axis + label 렌더링 | ✅ |
+| JS 애니메이션 | IntersectionObserver 진입 시 easeInOut 80프레임 펼침 | ✅ |
+| JS 레전드 인터랙션 | hover 시 해당 dot 크기 + 색상 강조 | ✅ |
+| 모바일 대응 | `grid-template-columns:1fr` 단일 컬럼으로 처리 | ✅ |
+
+#### 레이더 차트 스킬 데이터
+
+| 스킬 | 수치 |
+|------|------|
+| TC 설계 | 95% |
+| 버그 리포팅 | 92% |
+| E2E 자동화 | 82% |
+| API 테스트 | 70% |
+| MCP 연동 | 95% |
+| Prompt Eng. | 92% |
+| QA 문서화 | 90% |
+| QA 리딩 | 88% |
+
+---
+
 ## v32.0.0 — 2026-04-07
 
 ### STEP 106~107 완료 — dot-nav 우측 고정 버그 완전 해결
@@ -48,8 +80,6 @@
 ## v30.0.0 — 2026-04-07
 
 ### STEP 101 완료 — 우측 사이드 점 네비게이션 추가
-
-#### 작업 내용
 
 | 항목 | 변경 내용 | 상태 |
 |------|-----------|------|
