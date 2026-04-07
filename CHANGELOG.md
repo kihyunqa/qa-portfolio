@@ -1,5 +1,35 @@
 # CHANGELOG
 
+## v34.0.0 — 2026-04-07
+
+### STEP 113 완료 — Hero 타이핑 효과 + TC 필터 버튼 복원
+
+#### 작업 내용
+
+| 항목 | 변경 내용 | 상태 |
+|------|-----------|------|
+| `index.html` | Hero `.hero-role`에 타이핑 커서 애니메이션 추가 | ✅ |
+| CSS `.typing-cursor` | 2px 보라 커서, `typing-blink` 0.8s 깜빡임 애니메이션 | ✅ |
+| JS `typeStep()` | 타이핑→대기→삭제→다음 텍스트 루프 (순수 JS, 외부 라이브러리 없음) | ✅ |
+| 타이핑 텍스트 | 3개 순환: "Quality Assurance Engineer" / "TC 설계·버그 분석·MCP 자동화" / "6년 9개월 QA·코드 0줄·결과 ∞" | ✅ |
+| 타이핑 속도 | 입력 55ms / 삭제 28ms / 완성 대기 2200ms / 다음 시작 350ms | ✅ |
+| 시작 딜레이 | 페이지 로드 후 600ms 후 시작 | ✅ |
+| TC 필터 버튼 | 전체 / 해피패스 / 네거티브 / 엣지케이스 4개 버튼 복원 | ✅ |
+| CSS `.tc-filter-btn` | 기본 muted 스타일, active 보라 채움, hover 보라 테두리 | ✅ |
+| JS TC 필터 | `data-type` 속성 기반 행 show/hide 필터링 | ✅ |
+| TC 행 `data-type` | 각 행에 `data-type="h/n/e"` 속성 추가 | ✅ |
+
+#### 타이핑 구현 방식
+```
+hero-role 요소 구조:
+<p class="hero-role">
+  <span id="heroRoleText"></span>  ← 타이핑 텍스트
+  <span class="typing-cursor"></span>  ← 깜빡이는 커서
+</p>
+```
+
+---
+
 ## v33.0.0 — 2026-04-07
 
 ### STEP 110~111 완료 — CHANGELOG v33 + QA 스킬 레이더 차트 시각화
@@ -17,19 +47,6 @@
 | JS 레전드 인터랙션 | hover 시 해당 dot 크기 + 색상 강조 | ✅ |
 | 모바일 대응 | `grid-template-columns:1fr` 단일 컬럼으로 처리 | ✅ |
 
-#### 레이더 차트 스킬 데이터
-
-| 스킬 | 수치 |
-|------|------|
-| TC 설계 | 95% |
-| 버그 리포팅 | 92% |
-| E2E 자동화 | 82% |
-| API 테스트 | 70% |
-| MCP 연동 | 95% |
-| Prompt Eng. | 92% |
-| QA 문서화 | 90% |
-| QA 리딩 | 88% |
-
 ---
 
 ## v32.0.0 — 2026-04-07
@@ -40,22 +57,8 @@
 
 | 항목 | 변경 내용 | 상태 |
 |------|-----------|------|
-| `index.html` | STEP 106: `#dot-nav` CSS에 `position:fixed; right:20px; top:50%` 추가 시도 | ⚠️ 부분 |
 | `index.html` | STEP 107: `<nav id="dot-nav">` → `<div id="dot-nav">` 태그 변경으로 완전 해결 | ✅ |
-| 근본 원인 | `nav { left:0; right:0 }` 전역 CSS가 `#dot-nav` CSS보다 우선 적용 → 전체 너비로 퍼져 중앙처럼 보임 | 확인 |
-| 모바일 대응 | `max-width:900px` 미만 `display:none` 유지 | ✅ |
-| 호버 레이블 | `right:16px` 위치 정상 적용 | ✅ |
-| 클릭 스크롤 | `data-target` 기반 `scrollIntoView` 정상 작동 | ✅ |
-| 활성 dot | 스크롤 시 `active` 클래스 토글 정상 | ✅ |
-
-#### 버그 분석
-
-| 구분 | 내용 |
-|------|------|
-| 증상 | dot-nav가 화면 중앙에 고정되어 보임 |
-| 원인 | HTML 태그가 `<nav>`여서 `nav { position:fixed; left:0; right:0 }` 스타일이 상속됨 |
-| 해결 | 시맨틱 `<nav>` 대신 `<div>`로 변경 → nav 전역 스타일 충돌 제거 |
-| 교훈 | HTML 시맨틱 태그와 전역 CSS 충돌 가능성 — id/class 선택자만으로 부족할 수 있음 |
+| 근본 원인 | `nav { left:0; right:0 }` 전역 CSS가 `#dot-nav` CSS보다 우선 적용 | 확인 |
 
 ---
 
@@ -63,17 +66,9 @@
 
 ### STEP 103 완료 — TC 섹션 stat bar 추가
 
-#### 작업 내용
-
 | 항목 | 변경 내용 | 상태 |
 |------|-----------|------|
 | `index.html` | TC 섹션 상단에 `.tc-stat-bar` 4칸 그리드 stat 바 추가 | ✅ |
-| CSS `.tc-stat-bar` | 4칸 그리드 — `.stats-grid`와 동일한 레이아웃 패턴 | ✅ |
-| CSS `.tc-stat-item` | hover 시 하단 보라 라인 + 배경 변화 효과 | ✅ |
-| CSS `.tc-stat-item.highlight` | 첫 번째 칸(145건+) 강조 — 보라3 컬러 + 배경 tint | ✅ |
-| HTML `.tc-stat-bar` | 4개 수치: 145건+, 16파일, 12 spec, 8카테고리 | ✅ |
-| JS `tcStatO` | IntersectionObserver — 진입 시 숫자 카운트업 애니메이션 | ✅ |
-| 위치 | TC 섹션 `sec-head` 바로 아래, `tc-intro` 위 | ✅ |
 
 ---
 
@@ -84,10 +79,6 @@
 | 항목 | 변경 내용 | 상태 |
 |------|-----------|------|
 | `index.html` | 우측 고정 점 네비게이션 (`dot-nav`) 추가 | ✅ |
-| CSS `#dot-nav` | 우측 고정 세로 점 목록 컨테이너 (z-index:500) | ✅ |
-| CSS `.dot-nav-dot` | 6px 원형 점, 기본 보라 테두리, active 시 보라 채움+glow | ✅ |
-| CSS `.dot-nav-label` | hover 시 오른쪽에서 나타나는 섹션 이름 레이블 | ✅ |
-| 모바일 처리 | `max-width:900px` 에서 `#dot-nav { display:none }` | ✅ |
 
 ---
 
@@ -95,22 +86,11 @@
 
 ### STEP 100 완료 — 섹션 간 divider 강화
 
-| 항목 | 변경 내용 | 상태 |
-|------|-----------|------|
-| `index.html` | 섹션 사이 그라데이션 페이드 레이어 추가 | ✅ |
-| 각 섹션 | 상단 보라 → 투명 그라데이션 오버레이 | ✅ |
-
 ---
 
 ## v28.0.0 — 2026-04-06
 
-### STEP 97 완료 — TC 테이블 필터 버튼 추가
-
-| 항목 | 변경 내용 | 상태 |
-|------|-----------|------|
-| `index.html` | TC 필터 버튼 4개 추가 (전체/해피패스/네거티브/엣지케이스) | ✅ |
-| TC 행 수 | 8행 → 15행으로 확장 | ✅ |
-| JS | `tcFilter()` 함수 — 행 필터링 + 카운트 업데이트 | ✅ |
+### STEP 97 완료 — TC 테이블 필터 버튼 추가 (최초)
 
 ---
 
@@ -118,22 +98,11 @@
 
 ### STEP 96 완료 — 버그 스토리 인라인 카드 섹션 추가
 
-| 항목 | 변경 내용 | 상태 |
-|------|-----------|------|
-| `index.html` | 버그 스토리 섹션(sec 06) 추가 — STORY-001/002/003 인라인 카드 | ✅ |
-| nav | "버그 스토리" 링크 추가 | ✅ |
-
 ---
 
 ## v26.0.0 — 2026-04-06
 
 ### STEP 91 완료 — 잔여 docs 3개 날짜 동기화
-
-| 파일 | 변경 내용 | 상태 |
-|------|-----------|------|
-| `docs/jira-integration-plan.md` | 날짜 2026-03-31 → 2026-04-06 | ✅ |
-| `docs/regression-checklist.md` | 날짜 2026-03-31 → 2026-04-06 | ✅ |
-| `docs/tools-comparison.md` | 날짜 동기화, Jira 상태 ✅ FULL ACCESS 반영 | ✅ |
 
 ---
 
@@ -141,33 +110,17 @@
 
 ### STEP 89 완료 — 잔여 docs 날짜 동기화
 
-| 파일 | 변경 내용 | 상태 |
-|------|-----------|------|
-| `docs/ai-qa-vision.md` | 날짜 → 2026-04-01 | ✅ |
-| `docs/test-metrics.md` | 날짜 → 2026-04-01 | ✅ |
-
 ---
 
 ## v24.0.0 — 2026-04-01
 
 ### STEP 88 완료 — docs 내부 수치 전체 동기화
 
-| 파일 | 변경 내용 | 상태 |
-|------|-----------|------|
-| `docs/qa-kpi-dashboard.md` | docs 25→28, Jira 행 추가 | ✅ |
-| `docs/qa-onboarding.md` | docs 25→28, Jira 체크리스트 추가 | ✅ |
-| `docs/weekly-qa-report-template.md` | docs 25→28, 날짜 갱신 | ✅ |
-
 ---
 
 ## v23.0.0 — 2026-04-01
 
 ### STEP 87 완료 — 수치 정합성 최종 마무리
-
-| 파일 | 변경 내용 | 상태 |
-|------|-----------|------|
-| `README.md` | docs 27→28개, bug-stories 링크 추가 | ✅ |
-| `docs/portfolio-summary.md` | docs 27→28개, 수치 추가 | ✅ |
 
 ---
 
