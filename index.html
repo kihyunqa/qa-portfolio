@@ -225,9 +225,8 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:
 .reveal.visible{opacity:1;transform:translateY(0)}
 
 /* =====================================================
-   DOT NAVIGATION — 우측 고정 (STEP 101 버그 수정)
-   position:fixed + right:20px 명시적으로 지정
-   콘텐츠 가림 방지: pointer-events는 dot만 활성
+   DOT NAVIGATION — 우측 고정 (STEP 107 최종 수정)
+   nav 태그 → div 태그로 변경하여 nav CSS 충돌 완전 해결
    ===================================================== */
 #dot-nav{
   position:fixed;
@@ -306,8 +305,8 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
 <div class="cur" id="cur"></div>
 <div class="cur-r" id="curR"></div>
 
-<!-- DOT NAVIGATION (우측 고정) -->
-<nav id="dot-nav" aria-label="섹션 네비게이션">
+<!-- DOT NAVIGATION (우측 고정) — div 태그 사용 (nav 태그 CSS 충돌 방지) -->
+<div id="dot-nav" aria-label="섹션 네비게이션">
   <div class="dot-nav-item" data-target="stats"><span class="dot-nav-label">숫자 현황</span><div class="dot-nav-dot" data-target="stats"></div></div>
   <div class="dot-nav-item" data-target="mcp"><span class="dot-nav-label">MCP 자동화</span><div class="dot-nav-dot" data-target="mcp"></div></div>
   <div class="dot-nav-item" data-target="proof"><span class="dot-nav-label">실제 증거</span><div class="dot-nav-dot" data-target="proof"></div></div>
@@ -318,7 +317,7 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
   <div class="dot-nav-item" data-target="timeline"><span class="dot-nav-label">경력</span><div class="dot-nav-dot" data-target="timeline"></div></div>
   <div class="dot-nav-item" data-target="skills"><span class="dot-nav-label">스킬</span><div class="dot-nav-dot" data-target="skills"></div></div>
   <div class="dot-nav-item" data-target="contact"><span class="dot-nav-label">연락</span><div class="dot-nav-dot" data-target="contact"></div></div>
-</nav>
+</div>
 
 <nav>
 <div class="nav-logo">KH.QA / 2026</div>
