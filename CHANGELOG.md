@@ -1,5 +1,37 @@
 # CHANGELOG
 
+## v36.0.0 — 2026-04-07
+
+### STEP 117 완료 — Hero 섹션 Canvas 파티클 배경 효과 추가
+
+#### 작업 내용
+
+| 항목 | 변경 내용 | 상태 |
+|------|-----------|------|
+| `index.html` | Hero 섹션 내 `<canvas id="hero-canvas">` 추가 (`.hero-bg-grid` 바로 뒤) | ✅ |
+| CSS `#hero-canvas` | `position:absolute;inset:0;pointer-events:none;z-index:0;opacity:.7` | ✅ |
+| JS `initHeroParticles()` | Canvas API 80개 파티클, 60fps rAF 루프 | ✅ |
+| 파티클 종류 | 코어 점 + 글로우 RadialGradient 혼합 (72% 확률로 글로우) | ✅ |
+| 색상 팔레트 | --purple / --purple2 / --purple3 / --text 4색 | ✅ |
+| 알파 펄스 | 각 파티클 개별 alphaMin~alphaMax 랜덤 펄스 | ✅ |
+| 이동 방향 | 위쪽(-vy) + 좌우 미세 drift, 경계 순환 | ✅ |
+| IntersectionObserver | Hero 섹션 뷰포트 밖 나가면 animLoop 일시 정지 (성능 최적화) | ✅ |
+| 모바일 대응 | `@media(max-width:900px)` → `#hero-canvas{display:none}` | ✅ |
+
+#### 구조
+```
+.hero (section)
+  ├── .hero-bg-grid    (기존 격자 배경)
+  ├── #hero-canvas     (Canvas 파티클 — STEP 117 신규)
+  └── .hero-left       (텍스트 콘텐츠)
+```
+
+#### 변경된 SHA
+- **index.html**: `d933d6a48b7b888e7c1d216f175ff7360870552c` (STEP 117)
+- **CHANGELOG.md**: 이 커밋 후 새 SHA
+
+---
+
 ## v35.0.0 — 2026-04-07
 
 ### STEP 115 완료 — 커밋 히스토리 시각화 카드 추가
@@ -14,21 +46,6 @@
 | 미니 바 차트 | 최근 14일 커밋 빈도 바 차트 (hover tooltip) | ✅ |
 | fallback | API 실패 시 100+ / 30+d 표시 | ✅ |
 | IntersectionObserver | 카드가 뷰포트 진입 시 1회만 API 호출 | ✅ |
-| CSS `.commit-card` | 상단 보라 그라디언트 border, 4칸 stat-row | ✅ |
-| 반응형 | 모바일 `.commit-stats-row` → 2컬럼 | ✅ |
-
-#### 구조
-```
-.commit-card
-  ├── .commit-card-head  (타이틀 + 로딩 인디케이터)
-  ├── .commit-stats-row  (총 커밋 / 파일 80+ / 활동 기간 / 코드 0)
-  ├── .commit-bar-area   (최근 14일 미니 바 차트, API 성공 시만 표시)
-  └── .commit-footer     (API 출처 노트 + 전체 커밋 보기 링크)
-```
-
-#### 변경된 SHA
-- **index.html**: `9bae9d51f623ee913f25fa6a527b05cc42891a0f` (STEP 115)
-- **CHANGELOG.md**: 이 커밋 후 새 SHA
 
 ---
 
@@ -36,39 +53,11 @@
 
 ### STEP 113 완료 — Hero 타이핑 효과 + TC 필터 버튼 복원
 
-#### 작업 내용
-
-| 항목 | 변경 내용 | 상태 |
-|------|-----------|------|
-| `index.html` | Hero `.hero-role`에 타이핑 커서 애니메이션 추가 | ✅ |
-| CSS `.typing-cursor` | 2px 보라 커서, `typing-blink` 0.8s 깜빡임 애니메이션 | ✅ |
-| JS `typeStep()` | 타이핑→대기→삭제→다음 텍스트 루프 (순수 JS, 외부 라이브러리 없음) | ✅ |
-| 타이핑 텍스트 | 3개 순환: "Quality Assurance Engineer" / "TC 설계·버그 분석·MCP 자동화" / "6년 9개월 QA·코드 0줄·결과 ∞" | ✅ |
-| 타이핑 속도 | 입력 55ms / 삭제 28ms / 완성 대기 2200ms / 다음 시작 350ms | ✅ |
-| 시작 딜레이 | 페이지 로드 후 600ms 후 시작 | ✅ |
-| TC 필터 버튼 | 전체 / 해피패스 / 네거티브 / 엣지케이스 4개 버튼 복원 | ✅ |
-| CSS `.tc-filter-btn` | 기본 muted 스타일, active 보라 채움, hover 보라 테두리 | ✅ |
-| JS TC 필터 | `data-type` 속성 기반 행 show/hide 필터링 | ✅ |
-| TC 행 `data-type` | 각 행에 `data-type="h/n/e"` 속성 추가 | ✅ |
-
 ---
 
 ## v33.0.0 — 2026-04-07
 
-### STEP 110~111 완료 — CHANGELOG v33 + QA 스킬 레이더 차트 시각화
-
-#### 작업 내용
-
-| 항목 | 변경 내용 | 상태 |
-|------|-----------|------|
-| `index.html` | STEP 111: 스킬 섹션 상단에 SVG 레이더(방사형) 차트 추가 | ✅ |
-| CSS `.radar-wrap` | 340px SVG + 범례 2컬럼 레이아웃, 보라 border box | ✅ |
-| CSS `.radar-legend-item` | hover 시 border + background 변화 | ✅ |
-| SVG 레이더 | 8개 스킬 축 (TC설계/버그리포팅/E2E자동화/API테스트/MCP연동/Prompt Eng./QA문서화/QA리딩) | ✅ |
-| JS `drawRadar()` | SVG polygon + grid + axis + label 렌더링 | ✅ |
-| JS 애니메이션 | IntersectionObserver 진입 시 easeInOut 80프레임 펼침 | ✅ |
-| JS 레전드 인터랙션 | hover 시 해당 dot 크기 + 색상 강조 | ✅ |
-| 모바일 대응 | `grid-template-columns:1fr` 단일 컬럼으로 처리 | ✅ |
+### STEP 110~111 완료 — QA 스킬 레이더 차트 시각화
 
 ---
 
@@ -76,32 +65,17 @@
 
 ### STEP 106~107 완료 — dot-nav 우측 고정 버그 완전 해결
 
-#### 작업 내용
-
-| 항목 | 변경 내용 | 상태 |
-|------|-----------|------|
-| `index.html` | STEP 107: `<nav id="dot-nav">` → `<div id="dot-nav">` 태그 변경으로 완전 해결 | ✅ |
-| 근본 원인 | `nav { left:0; right:0 }` 전역 CSS가 `#dot-nav` CSS보다 우선 적용 | 확인 |
-
 ---
 
 ## v31.0.0 — 2026-04-07
 
 ### STEP 103 완료 — TC 섹션 stat bar 추가
 
-| 항목 | 변경 내용 | 상태 |
-|------|-----------|------|
-| `index.html` | TC 섹션 상단에 `.tc-stat-bar` 4칸 그리드 stat 바 추가 | ✅ |
-
 ---
 
 ## v30.0.0 — 2026-04-07
 
 ### STEP 101 완료 — 우측 사이드 점 네비게이션 추가
-
-| 항목 | 변경 내용 | 상태 |
-|------|-----------|------|
-| `index.html` | 우측 고정 점 네비게이션 (`dot-nav`) 추가 | ✅ |
 
 ---
 
