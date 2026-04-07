@@ -1,5 +1,37 @@
 # CHANGELOG
 
+## v35.0.0 — 2026-04-07
+
+### STEP 115 완료 — 커밋 히스토리 시각화 카드 추가
+
+#### 작업 내용
+
+| 항목 | 변경 내용 | 상태 |
+|------|-----------|------|
+| `index.html` | proof 섹션 `.proof-grid` 아래에 `.commit-card` 추가 | ✅ |
+| GitHub API | `https://api.github.com/repos/kihyunqa/qa-portfolio/commits?per_page=100` 실시간 fetch | ✅ |
+| 카운트업 | 총 커밋 수 · 활동 기간(일) 카운트업 애니메이션 | ✅ |
+| 미니 바 차트 | 최근 14일 커밋 빈도 바 차트 (hover tooltip) | ✅ |
+| fallback | API 실패 시 100+ / 30+d 표시 | ✅ |
+| IntersectionObserver | 카드가 뷰포트 진입 시 1회만 API 호출 | ✅ |
+| CSS `.commit-card` | 상단 보라 그라디언트 border, 4칸 stat-row | ✅ |
+| 반응형 | 모바일 `.commit-stats-row` → 2컬럼 | ✅ |
+
+#### 구조
+```
+.commit-card
+  ├── .commit-card-head  (타이틀 + 로딩 인디케이터)
+  ├── .commit-stats-row  (총 커밋 / 파일 80+ / 활동 기간 / 코드 0)
+  ├── .commit-bar-area   (최근 14일 미니 바 차트, API 성공 시만 표시)
+  └── .commit-footer     (API 출처 노트 + 전체 커밋 보기 링크)
+```
+
+#### 변경된 SHA
+- **index.html**: `9bae9d51f623ee913f25fa6a527b05cc42891a0f` (STEP 115)
+- **CHANGELOG.md**: 이 커밋 후 새 SHA
+
+---
+
 ## v34.0.0 — 2026-04-07
 
 ### STEP 113 완료 — Hero 타이핑 효과 + TC 필터 버튼 복원
@@ -18,15 +50,6 @@
 | CSS `.tc-filter-btn` | 기본 muted 스타일, active 보라 채움, hover 보라 테두리 | ✅ |
 | JS TC 필터 | `data-type` 속성 기반 행 show/hide 필터링 | ✅ |
 | TC 행 `data-type` | 각 행에 `data-type="h/n/e"` 속성 추가 | ✅ |
-
-#### 타이핑 구현 방식
-```
-hero-role 요소 구조:
-<p class="hero-role">
-  <span id="heroRoleText"></span>  ← 타이핑 텍스트
-  <span class="typing-cursor"></span>  ← 깜빡이는 커서
-</p>
-```
 
 ---
 
