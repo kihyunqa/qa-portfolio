@@ -12,7 +12,7 @@
 
 ---
 
-## 🏁 현재 상태 (2026-04-07) — STEP 106 완료
+## 🏁 현재 상태 (2026-04-07) — STEP 107 완료
 
 ---
 
@@ -29,18 +29,15 @@
 | TC 건수 | **145건+** | ✅ |
 | CHANGELOG | **v31** | ✅ |
 | Jira 연동 | **완료** | ✅ FULL ACCESS |
-| index.html | **최신** | ✅ STEP 106 완료 |
+| index.html | **최신** | ✅ STEP 107 완료 |
 | 버그 스토리 | **3건** | ✅ |
 | 버그 리포트 | **8건** | ✅ |
 | screenshots | **4장** | ✅ |
 | TC 필터 버튼 | **완료** | ✅ |
 | Hero 시각 강화 | **완료** | ✅ STEP 99 |
 | 섹션 divider | **완료** | ✅ STEP 100 |
-| 점 네비게이션 | **완료(버그수정)** | ✅ STEP 106 |
-| CHANGELOG v31 | **완료** | ✅ STEP 104 |
-| TC stat bar | **완료** | ✅ STEP 103 |
-| 프로젝트 카드 링크 | **완료** | ✅ STEP 105 |
-| dot nav 우측 고정 버그 | **수정 완료** | ✅ STEP 106 |
+| 점 네비게이션 | **완료(최종버그수정)** | ✅ STEP 107 |
+| dot-nav 태그 버그 | **수정 완료** | ✅ STEP 107 |
 
 ---
 
@@ -64,23 +61,22 @@
 | STEP 103 | TC 섹션 stat bar 추가 — 145건+/16파일/12spec/8카테고리 숫자 크게 강조. 카운트업 애니메이션 포함 | 2026-04-07 |
 | STEP 104 | CHANGELOG v31 업데이트 — STEP 103 TC stat bar 기록 | 2026-04-07 |
 | STEP 105 | 프로젝트 카드 링크 강화 — PROJECT 02/03/04/06에 실제 docs 링크 연결 | 2026-04-07 |
-| **STEP 106** | **dot nav 버그 수정 — 가운데로 오던 점 네비게이션을 position:fixed right:20px로 우측 완전 고정. 모바일 900px 이하 display:none 처리. 호버 레이블 위치 수정(right:16px). 클릭 스크롤 + 활성 dot 하이라이트 JS 정상화.** | **2026-04-07** |
+| STEP 106 | dot nav 버그 수정 시도 — position:fixed right:20px 설정했으나 nav 태그 CSS 충돌로 미완 | 2026-04-07 |
+| **STEP 107** | **dot-nav 완전 수정 — `<nav id="dot-nav">` → `<div id="dot-nav">`로 태그 변경. 근본 원인: nav{left:0;right:0} CSS가 #dot-nav보다 우선 적용되어 중앙 배치되던 것 완전 해결. GitHub 커밋 완료.** | **2026-04-07** |
 
 ---
 
-## 🎯 STEP 106에서 변경한 내용 (index.html)
+## 🎯 STEP 107에서 변경한 내용 (index.html)
 
-### 버그 수정 내용
-| 항목 | 수정 전 | 수정 후 |
-|------|---------|---------|
-| `#dot-nav` | CSS 없음 (DOM에만 존재) | `position:fixed; right:20px; top:50%; transform:translateY(-50%); z-index:500` |
-| 모바일 대응 | 없음 | `@media(max-width:900px){ #dot-nav{display:none} }` |
-| 호버 레이블 | 위치 오류 | `right:16px` 명시적 지정 |
-| 클릭 이벤트 | 없음 | `data-target` 기반 scrollIntoView 연결 |
-| 활성 dot | 없음 | `updateDotNav()` 스크롤 시 active 클래스 토글 |
+### 버그 원인 및 수정
+| 항목 | 원인/수정 내용 |
+|------|---------------|
+| **근본 원인** | `<nav id="dot-nav">` 사용 시 `nav { left:0; right:0 }` CSS가 적용되어 전체 너비로 퍼짐 → 중앙처럼 보임 |
+| **수정 내용** | `<nav id="dot-nav">` → `<div id="dot-nav">` 로 태그 변경 |
+| **결과** | `#dot-nav { position:fixed; right:20px; top:50% }` CSS가 정상 적용됨 |
 
 ### 변경된 SHA
-- **index.html**: `231871d921f6111a1350cfc87e896f83fb9ebb9a` (STEP 106)
+- **index.html**: `ba136be15e088c36ec21b3e5091e1f53a7b25d5c` (STEP 107)
 - **CHANGELOG.md**: `e45e30ec38495072997eeb8bb2293453765caedc` (v31 — 아직 미업데이트)
 
 ---
@@ -88,7 +84,7 @@
 ## 🎯 다음 Claude가 해야 할 포트폴리오 업그레이드 (우선순위 순)
 
 ### 🟡 우선순위 1 — CHANGELOG v32 업데이트
-- STEP 106 dot nav 버그 수정 내용 기록
+- STEP 107 dot-nav 완전 수정 내용 기록
 - CHANGELOG.md SHA: `e45e30ec38495072997eeb8bb2293453765caedc` (v31)
 
 ### 🟡 우선순위 2 — 섹션 breadcrumb 인터랙션
@@ -109,7 +105,7 @@
 4. **새 파일 무분별 생성 금지** — 기존 파일 업데이트 우선
 5. **NEXT_STEPS.md 업데이트 필수** — SHA 먼저 확인
 6. **사용자는 포트폴리오 업그레이드만 원함** — 면접준비/LinkedIn 제안 금지
-7. **index.html 현재 SHA**: `231871d921f6111a1350cfc87e896f83fb9ebb9a` (STEP 106)
+7. **index.html 현재 SHA**: `ba136be15e088c36ec21b3e5091e1f53a7b25d5c` (STEP 107)
 8. **CHANGELOG.md 현재 SHA**: `e45e30ec38495072997eeb8bb2293453765caedc` (v31)
 9. **NEXT_STEPS.md 현재 SHA**: 이 커밋 후 새 SHA — 다음 Claude가 get_file_contents로 확인
 
@@ -141,5 +137,5 @@
 
 ---
 
-*최종 업데이트: 2026-04-07 · STEP 106 완료*
-*dot nav 가운데 겹침 버그 수정 완료 (position:fixed right:20px). 다음: CHANGELOG v32 업데이트 → breadcrumb 인터랙션*
+*최종 업데이트: 2026-04-07 · STEP 107 완료*
+*dot-nav 근본 원인 해결: nav 태그 → div 태그 변경으로 nav CSS 충돌 완전 제거. 다음: CHANGELOG v32 → breadcrumb 인터랙션*
