@@ -77,6 +77,22 @@ h1.hero-name em{color:var(--purple);font-style:normal}
 .stat-n{font-family:var(--mono);font-size:36px;font-weight:500;color:var(--purple);line-height:1}
 .stat-l{font-size:11px;color:var(--dim);margin-top:4px;letter-spacing:.06em}
 .hero-bg-grid{position:absolute;inset:0;opacity:.03;background-image:linear-gradient(var(--purple) 1px,transparent 1px),linear-gradient(90deg,var(--purple) 1px,transparent 1px);background-size:60px 60px;pointer-events:none}
+
+/* =====================================================
+   HERO CANVAS PARTICLE — STEP 117
+   Hero 섹션 배경 Canvas 파티클 효과
+   별빛처럼 떠다니는 글로우 포인트
+   ===================================================== */
+#hero-canvas{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  pointer-events:none;
+  z-index:0;
+  opacity:.7;
+}
+
 .hero-proof{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:36px}
 .hero-proof-item{font-family:var(--mono);font-size:10px;padding:5px 12px;border:1px solid var(--p-border);color:var(--purple);background:var(--p-muted);letter-spacing:.06em;display:flex;align-items:center;gap:6px}
 .hero-proof-item::before{content:'✓';color:var(--green)}
@@ -604,6 +620,7 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
 .radar-wrap{grid-template-columns:1fr;gap:32px}
 .radar-svg-container{width:100%}
 .commit-stats-row{grid-template-columns:repeat(2,1fr)}
+#hero-canvas{display:none}
 }
 </style>
 </head>
@@ -656,6 +673,8 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
 </div>
 <section class="hero">
 <div class="hero-bg-grid"></div>
+<!-- HERO CANVAS PARTICLE — STEP 117 -->
+<canvas id="hero-canvas"></canvas>
 <div class="hero-left">
 <div class="hero-tag" id="heroTag">QA ENGINEER · 6년 9개월 · 삼성전자 파트너 포함</div>
 <h1 class="hero-name">성<em>기현</em></h1>
@@ -1123,6 +1142,122 @@ function updateDotNav(){
   updateBreadcrumb(current);
 }
 updateDotNav();
+
+/* =====================================================
+   HERO CANVAS PARTICLE — STEP 117
+   Hero 섹션 배경에 별빛 파티클 효과
+   Canvas API, 순수 JS, 60fps rAF 루프
+   ===================================================== */
+(function initHeroParticles() {
+  const canvas = document.getElementById('hero-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+
+  const PARTICLE_COUNT = 80;
+  const COLOR_PALETTE = [
+    'rgba(168,85,247,',   // --purple
+    'rgba(124,58,237,',   // --purple2
+    'rgba(192,132,252,',  // --purple3
+    'rgba(240,234,255,',  // --text (white-ish)
+  ];
+
+  let W, H, particles = [];
+
+  function resize() {
+    const hero = canvas.parentElement;
+    W = canvas.width = hero.offsetWidth;
+    H = canvas.height = hero.offsetHeight;
+  }
+
+  function randomBetween(a, b) {
+    return a + Math.random() * (b - a);
+  }
+
+  function createParticle(forceY) {
+    const color = COLOR_PALETTE[Math.floor(Math.random() * COLOR_PALETTE.length)];
+    return {
+      x: randomBetween(0, W),
+      y: forceY !== undefined ? forceY : randomBetween(0, H),
+      r: randomBetween(0.4, 2.2),
+      alpha: randomBetween(0.08, 0.55),
+      alphaDir: Math.random() > 0.5 ? 1 : -1,
+      alphaSpeed: randomBetween(0.003, 0.012),
+      alphaMin: randomBetween(0.04, 0.12),
+      alphaMax: randomBetween(0.3, 0.6),
+      vx: randomBetween(-0.12, 0.12),
+      vy: randomBetween(-0.22, -0.06),
+      color: color,
+      glowing: Math.random() > 0.72,
+    };
+  }
+
+  function initParticles() {
+    particles = [];
+    for (let i = 0; i < PARTICLE_COUNT; i++) {
+      particles.push(createParticle());
+    }
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+
+    particles.forEach((p, i) => {
+      // Alpha 펄스
+      p.alpha += p.alphaDir * p.alphaSpeed;
+      if (p.alpha >= p.alphaMax) { p.alpha = p.alphaMax; p.alphaDir = -1; }
+      if (p.alpha <= p.alphaMin) { p.alpha = p.alphaMin; p.alphaDir = 1; }
+
+      // 이동
+      p.x += p.vx;
+      p.y += p.vy;
+
+      // 경계 처리 — 위로 벗어나면 아래에서 재생성
+      if (p.y < -4) {
+        particles[i] = createParticle(H + 4);
+        return;
+      }
+      if (p.x < -4) p.x = W + 4;
+      if (p.x > W + 4) p.x = -4;
+
+      // 글로우 파티클
+      if (p.glowing) {
+        const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 5);
+        grad.addColorStop(0, p.color + (p.alpha * 0.9).toFixed(3) + ')');
+        grad.addColorStop(1, p.color + '0)');
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r * 5, 0, Math.PI * 2);
+        ctx.fillStyle = grad;
+        ctx.fill();
+      }
+
+      // 코어 점
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = p.color + p.alpha.toFixed(3) + ')';
+      ctx.fill();
+    });
+
+    requestAnimationFrame(draw);
+  }
+
+  // 히어로 섹션이 뷰포트에 없으면 중단 (성능)
+  let heroVisible = true;
+  const heroObs = new IntersectionObserver(entries => {
+    heroVisible = entries[0].isIntersecting;
+  }, { threshold: 0 });
+  heroObs.observe(canvas.parentElement);
+
+  function animLoop() {
+    if (heroVisible) draw();
+    // heroVisible 아닐 땐 다음 프레임 예약만
+    requestAnimationFrame(animLoop);
+  }
+
+  window.addEventListener('resize', () => { resize(); initParticles(); });
+  resize();
+  initParticles();
+  animLoop();
+})();
 
 /* =====================================================
    HERO TYPING EFFECT — STEP 113
