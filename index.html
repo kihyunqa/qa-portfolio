@@ -59,7 +59,6 @@ h1.hero-name em{color:var(--purple);font-style:normal}
 .stat-n{font-family:var(--mono);font-size:36px;font-weight:500;color:var(--purple);line-height:1}
 .stat-l{font-size:11px;color:var(--dim);margin-top:4px;letter-spacing:.06em}
 .hero-bg-grid{position:absolute;inset:0;opacity:.03;background-image:linear-gradient(var(--purple) 1px,transparent 1px),linear-gradient(90deg,var(--purple) 1px,transparent 1px);background-size:60px 60px;pointer-events:none}
-/* hero 강조 박스 */
 .hero-proof{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:36px}
 .hero-proof-item{font-family:var(--mono);font-size:10px;padding:5px 12px;border:1px solid var(--p-border);color:var(--purple);background:var(--p-muted);letter-spacing:.06em;display:flex;align-items:center;gap:6px}
 .hero-proof-item::before{content:'✓';color:var(--green)}
@@ -225,8 +224,8 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:
 .reveal.visible{opacity:1;transform:translateY(0)}
 
 /* =====================================================
-   DOT NAVIGATION — 우측 고정 (STEP 107 최종 수정)
-   nav 태그 → div 태그로 변경하여 nav CSS 충돌 완전 해결
+   DOT NAVIGATION — 우측 고정 (STEP 107)
+   div 태그 사용으로 nav CSS 충돌 완전 해결
    ===================================================== */
 #dot-nav{
   position:fixed;
@@ -281,6 +280,48 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:
   opacity:1;
 }
 
+/* =====================================================
+   SECTION BREADCRUMB — 좌측 하단 고정 (STEP 109)
+   스크롤 시 현재 섹션명을 모노 폰트로 표시
+   ===================================================== */
+#breadcrumb{
+  position:fixed;
+  bottom:28px;
+  left:56px;
+  z-index:500;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  pointer-events:none;
+  opacity:0;
+  transform:translateY(6px);
+  transition:opacity .35s ease, transform .35s ease;
+}
+#breadcrumb.visible{
+  opacity:1;
+  transform:translateY(0);
+}
+.bc-prefix{
+  font-family:var(--mono);
+  font-size:9px;
+  color:var(--dim);
+  letter-spacing:.12em;
+}
+.bc-slash{
+  font-family:var(--mono);
+  font-size:9px;
+  color:var(--dim);
+  opacity:.5;
+}
+.bc-section{
+  font-family:var(--mono);
+  font-size:10px;
+  color:var(--purple);
+  letter-spacing:.1em;
+  font-weight:500;
+  transition:opacity .2s;
+}
+
 @media(max-width:1200px){.mcp-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:1100px){.projects-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:900px){
@@ -297,6 +338,7 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
 .proof-grid{grid-template-columns:1fr}
 .roadmap-grid{grid-template-columns:1fr}
 #dot-nav{display:none}
+#breadcrumb{left:24px;bottom:20px}
 }
 </style>
 </head>
@@ -305,7 +347,7 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
 <div class="cur" id="cur"></div>
 <div class="cur-r" id="curR"></div>
 
-<!-- DOT NAVIGATION (우측 고정) — div 태그 사용 (nav 태그 CSS 충돌 방지) -->
+<!-- DOT NAVIGATION (우측 고정) — div 태그 사용 -->
 <div id="dot-nav" aria-label="섹션 네비게이션">
   <div class="dot-nav-item" data-target="stats"><span class="dot-nav-label">숫자 현황</span><div class="dot-nav-dot" data-target="stats"></div></div>
   <div class="dot-nav-item" data-target="mcp"><span class="dot-nav-label">MCP 자동화</span><div class="dot-nav-dot" data-target="mcp"></div></div>
@@ -317,6 +359,13 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
   <div class="dot-nav-item" data-target="timeline"><span class="dot-nav-label">경력</span><div class="dot-nav-dot" data-target="timeline"></div></div>
   <div class="dot-nav-item" data-target="skills"><span class="dot-nav-label">스킬</span><div class="dot-nav-dot" data-target="skills"></div></div>
   <div class="dot-nav-item" data-target="contact"><span class="dot-nav-label">연락</span><div class="dot-nav-dot" data-target="contact"></div></div>
+</div>
+
+<!-- SECTION BREADCRUMB (좌측 하단 고정) — STEP 109 -->
+<div id="breadcrumb" aria-live="polite">
+  <span class="bc-prefix">KH.QA</span>
+  <span class="bc-slash">/</span>
+  <span class="bc-section" id="bcSection">—</span>
 </div>
 
 <nav>
@@ -639,73 +688,108 @@ QA 엔지니어링, AI 자동화 도입에 관심 있는<br>
 <p>Built with Claude MCP · No code written · 5 MCP servers · TC 145건+ · Playwright 12 spec · Actions 2개 · Jira 연동 완료 · docs 28개</p>
 </footer>
 <script>
+/* ===================== BREADCRUMB 섹션 맵 ===================== */
+const bcMap = {
+  'stats':    '00 · 숫자 현황',
+  'mcp':      '01 · MCP 자동화',
+  'proof':    '02 · 실제 증거',
+  'projects': '03 · 프로젝트',
+  'diagram':  '04 · 파이프라인',
+  'roadmap':  '05 · 로드맵',
+  'tc':       '06 · 테스트케이스',
+  'timeline': '07 · 경력',
+  'skills':   '08 · 스킬',
+  'contact':  '09 · 연락'
+};
+const bcEl = document.getElementById('breadcrumb');
+const bcSec = document.getElementById('bcSection');
+let bcCurrent = '';
+
+function updateBreadcrumb(currentId) {
+  if (currentId === bcCurrent) return;
+  bcCurrent = currentId;
+  if (currentId && bcMap[currentId]) {
+    bcSec.textContent = bcMap[currentId];
+    bcEl.classList.add('visible');
+  } else {
+    bcEl.classList.remove('visible');
+  }
+}
+
+/* ===================== SCROLL ===================== */
 window.addEventListener('scroll',()=>{
-const s=document.documentElement;
-const p=(s.scrollTop/(s.scrollHeight-s.clientHeight))*100;
-document.getElementById('scrollBar').style.width=p+'%';
-updateDotNav();
+  const s=document.documentElement;
+  const p=(s.scrollTop/(s.scrollHeight-s.clientHeight))*100;
+  document.getElementById('scrollBar').style.width=p+'%';
+  updateDotNav();
 });
 
+/* ===================== CURSOR ===================== */
 const cur=document.getElementById('cur'),curR=document.getElementById('curR');
 let mx=0,my=0,rx=0,ry=0;
 document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx-3.5+'px';cur.style.top=my-3.5+'px';});
 (function a(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;curR.style.left=rx-14+'px';curR.style.top=ry-14+'px';requestAnimationFrame(a);})();
 
 document.querySelectorAll('a,button').forEach(el=>{
-el.addEventListener('mouseenter',()=>{cur.style.transform='scale(2.5)';curR.style.transform='scale(1.5)';});
-el.addEventListener('mouseleave',()=>{cur.style.transform='';curR.style.transform='';});
+  el.addEventListener('mouseenter',()=>{cur.style.transform='scale(2.5)';curR.style.transform='scale(1.5)';});
+  el.addEventListener('mouseleave',()=>{cur.style.transform='';curR.style.transform='';});
 });
 
 function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open');}
 
+/* ===================== REVEAL ===================== */
 const obs=new IntersectionObserver(entries=>{
-entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*60);obs.unobserve(e.target);}});
+  entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*60);obs.unobserve(e.target);}});
 },{threshold:0.08});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
+/* ===================== SKILL BARS ===================== */
 const skO=new IntersectionObserver(entries=>{
-entries.forEach(e=>{if(e.isIntersecting){e.target.querySelectorAll('.sk-bar').forEach(b=>{const w=b.style.width;b.style.width='0';setTimeout(()=>b.style.width=w,150);});skO.unobserve(e.target);}});
+  entries.forEach(e=>{if(e.isIntersecting){e.target.querySelectorAll('.sk-bar').forEach(b=>{const w=b.style.width;b.style.width='0';setTimeout(()=>b.style.width=w,150);});skO.unobserve(e.target);}});
 },{threshold:0.3});
 document.querySelectorAll('.skills-wrap').forEach(el=>skO.observe(el));
 
+/* ===================== STAT COUNTUP ===================== */
 const statO=new IntersectionObserver(entries=>{
-entries.forEach(e=>{
-if(e.isIntersecting){
-e.target.querySelectorAll('.stat-big').forEach(el=>{
-const txt=el.textContent;const num=parseFloat(txt);
-if(!isNaN(num)&&num>0&&num<1000){
-let s=0,t=Math.round(num);const inc=Math.ceil(t/20);
-const iv=setInterval(()=>{s=Math.min(s+inc,t);el.textContent=s+(txt.includes('+')?'+':'');if(s>=t){el.textContent=txt;clearInterval(iv);}},40);
-}
-});statO.unobserve(e.target);
-}
-});
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.querySelectorAll('.stat-big').forEach(el=>{
+        const txt=el.textContent;const num=parseFloat(txt);
+        if(!isNaN(num)&&num>0&&num<1000){
+          let s=0,t=Math.round(num);const inc=Math.ceil(t/20);
+          const iv=setInterval(()=>{s=Math.min(s+inc,t);el.textContent=s+(txt.includes('+')?'+':'');if(s>=t){el.textContent=txt;clearInterval(iv);}},40);
+        }
+      });statO.unobserve(e.target);
+    }
+  });
 },{threshold:0.5});
 document.querySelectorAll('.stats-grid').forEach(el=>statO.observe(el));
 
-/* DOT NAV 클릭 + 활성 상태 */
+/* ===================== DOT NAV + BREADCRUMB ===================== */
 const dotSections=['stats','mcp','proof','projects','diagram','roadmap','tc','timeline','skills','contact'];
+
 document.querySelectorAll('.dot-nav-dot').forEach(dot=>{
-dot.addEventListener('click',()=>{
-const id=dot.dataset.target||dot.closest('.dot-nav-item').dataset.target;
-const el=document.getElementById(id);
-if(el)el.scrollIntoView({behavior:'smooth'});
-});
+  dot.addEventListener('click',()=>{
+    const id=dot.dataset.target||dot.closest('.dot-nav-item').dataset.target;
+    const el=document.getElementById(id);
+    if(el)el.scrollIntoView({behavior:'smooth'});
+  });
 });
 
 function updateDotNav(){
-let current='';
-dotSections.forEach(id=>{
-const el=document.getElementById(id);
-if(el){
-const rect=el.getBoundingClientRect();
-if(rect.top<=window.innerHeight*0.5&&rect.bottom>0)current=id;
-}
-});
-document.querySelectorAll('.dot-nav-dot').forEach(dot=>{
-const id=dot.dataset.target||dot.closest('.dot-nav-item').dataset.target;
-dot.classList.toggle('active',id===current);
-});
+  let current='';
+  dotSections.forEach(id=>{
+    const el=document.getElementById(id);
+    if(el){
+      const rect=el.getBoundingClientRect();
+      if(rect.top<=window.innerHeight*0.5&&rect.bottom>0)current=id;
+    }
+  });
+  document.querySelectorAll('.dot-nav-dot').forEach(dot=>{
+    const id=dot.dataset.target||dot.closest('.dot-nav-item').dataset.target;
+    dot.classList.toggle('active',id===current);
+  });
+  updateBreadcrumb(current);
 }
 updateDotNav();
 </script>
