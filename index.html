@@ -335,12 +335,111 @@ section{padding:96px 56px;position:relative;z-index:2}
 .rm-icon{font-size:22px;margin-bottom:10px}
 .rm-title{font-size:14px;font-weight:700;margin-bottom:6px}
 .rm-desc{font-size:12px;color:var(--muted);line-height:1.65}
+
+/* =====================================================
+   PROJECT CARD — STEP 125: 호버 오버레이 추가
+   ===================================================== */
 .projects-sec{background:var(--bg2);border-top:1px solid var(--p-border)}
 .projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.proj-card{border:1px solid var(--p-border);padding:28px;position:relative;overflow:hidden;transition:all .3s;background:var(--bg)}
-.proj-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--purple);transform:scaleY(0);transform-origin:bottom;transition:transform .35s}
-.proj-card:hover{border-color:rgba(168,85,247,.45);background:rgba(168,85,247,.03);transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.4)}
+.proj-card{
+  border:1px solid var(--p-border);
+  padding:28px;
+  position:relative;
+  overflow:hidden;
+  transition:all .35s cubic-bezier(.4,0,.2,1);
+  background:var(--bg);
+}
+.proj-card::before{
+  content:'';
+  position:absolute;
+  top:0;left:0;
+  width:3px;height:100%;
+  background:var(--purple);
+  transform:scaleY(0);
+  transform-origin:bottom;
+  transition:transform .35s;
+}
+.proj-card:hover{
+  border-color:rgba(168,85,247,.5);
+  background:rgba(168,85,247,.04);
+  transform:translateY(-5px);
+  box-shadow:0 20px 48px rgba(0,0,0,.5),0 0 0 1px rgba(168,85,247,.15);
+}
 .proj-card:hover::before{transform:scaleY(1)}
+
+/* 오버레이 슬라이드업 — STEP 125 */
+.proj-overlay{
+  position:absolute;
+  bottom:0;left:0;right:0;
+  background:linear-gradient(
+    to top,
+    rgba(13,10,24,0.97) 0%,
+    rgba(13,10,24,0.93) 60%,
+    rgba(13,10,24,0.82) 100%
+  );
+  border-top:1px solid rgba(168,85,247,0.35);
+  padding:20px 28px;
+  transform:translateY(100%);
+  transition:transform .38s cubic-bezier(.4,0,.2,1);
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  z-index:10;
+}
+.proj-card:hover .proj-overlay{
+  transform:translateY(0);
+}
+.proj-overlay-title{
+  font-family:var(--mono);
+  font-size:9px;
+  color:var(--purple);
+  letter-spacing:.18em;
+  margin-bottom:2px;
+}
+.proj-overlay-points{
+  list-style:none;
+  display:flex;
+  flex-direction:column;
+  gap:5px;
+}
+.proj-overlay-points li{
+  font-size:11px;
+  color:var(--muted);
+  line-height:1.55;
+  display:flex;
+  align-items:flex-start;
+  gap:7px;
+}
+.proj-overlay-points li::before{
+  content:'→';
+  color:var(--purple);
+  font-family:var(--mono);
+  font-size:10px;
+  flex-shrink:0;
+  margin-top:1px;
+}
+.proj-overlay-links{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-top:4px;
+}
+.proj-overlay-link{
+  font-family:var(--mono);
+  font-size:9px;
+  color:var(--purple);
+  text-decoration:none;
+  border:1px solid rgba(168,85,247,.4);
+  padding:4px 10px;
+  letter-spacing:.04em;
+  transition:.2s;
+  background:rgba(168,85,247,.08);
+}
+.proj-overlay-link:hover{
+  background:var(--purple);
+  color:#fff;
+}
+
 .proj-num{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:.15em;margin-bottom:12px}
 .proj-icon{font-size:24px;margin-bottom:12px}
 .proj-title{font-size:16px;font-weight:700;letter-spacing:-.02em;margin-bottom:8px}
@@ -721,6 +820,7 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
 #hero-canvas{display:none}
 .sec-stat-badge{display:none}
 .sk-tooltip{display:none}
+.proj-overlay{display:none}
 }
 </style>
 </head>
@@ -819,7 +919,6 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
   <span class="sec-n">00</span>
   <h2 class="sec-t">숫자로 보는 현황</h2>
   <div class="sec-line"></div>
-  <!-- STEP 121: 섹션 통계 배지 -->
   <span class="sec-stat-badge"><span class="ssb-num">4</span>개 지표</span>
 </div>
 <div class="stats-grid reveal">
@@ -835,7 +934,6 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
   <span class="sec-n">01</span>
   <h2 class="sec-t">Claude MCP 자동화 — 5개 서버 연동</h2>
   <div class="sec-line"></div>
-  <!-- STEP 121: 섹션 통계 배지 -->
   <span class="sec-stat-badge ssb-green"><span class="ssb-num">5</span>MCP 실제 연동</span>
 </div>
 <div class="mcp-top reveal">
@@ -886,7 +984,6 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
   <span class="sec-n">02</span>
   <h2 class="sec-t">실제 연동 증거</h2>
   <div class="sec-line"></div>
-  <!-- STEP 121: 섹션 통계 배지 -->
   <span class="sec-stat-badge ssb-green"><span class="ssb-num">4</span>개 실제 확인</span>
 </div>
 <p style="font-size:15px;color:var(--muted);line-height:1.85;max-width:580px;margin-bottom:40px" class="reveal">
@@ -944,9 +1041,7 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
 </div>
 </div>
 
-<!-- =====================================================
-     COMMIT HISTORY CARD — STEP 115
-     ===================================================== -->
+<!-- COMMIT HISTORY CARD — STEP 115 -->
 <div class="commit-card reveal" id="commitCard">
   <div class="commit-card-head">
     <span class="commit-card-title">// GITHUB COMMIT HISTORY · kihyunqa/qa-portfolio</span>
@@ -986,26 +1081,246 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
 </div>
 
 </section>
-<!-- PROJECTS -->
+<!-- PROJECTS — STEP 125: 호버 오버레이 추가 -->
 <section class="projects-sec" id="projects">
 <div class="sec-head reveal">
   <span class="sec-n">03</span>
   <h2 class="sec-t">프로젝트 카드 (10개 · 전체 구현 완료)</h2>
   <div class="sec-line"></div>
-  <!-- STEP 121: 섹션 통계 배지 -->
   <span class="sec-stat-badge"><span class="ssb-num">10</span>개 프로젝트</span>
 </div>
 <div class="projects-grid">
-<div class="proj-card reveal"><div class="proj-num">PROJECT 01 · <span class="badge badge-done" style="font-size:9px;padding:2px 8px">구현 완료</span></div><div class="proj-icon">🤖</div><div class="proj-title">TC 자동생성 워크플로우</div><div class="proj-desc">기능 명세 입력 → Claude가 해피패스·네거티브·엣지케이스 자동 생성 → 로컬 저장 → GitHub 커밋. 현재 145건+ 누적.</div><div class="proj-flow"><span class="proj-flow-step">기능명세 입력</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">TC 자동 생성</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">로컬 저장</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">GitHub</span></div><div class="proj-tags"><span class="proj-tag proj-tag-p">filesystem MCP</span><span class="proj-tag proj-tag-p">github MCP</span></div><div class="proj-links"><a href="https://github.com/kihyunqa/qa-portfolio/blob/main/testcase_login.md" target="_blank" class="proj-link">TC 파일 보기 ↗</a></div></div>
-<div class="proj-card reveal"><div class="proj-num">PROJECT 02 · <span class="badge badge-done" style="font-size:9px;padding:2px 8px">구현 완료</span></div><div class="proj-icon">🔀</div><div class="proj-title">QA 대응 프로세스 + 브랜치 전략</div><div class="proj-desc">main / develop / feature 브랜치 구조에서 QA 개입 시점 정의. GitHub MCP로 브랜치·PR·커밋 대화로 처리.</div><div class="branch-vis"><div><span class="branch-main">main</span> <span class="branch-dim">──●──────────●──</span> <span class="branch-dim"># 릴리즈</span></div><div><span class="branch-dev">develop</span> <span class="branch-dim">────●────●──</span> <span class="branch-dim"># 회귀 검증</span></div><div><span class="branch-feat">feature</span> <span class="branch-dim">──────●──</span> <span class="branch-dim"># 선행 검토</span></div></div><div class="proj-tags"><span class="proj-tag proj-tag-p">github MCP</span><span class="proj-tag">브랜치 전략</span></div><div class="proj-links"><a href="https://github.com/kihyunqa/qa-portfolio/blob/main/docs/release-qa-process.md" target="_blank" class="proj-link">릴리즈 QA 프로세스 ↗</a></div></div>
-<div class="proj-card reveal"><div class="proj-num">PROJECT 03 · <span class="badge badge-done" style="font-size:9px;padding:2px 8px">구현 완료</span></div><div class="proj-icon">⚡</div><div class="proj-title">오케스트레이션 하네스 구축</div><div class="proj-desc">여러 MCP 도구를 자유롭게 조합하는 파이프라인 빌더. Claude-in-Claude 방식으로 각 단계가 이전 결과를 컨텍스트로 받아 체이닝 실행.</div><div class="proj-flow"><span class="proj-flow-step">노드 조합</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">파이프라인 실행</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">결과 체이닝</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">내보내기</span></div><div class="proj-tags"><span class="proj-tag proj-tag-p">Claude-in-Claude</span><span class="proj-tag proj-tag-p">Multi-MCP</span></div><div class="proj-links"><a href="https://github.com/kihyunqa/qa-portfolio/blob/main/docs/mcp-architecture.md" target="_blank" class="proj-link">MCP 아키텍처 ↗</a></div></div>
-<div class="proj-card reveal"><div class="proj-num">PROJECT 04 · <span class="badge badge-done" style="font-size:9px;padding:2px 8px">구현 완료</span></div><div class="proj-icon">⚙️</div><div class="proj-title">Claude Code 환경 세팅 + Skill 지침</div><div class="proj-desc">Skill 파일로 반복 패턴을 지침화. MCP 서버 연결 + QA 특화 프롬프트 구조 정의. 한 번으로 전체 적용.</div><div class="proj-flow"><span class="proj-flow-step">Claude Code 설치</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">MCP 연결</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">Skill 정의</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">자동화 적용</span></div><div class="proj-tags"><span class="proj-tag proj-tag-p">Claude Code</span><span class="proj-tag proj-tag-p">Skill 지침</span></div><div class="proj-links"><a href="https://github.com/kihyunqa/qa-portfolio/blob/main/docs/mcp-setup-guide.md" target="_blank" class="proj-link">MCP 세팅 가이드 ↗</a></div></div>
-<div class="proj-card reveal"><div class="proj-num">PROJECT 05 · <span class="badge badge-done" style="font-size:9px;padding:2px 8px">구현 완료</span></div><div class="proj-icon">📢</div><div class="proj-title">버그 리포트 + 판단력 스토리</div><div class="proj-desc">버그 발견 → 심각도 판단 → 영향 분석 → 개발팀 설득. 보안 토큰 허점(P1), 결제 1원 오차(P1 에스컬레이션), 저속 네트워크 알림 중복(P2) 실제 케이스 포함.</div><div class="proj-flow"><span class="proj-flow-step">버그 발견</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">영향 분석</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">심각도 판단</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">해결</span></div><div class="proj-tags"><span class="proj-tag proj-tag-p">버그 스토리</span><span class="proj-tag">P1 보안</span><span class="proj-tag">결제 QA</span></div><div class="proj-links"><a href="https://github.com/kihyunqa/qa-portfolio/blob/main/docs/bug-stories.md" target="_blank" class="proj-link">버그 스토리 ↗</a><a href="https://github.com/kihyunqa/qa-portfolio/blob/main/testcase_bug-report.md" target="_blank" class="proj-link">버그 리포트 ↗</a></div></div>
-<div class="proj-card reveal"><div class="proj-num">PROJECT 06 · <span class="badge badge-done" style="font-size:9px;padding:2px 8px">구현 완료</span></div><div class="proj-icon">🐛</div><div class="proj-title">버그 심각도 분류 자동화</div><div class="proj-desc">버그 데이터를 Claude가 자동 분류. P1·P2·P3 심각도 기준 분류 + 재현 경로 분석 + 담당자별 현황 파악.</div><div class="proj-flow"><span class="proj-flow-step">버그 수집</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">심각도 분류</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">담당자 현황</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">리포트</span></div><div class="proj-tags"><span class="proj-tag proj-tag-p">버그 분석</span><span class="proj-tag">심각도 분류</span></div><div class="proj-links"><a href="https://github.com/kihyunqa/qa-portfolio/blob/main/testcase_bug-report.md" target="_blank" class="proj-link">버그 리포트 ↗</a><a href="https://github.com/kihyunqa/qa-portfolio/blob/main/docs/bug-report-template.md" target="_blank" class="proj-link">리포트 템플릿 ↗</a></div></div>
-<div class="proj-card reveal"><div class="proj-num">PROJECT 07 · <span class="badge badge-done" style="font-size:9px;padding:2px 8px">구현 완료</span></div><div class="proj-icon">🎭</div><div class="proj-title">playwright E2E 자동화 — 12 spec</div><div class="proj-desc">12개 spec 파일로 로그인·결제·보안·접근성·성능·알림까지 전 영역 E2E 커버. playwright.config.js 설정 완료.</div><div class="proj-flow"><span class="proj-flow-step">시나리오 정의</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">브라우저 조작</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">결과 검증</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">스크린샷</span></div><div class="proj-tags"><span class="proj-tag proj-tag-p">playwright MCP</span><span class="proj-tag">E2E 12 spec</span></div><div class="proj-links"><a href="https://github.com/kihyunqa/qa-portfolio/tree/main/playwright-tests" target="_blank" class="proj-link">spec 파일 보기 ↗</a></div></div>
-<div class="proj-card reveal"><div class="proj-num">PROJECT 08 · <span class="badge badge-done" style="font-size:9px;padding:2px 8px">구현 완료</span></div><div class="proj-icon">📋</div><div class="proj-title">QA 자동화 리포트 + README 문서화</div><div class="proj-desc">github/filesystem MCP로 레포 전체 구조화. README + QA 리포트 + CHANGELOG + QA 전략 문서 자동 작성. docs 28개.</div><div class="proj-flow"><span class="proj-flow-step">레포 설계</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">README 작성</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">QA 리포트</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">CHANGELOG</span></div><div class="proj-tags"><span class="proj-tag proj-tag-p">github MCP</span><span class="proj-tag proj-tag-p">filesystem MCP</span></div><div class="proj-links"><a href="https://github.com/kihyunqa/qa-portfolio/blob/main/README.md" target="_blank" class="proj-link">README ↗</a></div></div>
-<div class="proj-card reveal"><div class="proj-num">PROJECT 09 · <span class="badge badge-live" style="font-size:9px;padding:2px 8px">실제 연동</span></div><div class="proj-icon">📝</div><div class="proj-title">Notion MCP 연동 — TC 결과 자동 문서화</div><div class="proj-desc">Notion MCP로 TC 결과물을 자동 문서화. 테스트 완료 후 Notion 페이지를 자동 생성하여 팀 전체가 QA 현황을 실시간 확인.</div><div class="proj-flow"><span class="proj-flow-step">TC 결과 수집</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">Claude 분석</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">Notion 페이지 생성</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">팀 공유</span></div><div class="proj-tags"><span class="proj-tag proj-tag-g">notion MCP 실제 연동</span><span class="proj-tag">TC 결과 문서화</span></div></div>
-<div class="proj-card reveal"><div class="proj-num">PROJECT 10 · <span class="badge badge-live" style="font-size:9px;padding:2px 8px">실제 연동</span></div><div class="proj-icon">💬</div><div class="proj-title">Slack MCP 연동 — QA 알림 자동화</div><div class="proj-desc">Slack MCP + GitHub Actions 이중 연동. QA 완료 시 새-채널 자동 알림. TC 파일 push 감지 → Actions → Slack 완전 자동 파이프라인.</div><div class="proj-flow"><span class="proj-flow-step">QA 완료</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">MCP 알림</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">GitHub Actions</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">새-채널</span></div><div class="proj-tags"><span class="proj-tag proj-tag-g">slack MCP 실제 연동</span><span class="proj-tag">GitHub Actions</span></div></div>
+
+<!-- PROJECT 01 -->
+<div class="proj-card reveal">
+<div class="proj-num">PROJECT 01 · <span class="badge badge-done" style="font-size:9px;padding:2px 8px">구현 완료</span></div>
+<div class="proj-icon">🤖</div>
+<div class="proj-title">TC 자동생성 워크플로우</div>
+<div class="proj-desc">기능 명세 입력 → Claude가 해피패스·네거티브·엣지케이스 자동 생성 → 로컬 저장 → GitHub 커밋. 현재 145건+ 누적.</div>
+<div class="proj-flow"><span class="proj-flow-step">기능명세 입력</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">TC 자동 생성</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">로컬 저장</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">GitHub</span></div>
+<div class="proj-tags"><span class="proj-tag proj-tag-p">filesystem MCP</span><span class="proj-tag proj-tag-p">github MCP</span></div>
+<div class="proj-links"><a href="https://github.com/kihyunqa/qa-portfolio/blob/main/testcase_login.md" target="_blank" class="proj-link">TC 파일 보기 ↗</a></div>
+<!-- OVERLAY -->
+<div class="proj-overlay">
+  <div class="proj-overlay-title">// 핵심 성과</div>
+  <ul class="proj-overlay-points">
+    <li>145건+ TC 전부 대화 1번으로 자동 생성</li>
+    <li>해피패스·네거티브·엣지케이스 3분류 자동 구조화</li>
+    <li>코드 0줄 · filesystem + github MCP 조합</li>
+  </ul>
+  <div class="proj-overlay-links">
+    <a href="https://github.com/kihyunqa/qa-portfolio/blob/main/testcase_login.md" target="_blank" class="proj-overlay-link">TC 파일 ↗</a>
+    <a href="https://github.com/kihyunqa/qa-portfolio/blob/main/testcase_bug-report.md" target="_blank" class="proj-overlay-link">버그 리포트 ↗</a>
+  </div>
+</div>
+</div>
+
+<!-- PROJECT 02 -->
+<div class="proj-card reveal">
+<div class="proj-num">PROJECT 02 · <span class="badge badge-done" style="font-size:9px;padding:2px 8px">구현 완료</span></div>
+<div class="proj-icon">🔀</div>
+<div class="proj-title">QA 대응 프로세스 + 브랜치 전략</div>
+<div class="proj-desc">main / develop / feature 브랜치 구조에서 QA 개입 시점 정의. GitHub MCP로 브랜치·PR·커밋 대화로 처리.</div>
+<div class="branch-vis"><div><span class="branch-main">main</span> <span class="branch-dim">──●──────────●──</span> <span class="branch-dim"># 릴리즈</span></div><div><span class="branch-dev">develop</span> <span class="branch-dim">────●────●──</span> <span class="branch-dim"># 회귀 검증</span></div><div><span class="branch-feat">feature</span> <span class="branch-dim">──────●──</span> <span class="branch-dim"># 선행 검토</span></div></div>
+<div class="proj-tags"><span class="proj-tag proj-tag-p">github MCP</span><span class="proj-tag">브랜치 전략</span></div>
+<div class="proj-links"><a href="https://github.com/kihyunqa/qa-portfolio/blob/main/docs/release-qa-process.md" target="_blank" class="proj-link">릴리즈 QA 프로세스 ↗</a></div>
+<!-- OVERLAY -->
+<div class="proj-overlay">
+  <div class="proj-overlay-title">// 핵심 성과</div>
+  <ul class="proj-overlay-points">
+    <li>QA 개입 시점 3단계 명문화 (선행·회귀·릴리즈)</li>
+    <li>GitHub MCP로 브랜치·PR 대화로 처리</li>
+    <li>릴리즈 QA 프로세스 문서 작성 완료</li>
+  </ul>
+  <div class="proj-overlay-links">
+    <a href="https://github.com/kihyunqa/qa-portfolio/blob/main/docs/release-qa-process.md" target="_blank" class="proj-overlay-link">프로세스 문서 ↗</a>
+  </div>
+</div>
+</div>
+
+<!-- PROJECT 03 -->
+<div class="proj-card reveal">
+<div class="proj-num">PROJECT 03 · <span class="badge badge-done" style="font-size:9px;padding:2px 8px">구현 완료</span></div>
+<div class="proj-icon">⚡</div>
+<div class="proj-title">오케스트레이션 하네스 구축</div>
+<div class="proj-desc">여러 MCP 도구를 자유롭게 조합하는 파이프라인 빌더. Claude-in-Claude 방식으로 각 단계가 이전 결과를 컨텍스트로 받아 체이닝 실행.</div>
+<div class="proj-flow"><span class="proj-flow-step">노드 조합</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">파이프라인 실행</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">결과 체이닝</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">내보내기</span></div>
+<div class="proj-tags"><span class="proj-tag proj-tag-p">Claude-in-Claude</span><span class="proj-tag proj-tag-p">Multi-MCP</span></div>
+<div class="proj-links"><a href="https://github.com/kihyunqa/qa-portfolio/blob/main/docs/mcp-architecture.md" target="_blank" class="proj-link">MCP 아키텍처 ↗</a></div>
+<!-- OVERLAY -->
+<div class="proj-overlay">
+  <div class="proj-overlay-title">// 핵심 성과</div>
+  <ul class="proj-overlay-points">
+    <li>5개 MCP를 단일 대화로 체이닝 실행</li>
+    <li>각 단계 결과를 컨텍스트로 전달 — 오류 없음</li>
+    <li>MCP 아키텍처 문서로 재현 가능한 형태 정리</li>
+  </ul>
+  <div class="proj-overlay-links">
+    <a href="https://github.com/kihyunqa/qa-portfolio/blob/main/docs/mcp-architecture.md" target="_blank" class="proj-overlay-link">아키텍처 ↗</a>
+  </div>
+</div>
+</div>
+
+<!-- PROJECT 04 -->
+<div class="proj-card reveal">
+<div class="proj-num">PROJECT 04 · <span class="badge badge-done" style="font-size:9px;padding:2px 8px">구현 완료</span></div>
+<div class="proj-icon">⚙️</div>
+<div class="proj-title">Claude Code 환경 세팅 + Skill 지침</div>
+<div class="proj-desc">Skill 파일로 반복 패턴을 지침화. MCP 서버 연결 + QA 특화 프롬프트 구조 정의. 한 번으로 전체 적용.</div>
+<div class="proj-flow"><span class="proj-flow-step">Claude Code 설치</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">MCP 연결</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">Skill 정의</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">자동화 적용</span></div>
+<div class="proj-tags"><span class="proj-tag proj-tag-p">Claude Code</span><span class="proj-tag proj-tag-p">Skill 지침</span></div>
+<div class="proj-links"><a href="https://github.com/kihyunqa/qa-portfolio/blob/main/docs/mcp-setup-guide.md" target="_blank" class="proj-link">MCP 세팅 가이드 ↗</a></div>
+<!-- OVERLAY -->
+<div class="proj-overlay">
+  <div class="proj-overlay-title">// 핵심 성과</div>
+  <ul class="proj-overlay-points">
+    <li>QA 특화 Skill 파일로 반복 프롬프트 완전 제거</li>
+    <li>MCP 세팅 가이드 문서 — 누구나 재현 가능</li>
+    <li>skills/ 9개 문서 완비</li>
+  </ul>
+  <div class="proj-overlay-links">
+    <a href="https://github.com/kihyunqa/qa-portfolio/blob/main/docs/mcp-setup-guide.md" target="_blank" class="proj-overlay-link">세팅 가이드 ↗</a>
+  </div>
+</div>
+</div>
+
+<!-- PROJECT 05 -->
+<div class="proj-card reveal">
+<div class="proj-num">PROJECT 05 · <span class="badge badge-done" style="font-size:9px;padding:2px 8px">구현 완료</span></div>
+<div class="proj-icon">📢</div>
+<div class="proj-title">버그 리포트 + 판단력 스토리</div>
+<div class="proj-desc">버그 발견 → 심각도 판단 → 영향 분석 → 개발팀 설득. 보안 토큰 허점(P1), 결제 1원 오차(P1 에스컬레이션), 저속 네트워크 알림 중복(P2) 실제 케이스 포함.</div>
+<div class="proj-flow"><span class="proj-flow-step">버그 발견</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">영향 분석</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">심각도 판단</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">해결</span></div>
+<div class="proj-tags"><span class="proj-tag proj-tag-p">버그 스토리</span><span class="proj-tag">P1 보안</span><span class="proj-tag">결제 QA</span></div>
+<div class="proj-links"><a href="https://github.com/kihyunqa/qa-portfolio/blob/main/docs/bug-stories.md" target="_blank" class="proj-link">버그 스토리 ↗</a><a href="https://github.com/kihyunqa/qa-portfolio/blob/main/testcase_bug-report.md" target="_blank" class="proj-link">버그 리포트 ↗</a></div>
+<!-- OVERLAY -->
+<div class="proj-overlay">
+  <div class="proj-overlay-title">// 핵심 성과</div>
+  <ul class="proj-overlay-points">
+    <li>보안 토큰 허점 P1 발견 → 즉시 핫픽스 설득</li>
+    <li>결제 1원 오차 P3→P1 에스컬레이션 성공</li>
+    <li>저속 네트워크 알림 중복 P2 — 재현 경로 문서화</li>
+  </ul>
+  <div class="proj-overlay-links">
+    <a href="https://github.com/kihyunqa/qa-portfolio/blob/main/docs/bug-stories.md" target="_blank" class="proj-overlay-link">버그 스토리 ↗</a>
+  </div>
+</div>
+</div>
+
+<!-- PROJECT 06 -->
+<div class="proj-card reveal">
+<div class="proj-num">PROJECT 06 · <span class="badge badge-done" style="font-size:9px;padding:2px 8px">구현 완료</span></div>
+<div class="proj-icon">🐛</div>
+<div class="proj-title">버그 심각도 분류 자동화</div>
+<div class="proj-desc">버그 데이터를 Claude가 자동 분류. P1·P2·P3 심각도 기준 분류 + 재현 경로 분석 + 담당자별 현황 파악.</div>
+<div class="proj-flow"><span class="proj-flow-step">버그 수집</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">심각도 분류</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">담당자 현황</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">리포트</span></div>
+<div class="proj-tags"><span class="proj-tag proj-tag-p">버그 분석</span><span class="proj-tag">심각도 분류</span></div>
+<div class="proj-links"><a href="https://github.com/kihyunqa/qa-portfolio/blob/main/testcase_bug-report.md" target="_blank" class="proj-link">버그 리포트 ↗</a><a href="https://github.com/kihyunqa/qa-portfolio/blob/main/docs/bug-report-template.md" target="_blank" class="proj-link">리포트 템플릿 ↗</a></div>
+<!-- OVERLAY -->
+<div class="proj-overlay">
+  <div class="proj-overlay-title">// 핵심 성과</div>
+  <ul class="proj-overlay-points">
+    <li>P1·P2·P3 기준 수립 + Claude 자동 분류 파이프라인</li>
+    <li>버그 리포트 템플릿 표준화 — 팀 전체 적용</li>
+    <li>담당자별 현황 자동 집계 리포트</li>
+  </ul>
+  <div class="proj-overlay-links">
+    <a href="https://github.com/kihyunqa/qa-portfolio/blob/main/docs/bug-report-template.md" target="_blank" class="proj-overlay-link">템플릿 ↗</a>
+  </div>
+</div>
+</div>
+
+<!-- PROJECT 07 -->
+<div class="proj-card reveal">
+<div class="proj-num">PROJECT 07 · <span class="badge badge-done" style="font-size:9px;padding:2px 8px">구현 완료</span></div>
+<div class="proj-icon">🎭</div>
+<div class="proj-title">playwright E2E 자동화 — 12 spec</div>
+<div class="proj-desc">12개 spec 파일로 로그인·결제·보안·접근성·성능·알림까지 전 영역 E2E 커버. playwright.config.js 설정 완료.</div>
+<div class="proj-flow"><span class="proj-flow-step">시나리오 정의</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">브라우저 조작</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">결과 검증</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">스크린샷</span></div>
+<div class="proj-tags"><span class="proj-tag proj-tag-p">playwright MCP</span><span class="proj-tag">E2E 12 spec</span></div>
+<div class="proj-links"><a href="https://github.com/kihyunqa/qa-portfolio/tree/main/playwright-tests" target="_blank" class="proj-link">spec 파일 보기 ↗</a></div>
+<!-- OVERLAY -->
+<div class="proj-overlay">
+  <div class="proj-overlay-title">// 핵심 성과</div>
+  <ul class="proj-overlay-points">
+    <li>12개 spec — login·cart·payment·security·performance·accessibility 전 영역</li>
+    <li>playwright.config.js 설정 + 스크린샷 자동 캡처</li>
+    <li>playwright MCP로 대화만으로 E2E 실행</li>
+  </ul>
+  <div class="proj-overlay-links">
+    <a href="https://github.com/kihyunqa/qa-portfolio/tree/main/playwright-tests" target="_blank" class="proj-overlay-link">spec 폴더 ↗</a>
+  </div>
+</div>
+</div>
+
+<!-- PROJECT 08 -->
+<div class="proj-card reveal">
+<div class="proj-num">PROJECT 08 · <span class="badge badge-done" style="font-size:9px;padding:2px 8px">구현 완료</span></div>
+<div class="proj-icon">📋</div>
+<div class="proj-title">QA 자동화 리포트 + README 문서화</div>
+<div class="proj-desc">github/filesystem MCP로 레포 전체 구조화. README + QA 리포트 + CHANGELOG + QA 전략 문서 자동 작성. docs 28개.</div>
+<div class="proj-flow"><span class="proj-flow-step">레포 설계</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">README 작성</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">QA 리포트</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">CHANGELOG</span></div>
+<div class="proj-tags"><span class="proj-tag proj-tag-p">github MCP</span><span class="proj-tag proj-tag-p">filesystem MCP</span></div>
+<div class="proj-links"><a href="https://github.com/kihyunqa/qa-portfolio/blob/main/README.md" target="_blank" class="proj-link">README ↗</a></div>
+<!-- OVERLAY -->
+<div class="proj-overlay">
+  <div class="proj-overlay-title">// 핵심 성과</div>
+  <ul class="proj-overlay-points">
+    <li>docs/ 28개 문서 전부 MCP로 자동 작성</li>
+    <li>CHANGELOG v40+ — 전 스텝 이력 추적</li>
+    <li>qa-automation-report.md 리포트 완성</li>
+  </ul>
+  <div class="proj-overlay-links">
+    <a href="https://github.com/kihyunqa/qa-portfolio/blob/main/README.md" target="_blank" class="proj-overlay-link">README ↗</a>
+    <a href="https://github.com/kihyunqa/qa-portfolio/blob/main/CHANGELOG.md" target="_blank" class="proj-overlay-link">CHANGELOG ↗</a>
+  </div>
+</div>
+</div>
+
+<!-- PROJECT 09 -->
+<div class="proj-card reveal">
+<div class="proj-num">PROJECT 09 · <span class="badge badge-live" style="font-size:9px;padding:2px 8px">실제 연동</span></div>
+<div class="proj-icon">📝</div>
+<div class="proj-title">Notion MCP 연동 — TC 결과 자동 문서화</div>
+<div class="proj-desc">Notion MCP로 TC 결과물을 자동 문서화. 테스트 완료 후 Notion 페이지를 자동 생성하여 팀 전체가 QA 현황을 실시간 확인.</div>
+<div class="proj-flow"><span class="proj-flow-step">TC 결과 수집</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">Claude 분석</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">Notion 페이지 생성</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">팀 공유</span></div>
+<div class="proj-tags"><span class="proj-tag proj-tag-g">notion MCP 실제 연동</span><span class="proj-tag">TC 결과 문서화</span></div>
+<!-- OVERLAY -->
+<div class="proj-overlay">
+  <div class="proj-overlay-title">// 핵심 성과</div>
+  <ul class="proj-overlay-points">
+    <li>Notion에 TC 결과 페이지 자동 생성 확인 (실제 연동)</li>
+    <li>해피패스·네거티브·엣지케이스 구조화 기록</li>
+    <li>코드 0줄 · 대화 1번 · 팀 공유 완료</li>
+  </ul>
+  <div class="proj-overlay-links">
+    <a href="https://github.com/kihyunqa/qa-portfolio/blob/main/testcase_mcp-integration.md" target="_blank" class="proj-overlay-link">MCP TC ↗</a>
+  </div>
+</div>
+</div>
+
+<!-- PROJECT 10 -->
+<div class="proj-card reveal">
+<div class="proj-num">PROJECT 10 · <span class="badge badge-live" style="font-size:9px;padding:2px 8px">실제 연동</span></div>
+<div class="proj-icon">💬</div>
+<div class="proj-title">Slack MCP 연동 — QA 알림 자동화</div>
+<div class="proj-desc">Slack MCP + GitHub Actions 이중 연동. QA 완료 시 새-채널 자동 알림. TC 파일 push 감지 → Actions → Slack 완전 자동 파이프라인.</div>
+<div class="proj-flow"><span class="proj-flow-step">QA 완료</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">MCP 알림</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">GitHub Actions</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">새-채널</span></div>
+<div class="proj-tags"><span class="proj-tag proj-tag-g">slack MCP 실제 연동</span><span class="proj-tag">GitHub Actions</span></div>
+<!-- OVERLAY -->
+<div class="proj-overlay">
+  <div class="proj-overlay-title">// 핵심 성과</div>
+  <ul class="proj-overlay-points">
+    <li>새-채널 QA 완료 알림 실제 발송 확인</li>
+    <li>TC push → Actions → Slack 완전 자동 파이프라인</li>
+    <li>MCP + Actions 이중 연동으로 신뢰성 확보</li>
+  </ul>
+  <div class="proj-overlay-links">
+    <a href="https://github.com/kihyunqa/qa-portfolio/blob/main/.github/workflows/main.yml" target="_blank" class="proj-overlay-link">Actions ↗</a>
+  </div>
+</div>
+</div>
+
 </div>
 </section>
 <!-- PIPELINE DIAGRAM -->
@@ -1014,7 +1329,6 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
   <span class="sec-n">04</span>
   <h2 class="sec-t">QA 자동화 전체 파이프라인</h2>
   <div class="sec-line"></div>
-  <!-- STEP 121: 섹션 통계 배지 -->
   <span class="sec-stat-badge"><span class="ssb-num">7</span>스텝 파이프라인</span>
 </div>
 <div class="diagram-wrap reveal">
@@ -1031,7 +1345,6 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
   <span class="sec-n">05</span>
   <h2 class="sec-t">MCP 연동 로드맵</h2>
   <div class="sec-line"></div>
-  <!-- STEP 121: 섹션 통계 배지 -->
   <span class="sec-stat-badge ssb-green"><span class="ssb-num">2</span>PHASE 완료</span>
 </div>
 <p style="font-size:15px;color:var(--muted);line-height:1.85;max-width:580px;margin-bottom:40px" class="reveal">실제 연동 완료된 5개 MCP + Jira를 기반으로 더 많은 연동을 확장해 나갑니다.</p>
@@ -1047,12 +1360,10 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
   <span class="sec-n">06</span>
   <h2 class="sec-t">자동생성 테스트케이스 — 145건+</h2>
   <div class="sec-line"></div>
-  <!-- STEP 121: 섹션 통계 배지 -->
   <span class="sec-stat-badge"><span class="ssb-num">20</span>건 표시</span>
 </div>
 <p class="tc-intro reveal">Claude MCP로 자동 생성된 TC 145건+. 로그인·API·보안·성능·접근성·장바구니·검색·결제 전 카테고리 커버. test-cases/, playwright-tests/ 두 곳에서 관리.</p>
 
-<!-- TC 분류 통계 바 — STEP 119 -->
 <div class="tc-stat-bar reveal">
   <span style="color:var(--dim);letter-spacing:.12em">// TC 분류 현황</span>
   <span class="tc-stat-item"><span class="tc-stat-dot" style="background:var(--purple)"></span>해피패스 8건</span>
@@ -1061,7 +1372,6 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
   <span style="color:var(--dim)">· 전체 20건 표시 (145건+ 중 대표)</span>
 </div>
 
-<!-- TC 필터 버튼 — STEP 113 -->
 <div class="tc-filter reveal" id="tcFilter">
   <button class="tc-filter-btn active" data-filter="all">전체</button>
   <button class="tc-filter-btn" data-filter="h">해피패스</button>
@@ -1104,7 +1414,6 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
   <span class="sec-n">07</span>
   <h2 class="sec-t">경력 타임라인</h2>
   <div class="sec-line"></div>
-  <!-- STEP 121: 섹션 통계 배지 -->
   <span class="sec-stat-badge"><span class="ssb-num">6.9</span>yr 경력</span>
 </div>
 <div class="timeline reveal">
@@ -1140,7 +1449,6 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
   <span class="sec-n">08</span>
   <h2 class="sec-t">스킬</h2>
   <div class="sec-line"></div>
-  <!-- STEP 121: 섹션 통계 배지 -->
   <span class="sec-stat-badge"><span class="ssb-num">20</span>개 스킬</span>
 </div>
 
@@ -1156,7 +1464,6 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
   </div>
 </div>
 
-<!-- SKILLS WRAP — STEP 123: data-tip 속성 추가 -->
 <div class="skills-wrap reveal">
 <div>
 <div class="sk-group-title">TESTING &amp; QA</div>
@@ -1190,7 +1497,7 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
 <div class="sk-item" data-tip-title="TC 결과 정리" data-tip-body="145건+ TC · 카테고리별 분류·정리 완료" data-tip-tags="145건+|카테고리 분류|Notion 기록"><span class="sk-name">TC 결과 정리</span><div class="sk-bar-w"><div class="sk-bar" style="width:88%"></div></div></div>
 <div class="sk-item" data-tip-title="README / 가이드 작성" data-tip-body="docs 28개 · mcp-setup-guide · 릴리즈 QA 프로세스" data-tip-tags="docs 28개|가이드|프로세스 정의"><span class="sk-name">README / 가이드 작성</span><div class="sk-bar-w"><div class="sk-bar" style="width:85%"></div></div></div>
 <div class="sk-item" data-tip-title="QA 프로세스 정의" data-tip-body="릴리즈·회귀·선행 검토 프로세스 수립" data-tip-tags="릴리즈 QA|회귀 테스트|브랜치 전략"><span class="sk-name">QA 프로세스 정의</span><div class="sk-bar-w"><div class="sk-bar" style="width:82%"></div></div></div>
-<div class="sk-item" data-tip-title="GitHub 레포 구조화" data-tip-body="80개+ 파일 · 레포 전체 구조 설계 · CHANGELOG v38" data-tip-tags="80개+ 파일|CHANGELOG|레포 설계"><span class="sk-name">GitHub 레포 구조화</span><div class="sk-bar-w"><div class="sk-bar" style="width:85%"></div></div></div>
+<div class="sk-item" data-tip-title="GitHub 레포 구조화" data-tip-body="80개+ 파일 · 레포 전체 구조 설계 · CHANGELOG v39" data-tip-tags="80개+ 파일|CHANGELOG|레포 설계"><span class="sk-name">GitHub 레포 구조화</span><div class="sk-bar-w"><div class="sk-bar" style="width:85%"></div></div></div>
 </div>
 </div>
 </div>
@@ -1327,7 +1634,6 @@ updateDotNav();
 
 /* =====================================================
    SKILL TOOLTIP — STEP 123
-   스킬 바 hover 시 경험 맥락 툴팁
    ===================================================== */
 const skTooltip = document.getElementById('skTooltip');
 const skTipTitle = document.getElementById('skTipTitle');
