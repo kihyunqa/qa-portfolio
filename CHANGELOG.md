@@ -1,5 +1,46 @@
 # CHANGELOG
 
+## v44.0.0 — 2026-04-08
+
+### STEP 132 완료 — Hero 섹션 순차 fade-in 로딩 애니메이션
+
+#### 작업 내용
+
+| 항목 | 변경 내용 | 상태 |
+|------|-----------|------|
+| CSS `.hero-fade-in` | 초기 `opacity:0; transform:translateY(20px)` 상태 | ✅ |
+| CSS `.hero-fade-in.hfi-visible` | `opacity:1; transform:none; transition` 적용 | ✅ |
+| CSS `@keyframes hfi-slide` | 슬라이드업 keyframe 정의 | ✅ |
+| HTML hero-tag | `hero-fade-in` 클래스 추가 (delay 0) | ✅ |
+| HTML hero-name | `hero-fade-in` 클래스 추가 (delay 1) | ✅ |
+| HTML hero-role | `hero-fade-in` 클래스 추가 (delay 2) | ✅ |
+| HTML hero-desc | `hero-fade-in` 클래스 추가 (delay 3) | ✅ |
+| HTML hero-proof | `hero-fade-in` 클래스 추가 (delay 4) | ✅ |
+| HTML hero-cta | `hero-fade-in` 클래스 추가 (delay 5) | ✅ |
+| JS initHeroFadeIn | DOMContentLoaded 후 순차적으로 hfi-visible 클래스 추가 | ✅ |
+| 딜레이 간격 | 각 요소 120ms 간격으로 순차 등장 | ✅ |
+
+---
+
+## v43.0.0 — 2026-04-08
+
+### STEP 131 완료 — TC 테이블 행 클릭 expand/collapse 인터랙션
+
+#### 작업 내용
+
+| 항목 | 변경 내용 | 상태 |
+|------|-----------|------|
+| CSS `.tc-expand-icon` | 각 TC ID 옆 ▼/▲ 아이콘 · hover 시 퍼플 강조 | ✅ |
+| CSS `.tc-detail-row` | 기본 hidden · visible 클래스 추가 시 display | ✅ |
+| CSS `.tc-detail-inner` | `max-height:0 → 300px` CSS 트랜지션 `.4s` | ✅ |
+| CSS `.tc-detail-content` | 3컬럼 그리드 — 전제조건/테스트스텝/기대결과 | ✅ |
+| CSS `.tc-detail-result-pass/fail/edge` | 결과 유형별 색상 스타일 (green/red/amber) | ✅ |
+| CSS `.tc-row-hint` | "행을 클릭하면 상세 확인" 안내 텍스트 | ✅ |
+| HTML 20개 TC 행 | 각 행에 detail-row 페어 추가 (전제조건·스텝·기대결과) | ✅ |
+| JS expand/collapse | 클릭 토글 · 다른 행과 독립 동작 · filter와 연동 | ✅ |
+
+---
+
 ## v42.0.0 — 2026-04-08
 
 ### STEP 129 완료 — 히어로 stat 카드 hover 툴팁 + 클릭 섹션 스크롤 추가
@@ -12,39 +53,14 @@
 | CSS `.hero-stat-card:hover .stat-n` | purple3 + text-shadow glow 효과 | ✅ |
 | CSS `.hero-stat-tip` | position:absolute 왼쪽 슬라이드 툴팁 · opacity 0→1 트랜지션 | ✅ |
 | CSS `.hero-stat-tip::after` | 오른쪽 화살표 포인터 (삼각형) | ✅ |
-| `.hero-stat-tip-title` | 퍼플 색상 제목 + letter-spacing | ✅ |
-| `.hero-stat-tip-link` | 하단 "→ 섹션 이동" 링크 텍스트 | ✅ |
-| 6.9yr 툴팁 | 두플/IMS/모비프렌 회사명 + 총 6년 9개월 · data-scroll=timeline | ✅ |
-| 5+ 툴팁 | 5개 MCP 서버 목록 (filesystem·playwright·github·notion·slack) · data-scroll=mcp | ✅ |
-| 12 툴팁 | E2E spec 12개 목록 전체 · data-scroll=proof | ✅ |
-| P1 2건 툴팁 | 보안 토큰 허점·결제 1원 오차 스토리 요약 · data-scroll=proof | ✅ |
+| 6.9yr/5+/12/P1 2건 툴팁 | 각 stat 상세 + 클릭 시 섹션 스크롤 | ✅ |
 | JS click scroll | `.hero-stat-card[data-scroll]` 클릭 → 해당 섹션 scrollIntoView smooth | ✅ |
-
-#### 툴팁 포지셔닝
-- 카드 왼쪽 방향으로 슬라이드: `right:calc(100% + 14px)` absolute
-- hover 시 `translateX(-100%) translateX(-12px) translateY(-50%)` → 자연스럽게 등장
-- 오른쪽 화살표 포인터 CSS 삼각형으로 연결
 
 ---
 
 ## v41.0.0 — 2026-04-08
 
 ### STEP 127 완료 — 경력 타임라인 클릭 expand/collapse 인터랙션 추가
-
-#### 작업 내용
-
-| 항목 | 변경 내용 | 상태 |
-|------|-----------|------|
-| `index.html` | `.tl-item` 각각에 `.tl-detail` 슬라이드다운 영역 추가 | ✅ |
-| CSS `.tl-detail` | `max-height:0 → 400px` + `opacity:0→1` CSS 트랜지션 `.45s` | ✅ |
-| CSS `.tl-item.expanded` | 클릭 시 expanded 클래스 추가 → 상세 내역 표시 | ✅ |
-| CSS `.tl-expand-icon` | 각 회사명 옆 `상세 ↓/↑` 토글 버튼 | ✅ |
-| CSS `.tl-dot` hover | scale(1.4) + glow 강화 전환 효과 | ✅ |
-| 두플 상세 | QA 전략 수립, 팀 리딩, TC 설계, 릴리즈 게이트 기준 4항목 | ✅ |
-| IMS Mobility 상세 | Cypress 자동화 도입, 결제 P1 에스컬레이션, API 30+ 검증, 백오피스 QA 4항목 | ✅ |
-| 모비프렌 상세 | SmartThings 50+ 디바이스, Bixby AI 검증, Galaxy 전기종 회귀, 품질 기준 수립 4항목 | ✅ |
-| JS expand/collapse | 클릭 이벤트 — 다른 항목 닫기 + 현재 항목 토글, 링크 클릭 제외 처리 | ✅ |
-| `.tl-detail-highlight` | 각 회사 핵심 수치 한 줄 요약 (green 스타일) | ✅ |
 
 ---
 
