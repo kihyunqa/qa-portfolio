@@ -12,11 +12,11 @@
 
 ---
 
-## 🏁 현재 상태 (2026-04-07) — STEP 126 완료
+## 🏁 현재 상태 (2026-04-08) — STEP 128 완료
 
 ---
 
-## ✅ 확정 수치 (v40 기준)
+## ✅ 확정 수치 (v41 기준)
 
 | 항목 | 수치 | 검증 |
 |------|------|------|
@@ -27,9 +27,9 @@
 | GitHub Actions | **2개** | ✅ |
 | 전체 파일 수 | **80개+** | ✅ |
 | TC 건수 | **145건+** | ✅ |
-| CHANGELOG | **v40** | ✅ |
+| CHANGELOG | **v41** | ✅ |
 | Jira 연동 | **완료** | ✅ FULL ACCESS |
-| index.html | **최신** | ✅ STEP 125 완료 |
+| index.html | **최신** | ✅ STEP 127 완료 |
 | dot-nav | **완전 수정** | ✅ STEP 107 |
 | breadcrumb | **추가 완료** | ✅ STEP 109 |
 | 레이더 차트 | **추가 완료** | ✅ STEP 111 |
@@ -40,7 +40,8 @@
 | TC 섹션 행 확장 | **8행 → 20행** | ✅ STEP 119 |
 | 섹션별 통계 배지 | **9개 섹션 배지** | ✅ STEP 121 |
 | 스킬 바 hover 툴팁 | **20개 스킬 툴팁** | ✅ STEP 123 |
-| **프로젝트 카드 오버레이** | **10개 카드 슬라이드업** | ✅ **STEP 125** |
+| 프로젝트 카드 오버레이 | **10개 카드 슬라이드업** | ✅ STEP 125 |
+| **경력 타임라인 인터랙션** | **클릭 expand/collapse** | ✅ **STEP 127** |
 
 ---
 
@@ -50,68 +51,48 @@
 |------|------|--------|
 | STEP 1~83 | 포트폴리오 전체 구축 완료 | ~2026-04-01 |
 | STEP 84~100 | 수치 검증, bug-stories, 섹션 강화 등 | 2026-04-01~06 |
-| STEP 101 | 우측 사이드 점 네비게이션 추가 | 2026-04-07 |
-| STEP 102 | CHANGELOG v30 업데이트 | 2026-04-07 |
-| STEP 103 | TC 섹션 stat bar 추가 | 2026-04-07 |
-| STEP 104 | CHANGELOG v31 업데이트 | 2026-04-07 |
-| STEP 105 | 프로젝트 카드 링크 강화 | 2026-04-07 |
-| STEP 106 | dot nav 버그 수정 시도 (nav 태그 충돌 미해결) | 2026-04-07 |
-| STEP 107 | dot-nav 완전 수정 — `<nav>` → `<div>` 태그 변경 | 2026-04-07 |
-| STEP 108 | CHANGELOG v32 업데이트 | 2026-04-07 |
-| STEP 109 | 좌측 하단 섹션 breadcrumb 인터랙션 추가 | 2026-04-07 |
-| STEP 110 | CHANGELOG v32 기반 정리 (이전 세션) | 2026-04-07 |
-| STEP 111 | QA 스킬 레이더 차트 추가 — 스킬 섹션 상단에 SVG 방사형 차트. 8개 축 | 2026-04-07 |
-| STEP 112 | CHANGELOG v33 업데이트 | 2026-04-07 |
-| STEP 113 | Hero `.hero-role` 타이핑 효과 추가 (3개 텍스트 순환) + TC 필터 버튼 복원 | 2026-04-07 |
-| STEP 114 | CHANGELOG v34 업데이트 | 2026-04-07 |
-| STEP 115 | proof 섹션에 커밋 히스토리 시각화 카드 추가 | 2026-04-07 |
-| STEP 116 | CHANGELOG v35 업데이트 | 2026-04-07 |
-| STEP 117 | Hero 섹션 Canvas 파티클 배경 효과 추가 | 2026-04-07 |
-| STEP 118 | CHANGELOG v36 + NEXT_STEPS.md 업데이트 | 2026-04-07 |
-| STEP 119 | TC 섹션 행 확장 8행 → 20행 | 2026-04-07 |
-| STEP 120 | CHANGELOG v37 + NEXT_STEPS.md 업데이트 | 2026-04-07 |
-| STEP 121 | 섹션별 통계 배지 추가 — 9개 섹션 헤드 `.sec-stat-badge` | 2026-04-07 |
-| STEP 122 | CHANGELOG v38 + NEXT_STEPS.md 업데이트 | 2026-04-07 |
-| STEP 123 | 스킬 바 hover 툴팁 추가 — 20개 스킬 전체 data-tip 속성 | 2026-04-07 |
-| STEP 124 | CHANGELOG v39 + NEXT_STEPS.md 업데이트 | 2026-04-07 |
-| **STEP 125** | **프로젝트 카드 호버 오버레이 — 10개 카드 `.proj-overlay` 슬라이드업. 핵심 성과 3줄 + 링크. `translateY(100%)→(0)` 트랜지션 .38s. 모바일 숨김** | **2026-04-07** |
-| **STEP 126** | **CHANGELOG v40 + NEXT_STEPS.md 인수인계 업데이트** | **2026-04-07** |
+| STEP 101~126 | dot-nav, breadcrumb, 레이더, 타이핑, 파티클, TC행, 배지, 툴팁, 오버레이 | 2026-04-07 |
+| **STEP 127** | **경력 타임라인 클릭 expand/collapse — 두플·IMS·모비프렌 상세 업무 내역 슬라이드다운** | **2026-04-08** |
+| **STEP 128** | **CHANGELOG v41 + NEXT_STEPS.md 인수인계 업데이트** | **2026-04-08** |
 
 ---
 
-## 🎯 STEP 125에서 변경한 내용 (index.html)
+## 🎯 STEP 127에서 변경한 내용 (index.html)
 
-### 프로젝트 카드 호버 오버레이
+### 경력 타임라인 클릭 expand/collapse
 | 요소 | 구현 내용 |
 |------|----------|
-| `.proj-overlay` | `position:absolute;bottom:0;overflow:hidden` 슬라이드업 |
-| 배경 | `rgba(13,10,24)` 다크 그라디언트 + 퍼플 `border-top` |
-| `.proj-overlay-title` | `// 핵심 성과` mono 라벨 |
-| `.proj-overlay-points` | `→` 화살표 + 11px 포인트 3줄 |
-| `.proj-overlay-links` | 미니 GitHub 링크 버튼 (hover: 퍼플 배경) |
-| 트랜지션 | `.38s cubic-bezier(.4,0,.2,1)` |
-| 모바일 | `@media(max-width:900px)` → `display:none` |
+| `.tl-item` | cursor:pointer, 클릭 이벤트 추가 |
+| `.tl-expand-icon` | 회사명 옆 `상세 ↓/↑` 토글 버튼 |
+| `.tl-detail` | `max-height:0→400px` + `opacity:0→1` CSS 트랜지션 `.45s` |
+| `.tl-detail-inner` | bg2 배경 + 퍼플 left border + `// 상세 업무 내역` 헤더 |
+| `.tl-detail-list` | `▸` 화살표 + 12px 상세 업무 리스트 |
+| `.tl-detail-highlight` | 회사별 핵심 수치 한 줄 (green 스타일) |
+| JS expand | 클릭 시 다른 항목 자동 닫기 + 현재 토글 |
+| 두플 | QA 전략 수립, 팀 리딩, TC 커버리지, 릴리즈 게이트 P1 0건 |
+| IMS Mobility | Cypress CI 연동, 결제 P3→P1, Swagger 30+ API, 백오피스 권한 |
+| 모비프렌 | SmartThings 50+ 디바이스, Bixby 음성, Galaxy 전기종, 4.3년 파트너 |
 
-### 변경된 SHA
-- **index.html**: STEP 125 커밋 (새 SHA — get_file_contents로 확인)
-- **CHANGELOG.md**: STEP 126 커밋 후 새 SHA
-- **NEXT_STEPS.md**: STEP 126 커밋 후 새 SHA
+### 현재 SHA
+- **index.html**: `1d4e14f82be4af6f319ede46b45d782b6fe2f929` (STEP 127)
+- **CHANGELOG.md**: STEP 128 커밋 후 새 SHA
+- **NEXT_STEPS.md**: STEP 128 커밋 후 새 SHA
 
 ---
 
 ## 🎯 다음 Claude가 해야 할 포트폴리오 업그레이드 (우선순위 순)
 
-### ✅ 완료 — 우선순위 1~4 (STEP 119~125)
-- TC 행 확장, 섹션 통계 배지, 스킬 툴팁, 프로젝트 카드 오버레이 완료
+### ✅ 완료 — 우선순위 1~5 (STEP 119~127)
+- TC 행 확장, 섹션 통계 배지, 스킬 툴팁, 프로젝트 카드 오버레이, 경력 타임라인 인터랙션 완료
 
-### 🟡 우선순위 5 — 경력 타임라인 인터랙션 (다음 작업)
-- `.tl-item` hover 시 상세 업무 내역 expand/collapse
-- 구체적으로: 각 회사별 hover 시 숨겨진 상세 업무 내역 슬라이드다운
-- 두플: QA 전략 수립 내용, IMS: Cypress 자동화 성과, 모비프렌: SmartThings/Bixby 검증 규모
-
-### 🟡 우선순위 6 — 히어로 섹션 강화
+### 🟡 우선순위 6 — 히어로 섹션 강화 (다음 작업)
 - 히어로 우측 stat 카드 hover 시 툴팁 (현재 숫자만 있음)
-- 또는 히어로 proof 배지 클릭 시 해당 섹션으로 스크롤
+- 구체적으로: 6.9yr / 5+ / 12 / P1 2건 각 stat에 hover 시 설명 툴팁
+- 또는 히어로 proof 배지 클릭 시 해당 섹션으로 스크롤 (예: "MCP 5개 실제 연동" → #mcp 섹션)
+
+### 🟡 우선순위 7 — TC 섹션 강화
+- TC 테이블 행 클릭 시 상세 케이스 내용 expand (현재 기본 내용만)
+- 또는 TC 카테고리별 진행 현황 프로그레스바
 
 ---
 
@@ -123,8 +104,8 @@
 4. **새 파일 무분별 생성 금지** — 기존 파일 업데이트 우선
 5. **NEXT_STEPS.md 업데이트 필수** — SHA 먼저 확인
 6. **사용자는 포트폴리오 업그레이드만 원함** — 면접준비/LinkedIn 제안 금지
-7. **index.html 현재 SHA**: STEP 125 커밋 후 새 SHA — 반드시 get_file_contents로 확인
-8. **CHANGELOG.md 현재 SHA**: 이 커밋 후 확인 필요
+7. **index.html 현재 SHA**: `1d4e14f82be4af6f319ede46b45d782b6fe2f929`
+8. **CHANGELOG.md 현재 SHA**: STEP 128 커밋 후 새 SHA — get_file_contents로 확인
 9. **NEXT_STEPS.md 현재 SHA**: 이 커밋 후 새 SHA — 다음 Claude가 get_file_contents로 확인
 
 ---
@@ -155,5 +136,5 @@
 
 ---
 
-*최종 업데이트: 2026-04-07 · STEP 126 완료*
-*프로젝트 카드 호버 오버레이 완료 (STEP 125). 다음: 경력 타임라인 인터랙션 → 히어로 섹션 강화*
+*최종 업데이트: 2026-04-08 · STEP 128 완료*
+*경력 타임라인 expand/collapse 완료 (STEP 127). 다음: 히어로 섹션 강화 → TC 섹션 강화*

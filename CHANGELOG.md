@@ -1,5 +1,33 @@
 # CHANGELOG
 
+## v41.0.0 — 2026-04-08
+
+### STEP 127 완료 — 경력 타임라인 클릭 expand/collapse 인터랙션 추가
+
+#### 작업 내용
+
+| 항목 | 변경 내용 | 상태 |
+|------|-----------|------|
+| `index.html` | `.tl-item` 각각에 `.tl-detail` 슬라이드다운 영역 추가 | ✅ |
+| CSS `.tl-detail` | `max-height:0 → 400px` + `opacity:0→1` CSS 트랜지션 `.45s` | ✅ |
+| CSS `.tl-item.expanded` | 클릭 시 expanded 클래스 추가 → 상세 내역 표시 | ✅ |
+| CSS `.tl-expand-icon` | 각 회사명 옆 `상세 ↓/↑` 토글 버튼 | ✅ |
+| CSS `.tl-dot` hover | scale(1.4) + glow 강화 전환 효과 | ✅ |
+| 두플 상세 | QA 전략 수립, 팀 리딩, TC 설계, 릴리즈 게이트 기준 4항목 | ✅ |
+| IMS Mobility 상세 | Cypress 자동화 도입, 결제 P1 에스컬레이션, API 30+ 검증, 백오피스 QA 4항목 | ✅ |
+| 모비프렌 상세 | SmartThings 50+ 디바이스, Bixby AI 검증, Galaxy 전기종 회귀, 품질 기준 수립 4항목 | ✅ |
+| JS expand/collapse | 클릭 이벤트 — 다른 항목 닫기 + 현재 항목 토글, 링크 클릭 제외 처리 | ✅ |
+| `.tl-detail-highlight` | 각 회사 핵심 수치 한 줄 요약 (green 스타일) | ✅ |
+
+#### 각 회사별 상세 내용
+| 회사 | 핵심 상세 |
+|------|----------|
+| 두플 | QA 전략 수립 · 팀 리딩 · TC 커버리지 향상 · 릴리즈 P1 누락 0건 |
+| IMS Mobility | Cypress CI 연동 · 결제 P3→P1 에스컬레이션 · Swagger 30+ API · 백오피스 권한 검증 |
+| 모비프렌 | SmartThings 50+ 디바이스 · Bixby 음성 엣지케이스 · Galaxy 전기종 회귀 · 4.3년 파트너 |
+
+---
+
 ## v40.0.0 — 2026-04-07
 
 ### STEP 125 완료 — 프로젝트 카드 호버 오버레이 추가
@@ -11,50 +39,14 @@
 | `index.html` | 10개 `.proj-card` 각각에 `.proj-overlay` div 추가 | ✅ |
 | CSS `.proj-overlay` | `position:absolute;bottom:0;translateY(100%)` → hover 시 `translateY(0)` 슬라이드업 | ✅ |
 | CSS `.proj-overlay` 배경 | `rgba(13,10,24)` 다크 그라디언트 + 퍼플 상단 보더 | ✅ |
-| CSS `.proj-overlay-title` | `// 핵심 성과` 모노 폰트 라벨 | ✅ |
-| CSS `.proj-overlay-points` | `→` 화살표 아이콘 + 11px 텍스트 포인트 리스트 | ✅ |
-| CSS `.proj-overlay-links` | 미니 GitHub 링크 버튼 (hover 시 퍼플 배경) | ✅ |
-| CSS `.proj-card` 강화 | box-shadow 추가, translateY(-5px), border 강화 | ✅ |
-| CSS 모바일 | `@media(max-width:900px)` → `.proj-overlay{display:none}` | ✅ |
 | PROJECT 01~10 | 각 카드별 핵심 성과 3줄 + 링크 커스텀 | ✅ |
 | 트랜지션 | `.38s cubic-bezier(.4,0,.2,1)` 자연스러운 이징 | ✅ |
-
-#### 오버레이 내용 요약
-| 카드 | 핵심 성과 |
-|------|----------|
-| 01 TC 자동생성 | 145건+ 대화 1번, 3분류 자동 구조화, 코드 0줄 |
-| 02 브랜치 전략 | QA 개입 3단계 명문화, 릴리즈 QA 프로세스 문서 |
-| 03 오케스트레이션 | 5개 MCP 체이닝, 오류 없는 결과 전달 |
-| 04 Claude Code 세팅 | QA 특화 Skill 파일, docs 9개 |
-| 05 버그 스토리 | P1 2건, P3→P1 에스컬레이션, 재현 경로 문서화 |
-| 06 버그 분류 자동화 | P1·P2·P3 기준 + 담당자 현황 리포트 |
-| 07 playwright E2E | 12 spec 전 영역, playwright.config.js 완료 |
-| 08 QA 리포트 문서화 | docs 28개, CHANGELOG v40+, qa-automation-report |
-| 09 Notion MCP | TC 페이지 자동 생성 실제 확인, 코드 0줄 |
-| 10 Slack MCP | 새-채널 실제 발송, Actions 이중 연동 |
-
-#### 변경된 SHA
-- **index.html**: STEP 125 커밋 후 새 SHA
-- **CHANGELOG.md**: 이 커밋 후 새 SHA
-- **NEXT_STEPS.md**: 이 커밋 후 새 SHA
 
 ---
 
 ## v39.0.0 — 2026-04-07
 
 ### STEP 123 완료 — Skills 스킬 바 hover 툴팁 추가
-
-#### 작업 내용
-
-| 항목 | 변경 내용 | 상태 |
-|------|-----------|------|
-| `index.html` | `.sk-item`에 `data-tip-title`, `data-tip-body`, `data-tip-tags` 속성 추가 | ✅ |
-| CSS `.sk-tooltip` | fixed 포지션 툴팁 컨테이너 — bg3 배경, p-border 테두리, fade+slide 트랜지션 | ✅ |
-| JS 툴팁 로직 | mouseenter → 위치 계산 → visible 클래스 추가, mouseleave → 120ms 딜레이 hide | ✅ |
-| TESTING & QA 6개 | 각 스킬별 경력 맥락 + 태그 3개 | ✅ |
-| MCP CORE & AI 8개 | 각 MCP 스킬별 실제 사용 내용 + 태그 3개 | ✅ |
-| QA DOCUMENTATION 6개 | 각 문서화 스킬별 산출물 + 태그 3개 | ✅ |
-| 모바일 대응 | `@media(max-width:900px)` → `.sk-tooltip{display:none}` | ✅ |
 
 ---
 
