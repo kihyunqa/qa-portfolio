@@ -480,18 +480,111 @@ section{padding:96px 56px;position:relative;z-index:2}
 .stat-unit{font-size:20px}
 .stat-desc{font-size:13px;color:var(--muted);line-height:1.6}
 .stat-sub{font-family:var(--mono);font-size:10px;color:var(--dim);margin-top:6px;letter-spacing:.05em}
+
+/* =====================================================
+   TIMELINE — STEP 127: hover expand/collapse 인터랙션
+   ===================================================== */
 .timeline-sec{background:var(--bg);border-top:1px solid var(--p-border)}
 .timeline{position:relative;padding-left:32px}
 .timeline::before{content:'';position:absolute;left:0;top:8px;bottom:8px;width:1px;background:var(--p-border)}
-.tl-item{position:relative;padding:0 0 48px 40px}
+.tl-item{position:relative;padding:0 0 48px 40px;cursor:pointer}
 .tl-item:last-child{padding-bottom:0}
-.tl-dot{position:absolute;left:-40px;top:6px;width:10px;height:10px;border-radius:50%;background:var(--purple);box-shadow:0 0 12px var(--purple);border:2px solid var(--bg)}
+.tl-dot{position:absolute;left:-40px;top:6px;width:10px;height:10px;border-radius:50%;background:var(--purple);box-shadow:0 0 12px var(--purple);border:2px solid var(--bg);transition:all .3s}
+.tl-item:hover .tl-dot{
+  box-shadow:0 0 20px var(--purple),0 0 40px rgba(168,85,247,.3);
+  transform:scale(1.4);
+}
 .tl-year{font-family:var(--mono);font-size:10px;color:var(--purple);letter-spacing:.15em;margin-bottom:10px}
-.tl-title{font-size:18px;font-weight:700;margin-bottom:4px}
+.tl-title{font-size:18px;font-weight:700;margin-bottom:4px;display:flex;align-items:center;gap:12px}
+.tl-expand-icon{
+  font-family:var(--mono);
+  font-size:9px;
+  color:var(--dim);
+  padding:2px 7px;
+  border:1px solid var(--p-border);
+  letter-spacing:.06em;
+  transition:all .3s;
+  flex-shrink:0;
+}
+.tl-item:hover .tl-expand-icon,
+.tl-item.expanded .tl-expand-icon{
+  border-color:var(--purple);
+  color:var(--purple);
+  background:var(--p-muted);
+}
+.tl-item.expanded .tl-expand-icon::after{
+  content:' ↑';
+}
+.tl-item:not(.expanded) .tl-expand-icon::after{
+  content:' ↓';
+}
 .tl-role{font-family:var(--mono);font-size:11px;color:var(--muted);margin-bottom:12px}
 .tl-desc{font-size:13px;color:var(--muted);line-height:1.8}
 .tl-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
 .tl-tag{font-family:var(--mono);font-size:9px;padding:2px 8px;border:1px solid var(--p-border);color:var(--muted)}
+
+/* 상세 업무 내역 — 슬라이드다운 */
+.tl-detail{
+  overflow:hidden;
+  max-height:0;
+  opacity:0;
+  transition:max-height .45s cubic-bezier(.4,0,.2,1), opacity .35s ease, margin-top .35s ease;
+  margin-top:0;
+}
+.tl-item.expanded .tl-detail{
+  max-height:400px;
+  opacity:1;
+  margin-top:16px;
+}
+.tl-detail-inner{
+  background:var(--bg2);
+  border:1px solid var(--p-border);
+  border-left:2px solid var(--purple);
+  padding:20px 24px;
+  position:relative;
+}
+.tl-detail-inner::before{
+  content:'// 상세 업무 내역';
+  display:block;
+  font-family:var(--mono);
+  font-size:9px;
+  color:var(--purple);
+  letter-spacing:.18em;
+  margin-bottom:14px;
+  opacity:.7;
+}
+.tl-detail-list{
+  list-style:none;
+  display:flex;
+  flex-direction:column;
+  gap:9px;
+}
+.tl-detail-list li{
+  font-size:12px;
+  color:var(--muted);
+  line-height:1.65;
+  display:flex;
+  align-items:flex-start;
+  gap:9px;
+}
+.tl-detail-list li::before{
+  content:'▸';
+  color:var(--purple);
+  font-size:10px;
+  flex-shrink:0;
+  margin-top:2px;
+}
+.tl-detail-highlight{
+  font-family:var(--mono);
+  font-size:10px;
+  color:var(--green);
+  background:rgba(16,185,129,.08);
+  border:1px solid rgba(16,185,129,.2);
+  padding:8px 12px;
+  margin-top:12px;
+  line-height:1.7;
+}
+
 .skills-sec{border-top:1px solid var(--p-border)}
 .skills-wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:48px}
 .sk-group-title{font-family:var(--mono);font-size:10px;color:var(--purple);letter-spacing:.2em;margin-bottom:20px}
@@ -1408,7 +1501,7 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
 </div>
 <a href="https://github.com/kihyunqa/qa-portfolio" target="_blank" class="tc-link reveal">전체 TC 파일 보기 (145건+) ↗</a>
 </section>
-<!-- CAREER TIMELINE -->
+<!-- CAREER TIMELINE — STEP 127: hover expand/collapse 인터랙션 추가 -->
 <section class="timeline-sec" id="timeline">
 <div class="sec-head reveal">
   <span class="sec-n">07</span>
@@ -1417,30 +1510,70 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
   <span class="sec-stat-badge"><span class="ssb-num">6.9</span>yr 경력</span>
 </div>
 <div class="timeline reveal">
-<div class="tl-item">
+
+<!-- 두플 -->
+<div class="tl-item" id="tlDuple">
 <div class="tl-dot"></div>
 <div class="tl-year">2024.11 — 2025.02</div>
-<div class="tl-title">두플</div>
+<div class="tl-title">두플 <span class="tl-expand-icon" id="tlDupleIcon">상세</span></div>
 <div class="tl-role">QA PART LEADER</div>
 <div class="tl-desc">QA Part Leader로 테스트 전략 수립, TC 설계, 팀 리딩 담당.</div>
+<div class="tl-detail" id="tlDupleDetail">
+  <div class="tl-detail-inner">
+    <ul class="tl-detail-list">
+      <li>QA 전략 수립 — 릴리즈 사이클별 테스트 범위 정의, 우선순위 기반 TC 설계 프로세스 확립</li>
+      <li>팀 리딩 — QA 파트 리더로서 팀원 TC 리뷰, 버그 심각도 판단 기준 공유 및 에스컬레이션 교육</li>
+      <li>TC 설계 — 기능·회귀·탐색적 테스트 영역별 커버리지 매트릭스 작성, 핵심 플로우 우선 검증</li>
+      <li>프로세스 개선 — QA 게이트 기준 수립으로 릴리즈 전 P1 누락 0건 달성</li>
+    </ul>
+    <div class="tl-detail-highlight">✓ QA Part Leader 승격 · 팀 TC 커버리지 향상 · 릴리즈 게이트 기준 수립</div>
+  </div>
+</div>
 <div class="tl-tags"><span class="tl-tag">QA 리드</span><span class="tl-tag">TC 설계</span><span class="tl-tag">팀 리딩</span></div>
 </div>
-<div class="tl-item">
+
+<!-- IMS Mobility -->
+<div class="tl-item" id="tlIMS">
 <div class="tl-dot"></div>
 <div class="tl-year">2022.03 — 2024.02</div>
-<div class="tl-title">IMS Mobility</div>
+<div class="tl-title">IMS Mobility <span class="tl-expand-icon" id="tlIMSIcon">상세</span></div>
 <div class="tl-role">QA 대리</div>
 <div class="tl-desc">모바일앱 / 웹 / 백오피스 QA 수행. Cypress를 활용한 E2E 자동화 스크립트 작성 및 운영. Swagger 기반 API 검증. 결제 QA 담당.</div>
+<div class="tl-detail" id="tlIMSDetail">
+  <div class="tl-detail-inner">
+    <ul class="tl-detail-list">
+      <li>Cypress E2E 자동화 — 반복 회귀 테스트 스크립트 작성, CI 파이프라인 연동으로 배포마다 자동 실행</li>
+      <li>결제 QA — 결제 1원 오차 P3 → P1 에스컬레이션 주도, PG사 연동 시나리오 전 케이스 커버</li>
+      <li>API 검증 — Swagger 기반 30+ 엔드포인트 검증, 응답 스펙·에러 핸들링·타임아웃 케이스 포함</li>
+      <li>백오피스 QA — 어드민 권한 분리·데이터 정합성·배치 작업 결과 검증 전담</li>
+    </ul>
+    <div class="tl-detail-highlight">✓ Cypress 자동화 도입 · 결제 P1 에스컬레이션 · API 30+ 엔드포인트 커버</div>
+  </div>
+</div>
 <div class="tl-tags"><span class="tl-tag">모바일앱 QA</span><span class="tl-tag">웹/백오피스 QA</span><span class="tl-tag">Cypress 자동화</span><span class="tl-tag">Swagger API</span><span class="tl-tag">결제 QA</span></div>
 </div>
-<div class="tl-item">
+
+<!-- 모비프렌 -->
+<div class="tl-item" id="tlMobifren">
 <div class="tl-dot"></div>
 <div class="tl-year">2017.09 — 2022.01</div>
-<div class="tl-title">모비프렌 <span style="font-size:13px;color:var(--muted);font-weight:400">(삼성전자 파트너)</span></div>
+<div class="tl-title">모비프렌 <span style="font-size:13px;color:var(--muted);font-weight:400">(삼성전자 파트너)</span> <span class="tl-expand-icon" id="tlMobifrenIcon">상세</span></div>
 <div class="tl-role">QA 주임</div>
 <div class="tl-desc">IoT SmartThings, AI Bixby, 삼성 모바일앱 검증 담당. 다양한 디바이스 환경에서의 QA 수행 및 품질 기준 수립.</div>
+<div class="tl-detail" id="tlMobifrenDetail">
+  <div class="tl-detail-inner">
+    <ul class="tl-detail-list">
+      <li>SmartThings IoT 검증 — 50+ 디바이스 연동 시나리오, Wi-Fi·BLE·Z-Wave 프로토콜 호환성 검증</li>
+      <li>Bixby AI 검증 — 음성 명령 인식률·시나리오 흐름·엣지케이스(방언, 노이즈) 대규모 검증</li>
+      <li>삼성 모바일앱 QA — Galaxy 플래그십 모델 전 기종 회귀 테스트, OS 버전별 호환성 매트릭스 관리</li>
+      <li>품질 기준 수립 — 신규 디바이스 온보딩 QA 체크리스트 작성, 글로벌 출시 전 게이트 기준 정의</li>
+    </ul>
+    <div class="tl-detail-highlight">✓ SmartThings 50+ 디바이스 · Bixby AI 검증 · 삼성전자 파트너 4.3년</div>
+  </div>
+</div>
 <div class="tl-tags"><span class="tl-tag">IoT SmartThings</span><span class="tl-tag">AI Bixby</span><span class="tl-tag">삼성 모바일앱</span><span class="tl-tag">디바이스 QA</span></div>
 </div>
+
 </div>
 </section>
 <!-- SKILLS -->
@@ -1497,7 +1630,7 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
 <div class="sk-item" data-tip-title="TC 결과 정리" data-tip-body="145건+ TC · 카테고리별 분류·정리 완료" data-tip-tags="145건+|카테고리 분류|Notion 기록"><span class="sk-name">TC 결과 정리</span><div class="sk-bar-w"><div class="sk-bar" style="width:88%"></div></div></div>
 <div class="sk-item" data-tip-title="README / 가이드 작성" data-tip-body="docs 28개 · mcp-setup-guide · 릴리즈 QA 프로세스" data-tip-tags="docs 28개|가이드|프로세스 정의"><span class="sk-name">README / 가이드 작성</span><div class="sk-bar-w"><div class="sk-bar" style="width:85%"></div></div></div>
 <div class="sk-item" data-tip-title="QA 프로세스 정의" data-tip-body="릴리즈·회귀·선행 검토 프로세스 수립" data-tip-tags="릴리즈 QA|회귀 테스트|브랜치 전략"><span class="sk-name">QA 프로세스 정의</span><div class="sk-bar-w"><div class="sk-bar" style="width:82%"></div></div></div>
-<div class="sk-item" data-tip-title="GitHub 레포 구조화" data-tip-body="80개+ 파일 · 레포 전체 구조 설계 · CHANGELOG v39" data-tip-tags="80개+ 파일|CHANGELOG|레포 설계"><span class="sk-name">GitHub 레포 구조화</span><div class="sk-bar-w"><div class="sk-bar" style="width:85%"></div></div></div>
+<div class="sk-item" data-tip-title="GitHub 레포 구조화" data-tip-body="80개+ 파일 · 레포 전체 구조 설계 · CHANGELOG v40" data-tip-tags="80개+ 파일|CHANGELOG|레포 설계"><span class="sk-name">GitHub 레포 구조화</span><div class="sk-bar-w"><div class="sk-bar" style="width:85%"></div></div></div>
 </div>
 </div>
 </div>
@@ -2059,7 +2192,7 @@ async function loadCommitData() {
     barArea.style.display = '';
 
     loadingEl.style.display = 'none';
-    footerNote.textContent = `// GitHub API · ${totalCommits}+ commits · ${diffDays}일간 활동 · 2026-04-07 기준`;
+    footerNote.textContent = `// GitHub API · ${totalCommits}+ commits · ${diffDays}일간 활동 · 2026-04-08 기준`;
 
   } catch (err) {
     loadingEl.style.display = 'none';
@@ -2079,6 +2212,40 @@ const commitObs = new IntersectionObserver(entries => {
 }, { threshold: 0.2 });
 const commitCard = document.getElementById('commitCard');
 if (commitCard) commitObs.observe(commitCard);
+
+/* =====================================================
+   TIMELINE EXPAND/COLLAPSE — STEP 127
+   각 경력 항목 클릭 시 상세 업무 내역 슬라이드다운
+   ===================================================== */
+const tlItems = [
+  { itemId: 'tlDuple',    detailId: 'tlDupleDetail' },
+  { itemId: 'tlIMS',      detailId: 'tlIMSDetail' },
+  { itemId: 'tlMobifren', detailId: 'tlMobifrenDetail' },
+];
+
+tlItems.forEach(({ itemId, detailId }) => {
+  const item = document.getElementById(itemId);
+  const detail = document.getElementById(detailId);
+  if (!item || !detail) return;
+
+  item.addEventListener('click', (e) => {
+    // 링크 클릭은 제외
+    if (e.target.tagName === 'A') return;
+
+    const isExpanded = item.classList.contains('expanded');
+
+    // 다른 열린 항목 닫기
+    tlItems.forEach(({ itemId: otherId }) => {
+      const other = document.getElementById(otherId);
+      if (other && otherId !== itemId) {
+        other.classList.remove('expanded');
+      }
+    });
+
+    // 현재 항목 토글
+    item.classList.toggle('expanded', !isExpanded);
+  });
+});
 </script>
 </body>
 </html>
