@@ -79,6 +79,82 @@ h1.hero-name em{color:var(--purple);font-style:normal}
 .hero-bg-grid{position:absolute;inset:0;opacity:.03;background-image:linear-gradient(var(--purple) 1px,transparent 1px),linear-gradient(90deg,var(--purple) 1px,transparent 1px);background-size:60px 60px;pointer-events:none}
 
 /* =====================================================
+   HERO STAT CARD — STEP 129: hover 툴팁 + 클릭 스크롤
+   ===================================================== */
+.hero-stat-card{
+  position:relative;
+  cursor:pointer;
+  padding:10px 14px;
+  border:1px solid transparent;
+  transition:all .25s;
+  border-radius:2px;
+}
+.hero-stat-card:hover{
+  border-color:var(--p-border);
+  background:rgba(168,85,247,0.06);
+  transform:translateX(-4px);
+}
+.hero-stat-card:hover .stat-n{
+  color:var(--purple3);
+  text-shadow:0 0 16px rgba(168,85,247,0.4);
+}
+.hero-stat-card:hover .hero-stat-tip{
+  opacity:1;
+  transform:translateX(-100%) translateX(-12px) translateY(-50%);
+  pointer-events:auto;
+}
+.hero-stat-tip{
+  position:absolute;
+  right:calc(100% + 14px);
+  top:50%;
+  transform:translateX(-100%) translateX(-24px) translateY(-50%);
+  opacity:0;
+  pointer-events:none;
+  transition:all .28s cubic-bezier(.4,0,.2,1);
+  width:200px;
+  background:var(--bg3);
+  border:1px solid var(--p-border);
+  padding:12px 14px;
+  font-family:var(--mono);
+  font-size:10px;
+  color:var(--muted);
+  line-height:1.75;
+  box-shadow:0 8px 28px rgba(0,0,0,.5);
+  white-space:pre-line;
+  z-index:200;
+}
+.hero-stat-tip::after{
+  content:'';
+  position:absolute;
+  right:-6px;
+  top:50%;
+  transform:translateY(-50%);
+  width:10px;
+  height:10px;
+  background:var(--bg3);
+  border-right:1px solid var(--p-border);
+  border-top:1px solid var(--p-border);
+  transform:translateY(-50%) rotate(45deg);
+}
+.hero-stat-tip-title{
+  color:var(--purple);
+  font-size:9px;
+  letter-spacing:.15em;
+  margin-bottom:6px;
+  display:block;
+}
+.hero-stat-tip-link{
+  display:inline-block;
+  margin-top:8px;
+  font-size:9px;
+  color:var(--purple);
+  border:1px solid var(--p-border);
+  padding:2px 8px;
+  letter-spacing:.04em;
+  background:var(--p-muted);
+}
+
+/* =====================================================
    HERO CANVAS PARTICLE — STEP 117
    ===================================================== */
 #hero-canvas{
@@ -999,11 +1075,68 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
 <a href="https://github.com/kihyunqa/qa-portfolio/blob/main/docs/bug-stories.md" target="_blank" class="btn-s">버그 스토리 ↗</a>
 </div>
 </div>
+
+<!-- HERO STATS — STEP 129: hover 툴팁 + 클릭 섹션 스크롤 -->
 <div class="hero-stats">
-<div><div class="stat-n">6.9<span style="font-size:18px">yr</span></div><div class="stat-l">QA 경력</div></div>
-<div><div class="stat-n">5<span style="font-size:18px">+</span></div><div class="stat-l">MCP 연동</div></div>
-<div><div class="stat-n">12</div><div class="stat-l">Playwright spec</div></div>
-<div><div class="stat-n">P1<br><span style="font-size:24px">2건</span></div><div class="stat-l">보안 버그 발견</div></div>
+
+  <!-- 6.9yr → 경력 타임라인 -->
+  <div class="hero-stat-card" data-scroll="timeline">
+    <div class="stat-n">6.9<span style="font-size:18px">yr</span></div>
+    <div class="stat-l">QA 경력</div>
+    <div class="hero-stat-tip">
+      <span class="hero-stat-tip-title">// QA 경력 상세</span>
+      두플 (QA 파트 리더)
+      IMS Mobility (QA 대리)
+      모비프렌 — 삼성전자 파트너
+      총 6년 9개월
+      <span class="hero-stat-tip-link">경력 보기 →</span>
+    </div>
+  </div>
+
+  <!-- 5+ → MCP 섹션 -->
+  <div class="hero-stat-card" data-scroll="mcp">
+    <div class="stat-n">5<span style="font-size:18px">+</span></div>
+    <div class="stat-l">MCP 연동</div>
+    <div class="hero-stat-tip">
+      <span class="hero-stat-tip-title">// 실제 연동 MCP</span>
+      📁 filesystem
+      🎭 playwright
+      🐙 github
+      📒 notion (실제 연동)
+      💬 slack (실제 연동)
+      <span class="hero-stat-tip-link">MCP 자동화 →</span>
+    </div>
+  </div>
+
+  <!-- 12 → 실제 증거 섹션 -->
+  <div class="hero-stat-card" data-scroll="proof">
+    <div class="stat-n">12</div>
+    <div class="stat-l">Playwright spec</div>
+    <div class="hero-stat-tip">
+      <span class="hero-stat-tip-title">// E2E spec 목록</span>
+      login · search · cart
+      api · payment · security
+      performance · accessibility
+      signup · notification
+      portfolio · mcp-portfolio
+      <span class="hero-stat-tip-link">spec 보기 →</span>
+    </div>
+  </div>
+
+  <!-- P1 2건 → 실제 증거 섹션 -->
+  <div class="hero-stat-card" data-scroll="proof">
+    <div class="stat-n">P1<br><span style="font-size:24px">2건</span></div>
+    <div class="stat-l">보안 버그 발견</div>
+    <div class="hero-stat-tip">
+      <span class="hero-stat-tip-title">// 보안 버그 스토리</span>
+      🔴 보안 토큰 허점
+         만료 토큰 재사용 허용 → 즉시 핫픽스
+      🔴 결제 1원 오차
+         P3 → P1 에스컬레이션 성공
+      <span class="hero-stat-tip-link">버그 스토리 →</span>
+    </div>
+  </div>
+
 </div>
 </section>
 <!-- STATS -->
@@ -1807,6 +1940,18 @@ document.querySelectorAll('.sk-item[data-tip-title]').forEach(item => {
 skTooltip.addEventListener('mouseenter', () => clearTimeout(tooltipTimer));
 skTooltip.addEventListener('mouseleave', () => {
   tooltipTimer = setTimeout(() => skTooltip.classList.remove('visible'), 120);
+});
+
+/* =====================================================
+   HERO STAT CARD CLICK SCROLL — STEP 129
+   각 stat 카드 클릭 시 해당 섹션으로 스크롤
+   ===================================================== */
+document.querySelectorAll('.hero-stat-card[data-scroll]').forEach(card => {
+  card.addEventListener('click', () => {
+    const targetId = card.dataset.scroll;
+    const targetEl = document.getElementById(targetId);
+    if (targetEl) targetEl.scrollIntoView({ behavior: 'smooth' });
+  });
 });
 
 /* =====================================================

@@ -1,5 +1,32 @@
 # CHANGELOG
 
+## v42.0.0 — 2026-04-08
+
+### STEP 129 완료 — 히어로 stat 카드 hover 툴팁 + 클릭 섹션 스크롤 추가
+
+#### 작업 내용
+
+| 항목 | 변경 내용 | 상태 |
+|------|-----------|------|
+| CSS `.hero-stat-card` | wrapper div · cursor:pointer · hover 시 border + bg + translateX(-4px) | ✅ |
+| CSS `.hero-stat-card:hover .stat-n` | purple3 + text-shadow glow 효과 | ✅ |
+| CSS `.hero-stat-tip` | position:absolute 왼쪽 슬라이드 툴팁 · opacity 0→1 트랜지션 | ✅ |
+| CSS `.hero-stat-tip::after` | 오른쪽 화살표 포인터 (삼각형) | ✅ |
+| `.hero-stat-tip-title` | 퍼플 색상 제목 + letter-spacing | ✅ |
+| `.hero-stat-tip-link` | 하단 "→ 섹션 이동" 링크 텍스트 | ✅ |
+| 6.9yr 툴팁 | 두플/IMS/모비프렌 회사명 + 총 6년 9개월 · data-scroll=timeline | ✅ |
+| 5+ 툴팁 | 5개 MCP 서버 목록 (filesystem·playwright·github·notion·slack) · data-scroll=mcp | ✅ |
+| 12 툴팁 | E2E spec 12개 목록 전체 · data-scroll=proof | ✅ |
+| P1 2건 툴팁 | 보안 토큰 허점·결제 1원 오차 스토리 요약 · data-scroll=proof | ✅ |
+| JS click scroll | `.hero-stat-card[data-scroll]` 클릭 → 해당 섹션 scrollIntoView smooth | ✅ |
+
+#### 툴팁 포지셔닝
+- 카드 왼쪽 방향으로 슬라이드: `right:calc(100% + 14px)` absolute
+- hover 시 `translateX(-100%) translateX(-12px) translateY(-50%)` → 자연스럽게 등장
+- 오른쪽 화살표 포인터 CSS 삼각형으로 연결
+
+---
+
 ## v41.0.0 — 2026-04-08
 
 ### STEP 127 완료 — 경력 타임라인 클릭 expand/collapse 인터랙션 추가
@@ -19,28 +46,11 @@
 | JS expand/collapse | 클릭 이벤트 — 다른 항목 닫기 + 현재 항목 토글, 링크 클릭 제외 처리 | ✅ |
 | `.tl-detail-highlight` | 각 회사 핵심 수치 한 줄 요약 (green 스타일) | ✅ |
 
-#### 각 회사별 상세 내용
-| 회사 | 핵심 상세 |
-|------|----------|
-| 두플 | QA 전략 수립 · 팀 리딩 · TC 커버리지 향상 · 릴리즈 P1 누락 0건 |
-| IMS Mobility | Cypress CI 연동 · 결제 P3→P1 에스컬레이션 · Swagger 30+ API · 백오피스 권한 검증 |
-| 모비프렌 | SmartThings 50+ 디바이스 · Bixby 음성 엣지케이스 · Galaxy 전기종 회귀 · 4.3년 파트너 |
-
 ---
 
 ## v40.0.0 — 2026-04-07
 
 ### STEP 125 완료 — 프로젝트 카드 호버 오버레이 추가
-
-#### 작업 내용
-
-| 항목 | 변경 내용 | 상태 |
-|------|-----------|------|
-| `index.html` | 10개 `.proj-card` 각각에 `.proj-overlay` div 추가 | ✅ |
-| CSS `.proj-overlay` | `position:absolute;bottom:0;translateY(100%)` → hover 시 `translateY(0)` 슬라이드업 | ✅ |
-| CSS `.proj-overlay` 배경 | `rgba(13,10,24)` 다크 그라디언트 + 퍼플 상단 보더 | ✅ |
-| PROJECT 01~10 | 각 카드별 핵심 성과 3줄 + 링크 커스텀 | ✅ |
-| 트랜지션 | `.38s cubic-bezier(.4,0,.2,1)` 자연스러운 이징 | ✅ |
 
 ---
 
