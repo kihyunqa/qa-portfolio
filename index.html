@@ -772,7 +772,8 @@ section{padding:96px 56px;position:relative;z-index:2}
 .tc-table{width:100%;border-collapse:collapse;font-size:12px;font-family:var(--mono)}
 .tc-table th{background:var(--bg3);padding:11px 14px;text-align:left;color:var(--purple);font-size:10px;letter-spacing:.1em;border-bottom:1px solid var(--p-border);font-weight:500}
 .tc-table td{padding:11px 14px;border-bottom:1px solid rgba(168,85,247,.07);color:var(--muted);vertical-align:top;line-height:1.5}
-.tc-table tr:hover td{background:var(--p-muted);color:var(--text)}
+.tc-table tr.tc-data-row{cursor:pointer;transition:background .18s}
+.tc-table tr.tc-data-row:hover td{background:var(--p-muted);color:var(--text)}
 .tc-table tr:last-child td{border-bottom:none}
 .tc-type{display:inline-block;font-size:9px;padding:2px 8px;letter-spacing:.06em}
 .tc-type.h{background:rgba(168,85,247,.15);color:var(--purple);border:1px solid var(--p-border)}
@@ -783,6 +784,139 @@ section{padding:96px 56px;position:relative;z-index:2}
 .p3{font-size:9px;padding:2px 6px;background:rgba(168,85,247,.12);color:var(--purple)}
 .tc-link{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;color:var(--purple);text-decoration:none;border:1px solid var(--p-border);padding:10px 20px;margin-top:18px;transition:.2s;letter-spacing:.05em}
 .tc-link:hover{background:var(--p-muted);border-color:var(--purple)}
+
+/* =====================================================
+   TC 행 EXPAND — STEP 131
+   테이블 행 클릭 시 상세 케이스 내용 슬라이드다운
+   ===================================================== */
+.tc-expand-icon{
+  display:inline-block;
+  font-family:var(--mono);
+  font-size:9px;
+  color:var(--dim);
+  padding:1px 6px;
+  border:1px solid transparent;
+  transition:all .2s;
+  vertical-align:middle;
+  margin-left:6px;
+}
+.tc-data-row:hover .tc-expand-icon{
+  border-color:var(--p-border);
+  color:var(--purple);
+}
+.tc-data-row.tc-expanded .tc-expand-icon{
+  border-color:var(--purple);
+  color:var(--purple);
+  background:var(--p-muted);
+}
+.tc-detail-row{
+  display:none;
+}
+.tc-detail-row.tc-detail-visible{
+  display:table-row;
+}
+.tc-detail-cell{
+  padding:0 !important;
+  border-bottom:1px solid rgba(168,85,247,.15) !important;
+  background:rgba(8,6,15,0.6) !important;
+}
+.tc-detail-inner{
+  overflow:hidden;
+  max-height:0;
+  transition:max-height .4s cubic-bezier(.4,0,.2,1);
+}
+.tc-detail-inner.tc-detail-open{
+  max-height:300px;
+}
+.tc-detail-content{
+  padding:16px 20px 20px 20px;
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:16px;
+  border-top:1px solid rgba(168,85,247,.15);
+}
+.tc-detail-block{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+.tc-detail-label{
+  font-family:var(--mono);
+  font-size:9px;
+  color:var(--purple);
+  letter-spacing:.14em;
+  opacity:.7;
+}
+.tc-detail-value{
+  font-size:11px;
+  color:var(--muted);
+  line-height:1.65;
+}
+.tc-detail-steps{
+  list-style:none;
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+}
+.tc-detail-steps li{
+  font-size:10px;
+  color:var(--muted);
+  line-height:1.6;
+  display:flex;
+  align-items:flex-start;
+  gap:6px;
+}
+.tc-detail-steps li .step-num{
+  font-family:var(--mono);
+  font-size:9px;
+  color:var(--purple);
+  flex-shrink:0;
+  min-width:16px;
+}
+.tc-detail-result-pass{
+  font-family:var(--mono);
+  font-size:10px;
+  color:var(--green);
+  background:rgba(16,185,129,.08);
+  border:1px solid rgba(16,185,129,.2);
+  padding:6px 10px;
+  line-height:1.6;
+}
+.tc-detail-result-fail{
+  font-family:var(--mono);
+  font-size:10px;
+  color:#f87171;
+  background:rgba(239,68,68,.06);
+  border:1px solid rgba(239,68,68,.2);
+  padding:6px 10px;
+  line-height:1.6;
+}
+.tc-detail-result-edge{
+  font-family:var(--mono);
+  font-size:10px;
+  color:var(--wip);
+  background:rgba(245,158,11,.06);
+  border:1px solid rgba(245,158,11,.2);
+  padding:6px 10px;
+  line-height:1.6;
+}
+.tc-row-hint{
+  font-family:var(--mono);
+  font-size:9px;
+  color:var(--dim);
+  letter-spacing:.06em;
+  margin-bottom:10px;
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+.tc-row-hint::before{
+  content:'▼';
+  font-size:8px;
+  color:var(--purple);
+  opacity:.5;
+}
+
 .contact-sec{background:var(--bg2);border-top:1px solid var(--p-border)}
 .contact-wrap{display:flex;justify-content:space-between;align-items:flex-end}
 .contact-h{font-size:clamp(40px,6vw,72px);font-weight:900;line-height:.95;letter-spacing:-.04em;margin-bottom:20px}
@@ -990,6 +1124,7 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
 .sec-stat-badge{display:none}
 .sk-tooltip{display:none}
 .proj-overlay{display:none}
+.tc-detail-content{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -1493,7 +1628,7 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
   <div class="proj-overlay-title">// 핵심 성과</div>
   <ul class="proj-overlay-points">
     <li>docs/ 28개 문서 전부 MCP로 자동 작성</li>
-    <li>CHANGELOG v40+ — 전 스텝 이력 추적</li>
+    <li>CHANGELOG v42 — 전 스텝 이력 추적</li>
     <li>qa-automation-report.md 리포트 완성</li>
   </ul>
   <div class="proj-overlay-links">
@@ -1580,7 +1715,7 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
 <div class="roadmap-card future"><div class="rm-num">PHASE 3 · 계획</div><div class="rm-icon">🗓️</div><div class="rm-title">Scheduling &amp; Reporting MCP</div><div class="rm-desc">Google Calendar MCP → 릴리즈 QA 일정 자동 배분. Gmail MCP → 이해관계자 QA 리포트 자동 발송.</div></div>
 </div>
 </section>
-<!-- TC — STEP 119: 행 8 → 20으로 확장 -->
+<!-- TC — STEP 131: 행 클릭 expand 인터랙션 -->
 <section id="tc" style="background:var(--bg2);border-top:1px solid var(--p-border)">
 <div class="sec-head reveal">
   <span class="sec-n">06</span>
@@ -1605,30 +1740,113 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
   <button class="tc-filter-btn" data-filter="e">엣지케이스</button>
 </div>
 
+<!-- STEP 131: 행 클릭 힌트 -->
+<div class="tc-row-hint reveal">행을 클릭하면 전제조건 · 테스트 스텝 · 기대 결과 상세를 확인할 수 있습니다</div>
+
 <div class="tc-wrap reveal">
 <table class="tc-table" id="tcTable">
 <thead><tr><th>TC-ID</th><th>구분</th><th>테스트 제목</th><th>기대 결과</th><th>우선순위</th></tr></thead>
 <tbody id="tcBody">
-<tr data-type="h"><td>AUTH-001</td><td><span class="tc-type h">해피패스</span></td><td>유효한 자격증명으로 로그인</td><td>/dashboard 리다이렉트</td><td><span class="p1">P1</span></td></tr>
-<tr data-type="h"><td>AUTH-005</td><td><span class="tc-type h">해피패스</span></td><td>로그아웃 실행 + 토큰 무효화 검증</td><td>401 Unauthorized (API 직접 호출 시)</td><td><span class="p1">P1</span></td></tr>
-<tr data-type="n"><td>AUTH-007</td><td><span class="tc-type n">네거티브</span></td><td>5회 로그인 실패 후 계정 잠금</td><td>계정 잠금 또는 인증 요청</td><td><span class="p1">P1</span></td></tr>
-<tr data-type="h"><td>CART-001</td><td><span class="tc-type h">해피패스</span></td><td>상품 장바구니 추가</td><td>장바구니 아이콘 숫자 +1</td><td><span class="p1">P1</span></td></tr>
-<tr data-type="e"><td>PAY-012</td><td><span class="tc-type e">엣지케이스</span></td><td>다중 상품 + 할인 조합 소수점 오차</td><td>합산 후 할인 1회 적용, 오차 0원</td><td><span class="p1">P1</span></td></tr>
-<tr data-type="e"><td>API-S-006</td><td><span class="tc-type e">엣지케이스</span></td><td>특수문자 / SQL 패턴 검색</td><td>안전 처리된 결과 (500 없음)</td><td><span class="p1">P1</span></td></tr>
-<tr data-type="h"><td>TC-NOTIF-HP-001</td><td><span class="tc-type h">해피패스</span></td><td>QA 완료 Slack 알림 정상 발송</td><td>새-채널에 메시지 수신 확인</td><td><span class="p1">P1</span></td></tr>
-<tr data-type="h"><td>TC-CICD-HP-001</td><td><span class="tc-type h">해피패스</span></td><td>TC push 시 Actions 자동 트리거</td><td>workflow run 생성 확인</td><td><span class="p1">P1</span></td></tr>
-<tr data-type="n"><td>SEARCH-N-001</td><td><span class="tc-type n">네거티브</span></td><td>검색 결과 0건 빈 상태 표시</td><td>"결과 없음" 메시지 노출, 500 오류 없음</td><td><span class="p2">P2</span></td></tr>
-<tr data-type="n"><td>AUTH-N-008</td><td><span class="tc-type n">네거티브</span></td><td>세션 만료 후 보호 페이지 접근</td><td>로그인 페이지 리다이렉트, 401 반환</td><td><span class="p1">P1</span></td></tr>
-<tr data-type="e"><td>MOB-E-001</td><td><span class="tc-type e">엣지케이스</span></td><td>모바일 320px 뷰포트 레이아웃 검증</td><td>가로 스크롤 없음, 버튼 터치 영역 44px+</td><td><span class="p2">P2</span></td></tr>
-<tr data-type="n"><td>API-N-010</td><td><span class="tc-type n">네거티브</span></td><td>API 응답 타임아웃 (30s 초과)</td><td>타임아웃 에러 메시지 노출, 무한 로딩 없음</td><td><span class="p1">P1</span></td></tr>
-<tr data-type="h"><td>PAY-HP-001</td><td><span class="tc-type h">해피패스</span></td><td>정상 카드로 결제 완료</td><td>주문 완료 페이지 이동, 이메일 발송</td><td><span class="p1">P1</span></td></tr>
-<tr data-type="n"><td>PAY-N-005</td><td><span class="tc-type n">네거티브</span></td><td>잔액 부족 카드 결제 시도</td><td>결제 실패 메시지, 주문 미생성 확인</td><td><span class="p1">P1</span></td></tr>
-<tr data-type="e"><td>NOTIF-E-003</td><td><span class="tc-type e">엣지케이스</span></td><td>저속 네트워크(3G) 환경 알림 중복 발송</td><td>알림 1회만 수신, 중복 없음</td><td><span class="p2">P2</span></td></tr>
-<tr data-type="n"><td>SEC-N-002</td><td><span class="tc-type n">네거티브</span></td><td>만료된 JWT 토큰으로 API 호출</td><td>403 Forbidden 반환, 데이터 노출 없음</td><td><span class="p1">P1</span></td></tr>
-<tr data-type="h"><td>ACCESS-HP-001</td><td><span class="tc-type h">해피패스</span></td><td>키보드만으로 전체 폼 입력 및 제출</td><td>Tab 순서 정상, Enter 제출 동작</td><td><span class="p2">P2</span></td></tr>
-<tr data-type="n"><td>SEARCH-N-004</td><td><span class="tc-type n">네거티브</span></td><td>XSS 패턴 검색어 입력</td><td>스크립트 미실행, 인코딩 처리 확인</td><td><span class="p1">P1</span></td></tr>
-<tr data-type="h"><td>CART-HP-003</td><td><span class="tc-type h">해피패스</span></td><td>장바구니 수량 변경 후 합계 갱신</td><td>실시간 금액 재계산, 오차 0원</td><td><span class="p2">P2</span></td></tr>
-<tr data-type="e"><td>PERF-E-001</td><td><span class="tc-type e">엣지케이스</span></td><td>동시 100개 요청 부하 테스트</td><td>응답 시간 2s 이내, 서버 500 없음</td><td><span class="p2">P2</span></td></tr>
+<tr class="tc-data-row" data-type="h" data-tc-id="AUTH-001">
+  <td>AUTH-001 <span class="tc-expand-icon">▼</span></td><td><span class="tc-type h">해피패스</span></td><td>유효한 자격증명으로 로그인</td><td>/dashboard 리다이렉트</td><td><span class="p1">P1</span></td>
+</tr>
+<tr class="tc-detail-row" data-for="AUTH-001"><td class="tc-detail-cell" colspan="5"><div class="tc-detail-inner"><div class="tc-detail-content"><div class="tc-detail-block"><div class="tc-detail-label">// 전제조건</div><div class="tc-detail-value">유효한 계정 존재. 로그인 페이지 접근 가능.</div></div><div class="tc-detail-block"><div class="tc-detail-label">// 테스트 스텝</div><ol class="tc-detail-steps"><li><span class="step-num">01.</span>로그인 페이지 진입</li><li><span class="step-num">02.</span>유효한 이메일/비밀번호 입력</li><li><span class="step-num">03.</span>로그인 버튼 클릭</li><li><span class="step-num">04.</span>리다이렉트 URL 확인</li></ol></div><div class="tc-detail-block"><div class="tc-detail-label">// 기대 결과 상세</div><div class="tc-detail-result-pass">✓ /dashboard 리다이렉트 확인<br>✓ JWT 토큰 쿠키 발급 확인<br>✓ 사용자명 헤더 표시 확인</div></div></div></div></td></tr>
+
+<tr class="tc-data-row" data-type="h" data-tc-id="AUTH-005">
+  <td>AUTH-005 <span class="tc-expand-icon">▼</span></td><td><span class="tc-type h">해피패스</span></td><td>로그아웃 실행 + 토큰 무효화 검증</td><td>401 Unauthorized (API 직접 호출 시)</td><td><span class="p1">P1</span></td>
+</tr>
+<tr class="tc-detail-row" data-for="AUTH-005"><td class="tc-detail-cell" colspan="5"><div class="tc-detail-inner"><div class="tc-detail-content"><div class="tc-detail-block"><div class="tc-detail-label">// 전제조건</div><div class="tc-detail-value">로그인 상태. 유효한 JWT 토큰 보유.</div></div><div class="tc-detail-block"><div class="tc-detail-label">// 테스트 스텝</div><ol class="tc-detail-steps"><li><span class="step-num">01.</span>로그아웃 버튼 클릭</li><li><span class="step-num">02.</span>기존 토큰으로 API 직접 호출</li><li><span class="step-num">03.</span>응답 상태 코드 확인</li></ol></div><div class="tc-detail-block"><div class="tc-detail-label">// 기대 결과 상세</div><div class="tc-detail-result-pass">✓ 401 Unauthorized 반환<br>✓ 쿠키 삭제 확인<br>✓ 로그인 페이지 이동 확인</div></div></div></div></td></tr>
+
+<tr class="tc-data-row" data-type="n" data-tc-id="AUTH-007">
+  <td>AUTH-007 <span class="tc-expand-icon">▼</span></td><td><span class="tc-type n">네거티브</span></td><td>5회 로그인 실패 후 계정 잠금</td><td>계정 잠금 또는 인증 요청</td><td><span class="p1">P1</span></td>
+</tr>
+<tr class="tc-detail-row" data-for="AUTH-007"><td class="tc-detail-cell" colspan="5"><div class="tc-detail-inner"><div class="tc-detail-content"><div class="tc-detail-block"><div class="tc-detail-label">// 전제조건</div><div class="tc-detail-value">잠금 해제된 테스트 계정 준비.</div></div><div class="tc-detail-block"><div class="tc-detail-label">// 테스트 스텝</div><ol class="tc-detail-steps"><li><span class="step-num">01.</span>잘못된 비밀번호로 5회 반복 시도</li><li><span class="step-num">02.</span>각 시도 후 에러 메시지 확인</li><li><span class="step-num">03.</span>5회 초과 시 응답 확인</li></ol></div><div class="tc-detail-block"><div class="tc-detail-label">// 기대 결과 상세</div><div class="tc-detail-result-fail">✗ 계정 잠금 메시지 노출 확인<br>✗ 추가 로그인 시도 차단 확인<br>✗ 이메일 알림 발송 확인 (설정 시)</div></div></div></div></td></tr>
+
+<tr class="tc-data-row" data-type="h" data-tc-id="CART-001">
+  <td>CART-001 <span class="tc-expand-icon">▼</span></td><td><span class="tc-type h">해피패스</span></td><td>상품 장바구니 추가</td><td>장바구니 아이콘 숫자 +1</td><td><span class="p1">P1</span></td>
+</tr>
+<tr class="tc-detail-row" data-for="CART-001"><td class="tc-detail-cell" colspan="5"><div class="tc-detail-inner"><div class="tc-detail-content"><div class="tc-detail-block"><div class="tc-detail-label">// 전제조건</div><div class="tc-detail-value">로그인 상태. 상품 상세 페이지 접근 가능.</div></div><div class="tc-detail-block"><div class="tc-detail-label">// 테스트 스텝</div><ol class="tc-detail-steps"><li><span class="step-num">01.</span>상품 상세 페이지 진입</li><li><span class="step-num">02.</span>장바구니 담기 버튼 클릭</li><li><span class="step-num">03.</span>헤더 아이콘 숫자 확인</li></ol></div><div class="tc-detail-block"><div class="tc-detail-label">// 기대 결과 상세</div><div class="tc-detail-result-pass">✓ 장바구니 아이콘 +1 증가<br>✓ 상품 목록에 해당 상품 존재<br>✓ 수량·가격 정확히 반영</div></div></div></div></td></tr>
+
+<tr class="tc-data-row" data-type="e" data-tc-id="PAY-012">
+  <td>PAY-012 <span class="tc-expand-icon">▼</span></td><td><span class="tc-type e">엣지케이스</span></td><td>다중 상품 + 할인 조합 소수점 오차</td><td>합산 후 할인 1회 적용, 오차 0원</td><td><span class="p1">P1</span></td>
+</tr>
+<tr class="tc-detail-row" data-for="PAY-012"><td class="tc-detail-cell" colspan="5"><div class="tc-detail-inner"><div class="tc-detail-content"><div class="tc-detail-block"><div class="tc-detail-label">// 전제조건</div><div class="tc-detail-value">할인 쿠폰 보유. 소수점 단가 상품 3종 이상 준비.</div></div><div class="tc-detail-block"><div class="tc-detail-label">// 테스트 스텝</div><ol class="tc-detail-steps"><li><span class="step-num">01.</span>소수점 단가 상품 3종 장바구니 담기</li><li><span class="step-num">02.</span>할인 쿠폰 적용</li><li><span class="step-num">03.</span>최종 결제 금액 계산 비교</li></ol></div><div class="tc-detail-block"><div class="tc-detail-label">// 기대 결과 상세</div><div class="tc-detail-result-edge">△ 소수점 반올림 정책 명시 확인<br>△ 할인 중복 적용 방지 확인<br>△ 총액 계산 오차 0원 확인</div></div></div></div></td></tr>
+
+<tr class="tc-data-row" data-type="e" data-tc-id="API-S-006">
+  <td>API-S-006 <span class="tc-expand-icon">▼</span></td><td><span class="tc-type e">엣지케이스</span></td><td>특수문자 / SQL 패턴 검색</td><td>안전 처리된 결과 (500 없음)</td><td><span class="p1">P1</span></td>
+</tr>
+<tr class="tc-detail-row" data-for="API-S-006"><td class="tc-detail-cell" colspan="5"><div class="tc-detail-inner"><div class="tc-detail-content"><div class="tc-detail-block"><div class="tc-detail-label">// 전제조건</div><div class="tc-detail-value">검색 API 엔드포인트 접근 가능.</div></div><div class="tc-detail-block"><div class="tc-detail-label">// 테스트 스텝</div><ol class="tc-detail-steps"><li><span class="step-num">01.</span>SQL Injection 패턴 입력 (' OR 1=1--)</li><li><span class="step-num">02.</span>특수문자 조합 입력 (&lt;script&gt;alert(1)&lt;/script&gt;)</li><li><span class="step-num">03.</span>응답 상태코드 및 바디 확인</li></ol></div><div class="tc-detail-block"><div class="tc-detail-label">// 기대 결과 상세</div><div class="tc-detail-result-fail">✗ 500 에러 없음 확인<br>✗ 입력값 이스케이프 처리 확인<br>✗ DB 데이터 노출 없음 확인</div></div></div></div></td></tr>
+
+<tr class="tc-data-row" data-type="h" data-tc-id="TC-NOTIF-HP-001">
+  <td>TC-NOTIF-HP-001 <span class="tc-expand-icon">▼</span></td><td><span class="tc-type h">해피패스</span></td><td>QA 완료 Slack 알림 정상 발송</td><td>새-채널에 메시지 수신 확인</td><td><span class="p1">P1</span></td>
+</tr>
+<tr class="tc-detail-row" data-for="TC-NOTIF-HP-001"><td class="tc-detail-cell" colspan="5"><div class="tc-detail-inner"><div class="tc-detail-content"><div class="tc-detail-block"><div class="tc-detail-label">// 전제조건</div><div class="tc-detail-value">Slack MCP 연동 완료. 새-채널 봇 초대됨.</div></div><div class="tc-detail-block"><div class="tc-detail-label">// 테스트 스텝</div><ol class="tc-detail-steps"><li><span class="step-num">01.</span>Claude에서 QA 완료 알림 명령</li><li><span class="step-num">02.</span>slack MCP send_message 실행</li><li><span class="step-num">03.</span>새-채널 메시지 수신 확인</li></ol></div><div class="tc-detail-block"><div class="tc-detail-label">// 기대 결과 상세</div><div class="tc-detail-result-pass">✓ 새-채널에 메시지 수신 확인<br>✓ 발송 시각 정확 확인<br>✓ MCP 응답 success 확인</div></div></div></div></td></tr>
+
+<tr class="tc-data-row" data-type="h" data-tc-id="TC-CICD-HP-001">
+  <td>TC-CICD-HP-001 <span class="tc-expand-icon">▼</span></td><td><span class="tc-type h">해피패스</span></td><td>TC push 시 Actions 자동 트리거</td><td>workflow run 생성 확인</td><td><span class="p1">P1</span></td>
+</tr>
+<tr class="tc-detail-row" data-for="TC-CICD-HP-001"><td class="tc-detail-cell" colspan="5"><div class="tc-detail-inner"><div class="tc-detail-content"><div class="tc-detail-block"><div class="tc-detail-label">// 전제조건</div><div class="tc-detail-value">GitHub Actions qa-notify.yml 설정 완료.</div></div><div class="tc-detail-block"><div class="tc-detail-label">// 테스트 스텝</div><ol class="tc-detail-steps"><li><span class="step-num">01.</span>testcase_*.md 파일 push</li><li><span class="step-num">02.</span>Actions 탭에서 workflow run 확인</li><li><span class="step-num">03.</span>Slack 채널 알림 도착 확인</li></ol></div><div class="tc-detail-block"><div class="tc-detail-label">// 기대 결과 상세</div><div class="tc-detail-result-pass">✓ workflow run 자동 생성 확인<br>✓ Slack 알림 자동 발송 확인<br>✓ 전체 파이프라인 완주 확인</div></div></div></div></td></tr>
+
+<tr class="tc-data-row" data-type="n" data-tc-id="SEARCH-N-001">
+  <td>SEARCH-N-001 <span class="tc-expand-icon">▼</span></td><td><span class="tc-type n">네거티브</span></td><td>검색 결과 0건 빈 상태 표시</td><td>"결과 없음" 메시지 노출, 500 오류 없음</td><td><span class="p2">P2</span></td>
+</tr>
+<tr class="tc-detail-row" data-for="SEARCH-N-001"><td class="tc-detail-cell" colspan="5"><div class="tc-detail-inner"><div class="tc-detail-content"><div class="tc-detail-block"><div class="tc-detail-label">// 전제조건</div><div class="tc-detail-value">검색 기능 동작 중. 존재하지 않는 키워드 준비.</div></div><div class="tc-detail-block"><div class="tc-detail-label">// 테스트 스텝</div><ol class="tc-detail-steps"><li><span class="step-num">01.</span>검색창에 존재하지 않는 키워드 입력</li><li><span class="step-num">02.</span>검색 실행</li><li><span class="step-num">03.</span>결과 영역 UI 확인</li></ol></div><div class="tc-detail-block"><div class="tc-detail-label">// 기대 결과 상세</div><div class="tc-detail-result-fail">✗ "결과 없음" 문구 노출 확인<br>✗ 500 에러 없음 확인<br>✗ UI 레이아웃 깨짐 없음 확인</div></div></div></div></td></tr>
+
+<tr class="tc-data-row" data-type="n" data-tc-id="AUTH-N-008">
+  <td>AUTH-N-008 <span class="tc-expand-icon">▼</span></td><td><span class="tc-type n">네거티브</span></td><td>세션 만료 후 보호 페이지 접근</td><td>로그인 페이지 리다이렉트, 401 반환</td><td><span class="p1">P1</span></td>
+</tr>
+<tr class="tc-detail-row" data-for="AUTH-N-008"><td class="tc-detail-cell" colspan="5"><div class="tc-detail-inner"><div class="tc-detail-content"><div class="tc-detail-block"><div class="tc-detail-label">// 전제조건</div><div class="tc-detail-value">만료된 세션 토큰 보유.</div></div><div class="tc-detail-block"><div class="tc-detail-label">// 테스트 스텝</div><ol class="tc-detail-steps"><li><span class="step-num">01.</span>세션 토큰 만료 처리 (시간 조작)</li><li><span class="step-num">02.</span>보호된 URL 직접 접근</li><li><span class="step-num">03.</span>응답 및 리다이렉트 확인</li></ol></div><div class="tc-detail-block"><div class="tc-detail-label">// 기대 결과 상세</div><div class="tc-detail-result-fail">✗ 로그인 페이지 리다이렉트 확인<br>✗ 401 Unauthorized 확인<br>✗ 원래 URL 복귀 파라미터 확인</div></div></div></div></td></tr>
+
+<tr class="tc-data-row" data-type="e" data-tc-id="MOB-E-001">
+  <td>MOB-E-001 <span class="tc-expand-icon">▼</span></td><td><span class="tc-type e">엣지케이스</span></td><td>모바일 320px 뷰포트 레이아웃 검증</td><td>가로 스크롤 없음, 버튼 터치 영역 44px+</td><td><span class="p2">P2</span></td>
+</tr>
+<tr class="tc-detail-row" data-for="MOB-E-001"><td class="tc-detail-cell" colspan="5"><div class="tc-detail-inner"><div class="tc-detail-content"><div class="tc-detail-block"><div class="tc-detail-label">// 전제조건</div><div class="tc-detail-value">브라우저 뷰포트 320px 설정 가능.</div></div><div class="tc-detail-block"><div class="tc-detail-label">// 테스트 스텝</div><ol class="tc-detail-steps"><li><span class="step-num">01.</span>브라우저 뷰포트 320px으로 조정</li><li><span class="step-num">02.</span>전체 페이지 스크롤 후 가로 스크롤 여부 확인</li><li><span class="step-num">03.</span>버튼·링크 터치 영역 크기 확인</li></ol></div><div class="tc-detail-block"><div class="tc-detail-label">// 기대 결과 상세</div><div class="tc-detail-result-edge">△ 가로 스크롤 없음 확인<br>△ 모든 버튼 44px 이상 확인<br>△ 텍스트 잘림 없음 확인</div></div></div></div></td></tr>
+
+<tr class="tc-data-row" data-type="n" data-tc-id="API-N-010">
+  <td>API-N-010 <span class="tc-expand-icon">▼</span></td><td><span class="tc-type n">네거티브</span></td><td>API 응답 타임아웃 (30s 초과)</td><td>타임아웃 에러 메시지 노출, 무한 로딩 없음</td><td><span class="p1">P1</span></td>
+</tr>
+<tr class="tc-detail-row" data-for="API-N-010"><td class="tc-detail-cell" colspan="5"><div class="tc-detail-inner"><div class="tc-detail-content"><div class="tc-detail-block"><div class="tc-detail-label">// 전제조건</div><div class="tc-detail-value">네트워크 지연 시뮬레이션 도구 준비.</div></div><div class="tc-detail-block"><div class="tc-detail-label">// 테스트 스텝</div><ol class="tc-detail-steps"><li><span class="step-num">01.</span>네트워크 지연 30초 이상 설정</li><li><span class="step-num">02.</span>API 호출 발생 액션 실행</li><li><span class="step-num">03.</span>UI 응답 및 에러 메시지 확인</li></ol></div><div class="tc-detail-block"><div class="tc-detail-label">// 기대 결과 상세</div><div class="tc-detail-result-fail">✗ 타임아웃 에러 메시지 노출 확인<br>✗ 무한 스피너 없음 확인<br>✗ 재시도 버튼 제공 확인</div></div></div></div></td></tr>
+
+<tr class="tc-data-row" data-type="h" data-tc-id="PAY-HP-001">
+  <td>PAY-HP-001 <span class="tc-expand-icon">▼</span></td><td><span class="tc-type h">해피패스</span></td><td>정상 카드로 결제 완료</td><td>주문 완료 페이지 이동, 이메일 발송</td><td><span class="p1">P1</span></td>
+</tr>
+<tr class="tc-detail-row" data-for="PAY-HP-001"><td class="tc-detail-cell" colspan="5"><div class="tc-detail-inner"><div class="tc-detail-content"><div class="tc-detail-block"><div class="tc-detail-label">// 전제조건</div><div class="tc-detail-value">결제 테스트 카드 준비. 장바구니에 상품 있음.</div></div><div class="tc-detail-block"><div class="tc-detail-label">// 테스트 스텝</div><ol class="tc-detail-steps"><li><span class="step-num">01.</span>장바구니 → 결제 페이지 이동</li><li><span class="step-num">02.</span>테스트 카드 정보 입력</li><li><span class="step-num">03.</span>결제 완료 후 결과 확인</li></ol></div><div class="tc-detail-block"><div class="tc-detail-label">// 기대 결과 상세</div><div class="tc-detail-result-pass">✓ 주문 완료 페이지 이동 확인<br>✓ 주문번호 생성 확인<br>✓ 이메일 발송 확인</div></div></div></div></td></tr>
+
+<tr class="tc-data-row" data-type="n" data-tc-id="PAY-N-005">
+  <td>PAY-N-005 <span class="tc-expand-icon">▼</span></td><td><span class="tc-type n">네거티브</span></td><td>잔액 부족 카드 결제 시도</td><td>결제 실패 메시지, 주문 미생성 확인</td><td><span class="p1">P1</span></td>
+</tr>
+<tr class="tc-detail-row" data-for="PAY-N-005"><td class="tc-detail-cell" colspan="5"><div class="tc-detail-inner"><div class="tc-detail-content"><div class="tc-detail-block"><div class="tc-detail-label">// 전제조건</div><div class="tc-detail-value">잔액 부족 테스트 카드 준비.</div></div><div class="tc-detail-block"><div class="tc-detail-label">// 테스트 스텝</div><ol class="tc-detail-steps"><li><span class="step-num">01.</span>잔액 부족 카드로 결제 시도</li><li><span class="step-num">02.</span>PG사 응답 확인</li><li><span class="step-num">03.</span>주문 DB 생성 여부 확인</li></ol></div><div class="tc-detail-block"><div class="tc-detail-label">// 기대 결과 상세</div><div class="tc-detail-result-fail">✗ 결제 실패 메시지 노출 확인<br>✗ 주문 미생성 확인<br>✗ 장바구니 유지 확인</div></div></div></div></td></tr>
+
+<tr class="tc-data-row" data-type="e" data-tc-id="NOTIF-E-003">
+  <td>NOTIF-E-003 <span class="tc-expand-icon">▼</span></td><td><span class="tc-type e">엣지케이스</span></td><td>저속 네트워크(3G) 환경 알림 중복 발송</td><td>알림 1회만 수신, 중복 없음</td><td><span class="p2">P2</span></td>
+</tr>
+<tr class="tc-detail-row" data-for="NOTIF-E-003"><td class="tc-detail-cell" colspan="5"><div class="tc-detail-inner"><div class="tc-detail-content"><div class="tc-detail-block"><div class="tc-detail-label">// 전제조건</div><div class="tc-detail-value">3G 네트워크 스로틀링 설정 가능. 알림 기능 동작 중.</div></div><div class="tc-detail-block"><div class="tc-detail-label">// 테스트 스텝</div><ol class="tc-detail-steps"><li><span class="step-num">01.</span>3G 네트워크 시뮬레이션 활성화</li><li><span class="step-num">02.</span>알림 트리거 액션 실행</li><li><span class="step-num">03.</span>수신 알림 개수 확인</li></ol></div><div class="tc-detail-block"><div class="tc-detail-label">// 기대 결과 상세</div><div class="tc-detail-result-edge">△ 알림 1회만 수신 확인<br>△ 중복 발송 없음 확인<br>△ 재시도 로직 idempotency 확인</div></div></div></div></td></tr>
+
+<tr class="tc-data-row" data-type="n" data-tc-id="SEC-N-002">
+  <td>SEC-N-002 <span class="tc-expand-icon">▼</span></td><td><span class="tc-type n">네거티브</span></td><td>만료된 JWT 토큰으로 API 호출</td><td>403 Forbidden 반환, 데이터 노출 없음</td><td><span class="p1">P1</span></td>
+</tr>
+<tr class="tc-detail-row" data-for="SEC-N-002"><td class="tc-detail-cell" colspan="5"><div class="tc-detail-inner"><div class="tc-detail-content"><div class="tc-detail-block"><div class="tc-detail-label">// 전제조건</div><div class="tc-detail-value">만료된 JWT 토큰 보유 (보안 버그 P1 케이스).</div></div><div class="tc-detail-block"><div class="tc-detail-label">// 테스트 스텝</div><ol class="tc-detail-steps"><li><span class="step-num">01.</span>만료 토큰 Authorization 헤더에 삽입</li><li><span class="step-num">02.</span>보호된 API 엔드포인트 호출</li><li><span class="step-num">03.</span>응답 상태코드 및 바디 확인</li></ol></div><div class="tc-detail-block"><div class="tc-detail-label">// 기대 결과 상세</div><div class="tc-detail-result-fail">✗ 403 Forbidden 확인 (발견 당시 200 반환 — P1 보안 버그)<br>✗ 데이터 노출 없음 확인<br>✗ 핫픽스 후 재검증 완료 확인</div></div></div></div></td></tr>
+
+<tr class="tc-data-row" data-type="h" data-tc-id="ACCESS-HP-001">
+  <td>ACCESS-HP-001 <span class="tc-expand-icon">▼</span></td><td><span class="tc-type h">해피패스</span></td><td>키보드만으로 전체 폼 입력 및 제출</td><td>Tab 순서 정상, Enter 제출 동작</td><td><span class="p2">P2</span></td>
+</tr>
+<tr class="tc-detail-row" data-for="ACCESS-HP-001"><td class="tc-detail-cell" colspan="5"><div class="tc-detail-inner"><div class="tc-detail-content"><div class="tc-detail-block"><div class="tc-detail-label">// 전제조건</div><div class="tc-detail-value">마우스 비활성화 환경. 폼 페이지 접근.</div></div><div class="tc-detail-block"><div class="tc-detail-label">// 테스트 스텝</div><ol class="tc-detail-steps"><li><span class="step-num">01.</span>Tab 키로 폼 필드 순서대로 이동</li><li><span class="step-num">02.</span>각 필드 입력</li><li><span class="step-num">03.</span>Enter 키로 제출</li></ol></div><div class="tc-detail-block"><div class="tc-detail-label">// 기대 결과 상세</div><div class="tc-detail-result-pass">✓ Tab 순서 논리적 순서 확인<br>✓ Focus 표시 시각적 확인<br>✓ Enter 제출 동작 확인</div></div></div></div></td></tr>
+
+<tr class="tc-data-row" data-type="n" data-tc-id="SEARCH-N-004">
+  <td>SEARCH-N-004 <span class="tc-expand-icon">▼</span></td><td><span class="tc-type n">네거티브</span></td><td>XSS 패턴 검색어 입력</td><td>스크립트 미실행, 인코딩 처리 확인</td><td><span class="p1">P1</span></td>
+</tr>
+<tr class="tc-detail-row" data-for="SEARCH-N-004"><td class="tc-detail-cell" colspan="5"><div class="tc-detail-inner"><div class="tc-detail-content"><div class="tc-detail-block"><div class="tc-detail-label">// 전제조건</div><div class="tc-detail-value">검색 기능 동작 중. 브라우저 개발자 도구 접근 가능.</div></div><div class="tc-detail-block"><div class="tc-detail-label">// 테스트 스텝</div><ol class="tc-detail-steps"><li><span class="step-num">01.</span>검색창에 &lt;script&gt;alert('xss')&lt;/script&gt; 입력</li><li><span class="step-num">02.</span>검색 실행</li><li><span class="step-num">03.</span>스크립트 실행 여부 및 출력값 확인</li></ol></div><div class="tc-detail-block"><div class="tc-detail-label">// 기대 결과 상세</div><div class="tc-detail-result-fail">✗ 스크립트 미실행 확인<br>✗ 출력 시 HTML 인코딩 처리 확인<br>✗ alert 팝업 없음 확인</div></div></div></div></td></tr>
+
+<tr class="tc-data-row" data-type="h" data-tc-id="CART-HP-003">
+  <td>CART-HP-003 <span class="tc-expand-icon">▼</span></td><td><span class="tc-type h">해피패스</span></td><td>장바구니 수량 변경 후 합계 갱신</td><td>실시간 금액 재계산, 오차 0원</td><td><span class="p2">P2</span></td>
+</tr>
+<tr class="tc-detail-row" data-for="CART-HP-003"><td class="tc-detail-cell" colspan="5"><div class="tc-detail-inner"><div class="tc-detail-content"><div class="tc-detail-block"><div class="tc-detail-label">// 전제조건</div><div class="tc-detail-value">장바구니에 상품 1개 이상 존재.</div></div><div class="tc-detail-block"><div class="tc-detail-label">// 테스트 스텝</div><ol class="tc-detail-steps"><li><span class="step-num">01.</span>장바구니 수량 증가 버튼 클릭</li><li><span class="step-num">02.</span>표시 금액 갱신 확인</li><li><span class="step-num">03.</span>계산값과 UI 표시값 비교</li></ol></div><div class="tc-detail-block"><div class="tc-detail-label">// 기대 결과 상세</div><div class="tc-detail-result-pass">✓ 수량 변경 즉시 금액 갱신 확인<br>✓ 단가 × 수량 계산 오차 0원 확인<br>✓ 배송비 포함 총액 갱신 확인</div></div></div></div></td></tr>
+
+<tr class="tc-data-row" data-type="e" data-tc-id="PERF-E-001">
+  <td>PERF-E-001 <span class="tc-expand-icon">▼</span></td><td><span class="tc-type e">엣지케이스</span></td><td>동시 100개 요청 부하 테스트</td><td>응답 시간 2s 이내, 서버 500 없음</td><td><span class="p2">P2</span></td>
+</tr>
+<tr class="tc-detail-row" data-for="PERF-E-001"><td class="tc-detail-cell" colspan="5"><div class="tc-detail-inner"><div class="tc-detail-content"><div class="tc-detail-block"><div class="tc-detail-label">// 전제조건</div><div class="tc-detail-value">부하 테스트 도구 준비 (k6 또는 Artillery).</div></div><div class="tc-detail-block"><div class="tc-detail-label">// 테스트 스텝</div><ol class="tc-detail-steps"><li><span class="step-num">01.</span>동시 100개 요청 스크립트 실행</li><li><span class="step-num">02.</span>응답 시간 분포 측정</li><li><span class="step-num">03.</span>에러율 및 서버 로그 확인</li></ol></div><div class="tc-detail-block"><div class="tc-detail-label">// 기대 결과 상세</div><div class="tc-detail-result-edge">△ p95 응답 2s 이내 확인<br>△ 에러율 1% 미만 확인<br>△ 500 에러 0건 확인</div></div></div></div></td></tr>
+
 </tbody>
 </table>
 </div>
@@ -1763,7 +1981,7 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
 <div class="sk-item" data-tip-title="TC 결과 정리" data-tip-body="145건+ TC · 카테고리별 분류·정리 완료" data-tip-tags="145건+|카테고리 분류|Notion 기록"><span class="sk-name">TC 결과 정리</span><div class="sk-bar-w"><div class="sk-bar" style="width:88%"></div></div></div>
 <div class="sk-item" data-tip-title="README / 가이드 작성" data-tip-body="docs 28개 · mcp-setup-guide · 릴리즈 QA 프로세스" data-tip-tags="docs 28개|가이드|프로세스 정의"><span class="sk-name">README / 가이드 작성</span><div class="sk-bar-w"><div class="sk-bar" style="width:85%"></div></div></div>
 <div class="sk-item" data-tip-title="QA 프로세스 정의" data-tip-body="릴리즈·회귀·선행 검토 프로세스 수립" data-tip-tags="릴리즈 QA|회귀 테스트|브랜치 전략"><span class="sk-name">QA 프로세스 정의</span><div class="sk-bar-w"><div class="sk-bar" style="width:82%"></div></div></div>
-<div class="sk-item" data-tip-title="GitHub 레포 구조화" data-tip-body="80개+ 파일 · 레포 전체 구조 설계 · CHANGELOG v40" data-tip-tags="80개+ 파일|CHANGELOG|레포 설계"><span class="sk-name">GitHub 레포 구조화</span><div class="sk-bar-w"><div class="sk-bar" style="width:85%"></div></div></div>
+<div class="sk-item" data-tip-title="GitHub 레포 구조화" data-tip-body="80개+ 파일 · 레포 전체 구조 설계 · CHANGELOG v42" data-tip-tags="80개+ 파일|CHANGELOG|레포 설계"><span class="sk-name">GitHub 레포 구조화</span><div class="sk-bar-w"><div class="sk-bar" style="width:85%"></div></div></div>
 </div>
 </div>
 </div>
@@ -2109,7 +2327,6 @@ setTimeout(typeStep, 600);
    TC 필터 버튼 — STEP 113
    ===================================================== */
 const tcFilterBtns = document.querySelectorAll('.tc-filter-btn');
-const tcRows = document.querySelectorAll('#tcBody tr');
 
 tcFilterBtns.forEach(btn => {
   btn.addEventListener('click', () => {
@@ -2117,13 +2334,56 @@ tcFilterBtns.forEach(btn => {
     btn.classList.add('active');
 
     const filter = btn.dataset.filter;
-    tcRows.forEach(row => {
-      if (filter === 'all') {
-        row.style.display = '';
-      } else {
-        row.style.display = row.dataset.type === filter ? '' : 'none';
+    document.querySelectorAll('.tc-data-row').forEach(row => {
+      const show = filter === 'all' || row.dataset.type === filter;
+      row.style.display = show ? '' : 'none';
+      // 숨겨진 행의 expand detail도 숨기기
+      const tcId = row.dataset.tcId;
+      const detailRow = document.querySelector(`.tc-detail-row[data-for="${tcId}"]`);
+      if (detailRow) {
+        detailRow.style.display = show ? (detailRow.classList.contains('tc-detail-visible') ? '' : 'none') : 'none';
       }
     });
+  });
+});
+
+/* =====================================================
+   TC 행 EXPAND/COLLAPSE — STEP 131
+   테이블 행 클릭 시 상세 케이스 내용 슬라이드다운
+   ===================================================== */
+document.querySelectorAll('.tc-data-row').forEach(row => {
+  row.addEventListener('click', () => {
+    const tcId = row.dataset.tcId;
+    const detailRow = document.querySelector(`.tc-detail-row[data-for="${tcId}"]`);
+    const detailInner = detailRow ? detailRow.querySelector('.tc-detail-inner') : null;
+    const expandIcon = row.querySelector('.tc-expand-icon');
+
+    if (!detailRow || !detailInner) return;
+
+    const isExpanded = row.classList.contains('tc-expanded');
+
+    if (isExpanded) {
+      // 닫기
+      row.classList.remove('tc-expanded');
+      detailInner.classList.remove('tc-detail-open');
+      expandIcon.textContent = '▼';
+      setTimeout(() => {
+        detailRow.classList.remove('tc-detail-visible');
+        detailRow.style.display = 'none';
+      }, 400);
+    } else {
+      // 열기
+      row.classList.add('tc-expanded');
+      detailRow.classList.add('tc-detail-visible');
+      detailRow.style.display = '';
+      expandIcon.textContent = '▲';
+      // 다음 프레임에 open 클래스 추가 (transition 적용)
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          detailInner.classList.add('tc-detail-open');
+        });
+      });
+    }
   });
 });
 
