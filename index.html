@@ -29,7 +29,13 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);font-weight:
 .cur-r{position:fixed;width:28px;height:28px;border:1px solid var(--purple);border-radius:50%;pointer-events:none;z-index:9998;opacity:.4;transition:all .14s ease}
 body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 70% 50% at 15% 10%,rgba(124,58,237,.07) 0%,transparent 55%),radial-gradient(ellipse 50% 70% at 85% 85%,rgba(168,85,247,.05) 0%,transparent 55%);pointer-events:none;z-index:0}
 body::after{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.025) 2px,rgba(0,0,0,.025) 4px);pointer-events:none;z-index:1}
-.scroll-bar{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--purple2),var(--purple3));z-index:9999;transition:width .1s}
+
+/* =====================================================
+   SCROLL BAR — STEP 134: hue shift + glow 동적 강화
+   background/box-shadow는 JS에서 동적으로 제어
+   ===================================================== */
+.scroll-bar{position:fixed;top:0;left:0;height:3px;z-index:9999;transition:width .1s;background:linear-gradient(90deg,#7c3aed,#a855f7);box-shadow:0 0 6px rgba(168,85,247,0.5)}
+
 nav{position:fixed;top:0;left:0;right:0;padding:18px 56px;display:flex;align-items:center;justify-content:space-between;z-index:1000;background:rgba(8,6,15,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--p-border)}
 .nav-logo{font-family:var(--mono);font-size:12px;color:var(--purple);letter-spacing:.12em}
 .nav-links{display:flex;gap:28px;list-style:none}
@@ -2067,11 +2073,37 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+/* =====================================================================
+   SCROLL BAR — STEP 134: hue shift + glow 강화 (동적 그라데이션)
+   스크롤 진행률에 따라 색상·글로우 동적 변경
+   0%   → hsl(262,91%,50%) = purple2 계열
+   50%  → hsl(280,85%,60%) = purple 계열
+   100% → hsl(300,75%,70%) = pink-purple 계열
+   ===================================================================== */
+function updateScrollBar(pct) {
+  const bar = document.getElementById('scrollBar');
+  if (!bar) return;
+  // hue: 262(보라) → 300(핑크보라), saturation/lightness 약간 변화
+  const h1 = Math.round(262 + pct * 38);          // 262~300
+  const h2 = Math.round(272 + pct * 40);          // 272~312
+  const s1 = Math.round(91 - pct * 10);           // 91~81%
+  const l1 = Math.round(48 + pct * 10);           // 48~58%
+  const s2 = Math.round(85 - pct * 5);
+  const l2 = Math.round(58 + pct * 12);           // 58~70%
+  // glow intensity: 낮을 때 약하게, 높을 때 강하게
+  const glowAlpha = (0.3 + pct * 0.5).toFixed(2); // 0.30~0.80
+  const glowSpread = Math.round(4 + pct * 10);     // 4~14px
+  bar.style.background = `linear-gradient(90deg, hsl(${h1},${s1}%,${l1}%), hsl(${h2},${s2}%,${l2}%))`;
+  bar.style.boxShadow = `0 0 ${glowSpread}px rgba(168,85,247,${glowAlpha}), 0 0 ${Math.round(glowSpread*1.8)}px rgba(192,132,252,${(parseFloat(glowAlpha)*0.5).toFixed(2)})`;
+}
+
 /* ===================== SCROLL ===================== */
 window.addEventListener('scroll',()=>{
   const s=document.documentElement;
-  const p=(s.scrollTop/(s.scrollHeight-s.clientHeight))*100;
+  const pct=(s.scrollTop/(s.scrollHeight-s.clientHeight));
+  const p = pct * 100;
   document.getElementById('scrollBar').style.width=p+'%';
+  updateScrollBar(pct);
   updateDotNav();
 });
 
