@@ -11,8 +11,11 @@
 <meta property="og:url" content="https://kihyunqa.github.io/qa-portfolio">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://kihyunqa.github.io/qa-portfolio">
+<!-- 폰트 preconnect + display=swap으로 렌더링 차단 제거 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=DM+Mono:wght@400;500&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=DM+Mono:wght@400;500&display=swap"></noscript>
 <style>
 :root{
 --bg:#08060f;--bg2:#0d0a18;--bg3:#110d1f;
@@ -24,17 +27,13 @@
 --wip:#f59e0b;--green:#10b981;
 }
 *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:var(--sans);font-weight:300;overflow-x:hidden;cursor:none}
-.cur{position:fixed;width:7px;height:7px;background:var(--purple);border-radius:50%;pointer-events:none;z-index:9999;mix-blend-mode:screen;transition:transform .1s}
-.cur-r{position:fixed;width:28px;height:28px;border:1px solid var(--purple);border-radius:50%;pointer-events:none;z-index:9998;opacity:.4;transition:all .14s ease}
-body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 70% 50% at 15% 10%,rgba(124,58,237,.07) 0%,transparent 55%),radial-gradient(ellipse 50% 70% at 85% 85%,rgba(168,85,247,.05) 0%,transparent 55%);pointer-events:none;z-index:0}
-body::after{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.025) 2px,rgba(0,0,0,.025) 4px);pointer-events:none;z-index:1}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-weight:300;overflow-x:hidden}
+/* 배경 그라데이션 — fixed 제거 → 렌더링 부담 감소 */
+body::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 50% at 15% 10%,rgba(124,58,237,.07) 0%,transparent 55%),radial-gradient(ellipse 50% 70% at 85% 85%,rgba(168,85,247,.05) 0%,transparent 55%);pointer-events:none;z-index:0}
+/* 스캔라인 제거 (렌더링 비용 높음) */
 
-/* =====================================================
-   SCROLL BAR — STEP 134: hue shift + glow 동적 강화
-   background/box-shadow는 JS에서 동적으로 제어
-   ===================================================== */
-.scroll-bar{position:fixed;top:0;left:0;height:3px;z-index:9999;transition:width .1s;background:linear-gradient(90deg,#7c3aed,#a855f7);box-shadow:0 0 6px rgba(168,85,247,0.5)}
+/* SCROLL BAR */
+.scroll-bar{position:fixed;top:0;left:0;height:3px;z-index:9999;width:0%;background:linear-gradient(90deg,#7c3aed,#a855f7);box-shadow:0 0 6px rgba(168,85,247,0.5);will-change:width}
 
 nav{position:fixed;top:0;left:0;right:0;padding:18px 56px;display:flex;align-items:center;justify-content:space-between;z-index:1000;background:rgba(8,6,15,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--p-border)}
 .nav-logo{font-family:var(--mono);font-size:12px;color:var(--purple);letter-spacing:.12em}
@@ -55,136 +54,35 @@ h1.hero-name{font-size:clamp(60px,9vw,110px);font-weight:900;line-height:.95;let
 h1.hero-name em{color:var(--purple);font-style:normal}
 .hero-role{font-family:var(--mono);font-size:13px;color:var(--muted);letter-spacing:.08em;margin-bottom:36px;min-height:20px}
 
-/* =====================================================
-   TYPING CURSOR — Hero 타이핑 효과 (STEP 113)
-   ===================================================== */
-.typing-cursor{
-  display:inline-block;
-  width:2px;
-  height:14px;
-  background:var(--purple);
-  vertical-align:middle;
-  margin-left:2px;
-  animation:typing-blink 0.8s infinite;
-}
-@keyframes typing-blink{
-  0%,49%{opacity:1}
-  50%,100%{opacity:0}
-}
+/* TYPING CURSOR */
+.typing-cursor{display:inline-block;width:2px;height:14px;background:var(--purple);vertical-align:middle;margin-left:2px;animation:typing-blink 0.8s infinite}
+@keyframes typing-blink{0%,49%{opacity:1}50%,100%{opacity:0}}
 
-/* =====================================================
-   HERO FADE-IN — STEP 133: 순차 등장 애니메이션
-   ===================================================== */
-.hero-fade-in{
-  opacity:0;
-  transform:translateY(22px);
-  transition:opacity 0.65s cubic-bezier(.4,0,.2,1), transform 0.65s cubic-bezier(.4,0,.2,1);
-}
-.hero-fade-in.hfi-visible{
-  opacity:1;
-  transform:translateY(0);
-}
+/* HERO FADE-IN — 간소화 (GPU 부담 줄이기) */
+.hero-fade-in{opacity:0;transform:translateY(16px);transition:opacity 0.5s ease,transform 0.5s ease}
+.hero-fade-in.hfi-visible{opacity:1;transform:translateY(0)}
 
 .hero-desc{font-size:17px;line-height:1.85;color:var(--muted);max-width:520px;margin-bottom:48px}
 .hero-desc strong{color:var(--text);font-weight:500}
 .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
-.btn-p{padding:13px 30px;background:var(--purple);color:#fff;font-family:var(--mono);font-size:12px;font-weight:500;text-decoration:none;letter-spacing:.06em;transition:all .2s;clip-path:polygon(0 0,calc(100% - 7px) 0,100% 7px,100% 100%,7px 100%,0 calc(100% - 7px))}
+.btn-p{padding:13px 30px;background:var(--purple);color:#fff;font-family:var(--mono);font-size:12px;font-weight:500;text-decoration:none;letter-spacing:.06em;transition:background .2s,transform .2s,box-shadow .2s;clip-path:polygon(0 0,calc(100% - 7px) 0,100% 7px,100% 100%,7px 100%,0 calc(100% - 7px))}
 .btn-p:hover{background:var(--purple3);transform:translateY(-2px);box-shadow:0 8px 24px rgba(168,85,247,.3)}
-.btn-s{padding:13px 30px;border:1px solid var(--p-border);color:var(--purple);font-family:var(--mono);font-size:12px;text-decoration:none;letter-spacing:.06em;transition:all .2s}
+.btn-s{padding:13px 30px;border:1px solid var(--p-border);color:var(--purple);font-family:var(--mono);font-size:12px;text-decoration:none;letter-spacing:.06em;transition:background .2s,border-color .2s,transform .2s}
 .btn-s:hover{background:var(--p-muted);border-color:var(--purple);transform:translateY(-2px)}
 .hero-stats{position:absolute;right:56px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:32px}
 .stat-n{font-family:var(--mono);font-size:36px;font-weight:500;color:var(--purple);line-height:1}
 .stat-l{font-size:11px;color:var(--dim);margin-top:4px;letter-spacing:.06em}
 .hero-bg-grid{position:absolute;inset:0;opacity:.03;background-image:linear-gradient(var(--purple) 1px,transparent 1px),linear-gradient(90deg,var(--purple) 1px,transparent 1px);background-size:60px 60px;pointer-events:none}
 
-/* =====================================================
-   HERO STAT CARD — STEP 129: hover 툴팁 + 클릭 스크롤
-   ===================================================== */
-.hero-stat-card{
-  position:relative;
-  cursor:pointer;
-  padding:10px 14px;
-  border:1px solid transparent;
-  transition:all .25s;
-  border-radius:2px;
-}
-.hero-stat-card:hover{
-  border-color:var(--p-border);
-  background:rgba(168,85,247,0.06);
-  transform:translateX(-4px);
-}
-.hero-stat-card:hover .stat-n{
-  color:var(--purple3);
-  text-shadow:0 0 16px rgba(168,85,247,0.4);
-}
-.hero-stat-card:hover .hero-stat-tip{
-  opacity:1;
-  transform:translateX(-100%) translateX(-12px) translateY(-50%);
-  pointer-events:auto;
-}
-.hero-stat-tip{
-  position:absolute;
-  right:calc(100% + 14px);
-  top:50%;
-  transform:translateX(-100%) translateX(-24px) translateY(-50%);
-  opacity:0;
-  pointer-events:none;
-  transition:all .28s cubic-bezier(.4,0,.2,1);
-  width:200px;
-  background:var(--bg3);
-  border:1px solid var(--p-border);
-  padding:12px 14px;
-  font-family:var(--mono);
-  font-size:10px;
-  color:var(--muted);
-  line-height:1.75;
-  box-shadow:0 8px 28px rgba(0,0,0,.5);
-  white-space:pre-line;
-  z-index:200;
-}
-.hero-stat-tip::after{
-  content:'';
-  position:absolute;
-  right:-6px;
-  top:50%;
-  transform:translateY(-50%);
-  width:10px;
-  height:10px;
-  background:var(--bg3);
-  border-right:1px solid var(--p-border);
-  border-top:1px solid var(--p-border);
-  transform:translateY(-50%) rotate(45deg);
-}
-.hero-stat-tip-title{
-  color:var(--purple);
-  font-size:9px;
-  letter-spacing:.15em;
-  margin-bottom:6px;
-  display:block;
-}
-.hero-stat-tip-link{
-  display:inline-block;
-  margin-top:8px;
-  font-size:9px;
-  color:var(--purple);
-  border:1px solid var(--p-border);
-  padding:2px 8px;
-  letter-spacing:.04em;
-  background:var(--p-muted);
-}
-
-/* =====================================================
-   HERO CANVAS PARTICLE — STEP 117
-   ===================================================== */
-#hero-canvas{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  pointer-events:none;
-  z-index:0;
-  opacity:.7;
-}
+/* HERO STAT CARD */
+.hero-stat-card{position:relative;cursor:pointer;padding:10px 14px;border:1px solid transparent;transition:border-color .25s,background .25s,transform .25s;border-radius:2px}
+.hero-stat-card:hover{border-color:var(--p-border);background:rgba(168,85,247,0.06);transform:translateX(-4px)}
+.hero-stat-card:hover .stat-n{color:var(--purple3);text-shadow:0 0 16px rgba(168,85,247,0.4)}
+.hero-stat-card:hover .hero-stat-tip{opacity:1;transform:translateX(-100%) translateX(-12px) translateY(-50%);pointer-events:auto}
+.hero-stat-tip{position:absolute;right:calc(100% + 14px);top:50%;transform:translateX(-100%) translateX(-24px) translateY(-50%);opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;width:200px;background:var(--bg3);border:1px solid var(--p-border);padding:12px 14px;font-family:var(--mono);font-size:10px;color:var(--muted);line-height:1.75;box-shadow:0 8px 28px rgba(0,0,0,.5);white-space:pre-line;z-index:200}
+.hero-stat-tip::after{content:'';position:absolute;right:-6px;top:50%;width:10px;height:10px;background:var(--bg3);border-right:1px solid var(--p-border);border-top:1px solid var(--p-border);transform:translateY(-50%) rotate(45deg)}
+.hero-stat-tip-title{color:var(--purple);font-size:9px;letter-spacing:.15em;margin-bottom:6px;display:block}
+.hero-stat-tip-link{display:inline-block;margin-top:8px;font-size:9px;color:var(--purple);border:1px solid var(--p-border);padding:2px 8px;letter-spacing:.04em;background:var(--p-muted)}
 
 .hero-proof{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:36px}
 .hero-proof-item{font-family:var(--mono);font-size:10px;padding:5px 12px;border:1px solid var(--p-border);color:var(--purple);background:var(--p-muted);letter-spacing:.06em;display:flex;align-items:center;gap:6px}
@@ -195,49 +93,24 @@ section{padding:96px 56px;position:relative;z-index:2}
 .sec-t{font-size:28px;font-weight:700;letter-spacing:-.02em}
 .sec-line{flex:1;height:1px;background:var(--p-border)}
 
-/* =====================================================
-   SECTION STAT BADGE — STEP 121
-   각 섹션 헤드 우측 고정 숫자 뱃지
-   ===================================================== */
-.sec-stat-badge{
-  display:inline-flex;
-  align-items:center;
-  gap:6px;
-  font-family:var(--mono);
-  font-size:10px;
-  padding:4px 12px;
-  background:rgba(168,85,247,0.1);
-  border:1px solid rgba(168,85,247,0.3);
-  color:var(--purple);
-  letter-spacing:.08em;
-  white-space:nowrap;
-  flex-shrink:0;
-}
-.sec-stat-badge .ssb-num{
-  font-size:13px;
-  font-weight:500;
-  color:var(--purple3);
-}
-.sec-stat-badge.ssb-green{
-  background:rgba(16,185,129,0.08);
-  border-color:rgba(16,185,129,0.28);
-  color:var(--green);
-}
-.sec-stat-badge.ssb-green .ssb-num{
-  color:var(--green);
-}
+/* SECTION STAT BADGE */
+.sec-stat-badge{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:10px;padding:4px 12px;background:rgba(168,85,247,0.1);border:1px solid rgba(168,85,247,0.3);color:var(--purple);letter-spacing:.08em;white-space:nowrap;flex-shrink:0}
+.sec-stat-badge .ssb-num{font-size:13px;font-weight:500;color:var(--purple3)}
+.sec-stat-badge.ssb-green{background:rgba(16,185,129,0.08);border-color:rgba(16,185,129,0.28);color:var(--green)}
+.sec-stat-badge.ssb-green .ssb-num{color:var(--green)}
 
 .badge{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:10px;font-weight:500;padding:4px 12px;letter-spacing:.08em}
 .badge-done{background:rgba(168,85,247,.15);color:var(--purple);border:1px solid var(--p-border)}
-.badge-done::before{content:'';width:5px;height:5px;background:var(--purple);border-radius:50%;animation:pulse 1.5s infinite}
+/* pulse 애니메이션 — 배지 dot만 유지, 크기 줄임 */
+.badge-done::before{content:'';width:5px;height:5px;background:var(--purple);border-radius:50%;animation:pulse 2s infinite}
 .badge-live{background:rgba(16,185,129,.15);color:var(--green);border:1px solid rgba(16,185,129,.3)}
-.badge-live::before{content:'';width:5px;height:5px;background:var(--green);border-radius:50%;animation:pulse 1s infinite}
+.badge-live::before{content:'';width:5px;height:5px;background:var(--green);border-radius:50%;animation:pulse 2s infinite}
 .badge-next{background:rgba(245,158,11,.1);color:var(--wip);border:1px solid rgba(245,158,11,.25)}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
 .mcp-sec{background:var(--bg2);border-top:1px solid var(--p-border);border-bottom:1px solid var(--p-border)}
 .mcp-top{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;margin-bottom:64px}
 .mcp-intro-badge{display:inline-flex;align-items:center;gap:8px;background:var(--purple);color:#fff;font-family:var(--mono);font-size:10px;font-weight:500;padding:6px 14px;letter-spacing:.1em;margin-bottom:28px}
-.mcp-intro-badge::before{content:'';width:5px;height:5px;background:#fff;border-radius:50%;animation:pulse 1.2s infinite}
+.mcp-intro-badge::before{content:'';width:5px;height:5px;background:#fff;border-radius:50%;animation:pulse 2s infinite}
 .mcp-headline{font-size:clamp(24px,3.2vw,40px);font-weight:700;line-height:1.25;letter-spacing:-.025em;margin-bottom:20px}
 .mcp-headline em{color:var(--purple);font-style:normal}
 .mcp-sub{font-size:15px;color:var(--muted);line-height:1.8}
@@ -249,8 +122,8 @@ section{padding:96px 56px;position:relative;z-index:2}
 .pipe-name{font-size:13px;font-weight:500;margin-bottom:2px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .pipe-desc{font-size:11px;color:var(--muted);line-height:1.6}
 .mcp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--p-border);margin-bottom:40px}
-.mcp-card{background:var(--bg2);padding:20px 16px;position:relative;overflow:hidden;transition:all .3s}
-.mcp-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:2px;background:transparent;transition:background .3s}
+.mcp-card{background:var(--bg2);padding:20px 16px;position:relative;overflow:hidden;transition:background .2s}
+.mcp-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:2px;background:transparent;transition:background .2s}
 .mcp-card:hover{background:var(--bg3)}
 .mcp-card:hover::before{background:var(--purple)}
 .mc-icon{font-size:20px;margin-bottom:10px}
@@ -268,160 +141,42 @@ section{padding:96px 56px;position:relative;z-index:2}
 @keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}
 .proof-sec{background:var(--bg3);border-top:1px solid var(--p-border)}
 .proof-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-bottom:40px}
-.proof-card{background:var(--bg2);border:1px solid var(--p-border);padding:28px;position:relative;overflow:hidden;transition:all .3s}
+.proof-card{background:var(--bg2);border:1px solid var(--p-border);padding:28px;position:relative;overflow:hidden;transition:border-color .2s,transform .2s}
 .proof-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--green),transparent)}
 .proof-card:hover{border-color:rgba(16,185,129,.35);transform:translateY(-3px)}
 .proof-icon{font-size:28px;margin-bottom:14px}
 .proof-title{font-size:16px;font-weight:700;margin-bottom:8px;display:flex;align-items:center;gap:10px}
 .proof-desc{font-size:13px;color:var(--muted);line-height:1.75;margin-bottom:14px}
 .proof-detail{font-family:var(--mono);font-size:11px;color:var(--green);background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.2);padding:10px 14px;line-height:1.8}
-.proof-link{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:10px;color:var(--purple);text-decoration:none;border:1px solid var(--p-border);padding:6px 12px;margin-top:12px;transition:.2s;letter-spacing:.04em}
+.proof-link{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:10px;color:var(--purple);text-decoration:none;border:1px solid var(--p-border);padding:6px 12px;margin-top:12px;transition:background .2s,border-color .2s;letter-spacing:.04em}
 .proof-link:hover{background:var(--p-muted);border-color:var(--purple)}
 
-/* =====================================================
-   COMMIT HISTORY CARD — STEP 115
-   ===================================================== */
-.commit-card{
-  background:var(--bg2);
-  border:1px solid var(--p-border);
-  padding:32px;
-  margin-bottom:40px;
-  position:relative;
-  overflow:hidden;
-}
-.commit-card::before{
-  content:'';
-  position:absolute;
-  top:0;left:0;right:0;
-  height:2px;
-  background:linear-gradient(90deg,var(--purple2),var(--purple3),transparent);
-}
-.commit-card-head{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  margin-bottom:28px;
-  flex-wrap:wrap;
-  gap:12px;
-}
-.commit-card-title{
-  font-family:var(--mono);
-  font-size:11px;
-  color:var(--purple);
-  letter-spacing:.15em;
-}
-.commit-stats-row{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:1px;
-  background:var(--p-border);
-  margin-bottom:28px;
-}
-.commit-stat{
-  background:var(--bg2);
-  padding:20px 16px;
-  text-align:center;
-  transition:.3s;
-}
+/* COMMIT HISTORY CARD */
+.commit-card{background:var(--bg2);border:1px solid var(--p-border);padding:32px;margin-bottom:40px;position:relative;overflow:hidden}
+.commit-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--purple2),var(--purple3),transparent)}
+.commit-card-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px;flex-wrap:wrap;gap:12px}
+.commit-card-title{font-family:var(--mono);font-size:11px;color:var(--purple);letter-spacing:.15em}
+.commit-stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--p-border);margin-bottom:28px}
+.commit-stat{background:var(--bg2);padding:20px 16px;text-align:center;transition:background .2s}
 .commit-stat:hover{background:var(--bg3)}
-.commit-stat-num{
-  font-family:var(--mono);
-  font-size:36px;
-  font-weight:500;
-  color:var(--purple);
-  line-height:1;
-  margin-bottom:6px;
-}
-.commit-stat-label{
-  font-size:11px;
-  color:var(--muted);
-  line-height:1.5;
-}
-.commit-stat-sub{
-  font-family:var(--mono);
-  font-size:9px;
-  color:var(--dim);
-  margin-top:4px;
-  letter-spacing:.05em;
-}
-.commit-bar-area{
-  margin-bottom:16px;
-}
-.commit-bar-label{
-  font-family:var(--mono);
-  font-size:9px;
-  color:var(--dim);
-  letter-spacing:.12em;
-  margin-bottom:10px;
-}
-.commit-bars{
-  display:flex;
-  align-items:flex-end;
-  gap:4px;
-  height:48px;
-}
-.commit-bar-item{
-  flex:1;
-  border-radius:1px 1px 0 0;
-  background:var(--purple2);
-  opacity:.7;
-  transition:all .3s;
-  position:relative;
-  cursor:pointer;
-  min-height:2px;
-}
-.commit-bar-item:hover{
-  opacity:1;
-  background:var(--purple3);
-}
-.commit-bar-item::after{
-  content:attr(data-label);
-  position:absolute;
-  bottom:-18px;
-  left:50%;
-  transform:translateX(-50%);
-  font-family:var(--mono);
-  font-size:8px;
-  color:var(--dim);
-  white-space:nowrap;
-  letter-spacing:.04em;
-}
-.commit-bar-dates{
-  height:20px;
-}
-.commit-footer{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding-top:16px;
-  border-top:1px solid var(--p-border);
-  flex-wrap:wrap;
-  gap:8px;
-}
-.commit-footer-note{
-  font-family:var(--mono);
-  font-size:10px;
-  color:var(--dim);
-  letter-spacing:.05em;
-}
-.commit-loading{
-  font-family:var(--mono);
-  font-size:10px;
-  color:var(--dim);
-  display:flex;
-  align-items:center;
-  gap:8px;
-}
-.commit-loading-dot{
-  width:5px;height:5px;
-  border-radius:50%;
-  background:var(--purple);
-  animation:pulse 1s infinite;
-}
+.commit-stat-num{font-family:var(--mono);font-size:36px;font-weight:500;color:var(--purple);line-height:1;margin-bottom:6px}
+.commit-stat-label{font-size:11px;color:var(--muted);line-height:1.5}
+.commit-stat-sub{font-family:var(--mono);font-size:9px;color:var(--dim);margin-top:4px;letter-spacing:.05em}
+.commit-bar-area{margin-bottom:16px}
+.commit-bar-label{font-family:var(--mono);font-size:9px;color:var(--dim);letter-spacing:.12em;margin-bottom:10px}
+.commit-bars{display:flex;align-items:flex-end;gap:4px;height:48px}
+.commit-bar-item{flex:1;border-radius:1px 1px 0 0;background:var(--purple2);opacity:.7;transition:opacity .2s,background .2s;position:relative;cursor:pointer;min-height:2px}
+.commit-bar-item:hover{opacity:1;background:var(--purple3)}
+.commit-bar-item::after{content:attr(data-label);position:absolute;bottom:-18px;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:8px;color:var(--dim);white-space:nowrap;letter-spacing:.04em}
+.commit-bar-dates{height:20px}
+.commit-footer{display:flex;align-items:center;justify-content:space-between;padding-top:16px;border-top:1px solid var(--p-border);flex-wrap:wrap;gap:8px}
+.commit-footer-note{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:.05em}
+.commit-loading{font-family:var(--mono);font-size:10px;color:var(--dim);display:flex;align-items:center;gap:8px}
+.commit-loading-dot{width:5px;height:5px;border-radius:50%;background:var(--purple);animation:pulse 1s infinite}
 
 .roadmap-sec{background:var(--bg2);border-top:1px solid var(--p-border)}
 .roadmap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.roadmap-card{border:1px solid var(--p-border);padding:24px;transition:all .3s;position:relative}
+.roadmap-card{border:1px solid var(--p-border);padding:24px;transition:transform .2s;position:relative}
 .roadmap-card.done{border-color:rgba(168,85,247,.4);background:rgba(168,85,247,.04)}
 .roadmap-card.next{border-color:rgba(245,158,11,.3);background:rgba(245,158,11,.03)}
 .roadmap-card.future{opacity:.6}
@@ -431,109 +186,24 @@ section{padding:96px 56px;position:relative;z-index:2}
 .rm-title{font-size:14px;font-weight:700;margin-bottom:6px}
 .rm-desc{font-size:12px;color:var(--muted);line-height:1.65}
 
-/* =====================================================
-   PROJECT CARD — STEP 125: 호버 오버레이 추가
-   ===================================================== */
+/* PROJECT CARD */
 .projects-sec{background:var(--bg2);border-top:1px solid var(--p-border)}
 .projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.proj-card{
-  border:1px solid var(--p-border);
-  padding:28px;
-  position:relative;
-  overflow:hidden;
-  transition:all .35s cubic-bezier(.4,0,.2,1);
-  background:var(--bg);
-}
-.proj-card::before{
-  content:'';
-  position:absolute;
-  top:0;left:0;
-  width:3px;height:100%;
-  background:var(--purple);
-  transform:scaleY(0);
-  transform-origin:bottom;
-  transition:transform .35s;
-}
-.proj-card:hover{
-  border-color:rgba(168,85,247,.5);
-  background:rgba(168,85,247,.04);
-  transform:translateY(-5px);
-  box-shadow:0 20px 48px rgba(0,0,0,.5),0 0 0 1px rgba(168,85,247,.15);
-}
+.proj-card{border:1px solid var(--p-border);padding:28px;position:relative;overflow:hidden;transition:border-color .25s,background .25s,transform .25s,box-shadow .25s;background:var(--bg)}
+.proj-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--purple);transform:scaleY(0);transform-origin:bottom;transition:transform .25s}
+.proj-card:hover{border-color:rgba(168,85,247,.5);background:rgba(168,85,247,.04);transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.4)}
 .proj-card:hover::before{transform:scaleY(1)}
 
-/* 오버레이 슬라이드업 — STEP 125 */
-.proj-overlay{
-  position:absolute;
-  bottom:0;left:0;right:0;
-  background:linear-gradient(
-    to top,
-    rgba(13,10,24,0.97) 0%,
-    rgba(13,10,24,0.93) 60%,
-    rgba(13,10,24,0.82) 100%
-  );
-  border-top:1px solid rgba(168,85,247,0.35);
-  padding:20px 28px;
-  transform:translateY(100%);
-  transition:transform .38s cubic-bezier(.4,0,.2,1);
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-  z-index:10;
-}
-.proj-card:hover .proj-overlay{
-  transform:translateY(0);
-}
-.proj-overlay-title{
-  font-family:var(--mono);
-  font-size:9px;
-  color:var(--purple);
-  letter-spacing:.18em;
-  margin-bottom:2px;
-}
-.proj-overlay-points{
-  list-style:none;
-  display:flex;
-  flex-direction:column;
-  gap:5px;
-}
-.proj-overlay-points li{
-  font-size:11px;
-  color:var(--muted);
-  line-height:1.55;
-  display:flex;
-  align-items:flex-start;
-  gap:7px;
-}
-.proj-overlay-points li::before{
-  content:'→';
-  color:var(--purple);
-  font-family:var(--mono);
-  font-size:10px;
-  flex-shrink:0;
-  margin-top:1px;
-}
-.proj-overlay-links{
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap;
-  margin-top:4px;
-}
-.proj-overlay-link{
-  font-family:var(--mono);
-  font-size:9px;
-  color:var(--purple);
-  text-decoration:none;
-  border:1px solid rgba(168,85,247,.4);
-  padding:4px 10px;
-  letter-spacing:.04em;
-  transition:.2s;
-  background:rgba(168,85,247,.08);
-}
-.proj-overlay-link:hover{
-  background:var(--purple);
-  color:#fff;
-}
+/* 오버레이 — 모바일에서 display:none 처리됨 */
+.proj-overlay{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(13,10,24,0.97) 0%,rgba(13,10,24,0.93) 60%,rgba(13,10,24,0.82) 100%);border-top:1px solid rgba(168,85,247,0.35);padding:20px 28px;transform:translateY(100%);transition:transform .3s ease;display:flex;flex-direction:column;gap:10px;z-index:10}
+.proj-card:hover .proj-overlay{transform:translateY(0)}
+.proj-overlay-title{font-family:var(--mono);font-size:9px;color:var(--purple);letter-spacing:.18em;margin-bottom:2px}
+.proj-overlay-points{list-style:none;display:flex;flex-direction:column;gap:5px}
+.proj-overlay-points li{font-size:11px;color:var(--muted);line-height:1.55;display:flex;align-items:flex-start;gap:7px}
+.proj-overlay-points li::before{content:'→';color:var(--purple);font-family:var(--mono);font-size:10px;flex-shrink:0;margin-top:1px}
+.proj-overlay-links{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px}
+.proj-overlay-link{font-family:var(--mono);font-size:9px;color:var(--purple);text-decoration:none;border:1px solid rgba(168,85,247,.4);padding:4px 10px;letter-spacing:.04em;transition:background .2s,color .2s;background:rgba(168,85,247,.08)}
+.proj-overlay-link:hover{background:var(--purple);color:#fff}
 
 .proj-num{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:.15em;margin-bottom:12px}
 .proj-icon{font-size:24px;margin-bottom:12px}
@@ -543,12 +213,12 @@ section{padding:96px 56px;position:relative;z-index:2}
 .proj-flow-step{font-family:var(--mono);font-size:9px;padding:3px 8px;background:rgba(168,85,247,.1);border:1px solid var(--p-border);color:var(--purple);letter-spacing:.04em}
 .proj-flow-arrow{color:var(--dim);font-size:11px}
 .proj-tags{display:flex;flex-wrap:wrap;gap:5px}
-.proj-tag{font-family:var(--mono);font-size:9px;padding:2px 8px;border:1px solid var(--p-border);color:var(--muted);letter-spacing:.04em;transition:.2s}
+.proj-tag{font-family:var(--mono);font-size:9px;padding:2px 8px;border:1px solid var(--p-border);color:var(--muted);letter-spacing:.04em;transition:border-color .2s,color .2s}
 .proj-tag:hover{border-color:var(--purple);color:var(--purple)}
 .proj-tag-p{border-color:rgba(168,85,247,.35);color:var(--purple);background:rgba(168,85,247,.05)}
 .proj-tag-g{border-color:rgba(16,185,129,.3);color:var(--green);background:rgba(16,185,129,.05)}
 .proj-links{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
-.proj-link{font-family:var(--mono);font-size:9px;color:var(--purple);text-decoration:none;border:1px solid var(--p-border);padding:4px 10px;letter-spacing:.04em;transition:.2s}
+.proj-link{font-family:var(--mono);font-size:9px;color:var(--purple);text-decoration:none;border:1px solid var(--p-border);padding:4px 10px;letter-spacing:.04em;transition:background .2s,border-color .2s}
 .proj-link:hover{background:var(--p-muted);border-color:var(--purple)}
 .branch-vis{margin:12px 0;padding:12px;background:#050309;border:1px solid var(--p-border);font-family:var(--mono);font-size:10px;line-height:1.9}
 .branch-main{color:#22d3ee}.branch-dev{color:#a3e635}.branch-feat{color:var(--purple)}.branch-dim{color:var(--dim)}
@@ -556,7 +226,7 @@ section{padding:96px 56px;position:relative;z-index:2}
 .diagram-wrap{display:flex;flex-direction:column;gap:32px}
 .diagram-row{display:flex;align-items:center;justify-content:center;flex-wrap:wrap}
 .diag-node{display:flex;flex-direction:column;align-items:center;gap:8px;min-width:100px}
-.diag-box{padding:12px 16px;border:1px solid var(--p-border);background:var(--bg3);font-family:var(--mono);font-size:10px;color:var(--text);text-align:center;letter-spacing:.04em;position:relative;transition:all .3s}
+.diag-box{padding:12px 16px;border:1px solid var(--p-border);background:var(--bg3);font-family:var(--mono);font-size:10px;color:var(--text);text-align:center;letter-spacing:.04em;position:relative;transition:border-color .2s,background .2s,transform .2s}
 .diag-box:hover{border-color:var(--purple);background:rgba(168,85,247,.08);transform:translateY(-2px)}
 .diag-box.done{border-color:rgba(168,85,247,.5);background:rgba(168,85,247,.06)}
 .diag-box.done::after{content:'✓';position:absolute;top:-8px;right:-8px;width:16px;height:16px;background:var(--purple);border-radius:50%;font-size:9px;display:flex;align-items:center;justify-content:center;color:#fff}
@@ -567,8 +237,8 @@ section{padding:96px 56px;position:relative;z-index:2}
 .diag-section-label::after{content:'';flex:1;height:1px;background:var(--p-border)}
 .stats-sec{background:var(--bg2);border-top:1px solid var(--p-border)}
 .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--p-border)}
-.stat-card{background:var(--bg2);padding:36px 28px;text-align:center;transition:.3s;position:relative;overflow:hidden}
-.stat-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--purple),transparent);opacity:0;transition:.3s}
+.stat-card{background:var(--bg2);padding:36px 28px;text-align:center;transition:background .2s;position:relative;overflow:hidden}
+.stat-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--purple),transparent);opacity:0;transition:opacity .2s}
 .stat-card:hover{background:var(--bg3)}
 .stat-card:hover::after{opacity:1}
 .stat-big{font-family:var(--mono);font-size:52px;font-weight:500;color:var(--purple);line-height:1;margin-bottom:10px}
@@ -576,109 +246,32 @@ section{padding:96px 56px;position:relative;z-index:2}
 .stat-desc{font-size:13px;color:var(--muted);line-height:1.6}
 .stat-sub{font-family:var(--mono);font-size:10px;color:var(--dim);margin-top:6px;letter-spacing:.05em}
 
-/* =====================================================
-   TIMELINE — STEP 127: hover expand/collapse 인터랙션
-   ===================================================== */
+/* TIMELINE */
 .timeline-sec{background:var(--bg);border-top:1px solid var(--p-border)}
 .timeline{position:relative;padding-left:32px}
 .timeline::before{content:'';position:absolute;left:0;top:8px;bottom:8px;width:1px;background:var(--p-border)}
 .tl-item{position:relative;padding:0 0 48px 40px;cursor:pointer}
 .tl-item:last-child{padding-bottom:0}
-.tl-dot{position:absolute;left:-40px;top:6px;width:10px;height:10px;border-radius:50%;background:var(--purple);box-shadow:0 0 12px var(--purple);border:2px solid var(--bg);transition:all .3s}
-.tl-item:hover .tl-dot{
-  box-shadow:0 0 20px var(--purple),0 0 40px rgba(168,85,247,.3);
-  transform:scale(1.4);
-}
+.tl-dot{position:absolute;left:-40px;top:6px;width:10px;height:10px;border-radius:50%;background:var(--purple);box-shadow:0 0 12px var(--purple);border:2px solid var(--bg);transition:box-shadow .2s,transform .2s}
+.tl-item:hover .tl-dot{box-shadow:0 0 20px var(--purple);transform:scale(1.3)}
 .tl-year{font-family:var(--mono);font-size:10px;color:var(--purple);letter-spacing:.15em;margin-bottom:10px}
 .tl-title{font-size:18px;font-weight:700;margin-bottom:4px;display:flex;align-items:center;gap:12px}
-.tl-expand-icon{
-  font-family:var(--mono);
-  font-size:9px;
-  color:var(--dim);
-  padding:2px 7px;
-  border:1px solid var(--p-border);
-  letter-spacing:.06em;
-  transition:all .3s;
-  flex-shrink:0;
-}
-.tl-item:hover .tl-expand-icon,
-.tl-item.expanded .tl-expand-icon{
-  border-color:var(--purple);
-  color:var(--purple);
-  background:var(--p-muted);
-}
-.tl-item.expanded .tl-expand-icon::after{
-  content:' ↑';
-}
-.tl-item:not(.expanded) .tl-expand-icon::after{
-  content:' ↓';
-}
+.tl-expand-icon{font-family:var(--mono);font-size:9px;color:var(--dim);padding:2px 7px;border:1px solid var(--p-border);letter-spacing:.06em;transition:border-color .2s,color .2s,background .2s;flex-shrink:0}
+.tl-item:hover .tl-expand-icon,.tl-item.expanded .tl-expand-icon{border-color:var(--purple);color:var(--purple);background:var(--p-muted)}
 .tl-role{font-family:var(--mono);font-size:11px;color:var(--muted);margin-bottom:12px}
 .tl-desc{font-size:13px;color:var(--muted);line-height:1.8}
 .tl-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
 .tl-tag{font-family:var(--mono);font-size:9px;padding:2px 8px;border:1px solid var(--p-border);color:var(--muted)}
 
-/* 상세 업무 내역 — 슬라이드다운 */
-.tl-detail{
-  overflow:hidden;
-  max-height:0;
-  opacity:0;
-  transition:max-height .45s cubic-bezier(.4,0,.2,1), opacity .35s ease, margin-top .35s ease;
-  margin-top:0;
-}
-.tl-item.expanded .tl-detail{
-  max-height:400px;
-  opacity:1;
-  margin-top:16px;
-}
-.tl-detail-inner{
-  background:var(--bg2);
-  border:1px solid var(--p-border);
-  border-left:2px solid var(--purple);
-  padding:20px 24px;
-  position:relative;
-}
-.tl-detail-inner::before{
-  content:'// 상세 업무 내역';
-  display:block;
-  font-family:var(--mono);
-  font-size:9px;
-  color:var(--purple);
-  letter-spacing:.18em;
-  margin-bottom:14px;
-  opacity:.7;
-}
-.tl-detail-list{
-  list-style:none;
-  display:flex;
-  flex-direction:column;
-  gap:9px;
-}
-.tl-detail-list li{
-  font-size:12px;
-  color:var(--muted);
-  line-height:1.65;
-  display:flex;
-  align-items:flex-start;
-  gap:9px;
-}
-.tl-detail-list li::before{
-  content:'▸';
-  color:var(--purple);
-  font-size:10px;
-  flex-shrink:0;
-  margin-top:2px;
-}
-.tl-detail-highlight{
-  font-family:var(--mono);
-  font-size:10px;
-  color:var(--green);
-  background:rgba(16,185,129,.08);
-  border:1px solid rgba(16,185,129,.2);
-  padding:8px 12px;
-  margin-top:12px;
-  line-height:1.7;
-}
+/* 상세 업무 내역 */
+.tl-detail{overflow:hidden;max-height:0;opacity:0;transition:max-height .4s cubic-bezier(.4,0,.2,1),opacity .3s ease,margin-top .3s ease;margin-top:0}
+.tl-item.expanded .tl-detail{max-height:400px;opacity:1;margin-top:16px}
+.tl-detail-inner{background:var(--bg2);border:1px solid var(--p-border);border-left:2px solid var(--purple);padding:20px 24px;position:relative}
+.tl-detail-inner::before{content:'// 상세 업무 내역';display:block;font-family:var(--mono);font-size:9px;color:var(--purple);letter-spacing:.18em;margin-bottom:14px;opacity:.7}
+.tl-detail-list{list-style:none;display:flex;flex-direction:column;gap:9px}
+.tl-detail-list li{font-size:12px;color:var(--muted);line-height:1.65;display:flex;align-items:flex-start;gap:9px}
+.tl-detail-list li::before{content:'▸';color:var(--purple);font-size:10px;flex-shrink:0;margin-top:2px}
+.tl-detail-highlight{font-family:var(--mono);font-size:10px;color:var(--green);background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.2);padding:8px 12px;margin-top:12px;line-height:1.7}
 
 .skills-sec{border-top:1px solid var(--p-border)}
 .skills-wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:48px}
@@ -688,110 +281,33 @@ section{padding:96px 56px;position:relative;z-index:2}
 .sk-name{font-size:13px;color:var(--muted);transition:color .2s}
 .sk-item:hover .sk-name{color:var(--text)}
 .sk-bar-w{width:140px;height:2px;background:rgba(168,85,247,.12)}
-.sk-bar{height:100%;background:linear-gradient(90deg,var(--purple2),var(--purple));transition:width 1.2s cubic-bezier(.4,0,.2,1)}
+.sk-bar{height:100%;background:linear-gradient(90deg,var(--purple2),var(--purple));transition:width 1s ease}
 
-/* =====================================================
-   SKILL TOOLTIP — STEP 123
-   스킬 바 hover 시 경험 맥락 툴팁
-   ===================================================== */
-.sk-tooltip{
-  position:fixed;
-  z-index:8000;
-  background:var(--bg3);
-  border:1px solid var(--p-border);
-  padding:10px 14px;
-  font-family:var(--mono);
-  font-size:10px;
-  color:var(--muted);
-  line-height:1.7;
-  pointer-events:none;
-  opacity:0;
-  transform:translateY(4px);
-  transition:opacity .18s ease, transform .18s ease;
-  max-width:220px;
-  white-space:pre-line;
-  box-shadow:0 8px 24px rgba(0,0,0,.5);
-}
-.sk-tooltip.visible{
-  opacity:1;
-  transform:translateY(0);
-}
-.sk-tooltip-title{
-  color:var(--purple);
-  font-weight:500;
-  margin-bottom:4px;
-  letter-spacing:.06em;
-}
-.sk-tooltip-tags{
-  display:flex;
-  flex-wrap:wrap;
-  gap:4px;
-  margin-top:6px;
-}
-.sk-tooltip-tag{
-  font-size:9px;
-  padding:1px 6px;
-  border:1px solid var(--p-border);
-  color:var(--purple);
-  background:var(--p-muted);
-  letter-spacing:.04em;
-}
+/* SKILL TOOLTIP */
+.sk-tooltip{position:fixed;z-index:8000;background:var(--bg3);border:1px solid var(--p-border);padding:10px 14px;font-family:var(--mono);font-size:10px;color:var(--muted);line-height:1.7;pointer-events:none;opacity:0;transition:opacity .15s ease;max-width:220px;white-space:pre-line;box-shadow:0 8px 24px rgba(0,0,0,.5)}
+.sk-tooltip.visible{opacity:1}
+.sk-tooltip-title{color:var(--purple);font-weight:500;margin-bottom:4px;letter-spacing:.06em}
+.sk-tooltip-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}
+.sk-tooltip-tag{font-size:9px;padding:1px 6px;border:1px solid var(--p-border);color:var(--purple);background:var(--p-muted);letter-spacing:.04em}
 
 .tc-intro{font-size:15px;color:var(--muted);line-height:1.8;max-width:560px;margin-bottom:36px}
 
-/* =====================================================
-   TC 필터 버튼 — STEP 113
-   ===================================================== */
+/* TC 필터 버튼 */
 .tc-filter{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
-.tc-filter-btn{
-  font-family:var(--mono);
-  font-size:10px;
-  padding:6px 16px;
-  border:1px solid var(--p-border);
-  color:var(--muted);
-  background:transparent;
-  cursor:pointer;
-  letter-spacing:.08em;
-  transition:all .2s;
-}
-.tc-filter-btn:hover{
-  border-color:var(--purple);
-  color:var(--purple);
-  background:var(--p-muted);
-}
-.tc-filter-btn.active{
-  background:var(--purple);
-  color:#fff;
-  border-color:var(--purple);
-}
+.tc-filter-btn{font-family:var(--mono);font-size:10px;padding:6px 16px;border:1px solid var(--p-border);color:var(--muted);background:transparent;cursor:pointer;letter-spacing:.08em;transition:border-color .2s,color .2s,background .2s}
+.tc-filter-btn:hover{border-color:var(--purple);color:var(--purple);background:var(--p-muted)}
+.tc-filter-btn.active{background:var(--purple);color:#fff;border-color:var(--purple)}
 
-/* =====================================================
-   TC 통계 바 — STEP 119
-   ===================================================== */
-.tc-stat-bar{
-  display:flex;
-  gap:20px;
-  align-items:center;
-  margin-bottom:24px;
-  font-family:var(--mono);
-  font-size:10px;
-  color:var(--muted);
-  flex-wrap:wrap;
-}
-.tc-stat-item{
-  display:flex;
-  align-items:center;
-  gap:6px;
-}
-.tc-stat-dot{
-  width:7px;height:7px;border-radius:50%;flex-shrink:0;
-}
+/* TC 통계 바 */
+.tc-stat-bar{display:flex;gap:20px;align-items:center;margin-bottom:24px;font-family:var(--mono);font-size:10px;color:var(--muted);flex-wrap:wrap}
+.tc-stat-item{display:flex;align-items:center;gap:6px}
+.tc-stat-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
 
 .tc-wrap{overflow-x:auto;border:1px solid var(--p-border)}
 .tc-table{width:100%;border-collapse:collapse;font-size:12px;font-family:var(--mono)}
 .tc-table th{background:var(--bg3);padding:11px 14px;text-align:left;color:var(--purple);font-size:10px;letter-spacing:.1em;border-bottom:1px solid var(--p-border);font-weight:500}
 .tc-table td{padding:11px 14px;border-bottom:1px solid rgba(168,85,247,.07);color:var(--muted);vertical-align:top;line-height:1.5}
-.tc-table tr.tc-data-row{cursor:pointer;transition:background .18s}
+.tc-table tr.tc-data-row{cursor:pointer;transition:background .15s}
 .tc-table tr.tc-data-row:hover td{background:var(--p-muted);color:var(--text)}
 .tc-table tr:last-child td{border-bottom:none}
 .tc-type{display:inline-block;font-size:9px;padding:2px 8px;letter-spacing:.06em}
@@ -801,140 +317,30 @@ section{padding:96px 56px;position:relative;z-index:2}
 .p1{font-size:9px;padding:2px 6px;background:rgba(239,68,68,.15);color:#f87171}
 .p2{font-size:9px;padding:2px 6px;background:rgba(245,158,11,.12);color:var(--wip)}
 .p3{font-size:9px;padding:2px 6px;background:rgba(168,85,247,.12);color:var(--purple)}
-.tc-link{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;color:var(--purple);text-decoration:none;border:1px solid var(--p-border);padding:10px 20px;margin-top:18px;transition:.2s;letter-spacing:.05em}
+.tc-link{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;color:var(--purple);text-decoration:none;border:1px solid var(--p-border);padding:10px 20px;margin-top:18px;transition:background .2s,border-color .2s;letter-spacing:.05em}
 .tc-link:hover{background:var(--p-muted);border-color:var(--purple)}
 
-/* =====================================================
-   TC 행 EXPAND — STEP 131
-   테이블 행 클릭 시 상세 케이스 내용 슬라이드다운
-   ===================================================== */
-.tc-expand-icon{
-  display:inline-block;
-  font-family:var(--mono);
-  font-size:9px;
-  color:var(--dim);
-  padding:1px 6px;
-  border:1px solid transparent;
-  transition:all .2s;
-  vertical-align:middle;
-  margin-left:6px;
-}
-.tc-data-row:hover .tc-expand-icon{
-  border-color:var(--p-border);
-  color:var(--purple);
-}
-.tc-data-row.tc-expanded .tc-expand-icon{
-  border-color:var(--purple);
-  color:var(--purple);
-  background:var(--p-muted);
-}
-.tc-detail-row{
-  display:none;
-}
-.tc-detail-row.tc-detail-visible{
-  display:table-row;
-}
-.tc-detail-cell{
-  padding:0 !important;
-  border-bottom:1px solid rgba(168,85,247,.15) !important;
-  background:rgba(8,6,15,0.6) !important;
-}
-.tc-detail-inner{
-  overflow:hidden;
-  max-height:0;
-  transition:max-height .4s cubic-bezier(.4,0,.2,1);
-}
-.tc-detail-inner.tc-detail-open{
-  max-height:300px;
-}
-.tc-detail-content{
-  padding:16px 20px 20px 20px;
-  display:grid;
-  grid-template-columns:1fr 1fr 1fr;
-  gap:16px;
-  border-top:1px solid rgba(168,85,247,.15);
-}
-.tc-detail-block{
-  display:flex;
-  flex-direction:column;
-  gap:6px;
-}
-.tc-detail-label{
-  font-family:var(--mono);
-  font-size:9px;
-  color:var(--purple);
-  letter-spacing:.14em;
-  opacity:.7;
-}
-.tc-detail-value{
-  font-size:11px;
-  color:var(--muted);
-  line-height:1.65;
-}
-.tc-detail-steps{
-  list-style:none;
-  display:flex;
-  flex-direction:column;
-  gap:4px;
-}
-.tc-detail-steps li{
-  font-size:10px;
-  color:var(--muted);
-  line-height:1.6;
-  display:flex;
-  align-items:flex-start;
-  gap:6px;
-}
-.tc-detail-steps li .step-num{
-  font-family:var(--mono);
-  font-size:9px;
-  color:var(--purple);
-  flex-shrink:0;
-  min-width:16px;
-}
-.tc-detail-result-pass{
-  font-family:var(--mono);
-  font-size:10px;
-  color:var(--green);
-  background:rgba(16,185,129,.08);
-  border:1px solid rgba(16,185,129,.2);
-  padding:6px 10px;
-  line-height:1.6;
-}
-.tc-detail-result-fail{
-  font-family:var(--mono);
-  font-size:10px;
-  color:#f87171;
-  background:rgba(239,68,68,.06);
-  border:1px solid rgba(239,68,68,.2);
-  padding:6px 10px;
-  line-height:1.6;
-}
-.tc-detail-result-edge{
-  font-family:var(--mono);
-  font-size:10px;
-  color:var(--wip);
-  background:rgba(245,158,11,.06);
-  border:1px solid rgba(245,158,11,.2);
-  padding:6px 10px;
-  line-height:1.6;
-}
-.tc-row-hint{
-  font-family:var(--mono);
-  font-size:9px;
-  color:var(--dim);
-  letter-spacing:.06em;
-  margin-bottom:10px;
-  display:flex;
-  align-items:center;
-  gap:6px;
-}
-.tc-row-hint::before{
-  content:'▼';
-  font-size:8px;
-  color:var(--purple);
-  opacity:.5;
-}
+/* TC 행 EXPAND */
+.tc-expand-icon{display:inline-block;font-family:var(--mono);font-size:9px;color:var(--dim);padding:1px 6px;border:1px solid transparent;transition:border-color .2s,color .2s,background .2s;vertical-align:middle;margin-left:6px}
+.tc-data-row:hover .tc-expand-icon{border-color:var(--p-border);color:var(--purple)}
+.tc-data-row.tc-expanded .tc-expand-icon{border-color:var(--purple);color:var(--purple);background:var(--p-muted)}
+.tc-detail-row{display:none}
+.tc-detail-row.tc-detail-visible{display:table-row}
+.tc-detail-cell{padding:0 !important;border-bottom:1px solid rgba(168,85,247,.15) !important;background:rgba(8,6,15,0.6) !important}
+.tc-detail-inner{overflow:hidden;max-height:0;transition:max-height .35s cubic-bezier(.4,0,.2,1)}
+.tc-detail-inner.tc-detail-open{max-height:300px}
+.tc-detail-content{padding:16px 20px 20px 20px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;border-top:1px solid rgba(168,85,247,.15)}
+.tc-detail-block{display:flex;flex-direction:column;gap:6px}
+.tc-detail-label{font-family:var(--mono);font-size:9px;color:var(--purple);letter-spacing:.14em;opacity:.7}
+.tc-detail-value{font-size:11px;color:var(--muted);line-height:1.65}
+.tc-detail-steps{list-style:none;display:flex;flex-direction:column;gap:4px}
+.tc-detail-steps li{font-size:10px;color:var(--muted);line-height:1.6;display:flex;align-items:flex-start;gap:6px}
+.tc-detail-steps li .step-num{font-family:var(--mono);font-size:9px;color:var(--purple);flex-shrink:0;min-width:16px}
+.tc-detail-result-pass{font-family:var(--mono);font-size:10px;color:var(--green);background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.2);padding:6px 10px;line-height:1.6}
+.tc-detail-result-fail{font-family:var(--mono);font-size:10px;color:#f87171;background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.2);padding:6px 10px;line-height:1.6}
+.tc-detail-result-edge{font-family:var(--mono);font-size:10px;color:var(--wip);background:rgba(245,158,11,.06);border:1px solid rgba(245,158,11,.2);padding:6px 10px;line-height:1.6}
+.tc-row-hint{font-family:var(--mono);font-size:9px;color:var(--dim);letter-spacing:.06em;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.tc-row-hint::before{content:'▼';font-size:8px;color:var(--purple);opacity:.5}
 
 .contact-sec{background:var(--bg2);border-top:1px solid var(--p-border)}
 .contact-wrap{display:flex;justify-content:space-between;align-items:flex-end}
@@ -942,182 +348,41 @@ section{padding:96px 56px;position:relative;z-index:2}
 .contact-h span{color:var(--purple)}
 .contact-sub{font-size:14px;color:var(--muted);line-height:1.8}
 .contact-links{display:flex;flex-direction:column;gap:14px;align-items:flex-end}
-.c-link{font-family:var(--mono);font-size:12px;color:var(--muted);text-decoration:none;letter-spacing:.06em;transition:.2s;display:flex;align-items:center;gap:8px}
+.c-link{font-family:var(--mono);font-size:12px;color:var(--muted);text-decoration:none;letter-spacing:.06em;transition:color .2s;display:flex;align-items:center;gap:8px}
 .c-link:hover{color:var(--purple)}
 footer{padding:22px 56px;border-top:1px solid var(--p-border);display:flex;justify-content:space-between;position:relative;z-index:2}
 footer p{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:.05em}
-.reveal{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease}
+/* REVEAL — will-change 제거, 단순화 */
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .5s ease,transform .5s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
 
-/* =====================================================
-   DOT NAVIGATION — 우측 고정 (STEP 107)
-   ===================================================== */
-#dot-nav{
-  position:fixed;
-  right:20px;
-  top:50%;
-  transform:translateY(-50%);
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-  z-index:500;
-  pointer-events:none;
-}
-.dot-nav-item{
-  position:relative;
-  display:flex;
-  align-items:center;
-  justify-content:flex-end;
-  pointer-events:auto;
-}
-.dot-nav-dot{
-  width:6px;
-  height:6px;
-  border-radius:50%;
-  background:var(--dim);
-  border:1px solid rgba(168,85,247,.3);
-  cursor:pointer;
-  transition:all .3s;
-  flex-shrink:0;
-}
-.dot-nav-dot:hover,
-.dot-nav-dot.active{
-  background:var(--purple);
-  box-shadow:0 0 8px rgba(168,85,247,.6);
-  transform:scale(1.4);
-}
-.dot-nav-label{
-  position:absolute;
-  right:16px;
-  font-family:var(--mono);
-  font-size:9px;
-  color:var(--purple);
-  white-space:nowrap;
-  background:rgba(8,6,15,.9);
-  padding:3px 8px;
-  border:1px solid var(--p-border);
-  opacity:0;
-  pointer-events:none;
-  transition:opacity .2s;
-  letter-spacing:.06em;
-}
-.dot-nav-item:hover .dot-nav-label{
-  opacity:1;
-}
+/* DOT NAVIGATION */
+#dot-nav{position:fixed;right:20px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:10px;z-index:500;pointer-events:none}
+.dot-nav-item{position:relative;display:flex;align-items:center;justify-content:flex-end;pointer-events:auto}
+.dot-nav-dot{width:6px;height:6px;border-radius:50%;background:var(--dim);border:1px solid rgba(168,85,247,.3);cursor:pointer;transition:background .2s,transform .2s;flex-shrink:0}
+.dot-nav-dot:hover,.dot-nav-dot.active{background:var(--purple);box-shadow:0 0 8px rgba(168,85,247,.6);transform:scale(1.4)}
+.dot-nav-label{position:absolute;right:16px;font-family:var(--mono);font-size:9px;color:var(--purple);white-space:nowrap;background:rgba(8,6,15,.9);padding:3px 8px;border:1px solid var(--p-border);opacity:0;pointer-events:none;transition:opacity .2s;letter-spacing:.06em}
+.dot-nav-item:hover .dot-nav-label{opacity:1}
 
-/* =====================================================
-   SECTION BREADCRUMB — 좌측 하단 고정 (STEP 109)
-   ===================================================== */
-#breadcrumb{
-  position:fixed;
-  bottom:28px;
-  left:56px;
-  z-index:500;
-  display:flex;
-  align-items:center;
-  gap:8px;
-  pointer-events:none;
-  opacity:0;
-  transform:translateY(6px);
-  transition:opacity .35s ease, transform .35s ease;
-}
-#breadcrumb.visible{
-  opacity:1;
-  transform:translateY(0);
-}
-.bc-prefix{
-  font-family:var(--mono);
-  font-size:9px;
-  color:var(--dim);
-  letter-spacing:.12em;
-}
-.bc-slash{
-  font-family:var(--mono);
-  font-size:9px;
-  color:var(--dim);
-  opacity:.5;
-}
-.bc-section{
-  font-family:var(--mono);
-  font-size:10px;
-  color:var(--purple);
-  letter-spacing:.1em;
-  font-weight:500;
-  transition:opacity .2s;
-}
+/* BREADCRUMB */
+#breadcrumb{position:fixed;bottom:28px;left:56px;z-index:500;display:flex;align-items:center;gap:8px;pointer-events:none;opacity:0;transition:opacity .3s ease}
+#breadcrumb.visible{opacity:1}
+.bc-prefix{font-family:var(--mono);font-size:9px;color:var(--dim);letter-spacing:.12em}
+.bc-slash{font-family:var(--mono);font-size:9px;color:var(--dim);opacity:.5}
+.bc-section{font-family:var(--mono);font-size:10px;color:var(--purple);letter-spacing:.1em;font-weight:500}
 
-/* =====================================================
-   RADAR CHART — 스킬 섹션 (STEP 111)
-   ===================================================== */
-.radar-wrap{
-  display:grid;
-  grid-template-columns:340px 1fr;
-  gap:56px;
-  align-items:center;
-  margin-bottom:56px;
-  padding:32px;
-  border:1px solid var(--p-border);
-  background:var(--bg2);
-}
-.radar-svg-container{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:16px;
-}
-.radar-title{
-  font-family:var(--mono);
-  font-size:10px;
-  color:var(--purple);
-  letter-spacing:.15em;
-  text-align:center;
-}
-#radarSvg{
-  overflow:visible;
-}
-.radar-legend{
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-}
-.radar-legend-title{
-  font-family:var(--mono);
-  font-size:10px;
-  color:var(--dim);
-  letter-spacing:.15em;
-  margin-bottom:6px;
-}
-.radar-legend-item{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  cursor:pointer;
-  padding:6px 10px;
-  border:1px solid transparent;
-  transition:all .2s;
-}
-.radar-legend-item:hover{
-  border-color:var(--p-border);
-  background:var(--p-muted);
-}
-.radar-legend-dot{
-  width:8px;
-  height:8px;
-  border-radius:50%;
-  flex-shrink:0;
-}
-.radar-legend-name{
-  font-family:var(--mono);
-  font-size:11px;
-  color:var(--muted);
-  letter-spacing:.04em;
-}
-.radar-legend-val{
-  font-family:var(--mono);
-  font-size:11px;
-  color:var(--purple);
-  margin-left:auto;
-}
+/* RADAR CHART */
+.radar-wrap{display:grid;grid-template-columns:340px 1fr;gap:56px;align-items:center;margin-bottom:56px;padding:32px;border:1px solid var(--p-border);background:var(--bg2)}
+.radar-svg-container{display:flex;flex-direction:column;align-items:center;gap:16px}
+.radar-title{font-family:var(--mono);font-size:10px;color:var(--purple);letter-spacing:.15em;text-align:center}
+#radarSvg{overflow:visible}
+.radar-legend{display:flex;flex-direction:column;gap:10px}
+.radar-legend-title{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:.15em;margin-bottom:6px}
+.radar-legend-item{display:flex;align-items:center;gap:10px;cursor:pointer;padding:6px 10px;border:1px solid transparent;transition:border-color .2s,background .2s}
+.radar-legend-item:hover{border-color:var(--p-border);background:var(--p-muted)}
+.radar-legend-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.radar-legend-name{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.04em}
+.radar-legend-val{font-family:var(--mono);font-size:11px;color:var(--purple);margin-left:auto}
 
 @media(max-width:1200px){.mcp-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:1100px){.projects-grid{grid-template-columns:repeat(2,1fr)}}
@@ -1139,7 +404,6 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
 .radar-wrap{grid-template-columns:1fr;gap:32px}
 .radar-svg-container{width:100%}
 .commit-stats-row{grid-template-columns:repeat(2,1fr)}
-#hero-canvas{display:none}
 .sec-stat-badge{display:none}
 .sk-tooltip{display:none}
 .proj-overlay{display:none}
@@ -1149,17 +413,15 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
 </head>
 <body>
 <div class="scroll-bar" id="scrollBar"></div>
-<div class="cur" id="cur"></div>
-<div class="cur-r" id="curR"></div>
 
-<!-- SKILL TOOLTIP 엘리먼트 — STEP 123 -->
+<!-- SKILL TOOLTIP -->
 <div class="sk-tooltip" id="skTooltip">
   <div class="sk-tooltip-title" id="skTipTitle"></div>
   <div id="skTipBody"></div>
   <div class="sk-tooltip-tags" id="skTipTags"></div>
 </div>
 
-<!-- DOT NAVIGATION (우측 고정) — div 태그 사용 -->
+<!-- DOT NAVIGATION -->
 <div id="dot-nav" aria-label="섹션 네비게이션">
   <div class="dot-nav-item" data-target="stats"><span class="dot-nav-label">숫자 현황</span><div class="dot-nav-dot" data-target="stats"></div></div>
   <div class="dot-nav-item" data-target="mcp"><span class="dot-nav-label">MCP 자동화</span><div class="dot-nav-dot" data-target="mcp"></div></div>
@@ -1173,7 +435,7 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
   <div class="dot-nav-item" data-target="contact"><span class="dot-nav-label">연락</span><div class="dot-nav-dot" data-target="contact"></div></div>
 </div>
 
-<!-- SECTION BREADCRUMB (좌측 하단 고정) — STEP 109 -->
+<!-- BREADCRUMB -->
 <div id="breadcrumb" aria-live="polite">
   <span class="bc-prefix">KH.QA</span>
   <span class="bc-slash">/</span>
@@ -1203,13 +465,9 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
 </div>
 <section class="hero">
 <div class="hero-bg-grid"></div>
-<!-- HERO CANVAS PARTICLE — STEP 117 -->
-<canvas id="hero-canvas"></canvas>
 <div class="hero-left">
-<!-- STEP 133: hero-fade-in 클래스 추가 — 순차 등장 애니메이션 -->
 <div class="hero-tag hero-fade-in" id="heroTag" data-hfi-delay="0">QA ENGINEER · 6년 9개월 · 삼성전자 파트너 포함</div>
 <h1 class="hero-name hero-fade-in" data-hfi-delay="1">성<em>기현</em></h1>
-<!-- TYPING EFFECT TARGET — STEP 113 -->
 <p class="hero-role hero-fade-in" id="heroRole" data-hfi-delay="2"><span id="heroRoleText"></span><span class="typing-cursor" id="heroCursor"></span></p>
 <p class="hero-desc hero-fade-in" data-hfi-delay="3">
 <strong>보안 토큰 허점을 잡고, 결제 1원 오차를 P1으로 에스컬레이션하고,</strong><br>
@@ -1231,10 +489,7 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
 </div>
 </div>
 
-<!-- HERO STATS — STEP 129: hover 툴팁 + 클릭 섹션 스크롤 -->
 <div class="hero-stats">
-
-  <!-- 6.9yr → 경력 타임라인 -->
   <div class="hero-stat-card" data-scroll="timeline">
     <div class="stat-n">6.9<span style="font-size:18px">yr</span></div>
     <div class="stat-l">QA 경력</div>
@@ -1247,8 +502,6 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
       <span class="hero-stat-tip-link">경력 보기 →</span>
     </div>
   </div>
-
-  <!-- 5+ → MCP 섹션 -->
   <div class="hero-stat-card" data-scroll="mcp">
     <div class="stat-n">5<span style="font-size:18px">+</span></div>
     <div class="stat-l">MCP 연동</div>
@@ -1262,8 +515,6 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
       <span class="hero-stat-tip-link">MCP 자동화 →</span>
     </div>
   </div>
-
-  <!-- 12 → 실제 증거 섹션 -->
   <div class="hero-stat-card" data-scroll="proof">
     <div class="stat-n">12</div>
     <div class="stat-l">Playwright spec</div>
@@ -1277,8 +528,6 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
       <span class="hero-stat-tip-link">spec 보기 →</span>
     </div>
   </div>
-
-  <!-- P1 2건 → 실제 증거 섹션 -->
   <div class="hero-stat-card" data-scroll="proof">
     <div class="stat-n">P1<br><span style="font-size:24px">2건</span></div>
     <div class="stat-l">보안 버그 발견</div>
@@ -1291,7 +540,6 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
       <span class="hero-stat-tip-link">버그 스토리 →</span>
     </div>
   </div>
-
 </div>
 </section>
 <!-- STATS -->
@@ -1422,7 +670,7 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
 </div>
 </div>
 
-<!-- COMMIT HISTORY CARD — STEP 115 -->
+<!-- COMMIT HISTORY CARD -->
 <div class="commit-card reveal" id="commitCard">
   <div class="commit-card-head">
     <span class="commit-card-title">// GITHUB COMMIT HISTORY · kihyunqa/qa-portfolio</span>
@@ -1462,7 +710,7 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
 </div>
 
 </section>
-<!-- PROJECTS — STEP 125: 호버 오버레이 추가 -->
+<!-- PROJECTS -->
 <section class="projects-sec" id="projects">
 <div class="sec-head reveal">
   <span class="sec-n">03</span>
@@ -1472,7 +720,6 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
 </div>
 <div class="projects-grid">
 
-<!-- PROJECT 01 -->
 <div class="proj-card reveal">
 <div class="proj-num">PROJECT 01 · <span class="badge badge-done" style="font-size:9px;padding:2px 8px">구현 완료</span></div>
 <div class="proj-icon">🤖</div>
@@ -1481,7 +728,6 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
 <div class="proj-flow"><span class="proj-flow-step">기능명세 입력</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">TC 자동 생성</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">로컬 저장</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">GitHub</span></div>
 <div class="proj-tags"><span class="proj-tag proj-tag-p">filesystem MCP</span><span class="proj-tag proj-tag-p">github MCP</span></div>
 <div class="proj-links"><a href="https://github.com/kihyunqa/qa-portfolio/blob/main/testcase_login.md" target="_blank" class="proj-link">TC 파일 보기 ↗</a></div>
-<!-- OVERLAY -->
 <div class="proj-overlay">
   <div class="proj-overlay-title">// 핵심 성과</div>
   <ul class="proj-overlay-points">
@@ -1496,7 +742,6 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
 </div>
 </div>
 
-<!-- PROJECT 02 -->
 <div class="proj-card reveal">
 <div class="proj-num">PROJECT 02 · <span class="badge badge-done" style="font-size:9px;padding:2px 8px">구현 완료</span></div>
 <div class="proj-icon">🔀</div>
@@ -1505,7 +750,6 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
 <div class="branch-vis"><div><span class="branch-main">main</span> <span class="branch-dim">──●──────────●──</span> <span class="branch-dim"># 릴리즈</span></div><div><span class="branch-dev">develop</span> <span class="branch-dim">────●────●──</span> <span class="branch-dim"># 회귀 검증</span></div><div><span class="branch-feat">feature</span> <span class="branch-dim">──────●──</span> <span class="branch-dim"># 선행 검토</span></div></div>
 <div class="proj-tags"><span class="proj-tag proj-tag-p">github MCP</span><span class="proj-tag">브랜치 전략</span></div>
 <div class="proj-links"><a href="https://github.com/kihyunqa/qa-portfolio/blob/main/docs/release-qa-process.md" target="_blank" class="proj-link">릴리즈 QA 프로세스 ↗</a></div>
-<!-- OVERLAY -->
 <div class="proj-overlay">
   <div class="proj-overlay-title">// 핵심 성과</div>
   <ul class="proj-overlay-points">
@@ -1519,7 +763,6 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
 </div>
 </div>
 
-<!-- PROJECT 03 -->
 <div class="proj-card reveal">
 <div class="proj-num">PROJECT 03 · <span class="badge badge-done" style="font-size:9px;padding:2px 8px">구현 완료</span></div>
 <div class="proj-icon">⚡</div>
@@ -1528,7 +771,6 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
 <div class="proj-flow"><span class="proj-flow-step">노드 조합</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">파이프라인 실행</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">결과 체이닝</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">내보내기</span></div>
 <div class="proj-tags"><span class="proj-tag proj-tag-p">Claude-in-Claude</span><span class="proj-tag proj-tag-p">Multi-MCP</span></div>
 <div class="proj-links"><a href="https://github.com/kihyunqa/qa-portfolio/blob/main/docs/mcp-architecture.md" target="_blank" class="proj-link">MCP 아키텍처 ↗</a></div>
-<!-- OVERLAY -->
 <div class="proj-overlay">
   <div class="proj-overlay-title">// 핵심 성과</div>
   <ul class="proj-overlay-points">
@@ -1542,7 +784,6 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
 </div>
 </div>
 
-<!-- PROJECT 04 -->
 <div class="proj-card reveal">
 <div class="proj-num">PROJECT 04 · <span class="badge badge-done" style="font-size:9px;padding:2px 8px">구현 완료</span></div>
 <div class="proj-icon">⚙️</div>
@@ -1551,7 +792,6 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
 <div class="proj-flow"><span class="proj-flow-step">Claude Code 설치</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">MCP 연결</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">Skill 정의</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">자동화 적용</span></div>
 <div class="proj-tags"><span class="proj-tag proj-tag-p">Claude Code</span><span class="proj-tag proj-tag-p">Skill 지침</span></div>
 <div class="proj-links"><a href="https://github.com/kihyunqa/qa-portfolio/blob/main/docs/mcp-setup-guide.md" target="_blank" class="proj-link">MCP 세팅 가이드 ↗</a></div>
-<!-- OVERLAY -->
 <div class="proj-overlay">
   <div class="proj-overlay-title">// 핵심 성과</div>
   <ul class="proj-overlay-points">
@@ -1565,7 +805,6 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
 </div>
 </div>
 
-<!-- PROJECT 05 -->
 <div class="proj-card reveal">
 <div class="proj-num">PROJECT 05 · <span class="badge badge-done" style="font-size:9px;padding:2px 8px">구현 완료</span></div>
 <div class="proj-icon">📢</div>
@@ -1574,7 +813,6 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
 <div class="proj-flow"><span class="proj-flow-step">버그 발견</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">영향 분석</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">심각도 판단</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">해결</span></div>
 <div class="proj-tags"><span class="proj-tag proj-tag-p">버그 스토리</span><span class="proj-tag">P1 보안</span><span class="proj-tag">결제 QA</span></div>
 <div class="proj-links"><a href="https://github.com/kihyunqa/qa-portfolio/blob/main/docs/bug-stories.md" target="_blank" class="proj-link">버그 스토리 ↗</a><a href="https://github.com/kihyunqa/qa-portfolio/blob/main/testcase_bug-report.md" target="_blank" class="proj-link">버그 리포트 ↗</a></div>
-<!-- OVERLAY -->
 <div class="proj-overlay">
   <div class="proj-overlay-title">// 핵심 성과</div>
   <ul class="proj-overlay-points">
@@ -1588,7 +826,6 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
 </div>
 </div>
 
-<!-- PROJECT 06 -->
 <div class="proj-card reveal">
 <div class="proj-num">PROJECT 06 · <span class="badge badge-done" style="font-size:9px;padding:2px 8px">구현 완료</span></div>
 <div class="proj-icon">🐛</div>
@@ -1597,7 +834,6 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
 <div class="proj-flow"><span class="proj-flow-step">버그 수집</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">심각도 분류</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">담당자 현황</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">리포트</span></div>
 <div class="proj-tags"><span class="proj-tag proj-tag-p">버그 분석</span><span class="proj-tag">심각도 분류</span></div>
 <div class="proj-links"><a href="https://github.com/kihyunqa/qa-portfolio/blob/main/testcase_bug-report.md" target="_blank" class="proj-link">버그 리포트 ↗</a><a href="https://github.com/kihyunqa/qa-portfolio/blob/main/docs/bug-report-template.md" target="_blank" class="proj-link">리포트 템플릿 ↗</a></div>
-<!-- OVERLAY -->
 <div class="proj-overlay">
   <div class="proj-overlay-title">// 핵심 성과</div>
   <ul class="proj-overlay-points">
@@ -1611,7 +847,6 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
 </div>
 </div>
 
-<!-- PROJECT 07 -->
 <div class="proj-card reveal">
 <div class="proj-num">PROJECT 07 · <span class="badge badge-done" style="font-size:9px;padding:2px 8px">구현 완료</span></div>
 <div class="proj-icon">🎭</div>
@@ -1620,7 +855,6 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
 <div class="proj-flow"><span class="proj-flow-step">시나리오 정의</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">브라우저 조작</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">결과 검증</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">스크린샷</span></div>
 <div class="proj-tags"><span class="proj-tag proj-tag-p">playwright MCP</span><span class="proj-tag">E2E 12 spec</span></div>
 <div class="proj-links"><a href="https://github.com/kihyunqa/qa-portfolio/tree/main/playwright-tests" target="_blank" class="proj-link">spec 파일 보기 ↗</a></div>
-<!-- OVERLAY -->
 <div class="proj-overlay">
   <div class="proj-overlay-title">// 핵심 성과</div>
   <ul class="proj-overlay-points">
@@ -1634,7 +868,6 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
 </div>
 </div>
 
-<!-- PROJECT 08 -->
 <div class="proj-card reveal">
 <div class="proj-num">PROJECT 08 · <span class="badge badge-done" style="font-size:9px;padding:2px 8px">구현 완료</span></div>
 <div class="proj-icon">📋</div>
@@ -1643,7 +876,6 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
 <div class="proj-flow"><span class="proj-flow-step">레포 설계</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">README 작성</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">QA 리포트</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">CHANGELOG</span></div>
 <div class="proj-tags"><span class="proj-tag proj-tag-p">github MCP</span><span class="proj-tag proj-tag-p">filesystem MCP</span></div>
 <div class="proj-links"><a href="https://github.com/kihyunqa/qa-portfolio/blob/main/README.md" target="_blank" class="proj-link">README ↗</a></div>
-<!-- OVERLAY -->
 <div class="proj-overlay">
   <div class="proj-overlay-title">// 핵심 성과</div>
   <ul class="proj-overlay-points">
@@ -1658,7 +890,6 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
 </div>
 </div>
 
-<!-- PROJECT 09 -->
 <div class="proj-card reveal">
 <div class="proj-num">PROJECT 09 · <span class="badge badge-live" style="font-size:9px;padding:2px 8px">실제 연동</span></div>
 <div class="proj-icon">📝</div>
@@ -1666,7 +897,6 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
 <div class="proj-desc">Notion MCP로 TC 결과물을 자동 문서화. 테스트 완료 후 Notion 페이지를 자동 생성하여 팀 전체가 QA 현황을 실시간 확인.</div>
 <div class="proj-flow"><span class="proj-flow-step">TC 결과 수집</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">Claude 분석</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">Notion 페이지 생성</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">팀 공유</span></div>
 <div class="proj-tags"><span class="proj-tag proj-tag-g">notion MCP 실제 연동</span><span class="proj-tag">TC 결과 문서화</span></div>
-<!-- OVERLAY -->
 <div class="proj-overlay">
   <div class="proj-overlay-title">// 핵심 성과</div>
   <ul class="proj-overlay-points">
@@ -1680,7 +910,6 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
 </div>
 </div>
 
-<!-- PROJECT 10 -->
 <div class="proj-card reveal">
 <div class="proj-num">PROJECT 10 · <span class="badge badge-live" style="font-size:9px;padding:2px 8px">실제 연동</span></div>
 <div class="proj-icon">💬</div>
@@ -1688,7 +917,6 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
 <div class="proj-desc">Slack MCP + GitHub Actions 이중 연동. QA 완료 시 새-채널 자동 알림. TC 파일 push 감지 → Actions → Slack 완전 자동 파이프라인.</div>
 <div class="proj-flow"><span class="proj-flow-step">QA 완료</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">MCP 알림</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">GitHub Actions</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">새-채널</span></div>
 <div class="proj-tags"><span class="proj-tag proj-tag-g">slack MCP 실제 연동</span><span class="proj-tag">GitHub Actions</span></div>
-<!-- OVERLAY -->
 <div class="proj-overlay">
   <div class="proj-overlay-title">// 핵심 성과</div>
   <ul class="proj-overlay-points">
@@ -1735,7 +963,7 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
 <div class="roadmap-card future"><div class="rm-num">PHASE 3 · 계획</div><div class="rm-icon">🗓️</div><div class="rm-title">Scheduling &amp; Reporting MCP</div><div class="rm-desc">Google Calendar MCP → 릴리즈 QA 일정 자동 배분. Gmail MCP → 이해관계자 QA 리포트 자동 발송.</div></div>
 </div>
 </section>
-<!-- TC — STEP 131: 행 클릭 expand 인터랙션 -->
+<!-- TC -->
 <section id="tc" style="background:var(--bg2);border-top:1px solid var(--p-border)">
 <div class="sec-head reveal">
   <span class="sec-n">06</span>
@@ -1760,7 +988,6 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
   <button class="tc-filter-btn" data-filter="e">엣지케이스</button>
 </div>
 
-<!-- STEP 131: 행 클릭 힌트 -->
 <div class="tc-row-hint reveal">행을 클릭하면 전제조건 · 테스트 스텝 · 기대 결과 상세를 확인할 수 있습니다</div>
 
 <div class="tc-wrap reveal">
@@ -1872,7 +1099,7 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
 </div>
 <a href="https://github.com/kihyunqa/qa-portfolio" target="_blank" class="tc-link reveal">전체 TC 파일 보기 (145건+) ↗</a>
 </section>
-<!-- CAREER TIMELINE — STEP 127: hover expand/collapse 인터랙션 추가 -->
+<!-- CAREER TIMELINE -->
 <section class="timeline-sec" id="timeline">
 <div class="sec-head reveal">
   <span class="sec-n">07</span>
@@ -1882,7 +1109,6 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
 </div>
 <div class="timeline reveal">
 
-<!-- 두플 -->
 <div class="tl-item" id="tlDuple">
 <div class="tl-dot"></div>
 <div class="tl-year">2024.11 — 2025.02</div>
@@ -1903,7 +1129,6 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
 <div class="tl-tags"><span class="tl-tag">QA 리드</span><span class="tl-tag">TC 설계</span><span class="tl-tag">팀 리딩</span></div>
 </div>
 
-<!-- IMS Mobility -->
 <div class="tl-item" id="tlIMS">
 <div class="tl-dot"></div>
 <div class="tl-year">2022.03 — 2024.02</div>
@@ -1924,7 +1149,6 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
 <div class="tl-tags"><span class="tl-tag">모바일앱 QA</span><span class="tl-tag">웹/백오피스 QA</span><span class="tl-tag">Cypress 자동화</span><span class="tl-tag">Swagger API</span><span class="tl-tag">결제 QA</span></div>
 </div>
 
-<!-- 모비프렌 -->
 <div class="tl-item" id="tlMobifren">
 <div class="tl-dot"></div>
 <div class="tl-year">2017.09 — 2022.01</div>
@@ -1956,7 +1180,7 @@ footer{padding:18px 24px;flex-direction:column;gap:6px}
   <span class="sec-stat-badge"><span class="ssb-num">20</span>개 스킬</span>
 </div>
 
-<!-- RADAR CHART — STEP 111 -->
+<!-- RADAR CHART -->
 <div class="radar-wrap reveal" id="radarWrap">
   <div class="radar-svg-container">
     <div class="radar-title">// QA SKILL RADAR</div>
@@ -2031,447 +1255,226 @@ QA 엔지니어링, AI 자동화 도입에 관심 있는<br>
 <p>Built with Claude MCP · No code written · 5 MCP servers · TC 145건+ · Playwright 12 spec · Actions 2개 · Jira 연동 완료 · docs 28개</p>
 </footer>
 <script>
-/* ===================== BREADCRUMB 섹션 맵 ===================== */
+/* ========== BREADCRUMB ========== */
 const bcMap = {
-  'stats':    '00 · 숫자 현황',
-  'mcp':      '01 · MCP 자동화',
-  'proof':    '02 · 실제 증거',
-  'projects': '03 · 프로젝트',
-  'diagram':  '04 · 파이프라인',
-  'roadmap':  '05 · 로드맵',
-  'tc':       '06 · 테스트케이스',
-  'timeline': '07 · 경력',
-  'skills':   '08 · 스킬',
-  'contact':  '09 · 연락'
+  'stats':'00 · 숫자 현황','mcp':'01 · MCP 자동화','proof':'02 · 실제 증거',
+  'projects':'03 · 프로젝트','diagram':'04 · 파이프라인','roadmap':'05 · 로드맵',
+  'tc':'06 · 테스트케이스','timeline':'07 · 경력','skills':'08 · 스킬','contact':'09 · 연락'
 };
 const bcEl = document.getElementById('breadcrumb');
 const bcSec = document.getElementById('bcSection');
 let bcCurrent = '';
-
-function updateBreadcrumb(currentId) {
-  if (currentId === bcCurrent) return;
-  bcCurrent = currentId;
-  if (currentId && bcMap[currentId]) {
-    bcSec.textContent = bcMap[currentId];
-    bcEl.classList.add('visible');
-  } else {
-    bcEl.classList.remove('visible');
-  }
+function updateBreadcrumb(id) {
+  if (id === bcCurrent) return;
+  bcCurrent = id;
+  if (id && bcMap[id]) { bcSec.textContent = bcMap[id]; bcEl.classList.add('visible'); }
+  else { bcEl.classList.remove('visible'); }
 }
 
-/* =====================================================
-   HERO FADE-IN — STEP 133
-   DOMContentLoaded 후 순차적으로 .hfi-visible 추가
-   ===================================================== */
+/* ========== HERO FADE-IN ========== */
 document.addEventListener('DOMContentLoaded', () => {
-  const hfiEls = document.querySelectorAll('.hero-fade-in');
-  hfiEls.forEach((el, i) => {
+  document.querySelectorAll('.hero-fade-in').forEach((el, i) => {
     const delay = parseInt(el.dataset.hfiDelay || i, 10);
-    setTimeout(() => {
-      el.classList.add('hfi-visible');
-    }, 200 + delay * 120);
+    setTimeout(() => el.classList.add('hfi-visible'), 150 + delay * 100);
   });
 });
 
-/* =====================================================================
-   SCROLL BAR — STEP 134: hue shift + glow 강화 (동적 그라데이션)
-   스크롤 진행률에 따라 색상·글로우 동적 변경
-   0%   → hsl(262,91%,50%) = purple2 계열
-   50%  → hsl(280,85%,60%) = purple 계열
-   100% → hsl(300,75%,70%) = pink-purple 계열
-   ===================================================================== */
-function updateScrollBar(pct) {
-  const bar = document.getElementById('scrollBar');
-  if (!bar) return;
-  // hue: 262(보라) → 300(핑크보라), saturation/lightness 약간 변화
-  const h1 = Math.round(262 + pct * 38);          // 262~300
-  const h2 = Math.round(272 + pct * 40);          // 272~312
-  const s1 = Math.round(91 - pct * 10);           // 91~81%
-  const l1 = Math.round(48 + pct * 10);           // 48~58%
-  const s2 = Math.round(85 - pct * 5);
-  const l2 = Math.round(58 + pct * 12);           // 58~70%
-  // glow intensity: 낮을 때 약하게, 높을 때 강하게
-  const glowAlpha = (0.3 + pct * 0.5).toFixed(2); // 0.30~0.80
-  const glowSpread = Math.round(4 + pct * 10);     // 4~14px
-  bar.style.background = `linear-gradient(90deg, hsl(${h1},${s1}%,${l1}%), hsl(${h2},${s2}%,${l2}%))`;
-  bar.style.boxShadow = `0 0 ${glowSpread}px rgba(168,85,247,${glowAlpha}), 0 0 ${Math.round(glowSpread*1.8)}px rgba(192,132,252,${(parseFloat(glowAlpha)*0.5).toFixed(2)})`;
-}
+/* ========== SCROLL — throttled ========== */
+let scrollTicking = false;
+window.addEventListener('scroll', () => {
+  if (scrollTicking) return;
+  scrollTicking = true;
+  requestAnimationFrame(() => {
+    const s = document.documentElement;
+    const pct = s.scrollTop / (s.scrollHeight - s.clientHeight);
+    document.getElementById('scrollBar').style.width = (pct * 100) + '%';
+    updateDotNav();
+    scrollTicking = false;
+  });
+}, { passive: true });
 
-/* ===================== SCROLL ===================== */
-window.addEventListener('scroll',()=>{
-  const s=document.documentElement;
-  const pct=(s.scrollTop/(s.scrollHeight-s.clientHeight));
-  const p = pct * 100;
-  document.getElementById('scrollBar').style.width=p+'%';
-  updateScrollBar(pct);
-  updateDotNav();
-});
+function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
 
-/* ===================== CURSOR ===================== */
-const cur=document.getElementById('cur'),curR=document.getElementById('curR');
-let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx-3.5+'px';cur.style.top=my-3.5+'px';});
-(function a(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;curR.style.left=rx-14+'px';curR.style.top=ry-14+'px';requestAnimationFrame(a);})();
+/* ========== REVEAL — IntersectionObserver ========== */
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+  });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-document.querySelectorAll('a,button').forEach(el=>{
-  el.addEventListener('mouseenter',()=>{cur.style.transform='scale(2.5)';curR.style.transform='scale(1.5)';});
-  el.addEventListener('mouseleave',()=>{cur.style.transform='';curR.style.transform='';});
-});
+/* ========== SKILL BARS ========== */
+const skO = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('.sk-bar').forEach(b => {
+        const w = b.style.width; b.style.width = '0';
+        setTimeout(() => b.style.width = w, 100);
+      });
+      skO.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.3 });
+document.querySelectorAll('.skills-wrap').forEach(el => skO.observe(el));
 
-function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open');}
-
-/* ===================== REVEAL ===================== */
-const obs=new IntersectionObserver(entries=>{
-  entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*60);obs.unobserve(e.target);}});
-},{threshold:0.08});
-document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-
-/* ===================== SKILL BARS ===================== */
-const skO=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting){e.target.querySelectorAll('.sk-bar').forEach(b=>{const w=b.style.width;b.style.width='0';setTimeout(()=>b.style.width=w,150);});skO.unobserve(e.target);}});
-},{threshold:0.3});
-document.querySelectorAll('.skills-wrap').forEach(el=>skO.observe(el));
-
-/* ===================== STAT COUNTUP ===================== */
-const statO=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      e.target.querySelectorAll('.stat-big').forEach(el=>{
-        const txt=el.textContent;const num=parseFloat(txt);
-        if(!isNaN(num)&&num>0&&num<1000){
-          let s=0,t=Math.round(num);const inc=Math.ceil(t/20);
-          const iv=setInterval(()=>{s=Math.min(s+inc,t);el.textContent=s+(txt.includes('+')?'+':'');if(s>=t){el.textContent=txt;clearInterval(iv);}},40);
+/* ========== STAT COUNTUP ========== */
+const statO = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('.stat-big').forEach(el => {
+        const txt = el.textContent; const num = parseFloat(txt);
+        if (!isNaN(num) && num > 0 && num < 1000) {
+          let s = 0, t = Math.round(num); const inc = Math.ceil(t / 20);
+          const iv = setInterval(() => {
+            s = Math.min(s + inc, t);
+            el.textContent = s + (txt.includes('+') ? '+' : '');
+            if (s >= t) { el.textContent = txt; clearInterval(iv); }
+          }, 40);
         }
-      });statO.unobserve(e.target);
+      });
+      statO.unobserve(e.target);
     }
   });
-},{threshold:0.5});
-document.querySelectorAll('.stats-grid').forEach(el=>statO.observe(el));
+}, { threshold: 0.5 });
+document.querySelectorAll('.stats-grid').forEach(el => statO.observe(el));
 
-/* ===================== DOT NAV + BREADCRUMB ===================== */
-const dotSections=['stats','mcp','proof','projects','diagram','roadmap','tc','timeline','skills','contact'];
-
-document.querySelectorAll('.dot-nav-dot').forEach(dot=>{
-  dot.addEventListener('click',()=>{
-    const id=dot.dataset.target||dot.closest('.dot-nav-item').dataset.target;
-    const el=document.getElementById(id);
-    if(el)el.scrollIntoView({behavior:'smooth'});
+/* ========== DOT NAV ========== */
+const dotSections = ['stats','mcp','proof','projects','diagram','roadmap','tc','timeline','skills','contact'];
+document.querySelectorAll('.dot-nav-dot').forEach(dot => {
+  dot.addEventListener('click', () => {
+    const id = dot.dataset.target || dot.closest('.dot-nav-item').dataset.target;
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
   });
 });
-
-function updateDotNav(){
-  let current='';
-  dotSections.forEach(id=>{
-    const el=document.getElementById(id);
-    if(el){
-      const rect=el.getBoundingClientRect();
-      if(rect.top<=window.innerHeight*0.5&&rect.bottom>0)current=id;
-    }
+function updateDotNav() {
+  let current = '';
+  dotSections.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) { const r = el.getBoundingClientRect(); if (r.top <= window.innerHeight * 0.5 && r.bottom > 0) current = id; }
   });
-  document.querySelectorAll('.dot-nav-dot').forEach(dot=>{
-    const id=dot.dataset.target||dot.closest('.dot-nav-item').dataset.target;
-    dot.classList.toggle('active',id===current);
+  document.querySelectorAll('.dot-nav-dot').forEach(dot => {
+    const id = dot.dataset.target || dot.closest('.dot-nav-item').dataset.target;
+    dot.classList.toggle('active', id === current);
   });
   updateBreadcrumb(current);
 }
 updateDotNav();
 
-/* =====================================================
-   SKILL TOOLTIP — STEP 123
-   ===================================================== */
+/* ========== SKILL TOOLTIP ========== */
 const skTooltip = document.getElementById('skTooltip');
 const skTipTitle = document.getElementById('skTipTitle');
 const skTipBody = document.getElementById('skTipBody');
 const skTipTags = document.getElementById('skTipTags');
-
 let tooltipTimer = null;
-
 document.querySelectorAll('.sk-item[data-tip-title]').forEach(item => {
   item.addEventListener('mouseenter', function(e) {
     clearTimeout(tooltipTimer);
-    const title = this.dataset.tipTitle || '';
-    const body = this.dataset.tipBody || '';
+    skTipTitle.textContent = this.dataset.tipTitle || '';
+    skTipBody.textContent = this.dataset.tipBody || '';
     const tags = (this.dataset.tipTags || '').split('|').filter(Boolean);
-
-    skTipTitle.textContent = title;
-    skTipBody.textContent = body;
     skTipTags.innerHTML = tags.map(t => `<span class="sk-tooltip-tag">${t}</span>`).join('');
-
     const rect = this.getBoundingClientRect();
-    let top = rect.top + window.scrollY - 10;
-    let left = rect.left + rect.width / 2;
-
-    skTooltip.style.left = left + 'px';
-    skTooltip.style.top = top + 'px';
-    skTooltip.style.transform = 'translate(-50%, -100%)';
-
+    skTooltip.style.left = (rect.left + rect.width / 2) + 'px';
+    skTooltip.style.top = rect.top + 'px';
+    skTooltip.style.transform = 'translate(-50%, -110%)';
     skTooltip.classList.add('visible');
   });
-
-  item.addEventListener('mouseleave', function() {
-    tooltipTimer = setTimeout(() => {
-      skTooltip.classList.remove('visible');
-    }, 120);
+  item.addEventListener('mouseleave', () => {
+    tooltipTimer = setTimeout(() => skTooltip.classList.remove('visible'), 120);
   });
 });
-
 skTooltip.addEventListener('mouseenter', () => clearTimeout(tooltipTimer));
 skTooltip.addEventListener('mouseleave', () => {
   tooltipTimer = setTimeout(() => skTooltip.classList.remove('visible'), 120);
 });
 
-/* =====================================================
-   HERO STAT CARD CLICK SCROLL — STEP 129
-   각 stat 카드 클릭 시 해당 섹션으로 스크롤
-   ===================================================== */
+/* ========== HERO STAT CARD SCROLL ========== */
 document.querySelectorAll('.hero-stat-card[data-scroll]').forEach(card => {
   card.addEventListener('click', () => {
-    const targetId = card.dataset.scroll;
-    const targetEl = document.getElementById(targetId);
-    if (targetEl) targetEl.scrollIntoView({ behavior: 'smooth' });
+    const el = document.getElementById(card.dataset.scroll);
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
   });
 });
 
-/* =====================================================
-   HERO CANVAS PARTICLE — STEP 117
-   ===================================================== */
-(function initHeroParticles() {
-  const canvas = document.getElementById('hero-canvas');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-
-  const PARTICLE_COUNT = 80;
-  const COLOR_PALETTE = [
-    'rgba(168,85,247,',
-    'rgba(124,58,237,',
-    'rgba(192,132,252,',
-    'rgba(240,234,255,',
-  ];
-
-  let W, H, particles = [];
-
-  function resize() {
-    const hero = canvas.parentElement;
-    W = canvas.width = hero.offsetWidth;
-    H = canvas.height = hero.offsetHeight;
-  }
-
-  function randomBetween(a, b) {
-    return a + Math.random() * (b - a);
-  }
-
-  function createParticle(forceY) {
-    const color = COLOR_PALETTE[Math.floor(Math.random() * COLOR_PALETTE.length)];
-    return {
-      x: randomBetween(0, W),
-      y: forceY !== undefined ? forceY : randomBetween(0, H),
-      r: randomBetween(0.4, 2.2),
-      alpha: randomBetween(0.08, 0.55),
-      alphaDir: Math.random() > 0.5 ? 1 : -1,
-      alphaSpeed: randomBetween(0.003, 0.012),
-      alphaMin: randomBetween(0.04, 0.12),
-      alphaMax: randomBetween(0.3, 0.6),
-      vx: randomBetween(-0.12, 0.12),
-      vy: randomBetween(-0.22, -0.06),
-      color: color,
-      glowing: Math.random() > 0.72,
-    };
-  }
-
-  function initParticles() {
-    particles = [];
-    for (let i = 0; i < PARTICLE_COUNT; i++) {
-      particles.push(createParticle());
-    }
-  }
-
-  function draw() {
-    ctx.clearRect(0, 0, W, H);
-
-    particles.forEach((p, i) => {
-      p.alpha += p.alphaDir * p.alphaSpeed;
-      if (p.alpha >= p.alphaMax) { p.alpha = p.alphaMax; p.alphaDir = -1; }
-      if (p.alpha <= p.alphaMin) { p.alpha = p.alphaMin; p.alphaDir = 1; }
-
-      p.x += p.vx;
-      p.y += p.vy;
-
-      if (p.y < -4) {
-        particles[i] = createParticle(H + 4);
-        return;
-      }
-      if (p.x < -4) p.x = W + 4;
-      if (p.x > W + 4) p.x = -4;
-
-      if (p.glowing) {
-        const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 5);
-        grad.addColorStop(0, p.color + (p.alpha * 0.9).toFixed(3) + ')');
-        grad.addColorStop(1, p.color + '0)');
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r * 5, 0, Math.PI * 2);
-        ctx.fillStyle = grad;
-        ctx.fill();
-      }
-
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = p.color + p.alpha.toFixed(3) + ')';
-      ctx.fill();
-    });
-
-    requestAnimationFrame(draw);
-  }
-
-  let heroVisible = true;
-  const heroObs = new IntersectionObserver(entries => {
-    heroVisible = entries[0].isIntersecting;
-  }, { threshold: 0 });
-  heroObs.observe(canvas.parentElement);
-
-  function animLoop() {
-    if (heroVisible) draw();
-    requestAnimationFrame(animLoop);
-  }
-
-  window.addEventListener('resize', () => { resize(); initParticles(); });
-  resize();
-  initParticles();
-  animLoop();
-})();
-
-/* =====================================================
-   HERO TYPING EFFECT — STEP 113
-   ===================================================== */
+/* ========== HERO TYPING ========== */
 const heroRoleEl = document.getElementById('heroRoleText');
-const heroCursorEl = document.getElementById('heroCursor');
-
-const typingTexts = [
-  'Quality Assurance Engineer',
-  'TC 설계 · 버그 분석 · MCP 자동화',
-  '6년 9개월 QA · 코드 0줄 · 결과 ∞',
-];
-
-let typeIdx = 0;
-let charIdx = 0;
-let isDeleting = false;
-let typingTimer = null;
-
+const typingTexts = ['Quality Assurance Engineer','TC 설계 · 버그 분석 · MCP 자동화','6년 9개월 QA · 코드 0줄 · 결과 ∞'];
+let typeIdx = 0, charIdx = 0, isDeleting = false;
 function typeStep() {
-  const currentText = typingTexts[typeIdx];
-
+  const cur = typingTexts[typeIdx];
   if (!isDeleting) {
     charIdx++;
-    heroRoleEl.textContent = currentText.slice(0, charIdx);
-    if (charIdx === currentText.length) {
-      isDeleting = true;
-      typingTimer = setTimeout(typeStep, 2200);
-      return;
-    }
-    typingTimer = setTimeout(typeStep, 55);
+    heroRoleEl.textContent = cur.slice(0, charIdx);
+    if (charIdx === cur.length) { isDeleting = true; setTimeout(typeStep, 2000); return; }
+    setTimeout(typeStep, 55);
   } else {
     charIdx--;
-    heroRoleEl.textContent = currentText.slice(0, charIdx);
-    if (charIdx === 0) {
-      isDeleting = false;
-      typeIdx = (typeIdx + 1) % typingTexts.length;
-      typingTimer = setTimeout(typeStep, 350);
-      return;
-    }
-    typingTimer = setTimeout(typeStep, 28);
+    heroRoleEl.textContent = cur.slice(0, charIdx);
+    if (charIdx === 0) { isDeleting = false; typeIdx = (typeIdx + 1) % typingTexts.length; setTimeout(typeStep, 300); return; }
+    setTimeout(typeStep, 28);
   }
 }
+setTimeout(typeStep, 700);
 
-setTimeout(typeStep, 800);
-
-/* =====================================================
-   TC 필터 버튼 — STEP 113
-   ===================================================== */
-const tcFilterBtns = document.querySelectorAll('.tc-filter-btn');
-
-tcFilterBtns.forEach(btn => {
+/* ========== TC FILTER ========== */
+document.querySelectorAll('.tc-filter-btn').forEach(btn => {
   btn.addEventListener('click', () => {
-    tcFilterBtns.forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tc-filter-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
-
     const filter = btn.dataset.filter;
     document.querySelectorAll('.tc-data-row').forEach(row => {
       const show = filter === 'all' || row.dataset.type === filter;
       row.style.display = show ? '' : 'none';
-      const tcId = row.dataset.tcId;
-      const detailRow = document.querySelector(`.tc-detail-row[data-for="${tcId}"]`);
-      if (detailRow) {
-        detailRow.style.display = show ? (detailRow.classList.contains('tc-detail-visible') ? '' : 'none') : 'none';
-      }
+      const detailRow = document.querySelector(`.tc-detail-row[data-for="${row.dataset.tcId}"]`);
+      if (detailRow && !show) detailRow.style.display = 'none';
     });
   });
 });
 
-/* =====================================================
-   TC 행 EXPAND/COLLAPSE — STEP 131
-   테이블 행 클릭 시 상세 케이스 내용 슬라이드다운
-   ===================================================== */
+/* ========== TC ROW EXPAND ========== */
 document.querySelectorAll('.tc-data-row').forEach(row => {
   row.addEventListener('click', () => {
     const tcId = row.dataset.tcId;
     const detailRow = document.querySelector(`.tc-detail-row[data-for="${tcId}"]`);
     const detailInner = detailRow ? detailRow.querySelector('.tc-detail-inner') : null;
     const expandIcon = row.querySelector('.tc-expand-icon');
-
     if (!detailRow || !detailInner) return;
-
     const isExpanded = row.classList.contains('tc-expanded');
-
     if (isExpanded) {
       row.classList.remove('tc-expanded');
       detailInner.classList.remove('tc-detail-open');
       expandIcon.textContent = '▼';
-      setTimeout(() => {
-        detailRow.classList.remove('tc-detail-visible');
-        detailRow.style.display = 'none';
-      }, 400);
+      setTimeout(() => { detailRow.classList.remove('tc-detail-visible'); detailRow.style.display = 'none'; }, 360);
     } else {
       row.classList.add('tc-expanded');
       detailRow.classList.add('tc-detail-visible');
       detailRow.style.display = '';
       expandIcon.textContent = '▲';
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          detailInner.classList.add('tc-detail-open');
-        });
-      });
+      requestAnimationFrame(() => requestAnimationFrame(() => detailInner.classList.add('tc-detail-open')));
     }
   });
 });
 
-/* ===================== RADAR CHART — STEP 111 ===================== */
+/* ========== RADAR CHART ========== */
 const radarSkills = [
-  { name: 'TC 설계',       val: 95, color: '#a855f7' },
-  { name: '버그 리포팅',    val: 92, color: '#c084fc' },
-  { name: 'E2E 자동화',    val: 82, color: '#7c3aed' },
-  { name: 'API 테스트',    val: 70, color: '#a855f7' },
-  { name: 'MCP 연동',      val: 95, color: '#c084fc' },
-  { name: 'Prompt Eng.',   val: 92, color: '#7c3aed' },
-  { name: 'QA 문서화',     val: 90, color: '#a855f7' },
-  { name: 'QA 리딩',       val: 88, color: '#c084fc' },
+  {name:'TC 설계',val:95,color:'#a855f7'},{name:'버그 리포팅',val:92,color:'#c084fc'},
+  {name:'E2E 자동화',val:82,color:'#7c3aed'},{name:'API 테스트',val:70,color:'#a855f7'},
+  {name:'MCP 연동',val:95,color:'#c084fc'},{name:'Prompt Eng.',val:92,color:'#7c3aed'},
+  {name:'QA 문서화',val:90,color:'#a855f7'},{name:'QA 리딩',val:88,color:'#c084fc'},
 ];
-
 function drawRadar(animated) {
   const svg = document.getElementById('radarSvg');
   if (!svg) return;
-  const cx = 140, cy = 140, R = 110;
-  const n = radarSkills.length;
-  const levels = 5;
+  const cx = 140, cy = 140, R = 110, n = radarSkills.length, levels = 5;
   svg.innerHTML = '';
-
   function toXY(i, r) {
-    const angle = (Math.PI * 2 * i / n) - Math.PI / 2;
-    return { x: cx + r * Math.cos(angle), y: cy + r * Math.sin(angle) };
+    const a = (Math.PI * 2 * i / n) - Math.PI / 2;
+    return { x: cx + r * Math.cos(a), y: cy + r * Math.sin(a) };
   }
-
   for (let l = 1; l <= levels; l++) {
-    const r = R * l / levels;
     let pts = '';
-    for (let i = 0; i < n; i++) { const p = toXY(i, r); pts += `${p.x},${p.y} `; }
+    for (let i = 0; i < n; i++) { const p = toXY(i, R * l / levels); pts += `${p.x},${p.y} `; }
     const poly = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
     poly.setAttribute('points', pts.trim());
     poly.setAttribute('fill', 'none');
@@ -2479,64 +1482,50 @@ function drawRadar(animated) {
     poly.setAttribute('stroke-width', l === levels ? '1' : '0.5');
     svg.appendChild(poly);
   }
-
   for (let i = 0; i < n; i++) {
     const p = toXY(i, R);
     const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
     line.setAttribute('x1', cx); line.setAttribute('y1', cy);
     line.setAttribute('x2', p.x); line.setAttribute('y2', p.y);
-    line.setAttribute('stroke', 'rgba(168,85,247,0.18)');
-    line.setAttribute('stroke-width', '0.5');
+    line.setAttribute('stroke', 'rgba(168,85,247,0.18)'); line.setAttribute('stroke-width', '0.5');
     svg.appendChild(line);
   }
-
-  let dataPts = '';
   const finalVals = radarSkills.map(s => s.val / 100);
-  const animVals = animated ? radarSkills.map(() => 0) : finalVals;
+  let dataPts = '';
   for (let i = 0; i < n; i++) {
-    const p = toXY(i, R * animVals[i]);
+    const p = toXY(i, R * (animated ? 0 : finalVals[i]));
     dataPts += `${p.x},${p.y} `;
   }
   const dataPoly = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
   dataPoly.setAttribute('id', 'radarData');
   dataPoly.setAttribute('points', dataPts.trim());
   dataPoly.setAttribute('fill', 'rgba(168,85,247,0.15)');
-  dataPoly.setAttribute('stroke', '#a855f7');
-  dataPoly.setAttribute('stroke-width', '1.5');
+  dataPoly.setAttribute('stroke', '#a855f7'); dataPoly.setAttribute('stroke-width', '1.5');
   svg.appendChild(dataPoly);
-
   for (let i = 0; i < n; i++) {
     const p = toXY(i, R * (animated ? 0 : finalVals[i]));
     const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
     circle.setAttribute('class', 'radar-dot-' + i);
     circle.setAttribute('cx', p.x); circle.setAttribute('cy', p.y);
-    circle.setAttribute('r', '3');
-    circle.setAttribute('fill', '#a855f7');
-    circle.setAttribute('stroke', '#08060f');
-    circle.setAttribute('stroke-width', '1.5');
+    circle.setAttribute('r', '3'); circle.setAttribute('fill', '#a855f7');
+    circle.setAttribute('stroke', '#08060f'); circle.setAttribute('stroke-width', '1.5');
     svg.appendChild(circle);
   }
-
   for (let i = 0; i < n; i++) {
     const p = toXY(i, R + 18);
     const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
     text.setAttribute('x', p.x); text.setAttribute('y', p.y);
-    text.setAttribute('text-anchor', 'middle');
-    text.setAttribute('dominant-baseline', 'middle');
-    text.setAttribute('fill', '#7c6f9a');
-    text.setAttribute('font-size', '9');
-    text.setAttribute('font-family', "'DM Mono', monospace");
-    text.setAttribute('letter-spacing', '0.04em');
+    text.setAttribute('text-anchor', 'middle'); text.setAttribute('dominant-baseline', 'middle');
+    text.setAttribute('fill', '#7c6f9a'); text.setAttribute('font-size', '9');
+    text.setAttribute('font-family', "'DM Mono', monospace"); text.setAttribute('letter-spacing', '0.04em');
     text.textContent = radarSkills[i].name;
     svg.appendChild(text);
   }
-
   if (animated) {
     let progress = 0;
-    const duration = 80;
     function step() {
-      progress = Math.min(progress + 1, duration);
-      const t = progress / duration;
+      progress = Math.min(progress + 1, 70);
+      const t = progress / 70;
       const ease = t < 0.5 ? 2*t*t : -1+(4-2*t)*t;
       let pts = '';
       for (let i = 0; i < n; i++) {
@@ -2546,22 +1535,17 @@ function drawRadar(animated) {
         if (dot) { dot.setAttribute('cx', p.x); dot.setAttribute('cy', p.y); }
       }
       dataPoly.setAttribute('points', pts.trim());
-      if (progress < duration) requestAnimationFrame(step);
+      if (progress < 70) requestAnimationFrame(step);
     }
     requestAnimationFrame(step);
   }
-
   const legend = document.getElementById('radarLegend');
   if (legend) {
     legend.innerHTML = '';
     radarSkills.forEach((sk, i) => {
       const item = document.createElement('div');
       item.className = 'radar-legend-item';
-      item.innerHTML = `
-        <div class="radar-legend-dot" style="background:${sk.color};box-shadow:0 0 6px ${sk.color}44"></div>
-        <span class="radar-legend-name">${sk.name}</span>
-        <span class="radar-legend-val">${sk.val}%</span>
-      `;
+      item.innerHTML = `<div class="radar-legend-dot" style="background:${sk.color}"></div><span class="radar-legend-name">${sk.name}</span><span class="radar-legend-val">${sk.val}%</span>`;
       item.addEventListener('mouseenter', () => {
         const dot = svg.querySelector('.radar-dot-' + i);
         if (dot) { dot.setAttribute('r', '5'); dot.setAttribute('fill', '#c084fc'); }
@@ -2574,134 +1558,79 @@ function drawRadar(animated) {
     });
   }
 }
-
 const radarObs = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      drawRadar(true);
-      radarObs.unobserve(e.target);
-    }
-  });
+  entries.forEach(e => { if (e.isIntersecting) { drawRadar(true); radarObs.unobserve(e.target); } });
 }, { threshold: 0.2 });
 const radarWrap = document.getElementById('radarWrap');
 if (radarWrap) radarObs.observe(radarWrap);
 
-/* =====================================================
-   COMMIT HISTORY CARD — STEP 115
-   ===================================================== */
+/* ========== COMMIT HISTORY ========== */
 function countUp(el, target, suffix) {
-  let current = 0;
-  const inc = Math.max(1, Math.ceil(target / 30));
+  let current = 0; const inc = Math.max(1, Math.ceil(target / 30));
   const iv = setInterval(() => {
     current = Math.min(current + inc, target);
     el.textContent = current + (suffix || '');
     if (current >= target) clearInterval(iv);
   }, 40);
 }
-
 async function loadCommitData() {
   const loadingEl = document.getElementById('commitLoading');
   const footerNote = document.getElementById('commitFooterNote');
   const cStatTotal = document.getElementById('cStatTotal');
   const cStatDays = document.getElementById('cStatDays');
-
   try {
     const res = await fetch('https://api.github.com/repos/kihyunqa/qa-portfolio/commits?per_page=100');
     if (!res.ok) throw new Error('API ' + res.status);
     const commits = await res.json();
-
     if (!Array.isArray(commits) || commits.length === 0) throw new Error('no data');
-
     const totalCommits = commits.length;
-
     const firstDate = new Date(commits[commits.length - 1].commit.author.date);
-    const today = new Date();
-    const diffDays = Math.floor((today - firstDate) / (1000 * 60 * 60 * 24));
-
-    cStatTotal.innerHTML = '';
-    countUp(cStatTotal, totalCommits, '+');
-    cStatDays.innerHTML = '';
-    countUp(cStatDays, diffDays, 'd');
-
+    const diffDays = Math.floor((new Date() - firstDate) / (1000 * 60 * 60 * 24));
+    cStatTotal.innerHTML = ''; countUp(cStatTotal, totalCommits, '+');
+    cStatDays.innerHTML = ''; countUp(cStatDays, diffDays, 'd');
     const barArea = document.getElementById('commitBarArea');
     const barsEl = document.getElementById('commitBars');
     const buckets = {};
     const now = new Date();
     for (let i = 13; i >= 0; i--) {
-      const d = new Date(now);
-      d.setDate(d.getDate() - i);
-      const key = d.toISOString().slice(0, 10);
-      buckets[key] = 0;
+      const d = new Date(now); d.setDate(d.getDate() - i);
+      buckets[d.toISOString().slice(0, 10)] = 0;
     }
-    commits.forEach(c => {
-      const day = c.commit.author.date.slice(0, 10);
-      if (day in buckets) buckets[day]++;
-    });
-
+    commits.forEach(c => { const day = c.commit.author.date.slice(0, 10); if (day in buckets) buckets[day]++; });
     const maxVal = Math.max(...Object.values(buckets), 1);
     barsEl.innerHTML = '';
     Object.entries(buckets).forEach(([date, count]) => {
-      const heightPct = Math.max(4, Math.round((count / maxVal) * 100));
-      const shortDate = date.slice(5);
       const bar = document.createElement('div');
       bar.className = 'commit-bar-item';
-      bar.style.height = heightPct + '%';
-      bar.title = `${date}: ${count}건`;
-      bar.dataset.label = shortDate;
+      bar.style.height = Math.max(4, Math.round((count / maxVal) * 100)) + '%';
+      bar.title = `${date}: ${count}건`; bar.dataset.label = date.slice(5);
       barsEl.appendChild(bar);
     });
     barArea.style.display = '';
-
     loadingEl.style.display = 'none';
-    footerNote.textContent = `// GitHub API · ${totalCommits}+ commits · ${diffDays}일간 활동 · 2026-04-08 기준`;
-
-  } catch (err) {
+    footerNote.textContent = `// GitHub API · ${totalCommits}+ commits · ${diffDays}일간 활동`;
+  } catch {
     loadingEl.style.display = 'none';
-    cStatTotal.textContent = '100+';
-    cStatDays.textContent = '30+d';
+    cStatTotal.textContent = '100+'; cStatDays.textContent = '30+d';
     footerNote.textContent = '// kihyunqa/qa-portfolio · GitHub Pages 배포 완료';
   }
 }
-
 const commitObs = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      loadCommitData();
-      commitObs.unobserve(e.target);
-    }
-  });
+  entries.forEach(e => { if (e.isIntersecting) { loadCommitData(); commitObs.unobserve(e.target); } });
 }, { threshold: 0.2 });
 const commitCard = document.getElementById('commitCard');
 if (commitCard) commitObs.observe(commitCard);
 
-/* =====================================================
-   TIMELINE EXPAND/COLLAPSE — STEP 127
-   각 경력 항목 클릭 시 상세 업무 내역 슬라이드다운
-   ===================================================== */
-const tlItems = [
-  { itemId: 'tlDuple',    detailId: 'tlDupleDetail' },
-  { itemId: 'tlIMS',      detailId: 'tlIMSDetail' },
-  { itemId: 'tlMobifren', detailId: 'tlMobifrenDetail' },
-];
-
-tlItems.forEach(({ itemId, detailId }) => {
+/* ========== TIMELINE EXPAND ========== */
+[['tlDuple','tlDupleDetail'],['tlIMS','tlIMSDetail'],['tlMobifren','tlMobifrenDetail']].forEach(([itemId, detailId]) => {
   const item = document.getElementById(itemId);
   const detail = document.getElementById(detailId);
   if (!item || !detail) return;
-
-  item.addEventListener('click', (e) => {
+  item.addEventListener('click', e => {
     if (e.target.tagName === 'A') return;
-
-    const isExpanded = item.classList.contains('expanded');
-
-    tlItems.forEach(({ itemId: otherId }) => {
-      const other = document.getElementById(otherId);
-      if (other && otherId !== itemId) {
-        other.classList.remove('expanded');
-      }
-    });
-
-    item.classList.toggle('expanded', !isExpanded);
+    const wasExpanded = item.classList.contains('expanded');
+    document.querySelectorAll('.tl-item.expanded').forEach(el => el.classList.remove('expanded'));
+    if (!wasExpanded) item.classList.add('expanded');
   });
 });
 </script>
