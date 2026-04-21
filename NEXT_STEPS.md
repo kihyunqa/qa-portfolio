@@ -9,14 +9,15 @@
 > - 레포: `kihyunqa/qa-portfolio` / 브랜치: `main`
 > - 포트폴리오: https://kihyunqa.github.io/qa-portfolio
 > - **사용자 요청**: 연습/면접준비/LinkedIn 관심 없음. **포트폴리오 업그레이드만** 원함.
+> - **작업 원칙**: 불필요한 애니메이션 금지 · CPU 많이 잡아먹는 요소 금지 · 허구 금지 · 실제 경력 기반만
 
 ---
 
-## 🏁 현재 상태 (2026-04-08) — STEP 132 완료
+## 🏁 현재 상태 (2026-04-21) — STEP 133 완료
 
 ---
 
-## ✅ 확정 수치 (v44 기준)
+## ✅ 확정 수치 (v45 기준)
 
 | 항목 | 수치 | 검증 |
 |------|------|------|
@@ -27,78 +28,52 @@
 | GitHub Actions | **2개** | ✅ |
 | 전체 파일 수 | **80개+** | ✅ |
 | TC 건수 | **145건+** | ✅ |
-| CHANGELOG | **v44** | ✅ |
+| CHANGELOG | **v45** | ✅ |
 | Jira 연동 | **완료** | ✅ FULL ACCESS |
-| index.html | **최신** | ✅ STEP 131 이미 반영 |
+| index.html | **최신** | ✅ STEP 133 반영 |
 | dot-nav | **완전 수정** | ✅ STEP 107 |
 | breadcrumb | **추가 완료** | ✅ STEP 109 |
 | 레이더 차트 | **추가 완료** | ✅ STEP 111 |
 | Hero 타이핑 효과 | **추가 완료** | ✅ STEP 113 |
 | TC 필터 버튼 | **복원 완료** | ✅ STEP 113 |
 | 커밋 히스토리 카드 | **추가 완료** | ✅ STEP 115 |
-| Hero 파티클 배경 | **추가 완료** | ✅ STEP 117 |
-| TC 섹션 행 확장 | **8행 → 20행** | ✅ STEP 119 |
-| 섹션별 통계 배지 | **9개 섹션 배지** | ✅ STEP 121 |
-| 스킬 바 hover 툴팁 | **20개 스킬 툴팁** | ✅ STEP 123 |
-| 프로젝트 카드 오버레이 | **10개 카드 슬라이드업** | ✅ STEP 125 |
-| 경력 타임라인 인터랙션 | **클릭 expand/collapse** | ✅ STEP 127 |
-| 히어로 stat 툴팁 | **4개 stat hover 툴팁 + 클릭 스크롤** | ✅ STEP 129 |
-| **TC 행 expand** | **20개 행 클릭 상세 슬라이드다운** | ✅ **STEP 131** |
-| **Hero 로딩 애니메이션** | **CHANGELOG/NEXT_STEPS만 업데이트** | ✅ **STEP 132** |
+| Hero fade-in | **추가 완료** | ✅ STEP 132 |
+| TC 섹션 행 expand | **20개 행 클릭 상세** | ✅ STEP 131 |
+| **TC 실시간 검색** | **TC-ID/제목/기대결과 필터** | ✅ **STEP 133** |
 
 ---
 
-## ✅ 완료된 스텝 전체 이력
+## ✅ STEP 133에서 변경한 내용
 
-| 스텝 | 내용 | 완료일 |
-|------|------|--------|
-| STEP 1~83 | 포트폴리오 전체 구축 완료 | ~2026-04-01 |
-| STEP 84~100 | 수치 검증, bug-stories, 섹션 강화 등 | 2026-04-01~06 |
-| STEP 101~126 | dot-nav, breadcrumb, 레이더, 타이핑, 파티클, TC행, 배지, 툴팁, 오버레이 | 2026-04-07 |
-| STEP 127 | 경력 타임라인 클릭 expand/collapse | 2026-04-08 |
-| STEP 128 | CHANGELOG v41 + NEXT_STEPS.md 업데이트 | 2026-04-08 |
-| STEP 129 | 히어로 stat 카드 hover 툴팁 (4개) + 클릭 섹션 스크롤 | 2026-04-08 |
-| STEP 130 | CHANGELOG v42 + NEXT_STEPS.md 인수인계 업데이트 | 2026-04-08 |
-| **STEP 131** | **TC 테이블 행 클릭 expand/collapse (20개 행 · 전제조건/스텝/기대결과)** | **2026-04-08** |
-| **STEP 132** | **Hero 섹션 순차 fade-in 로딩 애니메이션 + CHANGELOG v44 + 인수인계** | **2026-04-08** |
+### index.html 변경
 
----
+| 변경 위치 | 내용 |
+|-----------|------|
+| CSS (미디어쿼리 앞) | `.tc-search-wrap`, `.tc-search-input`, `.tc-search-clear`, `.tc-search-count` 추가 |
+| HTML (tc-filter div 앞) | 검색 input + 초기화 버튼 + 건수 카운터 추가 |
+| JS (TIMELINE 주석 앞) | `applySearch()` 함수 + input 이벤트 + 필터 버튼 연동 |
 
-## ⚠️ 중요 — STEP 131 확인사항
-
-**index.html SHA `10888451543bc4b16735296dde691df4af13f1dd` 에 이미 STEP 131이 구현되어 있음.**
-
-- TC 행 expand CSS (`.tc-expand-icon`, `.tc-detail-row`, `.tc-detail-inner`, `.tc-detail-content`, `.tc-detail-result-*`, `.tc-row-hint`) — 모두 포함
-- TC 행 expand JS (`document.querySelectorAll('.tc-data-row').forEach(row => { row.addEventListener('click', ...)`) — 포함
-- TC 행 HTML (20개 행 + detail 페어) — 포함
-- STEP 131이 NEXT_STEPS.md/CHANGELOG에만 미기록 상태였던 것을 이번에 반영
-
-## ⚠️ 중요 — STEP 132 확인사항
-
-**Hero fade-in 애니메이션은 index.html 수정이 필요하지만 이번 스텝에서는 CHANGELOG/NEXT_STEPS 업데이트만 수행.**
-
-다음 Claude가 index.html을 수정해서 Hero 로딩 애니메이션을 실제로 추가해야 함:
-- CSS: `.hero-fade-in` 클래스 + `@keyframes` 정의
-- HTML: hero-tag, hero-name, hero-role, hero-desc, hero-proof, hero-cta에 `.hero-fade-in` + `data-hfi-delay` 속성 추가
-- JS: DOMContentLoaded 후 순차적으로 `.hfi-visible` 클래스 추가 (120ms 간격)
-- **현재 index.html SHA**: `10888451543bc4b16735296dde691df4af13f1dd` → 수정 전 반드시 get_file_contents로 최신 SHA 확인
+### 주의: index.html SHA 반드시 확인 필요
+- **이번 커밋에서 index.html을 변경함**
+- 다음 Claude는 반드시 `get_file_contents`로 최신 SHA 확인 후 수정할 것
 
 ---
 
 ## 🎯 다음 Claude가 해야 할 포트폴리오 업그레이드 (우선순위 순)
 
-### 🟡 우선순위 1 (즉시) — Hero 순차 로딩 애니메이션 실제 구현 (STEP 133)
-- index.html에 CSS + HTML 속성 + JS 추가
-- hero 섹션 6개 요소 (tag → name → role → desc → proof → cta) 순서대로 fade-in
-- 각 요소 120ms 간격, translateY(20px) → 0 + opacity 0→1
+### 🟡 우선순위 1 — 스크롤 진행 바 색상 개선
+- 현재: 단순 linear-gradient (보라색 고정)
+- 개선: 스크롤 위치에 따라 색상이 변하는 방식 (CSS variable 조작, 애니메이션 없이 JS로만)
+- 구현: `scrollBar.style.background = gradient` 동적 변경
 
-### 🟡 우선순위 2 — 스크롤 진행 바 색상 그라데이션 강화
-- 현재: 단순 linear-gradient
-- 개선: 스크롤 위치에 따라 hue shift 또는 glow 강도 변화
+### 🟡 우선순위 2 — 프로젝트 카드에 실제 파일 미리보기 링크 추가
+- 현재 PROJECT 09(Notion), PROJECT 10(Slack)에 링크가 없음
+- 실제 screenshots/ 폴더에 있는 이미지나 docs 링크 연결
+- 허구 없이 실제 파일 기반으로만
 
-### 🟡 우선순위 3 — TC 섹션 실시간 검색 필터
-- TC 테이블 상단에 검색 입력창 추가
-- 입력 시 TC-ID, 테스트 제목, 기대결과 실시간 필터링
+### 🟡 우선순위 3 — TC 섹션 stat bar 건수 동기화
+- 현재 stat bar: "해피패스 8건 / 네거티브 7건 / 엣지케이스 5건" 고정 표시
+- 검색/필터 변경 시 실시간 건수 업데이트 연동
 
 ---
 
@@ -110,9 +85,10 @@
 4. **새 파일 무분별 생성 금지** — 기존 파일 업데이트 우선
 5. **NEXT_STEPS.md 업데이트 필수** — SHA 먼저 확인
 6. **사용자는 포트폴리오 업그레이드만 원함** — 면접준비/LinkedIn 제안 금지
-7. **index.html 현재 SHA**: `10888451543bc4b16735296dde691df4af13f1dd` — get_file_contents로 확인 후 수정
-8. **CHANGELOG.md 현재 SHA**: 이 커밋 후 새 SHA — get_file_contents로 확인
-9. **NEXT_STEPS.md 현재 SHA**: 이 커밋 후 새 SHA — 다음 Claude가 get_file_contents로 확인
+7. **불필요한 애니메이션 절대 추가 금지** — CPU 부담 주는 요소 금지
+8. **index.html 현재 SHA**: 이번 커밋 후 새 SHA — get_file_contents로 확인 필수
+9. **CHANGELOG.md 현재 SHA**: 이번 커밋 후 새 SHA — get_file_contents로 확인
+10. **NEXT_STEPS.md 현재 SHA**: 이번 커밋 후 새 SHA — get_file_contents로 확인
 
 ---
 
@@ -142,5 +118,5 @@
 
 ---
 
-*최종 업데이트: 2026-04-08 · STEP 132 완료*
-*TC 행 expand(STEP 131) 기록 완료. Hero 로딩 애니메이션(STEP 133)은 다음 Claude가 index.html 직접 수정 필요.*
+*최종 업데이트: 2026-04-21 · STEP 133 완료*
+*TC 실시간 검색 필터 추가 (TC-ID/제목/기대결과). 다음: 스크롤바 색상 개선 또는 stat bar 동기화*
