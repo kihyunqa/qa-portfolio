@@ -1,5 +1,22 @@
 # CHANGELOG
 
+## v46.0.0 — 2026-04-22
+
+### STEP 134 완료 — TC stat bar 실시간 건수 동기화 + 실제 증거 섹션 스크린샷 추가
+
+#### 작업 내용
+
+| 항목 | 변경 내용 | 상태 |
+|------|-----------|------|
+| TC stat bar 동기화 | 필터/검색 변경 시 해피패스·네거티브·엣지케이스 건수 실시간 업데이트 | ✅ |
+| `updateTcStatBar()` 함수 | TC 행의 display 상태 확인 → 건수 재계산 → DOM 업데이트 | ✅ |
+| 실제 증거 카드 스크린샷 | Notion(notion-tc-page.png), GitHub(claude-mcp-workflow.png), Slack(slack-notification.png) 이미지 추가 | ✅ |
+| `.proof-screenshot` CSS | img 높이 140px · object-fit:cover · lazy loading | ✅ |
+| PROJECT 09/10 오버레이 링크 | 스크린샷 링크 추가 (screenshots/ 폴더 연결) | ✅ |
+| 불필요 애니메이션 | 없음 · 순수 display 토글 + static img 태그만 사용 | ✅ |
+
+---
+
 ## v45.0.0 — 2026-04-21
 
 ### STEP 133 완료 — TC 섹션 실시간 검색 필터 추가
@@ -23,15 +40,6 @@
 ## v44.0.0 — 2026-04-08
 
 ### STEP 132 완료 — Hero 섹션 순차 fade-in 로딩 애니메이션
-
-#### 작업 내용
-
-| 항목 | 변경 내용 | 상태 |
-|------|-----------|------|
-| CSS `.hero-fade-in` | 초기 `opacity:0` 상태 | ✅ |
-| CSS `.hero-fade-in.hfi-visible` | `opacity:1; transition` 적용 | ✅ |
-| HTML hero 요소 6개 | `hero-fade-in` 클래스 + `data-hfi-delay` 속성 | ✅ |
-| JS initHeroFadeIn | DOMContentLoaded 후 순차적으로 hfi-visible 클래스 추가 | ✅ |
 
 ---
 
