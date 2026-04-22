@@ -1,5 +1,20 @@
 # CHANGELOG
 
+## v51.0.0 — 2026-04-22
+
+### STEP 142 완료 — index.html 내용 정합성 수정 (STEP 142)
+
+#### 작업 내용
+
+| 항목 | 변경 내용 | 상태 |
+|------|-----------|------|
+| PROJECT 08 오버레이 | `CHANGELOG v49` → `CHANGELOG v50` 수정 | ✅ |
+| 스킬 tooltip (GitHub 레포 구조화) | `CHANGELOG v49` → `CHANGELOG v50` 수정 | ✅ |
+| index.html SHA | `daf22e85e78d026e75188e37fac5510cbbcc9c55` | ✅ |
+| 불필요 애니메이션 | 없음 | ✅ |
+
+---
+
 ## v50.0.0 — 2026-04-22
 
 ### STEP 141 완료 — 인수인계 확인 + 현황 점검 (Claude.ai 웹 세션)
@@ -11,8 +26,6 @@
 | NEXT_STEPS.md 확인 | STEP 140 완료 상태 확인 | ✅ |
 | index.html SHA 확인 | `b88cbee093c60a13d4ebf532a792dac9b5e061cc` 검증 | ✅ |
 | 라이브 사이트 확인 | https://kihyunqa.github.io/qa-portfolio 정상 확인 | ✅ |
-| 이전 breadcrumb | 이미 STEP 이전에 구현 완료 상태 확인 | ✅ |
-| 이전 레이더 차트 | 이미 STEP 이전에 구현 완료 상태 확인 | ✅ |
 | CHANGELOG v50 | 이번 세션 현황 기록 | ✅ |
 | 불필요 애니메이션 | 없음 | ✅ |
 
@@ -22,42 +35,17 @@
 
 ### STEP 139 완료 — 현황 점검 + NEXT_STEPS 정합성 확인
 
-#### 작업 내용
-
-| 항목 | 변경 내용 | 상태 |
-|------|-----------|------|
-| 현황 점검 | GitHub 레포 + 라이브 사이트 실제 상태 확인 | ✅ |
-| NEXT_STEPS 정합성 | CHANGELOG v48 / STEP 138 완료 상태 확인 | ✅ |
-| 라이브 사이트 | https://kihyunqa.github.io/qa-portfolio 정상 확인 | ✅ |
-| 불필요 애니메이션 | 없음 | ✅ |
-
 ---
 
 ## v48.0.0 — 2026-04-22
 
 ### STEP 137 완료 — 인수인계 문서 현행화 + CHANGELOG v48 업데이트
 
-#### 작업 내용
-
-| 항목 | 변경 내용 | 상태 |
-|------|-----------|------|
-| CHANGELOG v48 | STEP 136 이후 현황 기록 | ✅ |
-| NEXT_STEPS.md 현행화 | STEP 137 완료 기록, 다음 작업 업데이트 | ✅ |
-| index.html SHA 확인 | `0b60877cd63beb0a1094dd1207ba0f36ffa6b05d` 검증 완료 | ✅ |
-| 불필요 애니메이션 | 없음 | ✅ |
-
 ---
 
 ## v47.0.0 — 2026-04-22
 
 ### STEP 136 완료 — proof 배지 5개 확인 + PROJECT 08 오버레이 v47 표기
-
-#### 작업 내용
-
-| 항목 | 변경 내용 | 상태 |
-|------|-----------|------|
-| proof 섹션 배지 | `5개 실제 확인`으로 업데이트 | ✅ |
-| PROJECT 08 오버레이 | CHANGELOG v47 표기 반영 | ✅ |
 
 ---
 
@@ -69,12 +57,8 @@
 
 | 항목 | 변경 내용 | 상태 |
 |------|-----------|------|
-| Jira proof 카드 추가 | proof 섹션에 5번째 카드(전체 폭) 추가 — jira-board.png 실제 스크린샷 포함 | ✅ |
-| `.proof-card-full` CSS | `grid-column: 1/-1` — 전체 폭 레이아웃, 모바일에서는 auto | ✅ |
-| `.proof-screenshot-jira` CSS | Jira 카드 스크린샷 높이 200px (기본 140px보다 크게) | ✅ |
-| proof 섹션 배지 | `5개 실제 확인`으로 업데이트 | ✅ |
-| 스크롤 진행 바 색상 동적 변화 | 스크롤 위치에 따라 보라→파랑 방향으로 자연스럽게 그라디언트 변화 | ✅ |
-| JS 스크롤 바 | `scrollBar.style.cssText`로 background 즉시 반영 (CSS transition 없음) | ✅ |
+| Jira proof 카드 추가 | proof 섹션에 5번째 카드(전체 폭) 추가 | ✅ |
+| 스크롤 진행 바 색상 동적 변화 | 스크롤 위치에 따라 보라→파랑 그라디언트 | ✅ |
 | 불필요 애니메이션 | 없음 · requestAnimationFrame 기반 스로틀링만 사용 | ✅ |
 
 ---

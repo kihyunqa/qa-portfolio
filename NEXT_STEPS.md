@@ -13,17 +13,18 @@
 
 ---
 
-## 🏁 현재 상태 (2026-04-22) — STEP 141 완료 (Claude.ai 웹 세션)
+## 🏁 현재 상태 (2026-04-22) — STEP 142 완료 (Claude.ai 웹 세션)
 
 > **중요**: Claude.ai 웹 채팅으로도 작업 가능. GitHub MCP가 없는 경우에도
 > `github:get_file_contents` + `github:create_or_update_file` / `github:push_files` 툴을 직접 호출해서 진행.
 >
 > **주의**: index.html은 매번 get_file_contents로 최신 SHA를 확인 후 교체할 것.
 > create_or_update_file은 SHA 불일치 시 실패함 — 반드시 직전 SHA 사용.
+> **push_files는 SHA 없이 여러 파일을 한 번에 커밋 가능** — CHANGELOG + NEXT_STEPS 동시 업데이트에 활용.
 
 ---
 
-## ✅ 확정 수치 (v50 기준)
+## ✅ 확정 수치 (v51 기준)
 
 | 항목 | 수치 | 검증 |
 |------|------|------|
@@ -34,9 +35,9 @@
 | GitHub Actions | **2개** | ✅ |
 | 전체 파일 수 | **80개+** | ✅ |
 | TC 건수 | **145건+** | ✅ |
-| CHANGELOG | **v50** | ✅ |
+| CHANGELOG | **v51** | ✅ |
 | Jira 연동 | **완료** | ✅ FULL ACCESS |
-| index.html | **최신** | ✅ STEP 140 반영 |
+| index.html | **최신** | ✅ STEP 142 반영 |
 | dot-nav | **완전 수정** | ✅ |
 | breadcrumb | **추가 완료** | ✅ |
 | 레이더 차트 | **추가 완료** | ✅ |
@@ -45,7 +46,8 @@
 | 커밋 히스토리 카드 | **추가 완료** | ✅ |
 | 실제 스크린샷 표시 | **proof 카드 5개에 실제 이미지** | ✅ |
 | 스크롤 바 색상 | **스크롤 위치에 따라 보라→파랑 동적 변화** | ✅ |
-| 섹션 설명 텍스트 | **전 섹션(00~08) 완료** | ✅ |
+| PROJECT 08 오버레이 | **CHANGELOG v50 표기** | ✅ STEP 142 |
+| 스킬 tooltip | **CHANGELOG v50 표기** | ✅ STEP 142 |
 
 ---
 
@@ -55,24 +57,27 @@
 
 | 파일 | SHA (참고용) |
 |------|-----|
-| index.html | `b88cbee093c60a13d4ebf532a792dac9b5e061cc` — 작업 전 재확인 필수 |
-| CHANGELOG.md | `b7469ba32b0d549cd7da5ca0637f63371c7c8601` (v50) |
+| index.html | `daf22e85e78d026e75188e37fac5510cbbcc9c55` — 작업 전 재확인 필수 |
+| CHANGELOG.md | 이 커밋 후 새 SHA — get_file_contents로 확인 |
 | NEXT_STEPS.md | 이 커밋 후 새 SHA — get_file_contents로 확인 |
 
 ---
 
 ## 🎯 다음 Claude가 해야 할 포트폴리오 업그레이드 (우선순위 순)
 
-### 🟡 우선순위 1 — footer 정보 업데이트 검토
-- 현재 footer: `Built with Claude MCP · No code written · 5 MCP servers · TC 145건+ · Playwright 12 spec · Jira 연동 완료`
-- 현재도 충분하면 건너뜀 — 굳이 바꿀 필요 없음
-- 업데이트 필요하다면 CHANGELOG v51도 같이 작성
+### 🟢 현재 포트폴리오 상태: **완성**
+- 모든 수치·링크·배지·오버레이·tooltip이 최신 상태(v51)로 정합성 맞춤 완료
+- 추가 인터랙션 없이도 제출 가능한 수준
 
-### 🟡 우선순위 2 — 추가 인터랙션 아이디어 (선택)
+### 🟡 우선순위 1 — 추가 인터랙션 (선택)
 - 현재 포트폴리오는 기능적으로 **완성된 상태**
 - 새 기능 추가 시 반드시 **불필요한 애니메이션 금지** 원칙 준수
 - CPU 부담 없는 순수 CSS/간단 JS만 허용
-- 예: 섹션별 progress indicator, 스킬 카테고리 toggle 등
+- 아이디어: 섹션별 progress indicator, 다크/라이트 모드 토글, print-friendly 스타일 등
+
+### 🟡 우선순위 2 — README.md 최신화 (선택)
+- 현재 README의 CHANGELOG 버전 표기가 낡아 있을 수 있음
+- README.md SHA 확인 후 v51 기준으로 수치 업데이트 가능
 
 ---
 
@@ -117,6 +122,6 @@
 
 ---
 
-*최종 업데이트: 2026-04-22 · STEP 141 완료 (Claude.ai 웹 세션)*
-*이번 세션: 인수인계 확인 + CHANGELOG v50 업데이트 + NEXT_STEPS 현행화*
-*다음: footer 검토 → 추가 인터랙션 아이디어 (선택)*
+*최종 업데이트: 2026-04-22 · STEP 142 완료 (Claude.ai 웹 세션)*
+*이번 세션: index.html 내용 정합성 수정 (PROJECT 08 오버레이 + 스킬 tooltip v49→v50) + CHANGELOG v51 + NEXT_STEPS 현행화*
+*다음: 추가 인터랙션(선택) → README.md 최신화(선택)*
