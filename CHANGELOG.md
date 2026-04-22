@@ -1,5 +1,23 @@
 # CHANGELOG
 
+## v50.0.0 — 2026-04-22
+
+### STEP 141 완료 — 인수인계 확인 + 현황 점검 (Claude.ai 웹 세션)
+
+#### 작업 내용
+
+| 항목 | 변경 내용 | 상태 |
+|------|-----------|------|
+| NEXT_STEPS.md 확인 | STEP 140 완료 상태 확인 | ✅ |
+| index.html SHA 확인 | `b88cbee093c60a13d4ebf532a792dac9b5e061cc` 검증 | ✅ |
+| 라이브 사이트 확인 | https://kihyunqa.github.io/qa-portfolio 정상 확인 | ✅ |
+| 이전 breadcrumb | 이미 STEP 이전에 구현 완료 상태 확인 | ✅ |
+| 이전 레이더 차트 | 이미 STEP 이전에 구현 완료 상태 확인 | ✅ |
+| CHANGELOG v50 | 이번 세션 현황 기록 | ✅ |
+| 불필요 애니메이션 | 없음 | ✅ |
+
+---
+
 ## v49.0.0 — 2026-04-22
 
 ### STEP 139 완료 — 현황 점검 + NEXT_STEPS 정합성 확인
