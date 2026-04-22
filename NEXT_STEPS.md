@@ -13,7 +13,7 @@
 
 ---
 
-## 🏁 현재 상태 (2026-04-22) — STEP 143 완료 (Claude.ai 웹 세션)
+## 🏁 현재 상태 (2026-04-22) — STEP 144 완료 (Claude.ai 웹 세션)
 
 > **중요**: Claude.ai 웹 채팅으로도 작업 가능. GitHub MCP가 없는 경우에도
 > `github:get_file_contents` + `github:create_or_update_file` / `github:push_files` 툴을 직접 호출해서 진행.
@@ -37,8 +37,8 @@
 | TC 건수 | **145건+** | ✅ |
 | CHANGELOG | **v51** | ✅ |
 | Jira 연동 | **완료** | ✅ FULL ACCESS |
-| index.html | **최신** | ✅ STEP 142 반영 |
-| README.md | **최신** | ✅ STEP 143 확인 완료 (수치 이미 정합) |
+| index.html | **최신** | ✅ STEP 144 반영 |
+| README.md | **최신** | ✅ STEP 143 확인 완료 |
 | dot-nav | **완전 수정** | ✅ |
 | breadcrumb | **추가 완료** | ✅ |
 | 레이더 차트 | **추가 완료** | ✅ |
@@ -47,8 +47,9 @@
 | 커밋 히스토리 카드 | **추가 완료** | ✅ |
 | 실제 스크린샷 표시 | **proof 카드 5개에 실제 이미지** | ✅ |
 | 스크롤 바 색상 | **스크롤 위치에 따라 보라→파랑 동적 변화** | ✅ |
-| PROJECT 08 오버레이 | **CHANGELOG v50 표기** | ✅ |
-| 스킬 tooltip | **CHANGELOG v50 표기** | ✅ |
+| PROJECT 08 오버레이 | **CHANGELOG v51 표기** | ✅ STEP 144 |
+| 스킬 tooltip | **CHANGELOG v51 표기** | ✅ STEP 144 |
+| **@media print** | **추가 완료** | ✅ STEP 144 |
 
 ---
 
@@ -58,9 +59,9 @@
 
 | 파일 | SHA (참고용) |
 |------|-----|
-| index.html | `daf22e85e78d026e75188e37fac5510cbbcc9c55` — 변경 없음 (STEP 143에서 수정 안 함) |
-| README.md | `e74a4eccdb381531fcf5a3044af977b7e68966c8` — 변경 없음 (수치 이미 정합) |
-| NEXT_STEPS.md | STEP 143 커밋 후 새 SHA — get_file_contents로 확인 |
+| index.html | `40e5d2ac781637d986e3ed2e6d1ce6b894567ca5` — STEP 144 반영 |
+| README.md | `e74a4eccdb381531fcf5a3044af977b7e68966c8` — 변경 없음 |
+| NEXT_STEPS.md | STEP 144 커밋 후 새 SHA — get_file_contents로 확인 |
 
 ---
 
@@ -68,18 +69,31 @@
 
 ### 🟢 현재 포트폴리오 상태: **완성**
 - 모든 수치·링크·배지·오버레이·tooltip이 최신 상태(v51)로 정합성 맞춤 완료
-- README.md도 v51 수치와 완전 일치 확인 완료 (STEP 143)
-- 추가 인터랙션 없이도 제출 가능한 수준
+- README.md도 v51 수치와 완전 일치 확인 완료
+- **@media print 스타일 추가 완료** (STEP 144) — Ctrl+P 또는 브라우저 인쇄 시 흰 배경 깔끔하게 출력
 
-### 🟡 우선순위 1 — 추가 인터랙션 (선택)
-- 현재 포트폴리오는 기능적으로 **완성된 상태**
-- 새 기능 추가 시 반드시 **불필요한 애니메이션 금지** 원칙 준수
+### 🟡 우선순위 1 — CHANGELOG.md v52 업데이트 (선택)
+- v51까지 기록됨. STEP 144 (@media print 추가) 내용으로 v52 추가 가능
+- CHANGELOG.md SHA 확인 후 업데이트
+
+### 🟡 우선순위 2 — 추가 인터랙션 (선택)
 - CPU 부담 없는 순수 CSS/간단 JS만 허용
-- 아이디어: print-friendly 스타일 (`@media print`), 언어 토글(한/영) 등
+- 아이디어: 언어 토글(한/영) 등
 - **⚠️ 애니메이션·파티클·무한 루프 효과 절대 금지**
 
-### 🟡 우선순위 2 — CHANGELOG.md 최신화 (선택)
-- v51까지 기록됨. 새 작업 시 v52로 업데이트 가능
+---
+
+## @media print 상세 (STEP 144 추가 내용)
+
+인쇄 시 적용되는 사항:
+- 배경 흰색, 텍스트 검정으로 전환
+- nav, dot-nav, breadcrumb, scroll-bar 숨김
+- tc-search-wrap, tc-filter, tc-row-hint 숨김
+- 스크린샷 이미지 숨김 (인쇄 불필요)
+- 타임라인 상세 내용 자동 펼침
+- 링크 URL 텍스트로 표시 (단, 내부 UI 링크 제외)
+- 섹션별 페이지 나누기 제어
+- @page A4, 여백 18mm 16mm 설정
 
 ---
 
@@ -124,6 +138,6 @@
 
 ---
 
-*최종 업데이트: 2026-04-22 · STEP 143 완료 (Claude.ai 웹 세션)*
-*이번 세션: README.md 최신화 여부 확인 (수치 이미 v51 기준과 완전 정합 → 수정 불필요), NEXT_STEPS 현행화*
-*다음: print-friendly 스타일 추가(선택) · 언어 토글 한/영(선택) · CHANGELOG v52 업데이트(선택)*
+*최종 업데이트: 2026-04-22 · STEP 144 완료 (Claude.ai 웹 세션)*
+*이번 세션: @media print 스타일 추가 — 인쇄/PDF 저장 시 흰 배경·검정 텍스트 깔끔하게 출력. CPU 부담 없는 순수 CSS만 사용. index.html SHA 40e5d2ac*
+*다음: CHANGELOG v52 업데이트(선택) · 언어 토글 한/영(선택)*
