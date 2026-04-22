@@ -1,6 +1,34 @@
 # CHANGELOG
 
+## v48.0.0 — 2026-04-22
+
+### STEP 137 완료 — 인수인계 문서 현행화 + CHANGELOG v48 업데이트
+
+#### 작업 내용
+
+| 항목 | 변경 내용 | 상태 |
+|------|-----------|------|
+| CHANGELOG v48 | STEP 136 이후 현황 기록 | ✅ |
+| NEXT_STEPS.md 현행화 | STEP 137 완료 기록, 다음 작업 업데이트 | ✅ |
+| index.html SHA 확인 | `0b60877cd63beb0a1094dd1207ba0f36ffa6b05d` 검증 완료 | ✅ |
+| 불필요 애니메이션 | 없음 | ✅ |
+
+---
+
 ## v47.0.0 — 2026-04-22
+
+### STEP 136 완료 — proof 배지 5개 확인 + PROJECT 08 오버레이 v47 표기
+
+#### 작업 내용
+
+| 항목 | 변경 내용 | 상태 |
+|------|-----------|------|
+| proof 섹션 배지 | `5개 실제 확인`으로 업데이트 | ✅ |
+| PROJECT 08 오버레이 | CHANGELOG v47 표기 반영 | ✅ |
+
+---
+
+## v46.0.0 — 2026-04-22
 
 ### STEP 135 완료 — Jira proof 카드 추가 + 스크롤 바 색상 동적 변화
 
@@ -15,23 +43,6 @@
 | 스크롤 진행 바 색상 동적 변화 | 스크롤 위치에 따라 보라→파랑 방향으로 자연스럽게 그라디언트 변화 | ✅ |
 | JS 스크롤 바 | `scrollBar.style.cssText`로 background 즉시 반영 (CSS transition 없음) | ✅ |
 | 불필요 애니메이션 | 없음 · requestAnimationFrame 기반 스로틀링만 사용 | ✅ |
-
----
-
-## v46.0.0 — 2026-04-22
-
-### STEP 134 완료 — TC stat bar 실시간 건수 동기화 + 실제 증거 섹션 스크린샷 추가
-
-#### 작업 내용
-
-| 항목 | 변경 내용 | 상태 |
-|------|-----------|------|
-| TC stat bar 동기화 | 필터/검색 변경 시 해피패스·네거티브·엣지케이스 건수 실시간 업데이트 | ✅ |
-| `updateTcStatBar()` 함수 | TC 행의 display 상태 확인 → 건수 재계산 → DOM 업데이트 | ✅ |
-| 실제 증거 카드 스크린샷 | Notion(notion-tc-page.png), GitHub(claude-mcp-workflow.png), Slack(slack-notification.png) 이미지 추가 | ✅ |
-| `.proof-screenshot` CSS | img 높이 140px · object-fit:cover · lazy loading | ✅ |
-| PROJECT 09/10 오버레이 링크 | 스크린샷 링크 추가 (screenshots/ 폴더 연결) | ✅ |
-| 불필요 애니메이션 | 없음 · 순수 display 토글 + static img 태그만 사용 | ✅ |
 
 ---
 
