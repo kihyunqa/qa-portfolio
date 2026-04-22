@@ -13,7 +13,7 @@
 
 ---
 
-## 🏁 현재 상태 (2026-04-22) — STEP 140 완료 (Claude.ai 웹 세션)
+## 🏁 현재 상태 (2026-04-22) — STEP 141 완료 (Claude.ai 웹 세션)
 
 > **중요**: Claude.ai 웹 채팅으로도 작업 가능. GitHub MCP가 없는 경우에도
 > `github:get_file_contents` + `github:create_or_update_file` / `github:push_files` 툴을 직접 호출해서 진행.
@@ -23,7 +23,7 @@
 
 ---
 
-## ✅ 확정 수치 (v49 기준)
+## ✅ 확정 수치 (v50 기준)
 
 | 항목 | 수치 | 검증 |
 |------|------|------|
@@ -34,7 +34,7 @@
 | GitHub Actions | **2개** | ✅ |
 | 전체 파일 수 | **80개+** | ✅ |
 | TC 건수 | **145건+** | ✅ |
-| CHANGELOG | **v49** | ✅ |
+| CHANGELOG | **v50** | ✅ |
 | Jira 연동 | **완료** | ✅ FULL ACCESS |
 | index.html | **최신** | ✅ STEP 140 반영 |
 | dot-nav | **완전 수정** | ✅ |
@@ -45,9 +45,7 @@
 | 커밋 히스토리 카드 | **추가 완료** | ✅ |
 | 실제 스크린샷 표시 | **proof 카드 5개에 실제 이미지** | ✅ |
 | 스크롤 바 색상 | **스크롤 위치에 따라 보라→파랑 동적 변화** | ✅ |
-| 섹션 설명 텍스트 | **전 섹션(00~08) 완료** | ✅ STEP 140 |
-| PROJECT 08 오버레이 | **CHANGELOG v49 표기** | ✅ STEP 140 |
-| 스킬 tooltip | **CHANGELOG v49 표기** | ✅ STEP 140 |
+| 섹션 설명 텍스트 | **전 섹션(00~08) 완료** | ✅ |
 
 ---
 
@@ -58,25 +56,23 @@
 | 파일 | SHA (참고용) |
 |------|-----|
 | index.html | `b88cbee093c60a13d4ebf532a792dac9b5e061cc` — 작업 전 재확인 필수 |
-| CHANGELOG.md | `25e5425e934c6b7c87b2c3f44cf7a5db0a70fa68` (v49) |
+| CHANGELOG.md | `b7469ba32b0d549cd7da5ca0637f63371c7c8601` (v50) |
 | NEXT_STEPS.md | 이 커밋 후 새 SHA — get_file_contents로 확인 |
 
 ---
 
 ## 🎯 다음 Claude가 해야 할 포트폴리오 업그레이드 (우선순위 순)
 
-### 🟡 우선순위 1 — CHANGELOG v50 업데이트
-- STEP 140 내용 기록: stats 섹션(00번) `.sec-desc` 설명 텍스트 추가
-- CHANGELOG.md SHA: `25e5425e934c6b7c87b2c3f44cf7a5db0a70fa68` (v49) — 작업 전 재확인
-
-### 🟡 우선순위 2 — footer 정보 업데이트 검토
+### 🟡 우선순위 1 — footer 정보 업데이트 검토
 - 현재 footer: `Built with Claude MCP · No code written · 5 MCP servers · TC 145건+ · Playwright 12 spec · Jira 연동 완료`
 - 현재도 충분하면 건너뜀 — 굳이 바꿀 필요 없음
+- 업데이트 필요하다면 CHANGELOG v51도 같이 작성
 
-### 🟡 우선순위 3 — 추가 인터랙션 아이디어 (선택)
-- 현재 포트폴리오는 기능적으로 완성된 상태
+### 🟡 우선순위 2 — 추가 인터랙션 아이디어 (선택)
+- 현재 포트폴리오는 기능적으로 **완성된 상태**
 - 새 기능 추가 시 반드시 **불필요한 애니메이션 금지** 원칙 준수
 - CPU 부담 없는 순수 CSS/간단 JS만 허용
+- 예: 섹션별 progress indicator, 스킬 카테고리 toggle 등
 
 ---
 
@@ -121,6 +117,6 @@
 
 ---
 
-*최종 업데이트: 2026-04-22 · STEP 140 완료 (Claude.ai 웹 세션)*
-*이번 세션: stats 섹션(00번) 설명 텍스트 추가 + CHANGELOG v49 + NEXT_STEPS 현행화*
-*다음: CHANGELOG v50 업데이트 → footer 검토*
+*최종 업데이트: 2026-04-22 · STEP 141 완료 (Claude.ai 웹 세션)*
+*이번 세션: 인수인계 확인 + CHANGELOG v50 업데이트 + NEXT_STEPS 현행화*
+*다음: footer 검토 → 추가 인터랙션 아이디어 (선택)*
