@@ -13,7 +13,7 @@
 
 ---
 
-## 🏁 현재 상태 (2026-04-22) — STEP 138 완료 (Claude.ai 웹 세션)
+## 🏁 현재 상태 (2026-04-22) — STEP 139 완료 (Claude.ai 웹 세션)
 
 > **중요**: Claude.ai 웹 채팅으로도 작업 가능. GitHub MCP가 없는 경우에도
 > `github:get_file_contents` + `github:create_or_update_file` / `github:push_files` 툴을 직접 호출해서 진행.
@@ -23,7 +23,7 @@
 
 ---
 
-## ✅ 확정 수치 (v48 기준)
+## ✅ 확정 수치 (v49 기준)
 
 | 항목 | 수치 | 검증 |
 |------|------|------|
@@ -34,7 +34,7 @@
 | GitHub Actions | **2개** | ✅ |
 | 전체 파일 수 | **80개+** | ✅ |
 | TC 건수 | **145건+** | ✅ |
-| CHANGELOG | **v48** | ✅ |
+| CHANGELOG | **v49** | ✅ |
 | Jira 연동 | **완료** | ✅ FULL ACCESS |
 | index.html | **최신** | ✅ STEP 138 반영 |
 | dot-nav | **완전 수정** | ✅ |
@@ -46,9 +46,6 @@
 | 실제 스크린샷 표시 | **proof 카드 5개에 실제 이미지** | ✅ |
 | 스크롤 바 색상 | **스크롤 위치에 따라 보라→파랑 동적 변화** | ✅ |
 | 섹션 설명 텍스트 | **프로젝트/파이프라인/경력/스킬 4섹션 추가** | ✅ STEP 138 |
-| `.sec-desc` CSS 클래스 | **섹션 설명 전용 스타일 추가** | ✅ STEP 138 |
-| PROJECT 08 오버레이 | **CHANGELOG v48 표기** | ✅ STEP 138 |
-| 스킬 tooltip GitHub | **CHANGELOG v48 표기** | ✅ STEP 138 |
 
 ---
 
@@ -59,25 +56,26 @@
 | 파일 | SHA (참고용) |
 |------|-----|
 | index.html | `7ef6a8f5a21b036385ad251c7659b6492ecd8287` — 작업 전 재확인 필수 |
-| CHANGELOG.md | get_file_contents로 확인 |
-| NEXT_STEPS.md | 이 커밋 후 SHA — get_file_contents로 확인 |
+| CHANGELOG.md | `25e5425e934c6b7c87b2c3f44cf7a5db0a70fa68` (v49) |
+| NEXT_STEPS.md | 이 커밋 후 새 SHA — get_file_contents로 확인 |
 
 ---
 
 ## 🎯 다음 Claude가 해야 할 포트폴리오 업그레이드 (우선순위 순)
 
-### 🟡 우선순위 1 — CHANGELOG v49 업데이트
-- STEP 138 내용 기록: 섹션 설명 텍스트 4개 추가 (프로젝트/파이프라인/경력/스킬), PROJECT 08 v48 표기, `.sec-desc` CSS 추가
-- CHANGELOG.md SHA는 get_file_contents로 먼저 확인
-
-### 🟡 우선순위 2 — footer 정보 업데이트 검토
+### 🟡 우선순위 1 — footer 정보 업데이트 검토
 - 현재 footer: `Built with Claude MCP · No code written · 5 MCP servers · TC 145건+ · Playwright 12 spec · Jira 연동 완료`
-- CHANGELOG 버전 표기나 docs 수 등 추가 여부 검토 (현재도 충분하면 건너뜀)
+- CHANGELOG 버전(v49) 표기 추가 여부 검토
+- 현재도 충분하면 건너뛰어도 무방
 
-### 🟡 우선순위 3 — 추가 섹션 설명 검토
-- 현재 설명 없는 섹션: `00 숫자 현황` (stats-sec)
-- stats 섹션 바로 아래 짧은 설명 1줄 추가 여부 검토
+### 🟡 우선순위 2 — stats 섹션(00번) 설명 텍스트 추가
+- 현재 `00 숫자로 보는 현황` 섹션에는 `.sec-desc` 설명 텍스트 없음
+- 다른 섹션처럼 간단한 1~2문장 설명 추가 가능
 - **절대 허구 금지** — 실제 수치만
+
+### 🟡 우선순위 3 — NEXT_STEPS.md 업데이트 (STEP 140 이후)
+- 매 세션 마지막에 반드시 현행화
+- SHA 모두 get_file_contents로 재확인 후 기재
 
 ---
 
@@ -122,6 +120,6 @@
 
 ---
 
-*최종 업데이트: 2026-04-22 · STEP 138 완료 (Claude.ai 웹 세션)*
-*섹션 설명 텍스트 4개 추가 (프로젝트/파이프라인/경력/스킬) + .sec-desc CSS + PROJECT 08 v48 표기.*
-*다음: CHANGELOG v49 → footer 검토 → stats 섹션 설명 추가 여부*
+*최종 업데이트: 2026-04-22 · STEP 139 완료 (Claude.ai 웹 세션)*
+*이번 세션: 현황 점검 + CHANGELOG v49 업데이트 완료. index.html 변경 없음.*
+*다음: footer 검토 → stats 섹션 설명 추가 여부 검토*
