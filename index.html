@@ -89,6 +89,7 @@ section{padding:80px 56px;position:relative;z-index:2}
 .sec-stat-badge .ssb-num{font-size:13px;font-weight:500;color:var(--purple3)}
 .sec-stat-badge.ssb-green{background:rgba(16,185,129,0.08);border-color:rgba(16,185,129,0.28);color:var(--green)}
 .sec-stat-badge.ssb-green .ssb-num{color:var(--green)}
+.sec-desc{font-size:14px;color:var(--muted);line-height:1.75;max-width:600px;margin-bottom:40px;margin-top:-24px}
 
 /* BADGES */
 .badge{display:inline-flex;align-items:center;gap:5px;font-family:var(--mono);font-size:10px;font-weight:500;padding:3px 10px;letter-spacing:.08em}
@@ -404,6 +405,7 @@ footer{padding:16px 20px;flex-direction:column;gap:4px}
 .proj-overlay{display:none}
 .tc-detail-content{grid-template-columns:1fr}
 .tc-search-input{width:100%}
+.sec-desc{margin-top:-16px}
 }
 </style>
 </head>
@@ -699,6 +701,7 @@ Jira 연동 완료
   <div class="sec-line"></div>
   <span class="sec-stat-badge"><span class="ssb-num">10</span>개 프로젝트</span>
 </div>
+<p class="sec-desc reveal">TC 자동생성부터 버그 분류, E2E 자동화, Notion·Slack 연동까지 — QA 전 영역을 MCP로 연결한 10개 프로젝트. 카드에 마우스를 올리면 핵심 성과를 확인할 수 있습니다.</p>
 <div class="projects-grid">
 
 <div class="proj-card reveal">
@@ -786,7 +789,7 @@ Jira 연동 완료
 <div class="proj-flow"><span class="proj-flow-step">레포 설계</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">README 작성</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">QA 리포트</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">CHANGELOG</span></div>
 <div class="proj-tags"><span class="proj-tag proj-tag-p">github MCP</span><span class="proj-tag proj-tag-p">filesystem MCP</span></div>
 <div class="proj-links"><a href="https://github.com/kihyunqa/qa-portfolio/blob/main/README.md" target="_blank" class="proj-link">README ↗</a></div>
-<div class="proj-overlay"><div class="proj-overlay-title">// 핵심 성과</div><ul class="proj-overlay-points"><li>docs/ 28개 문서 전부 MCP로 자동 작성</li><li>CHANGELOG v47 — 전 스텝 이력 추적</li></ul><div class="proj-overlay-links"><a href="https://github.com/kihyunqa/qa-portfolio/blob/main/README.md" target="_blank" class="proj-overlay-link">README ↗</a></div></div>
+<div class="proj-overlay"><div class="proj-overlay-title">// 핵심 성과</div><ul class="proj-overlay-points"><li>docs/ 28개 문서 전부 MCP로 자동 작성</li><li>CHANGELOG v48 — 전 스텝 이력 추적</li></ul><div class="proj-overlay-links"><a href="https://github.com/kihyunqa/qa-portfolio/blob/main/README.md" target="_blank" class="proj-overlay-link">README ↗</a></div></div>
 </div>
 
 <div class="proj-card reveal">
@@ -819,6 +822,7 @@ Jira 연동 완료
   <div class="sec-line"></div>
   <span class="sec-stat-badge"><span class="ssb-num">7</span>스텝 파이프라인</span>
 </div>
+<p class="sec-desc reveal">기능 명세 입력 한 번으로 TC 생성부터 Notion 문서화, Slack 알림, Jira 이슈 연결까지 7단계가 순차 실행됩니다.</p>
 <div class="diagram-wrap reveal">
 <div><div class="diag-section-label">TRIGGER — 입력</div><div class="diagram-row"><div class="diag-node"><div class="diag-box done">기능 명세 입력</div><div class="diag-label">자연어 명령</div></div><div class="diag-arrow">→</div><div class="diag-node"><div class="diag-box done">Claude 수신</div><div class="diag-label">Claude Desktop</div></div><div class="diag-arrow">→</div><div class="diag-node"><div class="diag-box done">MCP 라우팅</div><div class="diag-label">5개 서버 연결</div></div></div></div>
 <div style="text-align:center"><div class="diag-arrow-down">↓</div></div>
@@ -835,6 +839,7 @@ Jira 연동 완료
   <div class="sec-line"></div>
   <span class="sec-stat-badge ssb-green"><span class="ssb-num">2</span>PHASE 완료</span>
 </div>
+<p style="font-size:14px;color:var(--muted);line-height:1.8;max-width:580px;margin-bottom:40px" class="reveal">실제 연동 완료된 5개 MCP + Jira를 기반으로 더 많은 연동을 확장해 나갑니다.</p>
 <div class="roadmap-grid reveal">
 <div class="roadmap-card done"><div class="rm-num">PHASE 1 · 완료</div><div class="rm-icon">✅</div><div class="rm-title">Core 5 MCP 연동</div><div class="rm-desc">filesystem · playwright · github · notion · slack 실제 연동 완료. TC 145건+ · Playwright 12 spec · GitHub Actions 2개 운영 중.</div></div>
 <div class="roadmap-card done"><div class="rm-num">PHASE 2 · 완료</div><div class="rm-icon">✅</div><div class="rm-title">Ticketing 연동</div><div class="rm-desc">Jira + GitHub for Atlassian 연동 완료. FULL ACCESS 권한. 커밋 메시지 기반 이슈 자동 연결.</div></div>
@@ -917,6 +922,7 @@ Jira 연동 완료
   <div class="sec-line"></div>
   <span class="sec-stat-badge"><span class="ssb-num">6.9</span>yr 경력</span>
 </div>
+<p class="sec-desc reveal">삼성전자 파트너사 4.3년(IoT·AI·모바일앱), IMS Mobility 2년(Cypress E2E·결제 QA), 두플 QA Part Leader — 각 항목을 클릭하면 상세 업무를 확인할 수 있습니다.</p>
 <div class="timeline reveal">
 <div class="tl-item" id="tlDuple">
 <div class="tl-dot"></div>
@@ -982,6 +988,7 @@ Jira 연동 완료
   <div class="sec-line"></div>
   <span class="sec-stat-badge"><span class="ssb-num">20</span>개 스킬</span>
 </div>
+<p class="sec-desc reveal">6.9년 현장 경험 기반의 QA 스킬과 Claude MCP 자동화 역량. 각 항목에 마우스를 올리면 실제 적용 이력을 확인할 수 있습니다.</p>
 <div class="radar-wrap reveal" id="radarWrap">
   <div class="radar-svg-container">
     <div class="radar-title">// QA SKILL RADAR</div>
@@ -1025,7 +1032,7 @@ Jira 연동 완료
 <div class="sk-item" data-tip-title="TC 결과 정리" data-tip-body="145건+ TC · 카테고리별 분류" data-tip-tags="145건+|카테고리 분류|Notion 기록"><span class="sk-name">TC 결과 정리</span><div class="sk-bar-w"><div class="sk-bar" style="width:88%"></div></div></div>
 <div class="sk-item" data-tip-title="README / 가이드 작성" data-tip-body="docs 28개 · mcp-setup-guide" data-tip-tags="docs 28개|가이드|프로세스 정의"><span class="sk-name">README / 가이드 작성</span><div class="sk-bar-w"><div class="sk-bar" style="width:85%"></div></div></div>
 <div class="sk-item" data-tip-title="QA 프로세스 정의" data-tip-body="릴리즈·회귀·선행 검토 프로세스 수립" data-tip-tags="릴리즈 QA|회귀 테스트|브랜치 전략"><span class="sk-name">QA 프로세스 정의</span><div class="sk-bar-w"><div class="sk-bar" style="width:82%"></div></div></div>
-<div class="sk-item" data-tip-title="GitHub 레포 구조화" data-tip-body="80개+ 파일 · CHANGELOG v47" data-tip-tags="80개+ 파일|CHANGELOG|레포 설계"><span class="sk-name">GitHub 레포 구조화</span><div class="sk-bar-w"><div class="sk-bar" style="width:85%"></div></div></div>
+<div class="sk-item" data-tip-title="GitHub 레포 구조화" data-tip-body="80개+ 파일 · CHANGELOG v48" data-tip-tags="80개+ 파일|CHANGELOG|레포 설계"><span class="sk-name">GitHub 레포 구조화</span><div class="sk-bar-w"><div class="sk-bar" style="width:85%"></div></div></div>
 </div>
 </div>
 </div>
@@ -1073,13 +1080,12 @@ window.addEventListener('scroll',()=>{
   requestAnimationFrame(()=>{
     const s=document.documentElement;
     const pct=s.scrollTop/(s.scrollHeight-s.clientHeight);
-    /* 스크롤 진행 바: 위치에 따라 보라-파랑 그라디언트 변화 */
-    const r=Math.round(124+44*pct); // 168→212 (r)
-    const g=Math.round(85-85*pct);  // 85→0   (g)
-    const b=Math.round(247-47*pct); // 247→200 (b)
-    const r2=Math.round(124+56*pct);// 124→180
-    const g2=Math.round(58-58*pct); // 58→0
-    const b2=Math.round(237-37*pct);// 237→200
+    const r=Math.round(124+44*pct);
+    const g=Math.round(85-85*pct);
+    const b=Math.round(247-47*pct);
+    const r2=Math.round(124+56*pct);
+    const g2=Math.round(58-58*pct);
+    const b2=Math.round(237-37*pct);
     document.getElementById('scrollBar').style.cssText=`width:${pct*100}%;background:linear-gradient(90deg,rgb(${r2},${g2},${b2}),rgb(${r},${g},${b}))`;
     updateDotNav();scrollTick=false;
   });
