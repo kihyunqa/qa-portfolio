@@ -1,5 +1,23 @@
 # CHANGELOG
 
+## v47.0.0 — 2026-04-22
+
+### STEP 135 완료 — Jira proof 카드 추가 + 스크롤 바 색상 동적 변화
+
+#### 작업 내용
+
+| 항목 | 변경 내용 | 상태 |
+|------|-----------|------|
+| Jira proof 카드 추가 | proof 섹션에 5번째 카드(전체 폭) 추가 — jira-board.png 실제 스크린샷 포함 | ✅ |
+| `.proof-card-full` CSS | `grid-column: 1/-1` — 전체 폭 레이아웃, 모바일에서는 auto | ✅ |
+| `.proof-screenshot-jira` CSS | Jira 카드 스크린샷 높이 200px (기본 140px보다 크게) | ✅ |
+| proof 섹션 배지 | `5개 실제 확인`으로 업데이트 | ✅ |
+| 스크롤 진행 바 색상 동적 변화 | 스크롤 위치에 따라 보라→파랑 방향으로 자연스럽게 그라디언트 변화 | ✅ |
+| JS 스크롤 바 | `scrollBar.style.cssText`로 background 즉시 반영 (CSS transition 없음) | ✅ |
+| 불필요 애니메이션 | 없음 · requestAnimationFrame 기반 스로틀링만 사용 | ✅ |
+
+---
+
 ## v46.0.0 — 2026-04-22
 
 ### STEP 134 완료 — TC stat bar 실시간 건수 동기화 + 실제 증거 섹션 스크린샷 추가
@@ -20,20 +38,6 @@
 ## v45.0.0 — 2026-04-21
 
 ### STEP 133 완료 — TC 섹션 실시간 검색 필터 추가
-
-#### 작업 내용
-
-| 항목 | 변경 내용 | 상태 |
-|------|-----------|------|
-| CSS `.tc-search-wrap` | flex 컨테이너 · input + 버튼 + 카운트 | ✅ |
-| CSS `.tc-search-input` | 모노 폰트 · bg3 배경 · purple focus 테두리 | ✅ |
-| CSS `.tc-search-clear` | 초기화 버튼 · hover purple | ✅ |
-| CSS `.tc-search-count` | 검색 결과 건수 표시 | ✅ |
-| HTML 검색 input | `tcSearchInput` + `tcSearchClear` + `tcSearchCount` | ✅ |
-| JS `applySearch()` | TC-ID · 제목 · 기대결과 실시간 필터 | ✅ |
-| JS filter 연동 | 기존 필터 버튼(전체/해피패스/네거티브/엣지케이스)과 검색 AND 조합 | ✅ |
-| JS detail row 연동 | 검색 결과에서 숨겨진 행은 expand detail도 자동 hidden | ✅ |
-| 불필요 애니메이션 | 없음 · 순수 display:none 토글만 사용 | ✅ |
 
 ---
 
