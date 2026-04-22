@@ -13,10 +13,13 @@
 
 ---
 
-## 🏁 현재 상태 (2026-04-22) — STEP 135 완료
+## 🏁 현재 상태 (2026-04-22) — STEP 136 완료 (Claude.ai 웹 세션)
 
 > **중요**: Claude.ai 웹 채팅으로도 작업 가능. GitHub MCP가 없는 경우에도
 > `github:get_file_contents` + `github:push_files` 툴을 직접 호출해서 진행.
+>
+> **주의**: index.html은 매번 get_file_contents로 최신 SHA를 확인 후 교체할 것.
+> create_or_update_file은 SHA 불일치 시 실패함 — 반드시 직전 SHA 사용.
 
 ---
 
@@ -33,50 +36,52 @@
 | TC 건수 | **145건+** | ✅ |
 | CHANGELOG | **v47** | ✅ |
 | Jira 연동 | **완료** | ✅ FULL ACCESS |
-| index.html | **최신** | ✅ STEP 135 반영 |
-| dot-nav | **완전 수정** | ✅ STEP 107 |
-| breadcrumb | **추가 완료** | ✅ STEP 109 |
-| 레이더 차트 | **추가 완료** | ✅ STEP 111 |
-| Hero 타이핑 효과 | **추가 완료** | ✅ STEP 113 |
-| TC 필터 버튼 | **복원 완료** | ✅ STEP 113 |
-| 커밋 히스토리 카드 | **추가 완료** | ✅ STEP 115 |
-| Hero fade-in | **추가 완료** | ✅ STEP 132 |
-| TC 섹션 행 expand | **20개 행 클릭 상세** | ✅ STEP 131 |
-| TC 실시간 검색 | **TC-ID/제목/기대결과 필터** | ✅ STEP 133 |
-| TC stat bar 동기화 | **필터/검색 시 실시간 건수 업데이트** | ✅ STEP 134 |
-| 실제 스크린샷 표시 | **proof 카드 4개(+Jira 전체폭)에 실제 이미지** | ✅ STEP 135 |
-| Jira proof 카드 | **전체 폭 카드 + jira-board.png** | ✅ STEP 135 |
-| 스크롤 바 색상 | **스크롤 위치에 따라 보라→파랑 동적 변화** | ✅ STEP 135 |
+| index.html | **최신** | ✅ STEP 136 반영 |
+| dot-nav | **완전 수정** | ✅ |
+| breadcrumb | **추가 완료** | ✅ |
+| 레이더 차트 | **추가 완료** | ✅ |
+| Hero 타이핑 효과 | **추가 완료** | ✅ |
+| TC 필터 버튼 | **복원 완료** | ✅ |
+| 커밋 히스토리 카드 | **추가 완료** | ✅ |
+| Hero fade-in | **추가 완료** | ✅ |
+| TC 섹션 행 expand | **20개 행 클릭 상세** | ✅ |
+| TC 실시간 검색 | **TC-ID/제목/기대결과 필터** | ✅ |
+| TC stat bar 동기화 | **필터/검색 시 실시간 건수 업데이트** | ✅ |
+| 실제 스크린샷 표시 | **proof 카드 4개(+Jira 전체폭)에 실제 이미지** | ✅ |
+| Jira proof 카드 | **전체 폭 카드 + jira-board.png** | ✅ |
+| 스크롤 바 색상 | **스크롤 위치에 따라 보라→파랑 동적 변화** | ✅ |
+| proof 섹션 배지 | **5개 실제 확인** | ✅ STEP 136 |
+| PROJECT 08 오버레이 | **CHANGELOG v47 표기** | ✅ STEP 136 |
 
 ---
 
 ## 📌 현재 SHA (필수 확인)
 
-> ⚠️ 아래 SHA는 이 커밋 시점 기준. 작업 전 항상 `github:get_file_contents`로 최신 SHA 재확인할 것.
+> ⚠️ 아래 SHA는 참고용. 작업 전 항상 `github:get_file_contents`로 최신 SHA 재확인할 것.
 
 | 파일 | SHA (참고용) |
 |------|-----|
-| index.html | STEP 135 커밋 후 SHA — get_file_contents로 확인 |
-| CHANGELOG.md | STEP 135 커밋 후 SHA — get_file_contents로 확인 |
+| index.html | `0b60877cd63beb0a1094dd1207ba0f36ffa6b05d` — 작업 전 재확인 필수 |
+| CHANGELOG.md | `4b60163e9d15ba00b078356420759516db136ff5` (v47) |
 | NEXT_STEPS.md | 이 커밋 후 SHA — get_file_contents로 확인 |
 
 ---
 
 ## 🎯 다음 Claude가 해야 할 포트폴리오 업그레이드 (우선순위 순)
 
-### 🟡 우선순위 1 — Hero 섹션 개선
+### 🟡 우선순위 1 — CHANGELOG v48 업데이트
+- v47 이후 STEP 136 (proof 배지 5개 확인 + PROJECT 08 v47 표기) 기록
+- CHANGELOG.md SHA: `4b60163e9d15ba00b078356420759516db136ff5`
+
+### 🟡 우선순위 2 — Hero 섹션 모바일 최적화 검토
 - 현재 Hero 오른쪽 stat 카드 4개가 desktop에만 보임 (모바일 hidden)
 - 모바일에서도 간결하게 볼 수 있도록 hero-proof-item(체크박스 배지) 아래에 수치 1줄 추가 검토
 - 단, 현재도 hero-proof 배지가 있으므로 중복이면 건너뜀
 
-### 🟡 우선순위 2 — 섹션 구성 최적화
-- 현재 proof 섹션 배지: `5개 실제 확인` (html 내 sec-stat-badge 수동 업데이트 필요)
-- 코드 내 sec-stat-badge가 `4개 실제 확인`으로 되어 있다면 `5개 실제 확인`으로 수정
-- index.html 내에서 `sec-n 02` 섹션의 sec-stat-badge 확인 및 수정
-
-### 🟡 우선순위 3 — CHANGELOG 업데이트 (매 스텝 필수)
-- 작업마다 CHANGELOG.md에 v48+ 추가 필수
-- 형식: `## v48.0.0 — YYYY-MM-DD` + 테이블 형태 변경 내역
+### 🟡 우선순위 3 — 섹션 설명 텍스트 품질 개선
+- 각 섹션의 sec-head 아래 설명 문구가 없거나 부실한 섹션 확인
+- 채용담당자가 읽기 좋은 간결한 한 줄 설명 추가 (없는 경우만)
+- **절대 허구 추가 금지** — 실제 경력/수치 기반만
 
 ---
 
@@ -91,7 +96,7 @@
 7. **불필요한 애니메이션 절대 추가 금지** — CPU 부담 주는 요소 금지
 8. **허구 금지** — 실제 경력/수치 기반만, 지어내지 말 것
 9. **screenshots/ 폴더 이미지 사용 시** — 실제 파일 존재 여부 먼저 확인
-10. **index.html은 파일 전체를 통째로 교체** — push_files 사용 권장
+10. **index.html은 파일 전체를 통째로 교체** — create_or_update_file 사용, SHA 반드시 직전 get_file_contents 결과 기준
 
 ---
 
@@ -121,6 +126,6 @@
 
 ---
 
-*최종 업데이트: 2026-04-22 · STEP 135 완료*
-*Jira proof 카드(jira-board.png) + 스크롤 바 색상 동적 변화 구현 완료.*
-*다음: proof 섹션 배지 `5개` 확인/수정 또는 Hero 섹션 모바일 최적화 검토*
+*최종 업데이트: 2026-04-22 · STEP 136 완료 (Claude.ai 웹 세션)*
+*현황 점검: proof 배지 5개 확인 완료, PROJECT 08 v47 표기 확인 완료.*
+*다음: CHANGELOG v48 업데이트 (STEP 136 기록) 또는 Hero 모바일 최적화 검토*
