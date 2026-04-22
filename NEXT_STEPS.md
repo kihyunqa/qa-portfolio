@@ -13,7 +13,10 @@
 
 ---
 
-## 🏁 현재 상태 (2026-04-22) — STEP 134 완료
+## 🏁 현재 상태 (2026-04-22) — STEP 134 완료 · 인수인계 재확인
+
+> **중요**: Claude.ai 웹 채팅으로도 작업 가능. GitHub MCP가 없는 경우에도
+> `github:get_file_contents` + `github:create_or_update_file` 툴을 직접 호출해서 진행.
 
 ---
 
@@ -40,58 +43,54 @@
 | Hero fade-in | **추가 완료** | ✅ STEP 132 |
 | TC 섹션 행 expand | **20개 행 클릭 상세** | ✅ STEP 131 |
 | TC 실시간 검색 | **TC-ID/제목/기대결과 필터** | ✅ STEP 133 |
-| **TC stat bar 동기화** | **필터/검색 시 실시간 건수 업데이트** | ✅ **STEP 134** |
-| **실제 스크린샷 표시** | **proof 카드 3개에 실제 이미지 추가** | ✅ **STEP 134** |
+| TC stat bar 동기화 | **필터/검색 시 실시간 건수 업데이트** | ✅ STEP 134 |
+| 실제 스크린샷 표시 | **proof 카드 3개에 실제 이미지 추가** | ✅ STEP 134 |
 
 ---
 
-## ✅ STEP 134에서 변경한 내용
+## 📌 현재 SHA (필수 확인)
 
-### index.html 변경
+| 파일 | SHA |
+|------|-----|
+| index.html | `14b9768145b2600bbc60cf2f83f988505dd2d57e` |
+| CHANGELOG.md | `10e6443b61cbe89b5482630bfe4714b6df6a5e62` |
+| NEXT_STEPS.md | 이 커밋 후 새 SHA — get_file_contents로 확인 |
 
-| 변경 위치 | 내용 |
-|-----------|------|
-| CSS `.proof-screenshot` | img 래퍼 · 높이 140px · lazy loading | 
-| HTML proof-card (Notion/GitHub/Slack) | 실제 screenshots/ 이미지 추가 |
-| HTML PROJECT 09/10 overlay | 스크린샷 링크 추가 |
-| JS `updateTcStatBar()` | TC 행 display 확인 → 건수 재계산 |
-| JS `applySearch()` | updateTcStatBar() 호출 추가 |
-| JS 필터 버튼 | applySearch() 통해 stat bar 자동 업데이트 |
-
-### 새 index.html SHA
-- **index.html**: `14b9768145b2600bbc60cf2f83f988505dd2d57e` (STEP 134)
+> ⚠️ 작업 전 항상 `github:get_file_contents`로 최신 SHA 다시 확인할 것
 
 ---
 
 ## 🎯 다음 Claude가 해야 할 포트폴리오 업그레이드 (우선순위 순)
 
-### 🟡 우선순위 1 — Jira 스크린샷 proof 카드에 추가
-- 현재 proof 카드 4개 중 playwright 카드(3번째)에만 스크린샷이 없음
-- screenshots/jira-board.png 가 있으므로 이것을 proof 카드 내 GitHub MCP 카드나 playwright 카드에 활용 가능
-- 단, Jira 카드는 proof 섹션에 별도 없으므로 기존 카드를 Jira 증거로 교체하거나 playwright 카드 아래에 Jira 스크린샷 추가 검토
+### 🟡 우선순위 1 — playwright proof 카드에 스크린샷 추가
+- 현재 proof 카드 4개 중 playwright 카드(3번째)에만 스크린샷 없음
+- screenshots/ 폴더 파일 목록 먼저 확인 (get_file_contents로 디렉토리 조회)
+- **실제 파일이 존재하는 것만 사용** — 없으면 추가하지 말 것
 
 ### 🟡 우선순위 2 — 스크롤 진행 바 색상 개선
 - 현재: 단순 linear-gradient (보라색 고정)
-- 개선: 스크롤 위치에 따라 색상이 변하는 방식 (JS로만, 애니메이션 없음)
-- 구현: `scrollBar.style.background = gradient` 동적 변경
+- 개선: 스크롤 위치에 따라 색상이 자연스럽게 변하는 방식
+- 구현: JS scroll 이벤트에서 `scrollBar.style.background` 동적 변경 (애니메이션 없음)
+- CSS transition 없이 즉시 반영
 
-### 🟡 우선순위 3 — CHANGELOG 업데이트는 항상 함께
-- 매 스텝마다 CHANGELOG.md에 변경 내역 기록 필수
+### 🟡 우선순위 3 — CHANGELOG 업데이트 (매 스텝 필수)
+- 작업마다 CHANGELOG.md에 v47+ 추가 필수
+- 형식: `## v47.0.0 — YYYY-MM-DD` + 테이블 형태 변경 내역
 
 ---
 
-## ⚠️ 작업 규칙
+## ⚠️ 작업 규칙 (필독)
 
 1. **workflows 파일** → MCP 수정 불가, GitHub 웹에서만
 2. **index.html** → 수정 시 반드시 get_file_contents로 현재 SHA 확인 후 전체 교체
 3. **숫자 부풀리기 금지** — 실제 확인 후 기재
 4. **새 파일 무분별 생성 금지** — 기존 파일 업데이트 우선
-5. **NEXT_STEPS.md 업데이트 필수** — SHA 먼저 확인
+5. **NEXT_STEPS.md 업데이트 필수** — 매 세션 마지막에 반드시
 6. **사용자는 포트폴리오 업그레이드만 원함** — 면접준비/LinkedIn 제안 금지
 7. **불필요한 애니메이션 절대 추가 금지** — CPU 부담 주는 요소 금지
-8. **index.html 현재 SHA**: `14b9768145b2600bbc60cf2f83f988505dd2d57e` (STEP 134)
-9. **CHANGELOG.md 현재 SHA**: 이번 커밋 후 새 SHA — get_file_contents로 확인
-10. **NEXT_STEPS.md 현재 SHA**: 이번 커밋 후 새 SHA — get_file_contents로 확인
+8. **허구 금지** — 실제 경력/수치 기반만, 지어내지 말 것
+9. **screenshots/ 폴더 이미지 사용 시** — 실제 파일 존재 여부 먼저 확인
+10. **index.html은 파일 전체를 통째로 교체** — push_files 또는 create_or_update_file 사용
 
 ---
 
@@ -121,5 +120,6 @@
 
 ---
 
-*최종 업데이트: 2026-04-22 · STEP 134 완료*
-*TC stat bar 실시간 동기화 + 실제 증거 카드에 스크린샷 이미지 추가 (Notion/GitHub/Slack). 다음: Jira 스크린샷 추가 또는 스크롤 바 색상 개선*
+*최종 업데이트: 2026-04-22 · STEP 134 확인 완료 · Claude.ai 웹 채팅으로 인수인계 재확인*  
+*이전 모든 항목(breadcrumb, 레이더차트, TC 검색, stat bar, 스크린샷)이 이미 구현 완료됨을 재확인.*  
+*다음: playwright proof 카드 스크린샷 추가 (실제 파일 존재 여부 선확인 필수) 또는 스크롤 바 색상 개선*
