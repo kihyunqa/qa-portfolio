@@ -407,6 +407,106 @@ footer{padding:16px 20px;flex-direction:column;gap:4px}
 .tc-search-input{width:100%}
 .sec-desc{margin-top:-16px}
 }
+
+/* =============================================
+   PRINT STYLES — @media print
+   인쇄/PDF 저장 시 깔끔한 흑백 레이아웃
+   ============================================= */
+@media print{
+  /* 기본 색상 리셋 */
+  :root{
+    --bg:#ffffff;--bg2:#f8f8f8;--bg3:#f2f2f2;
+    --purple:#5b21b6;--purple2:#4c1d95;--purple3:#7c3aed;
+    --p-border:#d4b8f0;--p-muted:#ede8f8;
+    --text:#111111;--muted:#444444;--dim:#888888;
+    --green:#065f46;--wip:#92400e;
+  }
+
+  /* 페이지 설정 */
+  @page{margin:18mm 16mm;size:A4}
+
+  /* 기본 리셋 */
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  body{background:#fff!important;color:#111!important;font-size:11pt;line-height:1.6}
+
+  /* 고정 UI 요소 숨김 */
+  nav,.scroll-bar,#dot-nav,#breadcrumb,.mobile-menu,
+  .ham,.sk-tooltip,.hero-stats,.hero-stat-tip,
+  .tc-search-wrap,.tc-filter,.tc-row-hint,
+  .commit-bar-area,.commit-loading,
+  .proj-overlay,.hero-cta,
+  .btn-p,.btn-s{display:none!important}
+
+  /* 섹션 여백 축소 */
+  section{padding:24pt 0!important;break-inside:avoid}
+  .hero{min-height:auto!important;padding:32pt 0 20pt!important}
+
+  /* 히어로 이름 크기 조정 */
+  h1.hero-name{font-size:48pt!important}
+
+  /* 그리드 레이아웃 단일 컬럼으로 */
+  .stats-grid,.projects-grid,.roadmap-grid{grid-template-columns:repeat(2,1fr)!important}
+  .mcp-grid{grid-template-columns:repeat(3,1fr)!important}
+  .skills-wrap{grid-template-columns:1fr!important;gap:16pt!important}
+  .mcp-top{grid-template-columns:1fr!important;gap:16pt!important}
+  .proof-grid{grid-template-columns:1fr!important}
+  .radar-wrap{grid-template-columns:1fr!important;gap:16pt!important}
+  .tc-detail-content{grid-template-columns:1fr 1fr!important}
+
+  /* 카드 배경/보더 정리 */
+  .proj-card,.proof-card,.roadmap-card,.mcp-card,
+  .stat-card,.commit-stat,.tl-detail-inner{
+    background:#f8f8f8!important;border:1px solid #ccc!important
+  }
+
+  /* 타임라인 — 상세 내용 펼침 */
+  .tl-detail{max-height:none!important;opacity:1!important;margin-top:10pt!important}
+  .tl-expand-icon{display:none!important}
+
+  /* 스크린샷 이미지 숨김 (인쇄 불필요) */
+  .proof-screenshot{display:none!important}
+
+  /* 링크 URL 표시 */
+  a[href]::after{content:" (" attr(href) ")";font-size:8pt;color:#666;word-break:break-all}
+  .proj-overlay-link::after,.tc-link::after,.proof-link::after,
+  .c-link::after,.proj-link::after,.nav-links a::after{content:none!important}
+
+  /* 터미널 배경 조정 */
+  .terminal,.branch-vis{background:#f2f2f2!important;border:1px solid #bbb!important}
+  .t-bar{background:#e8e8e8!important}
+  .t-prompt{color:#5b21b6!important}
+  .t-cmd{color:#111!important}
+  .t-out{color:#444!important}
+  .t-ok{color:#065f46!important}
+  .t-comment{color:#888!important}
+  .t-cursor{display:none!important}
+
+  /* 페이지 나누기 제어 */
+  .timeline-sec,.skills-sec,.contact-sec{break-before:page}
+  .tl-item{break-inside:avoid}
+  .proj-card,.roadmap-card,.proof-card{break-inside:avoid}
+
+  /* reveal 클래스 강제 표시 */
+  .reveal{opacity:1!important}
+  .hero-fade-in{opacity:1!important}
+
+  /* 푸터 정리 */
+  footer{border-top:1px solid #ccc!important;padding:12pt 0 0!important}
+  footer p{color:#666!important;font-size:8pt!important}
+
+  /* 섹션 헤더 라인 */
+  .sec-line{background:#ccc!important}
+  .sec-t{color:#111!important}
+  .sec-n{color:#5b21b6!important}
+
+  /* 배지 */
+  .badge-done,.badge-live{border:1px solid #999!important}
+  .hero-proof-item{border:1px solid #999!important;background:#f0ebff!important}
+
+  /* 스킬 바 */
+  .sk-bar-w{background:#e0d6f5!important}
+  .sk-name{color:#111!important}
+}
 </style>
 </head>
 <body>
@@ -790,7 +890,7 @@ Jira 연동 완료
 <div class="proj-flow"><span class="proj-flow-step">레포 설계</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">README 작성</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">QA 리포트</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">CHANGELOG</span></div>
 <div class="proj-tags"><span class="proj-tag proj-tag-p">github MCP</span><span class="proj-tag proj-tag-p">filesystem MCP</span></div>
 <div class="proj-links"><a href="https://github.com/kihyunqa/qa-portfolio/blob/main/README.md" target="_blank" class="proj-link">README ↗</a></div>
-<div class="proj-overlay"><div class="proj-overlay-title">// 핵심 성과</div><ul class="proj-overlay-points"><li>docs/ 28개 문서 전부 MCP로 자동 작성</li><li>CHANGELOG v50 — 전 스텝 이력 추적</li></ul><div class="proj-overlay-links"><a href="https://github.com/kihyunqa/qa-portfolio/blob/main/README.md" target="_blank" class="proj-overlay-link">README ↗</a></div></div>
+<div class="proj-overlay"><div class="proj-overlay-title">// 핵심 성과</div><ul class="proj-overlay-points"><li>docs/ 28개 문서 전부 MCP로 자동 작성</li><li>CHANGELOG v51 — 전 스텝 이력 추적</li></ul><div class="proj-overlay-links"><a href="https://github.com/kihyunqa/qa-portfolio/blob/main/README.md" target="_blank" class="proj-overlay-link">README ↗</a></div></div>
 </div>
 
 <div class="proj-card reveal">
@@ -1033,7 +1133,7 @@ Jira 연동 완료
 <div class="sk-item" data-tip-title="TC 결과 정리" data-tip-body="145건+ TC · 카테고리별 분류" data-tip-tags="145건+|카테고리 분류|Notion 기록"><span class="sk-name">TC 결과 정리</span><div class="sk-bar-w"><div class="sk-bar" style="width:88%"></div></div></div>
 <div class="sk-item" data-tip-title="README / 가이드 작성" data-tip-body="docs 28개 · mcp-setup-guide" data-tip-tags="docs 28개|가이드|프로세스 정의"><span class="sk-name">README / 가이드 작성</span><div class="sk-bar-w"><div class="sk-bar" style="width:85%"></div></div></div>
 <div class="sk-item" data-tip-title="QA 프로세스 정의" data-tip-body="릴리즈·회귀·선행 검토 프로세스 수립" data-tip-tags="릴리즈 QA|회귀 테스트|브랜치 전략"><span class="sk-name">QA 프로세스 정의</span><div class="sk-bar-w"><div class="sk-bar" style="width:82%"></div></div></div>
-<div class="sk-item" data-tip-title="GitHub 레포 구조화" data-tip-body="80개+ 파일 · CHANGELOG v50" data-tip-tags="80개+ 파일|CHANGELOG|레포 설계"><span class="sk-name">GitHub 레포 구조화</span><div class="sk-bar-w"><div class="sk-bar" style="width:85%"></div></div></div>
+<div class="sk-item" data-tip-title="GitHub 레포 구조화" data-tip-body="80개+ 파일 · CHANGELOG v51" data-tip-tags="80개+ 파일|CHANGELOG|레포 설계"><span class="sk-name">GitHub 레포 구조화</span><div class="sk-bar-w"><div class="sk-bar" style="width:85%"></div></div></div>
 </div>
 </div>
 </div>
