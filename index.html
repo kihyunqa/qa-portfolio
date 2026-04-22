@@ -147,6 +147,12 @@ section{padding:80px 56px;position:relative;z-index:2}
 .proof-link{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:10px;color:var(--purple);text-decoration:none;border:1px solid var(--p-border);padding:5px 10px;margin-top:10px;letter-spacing:.04em}
 .proof-link:hover{background:var(--p-muted)}
 
+/* PROOF SCREENSHOT */
+.proof-screenshot{margin-top:14px;border:1px solid var(--p-border);overflow:hidden;background:var(--bg3)}
+.proof-screenshot img{width:100%;height:140px;object-fit:cover;object-position:top;display:block;opacity:.85}
+.proof-screenshot img:hover{opacity:1}
+.proof-screenshot-caption{font-family:var(--mono);font-size:9px;color:var(--dim);padding:5px 8px;letter-spacing:.06em;border-top:1px solid var(--p-border)}
+
 /* COMMIT CARD */
 .commit-card{background:var(--bg2);border:1px solid var(--p-border);padding:28px;margin-bottom:32px}
 .commit-card-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:12px}
@@ -281,6 +287,13 @@ section{padding:80px 56px;position:relative;z-index:2}
 
 /* TC */
 .tc-intro{font-size:14px;color:var(--muted);line-height:1.75;max-width:560px;margin-bottom:32px}
+.tc-search-wrap{display:flex;align-items:center;gap:8px;margin-bottom:12px;flex-wrap:wrap}
+.tc-search-input{font-family:var(--mono);font-size:11px;background:var(--bg3);border:1px solid var(--p-border);color:var(--text);padding:6px 12px;width:280px;letter-spacing:.04em;outline:none}
+.tc-search-input:focus{border-color:var(--purple)}
+.tc-search-input::placeholder{color:var(--dim)}
+.tc-search-clear{font-family:var(--mono);font-size:10px;background:transparent;border:1px solid var(--p-border);color:var(--muted);padding:6px 10px;cursor:pointer;letter-spacing:.06em}
+.tc-search-clear:hover{border-color:var(--purple);color:var(--purple)}
+.tc-search-count{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:.06em}
 .tc-filter{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
 .tc-filter-btn{font-family:var(--mono);font-size:10px;padding:5px 14px;border:1px solid var(--p-border);color:var(--muted);background:transparent;cursor:pointer;letter-spacing:.08em}
 .tc-filter-btn:hover{border-color:var(--purple);color:var(--purple)}
@@ -391,6 +404,7 @@ footer{padding:16px 20px;flex-direction:column;gap:4px}
 .sk-tooltip{display:none}
 .proj-overlay{display:none}
 .tc-detail-content{grid-template-columns:1fr}
+.tc-search-input{width:100%}
 }
 </style>
 </head>
@@ -598,6 +612,12 @@ Jira 연동 완료
 <div class="proof-title">Notion MCP 실제 연동 <span class="badge badge-live">LIVE</span></div>
 <div class="proof-desc">Claude Desktop에서 notion MCP 명령 한 번으로 Notion에 "로그인 기능 테스트케이스" 페이지가 자동 생성됐습니다.</div>
 <div class="proof-detail">✓ notion 통합 사용함<br>✓ 페이지 자동 생성 확인<br>✓ 해피패스·네거티브·엣지케이스 분류 기록<br>✓ 코드 0줄 · 대화 1번 · Notion 실제 반영</div>
+<div class="proof-screenshot">
+  <a href="https://github.com/kihyunqa/qa-portfolio/blob/main/screenshots/notion-tc-page.png" target="_blank">
+    <img src="https://raw.githubusercontent.com/kihyunqa/qa-portfolio/main/screenshots/notion-tc-page.png" alt="Notion TC 페이지 실제 스크린샷" loading="lazy">
+  </a>
+  <div class="proof-screenshot-caption">// ACTUAL SCREENSHOT · notion-tc-page.png</div>
+</div>
 <a href="https://github.com/kihyunqa/qa-portfolio/blob/main/testcase_mcp-integration.md" target="_blank" class="proof-link">MCP TC 파일 보기 ↗</a>
 </div>
 <div class="proof-card">
@@ -605,6 +625,12 @@ Jira 연동 완료
 <div class="proof-title">GitHub MCP 실제 커밋 <span class="badge badge-live">LIVE</span></div>
 <div class="proof-desc">이 포트폴리오 페이지 자체가 github MCP로 커밋됐습니다. 모든 파일 전부 대화로만 만들어졌습니다.</div>
 <div class="proof-detail">✓ kihyunqa/qa-portfolio 레포 실제 운영 중<br>✓ 파일 80개+ 전부 MCP 커밋<br>✓ GitHub Pages 배포 완료<br>✓ GitHub Actions 2개 자동화 운영 중</div>
+<div class="proof-screenshot">
+  <a href="https://github.com/kihyunqa/qa-portfolio/blob/main/screenshots/claude-mcp-workflow.png" target="_blank">
+    <img src="https://raw.githubusercontent.com/kihyunqa/qa-portfolio/main/screenshots/claude-mcp-workflow.png" alt="Claude MCP 워크플로우 실제 스크린샷" loading="lazy">
+  </a>
+  <div class="proof-screenshot-caption">// ACTUAL SCREENSHOT · claude-mcp-workflow.png</div>
+</div>
 <a href="https://github.com/kihyunqa/qa-portfolio/commits/main" target="_blank" class="proof-link">실제 커밋 히스토리 ↗</a>
 </div>
 <div class="proof-card">
@@ -619,6 +645,12 @@ Jira 연동 완료
 <div class="proof-title">Slack MCP 실제 알림 <span class="badge badge-live">LIVE</span></div>
 <div class="proof-desc">slack MCP로 새-채널에 QA 완료 알림을 실제로 발송했습니다. GitHub Actions 연동으로 완전 자동 파이프라인 작동 중.</div>
 <div class="proof-detail">✓ 새-채널 claude-mcp 봇 연동 확인<br>✓ QA 완료 메시지 실제 발송 확인<br>✓ GitHub Actions → Slack 자동 알림 연결<br>✓ SLACK_BOT_TOKEN secret 설정 완료</div>
+<div class="proof-screenshot">
+  <a href="https://github.com/kihyunqa/qa-portfolio/blob/main/screenshots/slack-notification.png" target="_blank">
+    <img src="https://raw.githubusercontent.com/kihyunqa/qa-portfolio/main/screenshots/slack-notification.png" alt="Slack 알림 실제 스크린샷" loading="lazy">
+  </a>
+  <div class="proof-screenshot-caption">// ACTUAL SCREENSHOT · slack-notification.png</div>
+</div>
 <a href="https://github.com/kihyunqa/qa-portfolio/blob/main/.github/workflows/main.yml" target="_blank" class="proof-link">Actions workflow 보기 ↗</a>
 </div>
 </div>
@@ -750,7 +782,7 @@ Jira 연동 완료
 <div class="proj-desc">Notion MCP로 TC 결과물을 자동 문서화. 테스트 완료 후 Notion 페이지를 자동 생성하여 팀 전체가 QA 현황을 실시간 확인.</div>
 <div class="proj-flow"><span class="proj-flow-step">TC 결과 수집</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">Claude 분석</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">Notion 페이지 생성</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">팀 공유</span></div>
 <div class="proj-tags"><span class="proj-tag proj-tag-g">notion MCP 실제 연동</span><span class="proj-tag">TC 결과 문서화</span></div>
-<div class="proj-overlay"><div class="proj-overlay-title">// 핵심 성과</div><ul class="proj-overlay-points"><li>Notion에 TC 결과 페이지 자동 생성 확인</li><li>코드 0줄 · 대화 1번 · 팀 공유 완료</li></ul><div class="proj-overlay-links"><a href="https://github.com/kihyunqa/qa-portfolio/blob/main/testcase_mcp-integration.md" target="_blank" class="proj-overlay-link">MCP TC ↗</a></div></div>
+<div class="proj-overlay"><div class="proj-overlay-title">// 핵심 성과</div><ul class="proj-overlay-points"><li>Notion에 TC 결과 페이지 자동 생성 확인</li><li>코드 0줄 · 대화 1번 · 팀 공유 완료</li></ul><div class="proj-overlay-links"><a href="https://github.com/kihyunqa/qa-portfolio/blob/main/testcase_mcp-integration.md" target="_blank" class="proj-overlay-link">MCP TC ↗</a><a href="https://github.com/kihyunqa/qa-portfolio/blob/main/screenshots/notion-tc-page.png" target="_blank" class="proj-overlay-link">스크린샷 ↗</a></div></div>
 </div>
 
 <div class="proj-card reveal">
@@ -760,7 +792,7 @@ Jira 연동 완료
 <div class="proj-desc">Slack MCP + GitHub Actions 이중 연동. QA 완료 시 새-채널 자동 알림. TC push → Actions → Slack 완전 자동 파이프라인.</div>
 <div class="proj-flow"><span class="proj-flow-step">QA 완료</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">MCP 알림</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">GitHub Actions</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">새-채널</span></div>
 <div class="proj-tags"><span class="proj-tag proj-tag-g">slack MCP 실제 연동</span><span class="proj-tag">GitHub Actions</span></div>
-<div class="proj-overlay"><div class="proj-overlay-title">// 핵심 성과</div><ul class="proj-overlay-points"><li>새-채널 QA 완료 알림 실제 발송 확인</li><li>MCP + Actions 이중 연동으로 신뢰성 확보</li></ul><div class="proj-overlay-links"><a href="https://github.com/kihyunqa/qa-portfolio/blob/main/.github/workflows/main.yml" target="_blank" class="proj-overlay-link">Actions ↗</a></div></div>
+<div class="proj-overlay"><div class="proj-overlay-title">// 핵심 성과</div><ul class="proj-overlay-points"><li>새-채널 QA 완료 알림 실제 발송 확인</li><li>MCP + Actions 이중 연동으로 신뢰성 확보</li></ul><div class="proj-overlay-links"><a href="https://github.com/kihyunqa/qa-portfolio/blob/main/.github/workflows/main.yml" target="_blank" class="proj-overlay-link">Actions ↗</a><a href="https://github.com/kihyunqa/qa-portfolio/blob/main/screenshots/slack-notification.png" target="_blank" class="proj-overlay-link">스크린샷 ↗</a></div></div>
 </div>
 
 </div>
@@ -804,11 +836,16 @@ Jira 연동 완료
   <span class="sec-stat-badge"><span class="ssb-num">20</span>건 표시</span>
 </div>
 <p class="tc-intro reveal">Claude MCP로 자동 생성된 TC 145건+. 로그인·API·보안·성능·접근성·장바구니·검색·결제 전 카테고리 커버.</p>
-<div class="tc-stat-bar reveal">
+<div class="tc-stat-bar reveal" id="tcStatBar">
   <span style="color:var(--dim)">// TC 분류 현황</span>
-  <span class="tc-stat-item"><span class="tc-stat-dot" style="background:var(--purple)"></span>해피패스 8건</span>
-  <span class="tc-stat-item"><span class="tc-stat-dot" style="background:#f87171"></span>네거티브 7건</span>
-  <span class="tc-stat-item"><span class="tc-stat-dot" style="background:var(--wip)"></span>엣지케이스 5건</span>
+  <span class="tc-stat-item"><span class="tc-stat-dot" style="background:var(--purple)"></span><span id="statHP">해피패스 8건</span></span>
+  <span class="tc-stat-item"><span class="tc-stat-dot" style="background:#f87171"></span><span id="statNG">네거티브 7건</span></span>
+  <span class="tc-stat-item"><span class="tc-stat-dot" style="background:var(--wip)"></span><span id="statEG">엣지케이스 5건</span></span>
+</div>
+<div class="tc-search-wrap reveal" id="tcSearchWrap">
+  <input class="tc-search-input" id="tcSearchInput" type="text" placeholder="TC-ID, 테스트 제목, 기대 결과로 검색..." autocomplete="off" spellcheck="false">
+  <button class="tc-search-clear" id="tcSearchClear">초기화</button>
+  <span class="tc-search-count" id="tcSearchCount"></span>
 </div>
 <div class="tc-filter reveal" id="tcFilter">
   <button class="tc-filter-btn active" data-filter="all">전체</button>
@@ -1116,17 +1153,71 @@ function typeStep(){
 }
 setTimeout(typeStep,800);
 
+/* TC STAT BAR 업데이트 함수 */
+function updateTcStatBar(){
+  const rows=document.querySelectorAll('.tc-data-row');
+  let hp=0,ng=0,eg=0;
+  rows.forEach(row=>{
+    if(row.style.display==='none')return;
+    const t=row.dataset.type;
+    if(t==='h')hp++;
+    else if(t==='n')ng++;
+    else if(t==='e')eg++;
+  });
+  document.getElementById('statHP').textContent='해피패스 '+hp+'건';
+  document.getElementById('statNG').textContent='네거티브 '+ng+'건';
+  document.getElementById('statEG').textContent='엣지케이스 '+eg+'건';
+}
+
 /* TC FILTER */
+let currentFilter='all';
 document.querySelectorAll('.tc-filter-btn').forEach(btn=>{
   btn.addEventListener('click',()=>{
     document.querySelectorAll('.tc-filter-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');
-    const filter=btn.dataset.filter;
-    document.querySelectorAll('.tc-data-row').forEach(row=>{
-      const show=filter==='all'||row.dataset.type===filter;row.style.display=show?'':'none';
-      const dr=document.querySelector(`.tc-detail-row[data-for="${row.dataset.tcId}"]`);if(dr&&!show)dr.style.display='none';
-    });
+    currentFilter=btn.dataset.filter;
+    applySearch();
   });
 });
+
+/* TC SEARCH */
+const tcSearchInput=document.getElementById('tcSearchInput');
+const tcSearchClear=document.getElementById('tcSearchClear');
+const tcSearchCount=document.getElementById('tcSearchCount');
+
+function applySearch(){
+  const q=(tcSearchInput?tcSearchInput.value:'').trim().toLowerCase();
+  const rows=document.querySelectorAll('.tc-data-row');
+  let visible=0;
+  rows.forEach(row=>{
+    const typeMatch=currentFilter==='all'||row.dataset.type===currentFilter;
+    let textMatch=true;
+    if(q){
+      const cells=row.querySelectorAll('td');
+      const text=Array.from(cells).map(c=>c.textContent).join(' ').toLowerCase();
+      textMatch=text.includes(q);
+    }
+    const show=typeMatch&&textMatch;
+    row.style.display=show?'':'none';
+    const dr=document.querySelector(`.tc-detail-row[data-for="${row.dataset.tcId}"]`);
+    if(dr&&!show)dr.style.display='none';
+    if(show)visible++;
+  });
+  if(tcSearchCount){
+    tcSearchCount.textContent=q?`${visible}건 검색됨`:'';
+  }
+  updateTcStatBar();
+}
+
+if(tcSearchInput){
+  tcSearchInput.addEventListener('input',applySearch);
+}
+if(tcSearchClear){
+  tcSearchClear.addEventListener('click',()=>{
+    if(tcSearchInput)tcSearchInput.value='';
+    if(tcSearchCount)tcSearchCount.textContent='';
+    applySearch();
+  });
+}
 
 /* TC EXPAND */
 document.querySelectorAll('.tc-data-row').forEach(row=>{
