@@ -9,6 +9,11 @@
 <meta property="og:description" content="6년 9개월 QA + Claude MCP 실제 연동. TC 145건+. Jira 연동 완료. 코드 0줄.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://kihyunqa.github.io/qa-portfolio">
+<meta property="og:image" content="https://raw.githubusercontent.com/kihyunqa/qa-portfolio/main/screenshots/claude-mcp-workflow.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/kihyunqa/qa-portfolio/main/screenshots/claude-mcp-workflow.png">
 <link rel="canonical" href="https://kihyunqa.github.io/qa-portfolio">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&display=swap" onload="this.onload=null;this.rel='stylesheet'">
@@ -282,9 +287,7 @@ section{padding:80px 56px;position:relative;z-index:2}
 .sk-tooltip-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}
 .sk-tooltip-tag{font-size:9px;padding:1px 6px;border:1px solid var(--p-border);color:var(--purple);background:var(--p-muted)}
 
-/* =========================================
-   TC SECTION — 기존 + 설계 의도 해설 추가
-   ========================================= */
+/* TC SECTION */
 .tc-intro{font-size:14px;color:var(--muted);line-height:1.75;max-width:560px;margin-bottom:32px}
 .tc-search-wrap{display:flex;align-items:center;gap:8px;margin-bottom:12px;flex-wrap:wrap}
 .tc-search-input{font-family:var(--mono);font-size:11px;background:var(--bg3);border:1px solid var(--p-border);color:var(--text);padding:6px 12px;width:280px;letter-spacing:.04em;outline:none}
@@ -297,6 +300,7 @@ section{padding:80px 56px;position:relative;z-index:2}
 .tc-filter-btn{font-family:var(--mono);font-size:10px;padding:5px 14px;border:1px solid var(--p-border);color:var(--muted);background:transparent;cursor:pointer;letter-spacing:.08em}
 .tc-filter-btn:hover{border-color:var(--purple);color:var(--purple)}
 .tc-filter-btn.active{background:var(--purple);color:#fff;border-color:var(--purple)}
+.tc-bulk-actions{display:flex;gap:8px;margin-bottom:12px}
 .tc-stat-bar{display:flex;gap:16px;align-items:center;margin-bottom:20px;font-family:var(--mono);font-size:10px;color:var(--muted);flex-wrap:wrap}
 .tc-stat-item{display:flex;align-items:center;gap:5px}
 .tc-stat-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
@@ -324,7 +328,6 @@ section{padding:80px 56px;position:relative;z-index:2}
 .tc-detail-cell{padding:0 !important;border-bottom:1px solid rgba(168,85,247,.15) !important;background:rgba(8,6,15,0.6) !important}
 .tc-detail-inner{overflow:hidden;max-height:0;transition:max-height .3s ease}
 .tc-detail-inner.tc-detail-open{max-height:500px}
-/* 설계 의도 + 기존 3열 레이아웃 */
 .tc-detail-content{padding:14px 18px 18px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;border-top:1px solid rgba(168,85,247,.15)}
 .tc-detail-intent{padding:12px 18px;background:rgba(168,85,247,.05);border:1px solid rgba(168,85,247,.18);border-left:3px solid var(--purple);margin:0 18px 0;display:flex;flex-direction:column;gap:4px}
 .tc-detail-intent-label{font-family:var(--mono);font-size:9px;color:var(--purple);letter-spacing:.18em;margin-bottom:3px}
@@ -445,7 +448,7 @@ footer{padding:16px 20px;flex-direction:column;gap:4px}
   body{background:#fff!important;color:#111!important;font-size:11pt;line-height:1.6}
   nav,.scroll-bar,#dot-nav,#breadcrumb,.mobile-menu,
   .ham,.sk-tooltip,.hero-stats,.hero-stat-tip,
-  .tc-search-wrap,.tc-filter,.tc-row-hint,
+  .tc-search-wrap,.tc-filter,.tc-row-hint,.tc-bulk-actions,
   .commit-bar-area,.commit-loading,
   .proj-overlay,.hero-cta,
   .btn-p,.btn-s{display:none!important}
@@ -799,9 +802,7 @@ Jira 연동 완료
 </div>
 </section>
 
-<!-- =========================================================
-     TC SECTION — 설계 의도 해설 + 통계 대시보드 추가
-     ========================================================= -->
+<!-- TC SECTION -->
 <section id="tc" style="background:var(--bg2);border-top:1px solid var(--p-border)">
 <div class="sec-head reveal">
   <span class="sec-n">06</span>
@@ -871,6 +872,10 @@ Jira 연동 완료
   <button class="tc-filter-btn" data-filter="h">해피패스</button>
   <button class="tc-filter-btn" data-filter="n">네거티브</button>
   <button class="tc-filter-btn" data-filter="e">엣지케이스</button>
+</div>
+<div class="tc-bulk-actions reveal">
+  <button id="tcExpandAll" class="tc-filter-btn">▼ 전체 펼치기</button>
+  <button id="tcCollapseAll" class="tc-filter-btn">▲ 전체 접기</button>
 </div>
 <div class="tc-row-hint reveal">▼ 행을 클릭하면 <strong style="color:var(--purple)">설계 의도</strong> + 전제조건 · 테스트 스텝 · 기대 결과 상세를 확인할 수 있습니다</div>
 <div class="tc-wrap reveal">
@@ -962,7 +967,7 @@ Jira 연동 완료
 <div class="tl-year">2024.11 — 2025.02</div>
 <div class="tl-title">두플 <span class="tl-expand-icon">상세</span></div>
 <div class="tl-role">QA PART LEADER</div>
-<div class="tl-desc">QA Part Leader로 테스트 전략 수립, TC 설계, 팀 리딩 담당.</div>
+<div class="tl-desc">QA Part Leader로 테스트 전략 수립, TC 설계, 팀 리딩 담당. 스타트업 구조 변화로 3개월 후 팀 해체.</div>
 <div class="tl-detail" id="tlDupleDetail"><div class="tl-detail-inner"><ul class="tl-detail-list"><li>QA 전략 수립 — 릴리즈 사이클별 테스트 범위 정의, 우선순위 기반 TC 설계 프로세스 확립</li><li>팀 리딩 — TC 리뷰, 버그 심각도 판단 기준 공유 및 에스컬레이션 교육</li><li>프로세스 개선 — QA 게이트 기준 수립으로 릴리즈 전 P1 누락 0건 달성</li></ul><div class="tl-detail-highlight">✓ QA Part Leader 승격 · 팀 TC 커버리지 향상 · 릴리즈 게이트 기준 수립</div></div></div>
 <div class="tl-tags"><span class="tl-tag">QA 리드</span><span class="tl-tag">TC 설계</span><span class="tl-tag">팀 리딩</span></div>
 </div>
@@ -1105,7 +1110,6 @@ document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 const distObs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{
     if(e.isIntersecting){
-      const total=20;
       const hp=parseInt(document.getElementById('dashHP').textContent)||8;
       const ng=parseInt(document.getElementById('dashNG').textContent)||7;
       const eg=parseInt(document.getElementById('dashEG').textContent)||5;
@@ -1201,11 +1205,9 @@ function updateTcStatBar(){
   document.getElementById('statHP').textContent='해피패스 '+hp+'건';
   document.getElementById('statNG').textContent='네거티브 '+ng+'건';
   document.getElementById('statEG').textContent='엣지케이스 '+eg+'건';
-  /* 대시보드도 동기화 */
   document.getElementById('dashHP').textContent=hp;
   document.getElementById('dashNG').textContent=ng;
   document.getElementById('dashEG').textContent=eg;
-  /* 분포 바 재계산 */
   const mx=Math.max(hp,ng,eg,1);
   const bHP=document.getElementById('distBarHP'),bNG=document.getElementById('distBarNG'),bEG=document.getElementById('distBarEG');
   if(bHP)bHP.style.width=(hp/mx*100)+'%';
@@ -1222,7 +1224,7 @@ document.querySelectorAll('.tc-filter-btn').forEach(btn=>{
   btn.addEventListener('click',()=>{
     document.querySelectorAll('.tc-filter-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');
     currentFilter=btn.dataset.filter;
-    applySearch();
+    if(currentFilter)applySearch();
   });
 });
 
@@ -1271,6 +1273,36 @@ document.querySelectorAll('.tc-data-row').forEach(row=>{
     const expanded=row.classList.contains('tc-expanded');
     if(expanded){row.classList.remove('tc-expanded');di.classList.remove('tc-detail-open');icon.textContent='▼';setTimeout(()=>{dr.classList.remove('tc-detail-visible');dr.style.display='none';},320);}
     else{row.classList.add('tc-expanded');dr.classList.add('tc-detail-visible');dr.style.display='';icon.textContent='▲';requestAnimationFrame(()=>requestAnimationFrame(()=>di.classList.add('tc-detail-open')));}
+  });
+});
+
+/* TC 전체 펼치기 / 접기 */
+document.getElementById('tcExpandAll')?.addEventListener('click',()=>{
+  document.querySelectorAll('.tc-data-row').forEach(row=>{
+    if(row.style.display==='none')return;
+    if(row.classList.contains('tc-expanded'))return;
+    const tcId=row.dataset.tcId;
+    const dr=document.querySelector(`.tc-detail-row[data-for="${tcId}"]`);
+    const di=dr?.querySelector('.tc-detail-inner');
+    const icon=row.querySelector('.tc-expand-icon');
+    if(!dr||!di)return;
+    row.classList.add('tc-expanded');
+    dr.classList.add('tc-detail-visible');
+    dr.style.display='';
+    if(icon)icon.textContent='▲';
+    requestAnimationFrame(()=>requestAnimationFrame(()=>di.classList.add('tc-detail-open')));
+  });
+});
+document.getElementById('tcCollapseAll')?.addEventListener('click',()=>{
+  document.querySelectorAll('.tc-data-row.tc-expanded').forEach(row=>{
+    const tcId=row.dataset.tcId;
+    const dr=document.querySelector(`.tc-detail-row[data-for="${tcId}"]`);
+    const di=dr?.querySelector('.tc-detail-inner');
+    const icon=row.querySelector('.tc-expand-icon');
+    row.classList.remove('tc-expanded');
+    if(di)di.classList.remove('tc-detail-open');
+    if(icon)icon.textContent='▼';
+    setTimeout(()=>{if(dr){dr.classList.remove('tc-detail-visible');dr.style.display='none';}},320);
   });
 });
 
