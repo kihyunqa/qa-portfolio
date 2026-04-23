@@ -1,16 +1,32 @@
 # CHANGELOG
 
-## v51.0.0 — 2026-04-22
+## v52.0.0 — 2026-04-23
 
-### STEP 142 완료 — index.html 내용 정합성 수정 (STEP 142)
+### STEP 145 완료 — TC 배지 수정 + 인수인계 문서 현행화 (Claude.ai 웹 세션 3)
 
 #### 작업 내용
 
 | 항목 | 변경 내용 | 상태 |
 |------|-----------|------|
-| PROJECT 08 오버레이 | `CHANGELOG v49` → `CHANGELOG v50` 수정 | ✅ |
-| 스킬 tooltip (GitHub 레포 구조화) | `CHANGELOG v49` → `CHANGELOG v50` 수정 | ✅ |
-| index.html SHA | `daf22e85e78d026e75188e37fac5510cbbcc9c55` | ✅ |
+| TC 섹션 sec-stat-badge | "19건 표시" → "23건 표시" 수정 | ✅ |
+| CHANGELOG | v52 추가 | ✅ |
+| NEXT_STEPS.md | STEP 145 반영, SHA 업데이트 | ✅ |
+| docs/CLAUDE_HANDOFF.md | 세션 3 작업 이력 추가 | ✅ |
+| 불필요 애니메이션 | 없음 | ✅ |
+
+---
+
+## v51.0.0 — 2026-04-22
+
+### STEP 142~144 완료 — index.html 정합성 수정 + @media print 추가
+
+#### 작업 내용
+
+| 항목 | 변경 내용 | 상태 |
+|------|-----------|------|
+| PROJECT 08 오버레이 | `CHANGELOG v49` → `CHANGELOG v51` 수정 | ✅ |
+| 스킬 tooltip (GitHub 레포 구조화) | CHANGELOG v51 표기 | ✅ |
+| @media print | 인쇄/PDF 흰 배경·검정 텍스트 스타일 추가 | ✅ STEP 144 |
 | 불필요 애니메이션 | 없음 | ✅ |
 
 ---
@@ -18,16 +34,6 @@
 ## v50.0.0 — 2026-04-22
 
 ### STEP 141 완료 — 인수인계 확인 + 현황 점검 (Claude.ai 웹 세션)
-
-#### 작업 내용
-
-| 항목 | 변경 내용 | 상태 |
-|------|-----------|------|
-| NEXT_STEPS.md 확인 | STEP 140 완료 상태 확인 | ✅ |
-| index.html SHA 확인 | `b88cbee093c60a13d4ebf532a792dac9b5e061cc` 검증 | ✅ |
-| 라이브 사이트 확인 | https://kihyunqa.github.io/qa-portfolio 정상 확인 | ✅ |
-| CHANGELOG v50 | 이번 세션 현황 기록 | ✅ |
-| 불필요 애니메이션 | 없음 | ✅ |
 
 ---
 
