@@ -1,6 +1,6 @@
 # CLAUDE_HANDOFF.md
 > 다음 Claude가 이 포트폴리오를 이어받을 때 읽는 인수인계 문서
-> 최종 업데이트: 2026-04-23
+> 최종 업데이트: 2026-04-23 (세션 2)
 
 ---
 
@@ -19,8 +19,8 @@
 ```
 qa-portfolio/
 ├── index.html              ← 포트폴리오 본체. 이것만 건드리면 사이트 반영
-├── docs/                   ← 문서 28개+ (interview, bug, qa-strategy, etc.)
-│   └── CLAUDE_HANDOFF.md  ← 이 파일
+├── docs/
+│   └── CLAUDE_HANDOFF.md  ← 이 파일 (다음 Claude 필독)
 ├── playwright-tests/       ← E2E spec 12개
 ├── screenshots/            ← Notion/Slack/Jira 실제 스크린샷
 ├── .github/workflows/      ← qa-notify.yml, main.yml (Actions 2개)
@@ -39,10 +39,10 @@ qa-portfolio/
 | TC 145건+ 자동 생성 | ✅ 완료 | 12개 카테고리 커버 |
 | Playwright 12 spec | ✅ 완료 | E2E 전 영역 |
 | GitHub Actions 2개 | ✅ 운영 중 | qa-notify.yml, main.yml |
-| index.html TC 섹션 | ✅ 완료 | 20건+ 표시, 설계 의도 포함 |
-| TC 통계 대시보드 | ✅ 완료 | 4카드 + 분포 바 |
-| 설계 의도 (왜 이 케이스인가) | ✅ 완료 | 전 TC 적용 |
-| CLAUDE_HANDOFF.md | ✅ 최신화 | 이 파일 |
+| TC 섹션 (index.html) | ✅ 완료 | 23건 표시, 설계 의도 전 TC 적용 |
+| TC 통계 대시보드 | ✅ 완료 | 4카드 + 분포 바 애니메이션 |
+| 설계 의도 (왜 이 케이스인가) | ✅ 완료 | 전 TC 보라색 하이라이트 블록 |
+| CLAUDE_HANDOFF.md | ✅ 최신화 | 이 파일 (세션 2) |
 
 ---
 
@@ -65,7 +65,7 @@ qa-portfolio/
 
 ## 🧩 TC 섹션 (#tc) 상세
 
-### 현재 TC 목록 (index.html 기준)
+### 현재 TC 목록 (2026-04-23 세션 2 기준, 총 23건)
 
 | TC-ID | 구분 | 제목 | 우선순위 |
 |-------|------|------|----------|
@@ -88,6 +88,16 @@ qa-portfolio/
 | SIGNUP-HP-001 | 해피패스 | 신규 회원가입 완료 | P1 |
 | SESSION-E-001 | 엣지케이스 | 멀티 디바이스 세션 충돌 | P2 |
 | UX-N-001 | 네거티브 | 필수 입력 누락 시 인라인 에러 | P2 |
+| MOBILE-HP-001 | 해피패스 | 모바일 뷰포트 레이아웃 검증 | P2 | ← 세션 2 신규
+| DB-E-001 | 엣지케이스 | DB 연결 실패 시 graceful 처리 | P1 | ← 세션 2 신규
+| API-RT-001 | 네거티브 | API Rate Limit 초과 시 429 반환 | P1 | ← 세션 2 신규
+| IOT-HP-001 | 해피패스 | SmartThings 디바이스 상태 동기화 | P2 | ← 세션 2 신규
+
+### 통계 현황
+- 해피패스(h): 11건
+- 네거티브(n): 8건  
+- 엣지케이스(e): 8건  
+- 전체: 23건 (`sec-stat-badge`에 "23건 표시" 반영됨)
 
 ### TC HTML 패턴 (신규 TC 추가 시 복붙)
 
@@ -121,7 +131,7 @@ qa-portfolio/
         </div>
         <div class="tc-detail-block">
           <div class="tc-detail-label">// 기대 결과 상세</div>
-          <!-- 해피패스: tc-detail-result-pass, 네거티브: tc-detail-result-fail, 엣지: tc-detail-result-edge -->
+          <!-- 해피패스: tc-detail-result-pass / 네거티브: tc-detail-result-fail / 엣지: tc-detail-result-edge -->
           <div class="tc-detail-result-[pass|fail|edge]">결과 내용</div>
         </div>
       </div>
@@ -156,36 +166,36 @@ qa-portfolio/
 ## 🚀 다음 Claude가 할 수 있는 작업 목록
 
 ### 즉시 가능한 작업
-- [ ] TC 추가 (현재 19건 → 25건 목표) — 위 패턴 복붙 후 내용만 채우기
-- [ ] 새 TC 카테고리 추가 (예: MOBILE-*, PERF-*, IOT-* 등)
+- [ ] TC 추가 (현재 23건 → 30건 목표) — 위 패턴 복붙 후 내용만 채우기
+- [ ] 새 TC 카테고리 추가 예시: `MOBILE-*`, `IOT-*`, `DB-*`, `API-RT-*`
 - [ ] 히어로 섹션 수치 업데이트 (TC 건수, MCP 수 등)
 - [ ] `docs/` 에 새 문서 추가 (예: qa-automation-report-2026Q2.md)
 - [ ] 스크린샷 업데이트 (screenshots/ 폴더)
 
 ### 중기 작업
 - [ ] PHASE 3 로드맵 구현 (Google Calendar MCP, Gmail MCP)
-- [ ] TC 섹션에 카테고리별 필터 강화 (현재 유형 기반 → 카테고리 기반도 추가)
-- [ ] 다크/라이트 모드 토글 추가
+- [ ] TC 섹션 카테고리 필터 추가 (현재: 유형 기반 → 카테고리 기반도 추가)
+- [ ] 다크/라이트 모드 토글
 - [ ] 포트폴리오 PDF 자동 생성 버튼 (현재 @media print 지원됨)
 
-### 주의사항
-- `index.html`은 단일 파일로 모든 CSS+JS가 인라인. 외부 파일 없음.
-- GitHub Pages 자동 배포됨. main 브랜치에 push하면 1-2분 후 반영.
-- `index.html`의 SHA: `4297e38bc57b2a3dbed7cf2a99e345301b5e413f` (업데이트 시 새 SHA 확인 필요)
-- 파일 크기가 크므로 (136KB+) 전체 교체 방식으로 push해야 함.
+### ⚠️ 주의사항
+- `index.html`은 **단일 파일**, 모든 CSS+JS 인라인. 외부 파일 없음.
+- GitHub Pages 자동 배포. main 브랜치 push → 1-2분 후 반영.
+- 파일이 크므로 (142KB+) `github:create_or_update_file` 사용 시 반드시 SHA 먼저 확인.
+- TC 추가 후 `sec-stat-badge`의 건수 숫자도 같이 업데이트해야 함 (섹션 헤더 오른쪽 배지).
+- `tc-dashboard`의 dashHP/dashNG/dashEG 수치는 JS가 DOM에서 자동 계산하므로 별도 수정 불필요.
 
 ---
 
 ## 🔧 GitHub 업데이트 방법
 
 ```
-1. github:get_file_contents로 현재 index.html SHA 확인
-2. 수정할 내용 작성
-3. github:create_or_update_file 또는 github:push_files 로 push
+1. github:get_file_contents 로 현재 파일 SHA 확인
+2. 수정 내용 작성
+3. github:push_files 로 한 번에 여러 파일 push (권장)
    - owner: kihyunqa
    - repo: qa-portfolio
    - branch: main
-   - sha: (현재 파일의 SHA 값)
 ```
 
 ---
@@ -204,16 +214,17 @@ qa-portfolio/
 
 ---
 
-## 📝 이전 Claude들이 한 작업 이력
+## 📝 세션별 작업 이력
 
-| 날짜 | 작업 내용 |
-|------|-----------|
-| 초기 | 포트폴리오 기본 구조 구축, MCP 5개 연동 |
-| 중기 | Jira 연동, GitHub Actions, Playwright spec 12개 |
-| 최근 | TC 섹션 설계 의도 추가, 통계 대시보드 추가 |
-| 2026-04-23 | TC 3건 추가(SIGNUP/SESSION/UX), HANDOFF.md 최신화 |
+| 날짜 | 세션 | 작업 내용 |
+|------|------|-----------|
+| 초기 | 1 | 포트폴리오 기본 구조 구축, MCP 5개 연동 |
+| 중기 | — | Jira 연동, GitHub Actions, Playwright spec 12개 |
+| 최근 | — | TC 섹션 설계 의도 추가, 통계 대시보드 추가 |
+| 2026-04-23 | 1 | TC 3건 추가(SIGNUP/SESSION/UX), 기존 HANDOFF.md 작성 |
+| 2026-04-23 | 2 | TC 4건 추가(MOBILE/DB/API-RT/IOT), sec-stat-badge 23건 반영, HANDOFF.md 보완 |
 
 ---
 
 *이 문서는 Claude가 포트폴리오를 이어받을 때 가장 먼저 읽어야 하는 인수인계 문서입니다.*
-*작업 완료 후 반드시 이 파일도 업데이트해 주세요.*
+*작업 완료 후 반드시 이 파일의 "세션별 작업 이력" 섹션도 업데이트해 주세요.*
