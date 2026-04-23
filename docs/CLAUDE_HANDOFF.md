@@ -1,7 +1,7 @@
 # CLAUDE HANDOFF — kihyunqa/qa-portfolio
 
 > 이 문서는 다음 Claude가 작업을 이어받기 위한 정확한 인수인계 문서입니다.
-> 마지막 업데이트: 2026-04-23 (2차)
+> 마지막 업데이트: 2026-04-23 (v3)
 
 ---
 
@@ -31,15 +31,14 @@ qa-portfolio/
 │   ├── qa-notify.yml       # TC push 시 Slack 알림
 │   └── main.yml            # 메인 Actions
 ├── screenshots/            # 실제 연동 증거 스크린샷
-├── docs/
-│   ├── CLAUDE_HANDOFF.md   # ← 이 파일
-│   ├── qa-context.md       # QA 컨텍스트
-│   ├── mcp-architecture.md
-│   ├── mcp-setup-guide.md
-│   ├── release-qa-process.md
-│   ├── jira-github-integration.md
-│   └── bug-stories.md
-└── skills/                 # QA 특화 Skill 파일 (9개)
+└── docs/
+    ├── CLAUDE_HANDOFF.md   # ← 이 파일
+    ├── qa-context.md       # QA 컨텍스트
+    ├── mcp-architecture.md
+    ├── mcp-setup-guide.md
+    ├── release-qa-process.md
+    ├── jira-github-integration.md
+    └── bug-stories.md
 ```
 
 ---
@@ -47,9 +46,9 @@ qa-portfolio/
 ## 🎨 index.html 구조 & 섹션 맵
 
 ```
-index.html 단일 파일 (약 145KB — TC 확장으로 증가)
+index.html 단일 파일 (~150KB, TC 26건)
 │
-├── <head>     — meta, font, 전체 CSS (약 700줄)
+├── <head>     — meta, font, 전체 CSS (~700줄)
 ├── <body>
 │   ├── .scroll-bar        — 상단 스크롤 진행 바
 │   ├── .sk-tooltip        — 스킬 호버 툴팁
@@ -68,24 +67,24 @@ index.html 단일 파일 (약 145KB — TC 확장으로 증가)
 │   ├── #skills   (08)     — 스킬 + 레이더 차트
 │   ├── #contact  (09)     — 연락처
 │   └── <footer>
-└── <script>   — 전체 JS 인터랙션 (약 200줄)
+└── <script>   — 전체 JS 인터랙션 (~200줄)
 ```
 
 ---
 
 ## 🧪 TC 섹션(#tc) 상세 — 가장 중요한 섹션
 
-### 현재 구현 상태 (2차 업데이트 완료)
+### 현재 구현 상태 (v3 완성)
 
-- **TC 건수**: **26건 표시** (이전 16건 → 확장)
+- **TC 건수**: **26건 표시** (총 145건+ 중 샘플)
   - 해피패스(h): 11건
-  - 네거티브(n): 10건  
+  - 네거티브(n): 10건
   - 엣지케이스(e): 5건
-- **헤더 배지**: `26건 표시`로 업데이트됨
+- **헤더 배지**: `26건 표시`
 - **필터**: 전체 / 해피패스 / 네거티브 / 엣지케이스
 - **검색**: TC-ID, 제목, 기대 결과 텍스트 검색
-- **클릭 확장**: 각 행 클릭 → 설계 의도 + 전제조건 + 스텝 + 기대 결과 펼침
-- **통계 대시보드** (`.tc-dashboard`): 총 건수 / 해피패스 / 네거티브 / 엣지케이스 카운트
+- **클릭 확장**: 각 행 클릭 → 설계 의도 + 전제조건 + 스텝 + 기대결과 펼침
+- **통계 대시보드** (`.tc-dashboard`): 총건수 / 해피패스 / 네거티브 / 엣지케이스 카운트
 - **분포 바** (`.tc-dist-wrap`): 유형별 비율 애니메이션 바
 - **설계 의도 카드** (`.tc-detail-intent`): 왜 이 케이스인지 QA 판단 근거 설명
 
@@ -96,31 +95,31 @@ index.html 단일 파일 (약 145KB — TC 확장으로 증가)
 | AUTH-001 | 해피패스 | 로그인 |
 | AUTH-005 | 해피패스 | 로그아웃/보안 |
 | AUTH-007 | 네거티브 | 계정 잠금 |
+| SIGNUP-HP-001 | 해피패스 | **회원가입** |
+| SIGNUP-N-002 | 네거티브 | **중복 이메일** |
+| SIGNUP-N-003 | 네거티브 | **비밀번호 규칙** |
 | CART-001 | 해피패스 | 장바구니 |
+| CART-E-004 | 엣지케이스 | **재고 0 장바구니** |
+| CART-N-005 | 네거티브 | **비로그인 장바구니** |
 | PAY-012 | 엣지케이스 | 결제 소수점 |
 | API-S-006 | 엣지케이스 | SQL Injection |
+| API-HP-001 | 해피패스 | **정상 API 응답** |
+| API-N-003 | 네거티브 | **인증 없는 API** |
 | SEC-N-002 | 네거티브 | JWT 만료 |
 | PAY-HP-001 | 해피패스 | 정상 결제 |
 | PAY-N-005 | 네거티브 | 잔액 부족 결제 |
 | SEARCH-N-001 | 네거티브 | 빈 검색 결과 |
 | AUTH-N-008 | 네거티브 | 세션 만료 |
+| NOTIF-HP-001 | 해피패스 | **정상 알림 수신** |
 | NOTIF-E-003 | 엣지케이스 | 3G 알림 중복 |
 | TC-CICD-HP-001 | 해피패스 | Actions 트리거 |
 | ACCESS-HP-001 | 해피패스 | 키보드 접근성 |
+| ACCESS-N-002 | 네거티브 | **스크린리더 대응** |
 | SEARCH-N-004 | 네거티브 | XSS 패턴 |
 | PERF-E-001 | 엣지케이스 | 100 동시 부하 |
-| **SIGNUP-HP-001** | **해피패스** | **회원가입 정상** |
-| **SIGNUP-N-002** | **네거티브** | **중복 이메일** |
-| **SIGNUP-N-003** | **네거티브** | **비밀번호 규칙** |
-| **CART-E-004** | **엣지케이스** | **재고 0 장바구니** |
-| **CART-N-005** | **네거티브** | **비로그인 장바구니** |
-| **API-HP-001** | **해피패스** | **정상 API 응답** |
-| **API-N-003** | **네거티브** | **인증 없는 API** |
-| **ACCESS-N-002** | **네거티브** | **스크린리더 대응** |
-| **PERF-N-002** | **네거티브** | **타임아웃 처리** |
-| **NOTIF-HP-001** | **해피패스** | **정상 알림 수신** |
+| PERF-N-002 | 네거티브 | **타임아웃 처리** |
 
-굵게 표시된 10건이 이번에 새로 추가된 TC입니다.
+굵게 표시된 10건이 v3에서 새로 추가된 TC입니다.
 
 ---
 
@@ -181,9 +180,9 @@ typeStep()              — 히어로 타이핑 애니메이션
 ### 우선순위 높음
 
 1. **TC 건수 추가 확장** (26건 → 35건+)
-   - PROFILE 관련 TC (포트폴리오 자체 테스트)
-   - MCP-INT (MCP 연동 검증 TC)
-   - 모바일 반응형 TC
+   - 추가할 카테고리: MCP-INT (MCP 연동 검증 TC), 모바일 반응형 TC
+   - HTML 패턴: `tc-data-row` + `tc-detail-row` 쌍으로 추가
+   - 헤더 배지 숫자도 함께 업데이트 필요
 
 2. **PROFILE.md 업데이트**
    - 최근 프로젝트 반영 필요
@@ -204,7 +203,7 @@ typeStep()              — 히어로 타이핑 애니메이션
    - screenshots 중 하나를 OG 이미지로 지정
 
 6. **성능 최적화**
-   - index.html 145KB → 압축/분리 고려
+   - index.html 150KB → 압축/분리 고려
    - 이미지 lazy loading 이미 적용됨
 
 ### 우선순위 낮음
@@ -268,7 +267,8 @@ typeStep()              — 히어로 타이핑 애니메이션
 | 날짜 | 작업 내용 |
 |------|----------|
 | 2026-04-23 (1차) | TC 섹션 설계 의도 + 대시보드 추가, HANDOFF 문서 최초 생성 |
-| 2026-04-23 (2차) | **TC 16건 → 26건 확장** (SIGNUP·CART-E·API·ACCESS-N·PERF-N·NOTIF-HP 추가), HANDOFF 갱신 |
+| 2026-04-23 (2차) | TC 16건 → 26건 확장 (SIGNUP·CART-E·API·ACCESS-N·PERF-N·NOTIF-HP 추가), HANDOFF v2 |
+| 2026-04-23 (3차) | **TC 26건 완성본 재배포** (이전 커밋 JS 잘림 버그 수정), HANDOFF v3 |
 
 ---
 
