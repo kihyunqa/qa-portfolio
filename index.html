@@ -808,7 +808,7 @@ Jira 연동 완료
   <span class="sec-n">06</span>
   <h2 class="sec-t">자동생성 테스트케이스 — 145건+</h2>
   <div class="sec-line"></div>
-  <span class="sec-stat-badge"><span class="ssb-num">20</span>건 표시</span>
+  <span class="sec-stat-badge"><span class="ssb-num">19</span>건 표시</span>
 </div>
 <p class="tc-intro reveal">Claude MCP로 자동 생성된 TC 145건+. 로그인·API·보안·성능·접근성·장바구니·검색·결제 전 카테고리 커버.<br><span style="font-family:var(--mono);font-size:11px;color:var(--dim)">각 TC를 클릭하면 설계 의도 + 전제조건 + 스텝 + 기대 결과를 확인할 수 있습니다.</span></p>
 
@@ -820,17 +820,17 @@ Jira 연동 완료
     <div class="tc-dash-sub">MCP 자동 생성</div>
   </div>
   <div class="tc-dash-card">
-    <div class="tc-dash-num" id="dashHP">8</div>
+    <div class="tc-dash-num" id="dashHP">9</div>
     <div class="tc-dash-label">해피패스</div>
     <div class="tc-dash-sub">정상 흐름 검증</div>
   </div>
   <div class="tc-dash-card">
-    <div class="tc-dash-num" id="dashNG">7</div>
+    <div class="tc-dash-num" id="dashNG">8</div>
     <div class="tc-dash-label">네거티브</div>
     <div class="tc-dash-sub">예외 처리 검증</div>
   </div>
   <div class="tc-dash-card">
-    <div class="tc-dash-num" id="dashEG">5</div>
+    <div class="tc-dash-num" id="dashEG">6</div>
     <div class="tc-dash-label">엣지케이스</div>
     <div class="tc-dash-sub">경계값·극단 시나리오</div>
   </div>
@@ -842,25 +842,25 @@ Jira 연동 완료
   <div class="tc-dist-bar-row">
     <span class="tc-dist-bar-label">해피패스</span>
     <div class="tc-dist-bar-track"><div class="tc-dist-bar-fill hp" id="distBarHP" style="width:0%"></div></div>
-    <span class="tc-dist-bar-val" id="distValHP">8건</span>
+    <span class="tc-dist-bar-val" id="distValHP">9건</span>
   </div>
   <div class="tc-dist-bar-row">
     <span class="tc-dist-bar-label">네거티브</span>
     <div class="tc-dist-bar-track"><div class="tc-dist-bar-fill ng" id="distBarNG" style="width:0%"></div></div>
-    <span class="tc-dist-bar-val" id="distValNG">7건</span>
+    <span class="tc-dist-bar-val" id="distValNG">8건</span>
   </div>
   <div class="tc-dist-bar-row">
     <span class="tc-dist-bar-label">엣지케이스</span>
     <div class="tc-dist-bar-track"><div class="tc-dist-bar-fill eg" id="distBarEG" style="width:0%"></div></div>
-    <span class="tc-dist-bar-val" id="distValEG">5건</span>
+    <span class="tc-dist-bar-val" id="distValEG">6건</span>
   </div>
 </div>
 
 <div class="tc-stat-bar reveal" id="tcStatBar">
   <span style="color:var(--dim)">// 현재 표시 중</span>
-  <span class="tc-stat-item"><span class="tc-stat-dot" style="background:var(--purple)"></span><span id="statHP">해피패스 8건</span></span>
-  <span class="tc-stat-item"><span class="tc-stat-dot" style="background:#f87171"></span><span id="statNG">네거티브 7건</span></span>
-  <span class="tc-stat-item"><span class="tc-stat-dot" style="background:var(--wip)"></span><span id="statEG">엣지케이스 5건</span></span>
+  <span class="tc-stat-item"><span class="tc-stat-dot" style="background:var(--purple)"></span><span id="statHP">해피패스 9건</span></span>
+  <span class="tc-stat-item"><span class="tc-stat-dot" style="background:#f87171"></span><span id="statNG">네거티브 8건</span></span>
+  <span class="tc-stat-item"><span class="tc-stat-dot" style="background:var(--wip)"></span><span id="statEG">엣지케이스 6건</span></span>
 </div>
 <div class="tc-search-wrap reveal" id="tcSearchWrap">
   <input class="tc-search-input" id="tcSearchInput" type="text" placeholder="TC-ID, 테스트 제목, 기대 결과로 검색..." autocomplete="off" spellcheck="false">
@@ -946,6 +946,18 @@ Jira 연동 완료
 <!-- PERF-E-001 -->
 <tr class="tc-data-row" data-type="e" data-tc-id="PERF-E-001"><td>PERF-E-001 <span class="tc-expand-icon">▼</span></td><td><span class="tc-type e">엣지케이스</span></td><td>동시 100개 요청 부하 테스트</td><td>응답 시간 2s 이내, 서버 500 없음</td><td><span class="p2">P2</span></td></tr>
 <tr class="tc-detail-row" data-for="PERF-E-001"><td class="tc-detail-cell" colspan="5"><div class="tc-detail-inner"><div class="tc-detail-intent"><div class="tc-detail-intent-label">// 설계 의도 — 왜 이 케이스인가</div><div class="tc-detail-intent-text">프로모션·이벤트 시점에 트래픽이 급증합니다. 100 concurrent 요청은 소규모 서비스에서 충분히 현실적인 부하 수준입니다. p95 응답 2초 기준은 Google의 Core Web Vitals 기준을 참고한 합격 기준으로, 서버 용량 계획의 근거가 됩니다.</div></div><div class="tc-detail-content"><div class="tc-detail-block"><div class="tc-detail-label">// 전제조건</div><div class="tc-detail-value">부하 테스트 도구 준비 (k6 또는 Artillery).</div></div><div class="tc-detail-block"><div class="tc-detail-label">// 테스트 스텝</div><ol class="tc-detail-steps"><li><span class="step-num">01.</span>동시 100개 요청 스크립트 실행</li><li><span class="step-num">02.</span>응답 시간 분포 측정</li></ol></div><div class="tc-detail-block"><div class="tc-detail-label">// 기대 결과 상세</div><div class="tc-detail-result-edge">△ p95 응답 2s 이내 확인<br>△ 500 에러 0건 확인</div></div></div></div></td></tr>
+
+<!-- SIGNUP-HP-001 (신규) -->
+<tr class="tc-data-row" data-type="h" data-tc-id="SIGNUP-HP-001"><td>SIGNUP-HP-001 <span class="tc-expand-icon">▼</span></td><td><span class="tc-type h">해피패스</span></td><td>신규 회원가입 완료 + 이메일 인증</td><td>인증 메일 수신, 로그인 가능 상태</td><td><span class="p1">P1</span></td></tr>
+<tr class="tc-detail-row" data-for="SIGNUP-HP-001"><td class="tc-detail-cell" colspan="5"><div class="tc-detail-inner"><div class="tc-detail-intent"><div class="tc-detail-intent-label">// 설계 의도 — 왜 이 케이스인가</div><div class="tc-detail-intent-text">회원가입은 서비스의 첫 진입점입니다. 가입 완료 후 이메일 인증 없이 로그인 가능한 버그는 보안 취약점이자 비즈니스 리스크입니다. 가입 → 메일 수신 → 인증 → 로그인까지 전체 온보딩 플로우를 단일 케이스에서 검증합니다.</div></div><div class="tc-detail-content"><div class="tc-detail-block"><div class="tc-detail-label">// 전제조건</div><div class="tc-detail-value">미가입 이메일 주소. 이메일 수신 가능한 환경.</div></div><div class="tc-detail-block"><div class="tc-detail-label">// 테스트 스텝</div><ol class="tc-detail-steps"><li><span class="step-num">01.</span>이메일·비밀번호 입력 후 가입 제출</li><li><span class="step-num">02.</span>인증 메일 수신 확인</li><li><span class="step-num">03.</span>인증 링크 클릭 후 로그인 시도</li></ol></div><div class="tc-detail-block"><div class="tc-detail-label">// 기대 결과 상세</div><div class="tc-detail-result-pass">✓ 인증 메일 5분 이내 수신<br>✓ 인증 완료 후 로그인 성공<br>✓ 미인증 상태에서 로그인 차단 확인</div></div></div></div></td></tr>
+
+<!-- SESSION-E-001 (신규) -->
+<tr class="tc-data-row" data-type="e" data-tc-id="SESSION-E-001"><td>SESSION-E-001 <span class="tc-expand-icon">▼</span></td><td><span class="tc-type e">엣지케이스</span></td><td>동일 계정 멀티 디바이스 동시 세션 충돌</td><td>세션 정책에 따라 기존 또는 신규 로그아웃</td><td><span class="p2">P2</span></td></tr>
+<tr class="tc-detail-row" data-for="SESSION-E-001"><td class="tc-detail-cell" colspan="5"><div class="tc-detail-inner"><div class="tc-detail-intent"><div class="tc-detail-intent-label">// 설계 의도 — 왜 이 케이스인가</div><div class="tc-detail-intent-text">멀티 디바이스 로그인은 현실에서 매우 흔한 시나리오입니다. 서비스가 세션 정책(중복 허용/차단)을 명시적으로 정의하지 않으면 예상치 못한 동작이 발생합니다. 어느 기기에서 강제 로그아웃이 일어나는지, 사용자에게 안내가 되는지를 검증합니다.</div></div><div class="tc-detail-content"><div class="tc-detail-block"><div class="tc-detail-label">// 전제조건</div><div class="tc-detail-value">동일 계정. 디바이스 A(PC) + 디바이스 B(모바일) 준비.</div></div><div class="tc-detail-block"><div class="tc-detail-label">// 테스트 스텝</div><ol class="tc-detail-steps"><li><span class="step-num">01.</span>디바이스 A에서 로그인</li><li><span class="step-num">02.</span>디바이스 B에서 동일 계정 로그인</li><li><span class="step-num">03.</span>디바이스 A 세션 상태 확인</li></ol></div><div class="tc-detail-block"><div class="tc-detail-label">// 기대 결과 상세</div><div class="tc-detail-result-edge">△ 세션 정책 명시 동작 확인<br>△ 강제 로그아웃 시 안내 메시지 노출 확인</div></div></div></div></td></tr>
+
+<!-- UX-N-001 (신규) -->
+<tr class="tc-data-row" data-type="n" data-tc-id="UX-N-001"><td>UX-N-001 <span class="tc-expand-icon">▼</span></td><td><span class="tc-type n">네거티브</span></td><td>필수 입력 누락 시 인라인 에러 메시지</td><td>각 필드별 에러 즉시 표시, 제출 차단</td><td><span class="p2">P2</span></td></tr>
+<tr class="tc-detail-row" data-for="UX-N-001"><td class="tc-detail-cell" colspan="5"><div class="tc-detail-inner"><div class="tc-detail-intent"><div class="tc-detail-intent-label">// 설계 의도 — 왜 이 케이스인가</div><div class="tc-detail-intent-text">폼 UX 품질은 신규 사용자 이탈률과 직결됩니다. 에러 메시지가 제출 후 상단에 일괄 표시되면 사용자는 어떤 필드가 문제인지 찾는 데 시간을 낭비합니다. 필드별 인라인 에러와 실시간 검증이 적용됐는지를 검증하는 UX 품질 케이스입니다.</div></div><div class="tc-detail-content"><div class="tc-detail-block"><div class="tc-detail-label">// 전제조건</div><div class="tc-detail-value">필수 입력 필드가 있는 폼 페이지.</div></div><div class="tc-detail-block"><div class="tc-detail-label">// 테스트 스텝</div><ol class="tc-detail-steps"><li><span class="step-num">01.</span>필수 필드 비워둔 채 제출 클릭</li><li><span class="step-num">02.</span>에러 메시지 위치·내용 확인</li></ol></div><div class="tc-detail-block"><div class="tc-detail-label">// 기대 결과 상세</div><div class="tc-detail-result-fail">✗ 각 필드 하단 인라인 에러 표시 확인<br>✗ 미입력 필드 포커스 이동 확인<br>✗ 제출 차단 확인</div></div></div></div></td></tr>
 
 </tbody>
 </table>
@@ -1110,9 +1122,9 @@ document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 const distObs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{
     if(e.isIntersecting){
-      const hp=parseInt(document.getElementById('dashHP').textContent)||8;
-      const ng=parseInt(document.getElementById('dashNG').textContent)||7;
-      const eg=parseInt(document.getElementById('dashEG').textContent)||5;
+      const hp=parseInt(document.getElementById('dashHP').textContent)||9;
+      const ng=parseInt(document.getElementById('dashNG').textContent)||8;
+      const eg=parseInt(document.getElementById('dashEG').textContent)||6;
       const mx=Math.max(hp,ng,eg);
       setTimeout(()=>{
         document.getElementById('distBarHP').style.width=(hp/mx*100)+'%';
