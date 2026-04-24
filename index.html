@@ -3,18 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>성기현 · QA Engineer</title>
-<meta name="description" content="6년 9개월 QA 엔지니어. Claude MCP 5개 실제 연동 완료. TC 145건+ 자동 생성, Playwright spec 12개, GitHub Actions 2개 운영, Jira 연동 완료. 코드 0줄.">
-<meta property="og:title" content="성기현 · QA Engineer · Claude MCP 자동화">
-<meta property="og:description" content="6년 9개월 QA + Claude MCP 실제 연동. TC 145건+. Jira 연동 완료. 코드 0줄.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://kihyunqa.github.io/qa-portfolio">
-<meta property="og:image" content="https://raw.githubusercontent.com/kihyunqa/qa-portfolio/main/screenshots/claude-mcp-workflow.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/kihyunqa/qa-portfolio/main/screenshots/claude-mcp-workflow.png">
-<link rel="canonical" href="https://kihyunqa.github.io/qa-portfolio">
+<title>성기현 · QA Engineer · MCP 자동화</title>
+<meta name="description" content="6년 9개월 QA 엔지니어. Claude MCP 5개 실제 연동. TC 145건+ 자동 생성. 코드 0줄.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&display=swap"></noscript>
@@ -23,7 +13,7 @@
 --bg:#08060f;--bg2:#0d0a18;--bg3:#110d1f;
 --purple:#a855f7;--purple2:#7c3aed;--purple3:#c084fc;
 --p-border:rgba(168,85,247,0.22);--p-muted:rgba(168,85,247,0.08);
---text:#f0eaff;--muted:#d4cce8;--dim:#b8aed4;
+--text:#f0eaff;--muted:#cec6e6;--dim:#a89ec8;
 --mono:'DM Mono',ui-monospace,monospace;
 --sans:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;
 --wip:#f59e0b;--green:#10b981;
@@ -45,64 +35,82 @@ nav{position:fixed;top:0;left:0;right:0;padding:16px 56px;display:flex;align-ite
 .mobile-menu.open{display:flex}
 .mobile-menu a{font-family:var(--mono);font-size:18px;color:var(--text);text-decoration:none}
 
-/* HERO */
-.hero{min-height:100vh;display:flex;align-items:center;padding:120px 56px 80px;position:relative;z-index:2}
-.hero-left{flex:1;max-width:720px}
-.hero-tag{font-family:var(--mono);font-size:11px;color:var(--purple);letter-spacing:.2em;margin-bottom:28px;display:flex;align-items:center;gap:12px}
+/* ============ HERO ============ */
+.hero{min-height:100vh;display:flex;align-items:center;padding:100px 56px 60px;position:relative;z-index:2;gap:48px}
+.hero-left{flex:1;max-width:640px}
+.hero-right{flex:0 0 380px;display:flex;flex-direction:column;gap:16px}
+
+.hero-tag{font-family:var(--mono);font-size:11px;color:var(--purple);letter-spacing:.2em;margin-bottom:20px;display:flex;align-items:center;gap:12px}
 .hero-tag::before{content:'';width:28px;height:1px;background:var(--purple)}
-h1.hero-name{font-size:clamp(56px,8vw,100px);font-weight:900;line-height:.95;letter-spacing:-.04em;margin-bottom:20px}
+
+h1.hero-name{font-size:clamp(52px,7vw,90px);font-weight:900;line-height:.92;letter-spacing:-.04em;margin-bottom:16px}
 h1.hero-name em{color:#ffffff;font-style:normal}
-.hero-role{font-family:var(--mono);font-size:13px;color:var(--muted);letter-spacing:.08em;margin-bottom:36px;min-height:20px}
+
+.hero-role{font-family:var(--mono);font-size:13px;color:var(--muted);letter-spacing:.08em;margin-bottom:28px;min-height:20px}
 .typing-cursor{display:inline-block;width:2px;height:14px;background:var(--purple);vertical-align:middle;margin-left:2px;animation:blink .8s infinite}
 @keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}
 
 .hero-fade-in{opacity:0;transition:opacity .4s ease}
 .hero-fade-in.hfi-visible{opacity:1}
 
-/* ★ 킥 — 초강력 아이덴티티 배너 */
-.kick-banner{margin-bottom:28px;padding:24px 28px;background:linear-gradient(135deg,rgba(124,58,237,0.15),rgba(168,85,247,0.08));border:1px solid rgba(168,85,247,0.35);border-left:4px solid var(--purple);position:relative;overflow:hidden}
-.kick-banner::after{content:'';position:absolute;top:-40px;right:-40px;width:120px;height:120px;background:radial-gradient(circle,rgba(168,85,247,0.12),transparent);pointer-events:none}
-.kick-banner-label{font-family:var(--mono);font-size:10px;color:var(--purple);letter-spacing:.25em;margin-bottom:12px;opacity:.8}
-.kick-banner-main{font-size:clamp(20px,2.8vw,30px);font-weight:800;line-height:1.3;letter-spacing:-.025em;color:var(--text);margin-bottom:10px}
-.kick-banner-main .kb-acc{color:var(--purple)}
-.kick-banner-main .kb-white{color:#ffffff}
-.kick-banner-sub{font-size:15px;color:var(--muted);line-height:1.65;font-weight:400}
-.kick-banner-sub strong{color:var(--text);font-weight:600}
+/* ★★★ NEW 킥 — 화면을 장악하는 한 방 ★★★ */
+.kick-main{margin-bottom:24px;position:relative}
+.kick-eyebrow{font-family:var(--mono);font-size:10px;color:var(--purple);letter-spacing:.3em;margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.kick-eyebrow::before{content:'';width:20px;height:1px;background:var(--purple);opacity:.6}
+.kick-eyebrow-dot{width:5px;height:5px;border-radius:50%;background:var(--green);animation:pulse-dot 2s infinite}
+@keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.4)}}
 
-/* ★ 두 강점 카드 */
-.kick-cards{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px}
-.kick-card{padding:18px 20px;border:1px solid var(--p-border);background:rgba(168,85,247,0.04);position:relative;overflow:hidden}
+.kick-headline{font-size:clamp(22px,3vw,34px);font-weight:900;line-height:1.2;letter-spacing:-.03em;margin-bottom:16px}
+.kick-headline .kh-white{color:#ffffff}
+.kick-headline .kh-acc{color:var(--purple)}
+.kick-headline .kh-line{display:block}
+
+.kick-proof-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px}
+.kick-proof-chip{font-family:var(--mono);font-size:11px;padding:5px 12px;border:1px solid rgba(168,85,247,.4);color:var(--purple);background:rgba(168,85,247,.07);letter-spacing:.04em;display:flex;align-items:center;gap:5px}
+.kick-proof-chip::before{content:'✓';color:var(--green);font-size:10px}
+
+.kick-story{font-size:15px;color:var(--muted);line-height:1.75;padding:16px 20px;border-left:3px solid var(--purple);background:rgba(168,85,247,.05);margin-bottom:24px}
+.kick-story strong{color:var(--text);font-weight:600}
+
+/* 두 강점 카드 */
+.kick-cards{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:22px}
+.kick-card{padding:16px 18px;border:1px solid var(--p-border);background:var(--bg2);position:relative;overflow:hidden;transition:border-color .2s}
+.kick-card:hover{border-color:rgba(168,85,247,.5)}
 .kick-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
 .kick-card.qa-card::before{background:linear-gradient(90deg,#7c3aed,#a855f7)}
 .kick-card.ai-card::before{background:linear-gradient(90deg,#a855f7,#c084fc)}
-.kick-card-label{font-family:var(--mono);font-size:9px;letter-spacing:.18em;margin-bottom:8px;display:flex;align-items:center;gap:6px}
-.kick-card.qa-card .kick-card-label{color:var(--purple)}
-.kick-card.ai-card .kick-card-label{color:var(--purple3)}
-.kick-card-num{font-family:var(--mono);font-size:28px;font-weight:500;line-height:1;margin-bottom:6px}
-.kick-card.qa-card .kick-card-num{color:#ffffff}
-.kick-card.ai-card .kick-card-num{color:var(--purple)}
-.kick-card-desc{font-size:13px;color:var(--muted);line-height:1.6}
+.kc-label{font-family:var(--mono);font-size:9px;letter-spacing:.2em;margin-bottom:8px;color:var(--purple);opacity:.8}
+.kc-num{font-family:var(--mono);font-size:30px;font-weight:500;line-height:1;color:#ffffff;margin-bottom:5px}
+.ai-card .kc-num{color:var(--purple)}
+.kc-desc{font-size:12px;color:var(--muted);line-height:1.6}
 
-.hero-proof{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:36px}
-.hero-proof-item{font-family:var(--mono);font-size:10px;padding:4px 10px;border:1px solid var(--p-border);color:var(--purple);background:var(--p-muted);letter-spacing:.06em}
-.hero-proof-item::before{content:'✓ ';color:var(--green)}
-
-.hero-cta{display:flex;gap:14px;flex-wrap:wrap}
-.btn-p{padding:13px 30px;background:var(--purple);color:#fff;font-family:var(--mono);font-size:12px;font-weight:500;text-decoration:none;letter-spacing:.06em}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap}
+.btn-p{padding:12px 28px;background:var(--purple);color:#fff;font-family:var(--mono);font-size:12px;font-weight:500;text-decoration:none;letter-spacing:.06em;transition:background .15s}
 .btn-p:hover{background:var(--purple3)}
-.btn-s{padding:13px 30px;border:1px solid var(--p-border);color:var(--purple);font-family:var(--mono);font-size:12px;text-decoration:none;letter-spacing:.06em}
+.btn-s{padding:12px 28px;border:1px solid var(--p-border);color:var(--purple);font-family:var(--mono);font-size:12px;text-decoration:none;letter-spacing:.06em;transition:background .15s}
 .btn-s:hover{background:var(--p-muted)}
 
-/* HERO STATS */
-.hero-stats{position:absolute;right:56px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:32px}
-.stat-n{font-family:var(--mono);font-size:36px;font-weight:500;color:var(--purple);line-height:1}
-.stat-l{font-size:12px;color:var(--dim);margin-top:4px;letter-spacing:.06em}
-.hero-stat-card{position:relative;cursor:pointer;padding:10px 14px;border:1px solid transparent}
-.hero-stat-card:hover{border-color:var(--p-border);background:rgba(168,85,247,0.06)}
-.hero-stat-card:hover .hero-stat-tip{opacity:1;pointer-events:auto}
-.hero-stat-tip{position:absolute;right:calc(100% + 14px);top:50%;transform:translateY(-50%);opacity:0;pointer-events:none;transition:opacity .15s;width:200px;background:var(--bg3);border:1px solid var(--p-border);padding:12px 14px;font-family:var(--mono);font-size:10px;color:var(--muted);line-height:1.75;white-space:pre-line;z-index:200}
-.hero-stat-tip-title{color:var(--purple);font-size:9px;letter-spacing:.15em;margin-bottom:6px;display:block}
-.hero-stat-tip-link{display:inline-block;margin-top:8px;font-size:9px;color:var(--purple);border:1px solid var(--p-border);padding:2px 8px;background:var(--p-muted)}
+/* ★★★ NEW 히어로 라이브 터미널 (오른쪽 패널) ★★★ */
+.hero-terminal{background:#05030a;border:1px solid rgba(168,85,247,.35);font-family:var(--mono);font-size:12px;overflow:hidden;position:relative}
+.hero-terminal::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--purple),transparent)}
+.ht-bar{background:#0d0a18;padding:8px 14px;border-bottom:1px solid rgba(168,85,247,.2);display:flex;align-items:center;gap:7px}
+.ht-dot{width:9px;height:9px;border-radius:50%}
+.ht-title{font-size:9px;color:var(--dim);margin-left:6px;letter-spacing:.08em}
+.ht-live{font-size:9px;color:var(--green);margin-left:auto;padding:1px 7px;border:1px solid rgba(16,185,129,.3);background:rgba(16,185,129,.08)}
+.ht-body{padding:16px 18px;line-height:2}
+.ht-line{display:flex;gap:8px;align-items:baseline}
+.ht-prompt{color:var(--purple2);font-size:12px}
+.ht-cmd{color:var(--text);font-size:12px}
+.ht-out{color:var(--muted);padding-left:16px;font-size:11px}
+.ht-ok{color:var(--green);font-size:11px}
+.ht-dim{color:var(--dim);padding-left:16px;font-size:10px}
+.ht-cursor{display:inline-block;width:6px;height:12px;background:var(--purple);vertical-align:middle;animation:blink 1s infinite}
+
+/* 히어로 오른쪽 스탯 카드 */
+.hero-stat-mini{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.hsm-card{background:var(--bg2);border:1px solid var(--p-border);padding:12px 14px;text-align:center}
+.hsm-num{font-family:var(--mono);font-size:22px;font-weight:500;color:var(--purple);line-height:1;margin-bottom:4px}
+.hsm-label{font-size:11px;color:var(--muted);line-height:1.4}
 
 /* SECTIONS */
 section{padding:80px 56px;position:relative;z-index:2}
@@ -114,11 +122,11 @@ section{padding:80px 56px;position:relative;z-index:2}
 .sec-stat-badge .ssb-num{font-size:13px;font-weight:500;color:var(--purple3)}
 .sec-stat-badge.ssb-green{background:rgba(16,185,129,0.08);border-color:rgba(16,185,129,0.28);color:var(--green)}
 .sec-stat-badge.ssb-green .ssb-num{color:var(--green)}
-.sec-desc{font-size:16px;color:var(--muted);line-height:1.8;max-width:600px;margin-bottom:40px;margin-top:-24px}
+.sec-desc{font-size:16px;color:var(--muted);line-height:1.85;max-width:600px;margin-bottom:40px;margin-top:-24px}
 
-/* ★ 섹션 전환 스토리 브릿지 */
-.sec-bridge{padding:28px 56px;background:var(--bg);border-top:1px solid var(--p-border);display:flex;align-items:center;gap:20px}
-.sec-bridge-arrow{font-family:var(--mono);font-size:20px;color:var(--purple);opacity:.5;flex-shrink:0}
+/* 스토리 브릿지 */
+.sec-bridge{padding:24px 56px;background:var(--bg);border-top:1px solid var(--p-border);display:flex;align-items:center;gap:20px}
+.sec-bridge-arrow{font-family:var(--mono);font-size:18px;color:var(--purple);opacity:.5;flex-shrink:0}
 .sec-bridge-text{font-size:15px;color:var(--muted);line-height:1.7}
 .sec-bridge-text strong{color:var(--text);font-weight:600}
 .sec-bridge-text em{color:var(--purple);font-style:normal}
@@ -129,7 +137,6 @@ section{padding:80px 56px;position:relative;z-index:2}
 .badge-done::before{content:'●';font-size:6px;color:var(--purple)}
 .badge-live{background:rgba(16,185,129,.15);color:var(--green);border:1px solid rgba(16,185,129,.3)}
 .badge-live::before{content:'●';font-size:6px;color:var(--green)}
-.badge-next{background:rgba(245,158,11,.1);color:var(--wip);border:1px solid rgba(245,158,11,.25)}
 
 /* MCP */
 .mcp-sec{background:var(--bg2);border-top:1px solid var(--p-border);border-bottom:1px solid var(--p-border)}
@@ -143,14 +150,14 @@ section{padding:80px 56px;position:relative;z-index:2}
 .pipe-step{display:flex;align-items:flex-start;gap:14px;padding:10px 0;border-bottom:1px solid var(--p-border)}
 .pipe-step:last-child{border-bottom:none}
 .pipe-dot{width:8px;height:8px;border-radius:50%;background:var(--purple);margin-top:5px;flex-shrink:0}
-.pipe-name{font-size:14px;font-weight:500;margin-bottom:2px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-.pipe-desc{font-size:13px;color:var(--muted);line-height:1.6}
+.pipe-name{font-size:14px;font-weight:500;margin-bottom:3px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.pipe-desc{font-size:13px;color:var(--muted);line-height:1.65}
 .mcp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--p-border);margin-bottom:32px}
 .mcp-card{background:var(--bg2);padding:20px 16px;transition:background .15s}
 .mcp-card:hover{background:var(--bg3)}
 .mc-icon{font-size:20px;margin-bottom:10px}
 .mc-name{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--text);margin-bottom:6px;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
-.mc-desc{font-size:13px;color:var(--muted);line-height:1.6}
+.mc-desc{font-size:13px;color:var(--muted);line-height:1.65}
 
 /* TERMINAL */
 .terminal{background:#050309;border:1px solid var(--p-border);font-family:var(--mono);font-size:12px;line-height:1.9;overflow:hidden}
@@ -172,7 +179,7 @@ section{padding:80px 56px;position:relative;z-index:2}
 .proof-card-full{grid-column:1/-1}
 .proof-icon{font-size:24px;margin-bottom:12px}
 .proof-title{font-size:15px;font-weight:700;margin-bottom:8px;display:flex;align-items:center;gap:10px}
-.proof-desc{font-size:15px;color:var(--muted);line-height:1.75;margin-bottom:12px}
+.proof-desc{font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:12px}
 .proof-detail{font-family:var(--mono);font-size:12px;color:var(--green);background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.2);padding:10px 14px;line-height:1.85}
 .proof-link{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:10px;color:var(--purple);text-decoration:none;border:1px solid var(--p-border);padding:5px 10px;margin-top:10px;letter-spacing:.04em}
 .proof-link:hover{background:var(--p-muted)}
@@ -202,11 +209,11 @@ section{padding:80px 56px;position:relative;z-index:2}
 .roadmap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .roadmap-card{border:1px solid var(--p-border);padding:20px}
 .roadmap-card.done{border-color:rgba(168,85,247,.4);background:rgba(168,85,247,.04)}
-.roadmap-card.future{opacity:.6}
+.roadmap-card.future{opacity:.55}
 .rm-num{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:.15em;margin-bottom:8px}
 .rm-icon{font-size:20px;margin-bottom:8px}
 .rm-title{font-size:15px;font-weight:700;margin-bottom:8px}
-.rm-desc{font-size:14px;color:var(--muted);line-height:1.7}
+.rm-desc{font-size:14px;color:var(--muted);line-height:1.75}
 
 /* PROJECTS */
 .projects-sec{background:var(--bg2);border-top:1px solid var(--p-border)}
@@ -225,7 +232,7 @@ section{padding:80px 56px;position:relative;z-index:2}
 .proj-num{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:.15em;margin-bottom:10px}
 .proj-icon{font-size:22px;margin-bottom:10px}
 .proj-title{font-size:15px;font-weight:700;letter-spacing:-.02em;margin-bottom:8px}
-.proj-desc{font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:12px}
+.proj-desc{font-size:14px;color:var(--muted);line-height:1.75;margin-bottom:12px}
 .proj-flow{display:flex;flex-wrap:wrap;align-items:center;gap:4px;margin-bottom:12px}
 .proj-flow-step{font-family:var(--mono);font-size:9px;padding:2px 7px;background:rgba(168,85,247,.1);border:1px solid var(--p-border);color:var(--purple);letter-spacing:.04em}
 .proj-flow-arrow{color:var(--dim);font-size:10px}
@@ -247,7 +254,7 @@ section{padding:80px 56px;position:relative;z-index:2}
 .diag-box{padding:10px 14px;border:1px solid var(--p-border);background:var(--bg3);font-family:var(--mono);font-size:10px;color:var(--text);text-align:center;letter-spacing:.04em}
 .diag-box:hover{border-color:var(--purple);background:rgba(168,85,247,.08)}
 .diag-box.done{border-color:rgba(168,85,247,.5);background:rgba(168,85,247,.06)}
-.diag-label{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:.06em;text-align:center}
+.diag-label{font-family:var(--mono);font-size:11px;color:var(--dim);letter-spacing:.06em;text-align:center}
 .diag-arrow{font-size:14px;color:var(--purple);opacity:.5;padding:0 4px;flex-shrink:0}
 .diag-arrow-down{font-size:18px;color:var(--purple);opacity:.4;text-align:center;margin:0 auto}
 .diag-section-label{font-family:var(--mono);font-size:10px;color:var(--purple);letter-spacing:.15em;margin-bottom:14px;display:flex;align-items:center;gap:10px}
@@ -276,7 +283,7 @@ section{padding:80px 56px;position:relative;z-index:2}
 .tl-expand-icon{font-family:var(--mono);font-size:9px;color:var(--dim);padding:2px 6px;border:1px solid var(--p-border);flex-shrink:0}
 .tl-item.expanded .tl-expand-icon{border-color:var(--purple);color:var(--purple);background:var(--p-muted)}
 .tl-role{font-family:var(--mono);font-size:12px;color:var(--muted);margin-bottom:10px}
-.tl-desc{font-size:15px;color:var(--muted);line-height:1.8}
+.tl-desc{font-size:15px;color:var(--muted);line-height:1.85}
 .tl-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:10px}
 .tl-tag{font-family:var(--mono);font-size:9px;padding:2px 7px;border:1px solid var(--p-border);color:var(--muted)}
 .tl-detail{overflow:hidden;max-height:0;opacity:0;transition:max-height .35s ease,opacity .25s ease,margin-top .25s ease;margin-top:0}
@@ -284,7 +291,7 @@ section{padding:80px 56px;position:relative;z-index:2}
 .tl-detail-inner{background:var(--bg2);border:1px solid var(--p-border);border-left:2px solid var(--purple);padding:18px 22px}
 .tl-detail-inner::before{content:'// 상세 업무 내역';display:block;font-family:var(--mono);font-size:9px;color:var(--purple);letter-spacing:.18em;margin-bottom:12px;opacity:.7}
 .tl-detail-list{list-style:none;display:flex;flex-direction:column;gap:8px}
-.tl-detail-list li{font-size:14px;color:var(--muted);line-height:1.7;display:flex;align-items:flex-start;gap:8px}
+.tl-detail-list li{font-size:14px;color:var(--muted);line-height:1.75;display:flex;align-items:flex-start;gap:8px}
 .tl-detail-list li::before{content:'▸';color:var(--purple);font-size:10px;flex-shrink:0;margin-top:2px}
 .tl-detail-highlight{font-family:var(--mono);font-size:11px;color:var(--green);background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.2);padding:8px 12px;margin-top:10px;line-height:1.75}
 
@@ -348,40 +355,40 @@ section{padding:80px 56px;position:relative;z-index:2}
 .tc-detail-content{padding:14px 18px 18px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;border-top:1px solid rgba(168,85,247,.15)}
 .tc-detail-intent{padding:12px 18px;background:rgba(168,85,247,.05);border:1px solid rgba(168,85,247,.18);border-left:3px solid var(--purple);margin:0 18px 0;display:flex;flex-direction:column;gap:4px}
 .tc-detail-intent-label{font-family:var(--mono);font-size:9px;color:var(--purple);letter-spacing:.18em;margin-bottom:3px}
-.tc-detail-intent-text{font-size:12px;color:var(--text);line-height:1.7}
+.tc-detail-intent-text{font-size:13px;color:var(--text);line-height:1.75}
 .tc-detail-block{display:flex;flex-direction:column;gap:5px}
-.tc-detail-label{font-family:var(--mono);font-size:9px;color:var(--purple);letter-spacing:.14em;opacity:.7}
-.tc-detail-value{font-size:12px;color:var(--muted);line-height:1.65}
+.tc-detail-label{font-family:var(--mono);font-size:9px;color:var(--purple);letter-spacing:.14em;opacity:.8}
+.tc-detail-value{font-size:12px;color:var(--muted);line-height:1.7}
 .tc-detail-steps{list-style:none;display:flex;flex-direction:column;gap:4px}
 .tc-detail-steps li{font-size:11px;color:var(--muted);line-height:1.6;display:flex;align-items:flex-start;gap:5px}
 .tc-detail-steps li .step-num{font-family:var(--mono);font-size:9px;color:var(--purple);flex-shrink:0;min-width:16px}
 .tc-detail-result-pass{font-family:var(--mono);font-size:11px;color:var(--green);background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.2);padding:6px 10px;line-height:1.65}
 .tc-detail-result-fail{font-family:var(--mono);font-size:11px;color:#f87171;background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.2);padding:6px 10px;line-height:1.65}
 .tc-detail-result-edge{font-family:var(--mono);font-size:11px;color:var(--wip);background:rgba(245,158,11,.06);border:1px solid rgba(245,158,11,.2);padding:6px 10px;line-height:1.65}
-.tc-row-hint{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:.06em;margin-bottom:8px}
+.tc-row-hint{font-family:var(--mono);font-size:11px;color:var(--dim);letter-spacing:.06em;margin-bottom:8px}
 .tc-dashboard{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--p-border);margin-bottom:28px;border:1px solid var(--p-border)}
 .tc-dash-card{background:var(--bg3);padding:18px 16px;text-align:center;transition:background .15s}
 .tc-dash-card:hover{background:rgba(168,85,247,.06)}
 .tc-dash-num{font-family:var(--mono);font-size:28px;font-weight:500;color:var(--purple);line-height:1;margin-bottom:5px}
 .tc-dash-label{font-size:13px;color:var(--muted);line-height:1.4}
-.tc-dash-sub{font-family:var(--mono);font-size:10px;color:var(--dim);margin-top:3px}
+.tc-dash-sub{font-family:var(--mono);font-size:11px;color:var(--dim);margin-top:3px}
 .tc-dist-wrap{padding:18px 20px;background:var(--bg3);border:1px solid var(--p-border);margin-bottom:28px}
 .tc-dist-title{font-family:var(--mono);font-size:10px;color:var(--purple);letter-spacing:.15em;margin-bottom:12px}
 .tc-dist-bar-row{display:flex;align-items:center;gap:10px;margin-bottom:8px}
-.tc-dist-bar-label{font-family:var(--mono);font-size:11px;color:var(--muted);width:72px;text-align:right;flex-shrink:0}
+.tc-dist-bar-label{font-family:var(--mono);font-size:12px;color:var(--muted);width:72px;text-align:right;flex-shrink:0}
 .tc-dist-bar-track{flex:1;height:6px;background:rgba(168,85,247,.1);border-radius:1px;overflow:hidden}
 .tc-dist-bar-fill{height:100%;border-radius:1px;transition:width .8s ease}
 .tc-dist-bar-fill.hp{background:var(--purple)}
 .tc-dist-bar-fill.ng{background:#f87171}
 .tc-dist-bar-fill.eg{background:var(--wip)}
-.tc-dist-bar-val{font-family:var(--mono);font-size:11px;color:var(--muted);min-width:32px}
+.tc-dist-bar-val{font-family:var(--mono);font-size:12px;color:var(--muted);min-width:32px}
 
 /* CONTACT */
 .contact-sec{background:var(--bg2);border-top:1px solid var(--p-border)}
 .contact-wrap{display:flex;justify-content:space-between;align-items:flex-end}
 .contact-h{font-size:clamp(36px,5.5vw,64px);font-weight:900;line-height:.95;letter-spacing:-.04em;margin-bottom:18px}
 .contact-h span{color:var(--purple)}
-.contact-sub{font-size:15px;color:var(--muted);line-height:1.85}
+.contact-sub{font-size:15px;color:var(--muted);line-height:1.9}
 .contact-links{display:flex;flex-direction:column;gap:12px;align-items:flex-end}
 .c-link{font-family:var(--mono);font-size:12px;color:var(--muted);text-decoration:none;letter-spacing:.06em;display:flex;align-items:center;gap:8px}
 .c-link:hover{color:var(--purple)}
@@ -416,13 +423,15 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:
 .radar-legend-name{font-family:var(--mono);font-size:12px;color:var(--muted)}
 .radar-legend-val{font-family:var(--mono);font-size:12px;color:var(--purple);margin-left:auto}
 
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.3)}}
-
-@media(max-width:1200px){.mcp-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:1200px){.mcp-grid{grid-template-columns:repeat(2,1fr)}.hero-right{flex:0 0 320px}}
 @media(max-width:1100px){.projects-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:960px){
+.hero{flex-direction:column;gap:32px;align-items:flex-start}
+.hero-right{flex:none;width:100%;display:none}
+}
 @media(max-width:900px){
 nav{padding:14px 20px}.nav-links{display:none}.ham{display:flex}
-.hero{padding:90px 20px 60px}.hero-stats{display:none}
+.hero{padding:80px 20px 56px}
 section{padding:56px 20px}
 .kick-cards{grid-template-columns:1fr}
 .mcp-top{grid-template-columns:1fr;gap:32px}.mcp-grid{grid-template-columns:repeat(2,1fr)}
@@ -450,44 +459,37 @@ footer{padding:16px 20px;flex-direction:column;gap:4px}
 }
 
 @media print{
-  :root{--bg:#ffffff;--bg2:#f8f8f8;--bg3:#f2f2f2;--purple:#5b21b6;--purple2:#4c1d95;--purple3:#7c3aed;--p-border:#d4b8f0;--p-muted:#ede8f8;--text:#111111;--muted:#444444;--dim:#888888;--green:#065f46;--wip:#92400e;}
-  @page{margin:18mm 16mm;size:A4}
-  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
-  body{background:#fff!important;color:#111!important;font-size:11pt;line-height:1.6}
-  nav,.scroll-bar,#dot-nav,#breadcrumb,.mobile-menu,.ham,.sk-tooltip,.hero-stats,.hero-stat-tip,.tc-search-wrap,.tc-filter,.tc-row-hint,.tc-bulk-actions,.commit-bar-area,.proj-overlay,.hero-cta,.btn-p,.btn-s,.sec-bridge{display:none!important}
-  section{padding:24pt 0!important;break-inside:avoid}
-  .hero{min-height:auto!important;padding:32pt 0 20pt!important}
-  h1.hero-name{font-size:48pt!important}
-  .stats-grid,.projects-grid,.roadmap-grid{grid-template-columns:repeat(2,1fr)!important}
-  .mcp-grid{grid-template-columns:repeat(3,1fr)!important}
-  .skills-wrap{grid-template-columns:1fr!important;gap:16pt!important}
-  .mcp-top{grid-template-columns:1fr!important;gap:16pt!important}
-  .proof-grid{grid-template-columns:1fr!important}
-  .radar-wrap{grid-template-columns:1fr!important;gap:16pt!important}
-  .tc-detail-content{grid-template-columns:1fr 1fr!important}
-  .tc-dashboard{grid-template-columns:repeat(4,1fr)!important}
-  .tl-detail{max-height:none!important;opacity:1!important;margin-top:10pt!important}
-  .tl-expand-icon{display:none!important}
-  .proof-screenshot{display:none!important}
-  a[href]::after{content:" (" attr(href) ")";font-size:8pt;color:#666;word-break:break-all}
-  .proj-overlay-link::after,.tc-link::after,.proof-link::after,.c-link::after,.proj-link::after,.nav-links a::after{content:none!important}
-  .terminal,.branch-vis{background:#f2f2f2!important;border:1px solid #bbb!important}
-  .t-bar{background:#e8e8e8!important}
-  .reveal{opacity:1!important}
-  .hero-fade-in{opacity:1!important}
-  footer{border-top:1px solid #ccc!important;padding:12pt 0 0!important}
-  .kick-cards{grid-template-columns:1fr 1fr!important}
+:root{--bg:#fff;--bg2:#f8f8f8;--bg3:#f2f2f2;--purple:#5b21b6;--purple2:#4c1d95;--purple3:#7c3aed;--p-border:#d4b8f0;--p-muted:#ede8f8;--text:#111;--muted:#444;--dim:#888;--green:#065f46;--wip:#92400e;}
+@page{margin:18mm 16mm;size:A4}
+*{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{background:#fff!important;color:#111!important;font-size:11pt;line-height:1.6}
+nav,.scroll-bar,#dot-nav,#breadcrumb,.mobile-menu,.ham,.sk-tooltip,.hero-right,.tc-search-wrap,.tc-filter,.tc-row-hint,.tc-bulk-actions,.commit-bar-area,.proj-overlay,.hero-cta,.btn-p,.btn-s,.sec-bridge{display:none!important}
+section{padding:24pt 0!important;break-inside:avoid}
+.hero{min-height:auto!important;padding:32pt 0 20pt!important;flex-direction:column!important;gap:0!important}
+h1.hero-name{font-size:48pt!important}
+.stats-grid,.projects-grid,.roadmap-grid{grid-template-columns:repeat(2,1fr)!important}
+.mcp-grid{grid-template-columns:repeat(3,1fr)!important}
+.skills-wrap{grid-template-columns:1fr!important;gap:16pt!important}
+.mcp-top{grid-template-columns:1fr!important;gap:16pt!important}
+.proof-grid{grid-template-columns:1fr!important}
+.radar-wrap{grid-template-columns:1fr!important;gap:16pt!important}
+.tc-detail-content{grid-template-columns:1fr 1fr!important}
+.tc-dashboard{grid-template-columns:repeat(4,1fr)!important}
+.tl-detail{max-height:none!important;opacity:1!important;margin-top:10pt!important}
+.tl-expand-icon{display:none!important}
+.proof-screenshot{display:none!important}
+a[href]::after{content:" (" attr(href) ")";font-size:8pt;color:#666;word-break:break-all}
+.proj-overlay-link::after,.tc-link::after,.proof-link::after,.c-link::after,.proj-link::after,.nav-links a::after{content:none!important}
+.reveal{opacity:1!important}
+.hero-fade-in{opacity:1!important}
+footer{border-top:1px solid #ccc!important;padding:12pt 0 0!important}
+.kick-cards{grid-template-columns:1fr 1fr!important}
 }
 </style>
 </head>
 <body>
 <div class="scroll-bar" id="scrollBar"></div>
-
-<div class="sk-tooltip" id="skTooltip">
-  <div class="sk-tooltip-title" id="skTipTitle"></div>
-  <div id="skTipBody"></div>
-  <div class="sk-tooltip-tags" id="skTipTags"></div>
-</div>
+<div class="sk-tooltip" id="skTooltip"><div class="sk-tooltip-title" id="skTipTitle"></div><div id="skTipBody"></div><div class="sk-tooltip-tags" id="skTipTags"></div></div>
 
 <div id="dot-nav" aria-label="섹션 네비게이션">
   <div class="dot-nav-item" data-target="stats"><span class="dot-nav-label">숫자 현황</span><div class="dot-nav-dot" data-target="stats"></div></div>
@@ -503,9 +505,7 @@ footer{padding:16px 20px;flex-direction:column;gap:4px}
 </div>
 
 <div id="breadcrumb" aria-live="polite">
-  <span class="bc-prefix">KH.QA</span>
-  <span class="bc-slash">/</span>
-  <span class="bc-section" id="bcSection">—</span>
+  <span class="bc-prefix">KH.QA</span><span class="bc-slash">/</span><span class="bc-section" id="bcSection">—</span>
 </div>
 
 <nav>
@@ -530,98 +530,86 @@ footer{padding:16px 20px;flex-direction:column;gap:4px}
 <a href="#contact" onclick="toggleMenu()">연락</a>
 </div>
 
+<!-- ★★★ HERO — 완전 새 설계 ★★★ -->
 <section class="hero">
+<!-- LEFT: 킥 텍스트 -->
 <div class="hero-left">
-<div class="hero-tag hero-fade-in" data-hfi-delay="0">QA ENGINEER · 6년 9개월 · 삼성전자 파트너 포함</div>
-<h1 class="hero-name hero-fade-in" data-hfi-delay="1">성<em>기현</em></h1>
-<p class="hero-role hero-fade-in" data-hfi-delay="2"><span id="heroRoleText"></span><span class="typing-cursor"></span></p>
+  <div class="hero-tag hero-fade-in" data-hfi-delay="0">QA ENGINEER · 6년 9개월 · 삼성전자 파트너 포함</div>
+  <h1 class="hero-name hero-fade-in" data-hfi-delay="1">성<em>기현</em></h1>
+  <p class="hero-role hero-fade-in" data-hfi-delay="2"><span id="heroRoleText"></span><span class="typing-cursor"></span></p>
 
-<!-- ★ 킥 배너 — 첫 눈에 꽂히는 아이덴티티 -->
-<div class="kick-banner hero-fade-in" data-hfi-delay="3">
-  <div class="kick-banner-label">// WHO I AM · 한 줄 정의</div>
-  <div class="kick-banner-main">
-    <span class="kb-white">"QA가 느리다"는 말 듣기 싫어서,</span><br>
-    <span class="kb-acc">AI로 직접 자동화했습니다.</span>
+  <!-- ★ 킥 메인 — 강력 아이덴티티 -->
+  <div class="kick-main hero-fade-in" data-hfi-delay="3">
+    <div class="kick-eyebrow">
+      <span class="kick-eyebrow-dot"></span>
+      LIVE · ACTUALLY WORKS · 2026
+    </div>
+    <div class="kick-headline">
+      <span class="kh-line"><span class="kh-white">"QA가 느리다"는 말,</span></span>
+      <span class="kh-line"><span class="kh-white">이제 </span><span class="kh-acc">AI가 대신 뛰어줍니다.</span></span>
+    </div>
+    <div class="kick-story">
+      TC 생성 명령 한 마디 — <strong>145건이 자동으로 만들어지고</strong>, Notion에 기록되고, Slack으로 알리고, Jira에 연결됩니다.<br>
+      <strong>코드 0줄. 대화 1번. 전부 실제로 됐습니다.</strong>
+    </div>
+    <div class="kick-proof-row">
+      <span class="kick-proof-chip">MCP 5개 실제 연동</span>
+      <span class="kick-proof-chip">TC 145건+ 자동 생성</span>
+      <span class="kick-proof-chip">Playwright 12 spec</span>
+      <span class="kick-proof-chip">코드 0줄</span>
+    </div>
   </div>
-  <div class="kick-banner-sub">
-    코드 한 줄 없이. <strong>대화 한 번으로.</strong> TC 생성부터 Notion 문서화, Slack 알림, Jira 트래킹까지.<br>
-    6.9년 QA 현장 경험 위에 Claude MCP 자동화를 직접 얹었습니다.
+
+  <!-- 두 강점 카드 -->
+  <div class="kick-cards hero-fade-in" data-hfi-delay="4">
+    <div class="kick-card qa-card">
+      <div class="kc-label">● QA 현장 경험</div>
+      <div class="kc-num">6.9<span style="font-size:16px;font-weight:300">yr</span></div>
+      <div class="kc-desc">삼성전자 파트너 4.3년 · IoT·AI·모바일앱<br>IMS 결제 QA · 두플 QA 파트장</div>
+    </div>
+    <div class="kick-card ai-card">
+      <div class="kc-label">● AI 자동화 실제 구현</div>
+      <div class="kc-num">코드 <span style="font-size:22px">0</span>줄</div>
+      <div class="kc-desc">MCP 5개 연동 · TC 145건+ 자동 생성<br>Playwright 12 spec · Jira 연동 완료</div>
+    </div>
+  </div>
+
+  <div class="hero-cta hero-fade-in" data-hfi-delay="5">
+    <a href="#proof" class="btn-p">실제 증거 보기</a>
+    <a href="#mcp" class="btn-s">MCP 자동화 ↓</a>
+    <a href="https://github.com/kihyunqa/qa-portfolio/blob/main/docs/bug-stories.md" target="_blank" class="btn-s">버그 스토리 ↗</a>
   </div>
 </div>
 
-<!-- 두 강점 카드 -->
-<div class="kick-cards hero-fade-in" data-hfi-delay="4">
-  <div class="kick-card qa-card">
-    <div class="kick-card-label">● QA 현장 경험</div>
-    <div class="kick-card-num">6.9<span style="font-size:16px;font-weight:300">yr</span></div>
-    <div class="kick-card-desc">삼성전자 파트너 4.3년 · IoT·AI·모바일앱<br>IMS Mobility 결제 QA · 두플 QA 파트장</div>
+<!-- RIGHT: 라이브 터미널 + 스탯 -->
+<div class="hero-right hero-fade-in" data-hfi-delay="4">
+  <!-- 라이브 터미널 -->
+  <div class="hero-terminal">
+    <div class="ht-bar">
+      <div class="ht-dot" style="background:#ff5f57"></div>
+      <div class="ht-dot" style="background:#febc2e"></div>
+      <div class="ht-dot" style="background:#28c840"></div>
+      <span class="ht-title">claude-desktop · 5 MCP</span>
+      <span class="ht-live">LIVE</span>
+    </div>
+    <div class="ht-body">
+      <div class="ht-line"><span class="ht-prompt">❯</span><span class="ht-cmd" id="htCmd"></span><span id="htCursor" class="ht-cursor"></span></div>
+      <div id="htOutputs"></div>
+    </div>
   </div>
-  <div class="kick-card ai-card">
-    <div class="kick-card-label">● AI 자동화 실제 구현</div>
-    <div class="kick-card-num">코드 <span style="font-size:20px">0</span>줄</div>
-    <div class="kick-card-desc">MCP 5개 연동 · TC 145건+ 자동 생성<br>Playwright 12 spec · Jira 연동 완료</div>
-  </div>
-</div>
-
-<div class="hero-proof hero-fade-in" data-hfi-delay="5">
-<span class="hero-proof-item">MCP 5개 실제 연동</span>
-<span class="hero-proof-item">TC 145건+ 자동 생성</span>
-<span class="hero-proof-item">Playwright 12 spec</span>
-<span class="hero-proof-item">Jira 연동 완료</span>
-<span class="hero-proof-item">코드 0줄</span>
-</div>
-<div class="hero-cta hero-fade-in" data-hfi-delay="6">
-<a href="#proof" class="btn-p">실제 증거 보기</a>
-<a href="#mcp" class="btn-s">MCP 자동화 ↓</a>
-<a href="https://github.com/kihyunqa/qa-portfolio/blob/main/docs/bug-stories.md" target="_blank" class="btn-s">버그 스토리 ↗</a>
-</div>
-</div>
-
-<div class="hero-stats">
-  <div class="hero-stat-card" data-scroll="timeline">
-    <div class="stat-n">6.9<span style="font-size:18px">yr</span></div>
-    <div class="stat-l">QA 경력</div>
-    <div class="hero-stat-tip"><span class="hero-stat-tip-title">// QA 경력 상세</span>두플 (QA 파트 리더)
-IMS Mobility (QA 대리)
-모비프렌 — 삼성전자 파트너
-총 6년 9개월
-      <span class="hero-stat-tip-link">경력 보기 →</span></div>
-  </div>
-  <div class="hero-stat-card" data-scroll="mcp">
-    <div class="stat-n">5<span style="font-size:18px">+</span></div>
-    <div class="stat-l">MCP 연동</div>
-    <div class="hero-stat-tip"><span class="hero-stat-tip-title">// 실제 연동 MCP</span>📁 filesystem
-🎭 playwright
-🐙 github
-📒 notion (실제 연동)
-💬 slack (실제 연동)
-      <span class="hero-stat-tip-link">MCP 자동화 →</span></div>
-  </div>
-  <div class="hero-stat-card" data-scroll="proof">
-    <div class="stat-n">12</div>
-    <div class="stat-l">Playwright spec</div>
-    <div class="hero-stat-tip"><span class="hero-stat-tip-title">// E2E spec 목록</span>login · search · cart
-api · payment · security
-performance · accessibility
-signup · notification
-portfolio · mcp-portfolio
-      <span class="hero-stat-tip-link">spec 보기 →</span></div>
-  </div>
-  <div class="hero-stat-card" data-scroll="proof">
-    <div class="stat-n">145<span style="font-size:18px">+</span></div>
-    <div class="stat-l">자동생성 TC</div>
-    <div class="hero-stat-tip"><span class="hero-stat-tip-title">// TC 자동화</span>MCP 5개 실제 연동
-Jira 연동 완료
-코드 0줄
-      <span class="hero-stat-tip-link">TC 보기 →</span></div>
+  <!-- 미니 스탯 카드 -->
+  <div class="hero-stat-mini">
+    <div class="hsm-card"><div class="hsm-num">145<span style="font-size:13px">+</span></div><div class="hsm-label">자동생성 TC</div></div>
+    <div class="hsm-card"><div class="hsm-num">5</div><div class="hsm-label">MCP 실제 연동</div></div>
+    <div class="hsm-card"><div class="hsm-num">12</div><div class="hsm-label">E2E spec</div></div>
+    <div class="hsm-card"><div class="hsm-num" style="color:#10b981">0</div><div class="hsm-label">작성한 코드 줄</div></div>
   </div>
 </div>
 </section>
 
-<!-- ★ 기승전결 브릿지 1: 숫자로 입증 -->
 <div class="sec-bridge reveal">
   <div class="sec-bridge-arrow">↓</div>
-  <div class="sec-bridge-text">말이 아닌 <strong>숫자</strong>로 먼저 보여드립니다. 6.9년이 만든 QA 경력, 그리고 직접 구현한 자동화의 결과물.</div>
+  <div class="sec-bridge-text">말이 아닌 <strong>숫자</strong>로 먼저 보여드립니다 — 6.9년 QA 경력 위에 AI 자동화를 직접 얹은 결과물입니다.</div>
 </div>
 
 <section class="stats-sec" id="stats">
@@ -640,10 +628,9 @@ Jira 연동 완료
 </div>
 </section>
 
-<!-- ★ 기승전결 브릿지 2: 어떻게 됐는지 -->
 <div class="sec-bridge reveal">
   <div class="sec-bridge-arrow">↓</div>
-  <div class="sec-bridge-text">이 숫자들이 어떻게 만들어졌는지 — <strong>Claude MCP 자동화</strong>의 실제 작동 방식을 보여드립니다. 코드 없이 대화만으로.</div>
+  <div class="sec-bridge-text">이 숫자들이 어떻게 만들어졌는지 — <strong>Claude MCP 5개</strong>가 연결된 자동화 파이프라인을 직접 보여드립니다.</div>
 </div>
 
 <section class="mcp-sec" id="mcp">
@@ -657,7 +644,7 @@ Jira 연동 완료
 <div>
 <div class="mcp-intro-badge">LIVE · 5 MCP 실제 연동</div>
 <h3 class="mcp-headline">대화 한 번으로<br><em>TC 생성부터 Notion 문서화, Slack 알림, Jira 연동까지</em><br>전부 자동으로 완료됩니다</h3>
-<p class="mcp-sub" style="margin-top:14px">Claude Desktop에 MCP 서버 5개를 직접 연결했습니다. TC 생성 → E2E 테스트 → GitHub 커밋 → 버그 리포트 작성 → Notion 페이지 자동 생성 → Slack 채널 알림 → Jira 이슈 트래킹까지, 코드 한 줄 없이 대화만으로.</p>
+<p class="mcp-sub" style="margin-top:14px">Claude Desktop에 MCP 서버 5개를 직접 연결했습니다. TC 생성 → E2E 테스트 → GitHub 커밋 → 버그 리포트 → Notion 페이지 자동 생성 → Slack 채널 알림 → Jira 이슈 트래킹까지, 코드 한 줄 없이 대화만으로.</p>
 </div>
 <div>
 <div class="pipeline-title">// CORE WORKFLOW · 7 STEPS</div>
@@ -681,7 +668,7 @@ Jira 연동 완료
 <div class="mcp-card"><div class="mc-icon">📋</div><div class="mc-name">Jira <span class="badge badge-live" style="font-size:9px;padding:2px 6px">연동 완료</span></div><div class="mc-desc">GitHub for Atlassian 연동. FULL ACCESS. 이슈 트래킹 자동화.</div></div>
 </div>
 <div class="terminal reveal">
-<div class="t-bar"><div class="t-dot" style="background:#ff5f57"></div><div class="t-dot" style="background:#febc2e"></div><div class="t-dot" style="background:#28c840"></div><span class="t-bar-title">claude-desktop — 5 MCP servers · TC 145건+ · Playwright 12 specs · Actions 2개 · Jira 연동 완료</span></div>
+<div class="t-bar"><div class="t-dot" style="background:#ff5f57"></div><div class="t-dot" style="background:#febc2e"></div><div class="t-dot" style="background:#28c840"></div><span class="t-bar-title">claude-desktop — 5 MCP servers · TC 145건+ · Playwright 12 specs · Jira 연동</span></div>
 <div class="t-body">
 <div class="t-line"><span class="t-prompt">❯</span><span class="t-cmd">TC 만들고 E2E 돌리고 GitHub 커밋하고 Notion에 문서화하고 Slack 알림까지 해줘</span></div>
 <div class="t-line" style="margin-top:4px"><span class="t-out">filesystem 통합 사용함 ··· TC 생성 완료 (145건+)</span></div>
@@ -696,10 +683,9 @@ Jira 연동 완료
 </div>
 </section>
 
-<!-- ★ 기승전결 브릿지 3: 말이 아닌 증거 -->
 <div class="sec-bridge reveal">
   <div class="sec-bridge-arrow">↓</div>
-  <div class="sec-bridge-text">"말로만 하는 거 아니냐?" — 그래서 <strong>실제 스크린샷과 결과물</strong>을 전부 공개합니다. 직접 확인해보세요.</div>
+  <div class="sec-bridge-text">"말로만 하는 거 아니냐?" — <strong>실제 스크린샷과 연동 결과물</strong>을 전부 공개합니다. 링크 클릭하면 직접 확인됩니다.</div>
 </div>
 
 <section class="proof-sec" id="proof">
@@ -716,7 +702,7 @@ Jira 연동 완료
 <div class="proof-title">Notion MCP 실제 연동 <span class="badge badge-live">LIVE</span></div>
 <div class="proof-desc">Claude Desktop에서 notion MCP 명령 한 번으로 Notion에 "로그인 기능 테스트케이스" 페이지가 자동 생성됐습니다.</div>
 <div class="proof-detail">✓ notion 통합 사용함<br>✓ 페이지 자동 생성 확인<br>✓ 해피패스·네거티브·엣지케이스 분류 기록<br>✓ 코드 0줄 · 대화 1번 · Notion 실제 반영</div>
-<div class="proof-screenshot"><a href="https://github.com/kihyunqa/qa-portfolio/blob/main/screenshots/notion-tc-page.png" target="_blank"><img src="https://raw.githubusercontent.com/kihyunqa/qa-portfolio/main/screenshots/notion-tc-page.png" alt="Notion TC 페이지 실제 스크린샷" loading="lazy"></a><div class="proof-screenshot-caption">// ACTUAL SCREENSHOT · notion-tc-page.png</div></div>
+<div class="proof-screenshot"><a href="https://github.com/kihyunqa/qa-portfolio/blob/main/screenshots/notion-tc-page.png" target="_blank"><img src="https://raw.githubusercontent.com/kihyunqa/qa-portfolio/main/screenshots/notion-tc-page.png" alt="Notion TC 페이지" loading="lazy"></a><div class="proof-screenshot-caption">// ACTUAL SCREENSHOT · notion-tc-page.png</div></div>
 <a href="https://github.com/kihyunqa/qa-portfolio/blob/main/testcase_mcp-integration.md" target="_blank" class="proof-link">MCP TC 파일 보기 ↗</a>
 </div>
 <div class="proof-card">
@@ -724,7 +710,7 @@ Jira 연동 완료
 <div class="proof-title">GitHub MCP 실제 커밋 <span class="badge badge-live">LIVE</span></div>
 <div class="proof-desc">이 포트폴리오 페이지 자체가 github MCP로 커밋됐습니다. 모든 파일 전부 대화로만 만들어졌습니다.</div>
 <div class="proof-detail">✓ kihyunqa/qa-portfolio 레포 실제 운영 중<br>✓ 파일 80개+ 전부 MCP 커밋<br>✓ GitHub Pages 배포 완료<br>✓ GitHub Actions 2개 자동화 운영 중</div>
-<div class="proof-screenshot"><a href="https://github.com/kihyunqa/qa-portfolio/blob/main/screenshots/claude-mcp-workflow.png" target="_blank"><img src="https://raw.githubusercontent.com/kihyunqa/qa-portfolio/main/screenshots/claude-mcp-workflow.png" alt="Claude MCP 워크플로우 실제 스크린샷" loading="lazy"></a><div class="proof-screenshot-caption">// ACTUAL SCREENSHOT · claude-mcp-workflow.png</div></div>
+<div class="proof-screenshot"><a href="https://github.com/kihyunqa/qa-portfolio/blob/main/screenshots/claude-mcp-workflow.png" target="_blank"><img src="https://raw.githubusercontent.com/kihyunqa/qa-portfolio/main/screenshots/claude-mcp-workflow.png" alt="Claude MCP 워크플로우" loading="lazy"></a><div class="proof-screenshot-caption">// ACTUAL SCREENSHOT · claude-mcp-workflow.png</div></div>
 <a href="https://github.com/kihyunqa/qa-portfolio/commits/main" target="_blank" class="proof-link">실제 커밋 히스토리 ↗</a>
 </div>
 <div class="proof-card">
@@ -737,26 +723,23 @@ Jira 연동 완료
 <div class="proof-card">
 <div class="proof-icon">💬</div>
 <div class="proof-title">Slack MCP 실제 알림 <span class="badge badge-live">LIVE</span></div>
-<div class="proof-desc">slack MCP로 새-채널에 QA 완료 알림을 실제로 발송했습니다. GitHub Actions 연동으로 완전 자동 파이프라인 작동 중.</div>
+<div class="proof-desc">slack MCP로 새-채널에 QA 완료 알림을 실제로 발송했습니다. GitHub Actions 연동으로 완전 자동 파이프라인.</div>
 <div class="proof-detail">✓ 새-채널 claude-mcp 봇 연동 확인<br>✓ QA 완료 메시지 실제 발송 확인<br>✓ GitHub Actions → Slack 자동 알림 연결<br>✓ SLACK_BOT_TOKEN secret 설정 완료</div>
-<div class="proof-screenshot"><a href="https://github.com/kihyunqa/qa-portfolio/blob/main/screenshots/slack-notification.png" target="_blank"><img src="https://raw.githubusercontent.com/kihyunqa/qa-portfolio/main/screenshots/slack-notification.png" alt="Slack 알림 실제 스크린샷" loading="lazy"></a><div class="proof-screenshot-caption">// ACTUAL SCREENSHOT · slack-notification.png</div></div>
+<div class="proof-screenshot"><a href="https://github.com/kihyunqa/qa-portfolio/blob/main/screenshots/slack-notification.png" target="_blank"><img src="https://raw.githubusercontent.com/kihyunqa/qa-portfolio/main/screenshots/slack-notification.png" alt="Slack 알림" loading="lazy"></a><div class="proof-screenshot-caption">// ACTUAL SCREENSHOT · slack-notification.png</div></div>
 <a href="https://github.com/kihyunqa/qa-portfolio/blob/main/.github/workflows/main.yml" target="_blank" class="proof-link">Actions workflow 보기 ↗</a>
 </div>
 <div class="proof-card proof-card-full">
 <div class="proof-icon">📋</div>
 <div class="proof-title">Jira 이슈 트래킹 연동 <span class="badge badge-live">LIVE</span></div>
-<div class="proof-desc">GitHub for Atlassian을 통해 Jira와 GitHub 레포를 직접 연동했습니다. 커밋 메시지 기반으로 Jira 이슈가 자동 연결되어 QA 작업 현황을 실시간 트래킹합니다.</div>
+<div class="proof-desc">GitHub for Atlassian을 통해 Jira와 GitHub 레포를 직접 연동했습니다. 커밋 메시지 기반으로 Jira 이슈가 자동 연결됩니다.</div>
 <div class="proof-detail">✓ kihyunqa-1775011951168.atlassian.net — FULL ACCESS 연동 완료<br>✓ GitHub for Atlassian 앱 설치 및 레포 연결<br>✓ 커밋 메시지 기반 이슈 자동 트래킹<br>✓ QA 작업 현황 Jira 보드에서 실시간 확인 가능</div>
-<div class="proof-screenshot proof-screenshot-jira"><a href="https://github.com/kihyunqa/qa-portfolio/blob/main/screenshots/jira-board.png" target="_blank"><img src="https://raw.githubusercontent.com/kihyunqa/qa-portfolio/main/screenshots/jira-board.png" alt="Jira 보드 실제 스크린샷" loading="lazy"></a><div class="proof-screenshot-caption">// ACTUAL SCREENSHOT · jira-board.png</div></div>
+<div class="proof-screenshot proof-screenshot-jira"><a href="https://github.com/kihyunqa/qa-portfolio/blob/main/screenshots/jira-board.png" target="_blank"><img src="https://raw.githubusercontent.com/kihyunqa/qa-portfolio/main/screenshots/jira-board.png" alt="Jira 보드" loading="lazy"></a><div class="proof-screenshot-caption">// ACTUAL SCREENSHOT · jira-board.png</div></div>
 <a href="https://kihyunqa-1775011951168.atlassian.net" target="_blank" class="proof-link">Jira 프로젝트 보기 ↗</a>
 <a href="https://github.com/kihyunqa/qa-portfolio/blob/main/docs/jira-github-integration.md" target="_blank" class="proof-link">연동 문서 보기 ↗</a>
 </div>
 </div>
-
 <div class="commit-card reveal" id="commitCard">
-  <div class="commit-card-head">
-    <span class="commit-card-title">// QA PORTFOLIO · 자동화 성과 요약</span>
-  </div>
+  <div class="commit-card-head"><span class="commit-card-title">// QA PORTFOLIO · 자동화 성과 요약</span></div>
   <div class="commit-stats-row">
     <div class="commit-stat"><div class="commit-stat-num">145<span style="font-size:16px">+</span></div><div class="commit-stat-label">자동 생성 TC</div><div class="commit-stat-sub">16개 testcase 파일</div></div>
     <div class="commit-stat"><div class="commit-stat-num">80<span style="font-size:16px">+</span></div><div class="commit-stat-label">관리 파일 수</div><div class="commit-stat-sub">MCP로 생성·커밋</div></div>
@@ -766,10 +749,10 @@ Jira 연동 완료
   <div class="commit-bar-area" style="display:block">
     <div class="commit-bar-label">// QA 커버리지 현황</div>
     <div style="display:flex;flex-direction:column;gap:10px;margin-top:8px">
-      <div style="display:flex;align-items:center;gap:10px"><span style="font-family:var(--mono);font-size:11px;color:var(--muted);width:160px;flex-shrink:0">E2E spec (Playwright)</span><div style="flex:1;height:5px;background:rgba(168,85,247,0.12);border-radius:2px;overflow:hidden"><div style="width:100%;height:100%;background:var(--purple);border-radius:2px"></div></div><span style="font-family:var(--mono);font-size:11px;color:var(--muted);width:36px;text-align:right">12개</span></div>
-      <div style="display:flex;align-items:center;gap:10px"><span style="font-family:var(--mono);font-size:11px;color:var(--muted);width:160px;flex-shrink:0">TC 카테고리</span><div style="flex:1;height:5px;background:rgba(168,85,247,0.12);border-radius:2px;overflow:hidden"><div style="width:88%;height:100%;background:var(--purple);border-radius:2px"></div></div><span style="font-family:var(--mono);font-size:11px;color:var(--muted);width:36px;text-align:right">16종</span></div>
-      <div style="display:flex;align-items:center;gap:10px"><span style="font-family:var(--mono);font-size:11px;color:var(--muted);width:160px;flex-shrink:0">GitHub Actions</span><div style="flex:1;height:5px;background:rgba(168,85,247,0.12);border-radius:2px;overflow:hidden"><div style="width:33%;height:100%;background:var(--purple);border-radius:2px"></div></div><span style="font-family:var(--mono);font-size:11px;color:var(--muted);width:36px;text-align:right">2개</span></div>
-      <div style="display:flex;align-items:center;gap:10px"><span style="font-family:var(--mono);font-size:11px;color:var(--muted);width:160px;flex-shrink:0">문서 (docs/)</span><div style="flex:1;height:5px;background:rgba(168,85,247,0.12);border-radius:2px;overflow:hidden"><div style="width:93%;height:100%;background:var(--purple);border-radius:2px"></div></div><span style="font-family:var(--mono);font-size:11px;color:var(--muted);width:36px;text-align:right">28개</span></div>
+      <div style="display:flex;align-items:center;gap:10px"><span style="font-family:var(--mono);font-size:12px;color:var(--muted);width:160px;flex-shrink:0">E2E spec (Playwright)</span><div style="flex:1;height:5px;background:rgba(168,85,247,0.12);border-radius:2px;overflow:hidden"><div style="width:100%;height:100%;background:var(--purple);border-radius:2px"></div></div><span style="font-family:var(--mono);font-size:12px;color:var(--muted);width:36px;text-align:right">12개</span></div>
+      <div style="display:flex;align-items:center;gap:10px"><span style="font-family:var(--mono);font-size:12px;color:var(--muted);width:160px;flex-shrink:0">TC 카테고리</span><div style="flex:1;height:5px;background:rgba(168,85,247,0.12);border-radius:2px;overflow:hidden"><div style="width:88%;height:100%;background:var(--purple);border-radius:2px"></div></div><span style="font-family:var(--mono);font-size:12px;color:var(--muted);width:36px;text-align:right">16종</span></div>
+      <div style="display:flex;align-items:center;gap:10px"><span style="font-family:var(--mono);font-size:12px;color:var(--muted);width:160px;flex-shrink:0">GitHub Actions</span><div style="flex:1;height:5px;background:rgba(168,85,247,0.12);border-radius:2px;overflow:hidden"><div style="width:33%;height:100%;background:var(--purple);border-radius:2px"></div></div><span style="font-family:var(--mono);font-size:12px;color:var(--muted);width:36px;text-align:right">2개</span></div>
+      <div style="display:flex;align-items:center;gap:10px"><span style="font-family:var(--mono);font-size:12px;color:var(--muted);width:160px;flex-shrink:0">문서 (docs/)</span><div style="flex:1;height:5px;background:rgba(168,85,247,0.12);border-radius:2px;overflow:hidden"><div style="width:93%;height:100%;background:var(--purple);border-radius:2px"></div></div><span style="font-family:var(--mono);font-size:12px;color:var(--muted);width:36px;text-align:right">28개</span></div>
     </div>
   </div>
   <div class="commit-footer">
@@ -779,7 +762,6 @@ Jira 연동 완료
 </div>
 </section>
 
-<!-- ★ 기승전결 브릿지 4: 구체적으로 뭘 만들었나 -->
 <div class="sec-bridge reveal">
   <div class="sec-bridge-arrow">↓</div>
   <div class="sec-bridge-text">증거를 봤다면 — 구체적으로 <strong>어떤 프로젝트</strong>를 만들었는지 확인할 차례입니다. QA 전 영역 10개 프로젝트.</div>
@@ -839,13 +821,11 @@ Jira 연동 완료
 </div>
 </section>
 
-<!-- ★ 기승전결 브릿지 5: 실제 TC 보여주기 -->
 <div class="sec-bridge reveal">
   <div class="sec-bridge-arrow">↓</div>
-  <div class="sec-bridge-text">자동화로 만들어진 TC가 어떤 수준인지 — <strong>실제 TC 145건+ 중 19건</strong>을 직접 열어볼 수 있습니다. 설계 의도까지 담았습니다.</div>
+  <div class="sec-bridge-text">자동화로 만들어진 TC가 어떤 수준인지 — <strong>실제 TC 145건+ 중 19건</strong>을 직접 열어볼 수 있습니다. 설계 의도까지 담겼습니다.</div>
 </div>
 
-<!-- TC SECTION -->
 <section id="tc" style="background:var(--bg2);border-top:1px solid var(--p-border)">
 <div class="sec-head reveal">
   <span class="sec-n">06</span>
@@ -853,22 +833,19 @@ Jira 연동 완료
   <div class="sec-line"></div>
   <span class="sec-stat-badge"><span class="ssb-num">19</span>건 표시</span>
 </div>
-<p class="tc-intro reveal">Claude MCP로 자동 생성된 TC 145건+. 로그인·API·보안·성능·접근성·장바구니·검색·결제 전 카테고리 커버.<br><span style="font-family:var(--mono);font-size:12px;color:var(--dim)">각 TC를 클릭하면 설계 의도 + 전제조건 + 스텝 + 기대 결과를 확인할 수 있습니다.</span></p>
-
+<p class="tc-intro reveal">Claude MCP로 자동 생성된 TC 145건+. 로그인·API·보안·성능·접근성·장바구니·검색·결제 전 카테고리 커버.<br><span style="font-family:var(--mono);font-size:13px;color:var(--dim)">각 TC를 클릭하면 설계 의도 + 전제조건 + 스텝 + 기대 결과를 확인할 수 있습니다.</span></p>
 <div class="tc-dashboard reveal">
   <div class="tc-dash-card"><div class="tc-dash-num">145<span style="font-size:14px">+</span></div><div class="tc-dash-label">총 TC 건수</div><div class="tc-dash-sub">MCP 자동 생성</div></div>
   <div class="tc-dash-card"><div class="tc-dash-num" id="dashHP">9</div><div class="tc-dash-label">해피패스</div><div class="tc-dash-sub">정상 흐름 검증</div></div>
   <div class="tc-dash-card"><div class="tc-dash-num" id="dashNG">8</div><div class="tc-dash-label">네거티브</div><div class="tc-dash-sub">예외 처리 검증</div></div>
   <div class="tc-dash-card"><div class="tc-dash-num" id="dashEG">6</div><div class="tc-dash-label">엣지케이스</div><div class="tc-dash-sub">경계값·극단 시나리오</div></div>
 </div>
-
 <div class="tc-dist-wrap reveal">
   <div class="tc-dist-title">// TC 유형 분포</div>
   <div class="tc-dist-bar-row"><span class="tc-dist-bar-label">해피패스</span><div class="tc-dist-bar-track"><div class="tc-dist-bar-fill hp" id="distBarHP" style="width:0%"></div></div><span class="tc-dist-bar-val" id="distValHP">9건</span></div>
   <div class="tc-dist-bar-row"><span class="tc-dist-bar-label">네거티브</span><div class="tc-dist-bar-track"><div class="tc-dist-bar-fill ng" id="distBarNG" style="width:0%"></div></div><span class="tc-dist-bar-val" id="distValNG">8건</span></div>
   <div class="tc-dist-bar-row"><span class="tc-dist-bar-label">엣지케이스</span><div class="tc-dist-bar-track"><div class="tc-dist-bar-fill eg" id="distBarEG" style="width:0%"></div></div><span class="tc-dist-bar-val" id="distValEG">6건</span></div>
 </div>
-
 <div class="tc-stat-bar reveal" id="tcStatBar">
   <span style="color:var(--dim)">// 현재 표시 중</span>
   <span class="tc-stat-item"><span class="tc-stat-dot" style="background:var(--purple)"></span><span id="statHP">해피패스 9건</span></span>
@@ -939,10 +916,9 @@ Jira 연동 완료
 <a href="https://github.com/kihyunqa/qa-portfolio" target="_blank" class="tc-link reveal">전체 TC 파일 보기 (145건+) ↗</a>
 </section>
 
-<!-- ★ 기승전결 브릿지 6: 경력 배경 -->
 <div class="sec-bridge reveal">
   <div class="sec-bridge-arrow">↓</div>
-  <div class="sec-bridge-text">이런 자동화가 가능했던 배경 — <strong>6.9년 QA 현장</strong>에서 쌓은 경험이 있었기에 무엇을 자동화해야 할지 알고 있었습니다.</div>
+  <div class="sec-bridge-text">이런 자동화가 가능했던 배경 — <strong>6.9년 QA 현장</strong>에서 쌓은 경험이 있었기에 무엇을 자동화해야 할지 알았습니다.</div>
 </div>
 
 <section class="timeline-sec" id="timeline">
@@ -1064,37 +1040,76 @@ Jira 연동 완료
 </footer>
 
 <script>
+/* ─── 브레드크럼 ─── */
 const bcMap={'stats':'00 · 숫자 현황','mcp':'01 · MCP 자동화','proof':'02 · 실제 증거','projects':'03 · 프로젝트','diagram':'04 · 파이프라인','roadmap':'05 · 로드맵','tc':'06 · 테스트케이스','timeline':'07 · 경력','skills':'08 · 스킬','contact':'09 · 연락'};
-const bcEl=document.getElementById('breadcrumb'),bcSec=document.getElementById('bcSection');
-let bcCurrent='';
+const bcEl=document.getElementById('breadcrumb'),bcSec=document.getElementById('bcSection');let bcCurrent='';
 function updateBreadcrumb(id){if(id===bcCurrent)return;bcCurrent=id;if(id&&bcMap[id]){bcSec.textContent=bcMap[id];bcEl.classList.add('visible');}else bcEl.classList.remove('visible');}
 
+/* ─── 히어로 fade-in ─── */
 document.addEventListener('DOMContentLoaded',()=>{
   document.querySelectorAll('.hero-fade-in').forEach((el,i)=>{
-    setTimeout(()=>el.classList.add('hfi-visible'),100+parseInt(el.dataset.hfiDelay||i)*100);
+    setTimeout(()=>el.classList.add('hfi-visible'),100+parseInt(el.dataset.hfiDelay||i)*120);
   });
+  startHeroTerminal();
 });
 
+/* ─── 히어로 라이브 터미널 타이핑 ─── */
+function startHeroTerminal(){
+  const cmdEl=document.getElementById('htCmd');
+  const curEl=document.getElementById('htCursor');
+  const outEl=document.getElementById('htOutputs');
+  if(!cmdEl||!outEl)return;
+  const cmd='로그인 TC 만들고 E2E 돌리고 Slack 알림까지 해줘';
+  const outputs=[
+    {txt:'filesystem 통합 사용함 ··· TC 생성 완료 (23건)',cls:'ht-out',delay:1800},
+    {txt:'playwright 통합 사용함 ··· login.spec.ts 실행 → 스크린샷 저장',cls:'ht-out',delay:3000},
+    {txt:'github 통합 사용함 ··· main 브랜치 커밋 완료 ✓',cls:'ht-ok',delay:4200},
+    {txt:'slack 통합 사용함 ··· 새-채널 QA 완료 알림 발송 완료 ✓',cls:'ht-ok',delay:5200},
+    {txt:'# 코드 0줄. 대화 1번. 전부 실제로 됐다.',cls:'ht-dim',delay:6400},
+  ];
+  let ci=0;
+  function typeCmd(){
+    if(ci<cmd.length){cmdEl.textContent=cmd.slice(0,++ci);setTimeout(typeCmd,ci===1?800:55);}else{
+      curEl.style.display='none';
+      outputs.forEach(o=>{
+        setTimeout(()=>{
+          const div=document.createElement('div');div.className='ht-line';
+          const sp=document.createElement('span');sp.className=o.cls;sp.textContent=o.txt;
+          div.appendChild(sp);outEl.appendChild(div);
+          if(outEl.children.length>=3)outEl.scrollTop=outEl.scrollHeight;
+        },o.delay);
+      });
+      // 7.5초 후 재시작
+      setTimeout(()=>{
+        cmdEl.textContent='';ci=0;outEl.innerHTML='';curEl.style.display='';
+        setTimeout(typeCmd,500);
+      },8000);
+    }
+  }
+  setTimeout(typeCmd,1200);
+}
+
+/* ─── 스크롤 바 ─── */
 let scrollTick=false;
 window.addEventListener('scroll',()=>{
   if(scrollTick)return;scrollTick=true;
   requestAnimationFrame(()=>{
     const s=document.documentElement;
     const pct=s.scrollTop/(s.scrollHeight-s.clientHeight);
-    const r2=Math.round(124+56*pct),g2=Math.round(58-58*pct),b2=Math.round(237-37*pct);
-    const r=Math.round(124+44*pct),g=Math.round(85-85*pct),b=Math.round(247-47*pct);
-    document.getElementById('scrollBar').style.cssText=`width:${pct*100}%;background:linear-gradient(90deg,rgb(${r2},${g2},${b2}),rgb(${r},${g},${b}))`;
+    document.getElementById('scrollBar').style.cssText=`width:${pct*100}%;background:linear-gradient(90deg,#7c3aed,#a855f7)`;
     updateDotNav();scrollTick=false;
   });
 },{passive:true});
 
 function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open');}
 
+/* ─── Reveal ─── */
 const obs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});
 },{threshold:0.06});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
+/* ─── TC 분포 바 ─── */
 const distObs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{
     if(e.isIntersecting){
@@ -1114,6 +1129,7 @@ const distObs=new IntersectionObserver(entries=>{
 const distWrap=document.querySelector('.tc-dist-wrap');
 if(distWrap)distObs.observe(distWrap);
 
+/* ─── 스킬 바 ─── */
 const skO=new IntersectionObserver(entries=>{
   entries.forEach(e=>{
     if(e.isIntersecting){
@@ -1124,6 +1140,7 @@ const skO=new IntersectionObserver(entries=>{
 },{threshold:0.3});
 document.querySelectorAll('.skills-wrap').forEach(el=>skO.observe(el));
 
+/* ─── 도트 네비 ─── */
 const dotSections=['stats','mcp','proof','projects','diagram','roadmap','tc','timeline','skills','contact'];
 document.querySelectorAll('.dot-nav-dot').forEach(dot=>{
   dot.addEventListener('click',()=>{
@@ -1142,6 +1159,7 @@ function updateDotNav(){
 }
 updateDotNav();
 
+/* ─── 스킬 툴팁 ─── */
 const skTip=document.getElementById('skTooltip'),skTipTitle=document.getElementById('skTipTitle'),skTipBody=document.getElementById('skTipBody'),skTipTags=document.getElementById('skTipTags');
 let tipTimer=null;
 document.querySelectorAll('.sk-item[data-tip-title]').forEach(item=>{
@@ -1160,10 +1178,7 @@ document.querySelectorAll('.sk-item[data-tip-title]').forEach(item=>{
 skTip.addEventListener('mouseenter',()=>clearTimeout(tipTimer));
 skTip.addEventListener('mouseleave',()=>{tipTimer=setTimeout(()=>skTip.classList.remove('visible'),100);});
 
-document.querySelectorAll('.hero-stat-card[data-scroll]').forEach(card=>{
-  card.addEventListener('click',()=>{const el=document.getElementById(card.dataset.scroll);if(el)el.scrollIntoView({behavior:'smooth'});});
-});
-
+/* ─── 히어로 타이핑 ─── */
 const heroRoleEl=document.getElementById('heroRoleText');
 const typingTexts=['Quality Assurance Engineer','TC 설계 · 버그 분석 · MCP 자동화','6년 9개월 QA · 코드 0줄 · 결과 ∞'];
 let typeIdx=0,charIdx=0,isDeleting=false;
@@ -1174,14 +1189,11 @@ function typeStep(){
 }
 setTimeout(typeStep,800);
 
+/* ─── TC 통계 업데이트 ─── */
 function updateTcStatBar(){
   const rows=document.querySelectorAll('.tc-data-row');
   let hp=0,ng=0,eg=0;
-  rows.forEach(row=>{
-    if(row.style.display==='none')return;
-    const t=row.dataset.type;
-    if(t==='h')hp++;else if(t==='n')ng++;else if(t==='e')eg++;
-  });
+  rows.forEach(row=>{if(row.style.display==='none')return;const t=row.dataset.type;if(t==='h')hp++;else if(t==='n')ng++;else if(t==='e')eg++;});
   document.getElementById('statHP').textContent='해피패스 '+hp+'건';
   document.getElementById('statNG').textContent='네거티브 '+ng+'건';
   document.getElementById('statEG').textContent='엣지케이스 '+eg+'건';
@@ -1198,19 +1210,17 @@ function updateTcStatBar(){
   document.getElementById('distValEG').textContent=eg+'건';
 }
 
+/* ─── TC 필터 ─── */
 let currentFilter='all';
-document.querySelectorAll('.tc-filter-btn').forEach(btn=>{
+document.querySelectorAll('.tc-filter-btn[data-filter]').forEach(btn=>{
   btn.addEventListener('click',()=>{
     document.querySelectorAll('.tc-filter-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');
-    currentFilter=btn.dataset.filter;
-    if(currentFilter)applySearch();
+    currentFilter=btn.dataset.filter;applySearch();
   });
 });
-
 const tcSearchInput=document.getElementById('tcSearchInput');
 const tcSearchClear=document.getElementById('tcSearchClear');
 const tcSearchCount=document.getElementById('tcSearchCount');
-
 function applySearch(){
   const q=(tcSearchInput?tcSearchInput.value:'').trim().toLowerCase();
   const rows=document.querySelectorAll('.tc-data-row');
@@ -1218,7 +1228,7 @@ function applySearch(){
   rows.forEach(row=>{
     const typeMatch=currentFilter==='all'||row.dataset.type===currentFilter;
     let textMatch=true;
-    if(q){const cells=row.querySelectorAll('td');const text=Array.from(cells).map(c=>c.textContent).join(' ').toLowerCase();textMatch=text.includes(q);}
+    if(q){const text=Array.from(row.querySelectorAll('td')).map(c=>c.textContent).join(' ').toLowerCase();textMatch=text.includes(q);}
     const show=typeMatch&&textMatch;
     row.style.display=show?'':'none';
     const dr=document.querySelector(`.tc-detail-row[data-for="${row.dataset.tcId}"]`);
@@ -1228,14 +1238,10 @@ function applySearch(){
   if(tcSearchCount)tcSearchCount.textContent=q?`${visible}건 검색됨`:'';
   updateTcStatBar();
 }
-
 if(tcSearchInput)tcSearchInput.addEventListener('input',applySearch);
-if(tcSearchClear){tcSearchClear.addEventListener('click',()=>{
-  if(tcSearchInput)tcSearchInput.value='';
-  if(tcSearchCount)tcSearchCount.textContent='';
-  applySearch();
-});}
+if(tcSearchClear){tcSearchClear.addEventListener('click',()=>{if(tcSearchInput)tcSearchInput.value='';if(tcSearchCount)tcSearchCount.textContent='';applySearch();});}
 
+/* ─── TC 행 확장 ─── */
 document.querySelectorAll('.tc-data-row').forEach(row=>{
   row.addEventListener('click',()=>{
     const tcId=row.dataset.tcId;
@@ -1248,11 +1254,9 @@ document.querySelectorAll('.tc-data-row').forEach(row=>{
     else{row.classList.add('tc-expanded');dr.classList.add('tc-detail-visible');dr.style.display='';icon.textContent='▲';requestAnimationFrame(()=>requestAnimationFrame(()=>di.classList.add('tc-detail-open')));}
   });
 });
-
 document.getElementById('tcExpandAll')?.addEventListener('click',()=>{
   document.querySelectorAll('.tc-data-row').forEach(row=>{
-    if(row.style.display==='none')return;
-    if(row.classList.contains('tc-expanded'))return;
+    if(row.style.display==='none'||row.classList.contains('tc-expanded'))return;
     const tcId=row.dataset.tcId;
     const dr=document.querySelector(`.tc-detail-row[data-for="${tcId}"]`);
     const di=dr?.querySelector('.tc-detail-inner');
@@ -1276,6 +1280,7 @@ document.getElementById('tcCollapseAll')?.addEventListener('click',()=>{
   });
 });
 
+/* ─── 레이더 차트 ─── */
 const radarSkills=[
   {name:'TC 설계',val:95,color:'#a855f7'},{name:'버그 리포팅',val:92,color:'#c084fc'},
   {name:'E2E 자동화',val:82,color:'#7c3aed'},{name:'API 테스트',val:70,color:'#a855f7'},
@@ -1299,6 +1304,7 @@ function drawRadar(animated){
 const radarObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){drawRadar(true);radarObs.unobserve(e.target);}});},{threshold:0.2});
 const rw=document.getElementById('radarWrap');if(rw)radarObs.observe(rw);
 
+/* ─── 타임라인 확장 ─── */
 [['tlDuple','tlDupleDetail'],['tlIMS','tlIMSDetail'],['tlMobifren','tlMobifrenDetail']].forEach(([iid,did])=>{
   const item=document.getElementById(iid),detail=document.getElementById(did);if(!item||!detail)return;
   item.addEventListener('click',e=>{if(e.target.tagName==='A')return;const was=item.classList.contains('expanded');document.querySelectorAll('.tl-item.expanded').forEach(el=>el.classList.remove('expanded'));if(!was)item.classList.add('expanded');});
