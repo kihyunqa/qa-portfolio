@@ -727,22 +727,65 @@ Jira 연동 완료
 
 <div class="commit-card reveal" id="commitCard">
   <div class="commit-card-head">
-    <span class="commit-card-title">// GITHUB COMMIT HISTORY · kihyunqa/qa-portfolio</span>
-    <span class="commit-loading" id="commitLoading"><span class="commit-loading-dot"></span> GitHub API 연결 중...</span>
+    <span class="commit-card-title">// QA PORTFOLIO · 자동화 성과 요약</span>
   </div>
   <div class="commit-stats-row">
-    <div class="commit-stat"><div class="commit-stat-num" id="cStatTotal">—</div><div class="commit-stat-label">총 커밋 수</div><div class="commit-stat-sub">전체 히스토리</div></div>
-    <div class="commit-stat"><div class="commit-stat-num">80<span style="font-size:16px">+</span></div><div class="commit-stat-label">관리 파일 수</div><div class="commit-stat-sub">MCP로 생성·커밋</div></div>
-    <div class="commit-stat"><div class="commit-stat-num" id="cStatDays">—</div><div class="commit-stat-label">활동 기간</div><div class="commit-stat-sub">최초 커밋 기준</div></div>
-    <div class="commit-stat"><div class="commit-stat-num">0</div><div class="commit-stat-label">직접 작성한 코드</div><div class="commit-stat-sub">전부 MCP 자동화</div></div>
+    <div class="commit-stat">
+      <div class="commit-stat-num">145<span style="font-size:16px">+</span></div>
+      <div class="commit-stat-label">자동 생성 TC</div>
+      <div class="commit-stat-sub">16개 testcase 파일</div>
+    </div>
+    <div class="commit-stat">
+      <div class="commit-stat-num">80<span style="font-size:16px">+</span></div>
+      <div class="commit-stat-label">관리 파일 수</div>
+      <div class="commit-stat-sub">MCP로 생성·커밋</div>
+    </div>
+    <div class="commit-stat">
+      <div class="commit-stat-num">5</div>
+      <div class="commit-stat-label">MCP 실제 연동</div>
+      <div class="commit-stat-sub">filesystem·playwright·github·notion·slack</div>
+    </div>
+    <div class="commit-stat">
+      <div class="commit-stat-num">0</div>
+      <div class="commit-stat-label">직접 작성한 코드</div>
+      <div class="commit-stat-sub">전부 MCP 자동화</div>
+    </div>
   </div>
-  <div class="commit-bar-area" id="commitBarArea" style="display:none">
-    <div class="commit-bar-label">// RECENT COMMIT ACTIVITY</div>
-    <div class="commit-bars" id="commitBars"></div>
-    <div class="commit-bar-dates"></div>
+  <div class="commit-bar-area" style="display:block">
+    <div class="commit-bar-label">// QA 커버리지 현황</div>
+    <div style="display:flex;flex-direction:column;gap:10px;margin-top:8px">
+      <div style="display:flex;align-items:center;gap:10px">
+        <span style="font-family:var(--mono);font-size:10px;color:var(--muted);width:160px;flex-shrink:0">E2E spec (Playwright)</span>
+        <div style="flex:1;height:5px;background:rgba(168,85,247,0.12);border-radius:2px;overflow:hidden">
+          <div style="width:100%;height:100%;background:var(--purple);border-radius:2px"></div>
+        </div>
+        <span style="font-family:var(--mono);font-size:10px;color:var(--muted);width:36px;text-align:right">12개</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px">
+        <span style="font-family:var(--mono);font-size:10px;color:var(--muted);width:160px;flex-shrink:0">TC 카테고리</span>
+        <div style="flex:1;height:5px;background:rgba(168,85,247,0.12);border-radius:2px;overflow:hidden">
+          <div style="width:88%;height:100%;background:var(--purple);border-radius:2px"></div>
+        </div>
+        <span style="font-family:var(--mono);font-size:10px;color:var(--muted);width:36px;text-align:right">16종</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px">
+        <span style="font-family:var(--mono);font-size:10px;color:var(--muted);width:160px;flex-shrink:0">GitHub Actions</span>
+        <div style="flex:1;height:5px;background:rgba(168,85,247,0.12);border-radius:2px;overflow:hidden">
+          <div style="width:33%;height:100%;background:var(--purple);border-radius:2px"></div>
+        </div>
+        <span style="font-family:var(--mono);font-size:10px;color:var(--muted);width:36px;text-align:right">2개</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px">
+        <span style="font-family:var(--mono);font-size:10px;color:var(--muted);width:160px;flex-shrink:0">문서 (docs/)</span>
+        <div style="flex:1;height:5px;background:rgba(168,85,247,0.12);border-radius:2px;overflow:hidden">
+          <div style="width:93%;height:100%;background:var(--purple);border-radius:2px"></div>
+        </div>
+        <span style="font-family:var(--mono);font-size:10px;color:var(--muted);width:36px;text-align:right">28개</span>
+      </div>
+    </div>
   </div>
   <div class="commit-footer">
-    <span class="commit-footer-note" id="commitFooterNote">GitHub API 데이터 로딩 중...</span>
+    <span class="commit-footer-note">// kihyunqa/qa-portfolio · MCP 자동화 포트폴리오</span>
     <a href="https://github.com/kihyunqa/qa-portfolio/commits/main" target="_blank" class="proof-link" style="margin-top:0">전체 커밋 보기 ↗</a>
   </div>
 </div>
@@ -947,15 +990,15 @@ Jira 연동 완료
 <tr class="tc-data-row" data-type="e" data-tc-id="PERF-E-001"><td>PERF-E-001 <span class="tc-expand-icon">▼</span></td><td><span class="tc-type e">엣지케이스</span></td><td>동시 100개 요청 부하 테스트</td><td>응답 시간 2s 이내, 서버 500 없음</td><td><span class="p2">P2</span></td></tr>
 <tr class="tc-detail-row" data-for="PERF-E-001"><td class="tc-detail-cell" colspan="5"><div class="tc-detail-inner"><div class="tc-detail-intent"><div class="tc-detail-intent-label">// 설계 의도 — 왜 이 케이스인가</div><div class="tc-detail-intent-text">프로모션·이벤트 시점에 트래픽이 급증합니다. 100 concurrent 요청은 소규모 서비스에서 충분히 현실적인 부하 수준입니다. p95 응답 2초 기준은 Google의 Core Web Vitals 기준을 참고한 합격 기준으로, 서버 용량 계획의 근거가 됩니다.</div></div><div class="tc-detail-content"><div class="tc-detail-block"><div class="tc-detail-label">// 전제조건</div><div class="tc-detail-value">부하 테스트 도구 준비 (k6 또는 Artillery).</div></div><div class="tc-detail-block"><div class="tc-detail-label">// 테스트 스텝</div><ol class="tc-detail-steps"><li><span class="step-num">01.</span>동시 100개 요청 스크립트 실행</li><li><span class="step-num">02.</span>응답 시간 분포 측정</li></ol></div><div class="tc-detail-block"><div class="tc-detail-label">// 기대 결과 상세</div><div class="tc-detail-result-edge">△ p95 응답 2s 이내 확인<br>△ 500 에러 0건 확인</div></div></div></div></td></tr>
 
-<!-- SIGNUP-HP-001 (신규) -->
+<!-- SIGNUP-HP-001 -->
 <tr class="tc-data-row" data-type="h" data-tc-id="SIGNUP-HP-001"><td>SIGNUP-HP-001 <span class="tc-expand-icon">▼</span></td><td><span class="tc-type h">해피패스</span></td><td>신규 회원가입 완료 + 이메일 인증</td><td>인증 메일 수신, 로그인 가능 상태</td><td><span class="p1">P1</span></td></tr>
 <tr class="tc-detail-row" data-for="SIGNUP-HP-001"><td class="tc-detail-cell" colspan="5"><div class="tc-detail-inner"><div class="tc-detail-intent"><div class="tc-detail-intent-label">// 설계 의도 — 왜 이 케이스인가</div><div class="tc-detail-intent-text">회원가입은 서비스의 첫 진입점입니다. 가입 완료 후 이메일 인증 없이 로그인 가능한 버그는 보안 취약점이자 비즈니스 리스크입니다. 가입 → 메일 수신 → 인증 → 로그인까지 전체 온보딩 플로우를 단일 케이스에서 검증합니다.</div></div><div class="tc-detail-content"><div class="tc-detail-block"><div class="tc-detail-label">// 전제조건</div><div class="tc-detail-value">미가입 이메일 주소. 이메일 수신 가능한 환경.</div></div><div class="tc-detail-block"><div class="tc-detail-label">// 테스트 스텝</div><ol class="tc-detail-steps"><li><span class="step-num">01.</span>이메일·비밀번호 입력 후 가입 제출</li><li><span class="step-num">02.</span>인증 메일 수신 확인</li><li><span class="step-num">03.</span>인증 링크 클릭 후 로그인 시도</li></ol></div><div class="tc-detail-block"><div class="tc-detail-label">// 기대 결과 상세</div><div class="tc-detail-result-pass">✓ 인증 메일 5분 이내 수신<br>✓ 인증 완료 후 로그인 성공<br>✓ 미인증 상태에서 로그인 차단 확인</div></div></div></div></td></tr>
 
-<!-- SESSION-E-001 (신규) -->
+<!-- SESSION-E-001 -->
 <tr class="tc-data-row" data-type="e" data-tc-id="SESSION-E-001"><td>SESSION-E-001 <span class="tc-expand-icon">▼</span></td><td><span class="tc-type e">엣지케이스</span></td><td>동일 계정 멀티 디바이스 동시 세션 충돌</td><td>세션 정책에 따라 기존 또는 신규 로그아웃</td><td><span class="p2">P2</span></td></tr>
 <tr class="tc-detail-row" data-for="SESSION-E-001"><td class="tc-detail-cell" colspan="5"><div class="tc-detail-inner"><div class="tc-detail-intent"><div class="tc-detail-intent-label">// 설계 의도 — 왜 이 케이스인가</div><div class="tc-detail-intent-text">멀티 디바이스 로그인은 현실에서 매우 흔한 시나리오입니다. 서비스가 세션 정책(중복 허용/차단)을 명시적으로 정의하지 않으면 예상치 못한 동작이 발생합니다. 어느 기기에서 강제 로그아웃이 일어나는지, 사용자에게 안내가 되는지를 검증합니다.</div></div><div class="tc-detail-content"><div class="tc-detail-block"><div class="tc-detail-label">// 전제조건</div><div class="tc-detail-value">동일 계정. 디바이스 A(PC) + 디바이스 B(모바일) 준비.</div></div><div class="tc-detail-block"><div class="tc-detail-label">// 테스트 스텝</div><ol class="tc-detail-steps"><li><span class="step-num">01.</span>디바이스 A에서 로그인</li><li><span class="step-num">02.</span>디바이스 B에서 동일 계정 로그인</li><li><span class="step-num">03.</span>디바이스 A 세션 상태 확인</li></ol></div><div class="tc-detail-block"><div class="tc-detail-label">// 기대 결과 상세</div><div class="tc-detail-result-edge">△ 세션 정책 명시 동작 확인<br>△ 강제 로그아웃 시 안내 메시지 노출 확인</div></div></div></div></td></tr>
 
-<!-- UX-N-001 (신규) -->
+<!-- UX-N-001 -->
 <tr class="tc-data-row" data-type="n" data-tc-id="UX-N-001"><td>UX-N-001 <span class="tc-expand-icon">▼</span></td><td><span class="tc-type n">네거티브</span></td><td>필수 입력 누락 시 인라인 에러 메시지</td><td>각 필드별 에러 즉시 표시, 제출 차단</td><td><span class="p2">P2</span></td></tr>
 <tr class="tc-detail-row" data-for="UX-N-001"><td class="tc-detail-cell" colspan="5"><div class="tc-detail-inner"><div class="tc-detail-intent"><div class="tc-detail-intent-label">// 설계 의도 — 왜 이 케이스인가</div><div class="tc-detail-intent-text">폼 UX 품질은 신규 사용자 이탈률과 직결됩니다. 에러 메시지가 제출 후 상단에 일괄 표시되면 사용자는 어떤 필드가 문제인지 찾는 데 시간을 낭비합니다. 필드별 인라인 에러와 실시간 검증이 적용됐는지를 검증하는 UX 품질 케이스입니다.</div></div><div class="tc-detail-content"><div class="tc-detail-block"><div class="tc-detail-label">// 전제조건</div><div class="tc-detail-value">필수 입력 필드가 있는 폼 페이지.</div></div><div class="tc-detail-block"><div class="tc-detail-label">// 테스트 스텝</div><ol class="tc-detail-steps"><li><span class="step-num">01.</span>필수 필드 비워둔 채 제출 클릭</li><li><span class="step-num">02.</span>에러 메시지 위치·내용 확인</li></ol></div><div class="tc-detail-block"><div class="tc-detail-label">// 기대 결과 상세</div><div class="tc-detail-result-fail">✗ 각 필드 하단 인라인 에러 표시 확인<br>✗ 미입력 필드 포커스 이동 확인<br>✗ 제출 차단 확인</div></div></div></div></td></tr>
 
@@ -1027,7 +1070,7 @@ Jira 연동 완료
 <div class="sk-group-title">TESTING &amp; QA</div>
 <div class="sk-list">
 <div class="sk-item" data-tip-title="테스트케이스 설계" data-tip-body="6.9년 경력 · 145건+ TC 설계" data-tip-tags="두플 리드|IMS Mobility|모비프렌"><span class="sk-name">테스트케이스 설계</span><div class="sk-bar-w"><div class="sk-bar" style="width:95%"></div></div></div>
-<div class="sk-item" data-tip-title="버그 리포팅 & 트래킹" data-tip-body="버그 심각도 판단 · Jira 연동" data-tip-tags="심각도 판단|에스컬레이션|Jira 연동"><span class="sk-name">버그 리포팅 &amp; 트래킹</span><div class="sk-bar-w"><div class="sk-bar" style="width:92%"></div></div></div>
+<div class="sk-item" data-tip-title="버그 리포팅 &amp; 트래킹" data-tip-body="버그 심각도 판단 · Jira 연동" data-tip-tags="심각도 판단|에스컬레이션|Jira 연동"><span class="sk-name">버그 리포팅 &amp; 트래킹</span><div class="sk-bar-w"><div class="sk-bar" style="width:92%"></div></div></div>
 <div class="sk-item" data-tip-title="E2E 자동화" data-tip-body="Cypress (IMS) + Playwright MCP · 12 spec" data-tip-tags="Cypress|Playwright|spec 12개"><span class="sk-name">E2E 자동화 (Cypress/Playwright)</span><div class="sk-bar-w"><div class="sk-bar" style="width:82%"></div></div></div>
 <div class="sk-item" data-tip-title="API 테스트" data-tip-body="Swagger 기반 API 검증 · IMS Mobility 2년" data-tip-tags="Swagger|REST API|결제 API"><span class="sk-name">API 테스트 (Swagger)</span><div class="sk-bar-w"><div class="sk-bar" style="width:70%"></div></div></div>
 <div class="sk-item" data-tip-title="버그 심각도 분류" data-tip-body="P1·P2·P3 기준 수립 · 개발팀 설득" data-tip-tags="P1 판단|심각도 기준|영향 분석"><span class="sk-name">버그 심각도 분류</span><div class="sk-bar-w"><div class="sk-bar" style="width:90%"></div></div></div>
@@ -1341,29 +1384,6 @@ function drawRadar(animated){
 }
 const radarObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){drawRadar(true);radarObs.unobserve(e.target);}});},{threshold:0.2});
 const rw=document.getElementById('radarWrap');if(rw)radarObs.observe(rw);
-
-/* COMMIT */
-async function loadCommitData(){
-  const loadEl=document.getElementById('commitLoading'),footerEl=document.getElementById('commitFooterNote');
-  const tot=document.getElementById('cStatTotal'),days=document.getElementById('cStatDays');
-  try{
-    const res=await fetch('https://api.github.com/repos/kihyunqa/qa-portfolio/commits?per_page=100');
-    if(!res.ok)throw new Error();
-    const commits=await res.json();if(!Array.isArray(commits)||!commits.length)throw new Error();
-    const total=commits.length,first=new Date(commits[commits.length-1].commit.author.date);
-    const diff=Math.floor((new Date()-first)/(86400000));
-    tot.textContent=total+'+';days.textContent=diff+'d';
-    const barsEl=document.getElementById('commitBars'),barArea=document.getElementById('commitBarArea');
-    const buckets={};const now=new Date();
-    for(let i=13;i>=0;i--){const d=new Date(now);d.setDate(d.getDate()-i);buckets[d.toISOString().slice(0,10)]=0;}
-    commits.forEach(c=>{const day=c.commit.author.date.slice(0,10);if(day in buckets)buckets[day]++;});
-    const maxV=Math.max(...Object.values(buckets),1);barsEl.innerHTML='';
-    Object.entries(buckets).forEach(([date,count])=>{const bar=document.createElement('div');bar.className='commit-bar-item';bar.style.height=Math.max(4,Math.round(count/maxV*100))+'%';bar.title=`${date}: ${count}건`;bar.dataset.label=date.slice(5);barsEl.appendChild(bar);});
-    barArea.style.display='';loadEl.style.display='none';footerEl.textContent=`// GitHub API · ${total}+ commits · ${diff}일간 활동`;
-  }catch{loadEl.style.display='none';tot.textContent='100+';days.textContent='30+d';footerEl.textContent='// kihyunqa/qa-portfolio · GitHub Pages 배포 완료';}
-}
-const commitObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){loadCommitData();commitObs.unobserve(e.target);}});},{threshold:0.2});
-const cc=document.getElementById('commitCard');if(cc)commitObs.observe(cc);
 
 /* TIMELINE */
 [['tlDuple','tlDupleDetail'],['tlIMS','tlIMSDetail'],['tlMobifren','tlMobifrenDetail']].forEach(([iid,did])=>{
