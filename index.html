@@ -23,7 +23,6 @@
 --bg:#08060f;--bg2:#0d0a18;--bg3:#110d1f;
 --purple:#a855f7;--purple2:#7c3aed;--purple3:#c084fc;
 --p-border:rgba(168,85,247,0.22);--p-muted:rgba(168,85,247,0.08);
-/* ✅ 피드백 반영: muted/dim 색상 더 밝게 — 가독성 대폭 향상 */
 --text:#f0eaff;--muted:#d4cce8;--dim:#a898c8;
 --mono:'DM Mono',ui-monospace,monospace;
 --sans:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;
@@ -33,10 +32,8 @@
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:var(--sans);font-weight:300;overflow-x:hidden}
 
-/* 스크롤바 */
 .scroll-bar{position:fixed;top:0;left:0;height:3px;z-index:9999;width:0%;background:linear-gradient(90deg,#7c3aed,#a855f7)}
 
-/* NAV */
 nav{position:fixed;top:0;left:0;right:0;padding:16px 56px;display:flex;align-items:center;justify-content:space-between;z-index:1000;background:rgba(8,6,15,.97);border-bottom:1px solid var(--p-border)}
 .nav-logo{font-family:var(--mono);font-size:12px;color:var(--purple);letter-spacing:.12em}
 .nav-links{display:flex;gap:28px;list-style:none}
@@ -48,24 +45,12 @@ nav{position:fixed;top:0;left:0;right:0;padding:16px 56px;display:flex;align-ite
 .mobile-menu.open{display:flex}
 .mobile-menu a{font-family:var(--mono);font-size:18px;color:var(--text);text-decoration:none}
 
-/* ✅ 킥 배너 — 강화 버전 */
-.kick-banner{background:linear-gradient(135deg,rgba(124,58,237,0.18),rgba(168,85,247,0.1));border:1px solid rgba(168,85,247,0.5);border-left:5px solid var(--purple);padding:20px 28px;margin-bottom:36px;position:relative;overflow:hidden}
-.kick-banner::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at top left,rgba(168,85,247,0.12),transparent 60%);pointer-events:none}
-.kick-banner-label{font-family:var(--mono);font-size:10px;color:var(--purple);letter-spacing:.2em;margin-bottom:10px;display:flex;align-items:center;gap:8px}
-.kick-banner-label::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--purple);animation:pulse 1.5s infinite}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.3)}}
-.kick-banner-main{font-size:clamp(17px,2.4vw,24px);font-weight:700;color:var(--text);line-height:1.4;letter-spacing:-.02em;margin-bottom:12px}
-.kick-banner-main em{color:var(--purple);font-style:normal}
-.kick-banner-sub{font-size:14px;color:var(--muted);line-height:1.75}
-.kick-banner-sub strong{color:var(--text);font-weight:500}
-
 /* HERO */
 .hero{min-height:100vh;display:flex;align-items:center;padding:120px 56px 80px;position:relative;z-index:2}
 .hero-left{flex:1;max-width:720px}
 .hero-tag{font-family:var(--mono);font-size:11px;color:var(--purple);letter-spacing:.2em;margin-bottom:28px;display:flex;align-items:center;gap:12px}
 .hero-tag::before{content:'';width:28px;height:1px;background:var(--purple)}
 h1.hero-name{font-size:clamp(56px,8vw,100px);font-weight:900;line-height:.95;letter-spacing:-.04em;margin-bottom:20px}
-/* ✅ 피드백 반영: 이름 '기현' 부분 흰색 고정 */
 h1.hero-name em{color:#ffffff;font-style:normal}
 .hero-role{font-family:var(--mono);font-size:13px;color:var(--muted);letter-spacing:.08em;margin-bottom:36px;min-height:20px}
 .typing-cursor{display:inline-block;width:2px;height:14px;background:var(--purple);vertical-align:middle;margin-left:2px;animation:blink .8s infinite}
@@ -74,7 +59,46 @@ h1.hero-name em{color:#ffffff;font-style:normal}
 .hero-fade-in{opacity:0;transition:opacity .4s ease}
 .hero-fade-in.hfi-visible{opacity:1}
 
-.hero-desc{font-size:16px;line-height:1.8;color:var(--muted);max-width:520px;margin-bottom:48px}
+/* ★ 킥 — 메인 아이덴티티 블록 */
+.kick-identity{margin-bottom:32px}
+.kick-identity-label{font-family:var(--mono);font-size:10px;color:var(--purple);letter-spacing:.22em;margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.kick-identity-label::before{content:'';width:18px;height:1px;background:var(--purple)}
+.kick-identity-headline{font-size:clamp(22px,3.2vw,34px);font-weight:800;line-height:1.25;letter-spacing:-.03em;color:var(--text);margin-bottom:20px}
+.kick-identity-headline .hl-qa{color:#ffffff}
+.kick-identity-headline .hl-plus{color:var(--dim);font-weight:300;margin:0 6px}
+.kick-identity-headline .hl-ai{color:var(--purple)}
+.kick-identity-headline .hl-eq{color:var(--dim);font-weight:300;margin:0 6px}
+.kick-identity-headline .hl-result{
+  background:linear-gradient(90deg,var(--purple),var(--purple3));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+
+/* ★ 두 가지 강점을 나란히 보여주는 카드 */
+.kick-cards{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:28px}
+.kick-card{padding:18px 20px;border:1px solid var(--p-border);background:rgba(168,85,247,0.04);position:relative;overflow:hidden}
+.kick-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
+.kick-card.qa-card::before{background:linear-gradient(90deg,#7c3aed,#a855f7)}
+.kick-card.ai-card::before{background:linear-gradient(90deg,#a855f7,#c084fc)}
+.kick-card-label{font-family:var(--mono);font-size:9px;letter-spacing:.18em;margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.kick-card.qa-card .kick-card-label{color:var(--purple)}
+.kick-card.ai-card .kick-card-label{color:var(--purple3)}
+.kick-card-num{font-family:var(--mono);font-size:28px;font-weight:500;color:var(--text);line-height:1;margin-bottom:4px}
+.kick-card.qa-card .kick-card-num{color:#ffffff}
+.kick-card.ai-card .kick-card-num{color:var(--purple)}
+.kick-card-desc{font-size:13px;color:var(--muted);line-height:1.55}
+
+/* ★ 핵심 한 줄 메시지 */
+.kick-statement{padding:16px 22px;background:rgba(168,85,247,0.08);border-left:4px solid var(--purple);margin-bottom:36px;position:relative}
+.kick-statement-text{font-size:16px;font-weight:600;color:var(--text);line-height:1.6;letter-spacing:-.01em}
+.kick-statement-text em{color:var(--purple);font-style:normal}
+.kick-statement-sub{font-family:var(--mono);font-size:11px;color:var(--dim);margin-top:6px}
+
+.hero-proof{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:36px}
+.hero-proof-item{font-family:var(--mono);font-size:10px;padding:4px 10px;border:1px solid var(--p-border);color:var(--purple);background:var(--p-muted);letter-spacing:.06em}
+.hero-proof-item::before{content:'✓ ';color:var(--green)}
+
+.hero-desc{font-size:16px;line-height:1.8;color:var(--muted);max-width:520px;margin-bottom:36px}
 .hero-desc strong{color:var(--text);font-weight:500}
 .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
 .btn-p{padding:13px 30px;background:var(--purple);color:#fff;font-family:var(--mono);font-size:12px;font-weight:500;text-decoration:none;letter-spacing:.06em}
@@ -93,10 +117,6 @@ h1.hero-name em{color:#ffffff;font-style:normal}
 .hero-stat-tip-title{color:var(--purple);font-size:9px;letter-spacing:.15em;margin-bottom:6px;display:block}
 .hero-stat-tip-link{display:inline-block;margin-top:8px;font-size:9px;color:var(--purple);border:1px solid var(--p-border);padding:2px 8px;background:var(--p-muted)}
 
-.hero-proof{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:36px}
-.hero-proof-item{font-family:var(--mono);font-size:10px;padding:4px 10px;border:1px solid var(--p-border);color:var(--purple);background:var(--p-muted);letter-spacing:.06em}
-.hero-proof-item::before{content:'✓ ';color:var(--green)}
-
 /* SECTIONS */
 section{padding:80px 56px;position:relative;z-index:2}
 .sec-head{display:flex;align-items:center;gap:14px;margin-bottom:48px}
@@ -107,7 +127,6 @@ section{padding:80px 56px;position:relative;z-index:2}
 .sec-stat-badge .ssb-num{font-size:13px;font-weight:500;color:var(--purple3)}
 .sec-stat-badge.ssb-green{background:rgba(16,185,129,0.08);border-color:rgba(16,185,129,0.28);color:var(--green)}
 .sec-stat-badge.ssb-green .ssb-num{color:var(--green)}
-/* ✅ 피드백 반영: sec-desc 폰트 크기 업 + 가독성 향상 */
 .sec-desc{font-size:16px;color:var(--muted);line-height:1.8;max-width:600px;margin-bottom:40px;margin-top:-24px}
 
 /* BADGES */
@@ -131,14 +150,12 @@ section{padding:80px 56px;position:relative;z-index:2}
 .pipe-step:last-child{border-bottom:none}
 .pipe-dot{width:8px;height:8px;border-radius:50%;background:var(--purple);margin-top:5px;flex-shrink:0}
 .pipe-name{font-size:13px;font-weight:500;margin-bottom:2px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-/* ✅ 피드백 반영: pipe-desc 폰트 크기 업 */
 .pipe-desc{font-size:13px;color:var(--muted);line-height:1.6}
 .mcp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--p-border);margin-bottom:32px}
 .mcp-card{background:var(--bg2);padding:18px 14px;transition:background .15s}
 .mcp-card:hover{background:var(--bg3)}
 .mc-icon{font-size:18px;margin-bottom:8px}
 .mc-name{font-family:var(--mono);font-size:10px;font-weight:500;color:var(--text);margin-bottom:5px;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
-/* ✅ 피드백 반영: mc-desc 폰트 크기 업 */
 .mc-desc{font-size:13px;color:var(--muted);line-height:1.55}
 
 /* TERMINAL */
@@ -161,13 +178,10 @@ section{padding:80px 56px;position:relative;z-index:2}
 .proof-card-full{grid-column:1/-1}
 .proof-icon{font-size:24px;margin-bottom:12px}
 .proof-title{font-size:15px;font-weight:700;margin-bottom:8px;display:flex;align-items:center;gap:10px}
-/* ✅ 피드백 반영: proof-desc 폰트 크기 업 */
 .proof-desc{font-size:15px;color:var(--muted);line-height:1.7;margin-bottom:12px}
 .proof-detail{font-family:var(--mono);font-size:11px;color:var(--green);background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.2);padding:8px 12px;line-height:1.8}
 .proof-link{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:10px;color:var(--purple);text-decoration:none;border:1px solid var(--p-border);padding:5px 10px;margin-top:10px;letter-spacing:.04em}
 .proof-link:hover{background:var(--p-muted)}
-
-/* PROOF SCREENSHOT */
 .proof-screenshot{margin-top:14px;border:1px solid var(--p-border);overflow:hidden;background:var(--bg3)}
 .proof-screenshot img{width:100%;height:140px;object-fit:cover;object-position:top;display:block;opacity:.85}
 .proof-screenshot img:hover{opacity:1}
@@ -186,15 +200,8 @@ section{padding:80px 56px;position:relative;z-index:2}
 .commit-stat-sub{font-family:var(--mono);font-size:10px;color:var(--dim);margin-top:4px}
 .commit-bar-area{margin-bottom:16px}
 .commit-bar-label{font-family:var(--mono);font-size:9px;color:var(--dim);letter-spacing:.12em;margin-bottom:8px}
-.commit-bars{display:flex;align-items:flex-end;gap:4px;height:44px}
-.commit-bar-item{flex:1;border-radius:1px 1px 0 0;background:var(--purple2);opacity:.7;position:relative;cursor:default;min-height:2px}
-.commit-bar-item:hover{opacity:1;background:var(--purple3)}
-.commit-bar-item::after{content:attr(data-label);position:absolute;bottom:-18px;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:8px;color:var(--dim);white-space:nowrap}
-.commit-bar-dates{height:20px}
 .commit-footer{display:flex;align-items:center;justify-content:space-between;padding-top:14px;border-top:1px solid var(--p-border);flex-wrap:wrap;gap:8px}
 .commit-footer-note{font-family:var(--mono);font-size:10px;color:var(--dim)}
-.commit-loading{font-family:var(--mono);font-size:10px;color:var(--dim);display:flex;align-items:center;gap:8px}
-.commit-loading-dot{width:5px;height:5px;border-radius:50%;background:var(--purple)}
 
 /* ROADMAP */
 .roadmap-sec{background:var(--bg2);border-top:1px solid var(--p-border)}
@@ -205,7 +212,6 @@ section{padding:80px 56px;position:relative;z-index:2}
 .rm-num{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:.15em;margin-bottom:8px}
 .rm-icon{font-size:20px;margin-bottom:8px}
 .rm-title{font-size:14px;font-weight:700;margin-bottom:6px}
-/* ✅ 피드백 반영: rm-desc 폰트 크기 업 */
 .rm-desc{font-size:14px;color:var(--muted);line-height:1.65}
 
 /* PROJECTS */
@@ -222,11 +228,9 @@ section{padding:80px 56px;position:relative;z-index:2}
 .proj-overlay-links{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px}
 .proj-overlay-link{font-family:var(--mono);font-size:9px;color:var(--purple);text-decoration:none;border:1px solid rgba(168,85,247,.4);padding:3px 8px;background:rgba(168,85,247,.08)}
 .proj-overlay-link:hover{background:var(--purple);color:#fff}
-
 .proj-num{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:.15em;margin-bottom:10px}
 .proj-icon{font-size:22px;margin-bottom:10px}
 .proj-title{font-size:15px;font-weight:700;letter-spacing:-.02em;margin-bottom:7px}
-/* ✅ 피드백 반영: proj-desc 폰트 크기 업 */
 .proj-desc{font-size:14px;color:var(--muted);line-height:1.65;margin-bottom:12px}
 .proj-flow{display:flex;flex-wrap:wrap;align-items:center;gap:4px;margin-bottom:12px}
 .proj-flow-step{font-family:var(--mono);font-size:9px;padding:2px 7px;background:rgba(168,85,247,.1);border:1px solid var(--p-border);color:var(--purple);letter-spacing:.04em}
@@ -278,7 +282,6 @@ section{padding:80px 56px;position:relative;z-index:2}
 .tl-expand-icon{font-family:var(--mono);font-size:9px;color:var(--dim);padding:2px 6px;border:1px solid var(--p-border);flex-shrink:0}
 .tl-item.expanded .tl-expand-icon{border-color:var(--purple);color:var(--purple);background:var(--p-muted)}
 .tl-role{font-family:var(--mono);font-size:11px;color:var(--muted);margin-bottom:10px}
-/* ✅ 피드백 반영: tl-desc 폰트 크기 업 */
 .tl-desc{font-size:15px;color:var(--muted);line-height:1.75}
 .tl-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:10px}
 .tl-tag{font-family:var(--mono);font-size:9px;padding:2px 7px;border:1px solid var(--p-border);color:var(--muted)}
@@ -362,15 +365,12 @@ section{padding:80px 56px;position:relative;z-index:2}
 .tc-detail-result-fail{font-family:var(--mono);font-size:10px;color:#f87171;background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.2);padding:5px 8px;line-height:1.6}
 .tc-detail-result-edge{font-family:var(--mono);font-size:10px;color:var(--wip);background:rgba(245,158,11,.06);border:1px solid rgba(245,158,11,.2);padding:5px 8px;line-height:1.6}
 .tc-row-hint{font-family:var(--mono);font-size:9px;color:var(--dim);letter-spacing:.06em;margin-bottom:8px}
-
-/* TC 통계 대시보드 */
 .tc-dashboard{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--p-border);margin-bottom:28px;border:1px solid var(--p-border)}
 .tc-dash-card{background:var(--bg3);padding:18px 16px;text-align:center;transition:background .15s}
 .tc-dash-card:hover{background:rgba(168,85,247,.06)}
 .tc-dash-num{font-family:var(--mono);font-size:28px;font-weight:500;color:var(--purple);line-height:1;margin-bottom:5px}
 .tc-dash-label{font-size:12px;color:var(--muted);line-height:1.4}
 .tc-dash-sub{font-family:var(--mono);font-size:9px;color:var(--dim);margin-top:3px}
-/* 분포 바 */
 .tc-dist-wrap{padding:18px 20px;background:var(--bg3);border:1px solid var(--p-border);margin-bottom:28px}
 .tc-dist-title{font-family:var(--mono);font-size:10px;color:var(--purple);letter-spacing:.15em;margin-bottom:12px}
 .tc-dist-bar-row{display:flex;align-items:center;gap:10px;margin-bottom:8px}
@@ -394,11 +394,9 @@ section{padding:80px 56px;position:relative;z-index:2}
 footer{padding:20px 56px;border-top:1px solid var(--p-border);display:flex;justify-content:space-between;position:relative;z-index:2}
 footer p{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:.05em}
 
-/* REVEAL */
 .reveal{opacity:0;transition:opacity .4s ease}
 .reveal.visible{opacity:1}
 
-/* DOT NAV */
 #dot-nav{position:fixed;right:18px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:10px;z-index:500;pointer-events:none}
 .dot-nav-item{position:relative;display:flex;align-items:center;justify-content:flex-end;pointer-events:auto}
 .dot-nav-dot{width:6px;height:6px;border-radius:50%;background:var(--dim);border:1px solid rgba(168,85,247,.3);cursor:pointer;flex-shrink:0}
@@ -406,14 +404,12 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:
 .dot-nav-label{position:absolute;right:14px;font-family:var(--mono);font-size:9px;color:var(--purple);white-space:nowrap;background:rgba(8,6,15,.95);padding:3px 7px;border:1px solid var(--p-border);opacity:0;pointer-events:none;transition:opacity .15s}
 .dot-nav-item:hover .dot-nav-label{opacity:1}
 
-/* BREADCRUMB */
 #breadcrumb{position:fixed;bottom:24px;left:56px;z-index:500;display:flex;align-items:center;gap:8px;pointer-events:none;opacity:0;transition:opacity .25s}
 #breadcrumb.visible{opacity:1}
 .bc-prefix{font-family:var(--mono);font-size:9px;color:var(--dim)}
 .bc-slash{font-family:var(--mono);font-size:9px;color:var(--dim);opacity:.5}
 .bc-section{font-family:var(--mono);font-size:10px;color:var(--purple);letter-spacing:.1em;font-weight:500}
 
-/* RADAR */
 .radar-wrap{display:grid;grid-template-columns:300px 1fr;gap:48px;align-items:center;margin-bottom:48px;padding:28px;border:1px solid var(--p-border);background:var(--bg2)}
 .radar-svg-container{display:flex;flex-direction:column;align-items:center;gap:14px}
 .radar-title{font-family:var(--mono);font-size:10px;color:var(--purple);letter-spacing:.15em;text-align:center}
@@ -426,12 +422,15 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:
 .radar-legend-name{font-family:var(--mono);font-size:11px;color:var(--muted)}
 .radar-legend-val{font-family:var(--mono);font-size:11px;color:var(--purple);margin-left:auto}
 
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.3)}}
+
 @media(max-width:1200px){.mcp-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:1100px){.projects-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:900px){
 nav{padding:14px 20px}.nav-links{display:none}.ham{display:flex}
 .hero{padding:90px 20px 60px}.hero-stats{display:none}
 section{padding:56px 20px}
+.kick-cards{grid-template-columns:1fr}
 .mcp-top{grid-template-columns:1fr;gap:32px}.mcp-grid{grid-template-columns:repeat(2,1fr)}
 .skills-wrap{grid-template-columns:1fr;gap:28px}
 .contact-wrap{flex-direction:column;gap:32px;align-items:flex-start}
@@ -453,26 +452,14 @@ footer{padding:16px 20px;flex-direction:column;gap:4px}
 .tc-search-input{width:100%}
 .sec-desc{margin-top:-16px}
 .tc-dashboard{grid-template-columns:repeat(2,1fr)}
-.kick-banner{padding:14px 16px}
 }
 
 @media print{
-  :root{
-    --bg:#ffffff;--bg2:#f8f8f8;--bg3:#f2f2f2;
-    --purple:#5b21b6;--purple2:#4c1d95;--purple3:#7c3aed;
-    --p-border:#d4b8f0;--p-muted:#ede8f8;
-    --text:#111111;--muted:#444444;--dim:#888888;
-    --green:#065f46;--wip:#92400e;
-  }
+  :root{--bg:#ffffff;--bg2:#f8f8f8;--bg3:#f2f2f2;--purple:#5b21b6;--purple2:#4c1d95;--purple3:#7c3aed;--p-border:#d4b8f0;--p-muted:#ede8f8;--text:#111111;--muted:#444444;--dim:#888888;--green:#065f46;--wip:#92400e;}
   @page{margin:18mm 16mm;size:A4}
   *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
   body{background:#fff!important;color:#111!important;font-size:11pt;line-height:1.6}
-  nav,.scroll-bar,#dot-nav,#breadcrumb,.mobile-menu,
-  .ham,.sk-tooltip,.hero-stats,.hero-stat-tip,
-  .tc-search-wrap,.tc-filter,.tc-row-hint,.tc-bulk-actions,
-  .commit-bar-area,.commit-loading,
-  .proj-overlay,.hero-cta,
-  .btn-p,.btn-s,.kick-banner{display:none!important}
+  nav,.scroll-bar,#dot-nav,#breadcrumb,.mobile-menu,.ham,.sk-tooltip,.hero-stats,.hero-stat-tip,.tc-search-wrap,.tc-filter,.tc-row-hint,.tc-bulk-actions,.commit-bar-area,.proj-overlay,.hero-cta,.btn-p,.btn-s{display:none!important}
   section{padding:24pt 0!important;break-inside:avoid}
   .hero{min-height:auto!important;padding:32pt 0 20pt!important}
   h1.hero-name{font-size:48pt!important}
@@ -484,7 +471,6 @@ footer{padding:16px 20px;flex-direction:column;gap:4px}
   .radar-wrap{grid-template-columns:1fr!important;gap:16pt!important}
   .tc-detail-content{grid-template-columns:1fr 1fr!important}
   .tc-dashboard{grid-template-columns:repeat(4,1fr)!important}
-  .proj-card,.proof-card,.roadmap-card,.mcp-card,.stat-card,.commit-stat,.tl-detail-inner{background:#f8f8f8!important;border:1px solid #ccc!important}
   .tl-detail{max-height:none!important;opacity:1!important;margin-top:10pt!important}
   .tl-expand-icon{display:none!important}
   .proof-screenshot{display:none!important}
@@ -492,26 +478,10 @@ footer{padding:16px 20px;flex-direction:column;gap:4px}
   .proj-overlay-link::after,.tc-link::after,.proof-link::after,.c-link::after,.proj-link::after,.nav-links a::after{content:none!important}
   .terminal,.branch-vis{background:#f2f2f2!important;border:1px solid #bbb!important}
   .t-bar{background:#e8e8e8!important}
-  .t-prompt{color:#5b21b6!important}
-  .t-cmd{color:#111!important}
-  .t-out{color:#444!important}
-  .t-ok{color:#065f46!important}
-  .t-comment{color:#888!important}
-  .t-cursor{display:none!important}
-  .timeline-sec,.skills-sec,.contact-sec{break-before:page}
-  .tl-item{break-inside:avoid}
-  .proj-card,.roadmap-card,.proof-card{break-inside:avoid}
   .reveal{opacity:1!important}
   .hero-fade-in{opacity:1!important}
   footer{border-top:1px solid #ccc!important;padding:12pt 0 0!important}
-  footer p{color:#666!important;font-size:8pt!important}
-  .sec-line{background:#ccc!important}
-  .sec-t{color:#111!important}
-  .sec-n{color:#5b21b6!important}
-  .badge-done,.badge-live{border:1px solid #999!important}
-  .hero-proof-item{border:1px solid #999!important;background:#f0ebff!important}
-  .sk-bar-w{background:#e0d6f5!important}
-  .sk-name{color:#111!important}
+  .kick-cards{grid-template-columns:1fr 1fr!important}
 }
 </style>
 </head>
@@ -571,28 +541,43 @@ footer{padding:16px 20px;flex-direction:column;gap:4px}
 <h1 class="hero-name hero-fade-in" data-hfi-delay="1">성<em>기현</em></h1>
 <p class="hero-role hero-fade-in" data-hfi-delay="2"><span id="heroRoleText"></span><span class="typing-cursor"></span></p>
 
-<!-- ✅ 피드백 반영: 킥(한 방 메시지) 배너 — 강화 버전 -->
-<div class="kick-banner hero-fade-in" data-hfi-delay="3">
-  <div class="kick-banner-label">● QA 엔지니어의 관점</div>
-  <div class="kick-banner-main">"QA가 느리다"는 말이 싫어서, <em>자동화로 속도를 증명했습니다.</em></div>
-  <div class="kick-banner-sub">
-    버그를 찾는 것만큼 <strong>빠르게 찾는 것</strong>도 실력입니다.<br>
-    6년 9개월 현장 QA 경험 위에 Claude MCP 자동화를 얹어 — TC 생성, E2E, 리포팅까지 대화 한 번으로.
+<!-- ★ 킥 — 아이덴티티 블록 -->
+<div class="kick-identity hero-fade-in" data-hfi-delay="3">
+  <div class="kick-identity-label">WHO I AM</div>
+  <div class="kick-identity-headline">
+    <span class="hl-qa">QA 6년 9개월</span><span class="hl-plus">+</span><span class="hl-ai">AI 자동화 직접 구현</span><br>
+    <span class="hl-eq">=</span><span class="hl-result">둘 다 하는 QA 엔지니어</span>
+  </div>
+
+  <!-- 두 강점 카드 -->
+  <div class="kick-cards">
+    <div class="kick-card qa-card">
+      <div class="kick-card-label">● QA 현장 경험</div>
+      <div class="kick-card-num">6.9<span style="font-size:16px;font-weight:300">yr</span></div>
+      <div class="kick-card-desc">삼성전자 파트너 4.3년 · IoT·AI·모바일앱<br>IMS Mobility 결제 QA · 두플 QA 파트장</div>
+    </div>
+    <div class="kick-card ai-card">
+      <div class="kick-card-label">● AI 자동화 실제 구현</div>
+      <div class="kick-card-num">코드 <span style="font-size:20px">0</span>줄</div>
+      <div class="kick-card-desc">MCP 5개 연동 · TC 145건+ 자동 생성<br>Playwright 12 spec · Jira 연동 완료</div>
+    </div>
+  </div>
+
+  <!-- 핵심 메시지 -->
+  <div class="kick-statement">
+    <div class="kick-statement-text">QA만 잘하는 사람은 많습니다.<br>AI 자동화까지 <em>직접 구현하고 증명한</em> QA는 드뭅니다.</div>
+    <div class="kick-statement-sub">// 대화 한 번 → TC 생성 · E2E · GitHub 커밋 · Slack 알림 · Jira 트래킹 전부 완료</div>
   </div>
 </div>
 
-<p class="hero-desc hero-fade-in" data-hfi-delay="4">
-<strong>6년 9개월 QA 엔지니어, MCP 5개 실제 연동.</strong><br>
-대화 한 번으로 TC 생성부터 Slack 알림, Jira 트래킹까지 코드 없이 전부 돌립니다.
-</p>
-<div class="hero-proof hero-fade-in" data-hfi-delay="5">
+<div class="hero-proof hero-fade-in" data-hfi-delay="4">
 <span class="hero-proof-item">MCP 5개 실제 연동</span>
 <span class="hero-proof-item">TC 145건+ 자동 생성</span>
 <span class="hero-proof-item">Playwright 12 spec</span>
 <span class="hero-proof-item">Jira 연동 완료</span>
 <span class="hero-proof-item">코드 0줄</span>
 </div>
-<div class="hero-cta hero-fade-in" data-hfi-delay="6">
+<div class="hero-cta hero-fade-in" data-hfi-delay="5">
 <a href="#proof" class="btn-p">실제 증거 보기</a>
 <a href="#mcp" class="btn-s">MCP 자동화 ↓</a>
 <a href="https://github.com/kihyunqa/qa-portfolio/blob/main/docs/bug-stories.md" target="_blank" class="btn-s">버그 스토리 ↗</a>
@@ -762,58 +747,18 @@ Jira 연동 완료
     <span class="commit-card-title">// QA PORTFOLIO · 자동화 성과 요약</span>
   </div>
   <div class="commit-stats-row">
-    <div class="commit-stat">
-      <div class="commit-stat-num">145<span style="font-size:16px">+</span></div>
-      <div class="commit-stat-label">자동 생성 TC</div>
-      <div class="commit-stat-sub">16개 testcase 파일</div>
-    </div>
-    <div class="commit-stat">
-      <div class="commit-stat-num">80<span style="font-size:16px">+</span></div>
-      <div class="commit-stat-label">관리 파일 수</div>
-      <div class="commit-stat-sub">MCP로 생성·커밋</div>
-    </div>
-    <div class="commit-stat">
-      <div class="commit-stat-num">5</div>
-      <div class="commit-stat-label">MCP 실제 연동</div>
-      <div class="commit-stat-sub">filesystem·playwright·github·notion·slack</div>
-    </div>
-    <div class="commit-stat">
-      <div class="commit-stat-num">0</div>
-      <div class="commit-stat-label">직접 작성한 코드</div>
-      <div class="commit-stat-sub">전부 MCP 자동화</div>
-    </div>
+    <div class="commit-stat"><div class="commit-stat-num">145<span style="font-size:16px">+</span></div><div class="commit-stat-label">자동 생성 TC</div><div class="commit-stat-sub">16개 testcase 파일</div></div>
+    <div class="commit-stat"><div class="commit-stat-num">80<span style="font-size:16px">+</span></div><div class="commit-stat-label">관리 파일 수</div><div class="commit-stat-sub">MCP로 생성·커밋</div></div>
+    <div class="commit-stat"><div class="commit-stat-num">5</div><div class="commit-stat-label">MCP 실제 연동</div><div class="commit-stat-sub">filesystem·playwright·github·notion·slack</div></div>
+    <div class="commit-stat"><div class="commit-stat-num">0</div><div class="commit-stat-label">직접 작성한 코드</div><div class="commit-stat-sub">전부 MCP 자동화</div></div>
   </div>
   <div class="commit-bar-area" style="display:block">
     <div class="commit-bar-label">// QA 커버리지 현황</div>
     <div style="display:flex;flex-direction:column;gap:10px;margin-top:8px">
-      <div style="display:flex;align-items:center;gap:10px">
-        <span style="font-family:var(--mono);font-size:10px;color:var(--muted);width:160px;flex-shrink:0">E2E spec (Playwright)</span>
-        <div style="flex:1;height:5px;background:rgba(168,85,247,0.12);border-radius:2px;overflow:hidden">
-          <div style="width:100%;height:100%;background:var(--purple);border-radius:2px"></div>
-        </div>
-        <span style="font-family:var(--mono);font-size:10px;color:var(--muted);width:36px;text-align:right">12개</span>
-      </div>
-      <div style="display:flex;align-items:center;gap:10px">
-        <span style="font-family:var(--mono);font-size:10px;color:var(--muted);width:160px;flex-shrink:0">TC 카테고리</span>
-        <div style="flex:1;height:5px;background:rgba(168,85,247,0.12);border-radius:2px;overflow:hidden">
-          <div style="width:88%;height:100%;background:var(--purple);border-radius:2px"></div>
-        </div>
-        <span style="font-family:var(--mono);font-size:10px;color:var(--muted);width:36px;text-align:right">16종</span>
-      </div>
-      <div style="display:flex;align-items:center;gap:10px">
-        <span style="font-family:var(--mono);font-size:10px;color:var(--muted);width:160px;flex-shrink:0">GitHub Actions</span>
-        <div style="flex:1;height:5px;background:rgba(168,85,247,0.12);border-radius:2px;overflow:hidden">
-          <div style="width:33%;height:100%;background:var(--purple);border-radius:2px"></div>
-        </div>
-        <span style="font-family:var(--mono);font-size:10px;color:var(--muted);width:36px;text-align:right">2개</span>
-      </div>
-      <div style="display:flex;align-items:center;gap:10px">
-        <span style="font-family:var(--mono);font-size:10px;color:var(--muted);width:160px;flex-shrink:0">문서 (docs/)</span>
-        <div style="flex:1;height:5px;background:rgba(168,85,247,0.12);border-radius:2px;overflow:hidden">
-          <div style="width:93%;height:100%;background:var(--purple);border-radius:2px"></div>
-        </div>
-        <span style="font-family:var(--mono);font-size:10px;color:var(--muted);width:36px;text-align:right">28개</span>
-      </div>
+      <div style="display:flex;align-items:center;gap:10px"><span style="font-family:var(--mono);font-size:10px;color:var(--muted);width:160px;flex-shrink:0">E2E spec (Playwright)</span><div style="flex:1;height:5px;background:rgba(168,85,247,0.12);border-radius:2px;overflow:hidden"><div style="width:100%;height:100%;background:var(--purple);border-radius:2px"></div></div><span style="font-family:var(--mono);font-size:10px;color:var(--muted);width:36px;text-align:right">12개</span></div>
+      <div style="display:flex;align-items:center;gap:10px"><span style="font-family:var(--mono);font-size:10px;color:var(--muted);width:160px;flex-shrink:0">TC 카테고리</span><div style="flex:1;height:5px;background:rgba(168,85,247,0.12);border-radius:2px;overflow:hidden"><div style="width:88%;height:100%;background:var(--purple);border-radius:2px"></div></div><span style="font-family:var(--mono);font-size:10px;color:var(--muted);width:36px;text-align:right">16종</span></div>
+      <div style="display:flex;align-items:center;gap:10px"><span style="font-family:var(--mono);font-size:10px;color:var(--muted);width:160px;flex-shrink:0">GitHub Actions</span><div style="flex:1;height:5px;background:rgba(168,85,247,0.12);border-radius:2px;overflow:hidden"><div style="width:33%;height:100%;background:var(--purple);border-radius:2px"></div></div><span style="font-family:var(--mono);font-size:10px;color:var(--muted);width:36px;text-align:right">2개</span></div>
+      <div style="display:flex;align-items:center;gap:10px"><span style="font-family:var(--mono);font-size:10px;color:var(--muted);width:160px;flex-shrink:0">문서 (docs/)</span><div style="flex:1;height:5px;background:rgba(168,85,247,0.12);border-radius:2px;overflow:hidden"><div style="width:93%;height:100%;background:var(--purple);border-radius:2px"></div></div><span style="font-family:var(--mono);font-size:10px;color:var(--muted);width:36px;text-align:right">28개</span></div>
     </div>
   </div>
   <div class="commit-footer">
@@ -887,48 +832,18 @@ Jira 연동 완료
 </div>
 <p class="tc-intro reveal">Claude MCP로 자동 생성된 TC 145건+. 로그인·API·보안·성능·접근성·장바구니·검색·결제 전 카테고리 커버.<br><span style="font-family:var(--mono);font-size:11px;color:var(--dim)">각 TC를 클릭하면 설계 의도 + 전제조건 + 스텝 + 기대 결과를 확인할 수 있습니다.</span></p>
 
-<!-- TC 통계 대시보드 -->
 <div class="tc-dashboard reveal">
-  <div class="tc-dash-card">
-    <div class="tc-dash-num">145<span style="font-size:14px">+</span></div>
-    <div class="tc-dash-label">총 TC 건수</div>
-    <div class="tc-dash-sub">MCP 자동 생성</div>
-  </div>
-  <div class="tc-dash-card">
-    <div class="tc-dash-num" id="dashHP">9</div>
-    <div class="tc-dash-label">해피패스</div>
-    <div class="tc-dash-sub">정상 흐름 검증</div>
-  </div>
-  <div class="tc-dash-card">
-    <div class="tc-dash-num" id="dashNG">8</div>
-    <div class="tc-dash-label">네거티브</div>
-    <div class="tc-dash-sub">예외 처리 검증</div>
-  </div>
-  <div class="tc-dash-card">
-    <div class="tc-dash-num" id="dashEG">6</div>
-    <div class="tc-dash-label">엣지케이스</div>
-    <div class="tc-dash-sub">경계값·극단 시나리오</div>
-  </div>
+  <div class="tc-dash-card"><div class="tc-dash-num">145<span style="font-size:14px">+</span></div><div class="tc-dash-label">총 TC 건수</div><div class="tc-dash-sub">MCP 자동 생성</div></div>
+  <div class="tc-dash-card"><div class="tc-dash-num" id="dashHP">9</div><div class="tc-dash-label">해피패스</div><div class="tc-dash-sub">정상 흐름 검증</div></div>
+  <div class="tc-dash-card"><div class="tc-dash-num" id="dashNG">8</div><div class="tc-dash-label">네거티브</div><div class="tc-dash-sub">예외 처리 검증</div></div>
+  <div class="tc-dash-card"><div class="tc-dash-num" id="dashEG">6</div><div class="tc-dash-label">엣지케이스</div><div class="tc-dash-sub">경계값·극단 시나리오</div></div>
 </div>
 
-<!-- 분포 바 -->
 <div class="tc-dist-wrap reveal">
   <div class="tc-dist-title">// TC 유형 분포</div>
-  <div class="tc-dist-bar-row">
-    <span class="tc-dist-bar-label">해피패스</span>
-    <div class="tc-dist-bar-track"><div class="tc-dist-bar-fill hp" id="distBarHP" style="width:0%"></div></div>
-    <span class="tc-dist-bar-val" id="distValHP">9건</span>
-  </div>
-  <div class="tc-dist-bar-row">
-    <span class="tc-dist-bar-label">네거티브</span>
-    <div class="tc-dist-bar-track"><div class="tc-dist-bar-fill ng" id="distBarNG" style="width:0%"></div></div>
-    <span class="tc-dist-bar-val" id="distValNG">8건</span>
-  </div>
-  <div class="tc-dist-bar-row">
-    <span class="tc-dist-bar-label">엣지케이스</span>
-    <div class="tc-dist-bar-track"><div class="tc-dist-bar-fill eg" id="distBarEG" style="width:0%"></div></div>
-    <span class="tc-dist-bar-val" id="distValEG">6건</span>
-  </div>
+  <div class="tc-dist-bar-row"><span class="tc-dist-bar-label">해피패스</span><div class="tc-dist-bar-track"><div class="tc-dist-bar-fill hp" id="distBarHP" style="width:0%"></div></div><span class="tc-dist-bar-val" id="distValHP">9건</span></div>
+  <div class="tc-dist-bar-row"><span class="tc-dist-bar-label">네거티브</span><div class="tc-dist-bar-track"><div class="tc-dist-bar-fill ng" id="distBarNG" style="width:0%"></div></div><span class="tc-dist-bar-val" id="distValNG">8건</span></div>
+  <div class="tc-dist-bar-row"><span class="tc-dist-bar-label">엣지케이스</span><div class="tc-dist-bar-track"><div class="tc-dist-bar-fill eg" id="distBarEG" style="width:0%"></div></div><span class="tc-dist-bar-val" id="distValEG">6건</span></div>
 </div>
 
 <div class="tc-stat-bar reveal" id="tcStatBar">
@@ -957,83 +872,44 @@ Jira 연동 완료
 <table class="tc-table">
 <thead><tr><th>TC-ID</th><th>구분</th><th>테스트 제목</th><th>기대 결과</th><th>우선순위</th></tr></thead>
 <tbody>
-
-<!-- AUTH-001 -->
 <tr class="tc-data-row" data-type="h" data-tc-id="AUTH-001"><td>AUTH-001 <span class="tc-expand-icon">▼</span></td><td><span class="tc-type h">해피패스</span></td><td>유효한 자격증명으로 로그인</td><td>/dashboard 리다이렉트</td><td><span class="p1">P1</span></td></tr>
-<tr class="tc-detail-row" data-for="AUTH-001"><td class="tc-detail-cell" colspan="5"><div class="tc-detail-inner"><div class="tc-detail-intent"><div class="tc-detail-intent-label">// 설계 의도 — 왜 이 케이스인가</div><div class="tc-detail-intent-text">인증 시스템의 가장 기본 흐름을 먼저 검증합니다. 정상 경로가 보장되지 않으면 네거티브 케이스 결과를 신뢰할 수 없기 때문에 P1 최우선 배치. 리다이렉트 URL, 토큰 발급, UI 피드백 3가지를 동시에 검증합니다.</div></div><div class="tc-detail-content"><div class="tc-detail-block"><div class="tc-detail-label">// 전제조건</div><div class="tc-detail-value">유효한 계정 존재. 로그인 페이지 접근 가능.</div></div><div class="tc-detail-block"><div class="tc-detail-label">// 테스트 스텝</div><ol class="tc-detail-steps"><li><span class="step-num">01.</span>로그인 페이지 진입</li><li><span class="step-num">02.</span>유효한 이메일/비밀번호 입력</li><li><span class="step-num">03.</span>로그인 버튼 클릭</li></ol></div><div class="tc-detail-block"><div class="tc-detail-label">// 기대 결과 상세</div><div class="tc-detail-result-pass">✓ /dashboard 리다이렉트 확인<br>✓ JWT 토큰 쿠키 발급 확인<br>✓ 사용자명 헤더 표시 확인</div></div></div></div></td></tr>
-
-<!-- AUTH-005 -->
+<tr class="tc-detail-row" data-for="AUTH-001"><td class="tc-detail-cell" colspan="5"><div class="tc-detail-inner"><div class="tc-detail-intent"><div class="tc-detail-intent-label">// 설계 의도 — 왜 이 케이스인가</div><div class="tc-detail-intent-text">인증 시스템의 가장 기본 흐름을 먼저 검증합니다. 정상 경로가 보장되지 않으면 네거티브 케이스 결과를 신뢰할 수 없기 때문에 P1 최우선 배치.</div></div><div class="tc-detail-content"><div class="tc-detail-block"><div class="tc-detail-label">// 전제조건</div><div class="tc-detail-value">유효한 계정 존재. 로그인 페이지 접근 가능.</div></div><div class="tc-detail-block"><div class="tc-detail-label">// 테스트 스텝</div><ol class="tc-detail-steps"><li><span class="step-num">01.</span>로그인 페이지 진입</li><li><span class="step-num">02.</span>유효한 이메일/비밀번호 입력</li><li><span class="step-num">03.</span>로그인 버튼 클릭</li></ol></div><div class="tc-detail-block"><div class="tc-detail-label">// 기대 결과 상세</div><div class="tc-detail-result-pass">✓ /dashboard 리다이렉트 확인<br>✓ JWT 토큰 쿠키 발급 확인<br>✓ 사용자명 헤더 표시 확인</div></div></div></div></td></tr>
 <tr class="tc-data-row" data-type="h" data-tc-id="AUTH-005"><td>AUTH-005 <span class="tc-expand-icon">▼</span></td><td><span class="tc-type h">해피패스</span></td><td>로그아웃 실행 + 토큰 무효화 검증</td><td>401 Unauthorized (API 직접 호출 시)</td><td><span class="p1">P1</span></td></tr>
-<tr class="tc-detail-row" data-for="AUTH-005"><td class="tc-detail-cell" colspan="5"><div class="tc-detail-inner"><div class="tc-detail-intent"><div class="tc-detail-intent-label">// 설계 의도 — 왜 이 케이스인가</div><div class="tc-detail-intent-text">로그아웃 후 토큰이 여전히 유효하면 보안 취약점입니다. 단순 화면 이동이 아닌 서버 측 토큰 무효화까지 검증하는 것이 핵심. 해피패스이지만 보안을 함께 확인하는 이중 목적 케이스입니다.</div></div><div class="tc-detail-content"><div class="tc-detail-block"><div class="tc-detail-label">// 전제조건</div><div class="tc-detail-value">로그인 상태. 유효한 JWT 토큰 보유.</div></div><div class="tc-detail-block"><div class="tc-detail-label">// 테스트 스텝</div><ol class="tc-detail-steps"><li><span class="step-num">01.</span>로그아웃 버튼 클릭</li><li><span class="step-num">02.</span>기존 토큰으로 API 직접 호출</li><li><span class="step-num">03.</span>응답 상태 코드 확인</li></ol></div><div class="tc-detail-block"><div class="tc-detail-label">// 기대 결과 상세</div><div class="tc-detail-result-pass">✓ 401 Unauthorized 반환<br>✓ 쿠키 삭제 확인</div></div></div></div></td></tr>
-
-<!-- AUTH-007 -->
+<tr class="tc-detail-row" data-for="AUTH-005"><td class="tc-detail-cell" colspan="5"><div class="tc-detail-inner"><div class="tc-detail-intent"><div class="tc-detail-intent-label">// 설계 의도 — 왜 이 케이스인가</div><div class="tc-detail-intent-text">로그아웃 후 토큰이 여전히 유효하면 보안 취약점입니다. 서버 측 토큰 무효화까지 검증하는 이중 목적 케이스.</div></div><div class="tc-detail-content"><div class="tc-detail-block"><div class="tc-detail-label">// 전제조건</div><div class="tc-detail-value">로그인 상태. 유효한 JWT 토큰 보유.</div></div><div class="tc-detail-block"><div class="tc-detail-label">// 테스트 스텝</div><ol class="tc-detail-steps"><li><span class="step-num">01.</span>로그아웃 버튼 클릭</li><li><span class="step-num">02.</span>기존 토큰으로 API 직접 호출</li><li><span class="step-num">03.</span>응답 상태 코드 확인</li></ol></div><div class="tc-detail-block"><div class="tc-detail-label">// 기대 결과 상세</div><div class="tc-detail-result-pass">✓ 401 Unauthorized 반환<br>✓ 쿠키 삭제 확인</div></div></div></div></td></tr>
 <tr class="tc-data-row" data-type="n" data-tc-id="AUTH-007"><td>AUTH-007 <span class="tc-expand-icon">▼</span></td><td><span class="tc-type n">네거티브</span></td><td>5회 로그인 실패 후 계정 잠금</td><td>계정 잠금 또는 인증 요청</td><td><span class="p1">P1</span></td></tr>
-<tr class="tc-detail-row" data-for="AUTH-007"><td class="tc-detail-cell" colspan="5"><div class="tc-detail-inner"><div class="tc-detail-intent"><div class="tc-detail-intent-label">// 설계 의도 — 왜 이 케이스인가</div><div class="tc-detail-intent-text">무제한 로그인 시도는 브루트포스 공격의 문이 됩니다. 잠금 임계값(5회)이 실제로 동작하는지, 잠금 후 안내 메시지가 명확한지 확인합니다. 보안 요구사항이 코드에 실제로 반영됐는지를 검증하는 케이스입니다.</div></div><div class="tc-detail-content"><div class="tc-detail-block"><div class="tc-detail-label">// 전제조건</div><div class="tc-detail-value">잠금 해제된 테스트 계정 준비.</div></div><div class="tc-detail-block"><div class="tc-detail-label">// 테스트 스텝</div><ol class="tc-detail-steps"><li><span class="step-num">01.</span>잘못된 비밀번호로 5회 반복 시도</li><li><span class="step-num">02.</span>5회 초과 시 응답 확인</li></ol></div><div class="tc-detail-block"><div class="tc-detail-label">// 기대 결과 상세</div><div class="tc-detail-result-fail">✗ 계정 잠금 메시지 노출 확인<br>✗ 추가 로그인 시도 차단 확인</div></div></div></div></td></tr>
-
-<!-- CART-001 -->
+<tr class="tc-detail-row" data-for="AUTH-007"><td class="tc-detail-cell" colspan="5"><div class="tc-detail-inner"><div class="tc-detail-intent"><div class="tc-detail-intent-label">// 설계 의도 — 왜 이 케이스인가</div><div class="tc-detail-intent-text">무제한 로그인 시도는 브루트포스 공격의 문이 됩니다. 잠금 임계값(5회)이 실제로 동작하는지 확인.</div></div><div class="tc-detail-content"><div class="tc-detail-block"><div class="tc-detail-label">// 전제조건</div><div class="tc-detail-value">잠금 해제된 테스트 계정 준비.</div></div><div class="tc-detail-block"><div class="tc-detail-label">// 테스트 스텝</div><ol class="tc-detail-steps"><li><span class="step-num">01.</span>잘못된 비밀번호로 5회 반복 시도</li><li><span class="step-num">02.</span>5회 초과 시 응답 확인</li></ol></div><div class="tc-detail-block"><div class="tc-detail-label">// 기대 결과 상세</div><div class="tc-detail-result-fail">✗ 계정 잠금 메시지 노출 확인<br>✗ 추가 로그인 시도 차단 확인</div></div></div></div></td></tr>
 <tr class="tc-data-row" data-type="h" data-tc-id="CART-001"><td>CART-001 <span class="tc-expand-icon">▼</span></td><td><span class="tc-type h">해피패스</span></td><td>상품 장바구니 추가</td><td>장바구니 아이콘 숫자 +1</td><td><span class="p1">P1</span></td></tr>
-<tr class="tc-detail-row" data-for="CART-001"><td class="tc-detail-cell" colspan="5"><div class="tc-detail-inner"><div class="tc-detail-intent"><div class="tc-detail-intent-label">// 설계 의도 — 왜 이 케이스인가</div><div class="tc-detail-intent-text">결제 플로우의 시작점이 장바구니 담기입니다. 이 단계에서 UI 피드백(숫자 +1)과 데이터 정합성(수량·가격)을 동시에 확인해야 이후 결제 TC의 신뢰성이 높아집니다. 핵심 구매 경로의 첫 관문이므로 P1 배치.</div></div><div class="tc-detail-content"><div class="tc-detail-block"><div class="tc-detail-label">// 전제조건</div><div class="tc-detail-value">로그인 상태. 상품 상세 페이지 접근 가능.</div></div><div class="tc-detail-block"><div class="tc-detail-label">// 테스트 스텝</div><ol class="tc-detail-steps"><li><span class="step-num">01.</span>상품 상세 페이지 진입</li><li><span class="step-num">02.</span>장바구니 담기 버튼 클릭</li><li><span class="step-num">03.</span>헤더 아이콘 숫자 확인</li></ol></div><div class="tc-detail-block"><div class="tc-detail-label">// 기대 결과 상세</div><div class="tc-detail-result-pass">✓ 장바구니 아이콘 +1 증가<br>✓ 수량·가격 정확히 반영</div></div></div></div></td></tr>
-
-<!-- PAY-012 -->
+<tr class="tc-detail-row" data-for="CART-001"><td class="tc-detail-cell" colspan="5"><div class="tc-detail-inner"><div class="tc-detail-intent"><div class="tc-detail-intent-label">// 설계 의도 — 왜 이 케이스인가</div><div class="tc-detail-intent-text">결제 플로우의 시작점이 장바구니 담기입니다. UI 피드백과 데이터 정합성을 동시에 확인.</div></div><div class="tc-detail-content"><div class="tc-detail-block"><div class="tc-detail-label">// 전제조건</div><div class="tc-detail-value">로그인 상태. 상품 상세 페이지 접근 가능.</div></div><div class="tc-detail-block"><div class="tc-detail-label">// 테스트 스텝</div><ol class="tc-detail-steps"><li><span class="step-num">01.</span>상품 상세 페이지 진입</li><li><span class="step-num">02.</span>장바구니 담기 버튼 클릭</li><li><span class="step-num">03.</span>헤더 아이콘 숫자 확인</li></ol></div><div class="tc-detail-block"><div class="tc-detail-label">// 기대 결과 상세</div><div class="tc-detail-result-pass">✓ 장바구니 아이콘 +1 증가<br>✓ 수량·가격 정확히 반영</div></div></div></div></td></tr>
 <tr class="tc-data-row" data-type="e" data-tc-id="PAY-012"><td>PAY-012 <span class="tc-expand-icon">▼</span></td><td><span class="tc-type e">엣지케이스</span></td><td>다중 상품 + 할인 조합 소수점 오차</td><td>합산 후 할인 1회 적용, 오차 0원</td><td><span class="p1">P1</span></td></tr>
-<tr class="tc-detail-row" data-for="PAY-012"><td class="tc-detail-cell" colspan="5"><div class="tc-detail-inner"><div class="tc-detail-intent"><div class="tc-detail-intent-label">// 설계 의도 — 왜 이 케이스인가</div><div class="tc-detail-intent-text">실제 현장에서 결제 금액 오차는 민원 1순위입니다. 소수점 단가와 할인이 겹칠 때 반올림 방식에 따라 1~2원 오차가 발생할 수 있습니다. 이 케이스는 금전 관련 계산의 정확성과 반올림 정책을 명시적으로 검증합니다.</div></div><div class="tc-detail-content"><div class="tc-detail-block"><div class="tc-detail-label">// 전제조건</div><div class="tc-detail-value">할인 쿠폰 보유. 소수점 단가 상품 3종 이상 준비.</div></div><div class="tc-detail-block"><div class="tc-detail-label">// 테스트 스텝</div><ol class="tc-detail-steps"><li><span class="step-num">01.</span>소수점 단가 상품 3종 장바구니 담기</li><li><span class="step-num">02.</span>할인 쿠폰 적용</li><li><span class="step-num">03.</span>최종 결제 금액 계산 비교</li></ol></div><div class="tc-detail-block"><div class="tc-detail-label">// 기대 결과 상세</div><div class="tc-detail-result-edge">△ 소수점 반올림 정책 명시 확인<br>△ 총액 계산 오차 0원 확인</div></div></div></div></td></tr>
-
-<!-- API-S-006 -->
+<tr class="tc-detail-row" data-for="PAY-012"><td class="tc-detail-cell" colspan="5"><div class="tc-detail-inner"><div class="tc-detail-intent"><div class="tc-detail-intent-label">// 설계 의도 — 왜 이 케이스인가</div><div class="tc-detail-intent-text">결제 금액 오차는 민원 1순위. 소수점 단가와 할인이 겹칠 때 반올림 정책을 명시적으로 검증.</div></div><div class="tc-detail-content"><div class="tc-detail-block"><div class="tc-detail-label">// 전제조건</div><div class="tc-detail-value">할인 쿠폰 보유. 소수점 단가 상품 3종 이상 준비.</div></div><div class="tc-detail-block"><div class="tc-detail-label">// 테스트 스텝</div><ol class="tc-detail-steps"><li><span class="step-num">01.</span>소수점 단가 상품 3종 장바구니 담기</li><li><span class="step-num">02.</span>할인 쿠폰 적용</li><li><span class="step-num">03.</span>최종 결제 금액 계산 비교</li></ol></div><div class="tc-detail-block"><div class="tc-detail-label">// 기대 결과 상세</div><div class="tc-detail-result-edge">△ 소수점 반올림 정책 명시 확인<br>△ 총액 계산 오차 0원 확인</div></div></div></div></td></tr>
 <tr class="tc-data-row" data-type="e" data-tc-id="API-S-006"><td>API-S-006 <span class="tc-expand-icon">▼</span></td><td><span class="tc-type e">엣지케이스</span></td><td>특수문자 / SQL 패턴 검색</td><td>안전 처리된 결과 (500 없음)</td><td><span class="p1">P1</span></td></tr>
-<tr class="tc-detail-row" data-for="API-S-006"><td class="tc-detail-cell" colspan="5"><div class="tc-detail-inner"><div class="tc-detail-intent"><div class="tc-detail-intent-label">// 설계 의도 — 왜 이 케이스인가</div><div class="tc-detail-intent-text">검색 입력은 사용자가 직접 제어하는 영역이므로 SQL Injection, XSS 패턴이 가장 많이 시도됩니다. 500 에러 발생은 내부 로직 노출을 의미할 수 있어 P1 지정. 인코딩 처리와 쿼리 파라미터 방어를 동시에 검증합니다.</div></div><div class="tc-detail-content"><div class="tc-detail-block"><div class="tc-detail-label">// 전제조건</div><div class="tc-detail-value">검색 API 엔드포인트 접근 가능.</div></div><div class="tc-detail-block"><div class="tc-detail-label">// 테스트 스텝</div><ol class="tc-detail-steps"><li><span class="step-num">01.</span>SQL Injection 패턴 입력</li><li><span class="step-num">02.</span>특수문자 조합 입력</li><li><span class="step-num">03.</span>응답 상태코드 확인</li></ol></div><div class="tc-detail-block"><div class="tc-detail-label">// 기대 결과 상세</div><div class="tc-detail-result-fail">✗ 500 에러 없음 확인<br>✗ DB 데이터 노출 없음 확인</div></div></div></div></td></tr>
-
-<!-- SEC-N-002 -->
+<tr class="tc-detail-row" data-for="API-S-006"><td class="tc-detail-cell" colspan="5"><div class="tc-detail-inner"><div class="tc-detail-intent"><div class="tc-detail-intent-label">// 설계 의도 — 왜 이 케이스인가</div><div class="tc-detail-intent-text">검색 입력은 SQL Injection, XSS 패턴이 가장 많이 시도되는 영역. 인코딩 처리와 쿼리 파라미터 방어를 동시에 검증.</div></div><div class="tc-detail-content"><div class="tc-detail-block"><div class="tc-detail-label">// 전제조건</div><div class="tc-detail-value">검색 API 엔드포인트 접근 가능.</div></div><div class="tc-detail-block"><div class="tc-detail-label">// 테스트 스텝</div><ol class="tc-detail-steps"><li><span class="step-num">01.</span>SQL Injection 패턴 입력</li><li><span class="step-num">02.</span>특수문자 조합 입력</li><li><span class="step-num">03.</span>응답 상태코드 확인</li></ol></div><div class="tc-detail-block"><div class="tc-detail-label">// 기대 결과 상세</div><div class="tc-detail-result-fail">✗ 500 에러 없음 확인<br>✗ DB 데이터 노출 없음 확인</div></div></div></div></td></tr>
 <tr class="tc-data-row" data-type="n" data-tc-id="SEC-N-002"><td>SEC-N-002 <span class="tc-expand-icon">▼</span></td><td><span class="tc-type n">네거티브</span></td><td>만료된 JWT 토큰으로 API 호출</td><td>403 Forbidden 반환, 데이터 노출 없음</td><td><span class="p1">P1</span></td></tr>
-<tr class="tc-detail-row" data-for="SEC-N-002"><td class="tc-detail-cell" colspan="5"><div class="tc-detail-inner"><div class="tc-detail-intent"><div class="tc-detail-intent-label">// 설계 의도 — 왜 이 케이스인가</div><div class="tc-detail-intent-text">클라이언트 측에서 토큰 유효성을 검증하지 않는 서버는 취약합니다. 만료된 토큰이 여전히 API 접근을 허용하는지 확인하는 것은 인증 미들웨어가 올바르게 동작하는지를 검증합니다. 데이터 노출 0건이 핵심 합격 기준.</div></div><div class="tc-detail-content"><div class="tc-detail-block"><div class="tc-detail-label">// 전제조건</div><div class="tc-detail-value">만료된 JWT 토큰 보유.</div></div><div class="tc-detail-block"><div class="tc-detail-label">// 테스트 스텝</div><ol class="tc-detail-steps"><li><span class="step-num">01.</span>만료 토큰 Authorization 헤더에 삽입</li><li><span class="step-num">02.</span>보호된 API 엔드포인트 호출</li><li><span class="step-num">03.</span>응답 상태코드 확인</li></ol></div><div class="tc-detail-block"><div class="tc-detail-label">// 기대 결과 상세</div><div class="tc-detail-result-fail">✗ 403 Forbidden 확인<br>✗ 데이터 노출 없음 확인</div></div></div></div></td></tr>
-
-<!-- PAY-HP-001 -->
+<tr class="tc-detail-row" data-for="SEC-N-002"><td class="tc-detail-cell" colspan="5"><div class="tc-detail-inner"><div class="tc-detail-intent"><div class="tc-detail-intent-label">// 설계 의도 — 왜 이 케이스인가</div><div class="tc-detail-intent-text">만료된 토큰이 API 접근을 허용하는지 확인. 인증 미들웨어가 올바르게 동작하는지를 검증. 데이터 노출 0건이 핵심.</div></div><div class="tc-detail-content"><div class="tc-detail-block"><div class="tc-detail-label">// 전제조건</div><div class="tc-detail-value">만료된 JWT 토큰 보유.</div></div><div class="tc-detail-block"><div class="tc-detail-label">// 테스트 스텝</div><ol class="tc-detail-steps"><li><span class="step-num">01.</span>만료 토큰 Authorization 헤더에 삽입</li><li><span class="step-num">02.</span>보호된 API 엔드포인트 호출</li><li><span class="step-num">03.</span>응답 상태코드 확인</li></ol></div><div class="tc-detail-block"><div class="tc-detail-label">// 기대 결과 상세</div><div class="tc-detail-result-fail">✗ 403 Forbidden 확인<br>✗ 데이터 노출 없음 확인</div></div></div></div></td></tr>
 <tr class="tc-data-row" data-type="h" data-tc-id="PAY-HP-001"><td>PAY-HP-001 <span class="tc-expand-icon">▼</span></td><td><span class="tc-type h">해피패스</span></td><td>정상 카드로 결제 완료</td><td>주문 완료 페이지 이동, 이메일 발송</td><td><span class="p1">P1</span></td></tr>
-<tr class="tc-detail-row" data-for="PAY-HP-001"><td class="tc-detail-cell" colspan="5"><div class="tc-detail-inner"><div class="tc-detail-intent"><div class="tc-detail-intent-label">// 설계 의도 — 왜 이 케이스인가</div><div class="tc-detail-intent-text">결제는 서비스 수익과 직결됩니다. 정상 결제 흐름이 깨지면 전체 서비스가 정지되는 수준의 영향이므로 P1 최우선. 주문번호 생성, 이메일 발송, UI 상태 변경을 모두 확인하여 결제 파이프라인 전체를 단일 케이스에서 검증합니다.</div></div><div class="tc-detail-content"><div class="tc-detail-block"><div class="tc-detail-label">// 전제조건</div><div class="tc-detail-value">결제 테스트 카드 준비.</div></div><div class="tc-detail-block"><div class="tc-detail-label">// 테스트 스텝</div><ol class="tc-detail-steps"><li><span class="step-num">01.</span>장바구니 → 결제 페이지 이동</li><li><span class="step-num">02.</span>테스트 카드 정보 입력</li><li><span class="step-num">03.</span>결제 완료 후 결과 확인</li></ol></div><div class="tc-detail-block"><div class="tc-detail-label">// 기대 결과 상세</div><div class="tc-detail-result-pass">✓ 주문 완료 페이지 이동 확인<br>✓ 주문번호 생성 확인</div></div></div></div></td></tr>
-
-<!-- PAY-N-005 -->
+<tr class="tc-detail-row" data-for="PAY-HP-001"><td class="tc-detail-cell" colspan="5"><div class="tc-detail-inner"><div class="tc-detail-intent"><div class="tc-detail-intent-label">// 설계 의도 — 왜 이 케이스인가</div><div class="tc-detail-intent-text">결제는 서비스 수익과 직결. 주문번호 생성, 이메일 발송, UI 상태 변경을 모두 확인하여 결제 파이프라인 전체를 단일 케이스에서 검증.</div></div><div class="tc-detail-content"><div class="tc-detail-block"><div class="tc-detail-label">// 전제조건</div><div class="tc-detail-value">결제 테스트 카드 준비.</div></div><div class="tc-detail-block"><div class="tc-detail-label">// 테스트 스텝</div><ol class="tc-detail-steps"><li><span class="step-num">01.</span>장바구니 → 결제 페이지 이동</li><li><span class="step-num">02.</span>테스트 카드 정보 입력</li><li><span class="step-num">03.</span>결제 완료 후 결과 확인</li></ol></div><div class="tc-detail-block"><div class="tc-detail-label">// 기대 결과 상세</div><div class="tc-detail-result-pass">✓ 주문 완료 페이지 이동 확인<br>✓ 주문번호 생성 확인</div></div></div></div></td></tr>
 <tr class="tc-data-row" data-type="n" data-tc-id="PAY-N-005"><td>PAY-N-005 <span class="tc-expand-icon">▼</span></td><td><span class="tc-type n">네거티브</span></td><td>잔액 부족 카드 결제 시도</td><td>결제 실패 메시지, 주문 미생성 확인</td><td><span class="p1">P1</span></td></tr>
-<tr class="tc-detail-row" data-for="PAY-N-005"><td class="tc-detail-cell" colspan="5"><div class="tc-detail-inner"><div class="tc-detail-intent"><div class="tc-detail-intent-label">// 설계 의도 — 왜 이 케이스인가</div><div class="tc-detail-intent-text">PG사에서 실패 응답이 왔을 때 주문이 생성되면 안 됩니다. 결제 실패 시 주문 롤백이 제대로 되는지, 사용자에게 명확한 안내가 되는지를 함께 검증합니다. 결제와 주문 상태의 트랜잭션 일관성 검증이 목적입니다.</div></div><div class="tc-detail-content"><div class="tc-detail-block"><div class="tc-detail-label">// 전제조건</div><div class="tc-detail-value">잔액 부족 테스트 카드 준비.</div></div><div class="tc-detail-block"><div class="tc-detail-label">// 테스트 스텝</div><ol class="tc-detail-steps"><li><span class="step-num">01.</span>잔액 부족 카드로 결제 시도</li><li><span class="step-num">02.</span>PG사 응답 확인</li></ol></div><div class="tc-detail-block"><div class="tc-detail-label">// 기대 결과 상세</div><div class="tc-detail-result-fail">✗ 결제 실패 메시지 노출 확인<br>✗ 주문 미생성 확인</div></div></div></div></td></tr>
-
-<!-- SEARCH-N-001 -->
+<tr class="tc-detail-row" data-for="PAY-N-005"><td class="tc-detail-cell" colspan="5"><div class="tc-detail-inner"><div class="tc-detail-intent"><div class="tc-detail-intent-label">// 설계 의도 — 왜 이 케이스인가</div><div class="tc-detail-intent-text">PG사 실패 응답 시 주문이 생성되면 안 됩니다. 결제와 주문 상태의 트랜잭션 일관성 검증이 목적.</div></div><div class="tc-detail-content"><div class="tc-detail-block"><div class="tc-detail-label">// 전제조건</div><div class="tc-detail-value">잔액 부족 테스트 카드 준비.</div></div><div class="tc-detail-block"><div class="tc-detail-label">// 테스트 스텝</div><ol class="tc-detail-steps"><li><span class="step-num">01.</span>잔액 부족 카드로 결제 시도</li><li><span class="step-num">02.</span>PG사 응답 확인</li></ol></div><div class="tc-detail-block"><div class="tc-detail-label">// 기대 결과 상세</div><div class="tc-detail-result-fail">✗ 결제 실패 메시지 노출 확인<br>✗ 주문 미생성 확인</div></div></div></div></td></tr>
 <tr class="tc-data-row" data-type="n" data-tc-id="SEARCH-N-001"><td>SEARCH-N-001 <span class="tc-expand-icon">▼</span></td><td><span class="tc-type n">네거티브</span></td><td>검색 결과 0건 빈 상태 표시</td><td>"결과 없음" 메시지 노출, 500 없음</td><td><span class="p2">P2</span></td></tr>
-<tr class="tc-detail-row" data-for="SEARCH-N-001"><td class="tc-detail-cell" colspan="5"><div class="tc-detail-inner"><div class="tc-detail-intent"><div class="tc-detail-intent-label">// 설계 의도 — 왜 이 케이스인가</div><div class="tc-detail-intent-text">빈 결과 상태는 개발 초기 종종 500이나 빈 화면으로 처리됩니다. 사용자 경험 측면에서 "결과 없음" 안내가 필수이며, 서버 안정성(500 부재)도 함께 검증합니다. P2이지만 검색 기능 완성도를 보여주는 기본 케이스입니다.</div></div><div class="tc-detail-content"><div class="tc-detail-block"><div class="tc-detail-label">// 전제조건</div><div class="tc-detail-value">존재하지 않는 키워드 준비.</div></div><div class="tc-detail-block"><div class="tc-detail-label">// 테스트 스텝</div><ol class="tc-detail-steps"><li><span class="step-num">01.</span>존재하지 않는 키워드 입력</li><li><span class="step-num">02.</span>검색 실행</li></ol></div><div class="tc-detail-block"><div class="tc-detail-label">// 기대 결과 상세</div><div class="tc-detail-result-fail">✗ "결과 없음" 문구 노출 확인<br>✗ 500 에러 없음 확인</div></div></div></div></td></tr>
-
-<!-- AUTH-N-008 -->
+<tr class="tc-detail-row" data-for="SEARCH-N-001"><td class="tc-detail-cell" colspan="5"><div class="tc-detail-inner"><div class="tc-detail-intent"><div class="tc-detail-intent-label">// 설계 의도 — 왜 이 케이스인가</div><div class="tc-detail-intent-text">빈 결과 상태는 개발 초기 종종 500이나 빈 화면으로 처리됩니다. 사용자 경험과 서버 안정성을 함께 검증.</div></div><div class="tc-detail-content"><div class="tc-detail-block"><div class="tc-detail-label">// 전제조건</div><div class="tc-detail-value">존재하지 않는 키워드 준비.</div></div><div class="tc-detail-block"><div class="tc-detail-label">// 테스트 스텝</div><ol class="tc-detail-steps"><li><span class="step-num">01.</span>존재하지 않는 키워드 입력</li><li><span class="step-num">02.</span>검색 실행</li></ol></div><div class="tc-detail-block"><div class="tc-detail-label">// 기대 결과 상세</div><div class="tc-detail-result-fail">✗ "결과 없음" 문구 노출 확인<br>✗ 500 에러 없음 확인</div></div></div></div></td></tr>
 <tr class="tc-data-row" data-type="n" data-tc-id="AUTH-N-008"><td>AUTH-N-008 <span class="tc-expand-icon">▼</span></td><td><span class="tc-type n">네거티브</span></td><td>세션 만료 후 보호 페이지 접근</td><td>로그인 페이지 리다이렉트, 401 반환</td><td><span class="p1">P1</span></td></tr>
-<tr class="tc-detail-row" data-for="AUTH-N-008"><td class="tc-detail-cell" colspan="5"><div class="tc-detail-inner"><div class="tc-detail-intent"><div class="tc-detail-intent-label">// 설계 의도 — 왜 이 케이스인가</div><div class="tc-detail-intent-text">세션 만료 후에도 URL 직접 접근으로 보호된 페이지를 열람할 수 있다면 인증 게이트가 프론트엔드에만 존재하는 것입니다. 서버 측 인증 미들웨어가 모든 경로에 적용됐는지 검증하는 케이스로, 보안 아키텍처의 실효성을 확인합니다.</div></div><div class="tc-detail-content"><div class="tc-detail-block"><div class="tc-detail-label">// 전제조건</div><div class="tc-detail-value">만료된 세션 토큰 보유.</div></div><div class="tc-detail-block"><div class="tc-detail-label">// 테스트 스텝</div><ol class="tc-detail-steps"><li><span class="step-num">01.</span>세션 토큰 만료 처리</li><li><span class="step-num">02.</span>보호된 URL 직접 접근</li></ol></div><div class="tc-detail-block"><div class="tc-detail-label">// 기대 결과 상세</div><div class="tc-detail-result-fail">✗ 로그인 페이지 리다이렉트 확인<br>✗ 401 Unauthorized 확인</div></div></div></div></td></tr>
-
-<!-- NOTIF-E-003 -->
+<tr class="tc-detail-row" data-for="AUTH-N-008"><td class="tc-detail-cell" colspan="5"><div class="tc-detail-inner"><div class="tc-detail-intent"><div class="tc-detail-intent-label">// 설계 의도 — 왜 이 케이스인가</div><div class="tc-detail-intent-text">세션 만료 후 URL 직접 접근으로 보호된 페이지를 열람할 수 있다면 인증 게이트가 프론트엔드에만 존재. 서버 측 미들웨어 검증.</div></div><div class="tc-detail-content"><div class="tc-detail-block"><div class="tc-detail-label">// 전제조건</div><div class="tc-detail-value">만료된 세션 토큰 보유.</div></div><div class="tc-detail-block"><div class="tc-detail-label">// 테스트 스텝</div><ol class="tc-detail-steps"><li><span class="step-num">01.</span>세션 토큰 만료 처리</li><li><span class="step-num">02.</span>보호된 URL 직접 접근</li></ol></div><div class="tc-detail-block"><div class="tc-detail-label">// 기대 결과 상세</div><div class="tc-detail-result-fail">✗ 로그인 페이지 리다이렉트 확인<br>✗ 401 Unauthorized 확인</div></div></div></div></td></tr>
 <tr class="tc-data-row" data-type="e" data-tc-id="NOTIF-E-003"><td>NOTIF-E-003 <span class="tc-expand-icon">▼</span></td><td><span class="tc-type e">엣지케이스</span></td><td>저속 네트워크(3G) 환경 알림 중복 발송</td><td>알림 1회만 수신, 중복 없음</td><td><span class="p2">P2</span></td></tr>
-<tr class="tc-detail-row" data-for="NOTIF-E-003"><td class="tc-detail-cell" colspan="5"><div class="tc-detail-inner"><div class="tc-detail-intent"><div class="tc-detail-intent-label">// 설계 의도 — 왜 이 케이스인가</div><div class="tc-detail-intent-text">저속 네트워크 환경에서 타임아웃 후 재시도 로직이 동작하면 알림이 중복 발송될 수 있습니다. 사용자 입장에서 동일 알림 2회 이상 수신은 시스템 신뢰도를 낮춥니다. idempotency 보장 여부를 실제 네트워크 제한 환경에서 검증합니다.</div></div><div class="tc-detail-content"><div class="tc-detail-block"><div class="tc-detail-label">// 전제조건</div><div class="tc-detail-value">3G 네트워크 스로틀링 설정 가능.</div></div><div class="tc-detail-block"><div class="tc-detail-label">// 테스트 스텝</div><ol class="tc-detail-steps"><li><span class="step-num">01.</span>3G 네트워크 시뮬레이션 활성화</li><li><span class="step-num">02.</span>알림 트리거 액션 실행</li></ol></div><div class="tc-detail-block"><div class="tc-detail-label">// 기대 결과 상세</div><div class="tc-detail-result-edge">△ 알림 1회만 수신 확인<br>△ idempotency 확인</div></div></div></div></td></tr>
-
-<!-- TC-CICD-HP-001 -->
+<tr class="tc-detail-row" data-for="NOTIF-E-003"><td class="tc-detail-cell" colspan="5"><div class="tc-detail-inner"><div class="tc-detail-intent"><div class="tc-detail-intent-label">// 설계 의도 — 왜 이 케이스인가</div><div class="tc-detail-intent-text">저속 네트워크에서 타임아웃 후 재시도 로직이 동작하면 알림이 중복 발송될 수 있습니다. idempotency 보장 여부 검증.</div></div><div class="tc-detail-content"><div class="tc-detail-block"><div class="tc-detail-label">// 전제조건</div><div class="tc-detail-value">3G 네트워크 스로틀링 설정 가능.</div></div><div class="tc-detail-block"><div class="tc-detail-label">// 테스트 스텝</div><ol class="tc-detail-steps"><li><span class="step-num">01.</span>3G 네트워크 시뮬레이션 활성화</li><li><span class="step-num">02.</span>알림 트리거 액션 실행</li></ol></div><div class="tc-detail-block"><div class="tc-detail-label">// 기대 결과 상세</div><div class="tc-detail-result-edge">△ 알림 1회만 수신 확인<br>△ idempotency 확인</div></div></div></div></td></tr>
 <tr class="tc-data-row" data-type="h" data-tc-id="TC-CICD-HP-001"><td>TC-CICD-HP-001 <span class="tc-expand-icon">▼</span></td><td><span class="tc-type h">해피패스</span></td><td>TC push 시 Actions 자동 트리거</td><td>workflow run 생성 확인</td><td><span class="p1">P1</span></td></tr>
-<tr class="tc-detail-row" data-for="TC-CICD-HP-001"><td class="tc-detail-cell" colspan="5"><div class="tc-detail-inner"><div class="tc-detail-intent"><div class="tc-detail-intent-label">// 설계 의도 — 왜 이 케이스인가</div><div class="tc-detail-intent-text">QA 자동화 파이프라인 자체를 테스트하는 메타 케이스입니다. Actions가 TC 파일 push에 정확히 반응하는지, Slack 알림까지 연결되는지 확인합니다. 자동화 인프라가 신뢰할 수 있어야 TC 결과도 신뢰할 수 있기 때문입니다.</div></div><div class="tc-detail-content"><div class="tc-detail-block"><div class="tc-detail-label">// 전제조건</div><div class="tc-detail-value">GitHub Actions qa-notify.yml 설정 완료.</div></div><div class="tc-detail-block"><div class="tc-detail-label">// 테스트 스텝</div><ol class="tc-detail-steps"><li><span class="step-num">01.</span>testcase_*.md 파일 push</li><li><span class="step-num">02.</span>Actions 탭에서 workflow run 확인</li></ol></div><div class="tc-detail-block"><div class="tc-detail-label">// 기대 결과 상세</div><div class="tc-detail-result-pass">✓ workflow run 자동 생성 확인<br>✓ Slack 알림 자동 발송 확인</div></div></div></div></td></tr>
-
-<!-- ACCESS-HP-001 -->
+<tr class="tc-detail-row" data-for="TC-CICD-HP-001"><td class="tc-detail-cell" colspan="5"><div class="tc-detail-inner"><div class="tc-detail-intent"><div class="tc-detail-intent-label">// 설계 의도 — 왜 이 케이스인가</div><div class="tc-detail-intent-text">QA 자동화 파이프라인 자체를 테스트하는 메타 케이스. Actions가 TC 파일 push에 정확히 반응하는지, Slack 알림까지 연결되는지 확인.</div></div><div class="tc-detail-content"><div class="tc-detail-block"><div class="tc-detail-label">// 전제조건</div><div class="tc-detail-value">GitHub Actions qa-notify.yml 설정 완료.</div></div><div class="tc-detail-block"><div class="tc-detail-label">// 테스트 스텝</div><ol class="tc-detail-steps"><li><span class="step-num">01.</span>testcase_*.md 파일 push</li><li><span class="step-num">02.</span>Actions 탭에서 workflow run 확인</li></ol></div><div class="tc-detail-block"><div class="tc-detail-label">// 기대 결과 상세</div><div class="tc-detail-result-pass">✓ workflow run 자동 생성 확인<br>✓ Slack 알림 자동 발송 확인</div></div></div></div></td></tr>
 <tr class="tc-data-row" data-type="h" data-tc-id="ACCESS-HP-001"><td>ACCESS-HP-001 <span class="tc-expand-icon">▼</span></td><td><span class="tc-type h">해피패스</span></td><td>키보드만으로 전체 폼 입력 및 제출</td><td>Tab 순서 정상, Enter 제출 동작</td><td><span class="p2">P2</span></td></tr>
-<tr class="tc-detail-row" data-for="ACCESS-HP-001"><td class="tc-detail-cell" colspan="5"><div class="tc-detail-inner"><div class="tc-detail-intent"><div class="tc-detail-intent-label">// 설계 의도 — 왜 이 케이스인가</div><div class="tc-detail-intent-text">접근성은 보조기술 사용자뿐 아니라 키보드 위주 파워유저에게도 중요합니다. Tab 순서 오류는 폼 UX를 크게 저해하고, Enter 동작 누락은 마우스 없이 제출 자체를 막습니다. WCAG 기준 충족 여부를 실제 사용자 시나리오로 검증합니다.</div></div><div class="tc-detail-content"><div class="tc-detail-block"><div class="tc-detail-label">// 전제조건</div><div class="tc-detail-value">마우스 비활성화 환경.</div></div><div class="tc-detail-block"><div class="tc-detail-label">// 테스트 스텝</div><ol class="tc-detail-steps"><li><span class="step-num">01.</span>Tab 키로 폼 필드 이동</li><li><span class="step-num">02.</span>Enter 키로 제출</li></ol></div><div class="tc-detail-block"><div class="tc-detail-label">// 기대 결과 상세</div><div class="tc-detail-result-pass">✓ Tab 순서 논리적 확인<br>✓ Enter 제출 동작 확인</div></div></div></div></td></tr>
-
-<!-- SEARCH-N-004 -->
+<tr class="tc-detail-row" data-for="ACCESS-HP-001"><td class="tc-detail-cell" colspan="5"><div class="tc-detail-inner"><div class="tc-detail-intent"><div class="tc-detail-intent-label">// 설계 의도 — 왜 이 케이스인가</div><div class="tc-detail-intent-text">접근성은 키보드 위주 파워유저에게도 중요합니다. WCAG 기준 충족 여부를 실제 사용자 시나리오로 검증.</div></div><div class="tc-detail-content"><div class="tc-detail-block"><div class="tc-detail-label">// 전제조건</div><div class="tc-detail-value">마우스 비활성화 환경.</div></div><div class="tc-detail-block"><div class="tc-detail-label">// 테스트 스텝</div><ol class="tc-detail-steps"><li><span class="step-num">01.</span>Tab 키로 폼 필드 이동</li><li><span class="step-num">02.</span>Enter 키로 제출</li></ol></div><div class="tc-detail-block"><div class="tc-detail-label">// 기대 결과 상세</div><div class="tc-detail-result-pass">✓ Tab 순서 논리적 확인<br>✓ Enter 제출 동작 확인</div></div></div></div></td></tr>
 <tr class="tc-data-row" data-type="n" data-tc-id="SEARCH-N-004"><td>SEARCH-N-004 <span class="tc-expand-icon">▼</span></td><td><span class="tc-type n">네거티브</span></td><td>XSS 패턴 검색어 입력</td><td>스크립트 미실행, 인코딩 처리 확인</td><td><span class="p1">P1</span></td></tr>
-<tr class="tc-detail-row" data-for="SEARCH-N-004"><td class="tc-detail-cell" colspan="5"><div class="tc-detail-inner"><div class="tc-detail-intent"><div class="tc-detail-intent-label">// 설계 의도 — 왜 이 케이스인가</div><div class="tc-detail-intent-text">XSS 공격은 검색 키워드가 결과 페이지에 그대로 반영될 때 발생합니다. 스크립트가 실행되면 세션 탈취·악성 리다이렉트로 이어질 수 있어 P1입니다. 입력값의 HTML 인코딩 처리가 프론트·백엔드 양쪽에서 동작하는지 확인합니다.</div></div><div class="tc-detail-content"><div class="tc-detail-block"><div class="tc-detail-label">// 전제조건</div><div class="tc-detail-value">검색 기능 동작 중.</div></div><div class="tc-detail-block"><div class="tc-detail-label">// 테스트 스텝</div><ol class="tc-detail-steps"><li><span class="step-num">01.</span>&lt;script&gt;alert('xss')&lt;/script&gt; 입력</li><li><span class="step-num">02.</span>검색 실행 후 결과 확인</li></ol></div><div class="tc-detail-block"><div class="tc-detail-label">// 기대 결과 상세</div><div class="tc-detail-result-fail">✗ 스크립트 미실행 확인<br>✗ HTML 인코딩 처리 확인</div></div></div></div></td></tr>
-
-<!-- PERF-E-001 -->
+<tr class="tc-detail-row" data-for="SEARCH-N-004"><td class="tc-detail-cell" colspan="5"><div class="tc-detail-inner"><div class="tc-detail-intent"><div class="tc-detail-intent-label">// 설계 의도 — 왜 이 케이스인가</div><div class="tc-detail-intent-text">XSS 공격은 검색 키워드가 결과 페이지에 그대로 반영될 때 발생. 세션 탈취 방지 위해 P1 지정.</div></div><div class="tc-detail-content"><div class="tc-detail-block"><div class="tc-detail-label">// 전제조건</div><div class="tc-detail-value">검색 기능 동작 중.</div></div><div class="tc-detail-block"><div class="tc-detail-label">// 테스트 스텝</div><ol class="tc-detail-steps"><li><span class="step-num">01.</span>&lt;script&gt;alert('xss')&lt;/script&gt; 입력</li><li><span class="step-num">02.</span>검색 실행 후 결과 확인</li></ol></div><div class="tc-detail-block"><div class="tc-detail-label">// 기대 결과 상세</div><div class="tc-detail-result-fail">✗ 스크립트 미실행 확인<br>✗ HTML 인코딩 처리 확인</div></div></div></div></td></tr>
 <tr class="tc-data-row" data-type="e" data-tc-id="PERF-E-001"><td>PERF-E-001 <span class="tc-expand-icon">▼</span></td><td><span class="tc-type e">엣지케이스</span></td><td>동시 100개 요청 부하 테스트</td><td>응답 시간 2s 이내, 서버 500 없음</td><td><span class="p2">P2</span></td></tr>
-<tr class="tc-detail-row" data-for="PERF-E-001"><td class="tc-detail-cell" colspan="5"><div class="tc-detail-inner"><div class="tc-detail-intent"><div class="tc-detail-intent-label">// 설계 의도 — 왜 이 케이스인가</div><div class="tc-detail-intent-text">프로모션·이벤트 시점에 트래픽이 급증합니다. 100 concurrent 요청은 소규모 서비스에서 충분히 현실적인 부하 수준입니다. p95 응답 2초 기준은 Google의 Core Web Vitals 기준을 참고한 합격 기준으로, 서버 용량 계획의 근거가 됩니다.</div></div><div class="tc-detail-content"><div class="tc-detail-block"><div class="tc-detail-label">// 전제조건</div><div class="tc-detail-value">부하 테스트 도구 준비 (k6 또는 Artillery).</div></div><div class="tc-detail-block"><div class="tc-detail-label">// 테스트 스텝</div><ol class="tc-detail-steps"><li><span class="step-num">01.</span>동시 100개 요청 스크립트 실행</li><li><span class="step-num">02.</span>응답 시간 분포 측정</li></ol></div><div class="tc-detail-block"><div class="tc-detail-label">// 기대 결과 상세</div><div class="tc-detail-result-edge">△ p95 응답 2s 이내 확인<br>△ 500 에러 0건 확인</div></div></div></div></td></tr>
-
-<!-- SIGNUP-HP-001 -->
+<tr class="tc-detail-row" data-for="PERF-E-001"><td class="tc-detail-cell" colspan="5"><div class="tc-detail-inner"><div class="tc-detail-intent"><div class="tc-detail-intent-label">// 설계 의도 — 왜 이 케이스인가</div><div class="tc-detail-intent-text">프로모션 시점 트래픽 급증 대비. p95 응답 2초 기준은 Google Core Web Vitals 참고.</div></div><div class="tc-detail-content"><div class="tc-detail-block"><div class="tc-detail-label">// 전제조건</div><div class="tc-detail-value">부하 테스트 도구 준비 (k6 또는 Artillery).</div></div><div class="tc-detail-block"><div class="tc-detail-label">// 테스트 스텝</div><ol class="tc-detail-steps"><li><span class="step-num">01.</span>동시 100개 요청 스크립트 실행</li><li><span class="step-num">02.</span>응답 시간 분포 측정</li></ol></div><div class="tc-detail-block"><div class="tc-detail-label">// 기대 결과 상세</div><div class="tc-detail-result-edge">△ p95 응답 2s 이내 확인<br>△ 500 에러 0건 확인</div></div></div></div></td></tr>
 <tr class="tc-data-row" data-type="h" data-tc-id="SIGNUP-HP-001"><td>SIGNUP-HP-001 <span class="tc-expand-icon">▼</span></td><td><span class="tc-type h">해피패스</span></td><td>신규 회원가입 완료 + 이메일 인증</td><td>인증 메일 수신, 로그인 가능 상태</td><td><span class="p1">P1</span></td></tr>
-<tr class="tc-detail-row" data-for="SIGNUP-HP-001"><td class="tc-detail-cell" colspan="5"><div class="tc-detail-inner"><div class="tc-detail-intent"><div class="tc-detail-intent-label">// 설계 의도 — 왜 이 케이스인가</div><div class="tc-detail-intent-text">회원가입은 서비스의 첫 진입점입니다. 가입 완료 후 이메일 인증 없이 로그인 가능한 버그는 보안 취약점이자 비즈니스 리스크입니다. 가입 → 메일 수신 → 인증 → 로그인까지 전체 온보딩 플로우를 단일 케이스에서 검증합니다.</div></div><div class="tc-detail-content"><div class="tc-detail-block"><div class="tc-detail-label">// 전제조건</div><div class="tc-detail-value">미가입 이메일 주소. 이메일 수신 가능한 환경.</div></div><div class="tc-detail-block"><div class="tc-detail-label">// 테스트 스텝</div><ol class="tc-detail-steps"><li><span class="step-num">01.</span>이메일·비밀번호 입력 후 가입 제출</li><li><span class="step-num">02.</span>인증 메일 수신 확인</li><li><span class="step-num">03.</span>인증 링크 클릭 후 로그인 시도</li></ol></div><div class="tc-detail-block"><div class="tc-detail-label">// 기대 결과 상세</div><div class="tc-detail-result-pass">✓ 인증 메일 5분 이내 수신<br>✓ 인증 완료 후 로그인 성공<br>✓ 미인증 상태에서 로그인 차단 확인</div></div></div></div></td></tr>
-
-<!-- SESSION-E-001 -->
+<tr class="tc-detail-row" data-for="SIGNUP-HP-001"><td class="tc-detail-cell" colspan="5"><div class="tc-detail-inner"><div class="tc-detail-intent"><div class="tc-detail-intent-label">// 설계 의도 — 왜 이 케이스인가</div><div class="tc-detail-intent-text">가입 완료 후 이메일 인증 없이 로그인 가능한 버그는 보안 취약점. 가입→메일→인증→로그인 전체 온보딩 플로우 검증.</div></div><div class="tc-detail-content"><div class="tc-detail-block"><div class="tc-detail-label">// 전제조건</div><div class="tc-detail-value">미가입 이메일 주소. 이메일 수신 가능한 환경.</div></div><div class="tc-detail-block"><div class="tc-detail-label">// 테스트 스텝</div><ol class="tc-detail-steps"><li><span class="step-num">01.</span>이메일·비밀번호 입력 후 가입 제출</li><li><span class="step-num">02.</span>인증 메일 수신 확인</li><li><span class="step-num">03.</span>인증 링크 클릭 후 로그인 시도</li></ol></div><div class="tc-detail-block"><div class="tc-detail-label">// 기대 결과 상세</div><div class="tc-detail-result-pass">✓ 인증 메일 5분 이내 수신<br>✓ 인증 완료 후 로그인 성공<br>✓ 미인증 상태에서 로그인 차단 확인</div></div></div></div></td></tr>
 <tr class="tc-data-row" data-type="e" data-tc-id="SESSION-E-001"><td>SESSION-E-001 <span class="tc-expand-icon">▼</span></td><td><span class="tc-type e">엣지케이스</span></td><td>동일 계정 멀티 디바이스 동시 세션 충돌</td><td>세션 정책에 따라 기존 또는 신규 로그아웃</td><td><span class="p2">P2</span></td></tr>
-<tr class="tc-detail-row" data-for="SESSION-E-001"><td class="tc-detail-cell" colspan="5"><div class="tc-detail-inner"><div class="tc-detail-intent"><div class="tc-detail-intent-label">// 설계 의도 — 왜 이 케이스인가</div><div class="tc-detail-intent-text">멀티 디바이스 로그인은 현실에서 매우 흔한 시나리오입니다. 서비스가 세션 정책(중복 허용/차단)을 명시적으로 정의하지 않으면 예상치 못한 동작이 발생합니다. 어느 기기에서 강제 로그아웃이 일어나는지, 사용자에게 안내가 되는지를 검증합니다.</div></div><div class="tc-detail-content"><div class="tc-detail-block"><div class="tc-detail-label">// 전제조건</div><div class="tc-detail-value">동일 계정. 디바이스 A(PC) + 디바이스 B(모바일) 준비.</div></div><div class="tc-detail-block"><div class="tc-detail-label">// 테스트 스텝</div><ol class="tc-detail-steps"><li><span class="step-num">01.</span>디바이스 A에서 로그인</li><li><span class="step-num">02.</span>디바이스 B에서 동일 계정 로그인</li><li><span class="step-num">03.</span>디바이스 A 세션 상태 확인</li></ol></div><div class="tc-detail-block"><div class="tc-detail-label">// 기대 결과 상세</div><div class="tc-detail-result-edge">△ 세션 정책 명시 동작 확인<br>△ 강제 로그아웃 시 안내 메시지 노출 확인</div></div></div></div></td></tr>
-
-<!-- UX-N-001 -->
+<tr class="tc-detail-row" data-for="SESSION-E-001"><td class="tc-detail-cell" colspan="5"><div class="tc-detail-inner"><div class="tc-detail-intent"><div class="tc-detail-intent-label">// 설계 의도 — 왜 이 케이스인가</div><div class="tc-detail-intent-text">멀티 디바이스 로그인은 현실에서 매우 흔한 시나리오. 세션 정책 명시 동작 및 강제 로그아웃 안내 검증.</div></div><div class="tc-detail-content"><div class="tc-detail-block"><div class="tc-detail-label">// 전제조건</div><div class="tc-detail-value">동일 계정. 디바이스 A(PC) + 디바이스 B(모바일) 준비.</div></div><div class="tc-detail-block"><div class="tc-detail-label">// 테스트 스텝</div><ol class="tc-detail-steps"><li><span class="step-num">01.</span>디바이스 A에서 로그인</li><li><span class="step-num">02.</span>디바이스 B에서 동일 계정 로그인</li><li><span class="step-num">03.</span>디바이스 A 세션 상태 확인</li></ol></div><div class="tc-detail-block"><div class="tc-detail-label">// 기대 결과 상세</div><div class="tc-detail-result-edge">△ 세션 정책 명시 동작 확인<br>△ 강제 로그아웃 시 안내 메시지 노출 확인</div></div></div></div></td></tr>
 <tr class="tc-data-row" data-type="n" data-tc-id="UX-N-001"><td>UX-N-001 <span class="tc-expand-icon">▼</span></td><td><span class="tc-type n">네거티브</span></td><td>필수 입력 누락 시 인라인 에러 메시지</td><td>각 필드별 에러 즉시 표시, 제출 차단</td><td><span class="p2">P2</span></td></tr>
-<tr class="tc-detail-row" data-for="UX-N-001"><td class="tc-detail-cell" colspan="5"><div class="tc-detail-inner"><div class="tc-detail-intent"><div class="tc-detail-intent-label">// 설계 의도 — 왜 이 케이스인가</div><div class="tc-detail-intent-text">폼 UX 품질은 신규 사용자 이탈률과 직결됩니다. 에러 메시지가 제출 후 상단에 일괄 표시되면 사용자는 어떤 필드가 문제인지 찾는 데 시간을 낭비합니다. 필드별 인라인 에러와 실시간 검증이 적용됐는지를 검증하는 UX 품질 케이스입니다.</div></div><div class="tc-detail-content"><div class="tc-detail-block"><div class="tc-detail-label">// 전제조건</div><div class="tc-detail-value">필수 입력 필드가 있는 폼 페이지.</div></div><div class="tc-detail-block"><div class="tc-detail-label">// 테스트 스텝</div><ol class="tc-detail-steps"><li><span class="step-num">01.</span>필수 필드 비워둔 채 제출 클릭</li><li><span class="step-num">02.</span>에러 메시지 위치·내용 확인</li></ol></div><div class="tc-detail-block"><div class="tc-detail-label">// 기대 결과 상세</div><div class="tc-detail-result-fail">✗ 각 필드 하단 인라인 에러 표시 확인<br>✗ 미입력 필드 포커스 이동 확인<br>✗ 제출 차단 확인</div></div></div></div></td></tr>
-
+<tr class="tc-detail-row" data-for="UX-N-001"><td class="tc-detail-cell" colspan="5"><div class="tc-detail-inner"><div class="tc-detail-intent"><div class="tc-detail-intent-label">// 설계 의도 — 왜 이 케이스인가</div><div class="tc-detail-intent-text">폼 UX 품질은 신규 사용자 이탈률과 직결. 필드별 인라인 에러와 실시간 검증이 적용됐는지를 검증하는 UX 품질 케이스.</div></div><div class="tc-detail-content"><div class="tc-detail-block"><div class="tc-detail-label">// 전제조건</div><div class="tc-detail-value">필수 입력 필드가 있는 폼 페이지.</div></div><div class="tc-detail-block"><div class="tc-detail-label">// 테스트 스텝</div><ol class="tc-detail-steps"><li><span class="step-num">01.</span>필수 필드 비워둔 채 제출 클릭</li><li><span class="step-num">02.</span>에러 메시지 위치·내용 확인</li></ol></div><div class="tc-detail-block"><div class="tc-detail-label">// 기대 결과 상세</div><div class="tc-detail-result-fail">✗ 각 필드 하단 인라인 에러 표시 확인<br>✗ 미입력 필드 포커스 이동 확인<br>✗ 제출 차단 확인</div></div></div></div></td></tr>
 </tbody>
 </table>
 </div>
@@ -1147,7 +1023,8 @@ Jira 연동 완료
 <a href="mailto:kihyun.qa@gmail.com" class="c-link">✉️ 이메일 보내기</a>
 <a href="https://github.com/kihyunqa" target="_blank" class="c-link">GitHub ↗</a>
 <a href="https://github.com/kihyunqa/qa-portfolio" target="_blank" class="c-link">포트폴리오 레포 ↗</a>
-<a href="https://github.com/kihyunqa/qa-portfolio/blob/main/PROFILE.md" target="_blank" class="c-link">이력서 문서 ↗</a>
+<a href="https://github.com/kihyunqa/qa-portfolio/blob/main/RESUME.md" target="_blank" class="c-link">이력서 ↗</a>
+<a href="https://github.com/kihyunqa/qa-portfolio/blob/main/CAREER.md" target="_blank" class="c-link">경력기술서 ↗</a>
 <a href="https://kihyunqa-1775011951168.atlassian.net" target="_blank" class="c-link">Jira 프로젝트 ↗</a>
 </div>
 </div>
@@ -1158,28 +1035,25 @@ Jira 연동 완료
 </footer>
 
 <script>
-/* BREADCRUMB */
 const bcMap={'stats':'00 · 숫자 현황','mcp':'01 · MCP 자동화','proof':'02 · 실제 증거','projects':'03 · 프로젝트','diagram':'04 · 파이프라인','roadmap':'05 · 로드맵','tc':'06 · 테스트케이스','timeline':'07 · 경력','skills':'08 · 스킬','contact':'09 · 연락'};
 const bcEl=document.getElementById('breadcrumb'),bcSec=document.getElementById('bcSection');
 let bcCurrent='';
 function updateBreadcrumb(id){if(id===bcCurrent)return;bcCurrent=id;if(id&&bcMap[id]){bcSec.textContent=bcMap[id];bcEl.classList.add('visible');}else bcEl.classList.remove('visible');}
 
-/* HERO FADE-IN */
 document.addEventListener('DOMContentLoaded',()=>{
   document.querySelectorAll('.hero-fade-in').forEach((el,i)=>{
     setTimeout(()=>el.classList.add('hfi-visible'),100+parseInt(el.dataset.hfiDelay||i)*100);
   });
 });
 
-/* SCROLL */
 let scrollTick=false;
 window.addEventListener('scroll',()=>{
   if(scrollTick)return;scrollTick=true;
   requestAnimationFrame(()=>{
     const s=document.documentElement;
     const pct=s.scrollTop/(s.scrollHeight-s.clientHeight);
-    const r=Math.round(124+44*pct),g=Math.round(85-85*pct),b=Math.round(247-47*pct);
     const r2=Math.round(124+56*pct),g2=Math.round(58-58*pct),b2=Math.round(237-37*pct);
+    const r=Math.round(124+44*pct),g=Math.round(85-85*pct),b=Math.round(247-47*pct);
     document.getElementById('scrollBar').style.cssText=`width:${pct*100}%;background:linear-gradient(90deg,rgb(${r2},${g2},${b2}),rgb(${r},${g},${b}))`;
     updateDotNav();scrollTick=false;
   });
@@ -1187,13 +1061,11 @@ window.addEventListener('scroll',()=>{
 
 function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open');}
 
-/* REVEAL */
 const obs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});
 },{threshold:0.06});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
-/* TC 분포 바 애니메이션 */
 const distObs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{
     if(e.isIntersecting){
@@ -1213,7 +1085,6 @@ const distObs=new IntersectionObserver(entries=>{
 const distWrap=document.querySelector('.tc-dist-wrap');
 if(distWrap)distObs.observe(distWrap);
 
-/* SKILL BARS */
 const skO=new IntersectionObserver(entries=>{
   entries.forEach(e=>{
     if(e.isIntersecting){
@@ -1224,7 +1095,6 @@ const skO=new IntersectionObserver(entries=>{
 },{threshold:0.3});
 document.querySelectorAll('.skills-wrap').forEach(el=>skO.observe(el));
 
-/* DOT NAV */
 const dotSections=['stats','mcp','proof','projects','diagram','roadmap','tc','timeline','skills','contact'];
 document.querySelectorAll('.dot-nav-dot').forEach(dot=>{
   dot.addEventListener('click',()=>{
@@ -1243,7 +1113,6 @@ function updateDotNav(){
 }
 updateDotNav();
 
-/* SKILL TOOLTIP */
 const skTip=document.getElementById('skTooltip'),skTipTitle=document.getElementById('skTipTitle'),skTipBody=document.getElementById('skTipBody'),skTipTags=document.getElementById('skTipTags');
 let tipTimer=null;
 document.querySelectorAll('.sk-item[data-tip-title]').forEach(item=>{
@@ -1262,12 +1131,10 @@ document.querySelectorAll('.sk-item[data-tip-title]').forEach(item=>{
 skTip.addEventListener('mouseenter',()=>clearTimeout(tipTimer));
 skTip.addEventListener('mouseleave',()=>{tipTimer=setTimeout(()=>skTip.classList.remove('visible'),100);});
 
-/* HERO STAT SCROLL */
 document.querySelectorAll('.hero-stat-card[data-scroll]').forEach(card=>{
   card.addEventListener('click',()=>{const el=document.getElementById(card.dataset.scroll);if(el)el.scrollIntoView({behavior:'smooth'});});
 });
 
-/* HERO TYPING */
 const heroRoleEl=document.getElementById('heroRoleText');
 const typingTexts=['Quality Assurance Engineer','TC 설계 · 버그 분석 · MCP 자동화','6년 9개월 QA · 코드 0줄 · 결과 ∞'];
 let typeIdx=0,charIdx=0,isDeleting=false;
@@ -1278,16 +1145,13 @@ function typeStep(){
 }
 setTimeout(typeStep,800);
 
-/* TC STAT BAR 업데이트 */
 function updateTcStatBar(){
   const rows=document.querySelectorAll('.tc-data-row');
   let hp=0,ng=0,eg=0;
   rows.forEach(row=>{
     if(row.style.display==='none')return;
     const t=row.dataset.type;
-    if(t==='h')hp++;
-    else if(t==='n')ng++;
-    else if(t==='e')eg++;
+    if(t==='h')hp++;else if(t==='n')ng++;else if(t==='e')eg++;
   });
   document.getElementById('statHP').textContent='해피패스 '+hp+'건';
   document.getElementById('statNG').textContent='네거티브 '+ng+'건';
@@ -1305,7 +1169,6 @@ function updateTcStatBar(){
   document.getElementById('distValEG').textContent=eg+'건';
 }
 
-/* TC FILTER */
 let currentFilter='all';
 document.querySelectorAll('.tc-filter-btn').forEach(btn=>{
   btn.addEventListener('click',()=>{
@@ -1315,7 +1178,6 @@ document.querySelectorAll('.tc-filter-btn').forEach(btn=>{
   });
 });
 
-/* TC SEARCH */
 const tcSearchInput=document.getElementById('tcSearchInput');
 const tcSearchClear=document.getElementById('tcSearchClear');
 const tcSearchCount=document.getElementById('tcSearchCount');
@@ -1327,11 +1189,7 @@ function applySearch(){
   rows.forEach(row=>{
     const typeMatch=currentFilter==='all'||row.dataset.type===currentFilter;
     let textMatch=true;
-    if(q){
-      const cells=row.querySelectorAll('td');
-      const text=Array.from(cells).map(c=>c.textContent).join(' ').toLowerCase();
-      textMatch=text.includes(q);
-    }
+    if(q){const cells=row.querySelectorAll('td');const text=Array.from(cells).map(c=>c.textContent).join(' ').toLowerCase();textMatch=text.includes(q);}
     const show=typeMatch&&textMatch;
     row.style.display=show?'':'none';
     const dr=document.querySelector(`.tc-detail-row[data-for="${row.dataset.tcId}"]`);
@@ -1349,7 +1207,6 @@ if(tcSearchClear){tcSearchClear.addEventListener('click',()=>{
   applySearch();
 });}
 
-/* TC EXPAND */
 document.querySelectorAll('.tc-data-row').forEach(row=>{
   row.addEventListener('click',()=>{
     const tcId=row.dataset.tcId;
@@ -1363,7 +1220,6 @@ document.querySelectorAll('.tc-data-row').forEach(row=>{
   });
 });
 
-/* TC 전체 펼치기 / 접기 */
 document.getElementById('tcExpandAll')?.addEventListener('click',()=>{
   document.querySelectorAll('.tc-data-row').forEach(row=>{
     if(row.style.display==='none')return;
@@ -1373,9 +1229,7 @@ document.getElementById('tcExpandAll')?.addEventListener('click',()=>{
     const di=dr?.querySelector('.tc-detail-inner');
     const icon=row.querySelector('.tc-expand-icon');
     if(!dr||!di)return;
-    row.classList.add('tc-expanded');
-    dr.classList.add('tc-detail-visible');
-    dr.style.display='';
+    row.classList.add('tc-expanded');dr.classList.add('tc-detail-visible');dr.style.display='';
     if(icon)icon.textContent='▲';
     requestAnimationFrame(()=>requestAnimationFrame(()=>di.classList.add('tc-detail-open')));
   });
@@ -1393,7 +1247,6 @@ document.getElementById('tcCollapseAll')?.addEventListener('click',()=>{
   });
 });
 
-/* RADAR CHART */
 const radarSkills=[
   {name:'TC 설계',val:95,color:'#a855f7'},{name:'버그 리포팅',val:92,color:'#c084fc'},
   {name:'E2E 자동화',val:82,color:'#7c3aed'},{name:'API 테스트',val:70,color:'#a855f7'},
@@ -1417,7 +1270,6 @@ function drawRadar(animated){
 const radarObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){drawRadar(true);radarObs.unobserve(e.target);}});},{threshold:0.2});
 const rw=document.getElementById('radarWrap');if(rw)radarObs.observe(rw);
 
-/* TIMELINE */
 [['tlDuple','tlDupleDetail'],['tlIMS','tlIMSDetail'],['tlMobifren','tlMobifrenDetail']].forEach(([iid,did])=>{
   const item=document.getElementById(iid),detail=document.getElementById(did);if(!item||!detail)return;
   item.addEventListener('click',e=>{if(e.target.tagName==='A')return;const was=item.classList.contains('expanded');document.querySelectorAll('.tl-item.expanded').forEach(el=>el.classList.remove('expanded'));if(!was)item.classList.add('expanded');});
