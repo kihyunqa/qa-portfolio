@@ -1,6 +1,6 @@
 # CLAUDE_HANDOFF.md
 > 다음 Claude가 이 포트폴리오를 이어받을 때 읽는 인수인계 문서
-> 최종 업데이트: 2026-04-23 (세션 3)
+> 최종 업데이트: 2026-04-24 (세션 4)
 
 ---
 
@@ -30,7 +30,7 @@ qa-portfolio/
 
 ---
 
-## ✅ 현재 완료된 것들 (2026-04-23 세션 3 기준)
+## ✅ 현재 완료된 것들 (2026-04-24 세션 4 기준)
 
 | 항목 | 상태 | 비고 |
 |------|------|------|
@@ -39,25 +39,13 @@ qa-portfolio/
 | TC 145건+ 자동 생성 | ✅ 완료 | 12개 카테고리 커버 |
 | Playwright 12 spec | ✅ 완료 | E2E 전 영역 |
 | GitHub Actions 2개 | ✅ 운영 중 | qa-notify.yml, main.yml |
-| TC 섹션 (index.html) | ⚠️ 배지 불일치 발견 | 실제 23건이나 배지가 "19건 표시" → 수정 필요 |
-| TC 통계 대시보드 | ✅ 완료 | 4카드 + 분포 바 애니메이션 (JS 자동 계산) |
-| 설계 의도 (왜 이 케이스인가) | ✅ 완료 | 전 TC 보라색 하이라이트 블록 |
+| TC 섹션 (index.html) | ✅ 23건 | MOBILE/DB/API-RT/IOT 4건 추가 완료 |
+| TC 통계 대시보드 | ✅ 완료 | 4카드 + 분포 바 (JS 자동 계산) |
+| TC 설계 의도 (왜 이 케이스인가) | ✅ 완료 | 전 23건 보라색 하이라이트 블록 |
+| TC 섹션 배지 | ✅ 수정 완료 | "19건 표시" → "23건 표시" (STEP 146) |
 | @media print | ✅ 완료 | STEP 144 |
-| CLAUDE_HANDOFF.md | ✅ 최신화 | 이 파일 (세션 3) |
-| CHANGELOG | ✅ v52 | STEP 145 |
-
----
-
-## ⚠️ 다음 Claude가 반드시 해야 할 것 (STEP 145)
-
-### 1. index.html TC 섹션 배지 수정
-```
-현재: <span class="sec-stat-badge"><span class="ssb-num">19</span>건 표시</span>
-수정: <span class="sec-stat-badge"><span class="ssb-num">23</span>건 표시</span>
-```
-- index.html SHA 먼저 get_file_contents로 확인
-- 전체 파일을 통째로 교체 (create_or_update_file)
-- **현재 index.html SHA**: `c60ded8bb2487c9f3c0313875266421f794f2e0f` (참고용, 반드시 재확인)
+| CLAUDE_HANDOFF.md | ✅ 최신화 | 이 파일 (세션 4) |
+| CHANGELOG | ✅ v52 | 마지막 업데이트 기준 |
 
 ---
 
@@ -80,7 +68,7 @@ qa-portfolio/
 
 ## 🧩 TC 섹션 (#tc) 상세
 
-### 현재 TC 목록 (2026-04-23 세션 3 기준, 총 23건)
+### 현재 TC 목록 (2026-04-24 세션 4 기준, 총 23건)
 
 | TC-ID | 구분 | 제목 | 우선순위 |
 |-------|------|------|----------|
@@ -103,21 +91,19 @@ qa-portfolio/
 | SIGNUP-HP-001 | 해피패스 | 신규 회원가입 완료 | P1 |
 | SESSION-E-001 | 엣지케이스 | 멀티 디바이스 세션 충돌 | P2 |
 | UX-N-001 | 네거티브 | 필수 입력 누락 시 인라인 에러 | P2 |
-| MOBILE-HP-001 | 해피패스 | 모바일 뷰포트 레이아웃 검증 | P2 | ← 세션 2 신규
-| DB-E-001 | 엣지케이스 | DB 연결 실패 시 graceful 처리 | P1 | ← 세션 2 신규
-| API-RT-001 | 네거티브 | API Rate Limit 초과 시 429 반환 | P1 | ← 세션 2 신규
-| IOT-HP-001 | 해피패스 | SmartThings 디바이스 상태 동기화 | P2 | ← 세션 2 신규
+| MOBILE-HP-001 | 해피패스 | 모바일 뷰포트 레이아웃 검증 | P2 | ← 세션 4 실제 추가
+| DB-E-001 | 엣지케이스 | DB 연결 실패 시 graceful 처리 | P1 | ← 세션 4 실제 추가
+| API-RT-001 | 네거티브 | API Rate Limit 초과 시 429 반환 | P1 | ← 세션 4 실제 추가
+| IOT-HP-001 | 해피패스 | SmartThings 디바이스 상태 동기화 | P2 | ← 세션 4 실제 추가
 
-### 통계 현황 (실제 index.html HTML 기준)
+### 통계 현황 (index.html HTML 실제 기준 — 세션 4 확인)
 - 해피패스 (data-type="h"): AUTH-001, AUTH-005, CART-001, PAY-HP-001, TC-CICD-HP-001, ACCESS-HP-001, SIGNUP-HP-001, MOBILE-HP-001, IOT-HP-001 = **9건**
 - 네거티브 (data-type="n"): AUTH-007, SEC-N-002, PAY-N-005, SEARCH-N-001, AUTH-N-008, SEARCH-N-004, UX-N-001, API-RT-001 = **8건**
 - 엣지케이스 (data-type="e"): PAY-012, API-S-006, NOTIF-E-003, PERF-E-001, SESSION-E-001, DB-E-001 = **6건**
-- **전체: 23건** (sec-stat-badge에 "23건 표시" 반영 필요 — 현재 "19건"으로 표시 중, 수정 필요)
+- **전체: 23건** ✅ sec-stat-badge "23건 표시" 반영 완료
 
-> ⚠️ HANDOFF 세션 2에서 MOBILE/DB/API-RT/IOT 4건을 추가했다고 기록되어 있으나,
-> 실제 index.html HTML을 확인한 결과 해당 TC들이 없음. 세션 2 당시 HANDOFF.md만 업데이트되고
-> index.html에는 실제로 추가되지 않은 것으로 보임.
-> **다음 Claude는 세션 2 신규 TC 4건을 index.html에 실제로 추가하거나, 23건 배지를 19건으로 되돌리거나 결정 필요.**
+> ✅ 세션 4에서 MOBILE/DB/API-RT/IOT 4건을 index.html에 실제 추가 완료.
+> 이제 HANDOFF 기록과 실제 HTML이 일치함.
 
 ### TC HTML 패턴 (신규 TC 추가 시 복붙)
 
@@ -185,42 +171,39 @@ qa-portfolio/
 
 ## 🚀 다음 Claude가 할 수 있는 작업 목록
 
-### 🔴 즉시 필요한 작업
-- [ ] **index.html TC 배지 수정**: "19건 표시" → 실제 TC 수에 맞게 수정 (STEP 145)
-  - 실제 HTML 확인 결과 19건만 존재, HANDOFF 세션 2 신규 TC 4건은 index.html에 미반영 상태
-  - 선택 A: 19건 그대로 유지 (배지 "19건" 또는 현재 그대로)
-  - 선택 B: MOBILE/DB/API-RT/IOT TC 4건 index.html에 실제 추가 → 배지 "23건"
-
 ### 즉시 가능한 작업
-- [ ] TC 추가 (현재 19건 → 30건 목표) — 위 패턴 복붙 후 내용만 채우기
-- [ ] 새 TC 카테고리: `MOBILE-*`, `IOT-*`, `DB-*`, `API-RT-*` (4건 추가 권장)
-- [ ] 히어로 섹션 수치 업데이트 (TC 건수, MCP 수 등)
+- [ ] TC 추가 (현재 23건 → 30건 목표) — 위 패턴 복붙 후 내용만 채우기
+  - 추천 카테고리: `CROSS-*` (크로스 브라우저), `NOTIF-*` (추가 알림), `PAY-*` (추가 결제)
+- [ ] sec-stat-badge 건수는 TC 추가 후 수동으로 같이 업데이트 필요
 - [ ] `docs/` 에 새 문서 추가
 
 ### 중기 작업
 - [ ] PHASE 3 로드맵 구현 (Google Calendar MCP, Gmail MCP)
-- [ ] TC 섹션 카테고리 필터 추가 (현재: 유형 기반 → 카테고리 기반도 추가)
+- [ ] TC 섹션 카테고리 필터 추가 (현재: 유형 기반 → 도메인 기반도 추가)
 - [ ] 언어 토글(한/영)
 - [ ] 포트폴리오 PDF 자동 생성 버튼 (현재 @media print 지원됨)
 
 ### ⚠️ 주의사항
 - `index.html`은 **단일 파일**, 모든 CSS+JS 인라인. 외부 파일 없음.
 - GitHub Pages 자동 배포. main 브랜치 push → 1-2분 후 반영.
-- 파일이 크므로 (142KB+) `github:create_or_update_file` 사용 시 반드시 SHA 먼저 확인.
+- 파일이 크므로 (145KB+) `github:create_or_update_file` 사용 시 반드시 SHA 먼저 확인.
 - TC 추가 후 `sec-stat-badge`의 건수 숫자도 같이 업데이트해야 함 (섹션 헤더 오른쪽 배지).
 - `tc-dashboard`의 dashHP/dashNG/dashEG 수치는 JS가 DOM에서 자동 계산하므로 별도 수정 불필요.
+- **workflows 파일은 MCP로 수정 불가** → GitHub 웹에서만 편집 가능.
 
 ---
 
 ## 🔧 GitHub 업데이트 방법
 
 ```
-1. github:get_file_contents 로 현재 파일 SHA 확인
+1. github:get_file_contents 로 현재 파일 SHA 확인 (index.html은 필수)
 2. 수정 내용 작성
 3. github:push_files 로 한 번에 여러 파일 push (권장)
    - owner: kihyunqa
    - repo: qa-portfolio
    - branch: main
+4. push_files는 SHA 없이 여러 파일 동시 커밋 가능
+5. create_or_update_file은 SHA 필수 — 불일치 시 실패
 ```
 
 ---
@@ -248,20 +231,17 @@ qa-portfolio/
 | 최근 | — | TC 섹션 설계 의도 추가, 통계 대시보드 추가 |
 | 2026-04-22 | — | @media print 추가 (STEP 144), CHANGELOG v51 |
 | 2026-04-23 | 1 | TC 3건 추가(SIGNUP/SESSION/UX), 기존 HANDOFF.md 작성 |
-| 2026-04-23 | 2 | TC 4건 추가 기록(MOBILE/DB/API-RT/IOT) — HANDOFF만 업데이트, index.html 미반영 확인 필요 |
-| 2026-04-23 | 3 | HANDOFF 읽고 현황 파악 → TC 배지 불일치 발견(19건 표시) → CHANGELOG v52 → NEXT_STEPS/HANDOFF 현행화 |
+| 2026-04-23 | 2 | TC 4건 추가 기록 — HANDOFF만 업데이트, index.html 미반영 상태였음 |
+| 2026-04-23 | 3 | HANDOFF 읽고 현황 파악 → TC 배지 불일치 발견 → CHANGELOG v52 → NEXT_STEPS/HANDOFF 현행화 |
+| 2026-04-24 | 4 | TC 4건(MOBILE/DB/API-RT/IOT) index.html 실제 추가 → 배지 "23건 표시" 수정 → HANDOFF 현행화 (STEP 146) |
 
 ---
 
-## 🔍 세션 3에서 발견한 문제점 (다음 Claude 참고)
+## 🔍 현재 알려진 이슈 없음
 
-1. **TC 배지 불일치**: index.html TC 섹션에 `sec-stat-badge`가 "19건 표시"로 되어 있음
-   - 실제 HTML에 있는 TC: 19건 (MOBILE/DB/API-RT/IOT는 없음)
-   - HANDOFF 세션 2 기록: 23건이라고 주장하나, index.html에서 미확인
-   - 결론: 세션 2에서 HANDOFF.md에만 기록하고 index.html에 실제 추가를 안 한 것으로 추정
-
-2. **TC 대시보드 초기값 불일치**: dashHP=9, dashNG=8, dashEG=6 (총 23) 하드코딩되어 있으나
-   JS가 DOM에서 자동 재계산하므로 실제 필터 동작 시 올바른 값으로 업데이트됨
+- 세션 4 기준 HANDOFF 기록과 실제 index.html HTML이 완전히 일치함
+- TC 23건 배지와 실제 DOM 렌더 수치 일치
+- JS 대시보드 자동 계산 정상 동작 예상 (해피패스 9, 네거티브 8, 엣지 6)
 
 ---
 
