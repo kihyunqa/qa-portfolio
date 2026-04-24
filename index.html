@@ -23,7 +23,7 @@
 --bg:#08060f;--bg2:#0d0a18;--bg3:#110d1f;
 --purple:#a855f7;--purple2:#7c3aed;--purple3:#c084fc;
 --p-border:rgba(168,85,247,0.22);--p-muted:rgba(168,85,247,0.08);
---text:#f0eaff;--muted:#d4cce8;--dim:#a898c8;
+--text:#f0eaff;--muted:#d4cce8;--dim:#b8aed4;
 --mono:'DM Mono',ui-monospace,monospace;
 --sans:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;
 --wip:#f59e0b;--green:#10b981;
@@ -59,23 +59,18 @@ h1.hero-name em{color:#ffffff;font-style:normal}
 .hero-fade-in{opacity:0;transition:opacity .4s ease}
 .hero-fade-in.hfi-visible{opacity:1}
 
-/* ★ 킥 — 메인 아이덴티티 블록 */
-.kick-identity{margin-bottom:32px}
-.kick-identity-label{font-family:var(--mono);font-size:10px;color:var(--purple);letter-spacing:.22em;margin-bottom:14px;display:flex;align-items:center;gap:10px}
-.kick-identity-label::before{content:'';width:18px;height:1px;background:var(--purple)}
-.kick-identity-headline{font-size:clamp(22px,3.2vw,34px);font-weight:800;line-height:1.25;letter-spacing:-.03em;color:var(--text);margin-bottom:20px}
-.kick-identity-headline .hl-qa{color:#ffffff}
-.kick-identity-headline .hl-plus{color:var(--dim);font-weight:300;margin:0 6px}
-.kick-identity-headline .hl-ai{color:var(--purple)}
-.kick-identity-headline .hl-eq{color:var(--dim);font-weight:300;margin:0 6px}
-.kick-identity-headline .hl-result{
-  background:linear-gradient(90deg,var(--purple),var(--purple3));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-  background-clip:text;
-}
+/* ★ 킥 — 초강력 아이덴티티 배너 */
+.kick-banner{margin-bottom:28px;padding:24px 28px;background:linear-gradient(135deg,rgba(124,58,237,0.15),rgba(168,85,247,0.08));border:1px solid rgba(168,85,247,0.35);border-left:4px solid var(--purple);position:relative;overflow:hidden}
+.kick-banner::after{content:'';position:absolute;top:-40px;right:-40px;width:120px;height:120px;background:radial-gradient(circle,rgba(168,85,247,0.12),transparent);pointer-events:none}
+.kick-banner-label{font-family:var(--mono);font-size:10px;color:var(--purple);letter-spacing:.25em;margin-bottom:12px;opacity:.8}
+.kick-banner-main{font-size:clamp(20px,2.8vw,30px);font-weight:800;line-height:1.3;letter-spacing:-.025em;color:var(--text);margin-bottom:10px}
+.kick-banner-main .kb-acc{color:var(--purple)}
+.kick-banner-main .kb-white{color:#ffffff}
+.kick-banner-sub{font-size:15px;color:var(--muted);line-height:1.65;font-weight:400}
+.kick-banner-sub strong{color:var(--text);font-weight:600}
 
-/* ★ 두 가지 강점을 나란히 보여주는 카드 */
-.kick-cards{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:28px}
+/* ★ 두 강점 카드 */
+.kick-cards{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px}
 .kick-card{padding:18px 20px;border:1px solid var(--p-border);background:rgba(168,85,247,0.04);position:relative;overflow:hidden}
 .kick-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
 .kick-card.qa-card::before{background:linear-gradient(90deg,#7c3aed,#a855f7)}
@@ -83,23 +78,15 @@ h1.hero-name em{color:#ffffff;font-style:normal}
 .kick-card-label{font-family:var(--mono);font-size:9px;letter-spacing:.18em;margin-bottom:8px;display:flex;align-items:center;gap:6px}
 .kick-card.qa-card .kick-card-label{color:var(--purple)}
 .kick-card.ai-card .kick-card-label{color:var(--purple3)}
-.kick-card-num{font-family:var(--mono);font-size:28px;font-weight:500;color:var(--text);line-height:1;margin-bottom:4px}
+.kick-card-num{font-family:var(--mono);font-size:28px;font-weight:500;line-height:1;margin-bottom:6px}
 .kick-card.qa-card .kick-card-num{color:#ffffff}
 .kick-card.ai-card .kick-card-num{color:var(--purple)}
-.kick-card-desc{font-size:13px;color:var(--muted);line-height:1.55}
-
-/* ★ 핵심 한 줄 메시지 */
-.kick-statement{padding:16px 22px;background:rgba(168,85,247,0.08);border-left:4px solid var(--purple);margin-bottom:36px;position:relative}
-.kick-statement-text{font-size:16px;font-weight:600;color:var(--text);line-height:1.6;letter-spacing:-.01em}
-.kick-statement-text em{color:var(--purple);font-style:normal}
-.kick-statement-sub{font-family:var(--mono);font-size:11px;color:var(--dim);margin-top:6px}
+.kick-card-desc{font-size:13px;color:var(--muted);line-height:1.6}
 
 .hero-proof{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:36px}
 .hero-proof-item{font-family:var(--mono);font-size:10px;padding:4px 10px;border:1px solid var(--p-border);color:var(--purple);background:var(--p-muted);letter-spacing:.06em}
 .hero-proof-item::before{content:'✓ ';color:var(--green)}
 
-.hero-desc{font-size:16px;line-height:1.8;color:var(--muted);max-width:520px;margin-bottom:36px}
-.hero-desc strong{color:var(--text);font-weight:500}
 .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
 .btn-p{padding:13px 30px;background:var(--purple);color:#fff;font-family:var(--mono);font-size:12px;font-weight:500;text-decoration:none;letter-spacing:.06em}
 .btn-p:hover{background:var(--purple3)}
@@ -109,7 +96,7 @@ h1.hero-name em{color:#ffffff;font-style:normal}
 /* HERO STATS */
 .hero-stats{position:absolute;right:56px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:32px}
 .stat-n{font-family:var(--mono);font-size:36px;font-weight:500;color:var(--purple);line-height:1}
-.stat-l{font-size:11px;color:var(--dim);margin-top:4px;letter-spacing:.06em}
+.stat-l{font-size:12px;color:var(--dim);margin-top:4px;letter-spacing:.06em}
 .hero-stat-card{position:relative;cursor:pointer;padding:10px 14px;border:1px solid transparent}
 .hero-stat-card:hover{border-color:var(--p-border);background:rgba(168,85,247,0.06)}
 .hero-stat-card:hover .hero-stat-tip{opacity:1;pointer-events:auto}
@@ -129,6 +116,13 @@ section{padding:80px 56px;position:relative;z-index:2}
 .sec-stat-badge.ssb-green .ssb-num{color:var(--green)}
 .sec-desc{font-size:16px;color:var(--muted);line-height:1.8;max-width:600px;margin-bottom:40px;margin-top:-24px}
 
+/* ★ 섹션 전환 스토리 브릿지 */
+.sec-bridge{padding:28px 56px;background:var(--bg);border-top:1px solid var(--p-border);display:flex;align-items:center;gap:20px}
+.sec-bridge-arrow{font-family:var(--mono);font-size:20px;color:var(--purple);opacity:.5;flex-shrink:0}
+.sec-bridge-text{font-size:15px;color:var(--muted);line-height:1.7}
+.sec-bridge-text strong{color:var(--text);font-weight:600}
+.sec-bridge-text em{color:var(--purple);font-style:normal}
+
 /* BADGES */
 .badge{display:inline-flex;align-items:center;gap:5px;font-family:var(--mono);font-size:10px;font-weight:500;padding:3px 10px;letter-spacing:.08em}
 .badge-done{background:rgba(168,85,247,.15);color:var(--purple);border:1px solid var(--p-border)}
@@ -143,20 +137,20 @@ section{padding:80px 56px;position:relative;z-index:2}
 .mcp-intro-badge{display:inline-flex;align-items:center;gap:8px;background:var(--purple);color:#fff;font-family:var(--mono);font-size:10px;font-weight:500;padding:5px 12px;letter-spacing:.1em;margin-bottom:24px}
 .mcp-headline{font-size:clamp(22px,3vw,36px);font-weight:700;line-height:1.25;letter-spacing:-.025em;margin-bottom:16px}
 .mcp-headline em{color:var(--purple);font-style:normal}
-.mcp-sub{font-size:14px;color:var(--muted);line-height:1.75}
+.mcp-sub{font-size:15px;color:var(--muted);line-height:1.8}
 .pipeline-title{font-family:var(--mono);font-size:11px;color:var(--purple);letter-spacing:.15em;margin-bottom:16px}
 .pipeline{display:flex;flex-direction:column}
 .pipe-step{display:flex;align-items:flex-start;gap:14px;padding:10px 0;border-bottom:1px solid var(--p-border)}
 .pipe-step:last-child{border-bottom:none}
 .pipe-dot{width:8px;height:8px;border-radius:50%;background:var(--purple);margin-top:5px;flex-shrink:0}
-.pipe-name{font-size:13px;font-weight:500;margin-bottom:2px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.pipe-name{font-size:14px;font-weight:500;margin-bottom:2px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .pipe-desc{font-size:13px;color:var(--muted);line-height:1.6}
 .mcp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--p-border);margin-bottom:32px}
-.mcp-card{background:var(--bg2);padding:18px 14px;transition:background .15s}
+.mcp-card{background:var(--bg2);padding:20px 16px;transition:background .15s}
 .mcp-card:hover{background:var(--bg3)}
-.mc-icon{font-size:18px;margin-bottom:8px}
-.mc-name{font-family:var(--mono);font-size:10px;font-weight:500;color:var(--text);margin-bottom:5px;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
-.mc-desc{font-size:13px;color:var(--muted);line-height:1.55}
+.mc-icon{font-size:20px;margin-bottom:10px}
+.mc-name{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--text);margin-bottom:6px;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.mc-desc{font-size:13px;color:var(--muted);line-height:1.6}
 
 /* TERMINAL */
 .terminal{background:#050309;border:1px solid var(--p-border);font-family:var(--mono);font-size:12px;line-height:1.9;overflow:hidden}
@@ -178,14 +172,14 @@ section{padding:80px 56px;position:relative;z-index:2}
 .proof-card-full{grid-column:1/-1}
 .proof-icon{font-size:24px;margin-bottom:12px}
 .proof-title{font-size:15px;font-weight:700;margin-bottom:8px;display:flex;align-items:center;gap:10px}
-.proof-desc{font-size:15px;color:var(--muted);line-height:1.7;margin-bottom:12px}
-.proof-detail{font-family:var(--mono);font-size:11px;color:var(--green);background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.2);padding:8px 12px;line-height:1.8}
+.proof-desc{font-size:15px;color:var(--muted);line-height:1.75;margin-bottom:12px}
+.proof-detail{font-family:var(--mono);font-size:12px;color:var(--green);background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.2);padding:10px 14px;line-height:1.85}
 .proof-link{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:10px;color:var(--purple);text-decoration:none;border:1px solid var(--p-border);padding:5px 10px;margin-top:10px;letter-spacing:.04em}
 .proof-link:hover{background:var(--p-muted)}
 .proof-screenshot{margin-top:14px;border:1px solid var(--p-border);overflow:hidden;background:var(--bg3)}
 .proof-screenshot img{width:100%;height:140px;object-fit:cover;object-position:top;display:block;opacity:.85}
 .proof-screenshot img:hover{opacity:1}
-.proof-screenshot-caption{font-family:var(--mono);font-size:9px;color:var(--dim);padding:5px 8px;letter-spacing:.06em;border-top:1px solid var(--p-border)}
+.proof-screenshot-caption{font-family:var(--mono);font-size:10px;color:var(--dim);padding:6px 10px;letter-spacing:.06em;border-top:1px solid var(--p-border)}
 .proof-screenshot-jira img{height:200px}
 
 /* COMMIT CARD */
@@ -196,12 +190,12 @@ section{padding:80px 56px;position:relative;z-index:2}
 .commit-stat{background:var(--bg2);padding:16px;text-align:center}
 .commit-stat:hover{background:var(--bg3)}
 .commit-stat-num{font-family:var(--mono);font-size:32px;font-weight:500;color:var(--purple);line-height:1;margin-bottom:6px}
-.commit-stat-label{font-size:12px;color:var(--muted);line-height:1.5}
-.commit-stat-sub{font-family:var(--mono);font-size:10px;color:var(--dim);margin-top:4px}
+.commit-stat-label{font-size:13px;color:var(--muted);line-height:1.5}
+.commit-stat-sub{font-family:var(--mono);font-size:11px;color:var(--dim);margin-top:4px}
 .commit-bar-area{margin-bottom:16px}
-.commit-bar-label{font-family:var(--mono);font-size:9px;color:var(--dim);letter-spacing:.12em;margin-bottom:8px}
+.commit-bar-label{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:.12em;margin-bottom:8px}
 .commit-footer{display:flex;align-items:center;justify-content:space-between;padding-top:14px;border-top:1px solid var(--p-border);flex-wrap:wrap;gap:8px}
-.commit-footer-note{font-family:var(--mono);font-size:10px;color:var(--dim)}
+.commit-footer-note{font-family:var(--mono);font-size:11px;color:var(--dim)}
 
 /* ROADMAP */
 .roadmap-sec{background:var(--bg2);border-top:1px solid var(--p-border)}
@@ -211,8 +205,8 @@ section{padding:80px 56px;position:relative;z-index:2}
 .roadmap-card.future{opacity:.6}
 .rm-num{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:.15em;margin-bottom:8px}
 .rm-icon{font-size:20px;margin-bottom:8px}
-.rm-title{font-size:14px;font-weight:700;margin-bottom:6px}
-.rm-desc{font-size:14px;color:var(--muted);line-height:1.65}
+.rm-title{font-size:15px;font-weight:700;margin-bottom:8px}
+.rm-desc{font-size:14px;color:var(--muted);line-height:1.7}
 
 /* PROJECTS */
 .projects-sec{background:var(--bg2);border-top:1px solid var(--p-border)}
@@ -223,15 +217,15 @@ section{padding:80px 56px;position:relative;z-index:2}
 .proj-card:hover .proj-overlay{transform:translateY(0)}
 .proj-overlay-title{font-family:var(--mono);font-size:9px;color:var(--purple);letter-spacing:.18em;margin-bottom:2px}
 .proj-overlay-points{list-style:none;display:flex;flex-direction:column;gap:4px}
-.proj-overlay-points li{font-size:11px;color:var(--muted);line-height:1.5;display:flex;align-items:flex-start;gap:6px}
+.proj-overlay-points li{font-size:12px;color:var(--muted);line-height:1.55;display:flex;align-items:flex-start;gap:6px}
 .proj-overlay-points li::before{content:'→';color:var(--purple);font-family:var(--mono);font-size:10px;flex-shrink:0}
 .proj-overlay-links{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px}
 .proj-overlay-link{font-family:var(--mono);font-size:9px;color:var(--purple);text-decoration:none;border:1px solid rgba(168,85,247,.4);padding:3px 8px;background:rgba(168,85,247,.08)}
 .proj-overlay-link:hover{background:var(--purple);color:#fff}
 .proj-num{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:.15em;margin-bottom:10px}
 .proj-icon{font-size:22px;margin-bottom:10px}
-.proj-title{font-size:15px;font-weight:700;letter-spacing:-.02em;margin-bottom:7px}
-.proj-desc{font-size:14px;color:var(--muted);line-height:1.65;margin-bottom:12px}
+.proj-title{font-size:15px;font-weight:700;letter-spacing:-.02em;margin-bottom:8px}
+.proj-desc{font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:12px}
 .proj-flow{display:flex;flex-wrap:wrap;align-items:center;gap:4px;margin-bottom:12px}
 .proj-flow-step{font-family:var(--mono);font-size:9px;padding:2px 7px;background:rgba(168,85,247,.1);border:1px solid var(--p-border);color:var(--purple);letter-spacing:.04em}
 .proj-flow-arrow{color:var(--dim);font-size:10px}
@@ -253,7 +247,7 @@ section{padding:80px 56px;position:relative;z-index:2}
 .diag-box{padding:10px 14px;border:1px solid var(--p-border);background:var(--bg3);font-family:var(--mono);font-size:10px;color:var(--text);text-align:center;letter-spacing:.04em}
 .diag-box:hover{border-color:var(--purple);background:rgba(168,85,247,.08)}
 .diag-box.done{border-color:rgba(168,85,247,.5);background:rgba(168,85,247,.06)}
-.diag-label{font-family:var(--mono);font-size:9px;color:var(--dim);letter-spacing:.06em;text-align:center}
+.diag-label{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:.06em;text-align:center}
 .diag-arrow{font-size:14px;color:var(--purple);opacity:.5;padding:0 4px;flex-shrink:0}
 .diag-arrow-down{font-size:18px;color:var(--purple);opacity:.4;text-align:center;margin:0 auto}
 .diag-section-label{font-family:var(--mono);font-size:10px;color:var(--purple);letter-spacing:.15em;margin-bottom:14px;display:flex;align-items:center;gap:10px}
@@ -266,8 +260,8 @@ section{padding:80px 56px;position:relative;z-index:2}
 .stat-card:hover{background:var(--bg3)}
 .stat-big{font-family:var(--mono);font-size:48px;font-weight:500;color:var(--purple);line-height:1;margin-bottom:8px}
 .stat-unit{font-size:20px}
-.stat-desc{font-size:14px;color:var(--muted);line-height:1.6}
-.stat-sub{font-family:var(--mono);font-size:10px;color:var(--dim);margin-top:5px}
+.stat-desc{font-size:15px;color:var(--muted);line-height:1.6}
+.stat-sub{font-family:var(--mono);font-size:11px;color:var(--dim);margin-top:6px}
 
 /* TIMELINE */
 .timeline-sec{background:var(--bg);border-top:1px solid var(--p-border)}
@@ -277,12 +271,12 @@ section{padding:80px 56px;position:relative;z-index:2}
 .tl-item:last-child{padding-bottom:0}
 .tl-dot{position:absolute;left:-40px;top:6px;width:10px;height:10px;border-radius:50%;background:var(--purple);border:2px solid var(--bg)}
 .tl-item:hover .tl-dot{background:var(--purple3)}
-.tl-year{font-family:var(--mono);font-size:10px;color:var(--purple);letter-spacing:.15em;margin-bottom:8px}
+.tl-year{font-family:var(--mono);font-size:11px;color:var(--purple);letter-spacing:.15em;margin-bottom:8px}
 .tl-title{font-size:17px;font-weight:700;margin-bottom:4px;display:flex;align-items:center;gap:12px}
 .tl-expand-icon{font-family:var(--mono);font-size:9px;color:var(--dim);padding:2px 6px;border:1px solid var(--p-border);flex-shrink:0}
 .tl-item.expanded .tl-expand-icon{border-color:var(--purple);color:var(--purple);background:var(--p-muted)}
-.tl-role{font-family:var(--mono);font-size:11px;color:var(--muted);margin-bottom:10px}
-.tl-desc{font-size:15px;color:var(--muted);line-height:1.75}
+.tl-role{font-family:var(--mono);font-size:12px;color:var(--muted);margin-bottom:10px}
+.tl-desc{font-size:15px;color:var(--muted);line-height:1.8}
 .tl-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:10px}
 .tl-tag{font-family:var(--mono);font-size:9px;padding:2px 7px;border:1px solid var(--p-border);color:var(--muted)}
 .tl-detail{overflow:hidden;max-height:0;opacity:0;transition:max-height .35s ease,opacity .25s ease,margin-top .25s ease;margin-top:0}
@@ -290,9 +284,9 @@ section{padding:80px 56px;position:relative;z-index:2}
 .tl-detail-inner{background:var(--bg2);border:1px solid var(--p-border);border-left:2px solid var(--purple);padding:18px 22px}
 .tl-detail-inner::before{content:'// 상세 업무 내역';display:block;font-family:var(--mono);font-size:9px;color:var(--purple);letter-spacing:.18em;margin-bottom:12px;opacity:.7}
 .tl-detail-list{list-style:none;display:flex;flex-direction:column;gap:8px}
-.tl-detail-list li{font-size:13px;color:var(--muted);line-height:1.65;display:flex;align-items:flex-start;gap:8px}
+.tl-detail-list li{font-size:14px;color:var(--muted);line-height:1.7;display:flex;align-items:flex-start;gap:8px}
 .tl-detail-list li::before{content:'▸';color:var(--purple);font-size:10px;flex-shrink:0;margin-top:2px}
-.tl-detail-highlight{font-family:var(--mono);font-size:10px;color:var(--green);background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.2);padding:7px 10px;margin-top:10px;line-height:1.7}
+.tl-detail-highlight{font-family:var(--mono);font-size:11px;color:var(--green);background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.2);padding:8px 12px;margin-top:10px;line-height:1.75}
 
 /* SKILLS */
 .skills-sec{border-top:1px solid var(--p-border)}
@@ -300,7 +294,7 @@ section{padding:80px 56px;position:relative;z-index:2}
 .sk-group-title{font-family:var(--mono);font-size:10px;color:var(--purple);letter-spacing:.2em;margin-bottom:18px}
 .sk-list{display:flex;flex-direction:column;gap:12px}
 .sk-item{display:flex;justify-content:space-between;align-items:center;position:relative;cursor:default}
-.sk-name{font-size:13px;color:var(--muted)}
+.sk-name{font-size:14px;color:var(--muted)}
 .sk-item:hover .sk-name{color:var(--text)}
 .sk-bar-w{width:140px;height:2px;background:rgba(168,85,247,.12)}
 .sk-bar{height:100%;background:linear-gradient(90deg,var(--purple2),var(--purple));transition:width .8s ease}
@@ -311,7 +305,7 @@ section{padding:80px 56px;position:relative;z-index:2}
 .sk-tooltip-tag{font-size:9px;padding:1px 6px;border:1px solid var(--p-border);color:var(--purple);background:var(--p-muted)}
 
 /* TC SECTION */
-.tc-intro{font-size:15px;color:var(--muted);line-height:1.8;max-width:560px;margin-bottom:32px}
+.tc-intro{font-size:16px;color:var(--muted);line-height:1.85;max-width:560px;margin-bottom:32px}
 .tc-search-wrap{display:flex;align-items:center;gap:8px;margin-bottom:12px;flex-wrap:wrap}
 .tc-search-input{font-family:var(--mono);font-size:11px;background:var(--bg3);border:1px solid var(--p-border);color:var(--text);padding:6px 12px;width:280px;letter-spacing:.04em;outline:none}
 .tc-search-input:focus{border-color:var(--purple)}
@@ -324,7 +318,7 @@ section{padding:80px 56px;position:relative;z-index:2}
 .tc-filter-btn:hover{border-color:var(--purple);color:var(--purple)}
 .tc-filter-btn.active{background:var(--purple);color:#fff;border-color:var(--purple)}
 .tc-bulk-actions{display:flex;gap:8px;margin-bottom:12px}
-.tc-stat-bar{display:flex;gap:16px;align-items:center;margin-bottom:20px;font-family:var(--mono);font-size:10px;color:var(--muted);flex-wrap:wrap}
+.tc-stat-bar{display:flex;gap:16px;align-items:center;margin-bottom:20px;font-family:var(--mono);font-size:11px;color:var(--muted);flex-wrap:wrap}
 .tc-stat-item{display:flex;align-items:center;gap:5px}
 .tc-stat-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
 .tc-wrap{overflow-x:auto;border:1px solid var(--p-border)}
@@ -354,40 +348,40 @@ section{padding:80px 56px;position:relative;z-index:2}
 .tc-detail-content{padding:14px 18px 18px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;border-top:1px solid rgba(168,85,247,.15)}
 .tc-detail-intent{padding:12px 18px;background:rgba(168,85,247,.05);border:1px solid rgba(168,85,247,.18);border-left:3px solid var(--purple);margin:0 18px 0;display:flex;flex-direction:column;gap:4px}
 .tc-detail-intent-label{font-family:var(--mono);font-size:9px;color:var(--purple);letter-spacing:.18em;margin-bottom:3px}
-.tc-detail-intent-text{font-size:11px;color:var(--text);line-height:1.65}
+.tc-detail-intent-text{font-size:12px;color:var(--text);line-height:1.7}
 .tc-detail-block{display:flex;flex-direction:column;gap:5px}
 .tc-detail-label{font-family:var(--mono);font-size:9px;color:var(--purple);letter-spacing:.14em;opacity:.7}
-.tc-detail-value{font-size:11px;color:var(--muted);line-height:1.6}
+.tc-detail-value{font-size:12px;color:var(--muted);line-height:1.65}
 .tc-detail-steps{list-style:none;display:flex;flex-direction:column;gap:4px}
-.tc-detail-steps li{font-size:10px;color:var(--muted);line-height:1.6;display:flex;align-items:flex-start;gap:5px}
+.tc-detail-steps li{font-size:11px;color:var(--muted);line-height:1.6;display:flex;align-items:flex-start;gap:5px}
 .tc-detail-steps li .step-num{font-family:var(--mono);font-size:9px;color:var(--purple);flex-shrink:0;min-width:16px}
-.tc-detail-result-pass{font-family:var(--mono);font-size:10px;color:var(--green);background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.2);padding:5px 8px;line-height:1.6}
-.tc-detail-result-fail{font-family:var(--mono);font-size:10px;color:#f87171;background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.2);padding:5px 8px;line-height:1.6}
-.tc-detail-result-edge{font-family:var(--mono);font-size:10px;color:var(--wip);background:rgba(245,158,11,.06);border:1px solid rgba(245,158,11,.2);padding:5px 8px;line-height:1.6}
-.tc-row-hint{font-family:var(--mono);font-size:9px;color:var(--dim);letter-spacing:.06em;margin-bottom:8px}
+.tc-detail-result-pass{font-family:var(--mono);font-size:11px;color:var(--green);background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.2);padding:6px 10px;line-height:1.65}
+.tc-detail-result-fail{font-family:var(--mono);font-size:11px;color:#f87171;background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.2);padding:6px 10px;line-height:1.65}
+.tc-detail-result-edge{font-family:var(--mono);font-size:11px;color:var(--wip);background:rgba(245,158,11,.06);border:1px solid rgba(245,158,11,.2);padding:6px 10px;line-height:1.65}
+.tc-row-hint{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:.06em;margin-bottom:8px}
 .tc-dashboard{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--p-border);margin-bottom:28px;border:1px solid var(--p-border)}
 .tc-dash-card{background:var(--bg3);padding:18px 16px;text-align:center;transition:background .15s}
 .tc-dash-card:hover{background:rgba(168,85,247,.06)}
 .tc-dash-num{font-family:var(--mono);font-size:28px;font-weight:500;color:var(--purple);line-height:1;margin-bottom:5px}
-.tc-dash-label{font-size:12px;color:var(--muted);line-height:1.4}
-.tc-dash-sub{font-family:var(--mono);font-size:9px;color:var(--dim);margin-top:3px}
+.tc-dash-label{font-size:13px;color:var(--muted);line-height:1.4}
+.tc-dash-sub{font-family:var(--mono);font-size:10px;color:var(--dim);margin-top:3px}
 .tc-dist-wrap{padding:18px 20px;background:var(--bg3);border:1px solid var(--p-border);margin-bottom:28px}
 .tc-dist-title{font-family:var(--mono);font-size:10px;color:var(--purple);letter-spacing:.15em;margin-bottom:12px}
 .tc-dist-bar-row{display:flex;align-items:center;gap:10px;margin-bottom:8px}
-.tc-dist-bar-label{font-family:var(--mono);font-size:10px;color:var(--muted);width:72px;text-align:right;flex-shrink:0}
+.tc-dist-bar-label{font-family:var(--mono);font-size:11px;color:var(--muted);width:72px;text-align:right;flex-shrink:0}
 .tc-dist-bar-track{flex:1;height:6px;background:rgba(168,85,247,.1);border-radius:1px;overflow:hidden}
 .tc-dist-bar-fill{height:100%;border-radius:1px;transition:width .8s ease}
 .tc-dist-bar-fill.hp{background:var(--purple)}
 .tc-dist-bar-fill.ng{background:#f87171}
 .tc-dist-bar-fill.eg{background:var(--wip)}
-.tc-dist-bar-val{font-family:var(--mono);font-size:10px;color:var(--muted);min-width:32px}
+.tc-dist-bar-val{font-family:var(--mono);font-size:11px;color:var(--muted);min-width:32px}
 
 /* CONTACT */
 .contact-sec{background:var(--bg2);border-top:1px solid var(--p-border)}
 .contact-wrap{display:flex;justify-content:space-between;align-items:flex-end}
 .contact-h{font-size:clamp(36px,5.5vw,64px);font-weight:900;line-height:.95;letter-spacing:-.04em;margin-bottom:18px}
 .contact-h span{color:var(--purple)}
-.contact-sub{font-size:14px;color:var(--muted);line-height:1.8}
+.contact-sub{font-size:15px;color:var(--muted);line-height:1.85}
 .contact-links{display:flex;flex-direction:column;gap:12px;align-items:flex-end}
 .c-link{font-family:var(--mono);font-size:12px;color:var(--muted);text-decoration:none;letter-spacing:.06em;display:flex;align-items:center;gap:8px}
 .c-link:hover{color:var(--purple)}
@@ -419,8 +413,8 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:
 .radar-legend-item{display:flex;align-items:center;gap:10px;cursor:pointer;padding:5px 8px;border:1px solid transparent}
 .radar-legend-item:hover{border-color:var(--p-border);background:var(--p-muted)}
 .radar-legend-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
-.radar-legend-name{font-family:var(--mono);font-size:11px;color:var(--muted)}
-.radar-legend-val{font-family:var(--mono);font-size:11px;color:var(--purple);margin-left:auto}
+.radar-legend-name{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.radar-legend-val{font-family:var(--mono);font-size:12px;color:var(--purple);margin-left:auto}
 
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.3)}}
 
@@ -452,6 +446,7 @@ footer{padding:16px 20px;flex-direction:column;gap:4px}
 .tc-search-input{width:100%}
 .sec-desc{margin-top:-16px}
 .tc-dashboard{grid-template-columns:repeat(2,1fr)}
+.sec-bridge{padding:20px;flex-direction:column;align-items:flex-start;gap:10px}
 }
 
 @media print{
@@ -459,7 +454,7 @@ footer{padding:16px 20px;flex-direction:column;gap:4px}
   @page{margin:18mm 16mm;size:A4}
   *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
   body{background:#fff!important;color:#111!important;font-size:11pt;line-height:1.6}
-  nav,.scroll-bar,#dot-nav,#breadcrumb,.mobile-menu,.ham,.sk-tooltip,.hero-stats,.hero-stat-tip,.tc-search-wrap,.tc-filter,.tc-row-hint,.tc-bulk-actions,.commit-bar-area,.proj-overlay,.hero-cta,.btn-p,.btn-s{display:none!important}
+  nav,.scroll-bar,#dot-nav,#breadcrumb,.mobile-menu,.ham,.sk-tooltip,.hero-stats,.hero-stat-tip,.tc-search-wrap,.tc-filter,.tc-row-hint,.tc-bulk-actions,.commit-bar-area,.proj-overlay,.hero-cta,.btn-p,.btn-s,.sec-bridge{display:none!important}
   section{padding:24pt 0!important;break-inside:avoid}
   .hero{min-height:auto!important;padding:32pt 0 20pt!important}
   h1.hero-name{font-size:48pt!important}
@@ -541,43 +536,41 @@ footer{padding:16px 20px;flex-direction:column;gap:4px}
 <h1 class="hero-name hero-fade-in" data-hfi-delay="1">성<em>기현</em></h1>
 <p class="hero-role hero-fade-in" data-hfi-delay="2"><span id="heroRoleText"></span><span class="typing-cursor"></span></p>
 
-<!-- ★ 킥 — 아이덴티티 블록 -->
-<div class="kick-identity hero-fade-in" data-hfi-delay="3">
-  <div class="kick-identity-label">WHO I AM</div>
-  <div class="kick-identity-headline">
-    <span class="hl-qa">QA 6년 9개월</span><span class="hl-plus">+</span><span class="hl-ai">AI 자동화 직접 구현</span><br>
-    <span class="hl-eq">=</span><span class="hl-result">둘 다 하는 QA 엔지니어</span>
+<!-- ★ 킥 배너 — 첫 눈에 꽂히는 아이덴티티 -->
+<div class="kick-banner hero-fade-in" data-hfi-delay="3">
+  <div class="kick-banner-label">// WHO I AM · 한 줄 정의</div>
+  <div class="kick-banner-main">
+    <span class="kb-white">"QA가 느리다"는 말 듣기 싫어서,</span><br>
+    <span class="kb-acc">AI로 직접 자동화했습니다.</span>
   </div>
-
-  <!-- 두 강점 카드 -->
-  <div class="kick-cards">
-    <div class="kick-card qa-card">
-      <div class="kick-card-label">● QA 현장 경험</div>
-      <div class="kick-card-num">6.9<span style="font-size:16px;font-weight:300">yr</span></div>
-      <div class="kick-card-desc">삼성전자 파트너 4.3년 · IoT·AI·모바일앱<br>IMS Mobility 결제 QA · 두플 QA 파트장</div>
-    </div>
-    <div class="kick-card ai-card">
-      <div class="kick-card-label">● AI 자동화 실제 구현</div>
-      <div class="kick-card-num">코드 <span style="font-size:20px">0</span>줄</div>
-      <div class="kick-card-desc">MCP 5개 연동 · TC 145건+ 자동 생성<br>Playwright 12 spec · Jira 연동 완료</div>
-    </div>
-  </div>
-
-  <!-- 핵심 메시지 -->
-  <div class="kick-statement">
-    <div class="kick-statement-text">QA만 잘하는 사람은 많습니다.<br>AI 자동화까지 <em>직접 구현하고 증명한</em> QA는 드뭅니다.</div>
-    <div class="kick-statement-sub">// 대화 한 번 → TC 생성 · E2E · GitHub 커밋 · Slack 알림 · Jira 트래킹 전부 완료</div>
+  <div class="kick-banner-sub">
+    코드 한 줄 없이. <strong>대화 한 번으로.</strong> TC 생성부터 Notion 문서화, Slack 알림, Jira 트래킹까지.<br>
+    6.9년 QA 현장 경험 위에 Claude MCP 자동화를 직접 얹었습니다.
   </div>
 </div>
 
-<div class="hero-proof hero-fade-in" data-hfi-delay="4">
+<!-- 두 강점 카드 -->
+<div class="kick-cards hero-fade-in" data-hfi-delay="4">
+  <div class="kick-card qa-card">
+    <div class="kick-card-label">● QA 현장 경험</div>
+    <div class="kick-card-num">6.9<span style="font-size:16px;font-weight:300">yr</span></div>
+    <div class="kick-card-desc">삼성전자 파트너 4.3년 · IoT·AI·모바일앱<br>IMS Mobility 결제 QA · 두플 QA 파트장</div>
+  </div>
+  <div class="kick-card ai-card">
+    <div class="kick-card-label">● AI 자동화 실제 구현</div>
+    <div class="kick-card-num">코드 <span style="font-size:20px">0</span>줄</div>
+    <div class="kick-card-desc">MCP 5개 연동 · TC 145건+ 자동 생성<br>Playwright 12 spec · Jira 연동 완료</div>
+  </div>
+</div>
+
+<div class="hero-proof hero-fade-in" data-hfi-delay="5">
 <span class="hero-proof-item">MCP 5개 실제 연동</span>
 <span class="hero-proof-item">TC 145건+ 자동 생성</span>
 <span class="hero-proof-item">Playwright 12 spec</span>
 <span class="hero-proof-item">Jira 연동 완료</span>
 <span class="hero-proof-item">코드 0줄</span>
 </div>
-<div class="hero-cta hero-fade-in" data-hfi-delay="5">
+<div class="hero-cta hero-fade-in" data-hfi-delay="6">
 <a href="#proof" class="btn-p">실제 증거 보기</a>
 <a href="#mcp" class="btn-s">MCP 자동화 ↓</a>
 <a href="https://github.com/kihyunqa/qa-portfolio/blob/main/docs/bug-stories.md" target="_blank" class="btn-s">버그 스토리 ↗</a>
@@ -625,6 +618,12 @@ Jira 연동 완료
 </div>
 </section>
 
+<!-- ★ 기승전결 브릿지 1: 숫자로 입증 -->
+<div class="sec-bridge reveal">
+  <div class="sec-bridge-arrow">↓</div>
+  <div class="sec-bridge-text">말이 아닌 <strong>숫자</strong>로 먼저 보여드립니다. 6.9년이 만든 QA 경력, 그리고 직접 구현한 자동화의 결과물.</div>
+</div>
+
 <section class="stats-sec" id="stats">
 <div class="sec-head reveal">
   <span class="sec-n">00</span>
@@ -640,6 +639,12 @@ Jira 연동 완료
 <div class="stat-card"><div class="stat-big">2</div><div class="stat-desc">GitHub Actions 운영 중</div><div class="stat-sub">qa-notify.yml · main.yml</div></div>
 </div>
 </section>
+
+<!-- ★ 기승전결 브릿지 2: 어떻게 됐는지 -->
+<div class="sec-bridge reveal">
+  <div class="sec-bridge-arrow">↓</div>
+  <div class="sec-bridge-text">이 숫자들이 어떻게 만들어졌는지 — <strong>Claude MCP 자동화</strong>의 실제 작동 방식을 보여드립니다. 코드 없이 대화만으로.</div>
+</div>
 
 <section class="mcp-sec" id="mcp">
 <div class="sec-head reveal">
@@ -691,6 +696,12 @@ Jira 연동 완료
 </div>
 </section>
 
+<!-- ★ 기승전결 브릿지 3: 말이 아닌 증거 -->
+<div class="sec-bridge reveal">
+  <div class="sec-bridge-arrow">↓</div>
+  <div class="sec-bridge-text">"말로만 하는 거 아니냐?" — 그래서 <strong>실제 스크린샷과 결과물</strong>을 전부 공개합니다. 직접 확인해보세요.</div>
+</div>
+
 <section class="proof-sec" id="proof">
 <div class="sec-head reveal">
   <span class="sec-n">02</span>
@@ -698,7 +709,7 @@ Jira 연동 완료
   <div class="sec-line"></div>
   <span class="sec-stat-badge ssb-green"><span class="ssb-num">5</span>개 실제 확인</span>
 </div>
-<p style="font-size:15px;color:var(--muted);line-height:1.8;max-width:580px;margin-bottom:36px" class="reveal">말로만 하는 포트폴리오가 아닙니다.<br><strong style="color:var(--text)">실제로 연결하고, 실제로 실행하고, 실제로 결과물이 만들어졌습니다.</strong></p>
+<p style="font-size:16px;color:var(--muted);line-height:1.85;max-width:580px;margin-bottom:36px" class="reveal">말로만 하는 포트폴리오가 아닙니다.<br><strong style="color:var(--text)">실제로 연결하고, 실제로 실행하고, 실제로 결과물이 만들어졌습니다.</strong></p>
 <div class="proof-grid reveal">
 <div class="proof-card">
 <div class="proof-icon">📝</div>
@@ -755,10 +766,10 @@ Jira 연동 완료
   <div class="commit-bar-area" style="display:block">
     <div class="commit-bar-label">// QA 커버리지 현황</div>
     <div style="display:flex;flex-direction:column;gap:10px;margin-top:8px">
-      <div style="display:flex;align-items:center;gap:10px"><span style="font-family:var(--mono);font-size:10px;color:var(--muted);width:160px;flex-shrink:0">E2E spec (Playwright)</span><div style="flex:1;height:5px;background:rgba(168,85,247,0.12);border-radius:2px;overflow:hidden"><div style="width:100%;height:100%;background:var(--purple);border-radius:2px"></div></div><span style="font-family:var(--mono);font-size:10px;color:var(--muted);width:36px;text-align:right">12개</span></div>
-      <div style="display:flex;align-items:center;gap:10px"><span style="font-family:var(--mono);font-size:10px;color:var(--muted);width:160px;flex-shrink:0">TC 카테고리</span><div style="flex:1;height:5px;background:rgba(168,85,247,0.12);border-radius:2px;overflow:hidden"><div style="width:88%;height:100%;background:var(--purple);border-radius:2px"></div></div><span style="font-family:var(--mono);font-size:10px;color:var(--muted);width:36px;text-align:right">16종</span></div>
-      <div style="display:flex;align-items:center;gap:10px"><span style="font-family:var(--mono);font-size:10px;color:var(--muted);width:160px;flex-shrink:0">GitHub Actions</span><div style="flex:1;height:5px;background:rgba(168,85,247,0.12);border-radius:2px;overflow:hidden"><div style="width:33%;height:100%;background:var(--purple);border-radius:2px"></div></div><span style="font-family:var(--mono);font-size:10px;color:var(--muted);width:36px;text-align:right">2개</span></div>
-      <div style="display:flex;align-items:center;gap:10px"><span style="font-family:var(--mono);font-size:10px;color:var(--muted);width:160px;flex-shrink:0">문서 (docs/)</span><div style="flex:1;height:5px;background:rgba(168,85,247,0.12);border-radius:2px;overflow:hidden"><div style="width:93%;height:100%;background:var(--purple);border-radius:2px"></div></div><span style="font-family:var(--mono);font-size:10px;color:var(--muted);width:36px;text-align:right">28개</span></div>
+      <div style="display:flex;align-items:center;gap:10px"><span style="font-family:var(--mono);font-size:11px;color:var(--muted);width:160px;flex-shrink:0">E2E spec (Playwright)</span><div style="flex:1;height:5px;background:rgba(168,85,247,0.12);border-radius:2px;overflow:hidden"><div style="width:100%;height:100%;background:var(--purple);border-radius:2px"></div></div><span style="font-family:var(--mono);font-size:11px;color:var(--muted);width:36px;text-align:right">12개</span></div>
+      <div style="display:flex;align-items:center;gap:10px"><span style="font-family:var(--mono);font-size:11px;color:var(--muted);width:160px;flex-shrink:0">TC 카테고리</span><div style="flex:1;height:5px;background:rgba(168,85,247,0.12);border-radius:2px;overflow:hidden"><div style="width:88%;height:100%;background:var(--purple);border-radius:2px"></div></div><span style="font-family:var(--mono);font-size:11px;color:var(--muted);width:36px;text-align:right">16종</span></div>
+      <div style="display:flex;align-items:center;gap:10px"><span style="font-family:var(--mono);font-size:11px;color:var(--muted);width:160px;flex-shrink:0">GitHub Actions</span><div style="flex:1;height:5px;background:rgba(168,85,247,0.12);border-radius:2px;overflow:hidden"><div style="width:33%;height:100%;background:var(--purple);border-radius:2px"></div></div><span style="font-family:var(--mono);font-size:11px;color:var(--muted);width:36px;text-align:right">2개</span></div>
+      <div style="display:flex;align-items:center;gap:10px"><span style="font-family:var(--mono);font-size:11px;color:var(--muted);width:160px;flex-shrink:0">문서 (docs/)</span><div style="flex:1;height:5px;background:rgba(168,85,247,0.12);border-radius:2px;overflow:hidden"><div style="width:93%;height:100%;background:var(--purple);border-radius:2px"></div></div><span style="font-family:var(--mono);font-size:11px;color:var(--muted);width:36px;text-align:right">28개</span></div>
     </div>
   </div>
   <div class="commit-footer">
@@ -767,6 +778,12 @@ Jira 연동 완료
   </div>
 </div>
 </section>
+
+<!-- ★ 기승전결 브릿지 4: 구체적으로 뭘 만들었나 -->
+<div class="sec-bridge reveal">
+  <div class="sec-bridge-arrow">↓</div>
+  <div class="sec-bridge-text">증거를 봤다면 — 구체적으로 <strong>어떤 프로젝트</strong>를 만들었는지 확인할 차례입니다. QA 전 영역 10개 프로젝트.</div>
+</div>
 
 <section class="projects-sec" id="projects">
 <div class="sec-head reveal">
@@ -814,13 +831,19 @@ Jira 연동 완료
   <div class="sec-line"></div>
   <span class="sec-stat-badge ssb-green"><span class="ssb-num">2</span>PHASE 완료</span>
 </div>
-<p style="font-size:15px;color:var(--muted);line-height:1.8;max-width:580px;margin-bottom:40px" class="reveal">실제 연동 완료된 5개 MCP + Jira를 기반으로 더 많은 연동을 확장해 나갑니다.</p>
+<p style="font-size:16px;color:var(--muted);line-height:1.85;max-width:580px;margin-bottom:40px" class="reveal">실제 연동 완료된 5개 MCP + Jira를 기반으로 더 많은 연동을 확장해 나갑니다.</p>
 <div class="roadmap-grid reveal">
 <div class="roadmap-card done"><div class="rm-num">PHASE 1 · 완료</div><div class="rm-icon">✅</div><div class="rm-title">Core 5 MCP 연동</div><div class="rm-desc">filesystem · playwright · github · notion · slack 실제 연동 완료. TC 145건+ · Playwright 12 spec · GitHub Actions 2개 운영 중.</div></div>
 <div class="roadmap-card done"><div class="rm-num">PHASE 2 · 완료</div><div class="rm-icon">✅</div><div class="rm-title">Ticketing 연동</div><div class="rm-desc">Jira + GitHub for Atlassian 연동 완료. FULL ACCESS 권한. 커밋 메시지 기반 이슈 자동 연결.</div></div>
 <div class="roadmap-card future"><div class="rm-num">PHASE 3 · 계획</div><div class="rm-icon">🗓️</div><div class="rm-title">Scheduling &amp; Reporting MCP</div><div class="rm-desc">Google Calendar MCP → 릴리즈 QA 일정 자동 배분. Gmail MCP → 이해관계자 QA 리포트 자동 발송.</div></div>
 </div>
 </section>
+
+<!-- ★ 기승전결 브릿지 5: 실제 TC 보여주기 -->
+<div class="sec-bridge reveal">
+  <div class="sec-bridge-arrow">↓</div>
+  <div class="sec-bridge-text">자동화로 만들어진 TC가 어떤 수준인지 — <strong>실제 TC 145건+ 중 19건</strong>을 직접 열어볼 수 있습니다. 설계 의도까지 담았습니다.</div>
+</div>
 
 <!-- TC SECTION -->
 <section id="tc" style="background:var(--bg2);border-top:1px solid var(--p-border)">
@@ -830,7 +853,7 @@ Jira 연동 완료
   <div class="sec-line"></div>
   <span class="sec-stat-badge"><span class="ssb-num">19</span>건 표시</span>
 </div>
-<p class="tc-intro reveal">Claude MCP로 자동 생성된 TC 145건+. 로그인·API·보안·성능·접근성·장바구니·검색·결제 전 카테고리 커버.<br><span style="font-family:var(--mono);font-size:11px;color:var(--dim)">각 TC를 클릭하면 설계 의도 + 전제조건 + 스텝 + 기대 결과를 확인할 수 있습니다.</span></p>
+<p class="tc-intro reveal">Claude MCP로 자동 생성된 TC 145건+. 로그인·API·보안·성능·접근성·장바구니·검색·결제 전 카테고리 커버.<br><span style="font-family:var(--mono);font-size:12px;color:var(--dim)">각 TC를 클릭하면 설계 의도 + 전제조건 + 스텝 + 기대 결과를 확인할 수 있습니다.</span></p>
 
 <div class="tc-dashboard reveal">
   <div class="tc-dash-card"><div class="tc-dash-num">145<span style="font-size:14px">+</span></div><div class="tc-dash-label">총 TC 건수</div><div class="tc-dash-sub">MCP 자동 생성</div></div>
@@ -873,7 +896,7 @@ Jira 연동 완료
 <thead><tr><th>TC-ID</th><th>구분</th><th>테스트 제목</th><th>기대 결과</th><th>우선순위</th></tr></thead>
 <tbody>
 <tr class="tc-data-row" data-type="h" data-tc-id="AUTH-001"><td>AUTH-001 <span class="tc-expand-icon">▼</span></td><td><span class="tc-type h">해피패스</span></td><td>유효한 자격증명으로 로그인</td><td>/dashboard 리다이렉트</td><td><span class="p1">P1</span></td></tr>
-<tr class="tc-detail-row" data-for="AUTH-001"><td class="tc-detail-cell" colspan="5"><div class="tc-detail-inner"><div class="tc-detail-intent"><div class="tc-detail-intent-label">// 설계 의도 — 왜 이 케이스인가</div><div class="tc-detail-intent-text">인증 시스템의 가장 기본 흐름을 먼저 검증합니다. 정상 경로가 보장되지 않으면 네거티브 케이스 결과를 신뢰할 수 없기 때문에 P1 최우선 배치.</div></div><div class="tc-detail-content"><div class="tc-detail-block"><div class="tc-detail-label">// 전제조건</div><div class="tc-detail-value">유효한 계정 존재. 로그인 페이지 접근 가능.</div></div><div class="tc-detail-block"><div class="tc-detail-label">// 테스트 스텝</div><ol class="tc-detail-steps"><li><span class="step-num">01.</span>로그인 페이지 진입</li><li><span class="step-num">02.</span>유효한 이메일/비밀번호 입력</li><li><span class="step-num">03.</span>로그인 버튼 클릭</li></ol></div><div class="tc-detail-block"><div class="tc-detail-label">// 기대 결과 상세</div><div class="tc-detail-result-pass">✓ /dashboard 리다이렉트 확인<br>✓ JWT 토큰 쿠키 발급 확인<br>✓ 사용자명 헤더 표시 확인</div></div></div></div></td></tr>
+<tr class="tc-detail-row" data-for="AUTH-001"><td class="tc-detail-cell" colspan="5"><div class="tc-detail-inner"><div class="tc-detail-intent"><div class="tc-detail-intent-label">// 설계 의도 — 왜 이 케이스인가</div><div class="tc-detail-intent-text">인증 시스템의 가장 기본 흐름을 먼저 검증합니다. 정상 경로가 보장되지 않으면 네거티브 케이스 결과를 신뢰할 수 없기 때문에 P1 최우선 배치. 리다이렉트 URL, 토큰 발급, UI 피드백 3가지를 동시에 검증합니다.</div></div><div class="tc-detail-content"><div class="tc-detail-block"><div class="tc-detail-label">// 전제조건</div><div class="tc-detail-value">유효한 계정 존재. 로그인 페이지 접근 가능.</div></div><div class="tc-detail-block"><div class="tc-detail-label">// 테스트 스텝</div><ol class="tc-detail-steps"><li><span class="step-num">01.</span>로그인 페이지 진입</li><li><span class="step-num">02.</span>유효한 이메일/비밀번호 입력</li><li><span class="step-num">03.</span>로그인 버튼 클릭</li></ol></div><div class="tc-detail-block"><div class="tc-detail-label">// 기대 결과 상세</div><div class="tc-detail-result-pass">✓ /dashboard 리다이렉트 확인<br>✓ JWT 토큰 쿠키 발급 확인<br>✓ 사용자명 헤더 표시 확인</div></div></div></div></td></tr>
 <tr class="tc-data-row" data-type="h" data-tc-id="AUTH-005"><td>AUTH-005 <span class="tc-expand-icon">▼</span></td><td><span class="tc-type h">해피패스</span></td><td>로그아웃 실행 + 토큰 무효화 검증</td><td>401 Unauthorized (API 직접 호출 시)</td><td><span class="p1">P1</span></td></tr>
 <tr class="tc-detail-row" data-for="AUTH-005"><td class="tc-detail-cell" colspan="5"><div class="tc-detail-inner"><div class="tc-detail-intent"><div class="tc-detail-intent-label">// 설계 의도 — 왜 이 케이스인가</div><div class="tc-detail-intent-text">로그아웃 후 토큰이 여전히 유효하면 보안 취약점입니다. 서버 측 토큰 무효화까지 검증하는 이중 목적 케이스.</div></div><div class="tc-detail-content"><div class="tc-detail-block"><div class="tc-detail-label">// 전제조건</div><div class="tc-detail-value">로그인 상태. 유효한 JWT 토큰 보유.</div></div><div class="tc-detail-block"><div class="tc-detail-label">// 테스트 스텝</div><ol class="tc-detail-steps"><li><span class="step-num">01.</span>로그아웃 버튼 클릭</li><li><span class="step-num">02.</span>기존 토큰으로 API 직접 호출</li><li><span class="step-num">03.</span>응답 상태 코드 확인</li></ol></div><div class="tc-detail-block"><div class="tc-detail-label">// 기대 결과 상세</div><div class="tc-detail-result-pass">✓ 401 Unauthorized 반환<br>✓ 쿠키 삭제 확인</div></div></div></div></td></tr>
 <tr class="tc-data-row" data-type="n" data-tc-id="AUTH-007"><td>AUTH-007 <span class="tc-expand-icon">▼</span></td><td><span class="tc-type n">네거티브</span></td><td>5회 로그인 실패 후 계정 잠금</td><td>계정 잠금 또는 인증 요청</td><td><span class="p1">P1</span></td></tr>
@@ -915,6 +938,12 @@ Jira 연동 완료
 </div>
 <a href="https://github.com/kihyunqa/qa-portfolio" target="_blank" class="tc-link reveal">전체 TC 파일 보기 (145건+) ↗</a>
 </section>
+
+<!-- ★ 기승전결 브릿지 6: 경력 배경 -->
+<div class="sec-bridge reveal">
+  <div class="sec-bridge-arrow">↓</div>
+  <div class="sec-bridge-text">이런 자동화가 가능했던 배경 — <strong>6.9년 QA 현장</strong>에서 쌓은 경험이 있었기에 무엇을 자동화해야 할지 알고 있었습니다.</div>
+</div>
 
 <section class="timeline-sec" id="timeline">
 <div class="sec-head reveal">
