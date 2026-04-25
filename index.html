@@ -336,19 +336,6 @@ section{padding:80px 56px;position:relative;z-index:2}
 .sk-tooltip-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}
 .sk-tooltip-tag{font-size:9px;padding:1px 6px;border:1px solid var(--p-border);color:var(--purple);background:var(--p-muted)}
 
-/* CONTACT */
-.contact-sec{background:var(--bg2);border-top:1px solid var(--p-border)}
-.contact-wrap{display:flex;justify-content:space-between;align-items:flex-start;gap:48px}
-.contact-h{font-size:clamp(28px,4vw,48px);font-weight:900;line-height:1.1;letter-spacing:-.03em;margin-bottom:16px}
-.contact-h span{color:var(--purple)}
-.contact-desc{font-size:16px;color:var(--muted);line-height:1.85;max-width:420px;margin-bottom:24px}
-.contact-email-block{font-family:var(--mono);font-size:13px;color:var(--purple);border:1px solid var(--p-border);padding:10px 16px;display:inline-block;letter-spacing:.04em;margin-bottom:20px}
-.contact-links{display:flex;flex-wrap:wrap;gap:8px}
-.c-link{font-family:var(--mono);font-size:11px;color:var(--muted);text-decoration:none;letter-spacing:.06em;border:1px solid var(--p-border);padding:6px 14px;display:flex;align-items:center;gap:6px;transition:border-color .15s,color .15s}
-.c-link:hover{color:var(--purple);border-color:var(--purple)}
-footer{padding:20px 56px;border-top:1px solid var(--p-border);display:flex;justify-content:space-between;position:relative;z-index:2}
-footer p{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:.05em}
-
 .reveal{opacity:0;transition:opacity .4s ease}
 .reveal.visible{opacity:1}
 
@@ -396,7 +383,6 @@ nav{padding:14px 20px}.nav-links{display:none}.ham{display:flex}
 section{padding:56px 20px}
 .mcp-top{grid-template-columns:1fr;gap:32px}.mcp-grid{grid-template-columns:repeat(2,1fr)}
 .skills-wrap{grid-template-columns:1fr;gap:28px}
-.contact-wrap{flex-direction:column;gap:24px}
 footer{padding:16px 20px;flex-direction:column;gap:4px}
 .proof-grid{grid-template-columns:1fr}
 .proof-card-full{grid-column:auto}
@@ -444,7 +430,6 @@ footer{border-top:1px solid #ccc!important;padding:12pt 0 0!important}
   <div class="dot-nav-item" data-target="proof"><span class="dot-nav-label">연동 증거</span><div class="dot-nav-dot" data-target="proof"></div></div>
   <div class="dot-nav-item" data-target="tc"><span class="dot-nav-label">테스트케이스</span><div class="dot-nav-dot" data-target="tc"></div></div>
   <div class="dot-nav-item" data-target="skills"><span class="dot-nav-label">스킬</span><div class="dot-nav-dot" data-target="skills"></div></div>
-  <div class="dot-nav-item" data-target="contact"><span class="dot-nav-label">연락</span><div class="dot-nav-dot" data-target="contact"></div></div>
 </div>
 
 <div id="breadcrumb" aria-live="polite">
@@ -459,7 +444,6 @@ footer{border-top:1px solid #ccc!important;padding:12pt 0 0!important}
 <li><a href="#code">코드 증거</a></li>
 <li><a href="#proof">연동 증거</a></li>
 <li><a href="#tc">테스트케이스</a></li>
-<li><a href="#contact">연락</a></li>
 </ul>
 <button class="ham" id="ham" onclick="toggleMenu()"><span></span><span></span><span></span></button>
 </nav>
@@ -467,10 +451,9 @@ footer{border-top:1px solid #ccc!important;padding:12pt 0 0!important}
 <!-- INTRO BANNER -->
 <div class="intro-banner">
   <div class="intro-name reveal">성기현 · QA ENGINEER</div>
-  <h1 class="intro-headline reveal">현장을 알아야<br><em>자동화</em>가 제대로 된다</h1>
+  <h1 class="intro-headline reveal">대화 한 번으로<br><em>TC 생성부터 Notion 문서화,</em><br>Slack 알림, Jira 연동까지<br>전부 자동으로 완료됩니다</h1>
   <p class="intro-sub reveal">
-    <strong>삼성전자 파트너 4.3년.</strong> IoT·AI Bixby·모바일앱 검증. IMS Mobility에서 결제 QA와 Cypress E2E. 두플에서 반도체 QA 파트 리드.<br>
-    그 위에 <strong>Claude MCP 5개</strong>로 TC 145건+를 자동 생성했습니다.
+    Claude Desktop에 MCP 서버 5개를 직접 연결했습니다. TC 생성 → E2E 테스트 → GitHub 커밋 → 버그 리포트 작성 → Notion 페이지 자동 생성 → Slack 채널 알림 → Jira 이슈 트래킹까지, <strong>코드 한 줄 없이 대화만으로.</strong> notion·slack MCP 실제 연동, GitHub for Atlassian을 통한 Jira 연동까지 완료했습니다.
   </p>
   <div class="intro-tags reveal">
     <span class="intro-tag hl">MCP 5개 실제 연동</span>
@@ -852,27 +835,13 @@ footer{border-top:1px solid #ccc!important;padding:12pt 0 0!important}
 </div>
 </section>
 
-<!-- ⑦ 연락 -->
-<section class="contact-sec" id="contact">
-<div class="contact-wrap reveal">
-<div>
-<h2 class="contact-h">연락<span>.</span></h2>
-<div class="contact-email-block">kihyun.qa@gmail.com</div>
-<div class="contact-links">
-<a href="mailto:kihyun.qa@gmail.com" class="c-link">✉️ 이메일</a>
-<a href="https://github.com/kihyunqa" target="_blank" class="c-link">GitHub ↗</a>
-<a href="https://kihyunqa-1775011951168.atlassian.net" target="_blank" class="c-link">Jira ↗</a>
-</div>
-</div>
-</div>
-</section>
 <footer>
 <p>© 2026 성기현 · QA Engineer · kihyun.qa@gmail.com</p>
-<p>Built with Claude MCP · 5 MCP servers · TC 145건+ · Playwright 12 spec · Jira 연동</p>
+<p>Built with Claude MCP · 5 MCP servers · TC 145건+ · Playwright 12 spec · Jira 연동 &nbsp;|&nbsp; <a href="mailto:kihyun.qa@gmail.com" style="color:var(--purple);text-decoration:none">✉️ 이메일</a> &nbsp; <a href="https://github.com/kihyunqa" target="_blank" style="color:var(--purple);text-decoration:none">GitHub ↗</a> &nbsp; <a href="https://kihyunqa-1775011951168.atlassian.net" target="_blank" style="color:var(--purple);text-decoration:none">Jira ↗</a></p>
 </footer>
 
 <script>
-const bcMap={'timeline':'01 · 경력','mcp':'02 · MCP 자동화','code':'03 · 코드 증거','proof':'04 · 연동 증거','tc':'05 · 테스트케이스','skills':'06 · 스킬','contact':'07 · 연락'};
+const bcMap={'timeline':'01 · 경력','mcp':'02 · MCP 자동화','code':'03 · 코드 증거','proof':'04 · 연동 증거','tc':'05 · 테스트케이스','skills':'06 · 스킬'};
 const bcEl=document.getElementById('breadcrumb'),bcSec=document.getElementById('bcSection');let bcCurrent='';
 function updateBreadcrumb(id){if(id===bcCurrent)return;bcCurrent=id;if(id&&bcMap[id]){bcSec.textContent=bcMap[id];bcEl.classList.add('visible');}else bcEl.classList.remove('visible');}
 
@@ -918,7 +887,7 @@ const skO=new IntersectionObserver(entries=>{
 },{threshold:0.3});
 document.querySelectorAll('.skills-wrap').forEach(el=>skO.observe(el));
 
-const dotSections=['timeline','mcp','code','proof','tc','skills','contact'];
+const dotSections=['timeline','mcp','code','proof','tc','skills'];
 document.querySelectorAll('.dot-nav-dot').forEach(dot=>{
   dot.addEventListener('click',()=>{
     const id=dot.dataset.target||dot.closest('.dot-nav-item').dataset.target;
