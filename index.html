@@ -37,8 +37,8 @@ nav{position:fixed;top:0;left:0;right:0;padding:16px 56px;display:flex;align-ite
 
 /* ============ HERO ============ */
 .hero{min-height:100vh;display:flex;align-items:center;padding:100px 56px 60px;position:relative;z-index:2;gap:48px}
-.hero-left{flex:1;max-width:640px}
-.hero-right{flex:0 0 380px;display:flex;flex-direction:column;gap:16px}
+.hero-left{flex:1;max-width:600px}
+.hero-right{flex:0 0 420px;display:flex;flex-direction:column;gap:12px}
 
 .hero-tag{font-family:var(--mono);font-size:11px;color:var(--purple);letter-spacing:.2em;margin-bottom:20px;display:flex;align-items:center;gap:12px}
 .hero-tag::before{content:'';width:28px;height:1px;background:var(--purple)}
@@ -46,71 +46,59 @@ nav{position:fixed;top:0;left:0;right:0;padding:16px 56px;display:flex;align-ite
 h1.hero-name{font-size:clamp(52px,7vw,90px);font-weight:900;line-height:.92;letter-spacing:-.04em;margin-bottom:16px}
 h1.hero-name em{color:#ffffff;font-style:normal}
 
-.hero-role{font-family:var(--mono);font-size:13px;color:var(--muted);letter-spacing:.08em;margin-bottom:28px;min-height:20px}
+.hero-role{font-family:var(--mono);font-size:13px;color:var(--muted);letter-spacing:.08em;margin-bottom:32px;min-height:20px}
 .typing-cursor{display:inline-block;width:2px;height:14px;background:var(--purple);vertical-align:middle;margin-left:2px;animation:blink .8s infinite}
 @keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}
 
 .hero-fade-in{opacity:0;transition:opacity .4s ease}
 .hero-fade-in.hfi-visible{opacity:1}
 
-/* ★★★ NEW 킥 — 화면을 장악하는 한 방 ★★★ */
-.kick-main{margin-bottom:24px;position:relative}
-.kick-eyebrow{font-family:var(--mono);font-size:10px;color:var(--purple);letter-spacing:.3em;margin-bottom:14px;display:flex;align-items:center;gap:10px}
-.kick-eyebrow::before{content:'';width:20px;height:1px;background:var(--purple);opacity:.6}
-.kick-eyebrow-dot{width:5px;height:5px;border-radius:50%;background:var(--green);animation:pulse-dot 2s infinite}
-@keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.4)}}
-
-.kick-headline{font-size:clamp(22px,3vw,34px);font-weight:900;line-height:1.2;letter-spacing:-.03em;margin-bottom:16px}
-.kick-headline .kh-white{color:#ffffff}
-.kick-headline .kh-acc{color:var(--purple)}
-.kick-headline .kh-line{display:block}
-
-.kick-proof-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px}
-.kick-proof-chip{font-family:var(--mono);font-size:11px;padding:5px 12px;border:1px solid rgba(168,85,247,.4);color:var(--purple);background:rgba(168,85,247,.07);letter-spacing:.04em;display:flex;align-items:center;gap:5px}
-.kick-proof-chip::before{content:'✓';color:var(--green);font-size:10px}
-
-.kick-story{font-size:15px;color:var(--muted);line-height:1.75;padding:16px 20px;border-left:3px solid var(--purple);background:rgba(168,85,247,.05);margin-bottom:24px}
-.kick-story strong{color:var(--text);font-weight:600}
-
-/* 두 강점 카드 */
-.kick-cards{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:22px}
-.kick-card{padding:16px 18px;border:1px solid var(--p-border);background:var(--bg2);position:relative;overflow:hidden;transition:border-color .2s}
-.kick-card:hover{border-color:rgba(168,85,247,.5)}
-.kick-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
-.kick-card.qa-card::before{background:linear-gradient(90deg,#7c3aed,#a855f7)}
-.kick-card.ai-card::before{background:linear-gradient(90deg,#a855f7,#c084fc)}
-.kc-label{font-family:var(--mono);font-size:9px;letter-spacing:.2em;margin-bottom:8px;color:var(--purple);opacity:.8}
-.kc-num{font-family:var(--mono);font-size:30px;font-weight:500;line-height:1;color:#ffffff;margin-bottom:5px}
-.ai-card .kc-num{color:var(--purple)}
-.kc-desc{font-size:12px;color:var(--muted);line-height:1.6}
+/* 수치 그리드 — 히어로 왼쪽 하단 */
+.hero-nums{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--p-border);margin-bottom:28px;border:1px solid var(--p-border)}
+.hero-num-card{background:var(--bg2);padding:18px 20px}
+.hn-val{font-family:var(--mono);font-size:34px;font-weight:500;color:var(--purple);line-height:1;margin-bottom:5px}
+.hn-val.white{color:#fff}
+.hn-sub{font-size:12px;color:var(--muted);line-height:1.5}
+.hn-detail{font-family:var(--mono);font-size:10px;color:var(--dim);margin-top:3px}
 
 .hero-cta{display:flex;gap:12px;flex-wrap:wrap}
-.btn-p{padding:12px 28px;background:var(--purple);color:#fff;font-family:var(--mono);font-size:12px;font-weight:500;text-decoration:none;letter-spacing:.06em;transition:background .15s}
+.btn-p{padding:11px 26px;background:var(--purple);color:#fff;font-family:var(--mono);font-size:12px;font-weight:500;text-decoration:none;letter-spacing:.06em;transition:background .15s}
 .btn-p:hover{background:var(--purple3)}
-.btn-s{padding:12px 28px;border:1px solid var(--p-border);color:var(--purple);font-family:var(--mono);font-size:12px;text-decoration:none;letter-spacing:.06em;transition:background .15s}
+.btn-s{padding:11px 26px;border:1px solid var(--p-border);color:var(--purple);font-family:var(--mono);font-size:12px;text-decoration:none;letter-spacing:.06em;transition:background .15s}
 .btn-s:hover{background:var(--p-muted)}
 
-/* ★★★ NEW 히어로 라이브 터미널 (오른쪽 패널) ★★★ */
-.hero-terminal{background:#05030a;border:1px solid rgba(168,85,247,.35);font-family:var(--mono);font-size:12px;overflow:hidden;position:relative}
-.hero-terminal::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--purple),transparent)}
-.ht-bar{background:#0d0a18;padding:8px 14px;border-bottom:1px solid rgba(168,85,247,.2);display:flex;align-items:center;gap:7px}
+/* 히어로 오른쪽 — 코드 패널 */
+.hero-code-panel{background:#05030a;border:1px solid rgba(168,85,247,.4);font-family:var(--mono);font-size:11.5px;overflow:hidden;position:relative}
+.hero-code-panel::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--purple),transparent)}
+.hcp-bar{background:#0d0a18;padding:8px 14px;border-bottom:1px solid rgba(168,85,247,.2);display:flex;align-items:center;gap:7px}
+.hcp-dot{width:9px;height:9px;border-radius:50%}
+.hcp-title{font-size:10px;color:var(--dim);margin-left:6px;letter-spacing:.08em;flex:1}
+.hcp-badge{font-size:9px;color:var(--green);padding:1px 7px;border:1px solid rgba(16,185,129,.3);background:rgba(16,185,129,.08);letter-spacing:.06em}
+.hcp-body{padding:16px 18px;line-height:1.85;overflow:hidden}
+.code-ln{display:flex;gap:12px}
+.code-lnum{color:var(--dim);font-size:10px;user-select:none;min-width:16px;text-align:right;opacity:.5}
+.code-kw{color:#c084fc}
+.code-fn{color:#93c5fd}
+.code-str{color:#86efac}
+.code-cm{color:var(--dim);font-style:italic}
+.code-sym{color:var(--muted)}
+.code-ok{color:var(--green)}
+.code-indent{padding-left:16px}
+
+/* 히어로 오른쪽 — 터미널 */
+.hero-terminal{background:#05030a;border:1px solid rgba(168,85,247,.3);font-family:var(--mono);font-size:11.5px;overflow:hidden}
+.ht-bar{background:#0d0a18;padding:7px 14px;border-bottom:1px solid rgba(168,85,247,.18);display:flex;align-items:center;gap:7px}
 .ht-dot{width:9px;height:9px;border-radius:50%}
-.ht-title{font-size:9px;color:var(--dim);margin-left:6px;letter-spacing:.08em}
-.ht-live{font-size:9px;color:var(--green);margin-left:auto;padding:1px 7px;border:1px solid rgba(16,185,129,.3);background:rgba(16,185,129,.08)}
-.ht-body{padding:16px 18px;line-height:2}
+.ht-title{font-size:9px;color:var(--dim);margin-left:6px;letter-spacing:.08em;flex:1}
+.ht-live{font-size:9px;color:var(--green);padding:1px 7px;border:1px solid rgba(16,185,129,.3);background:rgba(16,185,129,.08)}
+.ht-body{padding:12px 18px;line-height:1.9}
 .ht-line{display:flex;gap:8px;align-items:baseline}
 .ht-prompt{color:var(--purple2);font-size:12px}
-.ht-cmd{color:var(--text);font-size:12px}
+.ht-cmd{color:var(--text);font-size:11.5px}
 .ht-out{color:var(--muted);padding-left:16px;font-size:11px}
 .ht-ok{color:var(--green);font-size:11px}
 .ht-dim{color:var(--dim);padding-left:16px;font-size:10px}
 .ht-cursor{display:inline-block;width:6px;height:12px;background:var(--purple);vertical-align:middle;animation:blink 1s infinite}
-
-/* 히어로 오른쪽 스탯 카드 */
-.hero-stat-mini{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.hsm-card{background:var(--bg2);border:1px solid var(--p-border);padding:12px 14px;text-align:center}
-.hsm-num{font-family:var(--mono);font-size:22px;font-weight:500;color:var(--purple);line-height:1;margin-bottom:4px}
-.hsm-label{font-size:11px;color:var(--muted);line-height:1.4}
 
 /* SECTIONS */
 section{padding:80px 56px;position:relative;z-index:2}
@@ -122,14 +110,6 @@ section{padding:80px 56px;position:relative;z-index:2}
 .sec-stat-badge .ssb-num{font-size:13px;font-weight:500;color:var(--purple3)}
 .sec-stat-badge.ssb-green{background:rgba(16,185,129,0.08);border-color:rgba(16,185,129,0.28);color:var(--green)}
 .sec-stat-badge.ssb-green .ssb-num{color:var(--green)}
-.sec-desc{font-size:16px;color:var(--muted);line-height:1.85;max-width:600px;margin-bottom:40px;margin-top:-24px}
-
-/* 스토리 브릿지 */
-.sec-bridge{padding:24px 56px;background:var(--bg);border-top:1px solid var(--p-border);display:flex;align-items:center;gap:20px}
-.sec-bridge-arrow{font-family:var(--mono);font-size:18px;color:var(--purple);opacity:.5;flex-shrink:0}
-.sec-bridge-text{font-size:15px;color:var(--muted);line-height:1.7}
-.sec-bridge-text strong{color:var(--text);font-weight:600}
-.sec-bridge-text em{color:var(--purple);font-style:normal}
 
 /* BADGES */
 .badge{display:inline-flex;align-items:center;gap:5px;font-family:var(--mono);font-size:10px;font-weight:500;padding:3px 10px;letter-spacing:.08em}
@@ -141,10 +121,9 @@ section{padding:80px 56px;position:relative;z-index:2}
 /* MCP */
 .mcp-sec{background:var(--bg2);border-top:1px solid var(--p-border);border-bottom:1px solid var(--p-border)}
 .mcp-top{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;margin-bottom:48px}
-.mcp-intro-badge{display:inline-flex;align-items:center;gap:8px;background:var(--purple);color:#fff;font-family:var(--mono);font-size:10px;font-weight:500;padding:5px 12px;letter-spacing:.1em;margin-bottom:24px}
-.mcp-headline{font-size:clamp(22px,3vw,36px);font-weight:700;line-height:1.25;letter-spacing:-.025em;margin-bottom:16px}
+.mcp-headline{font-size:clamp(20px,2.6vw,32px);font-weight:700;line-height:1.25;letter-spacing:-.025em;margin-bottom:12px}
 .mcp-headline em{color:var(--purple);font-style:normal}
-.mcp-sub{font-size:15px;color:var(--muted);line-height:1.8}
+.mcp-sub{font-size:14px;color:var(--muted);line-height:1.8}
 .pipeline-title{font-family:var(--mono);font-size:11px;color:var(--purple);letter-spacing:.15em;margin-bottom:16px}
 .pipeline{display:flex;flex-direction:column}
 .pipe-step{display:flex;align-items:flex-start;gap:14px;padding:10px 0;border-bottom:1px solid var(--p-border)}
@@ -179,7 +158,7 @@ section{padding:80px 56px;position:relative;z-index:2}
 .proof-card-full{grid-column:1/-1}
 .proof-icon{font-size:24px;margin-bottom:12px}
 .proof-title{font-size:15px;font-weight:700;margin-bottom:8px;display:flex;align-items:center;gap:10px}
-.proof-desc{font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:12px}
+.proof-desc{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:12px}
 .proof-detail{font-family:var(--mono);font-size:12px;color:var(--green);background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.2);padding:10px 14px;line-height:1.85}
 .proof-link{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:10px;color:var(--purple);text-decoration:none;border:1px solid var(--p-border);padding:5px 10px;margin-top:10px;letter-spacing:.04em}
 .proof-link:hover{background:var(--p-muted)}
@@ -188,6 +167,17 @@ section{padding:80px 56px;position:relative;z-index:2}
 .proof-screenshot img:hover{opacity:1}
 .proof-screenshot-caption{font-family:var(--mono);font-size:10px;color:var(--dim);padding:6px 10px;letter-spacing:.06em;border-top:1px solid var(--p-border)}
 .proof-screenshot-jira img{height:200px}
+
+/* CODE SHOWCASE — 히어로 아래 인라인 코드 */
+.code-showcase{background:var(--bg2);border-top:1px solid var(--p-border);border-bottom:1px solid var(--p-border)}
+.code-showcase-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--p-border)}
+.cs-panel{background:var(--bg);padding:0;overflow:hidden}
+.cs-header{background:var(--bg3);padding:10px 18px;border-bottom:1px solid var(--p-border);display:flex;align-items:center;gap:10px}
+.cs-filename{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.06em}
+.cs-lang{font-family:var(--mono);font-size:9px;color:var(--purple);padding:2px 7px;border:1px solid var(--p-border);letter-spacing:.1em}
+.cs-link{font-family:var(--mono);font-size:9px;color:var(--dim);text-decoration:none;margin-left:auto;letter-spacing:.04em}
+.cs-link:hover{color:var(--purple)}
+.cs-body{padding:16px 18px;font-family:var(--mono);font-size:11.5px;line-height:1.85;overflow-x:auto}
 
 /* COMMIT CARD */
 .commit-card{background:var(--bg2);border:1px solid var(--p-border);padding:28px;margin-bottom:32px}
@@ -232,7 +222,7 @@ section{padding:80px 56px;position:relative;z-index:2}
 .proj-num{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:.15em;margin-bottom:10px}
 .proj-icon{font-size:22px;margin-bottom:10px}
 .proj-title{font-size:15px;font-weight:700;letter-spacing:-.02em;margin-bottom:8px}
-.proj-desc{font-size:14px;color:var(--muted);line-height:1.75;margin-bottom:12px}
+.proj-desc{font-size:13px;color:var(--muted);line-height:1.75;margin-bottom:12px}
 .proj-flow{display:flex;flex-wrap:wrap;align-items:center;gap:4px;margin-bottom:12px}
 .proj-flow-step{font-family:var(--mono);font-size:9px;padding:2px 7px;background:rgba(168,85,247,.1);border:1px solid var(--p-border);color:var(--purple);letter-spacing:.04em}
 .proj-flow-arrow{color:var(--dim);font-size:10px}
@@ -312,7 +302,6 @@ section{padding:80px 56px;position:relative;z-index:2}
 .sk-tooltip-tag{font-size:9px;padding:1px 6px;border:1px solid var(--p-border);color:var(--purple);background:var(--p-muted)}
 
 /* TC SECTION */
-.tc-intro{font-size:16px;color:var(--muted);line-height:1.85;max-width:560px;margin-bottom:32px}
 .tc-search-wrap{display:flex;align-items:center;gap:8px;margin-bottom:12px;flex-wrap:wrap}
 .tc-search-input{font-family:var(--mono);font-size:11px;background:var(--bg3);border:1px solid var(--p-border);color:var(--text);padding:6px 12px;width:280px;letter-spacing:.04em;outline:none}
 .tc-search-input:focus{border-color:var(--purple)}
@@ -385,13 +374,14 @@ section{padding:80px 56px;position:relative;z-index:2}
 
 /* CONTACT */
 .contact-sec{background:var(--bg2);border-top:1px solid var(--p-border)}
-.contact-wrap{display:flex;justify-content:space-between;align-items:flex-end}
-.contact-h{font-size:clamp(36px,5.5vw,64px);font-weight:900;line-height:.95;letter-spacing:-.04em;margin-bottom:18px}
+.contact-wrap{display:flex;justify-content:space-between;align-items:flex-start;gap:48px}
+.contact-h{font-size:clamp(28px,4vw,48px);font-weight:900;line-height:1.1;letter-spacing:-.03em;margin-bottom:16px}
 .contact-h span{color:var(--purple)}
-.contact-sub{font-size:15px;color:var(--muted);line-height:1.9}
-.contact-links{display:flex;flex-direction:column;gap:12px;align-items:flex-end}
-.c-link{font-family:var(--mono);font-size:12px;color:var(--muted);text-decoration:none;letter-spacing:.06em;display:flex;align-items:center;gap:8px}
-.c-link:hover{color:var(--purple)}
+.contact-desc{font-size:14px;color:var(--muted);line-height:1.85;max-width:420px;margin-bottom:24px}
+.contact-email-block{font-family:var(--mono);font-size:13px;color:var(--purple);border:1px solid var(--p-border);padding:10px 16px;display:inline-block;letter-spacing:.04em;margin-bottom:20px}
+.contact-links{display:flex;flex-wrap:wrap;gap:8px}
+.c-link{font-family:var(--mono);font-size:11px;color:var(--muted);text-decoration:none;letter-spacing:.06em;border:1px solid var(--p-border);padding:6px 14px;display:flex;align-items:center;gap:6px;transition:border-color .15s,color .15s}
+.c-link:hover{color:var(--purple);border-color:var(--purple)}
 footer{padding:20px 56px;border-top:1px solid var(--p-border);display:flex;justify-content:space-between;position:relative;z-index:2}
 footer p{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:.05em}
 
@@ -423,7 +413,7 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:
 .radar-legend-name{font-family:var(--mono);font-size:12px;color:var(--muted)}
 .radar-legend-val{font-family:var(--mono);font-size:12px;color:var(--purple);margin-left:auto}
 
-@media(max-width:1200px){.mcp-grid{grid-template-columns:repeat(2,1fr)}.hero-right{flex:0 0 320px}}
+@media(max-width:1200px){.mcp-grid{grid-template-columns:repeat(2,1fr)}.hero-right{flex:0 0 340px}}
 @media(max-width:1100px){.projects-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:960px){
 .hero{flex-direction:column;gap:32px;align-items:flex-start}
@@ -433,11 +423,9 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:
 nav{padding:14px 20px}.nav-links{display:none}.ham{display:flex}
 .hero{padding:80px 20px 56px}
 section{padding:56px 20px}
-.kick-cards{grid-template-columns:1fr}
 .mcp-top{grid-template-columns:1fr;gap:32px}.mcp-grid{grid-template-columns:repeat(2,1fr)}
 .skills-wrap{grid-template-columns:1fr;gap:28px}
-.contact-wrap{flex-direction:column;gap:32px;align-items:flex-start}
-.contact-links{align-items:flex-start}
+.contact-wrap{flex-direction:column;gap:24px}
 footer{padding:16px 20px;flex-direction:column;gap:4px}
 .projects-grid{grid-template-columns:1fr}.stats-grid{grid-template-columns:repeat(2,1fr)}
 .diag-arrow{display:none}.timeline{padding-left:20px}
@@ -453,9 +441,9 @@ footer{padding:16px 20px;flex-direction:column;gap:4px}
 .proj-overlay{display:none}
 .tc-detail-content{grid-template-columns:1fr}
 .tc-search-input{width:100%}
-.sec-desc{margin-top:-16px}
 .tc-dashboard{grid-template-columns:repeat(2,1fr)}
-.sec-bridge{padding:20px;flex-direction:column;align-items:flex-start;gap:10px}
+.code-showcase-grid{grid-template-columns:1fr}
+.hero-nums{grid-template-columns:repeat(2,1fr)}
 }
 
 @media print{
@@ -463,7 +451,7 @@ footer{padding:16px 20px;flex-direction:column;gap:4px}
 @page{margin:18mm 16mm;size:A4}
 *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
 body{background:#fff!important;color:#111!important;font-size:11pt;line-height:1.6}
-nav,.scroll-bar,#dot-nav,#breadcrumb,.mobile-menu,.ham,.sk-tooltip,.hero-right,.tc-search-wrap,.tc-filter,.tc-row-hint,.tc-bulk-actions,.commit-bar-area,.proj-overlay,.hero-cta,.btn-p,.btn-s,.sec-bridge{display:none!important}
+nav,.scroll-bar,#dot-nav,#breadcrumb,.mobile-menu,.ham,.sk-tooltip,.hero-right,.tc-search-wrap,.tc-filter,.tc-row-hint,.tc-bulk-actions,.commit-bar-area,.proj-overlay,.hero-cta,.btn-p,.btn-s,.code-showcase{display:none!important}
 section{padding:24pt 0!important;break-inside:avoid}
 .hero{min-height:auto!important;padding:32pt 0 20pt!important;flex-direction:column!important;gap:0!important}
 h1.hero-name{font-size:48pt!important}
@@ -483,7 +471,6 @@ a[href]::after{content:" (" attr(href) ")";font-size:8pt;color:#666;word-break:b
 .reveal{opacity:1!important}
 .hero-fade-in{opacity:1!important}
 footer{border-top:1px solid #ccc!important;padding:12pt 0 0!important}
-.kick-cards{grid-template-columns:1fr 1fr!important}
 }
 </style>
 </head>
@@ -492,12 +479,9 @@ footer{border-top:1px solid #ccc!important;padding:12pt 0 0!important}
 <div class="sk-tooltip" id="skTooltip"><div class="sk-tooltip-title" id="skTipTitle"></div><div id="skTipBody"></div><div class="sk-tooltip-tags" id="skTipTags"></div></div>
 
 <div id="dot-nav" aria-label="섹션 네비게이션">
-  <div class="dot-nav-item" data-target="stats"><span class="dot-nav-label">숫자 현황</span><div class="dot-nav-dot" data-target="stats"></div></div>
+  <div class="dot-nav-item" data-target="code"><span class="dot-nav-label">코드 증거</span><div class="dot-nav-dot" data-target="code"></div></div>
   <div class="dot-nav-item" data-target="mcp"><span class="dot-nav-label">MCP 자동화</span><div class="dot-nav-dot" data-target="mcp"></div></div>
-  <div class="dot-nav-item" data-target="proof"><span class="dot-nav-label">실제 증거</span><div class="dot-nav-dot" data-target="proof"></div></div>
-  <div class="dot-nav-item" data-target="projects"><span class="dot-nav-label">프로젝트</span><div class="dot-nav-dot" data-target="projects"></div></div>
-  <div class="dot-nav-item" data-target="diagram"><span class="dot-nav-label">파이프라인</span><div class="dot-nav-dot" data-target="diagram"></div></div>
-  <div class="dot-nav-item" data-target="roadmap"><span class="dot-nav-label">로드맵</span><div class="dot-nav-dot" data-target="roadmap"></div></div>
+  <div class="dot-nav-item" data-target="proof"><span class="dot-nav-label">연동 증거</span><div class="dot-nav-dot" data-target="proof"></div></div>
   <div class="dot-nav-item" data-target="tc"><span class="dot-nav-label">테스트케이스</span><div class="dot-nav-dot" data-target="tc"></div></div>
   <div class="dot-nav-item" data-target="timeline"><span class="dot-nav-label">경력</span><div class="dot-nav-dot" data-target="timeline"></div></div>
   <div class="dot-nav-item" data-target="skills"><span class="dot-nav-label">스킬</span><div class="dot-nav-dot" data-target="skills"></div></div>
@@ -511,79 +495,91 @@ footer{border-top:1px solid #ccc!important;padding:12pt 0 0!important}
 <nav>
 <div class="nav-logo">KH.QA / 2026</div>
 <ul class="nav-links">
+<li><a href="#code">코드 증거</a></li>
 <li><a href="#mcp">MCP 자동화</a></li>
-<li><a href="#proof">실제 연동 증거</a></li>
-<li><a href="#projects">프로젝트</a></li>
-<li><a href="#roadmap">로드맵</a></li>
-<li><a href="#timeline">경력</a></li>
+<li><a href="#proof">연동 증거</a></li>
 <li><a href="#tc">테스트케이스</a></li>
+<li><a href="#timeline">경력</a></li>
 <li><a href="#contact">연락</a></li>
 </ul>
 <button class="ham" id="ham" onclick="toggleMenu()"><span></span><span></span><span></span></button>
 </nav>
 <div class="mobile-menu" id="mobileMenu">
+<a href="#code" onclick="toggleMenu()">코드 증거</a>
 <a href="#mcp" onclick="toggleMenu()">MCP 자동화</a>
-<a href="#proof" onclick="toggleMenu()">실제 연동 증거</a>
-<a href="#projects" onclick="toggleMenu()">프로젝트</a>
-<a href="#roadmap" onclick="toggleMenu()">로드맵</a>
+<a href="#proof" onclick="toggleMenu()">연동 증거</a>
+<a href="#tc" onclick="toggleMenu()">테스트케이스</a>
 <a href="#timeline" onclick="toggleMenu()">경력</a>
 <a href="#contact" onclick="toggleMenu()">연락</a>
 </div>
 
-<!-- ★★★ HERO — 완전 새 설계 ★★★ -->
+<!-- HERO -->
 <section class="hero">
-<!-- LEFT: 킥 텍스트 -->
 <div class="hero-left">
   <div class="hero-tag hero-fade-in" data-hfi-delay="0">QA ENGINEER · 6년 9개월 · 삼성전자 파트너 포함</div>
   <h1 class="hero-name hero-fade-in" data-hfi-delay="1">성<em>기현</em></h1>
   <p class="hero-role hero-fade-in" data-hfi-delay="2"><span id="heroRoleText"></span><span class="typing-cursor"></span></p>
 
-  <!-- ★ 킥 메인 — 강력 아이덴티티 -->
-  <div class="kick-main hero-fade-in" data-hfi-delay="3">
-    <div class="kick-eyebrow">
-      <span class="kick-eyebrow-dot"></span>
-      LIVE · ACTUALLY WORKS · 2026
+  <div class="hero-nums hero-fade-in" data-hfi-delay="3">
+    <div class="hero-num-card">
+      <div class="hn-val">6.9<span style="font-size:18px;font-weight:300">yr</span></div>
+      <div class="hn-sub">QA 경력</div>
+      <div class="hn-detail">삼성전자 파트너 · IMS · 두플 파트장</div>
     </div>
-    <div class="kick-headline">
-      <span class="kh-line"><span class="kh-white">"QA가 느리다"는 말,</span></span>
-      <span class="kh-line"><span class="kh-white">이제 </span><span class="kh-acc">AI가 대신 뛰어줍니다.</span></span>
+    <div class="hero-num-card">
+      <div class="hn-val">145<span style="font-size:18px;font-weight:300">+</span></div>
+      <div class="hn-sub">자동 생성 TC</div>
+      <div class="hn-detail">코드 0줄 · MCP 5개 연동</div>
     </div>
-    <div class="kick-story">
-      TC 생성 명령 한 마디 — <strong>145건이 자동으로 만들어지고</strong>, Notion에 기록되고, Slack으로 알리고, Jira에 연결됩니다.<br>
-      <strong>코드 0줄. 대화 1번. 전부 실제로 됐습니다.</strong>
+    <div class="hero-num-card">
+      <div class="hn-val">12</div>
+      <div class="hn-sub">Playwright E2E spec</div>
+      <div class="hn-detail">login · payment · security · accessibility ···</div>
     </div>
-    <div class="kick-proof-row">
-      <span class="kick-proof-chip">MCP 5개 실제 연동</span>
-      <span class="kick-proof-chip">TC 145건+ 자동 생성</span>
-      <span class="kick-proof-chip">Playwright 12 spec</span>
-      <span class="kick-proof-chip">코드 0줄</span>
-    </div>
-  </div>
-
-  <!-- 두 강점 카드 -->
-  <div class="kick-cards hero-fade-in" data-hfi-delay="4">
-    <div class="kick-card qa-card">
-      <div class="kc-label">● QA 현장 경험</div>
-      <div class="kc-num">6.9<span style="font-size:16px;font-weight:300">yr</span></div>
-      <div class="kc-desc">삼성전자 파트너 4.3년 · IoT·AI·모바일앱<br>IMS 결제 QA · 두플 QA 파트장</div>
-    </div>
-    <div class="kick-card ai-card">
-      <div class="kc-label">● AI 자동화 실제 구현</div>
-      <div class="kc-num">코드 <span style="font-size:22px">0</span>줄</div>
-      <div class="kc-desc">MCP 5개 연동 · TC 145건+ 자동 생성<br>Playwright 12 spec · Jira 연동 완료</div>
+    <div class="hero-num-card">
+      <div class="hn-val white">0</div>
+      <div class="hn-sub">작성한 코드 줄</div>
+      <div class="hn-detail">전부 MCP 자동화로 생성</div>
     </div>
   </div>
 
-  <div class="hero-cta hero-fade-in" data-hfi-delay="5">
-    <a href="#proof" class="btn-p">실제 증거 보기</a>
-    <a href="#mcp" class="btn-s">MCP 자동화 ↓</a>
-    <a href="https://github.com/kihyunqa/qa-portfolio/blob/main/docs/bug-stories.md" target="_blank" class="btn-s">버그 스토리 ↗</a>
+  <div class="hero-cta hero-fade-in" data-hfi-delay="4">
+    <a href="#code" class="btn-p">코드 직접 보기 ↓</a>
+    <a href="#proof" class="btn-s">연동 증거 ↓</a>
+    <a href="https://github.com/kihyunqa/qa-portfolio" target="_blank" class="btn-s">GitHub ↗</a>
   </div>
 </div>
 
-<!-- RIGHT: 라이브 터미널 + 스탯 -->
-<div class="hero-right hero-fade-in" data-hfi-delay="4">
-  <!-- 라이브 터미널 -->
+<!-- RIGHT: 실제 Playwright 코드 + 터미널 -->
+<div class="hero-right hero-fade-in" data-hfi-delay="3">
+  <div class="hero-code-panel">
+    <div class="hcp-bar">
+      <div class="hcp-dot" style="background:#ff5f57"></div>
+      <div class="hcp-dot" style="background:#febc2e"></div>
+      <div class="hcp-dot" style="background:#28c840"></div>
+      <span class="hcp-title">playwright-tests/login.spec.ts</span>
+      <span class="hcp-badge">ACTUAL CODE</span>
+    </div>
+    <div class="hcp-body">
+      <div class="code-ln"><span class="code-lnum">1</span><span class="code-kw">import</span><span class="code-sym"> { test, expect } </span><span class="code-kw">from</span><span class="code-str"> '@playwright/test'</span><span class="code-sym">;</span></div>
+      <div class="code-ln"><span class="code-lnum"> </span>&nbsp;</div>
+      <div class="code-ln"><span class="code-lnum">3</span><span class="code-fn">test</span><span class="code-sym">(</span><span class="code-str">'로그인 성공 → /dashboard 리다이렉트'</span><span class="code-sym">, </span><span class="code-kw">async</span><span class="code-sym"> ({ page }) => {</span></div>
+      <div class="code-ln"><span class="code-lnum">4</span><span class="code-indent code-kw">await</span><span class="code-sym"> page.</span><span class="code-fn">goto</span><span class="code-sym">(</span><span class="code-str">'/login'</span><span class="code-sym">);</span></div>
+      <div class="code-ln"><span class="code-lnum">5</span><span class="code-indent code-kw">await</span><span class="code-sym"> page.</span><span class="code-fn">fill</span><span class="code-sym">(</span><span class="code-str">'#email'</span><span class="code-sym">, </span><span class="code-str">'test@example.com'</span><span class="code-sym">);</span></div>
+      <div class="code-ln"><span class="code-lnum">6</span><span class="code-indent code-kw">await</span><span class="code-sym"> page.</span><span class="code-fn">fill</span><span class="code-sym">(</span><span class="code-str">'#password'</span><span class="code-sym">, </span><span class="code-str">'ValidPass123'</span><span class="code-sym">);</span></div>
+      <div class="code-ln"><span class="code-lnum">7</span><span class="code-indent code-kw">await</span><span class="code-sym"> page.</span><span class="code-fn">click</span><span class="code-sym">(</span><span class="code-str">'button[type="submit"]'</span><span class="code-sym">);</span></div>
+      <div class="code-ln"><span class="code-lnum">8</span><span class="code-indent code-kw">await</span><span class="code-sym"> </span><span class="code-fn">expect</span><span class="code-sym">(page).</span><span class="code-fn">toHaveURL</span><span class="code-sym">(</span><span class="code-str">'/dashboard'</span><span class="code-sym">);</span></div>
+      <div class="code-ln"><span class="code-lnum">9</span><span class="code-sym">});</span></div>
+      <div class="code-ln"><span class="code-lnum"> </span>&nbsp;</div>
+      <div class="code-ln"><span class="code-lnum">11</span><span class="code-fn">test</span><span class="code-sym">(</span><span class="code-str">'5회 실패 → 계정 잠금 확인'</span><span class="code-sym">, </span><span class="code-kw">async</span><span class="code-sym"> ({ page }) => {</span></div>
+      <div class="code-ln"><span class="code-lnum">12</span><span class="code-indent code-kw">for</span><span class="code-sym"> (</span><span class="code-kw">let</span><span class="code-sym"> i = </span><span class="code-str">0</span><span class="code-sym">; i &lt; </span><span class="code-str">5</span><span class="code-sym">; i++) {</span></div>
+      <div class="code-ln"><span class="code-lnum">13</span><span class="code-indent code-indent code-kw">await</span><span class="code-sym"> page.</span><span class="code-fn">fill</span><span class="code-sym">(</span><span class="code-str">'#password'</span><span class="code-sym">, </span><span class="code-str">'WrongPass'</span><span class="code-sym">);</span></div>
+      <div class="code-ln"><span class="code-lnum">14</span><span class="code-indent code-indent code-kw">await</span><span class="code-sym"> page.</span><span class="code-fn">click</span><span class="code-sym">(</span><span class="code-str">'button[type="submit"]'</span><span class="code-sym">);</span></div>
+      <div class="code-ln"><span class="code-lnum">15</span><span class="code-indent code-sym">}</span></div>
+      <div class="code-ln"><span class="code-lnum">16</span><span class="code-indent code-kw">await</span><span class="code-sym"> </span><span class="code-fn">expect</span><span class="code-sym">(page.</span><span class="code-fn">locator</span><span class="code-sym">(</span><span class="code-str">'.lock-msg'</span><span class="code-sym">)).</span><span class="code-fn">toBeVisible</span><span class="code-sym">();</span></div>
+      <div class="code-ln"><span class="code-lnum">17</span><span class="code-sym">});</span></div>
+    </div>
+  </div>
   <div class="hero-terminal">
     <div class="ht-bar">
       <div class="ht-dot" style="background:#ff5f57"></div>
@@ -597,42 +593,73 @@ footer{border-top:1px solid #ccc!important;padding:12pt 0 0!important}
       <div id="htOutputs"></div>
     </div>
   </div>
-  <!-- 미니 스탯 카드 -->
-  <div class="hero-stat-mini">
-    <div class="hsm-card"><div class="hsm-num">145<span style="font-size:13px">+</span></div><div class="hsm-label">자동생성 TC</div></div>
-    <div class="hsm-card"><div class="hsm-num">5</div><div class="hsm-label">MCP 실제 연동</div></div>
-    <div class="hsm-card"><div class="hsm-num">12</div><div class="hsm-label">E2E spec</div></div>
-    <div class="hsm-card"><div class="hsm-num" style="color:#10b981">0</div><div class="hsm-label">작성한 코드 줄</div></div>
+</div>
+</section>
+
+<!-- ① 코드 쇼케이스 — 실제 파일들 바로 노출 -->
+<section class="code-showcase" id="code">
+<div class="sec-head reveal">
+  <span class="sec-n">00</span>
+  <h2 class="sec-t">실제 파일 — GitHub에서 직접 확인 가능</h2>
+  <div class="sec-line"></div>
+  <span class="sec-stat-badge ssb-green"><span class="ssb-num">80</span>개+ 파일</span>
+</div>
+<div class="code-showcase-grid reveal">
+  <div class="cs-panel">
+    <div class="cs-header">
+      <span class="cs-filename">playwright-tests/payment.spec.ts</span>
+      <span class="cs-lang">TypeScript</span>
+      <a href="https://github.com/kihyunqa/qa-portfolio/tree/main/playwright-tests" target="_blank" class="cs-link">GitHub에서 보기 ↗</a>
+    </div>
+    <div class="cs-body">
+      <div class="code-ln"><span class="code-lnum">1</span><span class="code-fn">test</span><span class="code-sym">(</span><span class="code-str">'정상 카드 결제 → 주문 완료'</span><span class="code-sym">, </span><span class="code-kw">async</span><span class="code-sym"> ({ page }) => {</span></div>
+      <div class="code-ln"><span class="code-lnum">2</span><span class="code-indent code-kw">await</span><span class="code-sym"> page.</span><span class="code-fn">goto</span><span class="code-sym">(</span><span class="code-str">'/cart'</span><span class="code-sym">);</span></div>
+      <div class="code-ln"><span class="code-lnum">3</span><span class="code-indent code-kw">await</span><span class="code-sym"> page.</span><span class="code-fn">click</span><span class="code-sym">(</span><span class="code-str">'[data-testid="checkout"]'</span><span class="code-sym">);</span></div>
+      <div class="code-ln"><span class="code-lnum">4</span><span class="code-indent code-kw">await</span><span class="code-sym"> page.</span><span class="code-fn">fill</span><span class="code-sym">(</span><span class="code-str">'#card-number'</span><span class="code-sym">, </span><span class="code-str">'4111111111111111'</span><span class="code-sym">);</span></div>
+      <div class="code-ln"><span class="code-lnum">5</span><span class="code-indent code-kw">await</span><span class="code-sym"> page.</span><span class="code-fn">click</span><span class="code-sym">(</span><span class="code-str">'[data-testid="pay-btn"]'</span><span class="code-sym">);</span></div>
+      <div class="code-ln"><span class="code-lnum">6</span><span class="code-indent code-kw">await</span><span class="code-sym"> </span><span class="code-fn">expect</span><span class="code-sym">(page.</span><span class="code-fn">locator</span><span class="code-sym">(</span><span class="code-str">'.order-complete'</span><span class="code-sym">)).</span><span class="code-fn">toBeVisible</span><span class="code-sym">();</span></div>
+      <div class="code-ln"><span class="code-lnum">7</span><span class="code-indent code-kw">await</span><span class="code-sym"> </span><span class="code-fn">expect</span><span class="code-sym">(page.</span><span class="code-fn">locator</span><span class="code-sym">(</span><span class="code-str">'.order-id'</span><span class="code-sym">)).</span><span class="code-fn">toBeVisible</span><span class="code-sym">();</span></div>
+      <div class="code-ln"><span class="code-lnum">8</span><span class="code-sym">});</span></div>
+      <div class="code-ln"><span class="code-lnum"> </span>&nbsp;</div>
+      <div class="code-ln"><span class="code-lnum">10</span><span class="code-fn">test</span><span class="code-sym">(</span><span class="code-str">'잔액 부족 → 주문 미생성 확인'</span><span class="code-sym">, </span><span class="code-kw">async</span><span class="code-sym"> ({ page }) => {</span></div>
+      <div class="code-ln"><span class="code-lnum">11</span><span class="code-indent code-kw">await</span><span class="code-sym"> page.</span><span class="code-fn">fill</span><span class="code-sym">(</span><span class="code-str">'#card-number'</span><span class="code-sym">, </span><span class="code-str">'4000000000000002'</span><span class="code-sym">);</span></div>
+      <div class="code-ln"><span class="code-lnum">12</span><span class="code-indent code-kw">await</span><span class="code-sym"> page.</span><span class="code-fn">click</span><span class="code-sym">(</span><span class="code-str">'[data-testid="pay-btn"]'</span><span class="code-sym">);</span></div>
+      <div class="code-ln"><span class="code-lnum">13</span><span class="code-indent code-kw">await</span><span class="code-sym"> </span><span class="code-fn">expect</span><span class="code-sym">(page.</span><span class="code-fn">locator</span><span class="code-sym">(</span><span class="code-str">'.pay-error'</span><span class="code-sym">)).</span><span class="code-fn">toBeVisible</span><span class="code-sym">();</span></div>
+      <div class="code-ln"><span class="code-lnum">14</span><span class="code-indent"><span class="code-cm">// 주문이 생성됐는지 DB 확인</span></span></div>
+      <div class="code-ln"><span class="code-lnum">15</span><span class="code-indent code-kw">await</span><span class="code-sym"> </span><span class="code-fn">expect</span><span class="code-sym">(page.</span><span class="code-fn">locator</span><span class="code-sym">(</span><span class="code-str">'.order-complete'</span><span class="code-sym">)).</span><span class="code-fn">not</span><span class="code-sym">.</span><span class="code-fn">toBeVisible</span><span class="code-sym">();</span></div>
+      <div class="code-ln"><span class="code-lnum">16</span><span class="code-sym">});</span></div>
+    </div>
+  </div>
+  <div class="cs-panel">
+    <div class="cs-header">
+      <span class="cs-filename">.github/workflows/qa-notify.yml</span>
+      <span class="cs-lang">YAML</span>
+      <a href="https://github.com/kihyunqa/qa-portfolio/blob/main/.github/workflows/qa-notify.yml" target="_blank" class="cs-link">GitHub에서 보기 ↗</a>
+    </div>
+    <div class="cs-body">
+      <div class="code-ln"><span class="code-lnum">1</span><span class="code-fn">name</span><span class="code-sym">: </span><span class="code-str">QA TC 자동 알림</span></div>
+      <div class="code-ln"><span class="code-lnum">2</span><span class="code-fn">on</span><span class="code-sym">:</span></div>
+      <div class="code-ln"><span class="code-lnum">3</span><span class="code-indent code-fn">push</span><span class="code-sym">:</span></div>
+      <div class="code-ln"><span class="code-lnum">4</span><span class="code-indent code-indent code-fn">paths</span><span class="code-sym">:</span></div>
+      <div class="code-ln"><span class="code-lnum">5</span><span class="code-indent code-indent code-sym">  - </span><span class="code-str">'testcase_*.md'</span></div>
+      <div class="code-ln"><span class="code-lnum"> </span>&nbsp;</div>
+      <div class="code-ln"><span class="code-lnum">7</span><span class="code-fn">jobs</span><span class="code-sym">:</span></div>
+      <div class="code-ln"><span class="code-lnum">8</span><span class="code-indent code-fn">notify</span><span class="code-sym">:</span></div>
+      <div class="code-ln"><span class="code-lnum">9</span><span class="code-indent code-indent code-fn">runs-on</span><span class="code-sym">: </span><span class="code-str">ubuntu-latest</span></div>
+      <div class="code-ln"><span class="code-lnum">10</span><span class="code-indent code-indent code-fn">steps</span><span class="code-sym">:</span></div>
+      <div class="code-ln"><span class="code-lnum">11</span><span class="code-indent code-indent code-sym">  - </span><span class="code-fn">name</span><span class="code-sym">: </span><span class="code-str">Slack 알림 발송</span></div>
+      <div class="code-ln"><span class="code-lnum">12</span><span class="code-indent code-indent code-indent code-fn">uses</span><span class="code-sym">: </span><span class="code-str">slackapi/slack-github-action@v1</span></div>
+      <div class="code-ln"><span class="code-lnum">13</span><span class="code-indent code-indent code-indent code-fn">with</span><span class="code-sym">:</span></div>
+      <div class="code-ln"><span class="code-lnum">14</span><span class="code-indent code-indent code-indent code-indent code-fn">channel-id</span><span class="code-sym">: </span><span class="code-str">'새-채널'</span></div>
+      <div class="code-ln"><span class="code-lnum">15</span><span class="code-indent code-indent code-indent code-indent code-fn">slack-message</span><span class="code-sym">: </span><span class="code-str">"✅ TC push → QA 완료"</span></div>
+      <div class="code-ln"><span class="code-lnum">16</span><span class="code-indent code-indent code-indent code-fn">env</span><span class="code-sym">:</span></div>
+      <div class="code-ln"><span class="code-lnum">17</span><span class="code-indent code-indent code-indent code-indent code-fn">SLACK_BOT_TOKEN</span><span class="code-sym">: </span><span class="code-str">${{ secrets.SLACK_BOT_TOKEN }}</span></div>
+    </div>
   </div>
 </div>
 </section>
 
-<div class="sec-bridge reveal">
-  <div class="sec-bridge-arrow">↓</div>
-  <div class="sec-bridge-text">말이 아닌 <strong>숫자</strong>로 먼저 보여드립니다 — 6.9년 QA 경력 위에 AI 자동화를 직접 얹은 결과물입니다.</div>
-</div>
-
-<section class="stats-sec" id="stats">
-<div class="sec-head reveal">
-  <span class="sec-n">00</span>
-  <h2 class="sec-t">숫자로 보는 현황</h2>
-  <div class="sec-line"></div>
-  <span class="sec-stat-badge"><span class="ssb-num">4</span>개 지표</span>
-</div>
-<p class="sec-desc reveal">5개 MCP 실제 연동, TC 145건+ 자동 생성, GitHub Actions 2개 운영 중 — 6.9년 QA 경력 위에 Claude MCP 자동화를 더한 결과입니다.</p>
-<div class="stats-grid reveal">
-<div class="stat-card"><div class="stat-big">5</div><div class="stat-desc">실제 연동된 MCP 서버</div><div class="stat-sub">filesystem·playwright·github·notion·slack</div></div>
-<div class="stat-card"><div class="stat-big">7</div><div class="stat-desc">AI 자동화 워크플로우 스텝</div><div class="stat-sub">명세 입력 → TC → E2E → 커밋 → Notion → Slack → Jira</div></div>
-<div class="stat-card"><div class="stat-big">145<span class="stat-unit">+</span></div><div class="stat-desc">자동 생성된 테스트케이스</div><div class="stat-sub">12개 spec · 전 카테고리 커버</div></div>
-<div class="stat-card"><div class="stat-big">2</div><div class="stat-desc">GitHub Actions 운영 중</div><div class="stat-sub">qa-notify.yml · main.yml</div></div>
-</div>
-</section>
-
-<div class="sec-bridge reveal">
-  <div class="sec-bridge-arrow">↓</div>
-  <div class="sec-bridge-text">이 숫자들이 어떻게 만들어졌는지 — <strong>Claude MCP 5개</strong>가 연결된 자동화 파이프라인을 직접 보여드립니다.</div>
-</div>
-
+<!-- ② MCP 자동화 파이프라인 -->
 <section class="mcp-sec" id="mcp">
 <div class="sec-head reveal">
   <span class="sec-n">01</span>
@@ -642,9 +669,8 @@ footer{border-top:1px solid #ccc!important;padding:12pt 0 0!important}
 </div>
 <div class="mcp-top reveal">
 <div>
-<div class="mcp-intro-badge">LIVE · 5 MCP 실제 연동</div>
-<h3 class="mcp-headline">대화 한 번으로<br><em>TC 생성부터 Notion 문서화, Slack 알림, Jira 연동까지</em><br>전부 자동으로 완료됩니다</h3>
-<p class="mcp-sub" style="margin-top:14px">Claude Desktop에 MCP 서버 5개를 직접 연결했습니다. TC 생성 → E2E 테스트 → GitHub 커밋 → 버그 리포트 → Notion 페이지 자동 생성 → Slack 채널 알림 → Jira 이슈 트래킹까지, 코드 한 줄 없이 대화만으로.</p>
+<h3 class="mcp-headline">TC 생성부터 Notion 문서화,<br>Slack 알림, Jira 연동까지<br><em>대화 한 번으로 전부 자동 실행</em></h3>
+<p class="mcp-sub" style="margin-top:14px">Claude Desktop에 MCP 서버 5개를 직접 연결. TC 생성 → E2E 테스트 → GitHub 커밋 → Notion 페이지 자동 생성 → Slack 채널 알림 → Jira 이슈 트래킹까지, 코드 없이 대화만으로.</p>
 </div>
 <div>
 <div class="pipeline-title">// CORE WORKFLOW · 7 STEPS</div>
@@ -677,25 +703,20 @@ footer{border-top:1px solid #ccc!important;padding:12pt 0 0!important}
 <div class="t-line"><span class="t-out">notion 통합 사용함 ··· QA Portfolio 페이지 TC 자동 기록 완료 ✓</span></div>
 <div class="t-line"><span class="t-out">slack 통합 사용함 ··· 새-채널 QA 완료 알림 발송 완료 ✓</span></div>
 <div class="t-line"><span class="t-out">Jira 연동 ··· </span><span class="t-ok">GitHub for Atlassian FULL ACCESS 연동 완료 ✓</span></div>
-<div class="t-line" style="margin-top:8px"><span class="t-comment"># 코드 0줄. 대화 1번. MCP 5개 + Jira. TC 145건+. 전부 실제로 됐다.</span></div>
+<div class="t-line" style="margin-top:8px"><span class="t-comment"># 코드 0줄. 대화 1번. MCP 5개 + Jira. TC 145건+.</span></div>
 <div class="t-line" style="margin-top:4px"><span class="t-prompt">❯</span><span class="t-cursor"></span></div>
 </div>
 </div>
 </section>
 
-<div class="sec-bridge reveal">
-  <div class="sec-bridge-arrow">↓</div>
-  <div class="sec-bridge-text">"말로만 하는 거 아니냐?" — <strong>실제 스크린샷과 연동 결과물</strong>을 전부 공개합니다. 링크 클릭하면 직접 확인됩니다.</div>
-</div>
-
+<!-- ③ 실제 연동 증거 -->
 <section class="proof-sec" id="proof">
 <div class="sec-head reveal">
   <span class="sec-n">02</span>
-  <h2 class="sec-t">실제 연동 증거</h2>
+  <h2 class="sec-t">실제 연동 증거 — 스크린샷 + 링크</h2>
   <div class="sec-line"></div>
   <span class="sec-stat-badge ssb-green"><span class="ssb-num">5</span>개 실제 확인</span>
 </div>
-<p style="font-size:16px;color:var(--muted);line-height:1.85;max-width:580px;margin-bottom:36px" class="reveal">말로만 하는 포트폴리오가 아닙니다.<br><strong style="color:var(--text)">실제로 연결하고, 실제로 실행하고, 실제로 결과물이 만들어졌습니다.</strong></p>
 <div class="proof-grid reveal">
 <div class="proof-card">
 <div class="proof-icon">📝</div>
@@ -715,9 +736,9 @@ footer{border-top:1px solid #ccc!important;padding:12pt 0 0!important}
 </div>
 <div class="proof-card">
 <div class="proof-icon">🎭</div>
-<div class="proof-title">playwright MCP 실제 실행 <span class="badge badge-live">LIVE</span></div>
+<div class="proof-title">Playwright E2E 12 spec <span class="badge badge-live">LIVE</span></div>
 <div class="proof-desc">playwright MCP를 통해 E2E 테스트 시나리오를 실행했습니다. 12개 spec 파일로 전 영역 커버.</div>
-<div class="proof-detail">✓ 12개 spec 실행 가능한 실제 코드<br>✓ login/search/cart/api/payment/security/performance/accessibility/signup/notification<br>✓ playwright.config.js 설정 완료<br>✓ 스크린샷 자동 캡처 설정</div>
+<div class="proof-detail">✓ 12개 spec 실행 가능한 실제 코드<br>✓ login/search/cart/api/payment/security/performance/accessibility<br>✓ playwright.config.js 설정 완료<br>✓ 스크린샷 자동 캡처 설정</div>
 <a href="https://github.com/kihyunqa/qa-portfolio/tree/main/playwright-tests" target="_blank" class="proof-link">spec 파일 직접 보기 ↗</a>
 </div>
 <div class="proof-card">
@@ -762,78 +783,15 @@ footer{border-top:1px solid #ccc!important;padding:12pt 0 0!important}
 </div>
 </section>
 
-<div class="sec-bridge reveal">
-  <div class="sec-bridge-arrow">↓</div>
-  <div class="sec-bridge-text">증거를 봤다면 — 구체적으로 <strong>어떤 프로젝트</strong>를 만들었는지 확인할 차례입니다. QA 전 영역 10개 프로젝트.</div>
-</div>
-
-<section class="projects-sec" id="projects">
-<div class="sec-head reveal">
-  <span class="sec-n">03</span>
-  <h2 class="sec-t">프로젝트 카드 (10개 · 전체 구현 완료)</h2>
-  <div class="sec-line"></div>
-  <span class="sec-stat-badge"><span class="ssb-num">10</span>개 프로젝트</span>
-</div>
-<p class="sec-desc reveal">TC 자동생성부터 버그 분류, E2E 자동화, Notion·Slack 연동까지 — QA 전 영역을 MCP로 연결한 10개 프로젝트. 카드에 마우스를 올리면 핵심 성과를 확인할 수 있습니다.</p>
-<div class="projects-grid">
-<div class="proj-card reveal"><div class="proj-num">PROJECT 01 · <span class="badge badge-done" style="font-size:9px;padding:2px 8px">구현 완료</span></div><div class="proj-icon">🤖</div><div class="proj-title">TC 자동생성 워크플로우</div><div class="proj-desc">기능 명세 입력 → Claude가 해피패스·네거티브·엣지케이스 자동 생성 → 로컬 저장 → GitHub 커밋. 현재 145건+ 누적.</div><div class="proj-flow"><span class="proj-flow-step">기능명세 입력</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">TC 자동 생성</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">로컬 저장</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">GitHub</span></div><div class="proj-tags"><span class="proj-tag proj-tag-p">filesystem MCP</span><span class="proj-tag proj-tag-p">github MCP</span></div><div class="proj-links"><a href="https://github.com/kihyunqa/qa-portfolio/blob/main/testcase_login.md" target="_blank" class="proj-link">TC 파일 보기 ↗</a></div><div class="proj-overlay"><div class="proj-overlay-title">// 핵심 성과</div><ul class="proj-overlay-points"><li>145건+ TC 전부 대화 1번으로 자동 생성</li><li>해피패스·네거티브·엣지케이스 3분류 자동 구조화</li><li>코드 0줄 · filesystem + github MCP 조합</li></ul><div class="proj-overlay-links"><a href="https://github.com/kihyunqa/qa-portfolio/blob/main/testcase_login.md" target="_blank" class="proj-overlay-link">TC 파일 ↗</a></div></div></div>
-<div class="proj-card reveal"><div class="proj-num">PROJECT 02 · <span class="badge badge-done" style="font-size:9px;padding:2px 8px">구현 완료</span></div><div class="proj-icon">🔀</div><div class="proj-title">QA 대응 프로세스 + 브랜치 전략</div><div class="proj-desc">main / develop / feature 브랜치 구조에서 QA 개입 시점 정의. GitHub MCP로 브랜치·PR·커밋 대화로 처리.</div><div class="branch-vis"><div><span class="branch-main">main</span> <span class="branch-dim">──●──────────●──</span> <span class="branch-dim"># 릴리즈</span></div><div><span class="branch-dev">develop</span> <span class="branch-dim">────●────●──</span> <span class="branch-dim"># 회귀 검증</span></div><div><span class="branch-feat">feature</span> <span class="branch-dim">──────●──</span> <span class="branch-dim"># 선행 검토</span></div></div><div class="proj-tags"><span class="proj-tag proj-tag-p">github MCP</span><span class="proj-tag">브랜치 전략</span></div><div class="proj-links"><a href="https://github.com/kihyunqa/qa-portfolio/blob/main/docs/release-qa-process.md" target="_blank" class="proj-link">릴리즈 QA 프로세스 ↗</a></div><div class="proj-overlay"><div class="proj-overlay-title">// 핵심 성과</div><ul class="proj-overlay-points"><li>QA 개입 시점 3단계 명문화 (선행·회귀·릴리즈)</li><li>GitHub MCP로 브랜치·PR 대화로 처리</li></ul></div></div>
-<div class="proj-card reveal"><div class="proj-num">PROJECT 03 · <span class="badge badge-done" style="font-size:9px;padding:2px 8px">구현 완료</span></div><div class="proj-icon">⚡</div><div class="proj-title">오케스트레이션 하네스 구축</div><div class="proj-desc">여러 MCP 도구를 자유롭게 조합하는 파이프라인 빌더. Claude-in-Claude 방식으로 각 단계가 이전 결과를 컨텍스트로 받아 체이닝 실행.</div><div class="proj-flow"><span class="proj-flow-step">노드 조합</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">파이프라인 실행</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">결과 체이닝</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">내보내기</span></div><div class="proj-tags"><span class="proj-tag proj-tag-p">Claude-in-Claude</span><span class="proj-tag proj-tag-p">Multi-MCP</span></div><div class="proj-links"><a href="https://github.com/kihyunqa/qa-portfolio/blob/main/docs/mcp-architecture.md" target="_blank" class="proj-link">MCP 아키텍처 ↗</a></div><div class="proj-overlay"><div class="proj-overlay-title">// 핵심 성과</div><ul class="proj-overlay-points"><li>5개 MCP를 단일 대화로 체이닝 실행</li><li>MCP 아키텍처 문서로 재현 가능한 형태 정리</li></ul></div></div>
-<div class="proj-card reveal"><div class="proj-num">PROJECT 04 · <span class="badge badge-done" style="font-size:9px;padding:2px 8px">구현 완료</span></div><div class="proj-icon">⚙️</div><div class="proj-title">Claude Code 환경 세팅 + Skill 지침</div><div class="proj-desc">Skill 파일로 반복 패턴을 지침화. MCP 서버 연결 + QA 특화 프롬프트 구조 정의.</div><div class="proj-flow"><span class="proj-flow-step">Claude Code 설치</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">MCP 연결</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">Skill 정의</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">자동화 적용</span></div><div class="proj-tags"><span class="proj-tag proj-tag-p">Claude Code</span><span class="proj-tag proj-tag-p">Skill 지침</span></div><div class="proj-links"><a href="https://github.com/kihyunqa/qa-portfolio/blob/main/docs/mcp-setup-guide.md" target="_blank" class="proj-link">MCP 세팅 가이드 ↗</a></div><div class="proj-overlay"><div class="proj-overlay-title">// 핵심 성과</div><ul class="proj-overlay-points"><li>QA 특화 Skill 파일로 반복 프롬프트 완전 제거</li><li>skills/ 9개 문서 완비</li></ul></div></div>
-<div class="proj-card reveal"><div class="proj-num">PROJECT 05 · <span class="badge badge-done" style="font-size:9px;padding:2px 8px">구현 완료</span></div><div class="proj-icon">📢</div><div class="proj-title">버그 리포트 + 판단력 스토리</div><div class="proj-desc">버그 발견 → 심각도 판단 → 영향 분석 → 개발팀 설득. 실제 QA 현장 판단 케이스 포함.</div><div class="proj-flow"><span class="proj-flow-step">버그 발견</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">영향 분석</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">심각도 판단</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">해결</span></div><div class="proj-tags"><span class="proj-tag proj-tag-p">버그 스토리</span><span class="proj-tag">심각도 판단</span><span class="proj-tag">QA 판단력</span></div><div class="proj-links"><a href="https://github.com/kihyunqa/qa-portfolio/blob/main/docs/bug-stories.md" target="_blank" class="proj-link">버그 스토리 ↗</a></div><div class="proj-overlay"><div class="proj-overlay-title">// 핵심 성과</div><ul class="proj-overlay-points"><li>버그 심각도 판단 → 개발팀 설득 프로세스</li><li>재현 경로 문서화 · 영향 분석 포함</li></ul></div></div>
-<div class="proj-card reveal"><div class="proj-num">PROJECT 06 · <span class="badge badge-done" style="font-size:9px;padding:2px 8px">구현 완료</span></div><div class="proj-icon">🐛</div><div class="proj-title">버그 심각도 분류 자동화</div><div class="proj-desc">버그 데이터를 Claude가 자동 분류. P1·P2·P3 심각도 기준 분류 + 재현 경로 분석 + 담당자별 현황 파악.</div><div class="proj-flow"><span class="proj-flow-step">버그 수집</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">심각도 분류</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">담당자 현황</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">리포트</span></div><div class="proj-tags"><span class="proj-tag proj-tag-p">버그 분석</span><span class="proj-tag">심각도 분류</span></div><div class="proj-links"><a href="https://github.com/kihyunqa/qa-portfolio/blob/main/testcase_bug-report.md" target="_blank" class="proj-link">버그 리포트 ↗</a></div><div class="proj-overlay"><div class="proj-overlay-title">// 핵심 성과</div><ul class="proj-overlay-points"><li>P1·P2·P3 기준 수립 + Claude 자동 분류 파이프라인</li><li>버그 리포트 템플릿 표준화</li></ul></div></div>
-<div class="proj-card reveal"><div class="proj-num">PROJECT 07 · <span class="badge badge-done" style="font-size:9px;padding:2px 8px">구현 완료</span></div><div class="proj-icon">🎭</div><div class="proj-title">playwright E2E 자동화 — 12 spec</div><div class="proj-desc">12개 spec 파일로 로그인·결제·보안·접근성·성능·알림까지 전 영역 E2E 커버.</div><div class="proj-flow"><span class="proj-flow-step">시나리오 정의</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">브라우저 조작</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">결과 검증</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">스크린샷</span></div><div class="proj-tags"><span class="proj-tag proj-tag-p">playwright MCP</span><span class="proj-tag">E2E 12 spec</span></div><div class="proj-links"><a href="https://github.com/kihyunqa/qa-portfolio/tree/main/playwright-tests" target="_blank" class="proj-link">spec 파일 보기 ↗</a></div><div class="proj-overlay"><div class="proj-overlay-title">// 핵심 성과</div><ul class="proj-overlay-points"><li>12개 spec — 전 영역 커버</li><li>playwright MCP로 대화만으로 E2E 실행</li></ul></div></div>
-<div class="proj-card reveal"><div class="proj-num">PROJECT 08 · <span class="badge badge-done" style="font-size:9px;padding:2px 8px">구현 완료</span></div><div class="proj-icon">📋</div><div class="proj-title">QA 자동화 리포트 + README 문서화</div><div class="proj-desc">github/filesystem MCP로 레포 전체 구조화. README + QA 리포트 + CHANGELOG + QA 전략 문서 자동 작성. docs 28개.</div><div class="proj-flow"><span class="proj-flow-step">레포 설계</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">README 작성</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">QA 리포트</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">CHANGELOG</span></div><div class="proj-tags"><span class="proj-tag proj-tag-p">github MCP</span><span class="proj-tag proj-tag-p">filesystem MCP</span></div><div class="proj-links"><a href="https://github.com/kihyunqa/qa-portfolio/blob/main/README.md" target="_blank" class="proj-link">README ↗</a></div><div class="proj-overlay"><div class="proj-overlay-title">// 핵심 성과</div><ul class="proj-overlay-points"><li>docs/ 28개 문서 전부 MCP로 자동 작성</li><li>CHANGELOG v51 — 전 스텝 이력 추적</li></ul></div></div>
-<div class="proj-card reveal"><div class="proj-num">PROJECT 09 · <span class="badge badge-live" style="font-size:9px;padding:2px 8px">실제 연동</span></div><div class="proj-icon">📝</div><div class="proj-title">Notion MCP 연동 — TC 결과 자동 문서화</div><div class="proj-desc">Notion MCP로 TC 결과물을 자동 문서화. 테스트 완료 후 Notion 페이지를 자동 생성하여 팀 전체가 QA 현황을 실시간 확인.</div><div class="proj-flow"><span class="proj-flow-step">TC 결과 수집</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">Claude 분석</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">Notion 페이지 생성</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">팀 공유</span></div><div class="proj-tags"><span class="proj-tag proj-tag-g">notion MCP 실제 연동</span><span class="proj-tag">TC 결과 문서화</span></div><div class="proj-overlay"><div class="proj-overlay-title">// 핵심 성과</div><ul class="proj-overlay-points"><li>Notion에 TC 결과 페이지 자동 생성 확인</li><li>코드 0줄 · 대화 1번 · 팀 공유 완료</li></ul></div></div>
-<div class="proj-card reveal"><div class="proj-num">PROJECT 10 · <span class="badge badge-live" style="font-size:9px;padding:2px 8px">실제 연동</span></div><div class="proj-icon">💬</div><div class="proj-title">Slack MCP 연동 — QA 알림 자동화</div><div class="proj-desc">Slack MCP + GitHub Actions 이중 연동. QA 완료 시 새-채널 자동 알림. TC push → Actions → Slack 완전 자동 파이프라인.</div><div class="proj-flow"><span class="proj-flow-step">QA 완료</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">MCP 알림</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">GitHub Actions</span><span class="proj-flow-arrow">→</span><span class="proj-flow-step">새-채널</span></div><div class="proj-tags"><span class="proj-tag proj-tag-g">slack MCP 실제 연동</span><span class="proj-tag">GitHub Actions</span></div><div class="proj-overlay"><div class="proj-overlay-title">// 핵심 성과</div><ul class="proj-overlay-points"><li>새-채널 QA 완료 알림 실제 발송 확인</li><li>MCP + Actions 이중 연동으로 신뢰성 확보</li></ul></div></div>
-</div>
-</section>
-
-<section class="diagram-sec" id="diagram">
-<div class="sec-head reveal">
-  <span class="sec-n">04</span>
-  <h2 class="sec-t">QA 자동화 전체 파이프라인</h2>
-  <div class="sec-line"></div>
-  <span class="sec-stat-badge"><span class="ssb-num">7</span>스텝 파이프라인</span>
-</div>
-<p class="sec-desc reveal">기능 명세 입력 한 번으로 TC 생성부터 Notion 문서화, Slack 알림, Jira 이슈 연결까지 7단계가 순차 실행됩니다.</p>
-<div class="diagram-wrap reveal">
-<div><div class="diag-section-label">TRIGGER — 입력</div><div class="diagram-row"><div class="diag-node"><div class="diag-box done">기능 명세 입력</div><div class="diag-label">자연어 명령</div></div><div class="diag-arrow">→</div><div class="diag-node"><div class="diag-box done">Claude 수신</div><div class="diag-label">Claude Desktop</div></div><div class="diag-arrow">→</div><div class="diag-node"><div class="diag-box done">MCP 라우팅</div><div class="diag-label">5개 서버 연결</div></div></div></div>
-<div style="text-align:center"><div class="diag-arrow-down">↓</div></div>
-<div><div class="diag-section-label">EXECUTION — 실행</div><div class="diagram-row"><div class="diag-node"><div class="diag-box done">TC 생성</div><div class="diag-label">145건+ 자동생성</div></div><div class="diag-arrow">→</div><div class="diag-node"><div class="diag-box done">E2E 테스트</div><div class="diag-label">playwright 12 spec</div></div><div class="diag-arrow">→</div><div class="diag-node"><div class="diag-box done">GitHub 커밋</div><div class="diag-label">github MCP</div></div></div></div>
-<div style="text-align:center"><div class="diag-arrow-down">↓</div></div>
-<div><div class="diag-section-label">OUTPUT — 문서화 &amp; 전달</div><div class="diagram-row"><div class="diag-node"><div class="diag-box done">버그 리포트</div><div class="diag-label">재현 분석</div></div><div class="diag-arrow">→</div><div class="diag-node"><div class="diag-box done">심각도 분류</div><div class="diag-label">P1·P2·P3</div></div><div class="diag-arrow">→</div><div class="diag-node"><div class="diag-box done" style="border-color:var(--green);background:rgba(16,185,129,.08)">Notion 문서화 ✓</div><div class="diag-label">notion MCP 실제</div></div><div class="diag-arrow">→</div><div class="diag-node"><div class="diag-box done" style="border-color:var(--purple);background:rgba(168,85,247,.12)">Slack 알림 ✓</div><div class="diag-label">slack MCP 실제</div></div><div class="diag-arrow">→</div><div class="diag-node"><div class="diag-box done" style="border-color:var(--green);background:rgba(16,185,129,.08)">Jira 연동 ✓</div><div class="diag-label">이슈 트래킹</div></div></div></div>
-</div>
-</section>
-
-<section class="roadmap-sec" id="roadmap">
-<div class="sec-head reveal">
-  <span class="sec-n">05</span>
-  <h2 class="sec-t">MCP 연동 로드맵</h2>
-  <div class="sec-line"></div>
-  <span class="sec-stat-badge ssb-green"><span class="ssb-num">2</span>PHASE 완료</span>
-</div>
-<p style="font-size:16px;color:var(--muted);line-height:1.85;max-width:580px;margin-bottom:40px" class="reveal">실제 연동 완료된 5개 MCP + Jira를 기반으로 더 많은 연동을 확장해 나갑니다.</p>
-<div class="roadmap-grid reveal">
-<div class="roadmap-card done"><div class="rm-num">PHASE 1 · 완료</div><div class="rm-icon">✅</div><div class="rm-title">Core 5 MCP 연동</div><div class="rm-desc">filesystem · playwright · github · notion · slack 실제 연동 완료. TC 145건+ · Playwright 12 spec · GitHub Actions 2개 운영 중.</div></div>
-<div class="roadmap-card done"><div class="rm-num">PHASE 2 · 완료</div><div class="rm-icon">✅</div><div class="rm-title">Ticketing 연동</div><div class="rm-desc">Jira + GitHub for Atlassian 연동 완료. FULL ACCESS 권한. 커밋 메시지 기반 이슈 자동 연결.</div></div>
-<div class="roadmap-card future"><div class="rm-num">PHASE 3 · 계획</div><div class="rm-icon">🗓️</div><div class="rm-title">Scheduling &amp; Reporting MCP</div><div class="rm-desc">Google Calendar MCP → 릴리즈 QA 일정 자동 배분. Gmail MCP → 이해관계자 QA 리포트 자동 발송.</div></div>
-</div>
-</section>
-
-<div class="sec-bridge reveal">
-  <div class="sec-bridge-arrow">↓</div>
-  <div class="sec-bridge-text">자동화로 만들어진 TC가 어떤 수준인지 — <strong>실제 TC 145건+ 중 19건</strong>을 직접 열어볼 수 있습니다. 설계 의도까지 담겼습니다.</div>
-</div>
-
+<!-- ④ TC 테이블 — 실제 설계 수준 직접 확인 -->
 <section id="tc" style="background:var(--bg2);border-top:1px solid var(--p-border)">
 <div class="sec-head reveal">
-  <span class="sec-n">06</span>
+  <span class="sec-n">03</span>
   <h2 class="sec-t">자동생성 테스트케이스 — 145건+</h2>
   <div class="sec-line"></div>
   <span class="sec-stat-badge"><span class="ssb-num">19</span>건 표시</span>
 </div>
-<p class="tc-intro reveal">Claude MCP로 자동 생성된 TC 145건+. 로그인·API·보안·성능·접근성·장바구니·검색·결제 전 카테고리 커버.<br><span style="font-family:var(--mono);font-size:13px;color:var(--dim)">각 TC를 클릭하면 설계 의도 + 전제조건 + 스텝 + 기대 결과를 확인할 수 있습니다.</span></p>
+<p style="font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:28px;margin-top:-24px" class="reveal">MCP로 자동 생성된 TC. 각 행을 클릭하면 <strong style="color:var(--text)">설계 의도 + 전제조건 + 스텝 + 기대 결과</strong>를 확인할 수 있습니다.</p>
 <div class="tc-dashboard reveal">
   <div class="tc-dash-card"><div class="tc-dash-num">145<span style="font-size:14px">+</span></div><div class="tc-dash-label">총 TC 건수</div><div class="tc-dash-sub">MCP 자동 생성</div></div>
   <div class="tc-dash-card"><div class="tc-dash-num" id="dashHP">9</div><div class="tc-dash-label">해피패스</div><div class="tc-dash-sub">정상 흐름 검증</div></div>
@@ -867,7 +825,7 @@ footer{border-top:1px solid #ccc!important;padding:12pt 0 0!important}
   <button id="tcExpandAll" class="tc-filter-btn">▼ 전체 펼치기</button>
   <button id="tcCollapseAll" class="tc-filter-btn">▲ 전체 접기</button>
 </div>
-<div class="tc-row-hint reveal">▼ 행을 클릭하면 <strong style="color:var(--purple)">설계 의도</strong> + 전제조건 · 테스트 스텝 · 기대 결과 상세를 확인할 수 있습니다</div>
+<div class="tc-row-hint reveal">▼ 행 클릭 → <strong style="color:var(--purple)">설계 의도</strong> + 전제조건 · 스텝 · 기대 결과 확인</div>
 <div class="tc-wrap reveal">
 <table class="tc-table">
 <thead><tr><th>TC-ID</th><th>구분</th><th>테스트 제목</th><th>기대 결과</th><th>우선순위</th></tr></thead>
@@ -916,26 +874,22 @@ footer{border-top:1px solid #ccc!important;padding:12pt 0 0!important}
 <a href="https://github.com/kihyunqa/qa-portfolio" target="_blank" class="tc-link reveal">전체 TC 파일 보기 (145건+) ↗</a>
 </section>
 
-<div class="sec-bridge reveal">
-  <div class="sec-bridge-arrow">↓</div>
-  <div class="sec-bridge-text">이런 자동화가 가능했던 배경 — <strong>6.9년 QA 현장</strong>에서 쌓은 경험이 있었기에 무엇을 자동화해야 할지 알았습니다.</div>
-</div>
-
+<!-- ⑤ 경력 타임라인 -->
 <section class="timeline-sec" id="timeline">
 <div class="sec-head reveal">
-  <span class="sec-n">07</span>
+  <span class="sec-n">04</span>
   <h2 class="sec-t">경력 타임라인</h2>
   <div class="sec-line"></div>
   <span class="sec-stat-badge"><span class="ssb-num">6.9</span>yr 경력</span>
 </div>
-<p class="sec-desc reveal">삼성전자 파트너사 4.3년(IoT·AI·모바일앱), IMS Mobility 2년(Cypress E2E·결제 QA), 두플 QA Part Leader — 각 항목을 클릭하면 상세 업무를 확인할 수 있습니다.</p>
+<p style="font-size:15px;color:var(--muted);line-height:1.85;margin-bottom:40px;margin-top:-24px" class="reveal">삼성전자 파트너사 4.3년(IoT·AI·모바일앱), IMS Mobility 2년(Cypress E2E·결제 QA), 두플 QA Part Leader — 클릭하면 상세 업무를 확인할 수 있습니다.</p>
 <div class="timeline reveal">
 <div class="tl-item" id="tlDuple">
 <div class="tl-dot"></div>
 <div class="tl-year">2024.11 — 2025.02</div>
 <div class="tl-title">두플 <span class="tl-expand-icon">상세</span></div>
 <div class="tl-role">QA PART LEADER</div>
-<div class="tl-desc">QA Part Leader로 테스트 전략 수립, TC 설계, 팀 리딩 담당. 스타트업 구조 변화로 3개월 후 팀 해체.</div>
+<div class="tl-desc">QA Part Leader로 테스트 전략 수립, TC 설계, 팀 리딩 담당. 릴리즈 게이트 기준 최초 수립.</div>
 <div class="tl-detail" id="tlDupleDetail"><div class="tl-detail-inner"><ul class="tl-detail-list"><li>QA 전략 수립 — 릴리즈 사이클별 테스트 범위 정의, 우선순위 기반 TC 설계 프로세스 확립</li><li>팀 리딩 — TC 리뷰, 버그 심각도 판단 기준 공유 및 에스컬레이션 교육</li><li>프로세스 개선 — QA 게이트 기준 수립으로 릴리즈 전 P1 누락 0건 달성</li></ul><div class="tl-detail-highlight">✓ QA Part Leader 승격 · 팀 TC 커버리지 향상 · 릴리즈 게이트 기준 수립</div></div></div>
 <div class="tl-tags"><span class="tl-tag">QA 리드</span><span class="tl-tag">TC 설계</span><span class="tl-tag">팀 리딩</span></div>
 </div>
@@ -944,8 +898,8 @@ footer{border-top:1px solid #ccc!important;padding:12pt 0 0!important}
 <div class="tl-year">2022.03 — 2024.02</div>
 <div class="tl-title">IMS Mobility <span class="tl-expand-icon">상세</span></div>
 <div class="tl-role">QA 대리</div>
-<div class="tl-desc">모바일앱 / 웹 / 백오피스 QA 수행. Cypress E2E 자동화. Swagger 기반 API 검증. 결제 QA 담당.</div>
-<div class="tl-detail" id="tlIMSDetail"><div class="tl-detail-inner"><ul class="tl-detail-list"><li>Cypress E2E 자동화 — 반복 회귀 테스트 스크립트 작성, CI 파이프라인 연동</li><li>결제 QA — 결제 오차 심각도 에스컬레이션 주도, PG사 연동 시나리오 전 케이스 커버</li><li>API 검증 — Swagger 기반 30+ 엔드포인트 검증</li></ul><div class="tl-detail-highlight">✓ Cypress 자동화 도입 · 결제 에스컬레이션 · API 30+ 엔드포인트 커버</div></div></div>
+<div class="tl-desc">Cypress E2E 자동화 도입. 결제 소수점 오차 P1 에스컬레이션 주도. Swagger API 30+ 엔드포인트 검증.</div>
+<div class="tl-detail" id="tlIMSDetail"><div class="tl-detail-inner"><ul class="tl-detail-list"><li>Cypress E2E 자동화 — 반복 회귀 테스트 스크립트 작성, CI 파이프라인 연동</li><li>결제 QA — 결제 오차 P1 에스컬레이션 주도, PG사 연동 시나리오 전 케이스 커버</li><li>API 검증 — Swagger 기반 30+ 엔드포인트 검증</li></ul><div class="tl-detail-highlight">✓ Cypress 자동화 도입 · 결제 에스컬레이션 · API 30+ 엔드포인트 커버</div></div></div>
 <div class="tl-tags"><span class="tl-tag">모바일앱 QA</span><span class="tl-tag">Cypress 자동화</span><span class="tl-tag">Swagger API</span><span class="tl-tag">결제 QA</span></div>
 </div>
 <div class="tl-item" id="tlMobifren">
@@ -953,21 +907,21 @@ footer{border-top:1px solid #ccc!important;padding:12pt 0 0!important}
 <div class="tl-year">2017.09 — 2022.01</div>
 <div class="tl-title">모비프렌 <span style="font-size:13px;color:var(--muted);font-weight:400">(삼성전자 파트너)</span> <span class="tl-expand-icon">상세</span></div>
 <div class="tl-role">QA 주임</div>
-<div class="tl-desc">IoT SmartThings, AI Bixby, 삼성 모바일앱 검증 담당.</div>
+<div class="tl-desc">SmartThings 50+ 디바이스 연동 검증. AI Bixby 음성 명령 엣지케이스 설계. Galaxy 전 라인업 회귀 테스트.</div>
 <div class="tl-detail" id="tlMobifrenDetail"><div class="tl-detail-inner"><ul class="tl-detail-list"><li>SmartThings IoT 검증 — 50+ 디바이스 연동 시나리오, Wi-Fi·BLE·Z-Wave 호환성 검증</li><li>Bixby AI 검증 — 음성 명령 인식률·시나리오 흐름·엣지케이스 대규모 검증</li><li>삼성 모바일앱 QA — Galaxy 플래그십 모델 전 기종 회귀 테스트</li></ul><div class="tl-detail-highlight">✓ SmartThings 50+ 디바이스 · Bixby AI 검증 · 삼성전자 파트너 4.3년</div></div></div>
 <div class="tl-tags"><span class="tl-tag">IoT SmartThings</span><span class="tl-tag">AI Bixby</span><span class="tl-tag">삼성 모바일앱</span></div>
 </div>
 </div>
 </section>
 
+<!-- ⑥ 스킬 -->
 <section class="skills-sec" id="skills">
 <div class="sec-head reveal">
-  <span class="sec-n">08</span>
+  <span class="sec-n">05</span>
   <h2 class="sec-t">스킬</h2>
   <div class="sec-line"></div>
   <span class="sec-stat-badge"><span class="ssb-num">20</span>개 스킬</span>
 </div>
-<p class="sec-desc reveal">6.9년 현장 경험 기반의 QA 스킬과 Claude MCP 자동화 역량. 각 항목에 마우스를 올리면 실제 적용 이력을 확인할 수 있습니다.</p>
 <div class="radar-wrap reveal" id="radarWrap">
   <div class="radar-svg-container">
     <div class="radar-title">// QA SKILL RADAR</div>
@@ -1017,31 +971,31 @@ footer{border-top:1px solid #ccc!important;padding:12pt 0 0!important}
 </div>
 </section>
 
+<!-- ⑦ 연락 -->
 <section class="contact-sec" id="contact">
 <div class="contact-wrap reveal">
 <div>
-<h2 class="contact-h">함께<br><span>일해요</span></h2>
-<p class="contact-sub">QA 엔지니어링, AI 자동화 도입에 관심 있는<br>팀이라면 언제든지 연락주세요.<br><br>
-<span style="font-family:var(--mono);font-size:13px;color:var(--purple)">kihyun.qa@gmail.com</span></p>
-</div>
+<h2 class="contact-h">QA 엔지니어가 필요하다면<br><span>연락주세요</span></h2>
+<p class="contact-desc">E2E 자동화 도입, MCP 기반 QA 파이프라인 구축, 릴리즈 QA 전략 수립 — 현장에서 직접 해봤습니다.</p>
+<div class="contact-email-block">kihyun.qa@gmail.com</div>
 <div class="contact-links">
-<a href="mailto:kihyun.qa@gmail.com" class="c-link">✉️ 이메일 보내기</a>
+<a href="mailto:kihyun.qa@gmail.com" class="c-link">✉️ 이메일</a>
 <a href="https://github.com/kihyunqa" target="_blank" class="c-link">GitHub ↗</a>
-<a href="https://github.com/kihyunqa/qa-portfolio" target="_blank" class="c-link">포트폴리오 레포 ↗</a>
 <a href="https://github.com/kihyunqa/qa-portfolio/blob/main/RESUME.md" target="_blank" class="c-link">이력서 ↗</a>
 <a href="https://github.com/kihyunqa/qa-portfolio/blob/main/CAREER.md" target="_blank" class="c-link">경력기술서 ↗</a>
-<a href="https://kihyunqa-1775011951168.atlassian.net" target="_blank" class="c-link">Jira 프로젝트 ↗</a>
+<a href="https://kihyunqa-1775011951168.atlassian.net" target="_blank" class="c-link">Jira ↗</a>
+</div>
 </div>
 </div>
 </section>
 <footer>
 <p>© 2026 성기현 · QA Engineer · kihyun.qa@gmail.com</p>
-<p>Built with Claude MCP · No code written · 5 MCP servers · TC 145건+ · Playwright 12 spec · Jira 연동 완료</p>
+<p>Built with Claude MCP · 5 MCP servers · TC 145건+ · Playwright 12 spec · Jira 연동</p>
 </footer>
 
 <script>
 /* ─── 브레드크럼 ─── */
-const bcMap={'stats':'00 · 숫자 현황','mcp':'01 · MCP 자동화','proof':'02 · 실제 증거','projects':'03 · 프로젝트','diagram':'04 · 파이프라인','roadmap':'05 · 로드맵','tc':'06 · 테스트케이스','timeline':'07 · 경력','skills':'08 · 스킬','contact':'09 · 연락'};
+const bcMap={'code':'00 · 코드 증거','mcp':'01 · MCP 자동화','proof':'02 · 연동 증거','tc':'03 · 테스트케이스','timeline':'04 · 경력','skills':'05 · 스킬','contact':'06 · 연락'};
 const bcEl=document.getElementById('breadcrumb'),bcSec=document.getElementById('bcSection');let bcCurrent='';
 function updateBreadcrumb(id){if(id===bcCurrent)return;bcCurrent=id;if(id&&bcMap[id]){bcSec.textContent=bcMap[id];bcEl.classList.add('visible');}else bcEl.classList.remove('visible');}
 
@@ -1053,23 +1007,23 @@ document.addEventListener('DOMContentLoaded',()=>{
   startHeroTerminal();
 });
 
-/* ─── 히어로 라이브 터미널 타이핑 ─── */
+/* ─── 히어로 터미널 타이핑 ─── */
 function startHeroTerminal(){
   const cmdEl=document.getElementById('htCmd');
   const curEl=document.getElementById('htCursor');
   const outEl=document.getElementById('htOutputs');
   if(!cmdEl||!outEl)return;
-  const cmd='로그인 TC 만들고 E2E 돌리고 Slack 알림까지 해줘';
+  const cmd='로그인 TC 만들고 E2E 돌리고 Slack 알림까지';
   const outputs=[
-    {txt:'filesystem 통합 사용함 ··· TC 생성 완료 (23건)',cls:'ht-out',delay:1800},
-    {txt:'playwright 통합 사용함 ··· login.spec.ts 실행 → 스크린샷 저장',cls:'ht-out',delay:3000},
-    {txt:'github 통합 사용함 ··· main 브랜치 커밋 완료 ✓',cls:'ht-ok',delay:4200},
-    {txt:'slack 통합 사용함 ··· 새-채널 QA 완료 알림 발송 완료 ✓',cls:'ht-ok',delay:5200},
-    {txt:'# 코드 0줄. 대화 1번. 전부 실제로 됐다.',cls:'ht-dim',delay:6400},
+    {txt:'filesystem 통합 사용함 ··· TC 23건 생성 완료',cls:'ht-out',delay:1600},
+    {txt:'playwright 통합 사용함 ··· login.spec.ts 실행 완료',cls:'ht-out',delay:2800},
+    {txt:'github 통합 사용함 ··· main 커밋 완료 ✓',cls:'ht-ok',delay:3800},
+    {txt:'slack 통합 사용함 ··· 새-채널 알림 발송 완료 ✓',cls:'ht-ok',delay:4800},
+    {txt:'# 코드 0줄. 대화 1번.',cls:'ht-dim',delay:5800},
   ];
   let ci=0;
   function typeCmd(){
-    if(ci<cmd.length){cmdEl.textContent=cmd.slice(0,++ci);setTimeout(typeCmd,ci===1?800:55);}else{
+    if(ci<cmd.length){cmdEl.textContent=cmd.slice(0,++ci);setTimeout(typeCmd,ci===1?600:55);}else{
       curEl.style.display='none';
       outputs.forEach(o=>{
         setTimeout(()=>{
@@ -1079,14 +1033,13 @@ function startHeroTerminal(){
           if(outEl.children.length>=3)outEl.scrollTop=outEl.scrollHeight;
         },o.delay);
       });
-      // 7.5초 후 재시작
       setTimeout(()=>{
         cmdEl.textContent='';ci=0;outEl.innerHTML='';curEl.style.display='';
-        setTimeout(typeCmd,500);
-      },8000);
+        setTimeout(typeCmd,400);
+      },7500);
     }
   }
-  setTimeout(typeCmd,1200);
+  setTimeout(typeCmd,1000);
 }
 
 /* ─── 스크롤 바 ─── */
@@ -1113,10 +1066,7 @@ document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 const distObs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{
     if(e.isIntersecting){
-      const hp=parseInt(document.getElementById('dashHP').textContent)||9;
-      const ng=parseInt(document.getElementById('dashNG').textContent)||8;
-      const eg=parseInt(document.getElementById('dashEG').textContent)||6;
-      const mx=Math.max(hp,ng,eg);
+      const hp=9,ng=8,eg=6,mx=9;
       setTimeout(()=>{
         document.getElementById('distBarHP').style.width=(hp/mx*100)+'%';
         document.getElementById('distBarNG').style.width=(ng/mx*100)+'%';
@@ -1141,7 +1091,7 @@ const skO=new IntersectionObserver(entries=>{
 document.querySelectorAll('.skills-wrap').forEach(el=>skO.observe(el));
 
 /* ─── 도트 네비 ─── */
-const dotSections=['stats','mcp','proof','projects','diagram','roadmap','tc','timeline','skills','contact'];
+const dotSections=['code','mcp','proof','tc','timeline','skills','contact'];
 document.querySelectorAll('.dot-nav-dot').forEach(dot=>{
   dot.addEventListener('click',()=>{
     const id=dot.dataset.target||dot.closest('.dot-nav-item').dataset.target;
@@ -1180,7 +1130,7 @@ skTip.addEventListener('mouseleave',()=>{tipTimer=setTimeout(()=>skTip.classList
 
 /* ─── 히어로 타이핑 ─── */
 const heroRoleEl=document.getElementById('heroRoleText');
-const typingTexts=['Quality Assurance Engineer','TC 설계 · 버그 분석 · MCP 자동화','6년 9개월 QA · 코드 0줄 · 결과 ∞'];
+const typingTexts=['Quality Assurance Engineer','TC 설계 · 버그 분석 · MCP 자동화','6년 9개월 QA · 코드 0줄 · Playwright 12 spec'];
 let typeIdx=0,charIdx=0,isDeleting=false;
 function typeStep(){
   const cur=typingTexts[typeIdx];
