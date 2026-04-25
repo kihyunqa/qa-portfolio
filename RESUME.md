@@ -4,47 +4,52 @@
 
 ---
 
-## 한 줄 소개
+## 한 줄
 
-6년 9개월 QA 경력, Claude MCP 자동화로 TC 생성부터 Slack 알림까지 코드 없이 전부 구현한 QA 엔지니어입니다.
-
----
-
-## 경력
-
-| 기간 | 회사 | 직급 |
-|------|------|------|
-| 2024.11 ~ 2025.02 | 두플 | QA 파트장 |
-| 2022.03 ~ 2024.02 | IMS Mobility | QA 대리 |
-| 2017.09 ~ 2022.01 | 모비프렌 (삼성전자 파트너) | QA 주임 |
+> **TC 생성 명령 한 마디 → 145건 자동 생성, Notion 기록, Slack 알림, Jira 연결 — 코드 0줄.**
 
 ---
 
-## 핵심 역량
+## 경력 요약
 
-- **QA 전문성**: TC 설계, 버그 리포팅, E2E 자동화(Playwright/Cypress), API 테스트(Swagger)
-- **AI 자동화**: Claude MCP 5개 실제 연동 — filesystem · playwright · github · notion · slack
-- **도메인 경험**: IoT(SmartThings), AI(Bixby), 모바일앱, 웹, 반도체 시뮬레이션
-- **팀 리딩**: QA 전략 수립, 릴리즈 게이트 기준 수립, TC 리뷰
+| 기간 | 회사 | 직급 | 도메인 |
+|------|------|------|--------|
+| 2024.11 ~ 2025.02 | 두플 | QA 파트장 | 반도체 공정 시뮬레이션 |
+| 2022.03 ~ 2024.02 | IMS Mobility | QA 대리 | 모바일앱 · 웹 · 결제 |
+| 2017.09 ~ 2022.01 | 모비프렌 (삼성전자 파트너) | QA 주임 | IoT · AI · 모바일 |
+
+**총 경력 6년 9개월**
 
 ---
 
-## 주요 성과
+## 핵심 수치
 
-- Claude MCP 5개 연동으로 TC 145건+ 자동 생성 (코드 0줄)
-- Playwright E2E 12개 spec 구축 (로그인·결제·보안·접근성·성능 전 영역)
-- GitHub Actions CI/CD 파이프라인 2개 운영 (TC push → Slack 자동 알림)
-- Jira + GitHub for Atlassian 연동 완료 — 커밋 기반 이슈 자동 트래킹
-- IMS Mobility: Cypress E2E 자동화 도입, 결제 오차 에스컬레이션 주도
-- 모비프렌: SmartThings 50+ 디바이스 연동 검증, AI Bixby 음성 명령 검증
+| 항목 | 수치 |
+|------|------|
+| 자동 생성 TC | **145건+** |
+| 실제 연동 MCP 서버 | **5개** (filesystem · playwright · github · notion · slack) |
+| Playwright E2E spec | **12개** |
+| 직접 작성한 코드 | **0줄** |
+| 담당 IoT 디바이스 검증 | **50개+** |
+| Swagger API 검증 엔드포인트 | **30개+** |
 
 ---
 
 ## 기술 스택
 
-`Playwright` `Cypress` `Swagger` `GitHub Actions` `Jira` `Notion`  
+`Playwright` `Cypress` `Swagger` `GitHub Actions` `Jira`  
 `Claude MCP` `Prompt Engineering` `TC 설계` `API 테스트` `E2E 자동화`
 
 ---
 
-*총 경력: 6년 9개월 · 포트폴리오: https://kihyunqa.github.io/qa-portfolio*
+## 주요 성과 (압축)
+
+- Claude MCP 5개 연동 → TC 생성~Slack 알림까지 7단계 파이프라인 대화 1번으로 실행
+- IMS Mobility: 결제 금액 소수점 오차 발견 → P1 에스컬레이션 → 릴리즈 전 수정 완료
+- 모비프렌: SmartThings 50+ 디바이스 연동 검증 · Bixby AI 음성 명령 엣지케이스 설계
+- 두플: QA 게이트 기준 최초 수립 → P1 버그 릴리즈 누락 0건 달성
+
+---
+
+*상세 업무 내역과 의사결정 배경은 경력기술서(CAREER.md) 참조*  
+*포트폴리오: https://kihyunqa.github.io/qa-portfolio*
