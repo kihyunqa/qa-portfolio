@@ -37,60 +37,18 @@ nav{position:fixed;top:0;left:0;right:0;padding:16px 56px;display:flex;align-ite
 .mobile-menu.open{display:flex}
 .mobile-menu a{font-family:var(--mono);font-size:18px;color:var(--text);text-decoration:none}
 
-/* INTRO BANNER */
-.intro-banner{
-  padding:calc(72px + 52px) 56px 56px;
-  background:var(--bg);
-  border-bottom:1px solid var(--p-border);
-  position:relative;
-  overflow:hidden;
-}
-.intro-banner::before{
-  content:'';
-  position:absolute;
-  top:-120px;left:-80px;
-  width:520px;height:520px;
-  background:radial-gradient(circle,rgba(124,58,237,0.13) 0%,transparent 70%);
-  pointer-events:none;
-}
-.intro-name{
-  font-family:var(--mono);
-  font-size:13px;
-  color:#ffffff;
-  letter-spacing:.18em;
-  margin-bottom:20px;
-  opacity:.9;
-}
-.intro-headline{
-  font-size:clamp(32px,5vw,56px);
-  font-weight:900;
-  line-height:1.1;
-  letter-spacing:-.03em;
-  margin-bottom:24px;
-  color:#ffffff;
-}
+.intro-banner{padding:calc(72px + 52px) 56px 56px;background:var(--bg);border-bottom:1px solid var(--p-border);position:relative;overflow:hidden;}
+.intro-banner::before{content:'';position:absolute;top:-120px;left:-80px;width:520px;height:520px;background:radial-gradient(circle,rgba(124,58,237,0.13) 0%,transparent 70%);pointer-events:none;}
+.intro-name{font-family:var(--mono);font-size:13px;color:#ffffff;letter-spacing:.18em;margin-bottom:20px;opacity:.9;}
+.intro-headline{font-size:clamp(32px,5vw,56px);font-weight:900;line-height:1.1;letter-spacing:-.03em;margin-bottom:24px;color:#ffffff;}
 .intro-headline em{color:var(--purple);font-style:normal}
-.intro-sub{
-  font-size:17px;
-  color:var(--muted);
-  line-height:1.9;
-  max-width:660px;
-  margin-bottom:32px;
-}
+.intro-sub{font-size:17px;color:var(--muted);line-height:1.9;max-width:660px;margin-bottom:32px;}
 .intro-sub strong{color:#ffffff;font-weight:600}
 .intro-tags{display:flex;flex-wrap:wrap;gap:8px}
-.intro-tag{
-  font-family:var(--mono);font-size:11px;padding:5px 14px;
-  border:1px solid var(--p-border);color:var(--dim);letter-spacing:.06em;
-}
-.intro-tag.hl{
-  background:rgba(168,85,247,0.12);border-color:rgba(168,85,247,0.4);color:var(--purple);
-}
-.intro-tag.hl-green{
-  background:var(--g-muted);border-color:var(--g-border);color:var(--green3);
-}
+.intro-tag{font-family:var(--mono);font-size:11px;padding:5px 14px;border:1px solid var(--p-border);color:var(--dim);letter-spacing:.06em;}
+.intro-tag.hl{background:rgba(168,85,247,0.12);border-color:rgba(168,85,247,0.4);color:var(--purple);}
+.intro-tag.hl-green{background:var(--g-muted);border-color:var(--g-border);color:var(--green3);}
 
-/* SECTIONS */
 section{padding:80px 56px;position:relative;z-index:2}
 .sec-head{display:flex;align-items:center;gap:14px;margin-bottom:48px}
 .sec-n{font-family:var(--mono);font-size:11px;color:var(--purple);opacity:.5}
@@ -103,37 +61,18 @@ section{padding:80px 56px;position:relative;z-index:2}
 .sec-stat-badge.ssb-green{background:var(--g-muted);border-color:var(--g-border);color:var(--green3)}
 .sec-stat-badge.ssb-green .ssb-num{color:var(--green3)}
 
-/* 섹션 구분 강조 — 딥그린 섹션용 */
-.sec-green-accent{
-  position:absolute;top:0;left:0;right:0;height:2px;
-  background:linear-gradient(90deg,var(--green2),var(--green),transparent);
-}
+.sec-green-accent{position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--green2),var(--green),transparent);}
 
-/* BADGES */
 .badge{display:inline-flex;align-items:center;gap:5px;font-family:var(--mono);font-size:10px;font-weight:500;padding:3px 10px;letter-spacing:.08em}
 .badge-done{background:rgba(168,85,247,.15);color:var(--purple);border:1px solid var(--p-border)}
 .badge-done::before{content:'●';font-size:6px;color:var(--purple)}
 .badge-live{background:var(--g-muted);color:var(--green3);border:1px solid var(--g-border)}
 .badge-live::before{content:'●';font-size:6px;color:var(--green)}
 
-/* BRIDGE — 섹션 연결 문장 */
-.bridge{
-  font-size:16px;
-  color:var(--muted);
-  line-height:1.85;
-  padding:16px 22px;
-  border-left:2px solid var(--purple);
-  background:rgba(168,85,247,0.04);
-  margin-bottom:40px;
-  margin-top:-28px;
-}
-.bridge.green{
-  border-left-color:var(--green);
-  background:var(--g-muted);
-}
+.bridge{font-size:16px;color:var(--muted);line-height:1.85;padding:16px 22px;border-left:2px solid var(--purple);background:rgba(168,85,247,0.04);margin-bottom:40px;margin-top:-28px;}
+.bridge.green{border-left-color:var(--green);background:var(--g-muted);}
 .bridge strong{color:#ffffff;font-weight:600}
 
-/* TIMELINE */
 .timeline-sec{background:var(--bg2);border-top:1px solid var(--p-border)}
 .timeline{position:relative;padding-left:32px}
 .timeline::before{content:'';position:absolute;left:0;top:8px;bottom:8px;width:1px;background:var(--p-border)}
@@ -156,19 +95,9 @@ section{padding:80px 56px;position:relative;z-index:2}
 .tl-detail-list{list-style:none;display:flex;flex-direction:column;gap:10px}
 .tl-detail-list li{font-size:15px;color:var(--muted);line-height:1.8;display:flex;align-items:flex-start;gap:8px}
 .tl-detail-list li::before{content:'▸';color:var(--purple);font-size:10px;flex-shrink:0;margin-top:2px}
-.tl-bridge-bottom{
-  margin-top:40px;
-  padding:18px 22px;
-  border:1px solid var(--g-border);
-  border-left:3px solid var(--green);
-  background:var(--g-muted);
-  font-size:16px;
-  color:var(--muted);
-  line-height:1.8;
-}
+.tl-bridge-bottom{margin-top:40px;padding:18px 22px;border:1px solid var(--g-border);border-left:3px solid var(--green);background:var(--g-muted);font-size:16px;color:var(--muted);line-height:1.8;}
 .tl-bridge-bottom strong{color:var(--green3);font-weight:600}
 
-/* MCP */
 .mcp-sec{background:var(--bg);border-top:1px solid var(--g-border);position:relative}
 .mcp-context-banner{background:var(--bg3);border:1px solid var(--p-border);border-left:3px solid var(--purple);padding:18px 22px;margin-bottom:40px}
 .mcp-context-banner p{font-size:16px;color:var(--muted);line-height:1.85}
@@ -191,7 +120,23 @@ section{padding:80px 56px;position:relative;z-index:2}
 .mc-name{font-family:var(--mono);font-size:12px;font-weight:500;color:var(--text);margin-bottom:6px;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
 .mc-desc{font-size:14px;color:var(--muted);line-height:1.65}
 
-/* TERMINAL */
+/* 파이프라인 다이어그램 */
+.pipeline-diagram{margin-top:40px;border:1px solid var(--g-border);background:var(--bg2);padding:28px 24px;}
+.pd-label{font-family:var(--mono);font-size:10px;color:var(--green);letter-spacing:.18em;margin-bottom:20px;}
+.pd-row{display:flex;align-items:center;gap:0;margin-bottom:12px;flex-wrap:wrap;gap:8px;}
+.pd-section{font-family:var(--mono);font-size:9px;color:var(--dim);letter-spacing:.15em;margin:16px 0 10px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.06);}
+.pd-section:first-of-type{margin-top:0;padding-top:0;border-top:none;}
+.pd-node{font-family:var(--mono);font-size:11px;padding:7px 14px;border:1px solid;display:inline-flex;flex-direction:column;gap:2px;}
+.pd-node-title{font-size:11px;font-weight:500;}
+.pd-node-sub{font-size:9px;opacity:.7;}
+.pd-node.trigger{border-color:var(--p-border);color:var(--muted);background:rgba(168,85,247,0.05);}
+.pd-node.exec{border-color:var(--g-border);color:var(--green3);background:rgba(5,150,105,0.06);}
+.pd-node.output{border-color:rgba(5,150,105,0.5);color:var(--green3);background:rgba(5,150,105,0.12);}
+.pd-arrow{color:var(--dim);font-size:11px;padding:0 2px;flex-shrink:0;}
+.pd-legend{display:flex;gap:20px;margin-top:20px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.06);flex-wrap:wrap;}
+.pd-legend-item{display:flex;align-items:center;gap:7px;font-family:var(--mono);font-size:10px;color:var(--dim);}
+.pd-legend-dot{width:8px;height:8px;border:1px solid;flex-shrink:0;}
+
 .terminal{background:#020b06;border:1px solid var(--g-border);font-family:var(--mono);font-size:12px;line-height:1.9;overflow:hidden}
 .t-bar{background:#031a0e;padding:10px 16px;border-bottom:1px solid var(--g-border);display:flex;align-items:center;gap:8px}
 .t-dot{width:10px;height:10px;border-radius:50%}
@@ -206,7 +151,6 @@ section{padding:80px 56px;position:relative;z-index:2}
 .t-cursor{display:inline-block;width:7px;height:13px;background:var(--green);vertical-align:middle;animation:blink 1s infinite}
 @keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}
 
-/* CODE SHOWCASE */
 .code-showcase{background:var(--bg2);border-top:1px solid var(--g-border);position:relative}
 .code-showcase-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--g-border)}
 .cs-panel{background:var(--bg);padding:0;overflow:hidden}
@@ -217,7 +161,6 @@ section{padding:80px 56px;position:relative;z-index:2}
 .cs-link:hover{color:var(--green3)}
 .cs-body{padding:16px 18px;font-family:var(--mono);font-size:11.5px;line-height:1.85;overflow-x:auto}
 
-/* PROOF */
 .proof-sec{background:var(--bg3);border-top:1px solid var(--g-border);position:relative}
 .proof-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-bottom:32px}
 .proof-card{background:var(--bg2);border:1px solid var(--p-border);padding:24px;position:relative;overflow:hidden}
@@ -236,7 +179,6 @@ section{padding:80px 56px;position:relative;z-index:2}
 .proof-screenshot-caption{font-family:var(--mono);font-size:10px;color:var(--dim);padding:6px 10px;letter-spacing:.06em;border-top:1px solid var(--p-border)}
 .proof-screenshot-jira img{height:200px}
 
-/* COMMIT CARD */
 .commit-card{background:var(--bg2);border:1px solid var(--g-border);padding:28px;margin-bottom:32px}
 .commit-card-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:12px}
 .commit-card-title{font-family:var(--mono);font-size:11px;color:var(--green3);letter-spacing:.15em}
@@ -249,7 +191,6 @@ section{padding:80px 56px;position:relative;z-index:2}
 .commit-footer{display:flex;align-items:center;justify-content:space-between;padding-top:14px;border-top:1px solid var(--g-border);flex-wrap:wrap;gap:8px}
 .commit-footer-note{font-family:var(--mono);font-size:11px;color:var(--dim)}
 
-/* TC SECTION */
 .tc-search-wrap{display:flex;align-items:center;gap:8px;margin-bottom:12px;flex-wrap:wrap}
 .tc-search-input{font-family:var(--mono);font-size:11px;background:var(--bg3);border:1px solid var(--p-border);color:var(--text);padding:6px 12px;width:280px;letter-spacing:.04em;outline:none}
 .tc-search-input:focus{border-color:var(--purple)}
@@ -320,7 +261,6 @@ section{padding:80px 56px;position:relative;z-index:2}
 .tc-dist-bar-fill.eg{background:var(--wip)}
 .tc-dist-bar-val{font-family:var(--mono);font-size:13px;color:var(--muted);min-width:32px}
 
-/* SKILLS */
 .skills-sec{border-top:1px solid var(--p-border)}
 .skills-wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:48px}
 .sk-group-title{font-family:var(--mono);font-size:10px;color:var(--purple);letter-spacing:.2em;margin-bottom:18px}
@@ -339,7 +279,6 @@ section{padding:80px 56px;position:relative;z-index:2}
 .reveal{opacity:0;transition:opacity .4s ease}
 .reveal.visible{opacity:1}
 
-/* RADAR */
 .radar-wrap{display:grid;grid-template-columns:300px 1fr;gap:48px;align-items:center;margin-bottom:48px;padding:28px;border:1px solid var(--p-border);background:var(--bg2)}
 .radar-svg-container{display:flex;flex-direction:column;align-items:center;gap:14px}
 .radar-title{font-family:var(--mono);font-size:10px;color:var(--purple);letter-spacing:.15em;text-align:center}
@@ -396,6 +335,7 @@ footer{padding:16px 20px;flex-direction:column;gap:4px}
 .tc-search-input{width:100%}
 .tc-dashboard{grid-template-columns:repeat(2,1fr)}
 .code-showcase-grid{grid-template-columns:1fr}
+.pd-row{gap:4px;}
 }
 
 @media print{
@@ -504,7 +444,6 @@ footer{border-top:1px solid #ccc!important;padding:12pt 0 0!important}
 <div class="tl-tags"><span class="tl-tag">IoT SmartThings</span><span class="tl-tag">AI Bixby</span><span class="tl-tag">삼성 모바일앱</span><span class="tl-tag">4년 4개월</span></div>
 </div>
 </div>
-<!-- 경력 → MCP 브릿지 -->
 <div class="tl-bridge-bottom reveal">
   6.9년간 반복되는 작업들이 보였습니다. TC 작성, 결과 문서화, 팀 알림, 이슈 연결 — 이것들을 <strong>직접 자동화하기로 했습니다.</strong>
 </div>
@@ -561,6 +500,40 @@ footer{border-top:1px solid #ccc!important;padding:12pt 0 0!important}
 <div class="t-line" style="margin-top:8px"><span class="t-comment"># 코드 0줄. 대화 1번. MCP 5개. TC 145건+.</span></div>
 <div class="t-line" style="margin-top:4px"><span class="t-prompt">❯</span><span class="t-cursor"></span></div>
 </div>
+</div>
+
+<!-- 파이프라인 다이어그램 -->
+<div class="pipeline-diagram reveal">
+  <div class="pd-label">// QA AUTOMATION PIPELINE · 전체 흐름</div>
+  <div class="pd-section">TRIGGER — 입력</div>
+  <div class="pd-row">
+    <div class="pd-node trigger"><span class="pd-node-title">기능 명세 입력</span><span class="pd-node-sub">자연어 명령</span></div>
+    <span class="pd-arrow">→</span>
+    <div class="pd-node trigger"><span class="pd-node-title">Claude Desktop</span><span class="pd-node-sub">MCP 5개 연결</span></div>
+    <span class="pd-arrow">→</span>
+    <div class="pd-node trigger"><span class="pd-node-title">MCP 라우팅</span><span class="pd-node-sub">5개 서버 분배</span></div>
+  </div>
+  <div class="pd-section">EXECUTION — 실행</div>
+  <div class="pd-row">
+    <div class="pd-node exec"><span class="pd-node-title">TC 자동 생성</span><span class="pd-node-sub">filesystem MCP</span></div>
+    <span class="pd-arrow">→</span>
+    <div class="pd-node exec"><span class="pd-node-title">E2E 테스트</span><span class="pd-node-sub">playwright MCP</span></div>
+    <span class="pd-arrow">→</span>
+    <div class="pd-node exec"><span class="pd-node-title">GitHub 커밋</span><span class="pd-node-sub">github MCP</span></div>
+  </div>
+  <div class="pd-section">OUTPUT — 문서화 &amp; 연동 (실제 연결)</div>
+  <div class="pd-row">
+    <div class="pd-node output"><span class="pd-node-title">Notion 문서화</span><span class="pd-node-sub">notion MCP 실제</span></div>
+    <span class="pd-arrow">→</span>
+    <div class="pd-node output"><span class="pd-node-title">Slack 알림</span><span class="pd-node-sub">slack MCP 실제</span></div>
+    <span class="pd-arrow">→</span>
+    <div class="pd-node output"><span class="pd-node-title">Jira 트래킹</span><span class="pd-node-sub">GitHub for Atlassian</span></div>
+  </div>
+  <div class="pd-legend">
+    <div class="pd-legend-item"><div class="pd-legend-dot" style="border-color:var(--p-border);background:rgba(168,85,247,0.05)"></div>입력·라우팅</div>
+    <div class="pd-legend-item"><div class="pd-legend-dot" style="border-color:var(--g-border);background:rgba(5,150,105,0.06)"></div>실행 단계</div>
+    <div class="pd-legend-item"><div class="pd-legend-dot" style="border-color:rgba(5,150,105,0.5);background:rgba(5,150,105,0.12)"></div>출력·실제 연동</div>
+  </div>
 </div>
 </section>
 
