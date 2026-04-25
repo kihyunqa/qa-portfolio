@@ -13,14 +13,14 @@
 --bg:#08060f;--bg2:#0d0a18;--bg3:#110d1f;
 --purple:#a855f7;--purple2:#7c3aed;--purple3:#c084fc;
 --p-border:rgba(168,85,247,0.22);--p-muted:rgba(168,85,247,0.08);
---text:#f0eaff;--muted:#e8e2f8;--dim:#cdc3e8;
+--text:#f0eaff;--muted:#f0ecff;--dim:#ddd6f5;
 --mono:'DM Mono',ui-monospace,monospace;
 --sans:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;
 --wip:#f59e0b;--green:#10b981;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:var(--sans);font-weight:300;font-size:16px;overflow-x:hidden}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-weight:300;font-size:17px;overflow-x:hidden}
 
 .scroll-bar{position:fixed;top:0;left:0;height:3px;z-index:9999;width:0%;background:linear-gradient(90deg,#7c3aed,#a855f7)}
 
@@ -34,6 +34,73 @@ nav{position:fixed;top:0;left:0;right:0;padding:16px 56px;display:flex;align-ite
 .mobile-menu{display:none;position:fixed;inset:0;background:rgba(8,6,15,.98);z-index:99;flex-direction:column;align-items:center;justify-content:center;gap:32px}
 .mobile-menu.open{display:flex}
 .mobile-menu a{font-family:var(--mono);font-size:18px;color:var(--text);text-decoration:none}
+
+/* INTRO BANNER */
+.intro-banner{
+  padding:72px 56px 56px;
+  padding-top:calc(72px + 52px);
+  background:var(--bg);
+  border-bottom:1px solid var(--p-border);
+  position:relative;
+  overflow:hidden;
+}
+.intro-banner::before{
+  content:'';
+  position:absolute;
+  top:-120px;left:-80px;
+  width:520px;height:520px;
+  background:radial-gradient(circle,rgba(124,58,237,0.13) 0%,transparent 70%);
+  pointer-events:none;
+}
+.intro-name{
+  font-family:var(--mono);
+  font-size:13px;
+  color:var(--purple);
+  letter-spacing:.18em;
+  margin-bottom:20px;
+  opacity:.85;
+}
+.intro-headline{
+  font-size:clamp(32px,5vw,56px);
+  font-weight:900;
+  line-height:1.1;
+  letter-spacing:-.03em;
+  margin-bottom:24px;
+  color:#ffffff;
+}
+.intro-headline em{
+  color:var(--purple);
+  font-style:normal;
+}
+.intro-sub{
+  font-size:16px;
+  color:var(--dim);
+  line-height:1.9;
+  max-width:640px;
+  margin-bottom:32px;
+}
+.intro-sub strong{
+  color:var(--text);
+  font-weight:500;
+}
+.intro-tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+.intro-tag{
+  font-family:var(--mono);
+  font-size:11px;
+  padding:5px 14px;
+  border:1px solid var(--p-border);
+  color:var(--dim);
+  letter-spacing:.06em;
+}
+.intro-tag.hl{
+  background:rgba(168,85,247,0.12);
+  border-color:rgba(168,85,247,0.4);
+  color:var(--purple);
+}
 
 /* SECTIONS */
 section{padding:80px 56px;position:relative;z-index:2}
@@ -301,6 +368,8 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:
 @media(max-width:1200px){.mcp-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:900px){
 nav{padding:14px 20px}.nav-links{display:none}.ham{display:flex}
+.intro-banner{padding:calc(60px + 52px) 20px 40px}
+.intro-headline{font-size:clamp(26px,8vw,40px)}
 section{padding:56px 20px}
 .mcp-top{grid-template-columns:1fr;gap:32px}.mcp-grid{grid-template-columns:repeat(2,1fr)}
 .skills-wrap{grid-template-columns:1fr;gap:28px}
@@ -325,7 +394,7 @@ footer{padding:16px 20px;flex-direction:column;gap:4px}
 @page{margin:18mm 16mm;size:A4}
 *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
 body{background:#fff!important;color:#111!important;font-size:11pt;line-height:1.6}
-nav,.scroll-bar,#dot-nav,#breadcrumb,.mobile-menu,.ham,.sk-tooltip,.tc-search-wrap,.tc-filter,.tc-row-hint,.tc-bulk-actions,.commit-bar-area,.code-showcase{display:none!important}
+nav,.scroll-bar,#dot-nav,#breadcrumb,.mobile-menu,.ham,.sk-tooltip,.tc-search-wrap,.tc-filter,.tc-row-hint,.tc-bulk-actions,.commit-bar-area,.code-showcase,.intro-banner{display:none!important}
 section{padding:24pt 0!important;break-inside:avoid}
 .proof-grid{grid-template-columns:1fr!important}
 .radar-wrap{grid-template-columns:1fr!important;gap:16pt!important}
@@ -371,24 +440,35 @@ footer{border-top:1px solid #ccc!important;padding:12pt 0 0!important}
 </ul>
 <button class="ham" id="ham" onclick="toggleMenu()"><span></span><span></span><span></span></button>
 </nav>
-<div class="mobile-menu" id="mobileMenu">
-<a href="#timeline" onclick="toggleMenu()">경력</a>
-<a href="#mcp" onclick="toggleMenu()">MCP 자동화</a>
-<a href="#code" onclick="toggleMenu()">코드 증거</a>
-<a href="#proof" onclick="toggleMenu()">연동 증거</a>
-<a href="#tc" onclick="toggleMenu()">테스트케이스</a>
-<a href="#contact" onclick="toggleMenu()">연락</a>
+
+<!-- INTRO BANNER -->
+<div class="intro-banner">
+  <div class="intro-name reveal">성기현 · QA ENGINEER</div>
+  <h1 class="intro-headline reveal">6년 9개월,<br>테스트를 <em>자동화</em>하다</h1>
+  <p class="intro-sub reveal">
+    <strong>삼성전자 파트너</strong>에서 AI·IoT 검증, 모빌리티 결제 QA, 반도체 스타트업 파트 리드까지.<br>
+    그 경험을 바탕으로 <strong>Claude MCP 5개</strong>를 직접 연동해 TC 145건+를 자동 생성했습니다.
+  </p>
+  <div class="intro-tags reveal">
+    <span class="intro-tag hl">MCP 5개 실제 연동</span>
+    <span class="intro-tag hl">TC 145건+ 자동 생성</span>
+    <span class="intro-tag hl">코드 0줄</span>
+    <span class="intro-tag">삼성전자 파트너 4.3년</span>
+    <span class="intro-tag">Cypress E2E</span>
+    <span class="intro-tag">Swagger API 검증</span>
+    <span class="intro-tag">QA Part Leader</span>
+  </div>
 </div>
 
-<!-- ① 경력 타임라인 — QA 내공 먼저 -->
-<section class="timeline-sec" id="timeline" style="padding-top:100px">
+<!-- ① 경력 타임라인 -->
+<section class="timeline-sec" id="timeline">
 <div class="sec-head reveal">
   <span class="sec-n">01</span>
   <h2 class="sec-t">6년 9개월 QA 경력</h2>
   <div class="sec-line"></div>
   <span class="sec-stat-badge"><span class="ssb-num">6.9</span>yr</span>
 </div>
-<p style="font-size:15px;color:var(--muted);line-height:1.85;margin-bottom:40px;margin-top:-24px" class="reveal">삼성전자 파트너사 4.3년(IoT·AI·모바일앱) → IMS Mobility 2년(Cypress E2E·결제 검증) → 두플 QA Part Leader. 이 경력이 있어서 MCP 자동화가 의미 있습니다. 클릭하면 상세 업무를 확인할 수 있습니다.</p>
+<p style="font-size:16px;color:var(--muted);line-height:1.85;margin-bottom:40px;margin-top:-24px" class="reveal">삼성전자 파트너사 4.3년(IoT·AI·모바일앱) → IMS Mobility 2년(Cypress E2E·결제 검증) → 두플 QA Part Leader. 이 경력이 있어서 MCP 자동화가 의미 있습니다. 클릭하면 상세 업무를 확인할 수 있습니다.</p>
 <div class="timeline reveal">
 <div class="tl-item" id="tlDuple">
 <div class="tl-dot"></div>
@@ -420,7 +500,7 @@ footer{border-top:1px solid #ccc!important;padding:12pt 0 0!important}
 </div>
 </section>
 
-<!-- ② MCP 자동화 — QA 내공 바탕으로 만든 해결책 -->
+<!-- ② MCP 자동화 -->
 <section class="mcp-sec" id="mcp">
 <div class="sec-head reveal">
   <span class="sec-n">02</span>
@@ -605,7 +685,7 @@ footer{border-top:1px solid #ccc!important;padding:12pt 0 0!important}
   <div class="sec-line"></div>
   <span class="sec-stat-badge"><span class="ssb-num">19</span>건 표시</span>
 </div>
-<p style="font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:28px;margin-top:-24px" class="reveal">MCP로 자동 생성된 TC. 각 행을 클릭하면 <strong style="color:var(--text)">설계 의도 + 전제조건 + 스텝 + 기대 결과</strong>를 확인할 수 있습니다.</p>
+<p style="font-size:16px;color:var(--muted);line-height:1.8;margin-bottom:28px;margin-top:-24px" class="reveal">MCP로 자동 생성된 TC. 각 행을 클릭하면 <strong style="color:var(--text)">설계 의도 + 전제조건 + 스텝 + 기대 결과</strong>를 확인할 수 있습니다.</p>
 <div class="tc-dashboard reveal">
   <div class="tc-dash-card"><div class="tc-dash-num">145<span style="font-size:14px">+</span></div><div class="tc-dash-label">총 TC 건수</div><div class="tc-dash-sub">MCP 자동 생성</div></div>
   <div class="tc-dash-card"><div class="tc-dash-num" id="dashHP">9</div><div class="tc-dash-label">해피패스</div><div class="tc-dash-sub">정상 흐름 검증</div></div>

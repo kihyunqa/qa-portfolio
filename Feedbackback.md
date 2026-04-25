@@ -4,7 +4,7 @@
 ## ⚠️ 절대 규칙
 
 * 허구 금지: 이력서/경력기술서에 없는 내용 절대 추가 금지. 수치·사례·성과 전부 실제 문서 기준으로만.
-* 히어로 섹션 제거됨: 건드리지 말 것
+* hero 섹션 제거됨 + intro-banner로 교체됨: 건드리지 말 것
 * 전문용어 금지: 에스컬레이션, 도입, 릴리즈 게이트 수립 등 이력서에 없는 표현 사용 금지
 * 기준 문서: 성기현_이력서.pdf / 성기현_경력기술서.pdf
 
@@ -12,23 +12,30 @@
 
 * 포트폴리오: https://kihyunqa.github.io/qa-portfolio/
 * GitHub: https://github.com/kihyunqa/qa-portfolio
-* index.html 단일 파일 (CSS/JS 전부 포함), 사용자가 직접 붙여넣기로 제공
+* index.html 단일 파일 (CSS/JS 전부 포함)
 
-## 확정된 구조 (이 순서로 고정)
+## 현재 확정된 구조 (이 순서로 고정)
 
+0. **인트로 배너** (intro-banner) — nav 아래, 경력 섹션 위. 이름/헤드라인/태그만. 오글거리지 않게.
 1. 경력 타임라인 — QA 6.9년 배경, MCP 자동화를 왜 만들었는지 맥락
 2. MCP로 만든 것 — TC, 연동 증거, 코드 증거 (핵심·증거, 비중 크게)
-3. 스킬
-4. 연락
+3. 코드 증거
+4. 연동 증거
+5. TC 테이블
+6. 스킬
+7. 연락
 
-* hero 섹션 제거
-* TC 테이블, 연동 증거, 코드 증거는 핵심이므로 유지
-* MCP 섹션이 포트폴리오의 본론
+## 완료된 작업 (건드리지 말 것)
+
+* [x] hero 섹션 제거 → intro-banner로 교체
+* [x] intro-banner: 이름·헤드라인·서브텍스트·태그 구성, 보라색 glow 배경
+* [x] --muted: #e8e2f8 → #f0ecff (밝게)
+* [x] --dim: #cdc3e8 → #ddd6f5 (밝게)
+* [x] body font-size: 16px → 17px (상향)
+* [x] 섹션 내 설명 텍스트 font-size 15px → 16px
 
 ## 미완료 작업
 
-* [ ] 가독성: --muted, --dim 색상 밝게, 본문 font-size 1-2px 상향
-* [ ] 이름 흰색: h1.hero-name 전체 color: #ffffff 확인
 * [ ] 이력서 vs 경력기술서 차별화 (나중에 별도 진행)
 
 ## 실제 경력 (이력서 기준 - 이것만 쓸 것)
@@ -60,5 +67,6 @@
 
 ## 주의사항
 
-* present_files로 파일 저장 반드시 확인
-* index.html은 사용자가 직접 붙여넣기로 제공
+* push_files로 index.html + Feedbackback.md 항상 같이 push할 것 (인수인계 최신화)
+* index.html은 101KB+ 단일 파일. SHA 없이 push_files로 처리.
+* GitHub Pages 반영은 1-2분 소요
