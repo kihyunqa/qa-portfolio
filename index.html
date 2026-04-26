@@ -283,18 +283,20 @@ section{padding:80px 56px;position:relative;z-index:2}
 .reveal{opacity:0;transition:opacity .4s ease}
 .reveal.visible{opacity:1}
 
-/* footer CTA — 포트폴리오 무드 통일 (터미널 스타일) */
-.footer-cta{padding:56px 56px 0;border-top:1px solid var(--g-border);background:var(--bg2);}
-.footer-cta-inner{max-width:640px;}
+/* footer CTA */
+.footer-cta{padding:64px 56px 0;border-top:2px solid var(--green);background:var(--bg2);position:relative;overflow:hidden;}
+.footer-cta::before{content:'';position:absolute;top:-80px;right:-60px;width:360px;height:360px;background:radial-gradient(circle,rgba(5,150,105,0.07) 0%,transparent 70%);pointer-events:none;}
+.footer-cta-inner{max-width:680px;position:relative;}
 .footer-cta-prefix{font-family:var(--mono);font-size:10px;color:var(--green);letter-spacing:.2em;margin-bottom:16px;}
-.footer-cta-title{font-size:22px;font-weight:700;color:var(--text);margin-bottom:8px;letter-spacing:-.02em;}
+.footer-cta-title{font-size:26px;font-weight:800;color:var(--text);margin-bottom:10px;letter-spacing:-.02em;line-height:1.2;}
 .footer-cta-title em{color:var(--green3);font-style:normal;}
-.footer-cta-sub{font-family:var(--mono);font-size:13px;color:var(--muted);margin-bottom:28px;line-height:1.7;}
-.footer-cta-links{display:flex;gap:10px;flex-wrap:wrap;}
-.footer-cta-btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12px;padding:10px 22px;border:1px solid var(--g-border);color:var(--green3);text-decoration:none;letter-spacing:.06em;transition:background .15s;}
+.footer-cta-sub{font-family:var(--mono);font-size:13px;color:var(--muted);margin-bottom:32px;line-height:1.85;}
+.footer-cta-sub span{color:var(--green3);}
+.footer-cta-links{display:flex;gap:12px;flex-wrap:wrap;}
+.footer-cta-btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12px;padding:12px 26px;border:1px solid var(--g-border);color:var(--green3);text-decoration:none;letter-spacing:.06em;transition:background .15s,border-color .15s;}
 .footer-cta-btn:hover{background:var(--g-muted);}
-.footer-cta-btn.primary{border-color:var(--green);background:rgba(5,150,105,0.1);color:var(--green3);}
-.footer-cta-btn.primary:hover{background:rgba(5,150,105,0.18);}
+.footer-cta-btn.primary{border-color:var(--green);background:rgba(5,150,105,0.14);color:#ffffff;font-size:13px;padding:14px 32px;}
+.footer-cta-btn.primary:hover{background:rgba(5,150,105,0.24);border-color:var(--green3);}
 .footer-cta-btn.sec{border-color:var(--p-border);color:var(--muted);}
 .footer-cta-btn.sec:hover{border-color:var(--purple);color:var(--purple);background:var(--p-muted);}
 
@@ -346,6 +348,7 @@ footer{padding:16px 20px;flex-direction:column;gap:4px}
 .pd-node{width:100%;}
 .footer-cta{padding:40px 20px 0;}
 .footer-cta-links{flex-direction:column;align-items:flex-start;}
+.footer-cta-btn.primary{width:100%;justify-content:center;}
 }
 
 @media print{
@@ -400,14 +403,14 @@ footer{border-top:1px solid #ccc!important;padding:12pt 0 0!important}
 <!-- INTRO BANNER -->
 <div class="intro-banner">
   <div class="intro-name reveal">성기현 · QA ENGINEER</div>
-  <h1 class="intro-headline reveal">TC 생성, Notion, Slack, Jira까지<br><em>MCP 5개로 직접 연결했습니다</em></h1>
+  <h1 class="intro-headline reveal">대화 한 번으로<br>TC 생성부터 Notion 문서화,<br>Slack 알림, Jira 연동까지<br><em>전부 자동으로 완료됩니다</em></h1>
   <p class="intro-sub reveal">
-    Claude Desktop에 MCP 서버 5개를 직접 연결했습니다. TC 생성 → E2E 테스트 → GitHub 커밋 → 버그 리포트 작성 → Notion 페이지 자동 생성 → Slack 채널 알림 → Jira 이슈 트래킹까지, <strong>코드 한 줄 없이 대화만으로.</strong> notion·slack MCP 실제 연동, GitHub for Atlassian을 통한 Jira 연동까지 완료했습니다.
+    Claude Desktop에 MCP 서버 5개를 직접 연결했습니다. TC 생성 → E2E 테스트 → GitHub 커밋 → Notion 페이지 자동 생성 → Slack 채널 알림 → Jira 이슈 트래킹까지, <strong>코드 한 줄 없이 대화만으로.</strong> notion·slack MCP 실제 연동, GitHub for Atlassian을 통한 Jira 연동까지 완료했습니다.
   </p>
   <div class="intro-tags reveal">
     <span class="intro-tag hl">MCP 5개 실제 연동</span>
     <span class="intro-tag hl-green">TC 145건+ 자동 생성</span>
-    <span class="intro-tag hl-green">코드 0줄</span>
+    <span class="intro-tag hl-green">MCP 자동화 파이프라인</span>
     <span class="intro-tag">삼성전자 파트너 4.3년</span>
     <span class="intro-tag">Cypress E2E</span>
     <span class="intro-tag">Swagger API 검증</span>
@@ -506,12 +509,12 @@ footer{border-top:1px solid #ccc!important;padding:12pt 0 0!important}
 <div class="t-line"><span class="t-out">notion 통합 사용함 ··· QA Portfolio 페이지 TC 자동 기록 완료 ✓</span></div>
 <div class="t-line"><span class="t-out">slack 통합 사용함 ··· 새-채널 QA 완료 알림 발송 완료 ✓</span></div>
 <div class="t-line"><span class="t-out">Jira 연동 ··· </span><span class="t-ok">GitHub for Atlassian FULL ACCESS 연동 완료 ✓</span></div>
-<div class="t-line" style="margin-top:8px"><span class="t-comment"># 코드 0줄. 대화 1번. MCP 5개. TC 145건+.</span></div>
+<div class="t-line" style="margin-top:8px"><span class="t-comment"># MCP가 자동으로 생성·커밋한 코드. 대화 1번. MCP 5개. TC 145건+.</span></div>
 <div class="t-line" style="margin-top:4px"><span class="t-prompt">❯</span><span class="t-cursor"></span></div>
 </div>
 </div>
 
-<!-- 파이프라인 다이어그램 — 연결 설명 강화 -->
+<!-- 파이프라인 다이어그램 -->
 <div class="pipeline-diagram-wrap reveal">
   <div class="pipeline-diagram-intro">
     <div>
@@ -563,7 +566,7 @@ footer{border-top:1px solid #ccc!important;padding:12pt 0 0!important}
   <div class="sec-line green"></div>
   <span class="sec-stat-badge ssb-green"><span class="ssb-num">80</span>개+ 파일</span>
 </div>
-<div class="bridge green reveal">위에서 본 파이프라인이 실제로 동작하는 코드입니다. GitHub에 커밋된 파일을 직접 확인할 수 있습니다.</div>
+<div class="bridge green reveal">위 파이프라인이 실제로 동작하는 코드입니다. MCP가 자동으로 생성하고 GitHub에 커밋한 파일을 직접 확인할 수 있습니다.</div>
 <div class="code-showcase-grid reveal">
   <div class="cs-panel">
     <div class="cs-header">
@@ -815,12 +818,12 @@ footer{border-top:1px solid #ccc!important;padding:12pt 0 0!important}
 </div>
 </section>
 
-<!-- footer CTA — 터미널 무드 통일 -->
+<!-- footer CTA -->
 <div class="footer-cta reveal">
   <div class="footer-cta-inner">
     <div class="footer-cta-prefix">// OPEN TO WORK · QA ENGINEER</div>
     <h2 class="footer-cta-title">현재 <em>QA 포지션</em>으로 구직 중입니다</h2>
-    <p class="footer-cta-sub">6년 9개월 QA · MCP 자동화 · 코드 0줄<br>TC 145건+ · Playwright E2E · Jira 연동</p>
+    <p class="footer-cta-sub">6년 9개월 QA · MCP 5개 자동화 · TC 145건+ · Playwright E2E · Jira 연동<br><span>연락 주시면 바로 응답합니다.</span></p>
     <div class="footer-cta-links">
       <a href="mailto:kihyun.qa@gmail.com" class="footer-cta-btn primary">✉ kihyun.qa@gmail.com</a>
       <a href="https://github.com/kihyunqa" target="_blank" class="footer-cta-btn">GitHub ↗</a>

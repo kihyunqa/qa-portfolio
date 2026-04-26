@@ -19,7 +19,7 @@
 
 ## 현재 확정된 구조 (이 순서로 고정)
 
-0. **Hero 섹션** — 이름 + 헤드라인("대화 한 번으로 TC 생성부터 Notion 문서화, Slack 알림, Jira 연동까지 전부 자동으로 완료됩니다") + 설명문 + 태그
+0. **Hero 섹션** — 이름 + 헤드라인("대화 한 번으로 / TC 생성부터 Notion 문서화, / Slack 알림, Jira 연동까지 / 전부 자동으로 완료됩니다") + 설명문 + 태그
 1. 경력 타임라인 (01)
 2. MCP 자동화 (02) — 헤드라인 + 7스텝 워크플로우 + MCP 카드 + 터미널 + **파이프라인 다이어그램**
 3. 코드 증거 (03)
@@ -65,51 +65,51 @@
    * `.pd-row`에 `flex-wrap:nowrap` 유지하되 모바일에서 `flex-direction:column`으로 전환
    * `.pd-arrow`를 모바일에서 `rotate(90deg)` 적용해 위→아래 방향으로 표시
    * `.pd-node`를 모바일에서 `width:100%`로 확장
-   * 화살표가 노드 사이에 어색하게 떠 있던 문제 해결
 
 2. **경력 섹션 문구 수정**
-   * `tl-bridge-bottom` 문구: "이것들을 직접 자동화하기로 했습니다" → "Claude MCP로 이 흐름 전체를 자동화했습니다."
-   * 허구 규칙 반영: 내가 코드를 짜서 만든 것처럼 읽히지 않도록 수정
-   * 경력 섹션 안내 문구: "클릭하면 상세 업무를 확인할 수 있습니다" → "각 항목을 클릭하면 상세 업무를 볼 수 있습니다"
-   * `tl-bridge-bottom` 시각적 강조 강화: border-left 2px→4px, font-size 올림, 색상 강조
+   * `tl-bridge-bottom`: "Claude MCP로 이 흐름 전체를 자동화했습니다."
 
 3. **코드 증거(03) bridge 문구 수정**
-   * "위 파이프라인이 실제로 어떻게 생겼는지입니다" → "위에서 본 파이프라인이 실제로 동작하는 코드입니다. GitHub에 커밋된 파일을 직접 확인할 수 있습니다."
-   * 파이프라인 다이어그램 label도 "위 워크플로우의 전체 흐름을 한눈에" 부제 추가
 
 4. **스크린샷 이미지 onerror 처리**
-   * 이미지 로드 실패 시 `onerror="this.closest('.proof-screenshot').style.display='none'"` 추가
-   * 깨진 이미지 대신 카드 자체가 깔끔하게 유지됨
-   * alt 텍스트도 구체적으로 수정 ("Notion TC 자동 생성 스크린샷" 등)
+   * `onerror="this.closest('.proof-screenshot').style.display='none'"` 추가
+   * alt 텍스트도 구체적으로 수정
 
 5. **레이더 차트 제거**
-   * QA 포트폴리오에서 레이더 차트가 어색하다는 판단으로 제거
-   * 스킬 바 리스트만 유지 (더 직관적)
-   * 관련 JS 코드(drawRadar, radarObs 등)도 함께 제거
 
 6. **footer CTA 추가**
-   * 스킬 섹션 바로 아래, footer 위에 독립 CTA 블록 추가
-   * "현재 QA 포지션으로 구직 중입니다" 문구
-   * 이메일(primary 버튼) + GitHub + Jira 링크
-   * footer는 copyright + built with 정보만 간결하게 유지
+   * 스킬 섹션 바로 아래, footer 위에 독립 CTA 블록
 
 ### STEP 110 — 2026-04-26
 
-**변경 내역 2가지:**
+1. **파이프라인 다이어그램 intro 배너** 추가
+2. **footer CTA 터미널 무드** 통일
 
-1. **파이프라인 다이어그램 위치 설명 강화**
-   * 다이어그램 위에 `.pipeline-diagram-intro` 배너 추가
-   * "위 워크플로우 7단계를 구조로 정리하면" + "입력 → 실행 → 출력의 3레이어. 초록색으로 표시된 OUTPUT이 실제로 연동된 서비스입니다." 문구
-   * 보는 사람이 다이어그램이 왜 여기 있는지 바로 파악 가능하도록 연결
-   * `.pipeline-diagram-wrap` → `.pipeline-diagram-intro` → `.pipeline-diagram` 구조로 개편
+### STEP 111 — 2026-04-26
 
-2. **footer CTA 톤 포트폴리오 무드와 통일**
-   * 기존: 중앙정렬 + 일반 텍스트 느낌 (전체 무드와 단절)
-   * 변경: 딥다크 배경 (`var(--bg2)`) + 좌정렬 + 모노폰트 prefix `// OPEN TO WORK · QA ENGINEER`
-   * 타이틀을 `h2` + `em` 강조로 격상
-   * 이메일 버튼: 딥그린 primary 스타일로 (보라 대신 green 계열 — 이 섹션은 연동 증거와 같은 그린 톤)
-   * Jira 버튼: `.sec` 클래스로 보라 hover 효과
-   * 스킬 섹션에서 footer CTA로 넘어올 때 톤 단절 없이 자연스럽게 이어짐
+**변경 내역 4가지:**
+
+1. **Hero 헤드라인 복원 (확정 버전)**
+   * 이전 버전이 "TC 생성, Notion, Slack, Jira까지 / MCP 5개로 직접 연결했습니다"로 바뀌어 있었음
+   * Feedbackback 확정 버전으로 복원: "대화 한 번으로 / TC 생성부터 Notion 문서화, / Slack 알림, Jira 연동까지 / <em>전부 자동으로 완료됩니다</em>"
+   * intro 태그에서 "코드 0줄" → "MCP 자동화 파이프라인"으로 교체 (태그는 성과/방법이지 광고 문구가 아님)
+
+2. **터미널 comment 맥락 명확화**
+   * 기존: `# 코드 0줄. 대화 1번. MCP 5개. TC 145건+.`
+   * 변경: `# MCP가 자동으로 생성·커밋한 코드. 대화 1번. MCP 5개. TC 145건+.`
+   * 개발자 출신 면접관이 "코드를 못 쓴다"로 오해하는 리스크 제거
+   * MCP가 코드를 생성했다는 점을 명확히
+
+3. **코드 증거(03) bridge 문구 강화**
+   * 기존: "위에서 본 파이프라인이 실제로 동작하는 코드입니다. GitHub에 커밋된 파일을 직접 확인할 수 있습니다."
+   * 변경: "위 파이프라인이 실제로 동작하는 코드입니다. MCP가 자동으로 생성하고 GitHub에 커밋한 파일을 직접 확인할 수 있습니다."
+
+4. **footer CTA 시각 강화**
+   * border-top: 1px → 2px solid var(--green) (더 명확한 시작점)
+   * 배경에 radial-gradient 그린 tone 추가 (은은하게)
+   * 이메일 버튼 (primary): 패딩/폰트 키우고 color:#ffffff로 최대 대비
+   * 모바일에서 primary 버튼 width:100% 처리
+   * 서브 카피에 그린 컬러 강조: "연락 주시면 바로 응답합니다."
 
 ## 색상 시스템 (확정, 건드리지 말 것)
 
@@ -121,11 +121,13 @@
 ## 미완료 작업
 
 * 이력서 vs 경력기술서 차별화 (별도 세션, PDF 원본 필요)
-* 스크린샷 실제 이미지 업로드 — notion-tc-page.png / claude-mcp-workflow.png / slack-notification.png / jira-board.png 가 GitHub에 없으면 카드에서 자동 숨김 처리됨. 실제 스크린샷 있으면 /screenshots/ 폴더에 업로드 권장.
+* **스크린샷 실제 이미지 업로드** — 가장 임팩트 있는 남은 작업
   * notion-tc-page.png: Notion에서 MCP로 자동 생성된 TC 페이지 캡처
   * claude-mcp-workflow.png: Claude Desktop에서 MCP 명령 실행 화면 캡처
   * slack-notification.png: 새-채널 QA 완료 알림 메시지 캡처
   * jira-board.png: Jira 프로젝트 보드 또는 GitHub 연동 화면 캡처
+  * 업로드 경로: `/screenshots/` 폴더. 이미지가 없으면 카드에서 자동 숨김 처리됨.
+  * 방법: 스크린샷 찍어서 GitHub 레포 /screenshots/ 폴더에 직접 업로드하거나, Claude 세션에서 MCP로 push 가능
 
 ## 실제 경력 (이력서 기준 — 이것만 쓸 것)
 
@@ -170,6 +172,6 @@
 
 ---
 
-*최종 업데이트: 2026-04-26 · STEP 110 완료*
-*변경: 파이프라인 다이어그램 intro 배너 추가(위치 설명 강화) / footer CTA 터미널 무드 통일*
-*다음: 스크린샷 실제 이미지 업로드 (선택) / 이력서 vs 경력기술서 차별화 (PDF 필요)*
+*최종 업데이트: 2026-04-26 · STEP 111 완료*
+*변경: hero 헤드라인 확정 버전 복원 / 터미널 코드 0줄 → MCP 생성 맥락 명확화 / footer CTA 시각 강화*
+*다음: **스크린샷 업로드가 가장 임팩트 있는 남은 작업** — /screenshots/ 폴더에 4개 이미지 업로드*
