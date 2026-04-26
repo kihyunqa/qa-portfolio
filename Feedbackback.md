@@ -93,6 +93,24 @@
    * 이메일(primary 버튼) + GitHub + Jira 링크
    * footer는 copyright + built with 정보만 간결하게 유지
 
+### STEP 110 — 2026-04-26
+
+**변경 내역 2가지:**
+
+1. **파이프라인 다이어그램 위치 설명 강화**
+   * 다이어그램 위에 `.pipeline-diagram-intro` 배너 추가
+   * "위 워크플로우 7단계를 구조로 정리하면" + "입력 → 실행 → 출력의 3레이어. 초록색으로 표시된 OUTPUT이 실제로 연동된 서비스입니다." 문구
+   * 보는 사람이 다이어그램이 왜 여기 있는지 바로 파악 가능하도록 연결
+   * `.pipeline-diagram-wrap` → `.pipeline-diagram-intro` → `.pipeline-diagram` 구조로 개편
+
+2. **footer CTA 톤 포트폴리오 무드와 통일**
+   * 기존: 중앙정렬 + 일반 텍스트 느낌 (전체 무드와 단절)
+   * 변경: 딥다크 배경 (`var(--bg2)`) + 좌정렬 + 모노폰트 prefix `// OPEN TO WORK · QA ENGINEER`
+   * 타이틀을 `h2` + `em` 강조로 격상
+   * 이메일 버튼: 딥그린 primary 스타일로 (보라 대신 green 계열 — 이 섹션은 연동 증거와 같은 그린 톤)
+   * Jira 버튼: `.sec` 클래스로 보라 hover 효과
+   * 스킬 섹션에서 footer CTA로 넘어올 때 톤 단절 없이 자연스럽게 이어짐
+
 ## 색상 시스템 (확정, 건드리지 말 것)
 
 * 보라(`#a855f7`) = 메인 아이덴티티
@@ -104,6 +122,10 @@
 
 * 이력서 vs 경력기술서 차별화 (별도 세션, PDF 원본 필요)
 * 스크린샷 실제 이미지 업로드 — notion-tc-page.png / claude-mcp-workflow.png / slack-notification.png / jira-board.png 가 GitHub에 없으면 카드에서 자동 숨김 처리됨. 실제 스크린샷 있으면 /screenshots/ 폴더에 업로드 권장.
+  * notion-tc-page.png: Notion에서 MCP로 자동 생성된 TC 페이지 캡처
+  * claude-mcp-workflow.png: Claude Desktop에서 MCP 명령 실행 화면 캡처
+  * slack-notification.png: 새-채널 QA 완료 알림 메시지 캡처
+  * jira-board.png: Jira 프로젝트 보드 또는 GitHub 연동 화면 캡처
 
 ## 실제 경력 (이력서 기준 — 이것만 쓸 것)
 
@@ -148,6 +170,6 @@
 
 ---
 
-*최종 업데이트: 2026-04-26 · STEP 109 완료*
-*변경: 모바일 파이프라인 수정 / 경력 문구(허구 제거) / 코드증거 bridge 문구 / 이미지 onerror / 레이더 차트 제거 / footer CTA 추가*
+*최종 업데이트: 2026-04-26 · STEP 110 완료*
+*변경: 파이프라인 다이어그램 intro 배너 추가(위치 설명 강화) / footer CTA 터미널 무드 통일*
 *다음: 스크린샷 실제 이미지 업로드 (선택) / 이력서 vs 경력기술서 차별화 (PDF 필요)*

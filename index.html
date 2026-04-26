@@ -121,11 +121,14 @@ section{padding:80px 56px;position:relative;z-index:2}
 .mc-desc{font-size:14px;color:var(--muted);line-height:1.65}
 
 /* 파이프라인 다이어그램 */
-.pipeline-diagram{margin-top:40px;border:1px solid var(--g-border);background:var(--bg2);padding:28px 24px;}
+.pipeline-diagram-wrap{margin-top:40px;}
+.pipeline-diagram-intro{display:flex;align-items:center;gap:14px;margin-bottom:16px;padding:14px 20px;border:1px solid var(--g-border);border-left:3px solid var(--green);background:var(--g-muted);}
+.pipeline-diagram-intro-title{font-size:15px;font-weight:600;color:var(--text);}
+.pipeline-diagram-intro-desc{font-size:14px;color:var(--muted);margin-top:3px;}
+.pipeline-diagram{border:1px solid var(--g-border);background:var(--bg2);padding:28px 24px;border-top:none;}
 .pd-label{font-family:var(--mono);font-size:10px;color:var(--green);letter-spacing:.18em;margin-bottom:20px;}
 .pd-section{font-family:var(--mono);font-size:9px;color:var(--dim);letter-spacing:.15em;margin:16px 0 10px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.06);}
 .pd-section:first-of-type{margin-top:0;padding-top:0;border-top:none;}
-/* 모바일에서 화살표 깨짐 방지 — row를 column으로 전환 */
 .pd-row{display:flex;align-items:center;flex-wrap:nowrap;gap:6px;}
 .pd-node{font-family:var(--mono);font-size:11px;padding:7px 14px;border:1px solid;display:inline-flex;flex-direction:column;gap:2px;flex-shrink:0;}
 .pd-node-title{font-size:11px;font-weight:500;}
@@ -280,15 +283,20 @@ section{padding:80px 56px;position:relative;z-index:2}
 .reveal{opacity:0;transition:opacity .4s ease}
 .reveal.visible{opacity:1}
 
-/* footer CTA */
-.footer-cta{text-align:center;padding:40px 56px 0;}
-.footer-cta-text{font-size:18px;color:var(--text);font-weight:600;margin-bottom:8px;}
-.footer-cta-sub{font-family:var(--mono);font-size:13px;color:var(--muted);margin-bottom:24px;}
-.footer-cta-links{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;}
-.footer-cta-btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12px;padding:10px 22px;border:1px solid var(--g-border);color:var(--green3);text-decoration:none;letter-spacing:.06em;}
+/* footer CTA — 포트폴리오 무드 통일 (터미널 스타일) */
+.footer-cta{padding:56px 56px 0;border-top:1px solid var(--g-border);background:var(--bg2);}
+.footer-cta-inner{max-width:640px;}
+.footer-cta-prefix{font-family:var(--mono);font-size:10px;color:var(--green);letter-spacing:.2em;margin-bottom:16px;}
+.footer-cta-title{font-size:22px;font-weight:700;color:var(--text);margin-bottom:8px;letter-spacing:-.02em;}
+.footer-cta-title em{color:var(--green3);font-style:normal;}
+.footer-cta-sub{font-family:var(--mono);font-size:13px;color:var(--muted);margin-bottom:28px;line-height:1.7;}
+.footer-cta-links{display:flex;gap:10px;flex-wrap:wrap;}
+.footer-cta-btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12px;padding:10px 22px;border:1px solid var(--g-border);color:var(--green3);text-decoration:none;letter-spacing:.06em;transition:background .15s;}
 .footer-cta-btn:hover{background:var(--g-muted);}
-.footer-cta-btn.primary{background:rgba(168,85,247,0.12);border-color:rgba(168,85,247,0.4);color:var(--purple);}
-.footer-cta-btn.primary:hover{background:rgba(168,85,247,0.2);}
+.footer-cta-btn.primary{border-color:var(--green);background:rgba(5,150,105,0.1);color:var(--green3);}
+.footer-cta-btn.primary:hover{background:rgba(5,150,105,0.18);}
+.footer-cta-btn.sec{border-color:var(--p-border);color:var(--muted);}
+.footer-cta-btn.sec:hover{border-color:var(--purple);color:var(--purple);background:var(--p-muted);}
 
 #dot-nav{position:fixed;right:18px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:10px;z-index:500;pointer-events:none}
 .dot-nav-item{position:relative;display:flex;align-items:center;justify-content:flex-end;pointer-events:auto}
@@ -333,12 +341,11 @@ footer{padding:16px 20px;flex-direction:column;gap:4px}
 .tc-search-input{width:100%}
 .tc-dashboard{grid-template-columns:repeat(2,1fr)}
 .code-showcase-grid{grid-template-columns:1fr}
-/* 모바일 파이프라인: column 방향으로 전환, 화살표를 아래 방향으로 */
 .pd-row{flex-direction:column;align-items:flex-start;gap:4px;}
 .pd-arrow{transform:rotate(90deg);padding:4px 0;align-self:center;}
 .pd-node{width:100%;}
-.footer-cta{padding:32px 20px 0;}
-.footer-cta-links{flex-direction:column;align-items:center;}
+.footer-cta{padding:40px 20px 0;}
+.footer-cta-links{flex-direction:column;align-items:flex-start;}
 }
 
 @media print{
@@ -504,37 +511,45 @@ footer{border-top:1px solid #ccc!important;padding:12pt 0 0!important}
 </div>
 </div>
 
-<!-- 파이프라인 다이어그램 -->
-<div class="pipeline-diagram reveal">
-  <div class="pd-label">// QA AUTOMATION PIPELINE · 위 워크플로우의 전체 흐름을 한눈에</div>
-  <div class="pd-section">TRIGGER — 입력</div>
-  <div class="pd-row">
-    <div class="pd-node trigger"><span class="pd-node-title">기능 명세 입력</span><span class="pd-node-sub">자연어 명령</span></div>
-    <span class="pd-arrow">→</span>
-    <div class="pd-node trigger"><span class="pd-node-title">Claude Desktop</span><span class="pd-node-sub">MCP 5개 연결</span></div>
-    <span class="pd-arrow">→</span>
-    <div class="pd-node trigger"><span class="pd-node-title">MCP 라우팅</span><span class="pd-node-sub">5개 서버 분배</span></div>
+<!-- 파이프라인 다이어그램 — 연결 설명 강화 -->
+<div class="pipeline-diagram-wrap reveal">
+  <div class="pipeline-diagram-intro">
+    <div>
+      <div class="pipeline-diagram-intro-title">위 워크플로우 7단계를 구조로 정리하면</div>
+      <div class="pipeline-diagram-intro-desc">입력 → 실행 → 출력의 3레이어. 초록색으로 표시된 OUTPUT이 실제로 연동된 서비스입니다.</div>
+    </div>
   </div>
-  <div class="pd-section">EXECUTION — 실행</div>
-  <div class="pd-row">
-    <div class="pd-node exec"><span class="pd-node-title">TC 자동 생성</span><span class="pd-node-sub">filesystem MCP</span></div>
-    <span class="pd-arrow">→</span>
-    <div class="pd-node exec"><span class="pd-node-title">E2E 테스트</span><span class="pd-node-sub">playwright MCP</span></div>
-    <span class="pd-arrow">→</span>
-    <div class="pd-node exec"><span class="pd-node-title">GitHub 커밋</span><span class="pd-node-sub">github MCP</span></div>
-  </div>
-  <div class="pd-section">OUTPUT — 문서화 &amp; 연동 (실제 연결)</div>
-  <div class="pd-row">
-    <div class="pd-node output"><span class="pd-node-title">Notion 문서화</span><span class="pd-node-sub">notion MCP 실제</span></div>
-    <span class="pd-arrow">→</span>
-    <div class="pd-node output"><span class="pd-node-title">Slack 알림</span><span class="pd-node-sub">slack MCP 실제</span></div>
-    <span class="pd-arrow">→</span>
-    <div class="pd-node output"><span class="pd-node-title">Jira 트래킹</span><span class="pd-node-sub">GitHub for Atlassian</span></div>
-  </div>
-  <div class="pd-legend">
-    <div class="pd-legend-item"><div class="pd-legend-dot" style="border-color:var(--p-border);background:rgba(168,85,247,0.05)"></div>입력·라우팅</div>
-    <div class="pd-legend-item"><div class="pd-legend-dot" style="border-color:var(--g-border);background:rgba(5,150,105,0.06)"></div>실행 단계</div>
-    <div class="pd-legend-item"><div class="pd-legend-dot" style="border-color:rgba(5,150,105,0.5);background:rgba(5,150,105,0.12)"></div>출력·실제 연동</div>
+  <div class="pipeline-diagram">
+    <div class="pd-label">// QA AUTOMATION PIPELINE · TRIGGER → EXECUTION → OUTPUT</div>
+    <div class="pd-section">TRIGGER — 입력</div>
+    <div class="pd-row">
+      <div class="pd-node trigger"><span class="pd-node-title">기능 명세 입력</span><span class="pd-node-sub">자연어 명령</span></div>
+      <span class="pd-arrow">→</span>
+      <div class="pd-node trigger"><span class="pd-node-title">Claude Desktop</span><span class="pd-node-sub">MCP 5개 연결</span></div>
+      <span class="pd-arrow">→</span>
+      <div class="pd-node trigger"><span class="pd-node-title">MCP 라우팅</span><span class="pd-node-sub">5개 서버 분배</span></div>
+    </div>
+    <div class="pd-section">EXECUTION — 실행</div>
+    <div class="pd-row">
+      <div class="pd-node exec"><span class="pd-node-title">TC 자동 생성</span><span class="pd-node-sub">filesystem MCP</span></div>
+      <span class="pd-arrow">→</span>
+      <div class="pd-node exec"><span class="pd-node-title">E2E 테스트</span><span class="pd-node-sub">playwright MCP</span></div>
+      <span class="pd-arrow">→</span>
+      <div class="pd-node exec"><span class="pd-node-title">GitHub 커밋</span><span class="pd-node-sub">github MCP</span></div>
+    </div>
+    <div class="pd-section">OUTPUT — 문서화 &amp; 연동 (실제 연결)</div>
+    <div class="pd-row">
+      <div class="pd-node output"><span class="pd-node-title">Notion 문서화</span><span class="pd-node-sub">notion MCP 실제</span></div>
+      <span class="pd-arrow">→</span>
+      <div class="pd-node output"><span class="pd-node-title">Slack 알림</span><span class="pd-node-sub">slack MCP 실제</span></div>
+      <span class="pd-arrow">→</span>
+      <div class="pd-node output"><span class="pd-node-title">Jira 트래킹</span><span class="pd-node-sub">GitHub for Atlassian</span></div>
+    </div>
+    <div class="pd-legend">
+      <div class="pd-legend-item"><div class="pd-legend-dot" style="border-color:var(--p-border);background:rgba(168,85,247,0.05)"></div>입력·라우팅</div>
+      <div class="pd-legend-item"><div class="pd-legend-dot" style="border-color:var(--g-border);background:rgba(5,150,105,0.06)"></div>실행 단계</div>
+      <div class="pd-legend-item"><div class="pd-legend-dot" style="border-color:rgba(5,150,105,0.5);background:rgba(5,150,105,0.12)"></div>출력·실제 연동</div>
+    </div>
   </div>
 </div>
 </section>
@@ -772,7 +787,7 @@ footer{border-top:1px solid #ccc!important;padding:12pt 0 0!important}
 <div class="sk-item" data-tip-title="버그 리포팅 &amp; 트래킹" data-tip-body="버그 심각도 판단 · Jira 연동" data-tip-tags="심각도 판단|Jira 연동"><span class="sk-name">버그 리포팅 &amp; 트래킹</span><div class="sk-bar-w"><div class="sk-bar" style="width:92%"></div></div></div>
 <div class="sk-item" data-tip-title="E2E 자동화" data-tip-body="Cypress (IMS) + Playwright MCP · 12 spec" data-tip-tags="Cypress|Playwright|spec 12개"><span class="sk-name">E2E 자동화 (Cypress/Playwright)</span><div class="sk-bar-w"><div class="sk-bar" style="width:82%"></div></div></div>
 <div class="sk-item" data-tip-title="API 테스트" data-tip-body="Swagger 기반 API 검증 · IMS Mobility 2년" data-tip-tags="Swagger|REST API|결제 API"><span class="sk-name">API 테스트 (Swagger)</span><div class="sk-bar-w"><div class="sk-bar" style="width:70%"></div></div></div>
-<div class="sk-item" data-tip-title="버그 심각도 분류" data-tip-body="P1·P2·P3 기준 · 개발팀 커뮤니케이션" data-tip-tags="P1 판단|심각도 기준|영향 분석"><span class="sk-name">버그 심각도 분류</span><div class="sk-bar-w"><div class="sk-bar" style="width:90%"></div></div></div>
+<div class="sk-item" data-tip-title="버그 심각도 분류" data-tip-body="P1·P2·P3 기준 · 개발팀 커뮤니케이션" data-tip-tags="P1 판단|심각도 기준|영향 분析"><span class="sk-name">버그 심각도 분류</span><div class="sk-bar-w"><div class="sk-bar" style="width:90%"></div></div></div>
 <div class="sk-item" data-tip-title="릴리즈 QA 리딩" data-tip-body="두플 QA Part Leader · 테스트 전략 수립" data-tip-tags="두플 리드|테스트 전략|팀 리딩"><span class="sk-name">릴리즈 QA 리딩</span><div class="sk-bar-w"><div class="sk-bar" style="width:88%"></div></div></div>
 </div>
 </div>
@@ -800,18 +815,21 @@ footer{border-top:1px solid #ccc!important;padding:12pt 0 0!important}
 </div>
 </section>
 
-<!-- footer CTA -->
+<!-- footer CTA — 터미널 무드 통일 -->
 <div class="footer-cta reveal">
-  <p class="footer-cta-text">현재 QA 포지션으로 구직 중입니다</p>
-  <p class="footer-cta-sub">// 6년 9개월 QA · MCP 자동화 · 코드 0줄</p>
-  <div class="footer-cta-links">
-    <a href="mailto:kihyun.qa@gmail.com" class="footer-cta-btn primary">✉️ kihyun.qa@gmail.com</a>
-    <a href="https://github.com/kihyunqa" target="_blank" class="footer-cta-btn">GitHub ↗</a>
-    <a href="https://kihyunqa-1775011951168.atlassian.net" target="_blank" class="footer-cta-btn">Jira ↗</a>
+  <div class="footer-cta-inner">
+    <div class="footer-cta-prefix">// OPEN TO WORK · QA ENGINEER</div>
+    <h2 class="footer-cta-title">현재 <em>QA 포지션</em>으로 구직 중입니다</h2>
+    <p class="footer-cta-sub">6년 9개월 QA · MCP 자동화 · 코드 0줄<br>TC 145건+ · Playwright E2E · Jira 연동</p>
+    <div class="footer-cta-links">
+      <a href="mailto:kihyun.qa@gmail.com" class="footer-cta-btn primary">✉ kihyun.qa@gmail.com</a>
+      <a href="https://github.com/kihyunqa" target="_blank" class="footer-cta-btn">GitHub ↗</a>
+      <a href="https://kihyunqa-1775011951168.atlassian.net" target="_blank" class="footer-cta-btn sec">Jira ↗</a>
+    </div>
   </div>
 </div>
 
-<footer style="padding:24px 56px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--p-border);margin-top:40px;flex-wrap:wrap;gap:8px">
+<footer style="padding:24px 56px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--p-border);margin-top:40px;flex-wrap:wrap;gap:8px;background:var(--bg2)">
 <p style="font-family:var(--mono);font-size:11px;color:var(--dim)">© 2026 성기현 · QA Engineer</p>
 <p style="font-family:var(--mono);font-size:11px;color:var(--dim)">Built with Claude MCP · 5 MCP servers · TC 145건+ · Playwright 12 spec · Jira 연동</p>
 </footer>
