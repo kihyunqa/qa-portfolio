@@ -23,33 +23,34 @@ html,body{background:#d8d8d8;font-family:'Noto Sans KR',-apple-system,sans-serif
    사이드바
 ══════════════════════ */
 .sidebar{
-  width:192px;
-  min-width:192px;
+  width:220px;
+  min-width:220px;
   background:#1d2a3b;
   color:#fff;
-  padding:32px 22px 32px 22px;
+  padding:32px 24px 32px 24px;
   display:flex;
   flex-direction:column;
+  gap:0;
 }
 
 /* 이름/역할/경력 */
 .sb-name{
-  font-size:22px;
+  font-size:26px;
   font-weight:700;
   color:#fff;
   line-height:1.2;
-  margin-bottom:4px;
+  margin-bottom:5px;
   letter-spacing:-0.01em;
 }
 .sb-role{
-  font-size:11px;
+  font-size:12px;
   color:#4ea8de;
   font-weight:600;
   letter-spacing:0.01em;
-  margin-bottom:2px;
+  margin-bottom:3px;
 }
 .sb-career{
-  font-size:10px;
+  font-size:11px;
   color:#a0b4c8;
   font-weight:400;
   margin-bottom:0;
@@ -57,76 +58,76 @@ html,body{background:#d8d8d8;font-family:'Noto Sans KR',-apple-system,sans-serif
 
 /* 섹션 헤더 */
 .sb-section{
-  font-size:9px;
+  font-size:9.5px;
   font-weight:700;
   color:#4ea8de;
-  letter-spacing:0.16em;
+  letter-spacing:0.18em;
   text-transform:uppercase;
-  margin-top:22px;
-  margin-bottom:7px;
+  margin-top:24px;
+  margin-bottom:8px;
 }
 
 /* Contact 항목 */
 .sb-contact-item{
-  font-size:10px;
+  font-size:11px;
   color:#c8d8e8;
-  line-height:1.75;
+  line-height:1.85;
 }
 
 /* Skills 라벨 + 값 */
 .sb-skill-group{
-  margin-bottom:7px;
+  margin-bottom:8px;
 }
 .sb-skill-label{
-  font-size:10px;
+  font-size:11px;
   color:#4ea8de;
   font-weight:600;
-  margin-bottom:1px;
+  margin-bottom:2px;
 }
 .sb-skill-val{
-  font-size:10px;
+  font-size:11px;
   color:#c8d8e8;
   line-height:1.6;
 }
 
 /* QA 방법론 불릿 */
 .sb-bullet{
-  font-size:10px;
+  font-size:11px;
   color:#c8d8e8;
-  line-height:1.75;
+  line-height:1.8;
   display:flex;
   align-items:flex-start;
-  gap:5px;
+  gap:6px;
 }
 .sb-bullet::before{
   content:'●';
   font-size:6px;
   color:#4ea8de;
   flex-shrink:0;
-  margin-top:4px;
+  margin-top:5px;
 }
 
 /* 구분선 */
 .sb-divider{
   height:1px;
   background:rgba(255,255,255,0.1);
-  margin:20px 0 18px;
+  margin:22px 0 20px;
 }
 
 /* Education */
 .sb-edu-name{
-  font-size:10px;
+  font-size:11px;
   color:#fff;
   font-weight:700;
   margin-bottom:2px;
 }
 .sb-edu-dept{
-  font-size:10px;
+  font-size:11px;
   color:#c8d8e8;
-  margin-bottom:2px;
+  margin-bottom:3px;
 }
 .sb-edu-date{
-  font-size:9px;
+  font-size:10px;
   color:#7a96aa;
 }
 
@@ -143,14 +144,14 @@ html,body{background:#d8d8d8;font-family:'Noto Sans KR',-apple-system,sans-serif
 
 /* 제목 */
 .doc-title{
-  font-size:30px;
+  font-size:32px;
   font-weight:700;
   color:#1d2a3b;
   letter-spacing:-0.02em;
   margin-bottom:4px;
 }
 .doc-sub{
-  font-size:10px;
+  font-size:11px;
   color:#5a7a9a;
   font-weight:400;
   margin-bottom:14px;
@@ -158,17 +159,17 @@ html,body{background:#d8d8d8;font-family:'Noto Sans KR',-apple-system,sans-serif
 
 /* 소개 */
 .doc-intro{
-  font-size:10px;
+  font-size:10.5px;
   color:#3a4a5a;
   line-height:1.85;
-  margin-bottom:14px;
+  margin-bottom:16px;
   padding-bottom:14px;
   border-bottom:1.5px solid #1d2a3b;
 }
 
 /* EXPERIENCE 헤더 */
 .section-title{
-  font-size:11px;
+  font-size:12px;
   font-weight:700;
   color:#4ea8de;
   letter-spacing:0.14em;
@@ -189,27 +190,27 @@ html,body{background:#d8d8d8;font-family:'Noto Sans KR',-apple-system,sans-serif
   margin-bottom:2px;
 }
 .exp-company{
-  font-size:15px;
+  font-size:16px;
   font-weight:700;
   color:#1d2a3b;
 }
 .exp-period{
-  font-size:10px;
+  font-size:10.5px;
   color:#4ea8de;
   font-weight:600;
   white-space:nowrap;
 }
 .exp-role{
-  font-size:11px;
+  font-size:12px;
   font-weight:700;
   color:#4ea8de;
   margin-bottom:1px;
 }
 .exp-domain{
-  font-size:10px;
+  font-size:10.5px;
   color:#5a7a9a;
   font-weight:400;
-  margin-bottom:8px;
+  margin-bottom:9px;
 }
 
 /* 수행 항목 리스트 */
@@ -217,10 +218,10 @@ html,body{background:#d8d8d8;font-family:'Noto Sans KR',-apple-system,sans-serif
   list-style:none;
   display:flex;
   flex-direction:column;
-  gap:5px;
+  gap:6px;
 }
 .exp-items li{
-  font-size:10px;
+  font-size:10.5px;
   color:#2a3a4a;
   line-height:1.8;
   display:flex;
