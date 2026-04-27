@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-html,body{background:#e0e0e0;font-family:'Noto Sans KR',-apple-system,sans-serif}
+html,body{background:#d8d8d8;font-family:'Noto Sans KR',-apple-system,sans-serif}
 
 .page{
   width:210mm;
@@ -16,194 +16,222 @@ html,body{background:#e0e0e0;font-family:'Noto Sans KR',-apple-system,sans-serif
   margin:24px auto;
   background:#fff;
   display:flex;
-  box-shadow:0 4px 32px rgba(0,0,0,0.18);
+  box-shadow:0 4px 32px rgba(0,0,0,0.2);
   page-break-after:always;
 }
 .page2{margin-top:0;}
 
-/* ── 사이드바 ── */
+/* ══════════════════════
+   사이드바 — 이력서와 동일
+══════════════════════ */
 .sidebar{
-  width:112px;
+  width:220px;
+  min-width:220px;
   background:#1d2a3b;
   color:#fff;
-  padding:30px 14px;
-  flex-shrink:0;
+  padding:32px 24px 32px 24px;
   display:flex;
   flex-direction:column;
+  gap:0;
 }
+
 .sb-name{
-  font-size:13.5px;
+  font-size:26px;
   font-weight:700;
   color:#fff;
-  line-height:1.3;
-  margin-bottom:3px;
+  line-height:1.2;
+  margin-bottom:5px;
+  letter-spacing:-0.01em;
 }
 .sb-role{
-  font-size:8px;
+  font-size:12px;
   color:#4ea8de;
   font-weight:600;
-  letter-spacing:0.03em;
-  margin-bottom:2px;
+  letter-spacing:0.01em;
+  margin-bottom:3px;
 }
-.sb-total{
-  font-size:7.5px;
+.sb-career{
+  font-size:11px;
   color:#a0b4c8;
-  margin-bottom:4px;
-}
-.sb-contact{
-  font-size:7.5px;
-  color:#c8d8e8;
-  line-height:1.7;
+  font-weight:400;
   margin-bottom:0;
 }
 
-/* 섹션 헤더 */
 .sb-section{
-  font-size:7.5px;
+  font-size:9.5px;
   font-weight:700;
   color:#4ea8de;
-  letter-spacing:0.12em;
+  letter-spacing:0.18em;
   text-transform:uppercase;
-  margin-top:18px;
-  margin-bottom:6px;
+  margin-top:24px;
+  margin-bottom:8px;
 }
 
-/* 불릿 항목 */
-.sb-bullet-item{
-  font-size:7.5px;
+.sb-contact-item{
+  font-size:11px;
   color:#c8d8e8;
-  line-height:1.75;
-  display:flex;
-  align-items:flex-start;
-  gap:4px;
-}
-.sb-bullet-item::before{
-  content:'●';
-  font-size:5px;
-  color:#4ea8de;
-  flex-shrink:0;
-  margin-top:3px;
+  line-height:1.85;
 }
 
-/* 일반 텍스트 항목 */
-.sb-plain{
-  font-size:7.5px;
-  color:#c8d8e8;
-  line-height:1.7;
+.sb-skill-group{
+  margin-bottom:8px;
 }
-
-/* 라벨 + 값 그룹 */
-.sb-kv{
-  margin-bottom:5px;
-}
-.sb-kv-label{
-  font-size:7px;
+.sb-skill-label{
+  font-size:11px;
   color:#4ea8de;
   font-weight:600;
-  margin-bottom:1px;
+  margin-bottom:2px;
 }
-.sb-kv-val{
-  font-size:7.5px;
+.sb-skill-val{
+  font-size:11px;
   color:#c8d8e8;
-  line-height:1.65;
+  line-height:1.6;
 }
 
-/* ── 본문 ── */
+.sb-bullet{
+  font-size:11px;
+  color:#c8d8e8;
+  line-height:1.8;
+  display:flex;
+  align-items:flex-start;
+  gap:6px;
+}
+.sb-bullet::before{
+  content:'●';
+  font-size:6px;
+  color:#4ea8de;
+  flex-shrink:0;
+  margin-top:5px;
+}
+
+/* 경력기술서 사이드바 전용 — 경력기간/주요도메인 */
+.sb-plain{
+  font-size:11px;
+  color:#c8d8e8;
+  line-height:1.75;
+}
+.sb-domain-item{
+  font-size:11px;
+  color:#c8d8e8;
+  line-height:1.8;
+  display:flex;
+  align-items:flex-start;
+  gap:6px;
+}
+.sb-domain-item::before{
+  content:'●';
+  font-size:6px;
+  color:#4ea8de;
+  flex-shrink:0;
+  margin-top:5px;
+}
+
+.sb-divider{
+  height:1px;
+  background:rgba(255,255,255,0.1);
+  margin:22px 0 0;
+}
+
+/* ══════════════════════
+   본문 — 이력서와 동일한 스타일
+══════════════════════ */
 .main{
   flex:1;
-  padding:30px 26px 30px 20px;
-}
-.doc-title{
-  font-size:23px;
-  font-weight:700;
-  color:#1d2a3b;
-  letter-spacing:-0.01em;
-  margin-bottom:3px;
-}
-.doc-sub{
-  font-size:8.5px;
-  color:#5a7a9a;
-  font-weight:500;
-  margin-bottom:20px;
+  padding:32px 32px 32px 28px;
+  display:flex;
+  flex-direction:column;
+  min-width:0;
 }
 
-/* 회사 블록 */
-.exp-block{
+.doc-title{
+  font-size:32px;
+  font-weight:700;
+  color:#1d2a3b;
+  letter-spacing:-0.02em;
+  margin-bottom:4px;
+}
+.doc-sub{
+  font-size:11px;
+  color:#5a7a9a;
+  font-weight:400;
   margin-bottom:20px;
+  padding-bottom:14px;
+  border-bottom:1.5px solid #1d2a3b;
+}
+
+/* 경력 블록 */
+.exp-block{
+  margin-bottom:16px;
 }
 .exp-header{
   display:flex;
   justify-content:space-between;
   align-items:baseline;
-  margin-bottom:1px;
+  margin-bottom:2px;
 }
 .exp-company{
-  font-size:13px;
+  font-size:16px;
   font-weight:700;
   color:#1d2a3b;
 }
 .exp-period{
-  font-size:7.5px;
+  font-size:10.5px;
   color:#4ea8de;
   font-weight:600;
   white-space:nowrap;
 }
 .exp-role{
-  font-size:8.5px;
-  font-weight:600;
+  font-size:12px;
+  font-weight:700;
   color:#4ea8de;
-  margin-bottom:2px;
+  margin-bottom:1px;
 }
 .exp-domain{
-  font-size:7.5px;
+  font-size:10.5px;
   color:#5a7a9a;
-  font-weight:500;
-  margin-bottom:8px;
+  font-weight:400;
+  margin-bottom:10px;
 }
 
-/* 역할 개요 박스 */
+/* 역할 개요 */
 .exp-overview{
-  font-size:7.5px;
+  font-size:10.5px;
   color:#3a4a5a;
   line-height:1.85;
-  padding:8px 10px;
-  background:#f5f8fb;
-  border-left:3px solid #4ea8de;
-  margin-bottom:10px;
+  margin-bottom:12px;
 }
 
 /* 소제목 */
 .sub-title{
-  font-size:8px;
+  font-size:11px;
   font-weight:700;
   color:#1d2a3b;
-  letter-spacing:0.05em;
-  margin-bottom:6px;
-  margin-top:10px;
+  letter-spacing:0.03em;
+  margin-bottom:8px;
+  margin-top:12px;
 }
 
-/* 수행 내용 리스트 */
+/* 수행 항목 리스트 — 이력서와 동일 */
 .exp-items{
   list-style:none;
   display:flex;
   flex-direction:column;
-  gap:4px;
+  gap:6px;
 }
 .exp-items li{
-  font-size:7.5px;
-  color:#3a4a5a;
+  font-size:10.5px;
+  color:#2a3a4a;
   line-height:1.8;
   display:flex;
   align-items:flex-start;
-  gap:5px;
+  gap:6px;
 }
 .exp-items li::before{
-  content:'·';
-  color:#4ea8de;
-  font-weight:700;
-  font-size:11px;
+  content:'●';
+  font-size:6px;
+  color:#1d2a3b;
   flex-shrink:0;
-  line-height:1.45;
+  margin-top:5px;
 }
 .exp-kw{
   font-weight:700;
@@ -215,58 +243,51 @@ html,body{background:#e0e0e0;font-family:'Noto Sans KR',-apple-system,sans-serif
   width:100%;
   border-collapse:collapse;
   margin-top:8px;
-  font-size:7.5px;
-}
-.proj-table th{
-  background:#1d2a3b;
-  color:#fff;
-  padding:5px 8px;
-  text-align:left;
-  font-weight:600;
+  font-size:10.5px;
 }
 .proj-table td{
-  padding:5px 8px;
+  padding:6px 8px;
   border-bottom:1px solid #e8eef4;
   vertical-align:top;
   color:#3a4a5a;
-  line-height:1.7;
+  line-height:1.75;
 }
 .proj-table tr:last-child td{border-bottom:none;}
 .proj-table td:first-child{
-  font-weight:600;
+  font-weight:700;
   color:#1d2a3b;
-  white-space:nowrap;
-  width:30%;
+  width:28%;
+  padding-right:12px;
 }
 
-/* 핵심 역량 그리드 */
+/* 핵심 역량 */
 .comp-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:6px;
+  gap:8px;
   margin-top:8px;
 }
 .comp-card{
-  padding:8px 10px;
+  padding:10px 12px;
   background:#f5f8fb;
   border-left:3px solid #1d2a3b;
 }
 .comp-card-title{
-  font-size:8px;
+  font-size:11px;
   font-weight:700;
   color:#1d2a3b;
-  margin-bottom:3px;
+  margin-bottom:4px;
 }
 .comp-card-desc{
-  font-size:7.5px;
+  font-size:10.5px;
   color:#4a5a6a;
-  line-height:1.7;
+  line-height:1.75;
 }
 
 .exp-divider{
   height:1px;
-  background:#e8eef4;
-  margin:18px 0;
+  background:#e4ecf4;
+  margin:16px 0;
 }
 
 @media print{
@@ -276,7 +297,7 @@ html,body{background:#e0e0e0;font-family:'Noto Sans KR',-apple-system,sans-serif
 }
 @media(max-width:680px){
   .page{width:100%;margin:0;flex-direction:column;}
-  .sidebar{width:100%;padding:20px;}
+  .sidebar{width:100%;min-width:unset;padding:20px;}
   .comp-grid{grid-template-columns:1fr;}
 }
 </style>
@@ -288,19 +309,21 @@ html,body{background:#e0e0e0;font-family:'Noto Sans KR',-apple-system,sans-serif
   <div class="sidebar">
     <div class="sb-name">성기현</div>
     <div class="sb-role">QA Engineer</div>
-    <div class="sb-total">총 경력 6년 9개월</div>
-    <div class="sb-contact">010-8732-9690</div>
-    <div class="sb-contact">kihyun.qa@gmail.com</div>
+    <div class="sb-career">총 경력 6년 9개월</div>
+
+    <div class="sb-section">Contact</div>
+    <div class="sb-contact-item">010-8732-9690</div>
+    <div class="sb-contact-item">kihyun.qa@gmail.com</div>
 
     <div class="sb-section">경력 기간</div>
     <div class="sb-plain">2017.09 — 2025.02</div>
 
     <div class="sb-section">주요 도메인</div>
-    <div class="sb-bullet-item">모바일 앱/웹</div>
-    <div class="sb-bullet-item">백오피스</div>
-    <div class="sb-bullet-item">IoT (SmartThings)</div>
-    <div class="sb-bullet-item">AI 음성 (Bixby)</div>
-    <div class="sb-bullet-item">반도체 공정 시뮬레이션</div>
+    <div class="sb-domain-item">모바일 앱/웹</div>
+    <div class="sb-domain-item">백오피스</div>
+    <div class="sb-domain-item">IoT (SmartThings)</div>
+    <div class="sb-domain-item">AI 음성 (Bixby)</div>
+    <div class="sb-domain-item">반도체 공정 시뮬레이션</div>
 
     <div class="sb-section">자동화 · 기술</div>
     <div class="sb-plain">Cypress · Swagger</div>
@@ -310,10 +333,10 @@ html,body{background:#e0e0e0;font-family:'Noto Sans KR',-apple-system,sans-serif
     <div class="sb-plain">Jira · Slack · Notion · Teams</div>
 
     <div class="sb-section">QA 방법론</div>
-    <div class="sb-bullet-item">사용자 흐름 기반 시나리오 설계</div>
-    <div class="sb-bullet-item">기능·회귀·탐색적 테스트</div>
-    <div class="sb-bullet-item">API 정합성 검증</div>
-    <div class="sb-bullet-item">예외·경계값 케이스 도출</div>
+    <div class="sb-bullet">사용자 흐름 기반 시나리오 설계</div>
+    <div class="sb-bullet">기능·회귀·탐색적 테스트</div>
+    <div class="sb-bullet">API 정합성 검증</div>
+    <div class="sb-bullet">예외·경계값 케이스 도출</div>
   </div>
 
   <div class="main">
@@ -348,8 +371,9 @@ html,body{background:#e0e0e0;font-family:'Noto Sans KR',-apple-system,sans-serif
       <div class="exp-domain">모바일 앱 / 웹 / 백오피스 품질 검증</div>
 
       <div class="exp-overview">
-        보험대차·일반렌트 서비스를 운영하는 모빌리티 스타트업에서 모바일 앱(iOS/Android), 관리자 백오피스, 앱/웹 전 영역의 QA를 담당했습니다.
-        차량 호출부터 결제·반납까지 사용자 전체 흐름을 기반으로 시나리오를 설계하고 검증했습니다.
+        보험대차·일반렌트 서비스를 운영하는 모빌리티 스타트업에서 모바일 앱(iOS/Android), 관리자 백오피스, 앱/웹
+        전 영역의 QA를 담당했습니다. 차량 호출부터 결제·반납까지 사용자 전체 흐름을 기반으로 시나리오를 설계하고
+        검증했습니다.
       </div>
 
       <div class="sub-title">주요 수행 내용</div>
@@ -363,9 +387,6 @@ html,body{background:#e0e0e0;font-family:'Noto Sans KR',-apple-system,sans-serif
 
       <div class="sub-title">주요 프로젝트</div>
       <table class="proj-table">
-        <thead>
-          <tr><th>프로젝트</th><th>내용</th></tr>
-        </thead>
         <tbody>
           <tr>
             <td>차량 그룹·요금 관리</td>
@@ -394,19 +415,21 @@ html,body{background:#e0e0e0;font-family:'Noto Sans KR',-apple-system,sans-serif
   <div class="sidebar">
     <div class="sb-name">성기현</div>
     <div class="sb-role">QA Engineer</div>
-    <div class="sb-total">총 경력 6년 9개월</div>
-    <div class="sb-contact">010-8732-9690</div>
-    <div class="sb-contact">kihyun.qa@gmail.com</div>
+    <div class="sb-career">총 경력 6년 9개월</div>
+
+    <div class="sb-section">Contact</div>
+    <div class="sb-contact-item">010-8732-9690</div>
+    <div class="sb-contact-item">kihyun.qa@gmail.com</div>
 
     <div class="sb-section">경력 기간</div>
     <div class="sb-plain">2017.09 — 2025.02</div>
 
     <div class="sb-section">주요 도메인</div>
-    <div class="sb-bullet-item">모바일 앱/웹</div>
-    <div class="sb-bullet-item">백오피스</div>
-    <div class="sb-bullet-item">IoT (SmartThings)</div>
-    <div class="sb-bullet-item">AI 음성 (Bixby)</div>
-    <div class="sb-bullet-item">반도체 공정 시뮬레이션</div>
+    <div class="sb-domain-item">모바일 앱/웹</div>
+    <div class="sb-domain-item">백오피스</div>
+    <div class="sb-domain-item">IoT (SmartThings)</div>
+    <div class="sb-domain-item">AI 음성 (Bixby)</div>
+    <div class="sb-domain-item">반도체 공정 시뮬레이션</div>
 
     <div class="sb-section">자동화 · 기술</div>
     <div class="sb-plain">Cypress · Swagger</div>
@@ -416,10 +439,10 @@ html,body{background:#e0e0e0;font-family:'Noto Sans KR',-apple-system,sans-serif
     <div class="sb-plain">Jira · Slack · Notion · Teams</div>
 
     <div class="sb-section">QA 방법론</div>
-    <div class="sb-bullet-item">사용자 흐름 기반 시나리오 설계</div>
-    <div class="sb-bullet-item">기능·회귀·탐색적 테스트</div>
-    <div class="sb-bullet-item">API 정합성 검증</div>
-    <div class="sb-bullet-item">예외·경계값 케이스 도출</div>
+    <div class="sb-bullet">사용자 흐름 기반 시나리오 설계</div>
+    <div class="sb-bullet">기능·회귀·탐색적 테스트</div>
+    <div class="sb-bullet">API 정합성 검증</div>
+    <div class="sb-bullet">예외·경계값 케이스 도출</div>
   </div>
 
   <div class="main">
@@ -451,7 +474,7 @@ html,body{background:#e0e0e0;font-family:'Noto Sans KR',-apple-system,sans-serif
     <div class="exp-divider"></div>
 
     <!-- 핵심 역량 -->
-    <div class="sub-title" style="font-size:9px;margin-bottom:8px;">핵심 역량</div>
+    <div class="sub-title">핵심 역량</div>
     <div class="comp-grid">
       <div class="comp-card">
         <div class="comp-card-title">리스크 기반 설계</div>
