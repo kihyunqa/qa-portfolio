@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>렌트카 예약 서비스 TC 관리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#eef1f5; --surface:#ffffff; --ink:#17202b; --muted:#5b6675; --line:#d5dbe3; --line-soft:#e6eaf0;
+  --accent:#1f5fd1; --accent-ink:#ffffff;
+  --pass:#1c8a5a; --fail:#c93a30; --nt:#8a96a8; --na:#b9c0cb;
+  --p-highest:#b3261e; --p-high:#b55d0c; --p-medium:#1f5fd1; --p-low:#5b6675;
+  --row-hover:#f5f8fc; --danger-bg:#fbeceb;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0f141b; --surface:#171e28; --ink:#e6ebf2; --muted:#98a3b3; --line:#2b3543; --line-soft:#222b37;
+    --accent:#6da2ff; --accent-ink:#0c1420;
+    --pass:#3fb984; --fail:#ff6b60; --nt:#7d8aa0; --na:#56607a;
+    --p-highest:#ff7a70; --p-high:#f0a24a; --p-medium:#6da2ff; --p-low:#98a3b3;
+    --row-hover:#1c2532; --danger-bg:#2a1a1a;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0f141b; --surface:#171e28; --ink:#e6ebf2; --muted:#98a3b3; --line:#2b3543; --line-soft:#222b37;
+  --accent:#6da2ff; --accent-ink:#0c1420;
+  --pass:#3fb984; --fail:#ff6b60; --nt:#7d8aa0; --na:#56607a;
+  --p-highest:#ff7a70; --p-high:#f0a24a; --p-medium:#6da2ff; --p-low:#98a3b3;
+  --row-hover:#1c2532; --danger-bg:#2a1a1a;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);}
+*,*::before,*::after{box-sizing:border-box;}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",system-ui,sans-serif;
+  font-size:14px; line-height:1.55; font-variant-numeric:tabular-nums;
+}
+.wrap:has(#view-tc:not([hidden])){max-width:min(1760px,97vw);}
+.wrap{max-width:1240px; margin:0 auto; padding:24px 20px 56px;}
+header.top{display:flex; flex-wrap:wrap; gap:16px 32px; align-items:flex-end; justify-content:space-between; padding-bottom:18px; border-bottom:2px solid var(--ink);}
+h1{margin:0; font-size:26px; line-height:1.25; font-weight:700; letter-spacing:-0.01em;}
+.meta{margin:6px 0 0; color:var(--muted); font-size:13px;}
+.meta b{color:var(--ink); font-weight:600;}
+.tabs{display:flex; gap:4px;}
+.tab{appearance:none; border:1px solid var(--line); background:transparent; color:var(--muted); font:inherit; font-weight:600; padding:8px 18px; border-radius:6px 6px 0 0; border-bottom:none; cursor:pointer; margin-bottom:-2px;}
+.tab[aria-selected="true"]{background:var(--ink); color:var(--bg); border-color:var(--ink);}
+.tab:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible{outline:2px solid var(--accent); outline-offset:2px;}
+h2{font-size:16px; font-weight:700; margin:0 0 12px;}
+.sec{margin-top:32px;}
+.btn{appearance:none; border:1px solid var(--line); background:var(--surface); color:var(--ink); font:inherit; font-weight:500; padding:7px 14px; border-radius:6px; cursor:pointer;}
+.btn:hover{border-color:var(--muted);}
+.btn.primary{background:var(--accent); border-color:var(--accent); color:var(--accent-ink); font-weight:600;}
+.btn.danger{color:var(--fail); border-color:var(--fail);}
+.btn.small{padding:3px 10px; font-size:12px;}
+/* TC view */
+.toolbar{display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin:20px 0 12px;}
+.toolbar input[type=search], .toolbar select{font:inherit; padding:7px 10px; border:1px solid var(--line); border-radius:6px; background:var(--surface); color:var(--ink);}
+.toolbar input[type=search]{min-width:200px; flex:1 1 200px;}
+.toolbar .spacer{flex:1 1 auto;}
+.count{color:var(--muted); font-size:13px; margin-left:4px;}
+.tablewrap{overflow-x:auto; border:1px solid var(--line); border-radius:8px; background:var(--surface); max-width:100%;}
+table.tc{border-collapse:collapse; width:100%; min-width:0;}
+table.tc th{position:sticky; top:0; text-align:left; font-weight:600; font-size:12.5px; color:var(--muted); background:var(--surface); border-bottom:1px solid var(--line); padding:9px 10px; white-space:nowrap;}
+table.tc td{padding:8px 10px; border-bottom:1px solid var(--line-soft); vertical-align:top;}
+table.tc tr:last-child td{border-bottom:none;}
+table.tc tbody tr:hover td{background:var(--row-hover);}
+td.no{color:var(--muted); width:40px;}
+td.plat{width:36px; font-weight:600;}
+td.txt{min-width:120px;}
+.cell-input, .cell-select{font:inherit; width:100%; padding:4px 6px; border:1px solid transparent; border-radius:5px; background:transparent; color:var(--ink);}
+.cell-input:hover, .cell-select:hover{border-color:var(--line);}
+.cell-input:focus, .cell-select:focus{border-color:var(--accent); background:var(--surface);}
+.cell-select{font-weight:600; width:auto; min-width:78px;}
+.cell-select[data-v="Pass"]{color:var(--pass);}
+.cell-select[data-v="Fail"]{color:var(--fail);}
+.cell-select[data-v="N/T"]{color:var(--nt);}
+.cell-select[data-v="N/A"]{color:var(--na);}
+.cell-select.pri[data-v="Highest"]{color:var(--p-highest);}
+.cell-select.pri[data-v="High"]{color:var(--p-high);}
+.cell-select.pri[data-v="Medium"]{color:var(--p-medium);}
+.cell-select.pri[data-v="Low"]{color:var(--p-low);}
+.empty{padding:40px 16px; text-align:center; color:var(--muted);}
+/* Dashboard */
+.headline{font-size:20px; font-weight:600; line-height:1.5; margin:24px 0 16px; max-width:52ch;}
+.headline em{font-style:normal; font-weight:700;}
+.stack{display:flex; height:22px; border-radius:5px; overflow:hidden; background:var(--line-soft);}
+.stack span{display:block; height:100%;}
+.seg-pass{background:var(--pass);} .seg-fail{background:var(--fail);} .seg-nt{background:var(--nt);}
+.seg-na{background:repeating-linear-gradient(135deg,var(--na) 0 4px,transparent 4px 8px);}
+.legend{display:flex; flex-wrap:wrap; gap:6px 20px; margin-top:10px; font-size:13px;}
+.legend i{display:inline-block; width:10px; height:10px; border-radius:2px; margin-right:6px; vertical-align:-1px;}
+.grid2{display:grid; grid-template-columns:1fr 1fr; gap:32px;}
+@media (max-width:820px){ .grid2{grid-template-columns:1fr;} .wrap{padding:18px 14px 48px;} h1{font-size:22px;} }
+.barrow{margin-bottom:16px;}
+.barrow .lab{display:flex; justify-content:space-between; gap:8px; margin-bottom:5px; font-weight:600;}
+.barrow .lab span{font-weight:400; color:var(--muted); font-size:13px;}
+.small-note{color:var(--muted); font-size:12.5px; margin-top:6px;}
+table.mini{border-collapse:collapse; width:100%;}
+table.mini th, table.mini td{text-align:right; padding:8px 8px; border-bottom:1px solid var(--line-soft);}
+table.mini th:first-child, table.mini td:first-child{text-align:left;}
+table.mini th{font-weight:600; color:var(--muted); font-size:12.5px; border-bottom:1px solid var(--line);}
+.fail-hot{color:var(--fail); font-weight:700;}
+.risk{list-style:none; margin:0; padding:0; border-top:1px solid var(--line);}
+.risk li{display:grid; grid-template-columns:52px 1fr auto; gap:4px 12px; padding:10px 0; border-bottom:1px solid var(--line-soft); align-items:baseline;}
+.risk .no{color:var(--muted);}
+.risk .st{font-weight:700;}
+.risk .st.f{color:var(--fail);} .risk .st.n{color:var(--nt);}
+.risk .sub{grid-column:2 / 4; color:var(--muted); font-size:13px;}
+.safe{padding:14px 0; color:var(--pass); font-weight:600;}
+/* Dialog */
+dialog{border:1px solid var(--line); border-radius:10px; background:var(--surface); color:var(--ink); padding:0; width:min(640px,94vw); max-height:90vh;}
+dialog::backdrop{background:rgba(10,14,20,.55);}
+.dlg{padding:20px; display:grid; gap:12px; grid-template-columns:1fr 1fr;}
+.dlg h3{grid-column:1/-1; margin:0; font-size:17px;}
+.dlg label{display:grid; gap:4px; font-size:12.5px; color:var(--muted); font-weight:600;}
+.dlg .full{grid-column:1/-1;}
+.dlg input, .dlg select, .dlg textarea{font:inherit; font-weight:400; color:var(--ink); background:var(--bg); border:1px solid var(--line); border-radius:6px; padding:7px 9px; width:100%;}
+.dlg textarea{min-height:64px; resize:vertical;}
+.dlg .actions{grid-column:1/-1; display:flex; gap:8px; justify-content:flex-end; margin-top:4px;}
+.dlg .actions .left{margin-right:auto;}
+@media (max-width:560px){ .dlg{grid-template-columns:1fr;} }
+
+/* Report */
+.rp-actions{display:flex; justify-content:flex-end; margin:20px 0 4px;}
+.rp-meta{display:grid; grid-template-columns:repeat(3,1fr); gap:12px 20px; margin:8px 0 4px;}
+.rp-meta label{display:grid; gap:4px; font-size:12.5px; color:var(--muted); font-weight:600;}
+.rp-meta input{font:inherit; font-weight:400; color:var(--ink); background:var(--surface); border:1px solid var(--line); border-radius:6px; padding:7px 9px; width:100%;}
+@media (max-width:820px){ .rp-meta{grid-template-columns:1fr;} }
+.verdict{border:1px solid var(--line); border-left-width:6px; border-radius:6px; background:var(--surface); padding:14px 18px; margin:8px 0 18px;}
+.verdict .v-label{font-size:20px; font-weight:700;}
+.verdict .v-reason{margin-top:2px; color:var(--muted);}
+.verdict.bad{border-left-color:var(--fail);} .verdict.bad .v-label{color:var(--fail);}
+.verdict.warn{border-left-color:var(--p-high);} .verdict.warn .v-label{color:var(--p-high);}
+.verdict.ok{border-left-color:var(--pass);} .verdict.ok .v-label{color:var(--pass);}
+.rule{color:var(--muted); font-size:12.5px; margin-top:6px;}
+.kv{display:grid; grid-template-columns:repeat(4,1fr); gap:0; border:1px solid var(--line); border-radius:6px; background:var(--surface); margin-bottom:14px;}
+.kv div{padding:10px 14px; border-right:1px solid var(--line-soft); border-bottom:1px solid var(--line-soft);}
+.kv b{display:block; font-size:20px; font-weight:700;}
+.kv span{color:var(--muted); font-size:12.5px;}
+@media (max-width:820px){ .kv{grid-template-columns:repeat(2,1fr);} }
+.tablewrap.flat{border-radius:6px;}
+table.rp{border-collapse:collapse; width:100%; min-width:640px; background:var(--surface);}
+table.rp th{text-align:left; font-weight:600; font-size:12.5px; color:var(--muted); border-bottom:1px solid var(--line); padding:8px 10px; white-space:nowrap;}
+table.rp td{padding:8px 10px; border-bottom:1px solid var(--line-soft); vertical-align:top;}
+table.rp tr:last-child td{border-bottom:none;}
+table.rp td.n{text-align:right;} table.rp th.n{text-align:right;}
+.p-Highest{color:var(--p-highest); font-weight:700;} .p-High{color:var(--p-high); font-weight:700;} .p-Medium{color:var(--p-medium); font-weight:600;} .p-Low{color:var(--p-low);}
+.opinion{width:100%; min-height:110px; font:inherit; color:var(--ink); background:var(--surface); border:1px solid var(--line); border-radius:6px; padding:10px 12px; resize:vertical; line-height:1.6;}
+@media print{
+  .tabs, .no-print, .toolbar{display:none !important;}
+  body{background:#fff; color:#000;}
+  .wrap{padding:0; max-width:none;}
+  header.top{border-bottom:1px solid #000;}
+  .tablewrap{overflow:visible; border-color:#bbb;}
+  table.rp{min-width:0;}
+  .rp-meta input, .opinion{border-color:#bbb; background:#fff; color:#000;}
+}
+
+.io-msg{color:var(--muted); font-size:13px;}
+.io-msg.err{color:var(--fail);} .io-msg.ok{color:var(--pass);}
+.imp{padding:20px; display:grid; gap:12px;}
+.imp h3{margin:0; font-size:17px;}
+.imp p{margin:0; color:var(--muted); font-size:13px;}
+.imp textarea{width:100%; min-height:150px; font:inherit; font-size:13px; color:var(--ink); background:var(--bg); border:1px solid var(--line); border-radius:6px; padding:9px 10px; resize:vertical;}
+.imp .row{display:flex; flex-wrap:wrap; gap:14px; align-items:center;}
+.imp .row label{display:flex; gap:6px; align-items:center; color:var(--ink); font-size:13.5px;}
+.imp .actions{display:flex; gap:8px; justify-content:flex-end;}
+
+td.cat{white-space:nowrap;}
+td.act{white-space:nowrap; width:1%;}
+.btn.small{white-space:nowrap;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div>
+      <h1>렌트카 예약 서비스 TC 관리</h1>
+      <p class="meta">QA 담당 <b>성기현</b>. 서비스와 데이터는 모두 직접 만든 가상 예시이며 실제 서비스와 무관합니다.</p>
+    </div>
+    <div class="tabs" role="tablist">
+      <button class="tab" role="tab" id="tab-tc" aria-selected="true" aria-controls="view-tc">TC 관리</button>
+      <button class="tab" role="tab" id="tab-dash" aria-selected="false" aria-controls="view-dash">현황 대시보드</button>
+      <button class="tab" role="tab" id="tab-report" aria-selected="false" aria-controls="view-report">QA 종료 보고서</button>
+    </div>
+  </header>
+
+  <main>
+    <section id="view-tc" role="tabpanel" aria-labelledby="tab-tc">
+      <div class="toolbar">
+        <input type="search" id="f-q" placeholder="기능명, 절차, 기대 결과 검색" aria-label="검색">
+        <select id="f-main" aria-label="Main 필터"></select>
+        <select id="f-plat" aria-label="플랫폼 필터"><option value="">플랫폼 전체</option><option>W</option><option>M</option></select>
+        <select id="f-res" aria-label="결과 필터"><option value="">결과 전체</option><option>Pass</option><option>Fail</option><option>N/T</option><option>N/A</option></select>
+        <select id="f-pri" aria-label="우선순위 필터"><option value="">우선순위 전체</option><option>Highest</option><option>High</option><option>Medium</option><option>Low</option></select>
+        <span class="count" id="count"></span>
+        <span class="spacer"></span>
+        <button class="btn primary" id="btn-add">TC 추가</button>
+      </div>
+      <div class="tablewrap">
+        <table class="tc">
+          <thead><tr>
+            <th>No</th><th>Main</th><th>Middle</th><th>Sub</th><th>P</th><th>Pre-Condition</th><th>Test Step</th><th>Expected Result</th><th>Result</th><th>Issue</th><th>Priority</th><th>비고</th><th></th>
+          </tr></thead>
+          <tbody id="tbody"></tbody>
+        </table>
+      </div>
+      <div class="toolbar" style="margin-top:14px">
+        <button class="btn" id="btn-demo">데모 결과로 복원</button>
+        <button class="btn" id="btn-nt">결과를 전부 N/T로 초기화</button>
+        <button class="btn" id="btn-imp">CSV 가져오기</button>
+        <button class="btn" id="btn-exp">CSV 내보내기</button>
+        <button class="btn" id="btn-copy">CSV 복사</button>
+        <span class="io-msg" id="io-msg" role="status" aria-live="polite"></span>
+        <span class="small-note">변경 내용은 이 브라우저에만 저장됩니다.</span>
+      </div>
+    </section>
+
+    <section id="view-dash" role="tabpanel" aria-labelledby="tab-dash" hidden></section>
+
+    <section id="view-report" role="tabpanel" aria-labelledby="tab-report" hidden>
+      <div class="rp-actions no-print"><button class="btn" id="btn-print">인쇄 / PDF 저장</button></div>
+      <div id="rp-body"></div>
+    </section>
+  </main>
+</div>
+
+<dialog id="dlg">
+  <div class="dlg" id="dlg-body">
+    <h3 id="dlg-title">TC 추가</h3>
+    <label>Main<input id="d-main" list="dl-main" autocomplete="off"></label>
+    <label>Middle<input id="d-middle" autocomplete="off"></label>
+    <label>Sub<input id="d-sub" autocomplete="off"></label>
+    <label>플랫폼<select id="d-plat"><option>W</option><option>M</option></select></label>
+    <label class="full">Pre-Condition<input id="d-pre" autocomplete="off"></label>
+    <label class="full">Test Step<textarea id="d-step"></textarea></label>
+    <label class="full">Expected Result<textarea id="d-exp"></textarea></label>
+    <label>Result<select id="d-res"><option>N/T</option><option>Pass</option><option>Fail</option><option>N/A</option></select></label>
+    <label>Priority<select id="d-pri"><option>Highest</option><option>High</option><option selected>Medium</option><option>Low</option></select></label>
+    <label>Issue<input id="d-issue" autocomplete="off"></label>
+    <label>비고<input id="d-note" autocomplete="off"></label>
+    <div class="actions">
+      <button class="btn danger left" id="d-del" type="button">삭제</button>
+      <button class="btn" id="d-cancel" type="button">취소</button>
+      <button class="btn primary" id="d-save" type="button">저장</button>
+    </div>
+  </div>
+  <datalist id="dl-main"></datalist>
+</dialog>
+
+
+<dialog id="dlg-imp">
+  <div class="imp">
+    <h3>CSV 가져오기</h3>
+    <p>파일을 고르거나, 엑셀에서 표를 복사해 아래에 붙여넣으세요. 첫 줄은 컬럼명이어야 하고 Main과 Test Step 컬럼이 필요합니다.</p>
+    <input type="file" id="imp-file" accept=".csv,.tsv,.txt,text/csv">
+    <textarea id="imp-text" placeholder="No,Main,Middle,Sub,Platform,Pre-Condition,Test Step,Expected Result,Result,Issue,Priority,비고" aria-label="붙여넣기"></textarea>
+    <div class="row">
+      <label><input type="radio" name="imp-mode" value="append" checked> 기존 TC에 추가</label>
+      <label><input type="radio" name="imp-mode" value="replace"> 기존 TC를 모두 교체</label>
+    </div>
+    <div class="io-msg" id="imp-msg" role="status" aria-live="polite"></div>
+    <div class="actions">
+      <button class="btn" id="imp-cancel" type="button">닫기</button>
+      <button class="btn primary" id="imp-go" type="button">가져오기</button>
+    </div>
+  </div>
+</dialog>
+
+<script>
+(function(){
+  var KEY = 'qa-tc-manager-v1';
+  var SAMPLE_ROWS = [
+    ['예약','생성','필수값','W','로그인','차량 미선택 후 예약 클릭','차량 선택 안내 노출','High'],
+    ['예약','생성','기간 검증','W','차량 선택','반납일을 대여일 이전으로 입력','저장 불가, 오류 안내','High'],
+    ['예약','생성','기간 검증','M','차량 선택','대여일을 과거 날짜로 선택','선택 불가 또는 오류 안내','Medium'],
+    ['예약','생성','중복 예약','W','해당 시간대 예약 존재','같은 차량, 같은 시간대 예약 시도','예약 불가 안내','Highest'],
+    ['예약','생성','정상 예약','W','로그인','차량·기간 선택 후 예약 확정','예약 완료, 예약번호 발급','Highest'],
+    ['예약','생성','정상 예약','M','로그인','차량·기간 선택 후 예약 확정','예약 완료, 예약번호 발급','Highest'],
+    ['예약','생성','요금 계산','W','차량 선택','이용 기간을 2일에서 3일로 변경','총 요금 재계산','High'],
+    ['예약','생성','쿠폰','M','쿠폰 보유','쿠폰 적용','할인 금액 반영','Medium'],
+    ['예약','생성','비로그인','W','비로그인','예약 버튼 클릭','로그인 화면 이동','Medium'],
+    ['예약','생성','입력 제한','M','예약 폼 진입','요청사항 최대 글자 초과 입력','입력 제한 또는 안내','Low'],
+    ['예약','조회','목록','W','예약 3건','내 예약 목록 진입','3건 최신순 노출','Medium'],
+    ['예약','조회','상세','M','예약 존재','목록에서 예약 선택','차량·기간·요금·상태 노출','High'],
+    ['예약','조회','빈 목록','W','예약 0건','목록 진입','내역 없음 안내','Low'],
+    ['예약','변경','기간 변경','W','예약 완료 건','반납일 연장','변경 저장, 요금 재계산','High'],
+    ['예약','변경','기간 변경','M','대여 진행 중','대여일 변경 시도','변경 불가 안내','High'],
+    ['예약','변경','차량 변경','W','예약 완료 건','다른 차량 선택 후 저장','변경 반영, 재고 갱신','Medium'],
+    ['예약','취소','정상 취소','W','예약 완료 건','취소 클릭 후 확인','상태 취소로 변경','Highest'],
+    ['예약','취소','정상 취소','M','예약 완료 건','취소 클릭 후 확인','상태 취소로 변경','Highest'],
+    ['예약','취소','환불 규정','W','대여 24시간 전','취소','규정에 맞는 환불금 표시','High'],
+    ['예약','취소','환불 규정','W','대여 1시간 전','취소','위약금 반영 금액 표시','High'],
+    ['예약','취소','취소 불가','M','대여 진행 중','취소 시도','취소 불가 안내','High'],
+    ['알림','발송','예약 확정','M','예약 완료','확정 직후','예약번호 포함 알림 수신','Medium'],
+    ['알림','발송','출발 전','M','대여 24시간 전','발송 시각 도래','알림 1회 수신','Medium'],
+    ['알림','발송','취소','M','예약 취소','취소 완료 후','취소 알림 수신','Medium'],
+    ['알림','설정','수신 거부','M','알림 OFF','예약 확정','알림 미발송','Low'],
+    ['관리자','예약','목록 조회','W','관리자 로그인','예약 목록 진입','전체 예약 최신순 노출','High'],
+    ['관리자','예약','필터','W','예약 다수','상태 필터 취소 선택','취소 건만 노출','Medium'],
+    ['관리자','예약','강제 취소','W','예약 완료 건','관리자가 강제 취소','상태 변경, 고객 알림 발송','High'],
+    ['관리자','권한','접근 제한','W','일반 사용자 로그인','관리자 URL 직접 접근','접근 불가 안내','Highest'],
+    ['관리자','예약','엑셀 다운로드','W','예약 다수','엑셀 다운로드','현재 필터 기준 파일 생성','Low']
+  ];
+  var DEMO = {
+    4:['Fail','RC-001','동일 차량, 같은 시간대 예약이 중복 저장됨'],
+    10:['Fail','RC-005','최대 글자 초과 입력이 잘리지 않음'],
+    15:['Fail','RC-002','대여 진행 중에도 대여일 변경이 가능함'],
+    20:['Fail','RC-003','1시간 전 취소 시 위약금이 0원으로 표시됨'],
+    23:['Fail','RC-004','출발 전 알림이 2회 발송됨'],
+    24:['N/T','','알림 서버 연동 대기'],
+    27:['N/T','',''],
+    28:['N/T','',''],
+    29:['N/T','','권한 테스트 계정 준비 후 수행'],
+    30:['N/A','','이번 릴리스 범위에서 제외']
+  };
+  var PRIS = ['Highest','High','Medium','Low'];
+  var RESULTS = ['Pass','Fail','N/T','N/A'];
+
+  function buildSample(withDemo){
+    return SAMPLE_ROWS.map(function(r,i){
+      var no = i+1, d = withDemo ? DEMO[no] : null;
+      return {id:no, main:r[0], middle:r[1], sub:r[2], plat:r[3], pre:r[4], step:r[5], exp:r[6],
+        result: d ? d[0] : (withDemo ? 'Pass' : 'N/T'), issue: d ? d[1] : '', priority:r[7], note: d ? d[2] : ''};
+    });
+  }
+  function load(){
+    try{
+      var raw = localStorage.getItem(KEY);
+      if(raw){ var a = JSON.parse(raw); if(Array.isArray(a) && a.length) return a; }
+    }catch(e){}
+    return buildSample(true);
+  }
+  function save(){ try{ localStorage.setItem(KEY, JSON.stringify(tcs)); }catch(e){} }
+
+  var tcs = load();
+  var filt = {q:'', main:'', plat:'', res:'', pri:''};
+  var editingId = null;
+
+  function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];}); }
+  function $(id){ return document.getElementById(id); }
+  function mains(){ var m=[]; tcs.forEach(function(t){ if(t.main && m.indexOf(t.main)<0) m.push(t.main); }); return m; }
+
+  function fillMainOptions(){
+    var cur = filt.main, sel = $('f-main');
+    sel.innerHTML = '<option value="">Main 전체</option>' + mains().map(function(m){return '<option'+(m===cur?' selected':'')+'>'+esc(m)+'</option>';}).join('');
+    $('dl-main').innerHTML = mains().map(function(m){return '<option value="'+esc(m)+'">';}).join('');
+  }
+
+  function filtered(){
+    var q = filt.q.trim().toLowerCase();
+    return tcs.filter(function(t){
+      if(filt.main && t.main!==filt.main) return false;
+      if(filt.plat && t.plat!==filt.plat) return false;
+      if(filt.res && t.result!==filt.res) return false;
+      if(filt.pri && t.priority!==filt.pri) return false;
+      if(q){
+        var hay = [t.main,t.middle,t.sub,t.pre,t.step,t.exp,t.issue,t.note].join(' ').toLowerCase();
+        if(hay.indexOf(q)<0) return false;
+      }
+      return true;
+    });
+  }
+
+  function opts(list, cur){ return list.map(function(v){return '<option'+(v===cur?' selected':'')+'>'+esc(v)+'</option>';}).join(''); }
+
+  function renderTable(){
+    var list = filtered();
+    $('count').textContent = list.length + ' / ' + tcs.length + '건';
+    if(!list.length){
+      $('tbody').innerHTML = '<tr><td colspan="13" class="empty">조건에 맞는 TC가 없습니다. 필터를 조정하거나 TC를 추가하세요.</td></tr>';
+      return;
+    }
+    $('tbody').innerHTML = list.map(function(t){
+      return '<tr data-id="'+t.id+'">'
+        + '<td class="no">'+t.id+'</td>'
+        + '<td class="cat">'+esc(t.main)+'</td><td class="cat">'+esc(t.middle)+'</td><td class="cat">'+esc(t.sub)+'</td>'
+        + '<td class="plat">'+esc(t.plat)+'</td>'
+        + '<td class="txt">'+esc(t.pre)+'</td><td class="txt">'+esc(t.step)+'</td><td class="txt">'+esc(t.exp)+'</td>'
+        + '<td><select class="cell-select res" data-f="result" data-v="'+esc(t.result)+'" aria-label="Result">'+opts(RESULTS,t.result)+'</select></td>'
+        + '<td><input class="cell-input" data-f="issue" value="'+esc(t.issue)+'" aria-label="Issue" style="min-width:64px"></td>'
+        + '<td><select class="cell-select pri" data-f="priority" data-v="'+esc(t.priority)+'" aria-label="Priority">'+opts(PRIS,t.priority)+'</select></td>'
+        + '<td><input class="cell-input" data-f="note" value="'+esc(t.note)+'" aria-label="비고" style="min-width:110px"></td>'
+        + '<td class="act"><button class="btn small" data-act="edit">수정</button></td>'
+        + '</tr>';
+    }).join('');
+  }
+
+  /* ---- dashboard ---- */
+  function stats(list){
+    var s = {total:list.length, Pass:0, Fail:0, 'N/T':0, 'N/A':0};
+    list.forEach(function(t){ if(s[t.result]!==undefined) s[t.result]++; });
+    var denom = s.total - s['N/A'], exec = s.Pass + s.Fail;
+    s.execRate = denom ? exec/denom : 0;
+    s.passRate = exec ? s.Pass/exec : 0;
+    s.exec = exec; s.denom = denom;
+    return s;
+  }
+  function pct(x){ return Math.round(x*100) + '%'; }
+  function stackBar(s){
+    if(!s.total) return '<div class="stack"></div>';
+    function w(n){ return (n/s.total*100).toFixed(2)+'%'; }
+    return '<div class="stack" role="img" aria-label="Pass '+s.Pass+', Fail '+s.Fail+', N/T '+s['N/T']+', N/A '+s['N/A']+'">'
+      + '<span class="seg-pass" style="width:'+w(s.Pass)+'"></span>'
+      + '<span class="seg-fail" style="width:'+w(s.Fail)+'"></span>'
+      + '<span class="seg-nt" style="width:'+w(s['N/T'])+'"></span>'
+      + '<span class="seg-na" style="width:'+w(s['N/A'])+'"></span></div>';
+  }
+  function legend(s){
+    return '<div class="legend">'
+      + '<span><i class="seg-pass"></i>Pass '+s.Pass+'</span>'
+      + '<span><i class="seg-fail"></i>Fail '+s.Fail+'</span>'
+      + '<span><i class="seg-nt"></i>N/T '+s['N/T']+'</span>'
+      + '<span><i class="seg-na"></i>N/A '+s['N/A']+'</span></div>';
+  }
+
+  function renderDash(){
+    var all = stats(tcs);
+    var hot = tcs.filter(function(t){ return t.result==='Fail' && (t.priority==='Highest'||t.priority==='High'); });
+    var ntTop = tcs.filter(function(t){ return t.result==='N/T' && t.priority==='Highest'; });
+    var h = '';
+    if(!all.total){
+      $('view-dash').innerHTML = '<div class="empty">TC가 없습니다. TC 관리 탭에서 TC를 추가하면 현황이 표시됩니다.</div>';
+      return;
+    }
+    h += '<p class="headline">전체 '+all.total+'건 중 <em>'+all.exec+'건을 실행</em>했고 실행률은 <em>'+pct(all.execRate)+'</em>, Pass율은 <em>'+pct(all.passRate)+'</em>입니다. Highest·High 중 Fail은 <em>'+hot.length+'건</em>입니다.</p>';
+    h += stackBar(all) + legend(all);
+    h += '<p class="small-note">실행률은 (Pass+Fail) ÷ (전체−N/A), Pass율은 Pass ÷ (Pass+Fail)로 계산합니다.</p>';
+
+    /* by main */
+    var byMain = mains().map(function(m){
+      var s = stats(tcs.filter(function(t){return t.main===m;}));
+      return '<div class="barrow"><div class="lab">'+esc(m)+'<span>실행률 '+pct(s.execRate)+', Pass율 '+pct(s.passRate)+', '+s.total+'건</span></div>'+stackBar(s)+legend(s)+'</div>';
+    }).join('');
+
+    /* by platform */
+    var byPlat = ['W','M'].map(function(p){
+      var s = stats(tcs.filter(function(t){return t.plat===p;}));
+      var name = p==='W' ? '웹 (W)' : '모바일 (M)';
+      return '<div class="barrow"><div class="lab">'+name+'<span>실행률 '+pct(s.execRate)+', Pass율 '+pct(s.passRate)+', '+s.total+'건</span></div>'+stackBar(s)+legend(s)+'</div>';
+    }).join('');
+
+    h += '<div class="sec grid2"><div><h2>기능별 진행 현황</h2>'+byMain+'</div><div><h2>플랫폼별 비교</h2>'+byPlat+'</div></div>';
+
+    /* by priority */
+    var rows = PRIS.map(function(p){
+      var s = stats(tcs.filter(function(t){return t.priority===p;}));
+      var hotCls = (s.Fail>0 && (p==='Highest'||p==='High')) ? ' class="fail-hot"' : '';
+      return '<tr><td>'+p+'</td><td>'+s.total+'</td><td>'+s.Pass+'</td><td'+hotCls+'>'+s.Fail+'</td><td>'+s['N/T']+'</td><td>'+s['N/A']+'</td></tr>';
+    }).join('');
+    var prio = '<h2>우선순위별 결과</h2><table class="mini"><thead><tr><th>Priority</th><th>전체</th><th>Pass</th><th>Fail</th><th>N/T</th><th>N/A</th></tr></thead><tbody>'+rows+'</tbody></table>';
+
+    /* risk list */
+    var risk = hot.map(function(t){return {t:t, kind:'f'};}).concat(ntTop.map(function(t){return {t:t, kind:'n'};}));
+    var rl;
+    if(!risk.length){
+      rl = '<div class="safe">Highest·High Fail과 미수행 Highest가 없습니다.</div>';
+    } else {
+      rl = '<ul class="risk">' + risk.map(function(r){
+        var t = r.t;
+        var st = r.kind==='f' ? '<span class="st f">Fail, '+esc(t.priority)+'</span>' : '<span class="st n">미수행, Highest</span>';
+        var sub = esc(t.step) + (t.note ? ' / ' + esc(t.note) : '');
+        return '<li><span class="no">#'+t.id+'</span><span>'+esc(t.main)+' &gt; '+esc(t.middle)+' &gt; '+esc(t.sub)+' ('+esc(t.plat)+')</span>'+st+'<span class="sub">'+(t.issue?esc(t.issue)+': ':'')+sub+'</span></li>';
+      }).join('') + '</ul>';
+    }
+    h += '<div class="sec grid2"><div>'+prio+'</div><div><h2>우선 확인할 TC</h2>'+rl+'</div></div>';
+    $('view-dash').innerHTML = h;
+  }
+
+  /* ---- QA report ---- */
+  var META_KEY = 'qa-tc-manager-meta-v1';
+  var META_DEFAULT = {
+    name:'렌트카 예약 서비스 (가상 서비스)', team:'QA파트', owner:'성기현',
+    design:'2026.09.14 ~ 2026.09.18', test:'2026.09.21 ~ 2026.09.30', env:'웹(Chrome), 모바일 앱(Android, iOS)',
+    opinion:'예약 생성·취소의 핵심 흐름은 대체로 정상입니다. 다만 중복 예약 방지(RC-001)와 대여 진행 중 변경 제한(RC-002)이 해결되지 않았고, 관리자 접근 제한 TC가 아직 수행되지 않았습니다. 위 결함 수정 후 재검증하고, 미수행 항목을 수행한 뒤 출시 여부를 다시 판정합니다.'
+  };
+  function loadMeta(){
+    try{
+      var r = localStorage.getItem(META_KEY);
+      if(r){ var o = JSON.parse(r); if(o && typeof o==='object') return Object.assign({}, META_DEFAULT, o); }
+    }catch(e){}
+    return Object.assign({}, META_DEFAULT);
+  }
+  var meta = loadMeta();
+  function saveMeta(){ try{ localStorage.setItem(META_KEY, JSON.stringify(meta)); }catch(e){} }
+
+  function judge(all, hot, ntTop){
+    if(hot.length) return {cls:'bad', label:'출시 보류 권고', reason:'Highest·High 등급 Fail이 '+hot.length+'건 남아 있습니다.'};
+    if(ntTop.length) return {cls:'warn', label:'수행 후 재판정', reason:'미수행 Highest TC가 '+ntTop.length+'건 남아 있습니다.'};
+    if(all.exec < all.denom) return {cls:'warn', label:'잔여 수행 후 출시', reason:'미수행 TC가 '+(all.denom-all.exec)+'건 남아 있습니다.'};
+    if(all.Fail > 0) return {cls:'ok', label:'출시 가능 (경미한 결함 인지)', reason:'남은 Fail은 Medium 이하이며 Highest·High Fail이 없습니다.'};
+    return {cls:'ok', label:'출시 가능', reason:'모든 대상 TC가 Pass입니다.'};
+  }
+
+  function renderReport(){
+    var all = stats(tcs);
+    if(!all.total){
+      $('rp-body').innerHTML = '<div class="empty">TC가 없습니다. TC 관리 탭에서 TC를 추가하면 보고서가 만들어집니다.</div>';
+      return;
+    }
+    var hot = tcs.filter(function(t){ return t.result==='Fail' && (t.priority==='Highest'||t.priority==='High'); });
+    var ntTop = tcs.filter(function(t){ return t.result==='N/T' && t.priority==='Highest'; });
+    var v = judge(all, hot, ntTop);
+    var h = '';
+
+    var fields = [['name','프로젝트명'],['team','파트'],['owner','QA 담당자'],['design','TC 설계 기간'],['test','검증 기간'],['env','검증 환경']];
+    h += '<div class="sec"><h2>1. 프로젝트 개요</h2><div class="rp-meta">'
+      + fields.map(function(f){ return '<label>'+f[1]+'<input data-k="'+f[0]+'" value="'+esc(meta[f[0]])+'"></label>'; }).join('')
+      + '</div></div>';
+
+    h += '<div class="sec"><h2>2. 결과 요약</h2>'
+      + '<div class="verdict '+v.cls+'"><div class="v-label">'+esc(v.label)+'</div><div class="v-reason">'+esc(v.reason)+'</div>'
+      + '<div class="rule">판정 기준: Highest·High Fail이 있으면 출시 보류, 미수행 Highest가 있으면 수행 후 재판정, 미수행이 남으면 잔여 수행 후 출시, 그 외는 출시 가능으로 산출합니다.</div></div>'
+      + '<div class="kv">'
+      + '<div><b>'+all.total+'</b><span>전체 TC</span></div>'
+      + '<div><b>'+pct(all.execRate)+'</b><span>실행률 ('+all.exec+'/'+all.denom+')</span></div>'
+      + '<div><b>'+pct(all.passRate)+'</b><span>Pass율 ('+all.Pass+'/'+all.exec+')</span></div>'
+      + '<div><b>'+all.Fail+'</b><span>Fail</span></div>'
+      + '</div>' + stackBar(all) + legend(all) + '</div>';
+
+    var mrows = mains().map(function(m){
+      var s = stats(tcs.filter(function(t){return t.main===m;}));
+      return '<tr><td>'+esc(m)+'</td><td class="n">'+s.total+'</td><td class="n">'+s.Pass+'</td><td class="n'+(s.Fail?' fail-hot':'')+'">'+s.Fail+'</td><td class="n">'+s['N/T']+'</td><td class="n">'+s['N/A']+'</td><td class="n">'+pct(s.execRate)+'</td><td class="n">'+pct(s.passRate)+'</td></tr>';
+    }).join('');
+    h += '<div class="sec"><h2>3. 기능별 결과</h2><div class="tablewrap flat"><table class="rp"><thead><tr><th>Main</th><th class="n">전체</th><th class="n">Pass</th><th class="n">Fail</th><th class="n">N/T</th><th class="n">N/A</th><th class="n">실행률</th><th class="n">Pass율</th></tr></thead><tbody>'+mrows+'</tbody></table></div></div>';
+
+    var fails = tcs.filter(function(t){ return t.result==='Fail'; }).sort(function(a,b){
+      return (PRIS.indexOf(a.priority)-PRIS.indexOf(b.priority)) || (a.id-b.id);
+    });
+    var frows = fails.length ? fails.map(function(t){
+      return '<tr><td>'+esc(t.issue||'-')+'</td><td class="p-'+esc(t.priority)+'">'+esc(t.priority)+'</td><td>'+esc(t.main)+' &gt; '+esc(t.middle)+' &gt; '+esc(t.sub)+' ('+esc(t.plat)+')</td><td>'+esc(t.note||'-')+'</td><td>TC #'+t.id+': '+esc(t.step)+'</td></tr>';
+    }).join('') : '<tr><td colspan="5" class="empty">Fail로 기록된 TC가 없습니다.</td></tr>';
+    h += '<div class="sec"><h2>4. 결함 목록 ('+fails.length+'건)</h2><div class="tablewrap flat"><table class="rp"><thead><tr><th>Issue</th><th>Priority</th><th>기능</th><th>현상</th><th>재현 TC</th></tr></thead><tbody>'+frows+'</tbody></table></div></div>';
+
+    var open = tcs.filter(function(t){ return t.result==='N/T' || t.result==='N/A'; }).sort(function(a,b){
+      return (PRIS.indexOf(a.priority)-PRIS.indexOf(b.priority)) || (a.id-b.id);
+    });
+    var orows = open.length ? open.map(function(t){
+      return '<tr><td>'+esc(t.result)+'</td><td class="p-'+esc(t.priority)+'">'+esc(t.priority)+'</td><td>'+esc(t.main)+' &gt; '+esc(t.middle)+' &gt; '+esc(t.sub)+' ('+esc(t.plat)+')</td><td>'+esc(t.note||'-')+'</td><td>TC #'+t.id+'</td></tr>';
+    }).join('') : '<tr><td colspan="5" class="empty">미수행 또는 제외 항목이 없습니다.</td></tr>';
+    h += '<div class="sec"><h2>5. 미수행·제외 항목 ('+open.length+'건)</h2><div class="tablewrap flat"><table class="rp"><thead><tr><th>상태</th><th>Priority</th><th>기능</th><th>사유</th><th>TC</th></tr></thead><tbody>'+orows+'</tbody></table></div></div>';
+
+    h += '<div class="sec"><h2>6. 종합 의견</h2><textarea class="opinion" data-k="opinion" aria-label="종합 의견">'+esc(meta.opinion)+'</textarea>'
+      + '<p class="small-note no-print">종합 의견과 개요 항목은 직접 수정할 수 있고, 위 수치와 표는 TC 데이터에서 자동으로 만들어집니다.</p></div>';
+    $('rp-body').innerHTML = h;
+  }
+  $('view-report').addEventListener('input', function(e){
+    var k = e.target.getAttribute && e.target.getAttribute('data-k');
+    if(!k) return;
+    meta[k] = e.target.value; saveMeta();
+  });
+  $('btn-print').addEventListener('click', function(){ try{ window.print(); }catch(err){} });
+
+  /* ---- tabs ---- */
+  function showTab(name){
+    var ids = {tc:'view-tc', dash:'view-dash', report:'view-report'};
+    Object.keys(ids).forEach(function(k){
+      $('tab-'+k).setAttribute('aria-selected', String(k===name));
+      $(ids[k]).hidden = (k!==name);
+    });
+    if(name==='dash') renderDash();
+    if(name==='report') renderReport();
+  }
+  $('tab-tc').addEventListener('click', function(){ showTab('tc'); });
+  $('tab-dash').addEventListener('click', function(){ showTab('dash'); });
+  $('tab-report').addEventListener('click', function(){ showTab('report'); });
+
+
+  /* ---- filters ---- */
+  $('f-q').addEventListener('input', function(e){ filt.q = e.target.value; renderTable(); });
+  $('f-main').addEventListener('change', function(e){ filt.main = e.target.value; renderTable(); });
+  $('f-plat').addEventListener('change', function(e){ filt.plat = e.target.value; renderTable(); });
+  $('f-res').addEventListener('change', function(e){ filt.res = e.target.value; renderTable(); });
+  $('f-pri').addEventListener('change', function(e){ filt.pri = e.target.value; renderTable(); });
+
+  /* ---- inline edits ---- */
+  function findTC(id){ for(var i=0;i<tcs.length;i++){ if(String(tcs[i].id)===String(id)) return tcs[i]; } return null; }
+  $('tbody').addEventListener('change', function(e){
+    var el = e.target, tr = el.closest('tr'); if(!tr) return;
+    var t = findTC(tr.getAttribute('data-id')); if(!t) return;
+    var f = el.getAttribute('data-f'); if(!f) return;
+    t[f] = el.value;
+    if(el.tagName==='SELECT') el.setAttribute('data-v', el.value);
+    save();
+  });
+  $('tbody').addEventListener('click', function(e){
+    var b = e.target.closest('[data-act="edit"]'); if(!b) return;
+    openDialog(b.closest('tr').getAttribute('data-id'));
+  });
+
+  /* ---- dialog ---- */
+  var dlg = $('dlg');
+  function openDialog(id){
+    editingId = id;
+    var t = id ? findTC(id) : null;
+    $('dlg-title').textContent = t ? ('TC #'+t.id+' 수정') : 'TC 추가';
+    $('d-main').value = t ? t.main : '';
+    $('d-middle').value = t ? t.middle : '';
+    $('d-sub').value = t ? t.sub : '';
+    $('d-plat').value = t ? t.plat : 'W';
+    $('d-pre').value = t ? t.pre : '';
+    $('d-step').value = t ? t.step : '';
+    $('d-exp').value = t ? t.exp : '';
+    $('d-res').value = t ? t.result : 'N/T';
+    $('d-pri').value = t ? t.priority : 'Medium';
+    $('d-issue').value = t ? t.issue : '';
+    $('d-note').value = t ? t.note : '';
+    $('d-del').style.display = t ? '' : 'none';
+    if(dlg.showModal){ dlg.showModal(); } else { dlg.setAttribute('open',''); }
+  }
+  function closeDialog(){ if(dlg.close){ dlg.close(); } else { dlg.removeAttribute('open'); } }
+  $('btn-add').addEventListener('click', function(){ openDialog(null); });
+  $('d-cancel').addEventListener('click', closeDialog);
+  $('d-save').addEventListener('click', function(){
+    var data = {
+      main:$('d-main').value.trim(), middle:$('d-middle').value.trim(), sub:$('d-sub').value.trim(),
+      plat:$('d-plat').value, pre:$('d-pre').value.trim(), step:$('d-step').value.trim(), exp:$('d-exp').value.trim(),
+      result:$('d-res').value, priority:$('d-pri').value, issue:$('d-issue').value.trim(), note:$('d-note').value.trim()
+    };
+    if(!data.main || !data.step){
+      $('d-main').style.borderColor = data.main ? '' : 'var(--fail)';
+      $('d-step').style.borderColor = data.step ? '' : 'var(--fail)';
+      return;
+    }
+    $('d-main').style.borderColor = ''; $('d-step').style.borderColor = '';
+    if(editingId){
+      var t = findTC(editingId); if(t){ Object.keys(data).forEach(function(k){ t[k] = data[k]; }); }
+    } else {
+      var next = tcs.reduce(function(m,t){ return Math.max(m, Number(t.id)||0); }, 0) + 1;
+      data.id = next; tcs.push(data);
+    }
+    save(); closeDialog(); fillMainOptions(); renderTable();
+  });
+  $('d-del').addEventListener('click', function(){
+    if(!editingId) return;
+    tcs = tcs.filter(function(t){ return String(t.id)!==String(editingId); });
+    save(); closeDialog(); fillMainOptions(); renderTable();
+  });
+
+  /* ---- reset buttons ---- */
+  $('btn-demo').addEventListener('click', function(){ tcs = buildSample(true); save(); fillMainOptions(); renderTable(); });
+  $('btn-nt').addEventListener('click', function(){
+    tcs.forEach(function(t){ t.result = 'N/T'; t.issue = ''; t.note = ''; });
+    save(); renderTable();
+  });
+
+
+  /* ---- CSV import / export ---- */
+  var CSV_COLS = [['id','No'],['main','Main'],['middle','Middle'],['sub','Sub'],['plat','Platform'],['pre','Pre-Condition'],['step','Test Step'],['exp','Expected Result'],['result','Result'],['issue','Issue'],['priority','Priority'],['note','비고']];
+  var ALIASES = {no:'no', main:'main', middle:'middle', sub:'sub', p:'plat', platform:'plat', '플랫폼':'plat',
+    precondition:'pre', pre:'pre', '사전조건':'pre', teststep:'step', step:'step', '수행절차':'step', '절차':'step',
+    expectedresult:'exp', expected:'exp', exp:'exp', '기대결과':'exp', result:'result', '결과':'result',
+    issue:'issue', priority:'priority', '우선순위':'priority', '비고':'note', note:'note', remark:'note'};
+
+  function ioMsg(text, kind){ var el = $('io-msg'); el.textContent = text; el.className = 'io-msg' + (kind ? ' '+kind : ''); }
+  function csvCell(v){
+    var t = String(v==null?'':v);
+    if(/^[=+@\t]/.test(t)) t = "'" + t;
+    return /[",\r\n]/.test(t) ? '"' + t.replace(/"/g,'""') + '"' : t;
+  }
+  function buildCSV(){
+    var lines = [CSV_COLS.map(function(c){return c[1];}).join(',')];
+    tcs.forEach(function(t){ lines.push(CSV_COLS.map(function(c){ return csvCell(t[c[0]]); }).join(',')); });
+    return lines.join('\r\n');
+  }
+
+  function parseCSV(text){
+    text = text.replace(/^\uFEFF/, '');
+    var first = text.split(/\r?\n/)[0] || '';
+    var counts = {',':(first.match(/,/g)||[]).length, '\t':(first.match(/\t/g)||[]).length, ';':(first.match(/;/g)||[]).length};
+    var delim = ',';
+    if(counts['\t']>counts[delim]) delim = '\t';
+    if(counts[';']>counts[delim]) delim = ';';
+    var rows = [], row = [], cell = '', inQ = false;
+    for(var i=0;i<text.length;i++){
+      var ch = text[i];
+      if(inQ){
+        if(ch==='"'){ if(text[i+1]==='"'){ cell += '"'; i++; } else { inQ = false; } }
+        else cell += ch;
+      } else if(ch==='"' && cell===''){ inQ = true; }
+      else if(ch===delim){ row.push(cell); cell = ''; }
+      else if(ch==='\n' || ch==='\r'){
+        if(ch==='\r' && text[i+1]==='\n') i++;
+        row.push(cell); cell = '';
+        if(row.some(function(c){return c.trim()!=='';})) rows.push(row);
+        row = [];
+      } else cell += ch;
+    }
+    row.push(cell);
+    if(row.some(function(c){return c.trim()!=='';})) rows.push(row);
+    return rows;
+  }
+  function normHead(h){ return String(h).toLowerCase().replace(/[\s\-_().]/g,''); }
+  function unguard(v){ return /^'[=+@\t]/.test(v) ? v.slice(1) : v; }
+  function normResult(v){
+    var k = String(v).trim().toLowerCase().replace(/\s/g,'');
+    if(k==='pass') return 'Pass'; if(k==='fail') return 'Fail'; if(k==='n/t'||k==='nt') return 'N/T'; if(k==='n/a'||k==='na') return 'N/A';
+    return 'N/T';
+  }
+  function normPri(v){
+    var k = String(v).trim().toLowerCase();
+    for(var i=0;i<PRIS.length;i++){ if(PRIS[i].toLowerCase()===k) return PRIS[i]; }
+    return 'Medium';
+  }
+  function normPlat(v){
+    var k = String(v).trim().toUpperCase();
+    if(k==='M' || k==='MOBILE' || k==='모바일' || k==='앱') return 'M';
+    return 'W';
+  }
+
+  function importCSV(text, mode){
+    var rows = parseCSV(text);
+    if(rows.length < 2) return {error:'데이터 행이 없습니다. 첫 줄은 컬럼명, 둘째 줄부터 TC여야 합니다.'};
+    var map = {};
+    rows[0].forEach(function(h, idx){ var key = ALIASES[normHead(h)]; if(key && map[key]===undefined) map[key] = idx; });
+    if(map.main===undefined || map.step===undefined) return {error:'Main과 Test Step 컬럼을 찾지 못했습니다. 첫 줄 컬럼명을 확인하세요.'};
+    function get(r, k){ return map[k]===undefined ? '' : unguard(String(r[map[k]]==null?'':r[map[k]]).trim()); }
+    var base = mode==='replace' ? 0 : tcs.reduce(function(m,t){ return Math.max(m, Number(t.id)||0); }, 0);
+    var out = [], skipped = 0;
+    rows.slice(1).forEach(function(r){
+      var main = get(r,'main'), step = get(r,'step');
+      if(!main || !step){ skipped++; return; }
+      base++;
+      out.push({id:base, main:main, middle:get(r,'middle'), sub:get(r,'sub'), plat:normPlat(get(r,'plat')),
+        pre:get(r,'pre'), step:step, exp:get(r,'exp'), result:normResult(get(r,'result')),
+        issue:get(r,'issue'), priority:normPri(get(r,'priority')), note:get(r,'note')});
+    });
+    if(!out.length) return {error:'가져올 수 있는 행이 없습니다. Main과 Test Step이 비어 있지 않은지 확인하세요.'};
+    tcs = mode==='replace' ? out : tcs.concat(out);
+    save(); fillMainOptions(); renderTable();
+    return {added:out.length, skipped:skipped};
+  }
+
+  var impDlg = $('dlg-imp');
+  function openImp(){
+    $('imp-text').value = ''; $('imp-file').value = ''; $('imp-msg').textContent = ''; $('imp-msg').className = 'io-msg';
+    if(impDlg.showModal){ impDlg.showModal(); } else { impDlg.setAttribute('open',''); }
+  }
+  function closeImp(){ if(impDlg.close){ impDlg.close(); } else { impDlg.removeAttribute('open'); } }
+  $('btn-imp').addEventListener('click', openImp);
+  $('imp-cancel').addEventListener('click', closeImp);
+
+  $('imp-file').addEventListener('change', function(e){
+    var f = e.target.files && e.target.files[0]; if(!f) return;
+    var rd = new FileReader();
+    rd.onload = function(){
+      var buf = rd.result, txt = '';
+      try{ txt = new TextDecoder('utf-8').decode(buf); }catch(err){ txt = ''; }
+      if(txt.indexOf('\uFFFD') >= 0){ try{ txt = new TextDecoder('euc-kr').decode(buf); }catch(err2){} }
+      $('imp-text').value = txt;
+    };
+    rd.onerror = function(){ $('imp-msg').textContent = '파일을 읽지 못했습니다. 내용을 복사해 아래에 붙여넣어 주세요.'; $('imp-msg').className = 'io-msg err'; };
+    rd.readAsArrayBuffer(f);
+  });
+  $('imp-go').addEventListener('click', function(){
+    var text = $('imp-text').value;
+    var msg = $('imp-msg');
+    if(!text.trim()){ msg.textContent = '파일을 고르거나 내용을 붙여넣어 주세요.'; msg.className = 'io-msg err'; return; }
+    var modeEl = document.querySelector('input[name="imp-mode"]:checked');
+    var res = importCSV(text, modeEl ? modeEl.value : 'append');
+    if(res.error){ msg.textContent = res.error; msg.className = 'io-msg err'; return; }
+    closeImp();
+    ioMsg(res.added + '건을 가져왔습니다.' + (res.skipped ? ' ' + res.skipped + '건은 Main 또는 Test Step이 비어 건너뛰었습니다.' : ''), 'ok');
+  });
+
+  function fallbackDownload(csv){
+    var blob = new Blob(['\uFEFF' + csv], {type:'text/csv;charset=utf-8'});
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a'); a.href = url; a.download = 'tc-export.csv';
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    setTimeout(function(){ URL.revokeObjectURL(url); }, 2000);
+  }
+  $('btn-exp').addEventListener('click', function(){
+    var csv = buildCSV();
+    var used = false;
+    if(window.claude && typeof window.claude.use === 'function'){
+      window.claude.use('downloads').then(function(dl){
+        if(!dl){ fallbackDownload(csv); ioMsg('CSV 다운로드를 시작했습니다. 저장되지 않으면 CSV 복사를 사용하세요.', ''); return; }
+        return dl.save({filename:'tc-export.csv', data:'\uFEFF' + csv}).then(function(){
+          ioMsg('CSV를 저장했습니다.', 'ok');
+        }, function(err){
+          if(err && err.code==='declined') ioMsg('저장을 취소했습니다.', '');
+          else ioMsg('저장하지 못했습니다. CSV 복사를 사용하세요.', 'err');
+        });
+      }, function(){ fallbackDownload(csv); });
+      used = true;
+    }
+    if(!used){
+      try{ fallbackDownload(csv); ioMsg('CSV 다운로드를 시작했습니다. 저장되지 않으면 CSV 복사를 사용하세요.', ''); }
+      catch(err){ ioMsg('다운로드하지 못했습니다. CSV 복사를 사용하세요.', 'err'); }
+    }
+  });
+  $('btn-copy').addEventListener('click', function(){
+    var csv = buildCSV();
+    function legacy(){
+      var ta = document.createElement('textarea'); ta.value = csv; ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.select();
+      var ok = false; try{ ok = document.execCommand('copy'); }catch(e){}
+      document.body.removeChild(ta);
+      ioMsg(ok ? 'CSV를 복사했습니다. 엑셀에 붙여넣으면 됩니다.' : '복사하지 못했습니다.', ok ? 'ok' : 'err');
+    }
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(csv).then(function(){ ioMsg('CSV를 복사했습니다. 엑셀에 붙여넣으면 됩니다.', 'ok'); }, legacy);
+    } else legacy();
+  });
+
+  fillMainOptions();
+  renderTable();
+})();
+</script>
+</body>
+</html>
