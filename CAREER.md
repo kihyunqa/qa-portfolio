@@ -1,7 +1,7 @@
 # 성기현 · 경력기술서
 
 📧 kihyun.qa@gmail.com · 🐙 github.com/kihyunqa · 🔗 kihyunqa.github.io/qa-portfolio
-
+ 
 ---
 
 ## 두플 — QA 파트장
