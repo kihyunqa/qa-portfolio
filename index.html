@@ -125,12 +125,8 @@ nav{background:rgba(8,6,15,.96);border-bottom:0.5px solid var(--p-border);paddin
 .proof-desc{font-size:12px;color:var(--dim);line-height:1.8;margin-bottom:12px}
 .proof-checks{font-family:var(--mono);font-size:10px;color:var(--dim);line-height:1.9;margin-bottom:12px}
 .proof-checks span{color:var(--green3)}
-.proof-screenshot{background:var(--bg3);border:0.5px solid rgba(5,150,105,.2);border-radius:5px;overflow:hidden;margin-bottom:6px;cursor:zoom-in}
-.proof-screenshot .crop{overflow:hidden;position:relative}
-.proof-screenshot .crop img{display:block;max-width:none}
-.zoom{position:fixed;inset:0;background:rgba(5,3,12,.92);display:none;align-items:center;justify-content:center;z-index:200;cursor:zoom-out;padding:20px}
-.zoom.on{display:flex}
-.zoom img{max-width:96vw;max-height:94vh;border-radius:6px}
+.proof-screenshot{background:var(--bg3);border:0.5px solid rgba(5,150,105,.2);border-radius:5px;overflow:hidden;margin-bottom:10px;max-height:160px}
+.proof-screenshot img{width:100%;display:block;max-height:160px;object-fit:cover;object-position:top}
 .proof-caption{font-family:var(--mono);font-size:8px;color:#9d98c0;padding:6px 10px}
 .proof-link{font-family:var(--mono);font-size:10px;color:var(--green3);border:0.5px solid rgba(5,150,105,.3);padding:5px 12px;border-radius:2px;display:inline-block;text-decoration:none}
 .proof-strip{background:var(--g-muted);border:0.5px solid var(--g-border);border-radius:7px;padding:10px 16px;display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
@@ -210,7 +206,7 @@ nav{background:rgba(8,6,15,.96);border-bottom:0.5px solid var(--p-border);paddin
   <div>
     <div class="hero-badge">QA Engineer · 6년 9개월</div>
     <h1 class="hero-main">대화 한 번으로 TC 생성,<br><em>MCP 5개로 직접 연결</em>했습니다</h1>
-    <p class="hero-sub">반복되는 TC 작성 · 문서화 · 팀 알림을 Claude + MCP 5개로 한 흐름에 연결했습니다.<br><span style="color:var(--dim);font-size:.9em">※ TC는 가상의 로그인·결제 서비스를 기준으로 만든 데모입니다.</span></p>
+    <p class="hero-sub">매 릴리즈 반복되는 TC 작성 · 문서화 · 팀 알림을 Claude Desktop + MCP 서버 5개로 한 흐름에 연결했습니다.<br>TC 생성 → E2E 테스트 → GitHub 커밋 → Notion 문서화 → Slack 알림<br><span style="color:var(--dim);font-size:.9em">※ TC는 가상의 로그인·결제 서비스를 기준으로 만든 데모입니다.</span></p>
   </div>
   <div class="hcards">
     <div class="hcard"><div class="hcard-icon">🧪</div><div class="hcard-text">TC 자동 생성</div><div class="hcard-tag">Filesystem MCP</div></div>
@@ -291,9 +287,10 @@ nav{background:rgba(8,6,15,.96);border-bottom:0.5px solid var(--p-border);paddin
           <span>✓</span> 해피패스·네거티브·엣지케이스 분류 기록
         </div>
         <div class="proof-screenshot">
-          <div class="crop" style="aspect-ratio:820/480"><img src="screenshots/notion-tc-page.png" data-full="screenshots/notion-tc-page.png" alt="Notion TC 자동 생성 스크린샷" style="width:200.85%;margin-left:-51.22%;margin-top:-19.51%"></div>
-          <div class="proof-caption">실제 화면 · 클릭하면 원본 확대</div>
+          <img src="screenshots/notion-tc-page.png" alt="Notion TC 자동 생성 스크린샷">
+          <div class="proof-caption">// ACTUAL SCREENSHOT · notion-tc-page.png</div>
         </div>
+        <a href="https://github.com/kihyunqa/qa-portfolio/blob/main/testcase_mcp-integration.md" class="proof-link" target="_blank">MCP TC 파일 보기 ↗</a>
       </div>
     </div>
 
@@ -313,21 +310,24 @@ nav{background:rgba(8,6,15,.96);border-bottom:0.5px solid var(--p-border);paddin
           <span>✓</span> TC 파일 변경 시 커밋·작성자·링크 자동 전달
         </div>
         <div class="proof-screenshot">
-          <div class="crop" style="aspect-ratio:850/758"><img src="screenshots/slack-notification.png" data-full="screenshots/slack-notification.png" alt="Slack 알림 발송 스크린샷" style="width:216.82%;margin-left:-51.76%;margin-top:-8.47%"></div>
-          <div class="proof-caption">실제 화면 · 클릭하면 원본 확대</div>
+          <img src="screenshots/slack-notification.png" alt="Slack 알림 발송 스크린샷">
+          <div class="proof-caption">// ACTUAL SCREENSHOT · slack-notification.png</div>
         </div>
+        <a href="https://github.com/kihyunqa/qa-portfolio/blob/main/.github/workflows/qa-notify.yml" class="proof-link" target="_blank">Actions workflow 보기 ↗</a>
       </div>
     </div>
   </div>
   <div style="margin-top:14px;font-family:var(--mono);font-size:11px;display:flex;gap:18px;flex-wrap:wrap">
     <a class="proof-link" href="https://github.com/kihyunqa/qa-portfolio/blob/main/.github/workflows/qa-notify.yml" target="_blank">알림 워크플로 코드 ↗</a>
+    <a class="proof-link" href="https://github.com/kihyunqa/qa-portfolio/tree/main/playwright-tests" target="_blank">Playwright spec 12개 ↗</a>
     <a class="proof-link" href="https://github.com/kihyunqa/qa-portfolio/commits/main" target="_blank">커밋 이력 ↗</a>
+    <a class="proof-link" href="https://kihyunqa.github.io/qa-portfolio/tc-manager/" target="_blank">TC 관리 툴 데모 ↗</a>
   </div>
 </div>
 
 <!-- 05 TC -->
 <div class="sec" id="tc">
-  <div class="sec-head"><span class="sec-n">03</span><span class="sec-t">생성된 테스트케이스 (샘플)</span><div class="sec-line"></div><span class="sec-badge">4건 표시</span></div>
+  <div class="sec-head"><span class="sec-n">03</span><span class="sec-t">생성된 테스트케이스 (샘플)</span><div class="sec-line"></div><span class="sec-badge">6건 표시</span></div>
   <div class="click-hint">행을 클릭하면 전제조건·스텝·기대 결과를 볼 수 있습니다 · AI가 만든 초안이며 실제 서비스에는 기획 문서와 대조한 검토가 필요합니다</div>
   <table class="tc-table">
     <thead>
@@ -338,6 +338,10 @@ nav{background:rgba(8,6,15,.96);border-bottom:0.5px solid var(--p-border);paddin
         <td>AUTH-001</td><td><span class="badge-h">해피패스</span></td><td>유효한 자격증명으로 로그인</td><td>/dashboard 리다이렉트</td><td><span class="p1">P1</span></td><td><span class="expand-arrow">▾</span></td>
       </tr>
       <tr class="tc-detail-row"><td colspan="6"><div class="tc-detail-inner"><strong>전제조건:</strong> 가입된 계정 존재<br><strong>스텝:</strong> 이메일·비밀번호 입력 → 로그인 버튼 클릭<br><strong>기대 결과:</strong> /dashboard로 리다이렉트, 세션 토큰 발급 확인</div></td></tr>
+<tr class="tc-row-wrap" data-type="해피패스" onclick="toggleTc(this)">
+        <td>PAY-HP-001</td><td><span class="badge-h">해피패스</span></td><td>정상 카드로 결제 완료</td><td>주문 완료 페이지 이동, 이메일 발송</td><td><span class="p1">P1</span></td><td><span class="expand-arrow">▾</span></td>
+      </tr>
+      <tr class="tc-detail-row"><td colspan="6"><div class="tc-detail-inner"><strong>전제조건:</strong> 결제 테스트 카드 준비<br><strong>스텝:</strong> 장바구니 → 결제 페이지 → 테스트 카드 입력 → 결제 완료<br><strong>기대 결과:</strong> 주문 완료 페이지 이동, 주문번호 생성 확인</div></td></tr>
 <tr class="tc-row-wrap" data-type="네거티브" onclick="toggleTc(this)">
         <td>AUTH-007</td><td><span class="badge-n">네거티브</span></td><td>5회 로그인 실패 후 계정 잠금</td><td>계정 잠금 또는 인증 요청</td><td><span class="p1">P1</span></td><td><span class="expand-arrow">▾</span></td>
       </tr>
@@ -346,6 +350,10 @@ nav{background:rgba(8,6,15,.96);border-bottom:0.5px solid var(--p-border);paddin
         <td>PAY-N-005</td><td><span class="badge-n">네거티브</span></td><td>잔액 부족 카드 결제 시도</td><td>결제 실패 메시지, 주문 미생성</td><td><span class="p1">P1</span></td><td><span class="expand-arrow">▾</span></td>
       </tr>
       <tr class="tc-detail-row"><td colspan="6"><div class="tc-detail-inner"><strong>전제조건:</strong> 잔액 부족 테스트 카드 준비<br><strong>스텝:</strong> 잔액 부족 카드로 결제 시도 → PG사 응답 확인<br><strong>기대 결과:</strong> 결제 실패 메시지 노출, 주문 미생성 확인</div></td></tr>
+<tr class="tc-row-wrap" data-type="네거티브" onclick="toggleTc(this)">
+        <td>SEC-N-002</td><td><span class="badge-n">네거티브</span></td><td>만료된 JWT 토큰으로 API 호출</td><td>403 Forbidden, 데이터 노출 없음</td><td><span class="p1">P1</span></td><td><span class="expand-arrow">▾</span></td>
+      </tr>
+      <tr class="tc-detail-row"><td colspan="6"><div class="tc-detail-inner"><strong>전제조건:</strong> 만료된 JWT 토큰 보유<br><strong>스텝:</strong> 만료 토큰 Authorization 헤더에 삽입 → 보호된 API 호출<br><strong>기대 결과:</strong> 403 Forbidden 확인, 데이터 노출 없음</div></td></tr>
 <tr class="tc-row-wrap" data-type="엣지케이스" onclick="toggleTc(this)">
         <td>PAY-012</td><td><span class="badge-e">엣지케이스</span></td><td>다중 상품 + 할인 소수점 오차</td><td>합산 후 할인 1회, 오차 0원</td><td><span class="p1">P1</span></td><td><span class="expand-arrow">▾</span></td>
       </tr>
@@ -477,11 +485,6 @@ function toggleTc(el) {
 }
 
 selectPipe(document.querySelector('.pipe-step'), 0);
-</script>
-<div class="zoom" id="zoom"><img alt=""></div>
-<script>
-document.querySelectorAll(".proof-screenshot img").forEach(i=>i.addEventListener("click",()=>{const z=document.getElementById("zoom");z.querySelector("img").src=i.dataset.full;z.classList.add("on")}));
-document.getElementById("zoom").addEventListener("click",e=>e.currentTarget.classList.remove("on"));
 </script>
 </body>
 </html>
