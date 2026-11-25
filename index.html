@@ -197,7 +197,7 @@ nav{background:rgba(8,6,15,.96);border-bottom:0.5px solid var(--p-border);paddin
 <nav>
   <div class="nav-logo">KH.QA / 2026</div>
   <ul class="nav-links">
-    <li><a href="#timeline">경력</a></li><li><a href="#mcp">MCP 자동화</a></li><li><a href="#code">코드 증거</a></li><li><a href="#proof">연동 증거</a></li><li><a href="#tc">테스트케이스</a></li><li><a href="#skills">스킬</a></li>
+    <li><a href="#mcp">MCP 자동화</a></li><li><a href="#proof">실제 결과</a></li><li><a href="#tc">테스트케이스</a></li><li><a href="#timeline">경력</a></li>
   </ul>
 </nav>
 
@@ -206,132 +206,21 @@ nav{background:rgba(8,6,15,.96);border-bottom:0.5px solid var(--p-border);paddin
   <div>
     <div class="hero-badge">QA Engineer · 6년 9개월</div>
     <h1 class="hero-main">대화 한 번으로 TC 생성,<br><em>MCP 5개로 직접 연결</em>했습니다</h1>
-    <p class="hero-sub">Claude Desktop에 MCP 서버 5개를 직접 연결했습니다.<br>TC 생성 → E2E 테스트 → GitHub 커밋 → Notion 문서화 → Slack 알림 → Jira 트래킹까지.</p>
+    <p class="hero-sub">매 릴리즈 반복되는 TC 작성 · 문서화 · 팀 알림을 Claude Desktop + MCP 서버 5개로 한 흐름에 연결했습니다.<br>TC 생성 → E2E 테스트 → GitHub 커밋 → Notion 문서화 → Slack 알림<br><span style="color:var(--dim);font-size:.9em">※ TC는 가상의 로그인·결제 서비스를 기준으로 만든 데모입니다.</span></p>
   </div>
   <div class="hcards">
     <div class="hcard"><div class="hcard-icon">🧪</div><div class="hcard-text">TC 자동 생성</div><div class="hcard-tag">Filesystem MCP</div></div>
     <div class="hcard"><div class="hcard-icon">⚡</div><div class="hcard-text">E2E 테스트 실행</div><div class="hcard-tag">Playwright MCP</div></div>
     <div class="hcard"><div class="hcard-icon">🐙</div><div class="hcard-text">GitHub 자동 커밋</div><div class="hcard-tag">GitHub MCP</div></div>
-    <div class="hcard"><div class="hcard-icon">📒</div><div class="hcard-text">Notion 문서화</div><div class="hcard-tag">실제 연동</div></div>
-    <div class="hcard"><div class="hcard-icon">💬</div><div class="hcard-text">Slack 알림 · Jira 트래킹</div><div class="hcard-tag">실제 연동</div></div>
+    <div class="hcard"><div class="hcard-icon">📒</div><div class="hcard-text">Notion 문서화</div><div class="hcard-tag">Notion MCP</div></div>
+    <div class="hcard"><div class="hcard-icon">💬</div><div class="hcard-text">Slack 알림</div><div class="hcard-tag">Slack MCP</div></div>
   </div>
 </div>
 
-<!-- NARR 1 -->
-<div class="narr"><div class="narr-line"></div><div class="narr-text">6년 9개월간 현장에서 반복되는 작업들이 있었습니다. <em>TC 작성, 결과 문서화, 팀 알림, 이슈 연결</em> — 매 릴리즈마다.</div></div>
-
-<!-- 01 경력 -->
-<div class="sec" id="timeline">
-  <div class="sec-head"><span class="sec-n">01</span><span class="sec-t">6년 9개월 QA 경력</span><div class="sec-line"></div><span class="sec-badge">6년 9개월</span></div>
-  <div class="click-hint">각 경력을 클릭하면 상세 내용을 볼 수 있습니다</div>
-  <div class="career-grid">
-    <div class="tl">
-      <div class="tl-item" onclick="toggleTl(this)">
-        <div class="tl-dot"></div>
-        <div class="tl-header">
-          <div>
-            <div class="tl-yr">2024.11 — 2025.02 · 두플</div>
-            <div class="tl-name">QA Part Leader</div>
-            <div class="tl-role">반도체 공정 시뮬레이션 스타트업</div>
-            <div class="tl-desc">QA 파트 리드. 공정 변수 기반 시뮬레이션 정합성 검증.</div>
-          </div>
-          <span class="tl-expand-icon">▾</span>
-        </div>
-        <div class="tl-detail">
-          <ul>
-            <li>공정 변수 조합별 시뮬레이션 결과 정합성 검증 (200+ 케이스)</li>
-            <li>QA 파트 프로세스 수립 및 팀 온보딩 리딩</li>
-            <li>릴리즈 전 회귀 테스트 체계 구축</li>
-            <li>버그 트래킹 및 개발팀 협업 플로우 정의</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="tl-item" onclick="toggleTl(this)">
-        <div class="tl-dot"></div>
-        <div class="tl-header">
-          <div>
-            <div class="tl-yr">2022.03 — 2024.02 · IMS Mobility</div>
-            <div class="tl-name">QA 대리</div>
-            <div class="tl-role">모바일앱 · 웹 · 백오피스 · 결제 도메인</div>
-            <div class="tl-desc">Cypress E2E, 결제 QA, iOS/Android 전 영역 기능·회귀 테스트.</div>
-          </div>
-          <span class="tl-expand-icon">▾</span>
-        </div>
-        <div class="tl-detail">
-          <ul>
-            <li>Cypress 기반 E2E 자동화 구축 및 유지</li>
-            <li>결제 플로우 QA — PG 연동, 환불, 부분취소 엣지케이스</li>
-            <li>iOS / Android 크로스 플랫폼 기능·회귀 테스트</li>
-            <li>백오피스 어드민 기능 전반 QA 리딩</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="tl-item" onclick="toggleTl(this)">
-        <div class="tl-dot"></div>
-        <div class="tl-header">
-          <div>
-            <div class="tl-yr">2017.09 — 2022.01 · 모비프렌 (삼성전자 파트너)</div>
-            <div class="tl-name">QA 주임</div>
-            <div class="tl-role">SmartThings IoT · AI Bixby · Galaxy 모바일앱</div>
-            <div class="tl-desc">AI Bixby ASR 검증, IoT SmartThings 다중 기기 연동 검증.</div>
-          </div>
-          <span class="tl-expand-icon">▾</span>
-        </div>
-        <div class="tl-detail">
-          <ul>
-            <li>AI Bixby 음성 인식(ASR) 정확도 검증 — 언어별 다국어 테스트</li>
-            <li>SmartThings IoT 다중 기기 연동 시나리오 설계 및 검증</li>
-            <li>Galaxy 모바일앱 주요 기능 릴리즈 QA 담당</li>
-            <li>삼성전자 QA 프로세스 체계 내 TC 작성 및 결과 문서화</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <!-- 경력 오른쪽 패널 -->
-    <div class="career-right">
-      <div class="stat-grid">
-        <div class="stat-card">
-          <div class="stat-num">6년 9개월</div>
-          <div class="stat-lbl">QA 경력</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num">145+</div>
-          <div class="stat-lbl">TC 자동 생성</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num g">5개</div>
-          <div class="stat-lbl">MCP 실제 연동</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num g">80+</div>
-          <div class="stat-lbl">관리 파일 수</div>
-        </div>
-      </div>
-      <div class="career-tags">
-        <div class="career-tags-title">QA 도메인</div>
-        <div class="tag-pills">
-          <span class="tag-pill">IoT / AI Bixby</span>
-          <span class="tag-pill">결제 / 앱</span>
-          <span class="tag-pill">반도체 공정</span>
-          <span class="tag-pill">삼성전자 파트너</span>
-          <span class="tag-pill">E2E 자동화</span>
-          <span class="tag-pill">iOS / Android</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- NARR 2 -->
-<div class="narr"><div class="narr-line g"></div><div class="narr-text">반복이 쌓일수록 한 가지 질문이 생겼습니다. <em>"이 흐름 전체를 자동화할 수 없을까?"</em></div></div>
-
+<div id="project"></div>
 <!-- 02 MCP -->
 <div class="sec green" id="mcp">
-  <div class="sec-head"><span class="sec-n g">02</span><span class="sec-t">Claude MCP 자동화 — 무엇을 만들었는가</span><div class="sec-line g"></div><span class="sec-badge g">5 MCP 실제 연동</span></div>
-  <div class="narr" style="margin:0 -36px 16px;padding:18px 36px"><div class="narr-line g"></div><div class="narr-text">TC 작성, 결과 문서화, 팀 알림, 이슈 트래커 연결 — 현장에서 반복되는 작업들입니다. <em>Claude Desktop에 MCP 서버 5개를 직접 연결해서 이 흐름 전체를 자동화했습니다.</em></div></div>
+  <div class="sec-head"><span class="sec-n g">01</span><span class="sec-t">Claude MCP 자동화 — 이렇게 연결했습니다</span><div class="sec-line g"></div><span class="sec-badge g">5 MCP 실제 연동</span></div>
   <div class="click-hint">파이프라인 단계를 클릭하면 해당 단계의 활동과 성과를 확인할 수 있습니다</div>
 
   <div class="pipe-steps">
@@ -376,61 +265,11 @@ nav{background:rgba(8,6,15,.96);border-bottom:0.5px solid var(--p-border);paddin
       <div class="pd-result" id="pd-result"></div>
     </div>
   </div>
-
-  <div class="proof-strip">
-    <div>
-      <div class="proof-dot-row"><div class="proof-dot"></div><span class="proof-lbl">// TC 자동생성 증거 · 145건+</span></div>
-      <div class="proof-check-text"><em>✓ testcase_*.md 145건+ 확인 가능</em><br>✓ 해피패스·네거티브·엣지케이스 분류<br>✓ GitHub 커밋 이력 직접 확인</div>
-    </div>
-    <div style="background:var(--bg);border:0.5px solid rgba(5,150,105,.25);border-radius:4px;padding:10px 14px;font-family:var(--mono);font-size:10px;line-height:1.9">
-      <span style="color:#6e9fcf">$</span> <span style="color:#c4bde8">claude "로그인 TC 전체 만들어줘"</span><br>
-      <span style="color:#9d98c0">filesystem MCP 사용함 ···</span><br>
-      <span style="color:#34d399">✓</span> <span style="color:#cfc7f5">testcase_login.md 생성 (35건)</span><br>
-      <span style="color:#34d399">✓</span> <span style="color:#cfc7f5">testcase_payment.md 생성 (28건)</span><br>
-      <span style="color:#34d399">✓</span> <span style="color:#cfc7f5">testcase_security.md 생성 (22건)</span><br>
-      <span style="color:#9d98c0">··· 13개 파일 더 ···</span><br>
-      <span style="color:#34d399;font-weight:700">✓ 총 145건 저장 완료</span>
-    </div>
-  </div>
 </div>
 
-<!-- NARR 3 -->
-<div class="narr"><div class="narr-line g"></div><div class="narr-text">말이 아니라 실제로 돌아갑니다. <em>코드, 커밋</em> — 전부 확인할 수 있습니다.</div></div>
-
-<!-- 03 코드 -->
-<div class="sec green" id="code">
-  <div class="sec-head"><span class="sec-n g">03</span><span class="sec-t">실제 코드 — GitHub에서 직접 확인 가능</span><div class="sec-line g"></div><span class="sec-badge g">80개+ 파일</span></div>
-  <p style="font-size:12px;color:#b0a8d4;margin-bottom:12px;line-height:1.8">위 파이프라인이 실제로 동작하는 코드입니다. MCP가 자동으로 생성하고 GitHub에 커밋한 파일을 직접 확인할 수 있습니다.</p>
-  <div class="code-grid">
-    <div class="cs-panel">
-      <div class="cs-header"><span class="cs-file">playwright-tests/login.spec.ts</span><span class="cs-lang">TypeScript</span></div>
-      <div class="cs-body">
-        <span class="fn">test</span>(<span class="str">'로그인 성공 → /dashboard'</span>, <span class="kw">async</span> ({ page }) => {<br>
-        &nbsp;&nbsp;<span class="kw">await</span> page.<span class="fn">goto</span>(<span class="str">'/login'</span>);<br>
-        &nbsp;&nbsp;<span class="kw">await</span> <span class="fn">expect</span>(page).<span class="fn">toHaveURL</span>(<span class="str">'/dashboard'</span>);<br>
-        });
-      </div>
-    </div>
-    <div class="cs-panel">
-      <div class="cs-header"><span class="cs-file">.github/workflows/qa-notify.yml</span><span class="cs-lang">YAML</span></div>
-      <div class="cs-body">
-        <span class="fn">name</span>: <span class="str">QA TC 자동 알림</span><br>
-        <span class="fn">on</span>:<br>
-        &nbsp;&nbsp;<span class="fn">push</span>:<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span class="fn">paths</span>: [<span class="str">'testcase_*.md'</span>]<br>
-        <span class="cm">// GitHub Actions 자동 실행</span>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- NARR 4 -->
-<div class="narr"><div class="narr-line g"></div><div class="narr-text">코드만 있으면 충분하지 않습니다. <em>실제로 연결되어 동작하고 있다는 걸 보여드립니다.</em></div></div>
-
-<!-- 04 연동 증거 -->
+<!-- 02 실제 결과 -->
 <div class="sec green" id="proof">
-  <div class="sec-head"><span class="sec-n g">04</span><span class="sec-t">실제 연동 증거 — 스크린샷 + 링크</span><div class="sec-line g"></div><span class="sec-badge g">5개 실제 확인</span></div>
-
+  <div class="sec-head"><span class="sec-n g">02</span><span class="sec-t">실제로 동작한 결과</span><div class="sec-line g"></div><span class="sec-badge g">실제 화면</span></div>
   <div class="proof-grid">
     <div class="proof-card">
       <div class="proof-card-head">
@@ -445,70 +284,13 @@ nav{background:rgba(8,6,15,.96);border-bottom:0.5px solid var(--p-border);paddin
         <div class="proof-checks">
           <span>✓</span> notion 통합 사용함<br>
           <span>✓</span> 페이지 자동 생성 확인<br>
-          <span>✓</span> 해피패스·네거티브·엣지케이스 분류 기록<br>
-          <span>✓</span> 코드 0줄 · 대화 1번
+          <span>✓</span> 해피패스·네거티브·엣지케이스 분류 기록
         </div>
         <div class="proof-screenshot">
-          <img src="https://raw.githubusercontent.com/kihyunqa/qa-portfolio/main/screenshots/notion-tc-page.png" alt="Notion TC 자동 생성 스크린샷">
+          <img src="screenshots/notion-tc-page.png" alt="Notion TC 자동 생성 스크린샷">
           <div class="proof-caption">// ACTUAL SCREENSHOT · notion-tc-page.png</div>
         </div>
         <a href="https://github.com/kihyunqa/qa-portfolio/blob/main/testcase_mcp-integration.md" class="proof-link" target="_blank">MCP TC 파일 보기 ↗</a>
-      </div>
-    </div>
-
-    <div class="proof-card">
-      <div class="proof-card-head">
-        <div class="proof-card-icon">🐙</div>
-        <div style="flex:1">
-          <div class="proof-card-title">GitHub MCP 실제 커밋</div>
-        </div>
-        <span class="proof-live">● LIVE</span>
-      </div>
-      <div class="proof-card-body">
-        <div class="proof-desc">이 포트폴리오 페이지 자체가 github MCP로 커밋됐습니다. 모든 파일 전부 대화로만 만들어졌습니다.</div>
-        <div class="proof-checks">
-          <span>✓</span> kihyunqa/qa-portfolio 레포 실제 운영 중<br>
-          <span>✓</span> 파일 80개+ 전부 MCP 커밋<br>
-          <span>✓</span> GitHub Pages 배포 완료<br>
-          <span>✓</span> GitHub Actions 2개 자동화 운영 중
-        </div>
-        <div class="proof-screenshot">
-          <img src="https://raw.githubusercontent.com/kihyunqa/qa-portfolio/main/screenshots/claude-mcp-workflow.png" alt="Claude MCP 워크플로우 스크린샷">
-          <div class="proof-caption">// ACTUAL SCREENSHOT · claude-mcp-workflow.png</div>
-        </div>
-        <a href="https://github.com/kihyunqa/qa-portfolio/commits/main" class="proof-link" target="_blank">실제 커밋 히스토리 ↗</a>
-      </div>
-    </div>
-
-    <div class="proof-card">
-      <div class="proof-card-head">
-        <div class="proof-card-icon">⚡</div>
-        <div style="flex:1">
-          <div class="proof-card-title">Playwright E2E 12 spec</div>
-        </div>
-        <span class="proof-live">● LIVE</span>
-      </div>
-      <div class="proof-card-body">
-        <div class="proof-desc">playwright MCP를 통해 E2E 테스트 시나리오를 실행했습니다. 12개 spec 파일로 전 영역 커버.</div>
-        <div class="proof-checks">
-          <span>✓</span> 12개 spec 실행 가능한 실제 코드<br>
-          <span>✓</span> login/search/cart/api/payment/security/performance/accessibility<br>
-          <span>✓</span> playwright.config.js 설정 완료<br>
-          <span>✓</span> 스크린샷 자동 캡처 설정
-        </div>
-        <div class="proof-screenshot" style="max-height:none;background:var(--bg)">
-          <div style="padding:10px 14px;font-family:var(--mono);font-size:10px;color:#86efac;line-height:1.9">
-            <span style="color:#6e9fcf">$</span> <span style="color:#c4bde8">npx playwright test</span><br>
-            <span style="color:#9d98c0">Running 12 spec files...</span><br>
-            <span style="color:#34d399">✓</span> login.spec.ts · 8 tests passed<br>
-            <span style="color:#34d399">✓</span> payment.spec.ts · 5 tests passed<br>
-            <span style="color:#34d399">✓</span> security.spec.ts · 4 tests passed<br>
-            <span style="color:#9d98c0">··· 9 more specs ···</span><br>
-            <span style="color:#34d399;font-weight:700">✓ 12 passed</span> <span style="color:#9d98c0">(145 test cases)</span>
-          </div>
-          <div class="proof-caption">// ACTUAL RUN · playwright-tests/</div>
-        </div>
-        <a href="https://github.com/kihyunqa/qa-portfolio/tree/main/playwright-tests" class="proof-link" target="_blank">spec 파일 직접 보기 ↗</a>
       </div>
     </div>
 
@@ -521,241 +303,127 @@ nav{background:rgba(8,6,15,.96);border-bottom:0.5px solid var(--p-border);paddin
         <span class="proof-live">● LIVE</span>
       </div>
       <div class="proof-card-body">
-        <div class="proof-desc">slack MCP로 새-채널에 QA 완료 알림을 실제로 발송했습니다. GitHub Actions 연동으로 완전 자동 파이프라인.</div>
+        <div class="proof-desc">slack MCP로 새-채널에 QA 알림을 실제로 발송했고, TC 파일이 바뀌면 GitHub Actions가 알림을 보냅니다.</div>
         <div class="proof-checks">
           <span>✓</span> 새-채널 claude-mcp 봇 연동 확인<br>
           <span>✓</span> QA 완료 메시지 실제 발송 확인<br>
-          <span>✓</span> GitHub Actions → Slack 자동 알림 연결
+          <span>✓</span> TC 파일 변경 시 커밋·작성자·링크 자동 전달
         </div>
         <div class="proof-screenshot">
-          <img src="https://raw.githubusercontent.com/kihyunqa/qa-portfolio/main/screenshots/slack-notification.png" alt="Slack 알림 발송 스크린샷">
+          <img src="screenshots/slack-notification.png" alt="Slack 알림 발송 스크린샷">
           <div class="proof-caption">// ACTUAL SCREENSHOT · slack-notification.png</div>
         </div>
-        <a href="https://github.com/kihyunqa/qa-portfolio/blob/main/.github/workflows/main.yml" class="proof-link" target="_blank">Actions workflow 보기 ↗</a>
+        <a href="https://github.com/kihyunqa/qa-portfolio/blob/main/.github/workflows/qa-notify.yml" class="proof-link" target="_blank">Actions workflow 보기 ↗</a>
       </div>
     </div>
   </div>
-
-  <!-- Jira 전폭 카드 -->
-  <div class="proof-card" style="margin-top:16px">
-    <div class="proof-card-head">
-      <div class="proof-card-icon">📋</div>
-      <div style="flex:1">
-        <div class="proof-card-title">Jira 이슈 트래킹 연동</div>
-      </div>
-      <span class="proof-live">● LIVE</span>
-    </div>
-    <div class="proof-card-body">
-      <div class="proof-desc">GitHub for Atlassian을 통해 Jira와 GitHub 레포를 직접 연동했습니다. 커밋 메시지 기반으로 Jira 이슈가 자동 연결됩니다.</div>
-      <div class="proof-checks">
-        <span>✓</span> kihyunqa-1775011951168.atlassian.net — FULL ACCESS 연동 완료<br>
-        <span>✓</span> GitHub for Atlassian 앱 설치 및 레포 연결<br>
-        <span>✓</span> 커밋 메시지 기반 이슈 자동 트래킹
-      </div>
-      <div class="proof-screenshot">
-        <img src="https://raw.githubusercontent.com/kihyunqa/qa-portfolio/main/screenshots/jira-board.png" alt="Jira 보드 연동 스크린샷">
-        <div class="proof-caption">// ACTUAL SCREENSHOT · jira-board.png</div>
-      </div>
-      <a href="https://kihyunqa-1775011951168.atlassian.net" class="proof-link" target="_blank">Jira 프로젝트 보기 ↗</a>
-    </div>
-  </div>
-  <!-- 성과 요약 -->
-  <div style="margin-top:20px;background:var(--bg2);border:0.5px solid rgba(168,85,247,.15);border-radius:7px;padding:16px 20px;display:grid;grid-template-columns:repeat(4,1fr);gap:0.5px;background:rgba(168,85,247,.1);border-radius:7px;overflow:hidden">
-    <div style="background:var(--bg2);padding:14px;text-align:center"><div style="font-family:var(--mono);font-size:22px;color:var(--purple);line-height:1">145+</div><div style="font-size:11px;color:var(--dim);margin-top:4px">자동 생성 TC</div><div style="font-family:var(--mono);font-size:9px;color:#7a7598;margin-top:2px">16개 testcase 파일</div></div>
-    <div style="background:var(--bg2);padding:14px;text-align:center"><div style="font-family:var(--mono);font-size:22px;color:var(--purple);line-height:1">80+</div><div style="font-size:11px;color:var(--dim);margin-top:4px">관리 파일 수</div><div style="font-family:var(--mono);font-size:9px;color:#7a7598;margin-top:2px">MCP로 생성·커밋</div></div>
-    <div style="background:var(--bg2);padding:14px;text-align:center"><div style="font-family:var(--mono);font-size:22px;color:var(--green3);line-height:1">5</div><div style="font-size:11px;color:var(--dim);margin-top:4px">MCP 실제 연동</div><div style="font-family:var(--mono);font-size:9px;color:#7a7598;margin-top:2px">filesystem·playwright·github·notion·slack</div></div>
-    <div style="background:var(--bg2);padding:14px;text-align:center"><div style="font-family:var(--mono);font-size:22px;color:var(--green3);line-height:1">0</div><div style="font-size:11px;color:var(--dim);margin-top:4px">직접 작성한 코드</div><div style="font-family:var(--mono);font-size:9px;color:#7a7598;margin-top:2px">전부 MCP 자동화</div></div>
-  </div>
-  <div style="margin-top:8px;font-family:var(--mono);font-size:9px;color:#7a7598;display:flex;align-items:center;justify-content:space-between">
-    <span>// kihyunqa/qa-portfolio · MCP 자동화 포트폴리오</span>
-    <a href="https://github.com/kihyunqa/qa-portfolio/commits/main" style="color:var(--green3);text-decoration:none" target="_blank">전체 커밋 보기 ↗</a>
+  <div style="margin-top:14px;font-family:var(--mono);font-size:11px;display:flex;gap:18px;flex-wrap:wrap">
+    <a class="proof-link" href="https://github.com/kihyunqa/qa-portfolio/blob/main/.github/workflows/qa-notify.yml" target="_blank">알림 워크플로 코드 ↗</a>
+    <a class="proof-link" href="https://github.com/kihyunqa/qa-portfolio/tree/main/playwright-tests" target="_blank">Playwright spec 12개 ↗</a>
+    <a class="proof-link" href="https://github.com/kihyunqa/qa-portfolio/commits/main" target="_blank">커밋 이력 ↗</a>
+    <a class="proof-link" href="https://kihyunqa.github.io/qa-portfolio/tc-manager/" target="_blank">TC 관리 툴 데모 ↗</a>
   </div>
 </div>
-<div class="narr"><div class="narr-line"></div><div class="narr-text">이 흐름이 만들어낸 결과물입니다. <em>대화 한 번, TC 145건.</em></div></div>
 
 <!-- 05 TC -->
 <div class="sec" id="tc">
-  <div class="sec-head"><span class="sec-n">05</span><span class="sec-t">자동생성 테스트케이스 — 145건+</span><div class="sec-line"></div><span class="sec-badge">19건 표시</span></div>
-  <div class="tc-stats">
-    <div class="tc-stat"><div class="tc-num">145+</div><div class="tc-lbl">총 TC 건수</div><div class="tc-sub">MCP 자동 생성</div></div>
-    <div class="tc-stat"><div class="tc-num">9</div><div class="tc-lbl">해피패스</div><div class="tc-sub">정상 흐름 검증</div></div>
-    <div class="tc-stat"><div class="tc-num">8</div><div class="tc-lbl">네거티브</div><div class="tc-sub">예외 처리 검증</div></div>
-  </div>
-
-  <!-- 필터 + 접기/펼치기 -->
-  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;flex-wrap:wrap;gap:8px">
-    <div style="display:flex;gap:6px">
-      <button class="tc-filter-btn active" onclick="filterTc('all',this)">전체</button>
-      <button class="tc-filter-btn" onclick="filterTc('해피패스',this)">해피패스</button>
-      <button class="tc-filter-btn" onclick="filterTc('네거티브',this)">네거티브</button>
-      <button class="tc-filter-btn" onclick="filterTc('엣지케이스',this)">엣지케이스</button>
-    </div>
-    <div style="display:flex;gap:6px">
-      <button class="tc-filter-btn" onclick="expandAll()">▼ 전체 펼치기</button>
-      <button class="tc-filter-btn" onclick="collapseAll()">▲ 전체 접기</button>
-    </div>
-  </div>
-
-  <div class="click-hint">각 TC 행을 클릭하면 전제조건·스텝·기대 결과 상세를 확인할 수 있습니다</div>
+  <div class="sec-head"><span class="sec-n">03</span><span class="sec-t">생성된 테스트케이스 (샘플)</span><div class="sec-line"></div><span class="sec-badge">6건 표시</span></div>
+  <div class="click-hint">행을 클릭하면 전제조건·스텝·기대 결과를 볼 수 있습니다 · AI가 만든 초안이며 실제 서비스에는 기획 문서와 대조한 검토가 필요합니다</div>
   <table class="tc-table">
     <thead>
       <tr><th>TC-ID</th><th>구분</th><th>테스트 제목</th><th>기대 결과</th><th>우선순위</th><th></th></tr>
     </thead>
     <tbody id="tc-tbody">
-      <tr class="tc-row-wrap" data-type="해피패스" onclick="toggleTc(this)">
+<tr class="tc-row-wrap" data-type="해피패스" onclick="toggleTc(this)">
         <td>AUTH-001</td><td><span class="badge-h">해피패스</span></td><td>유효한 자격증명으로 로그인</td><td>/dashboard 리다이렉트</td><td><span class="p1">P1</span></td><td><span class="expand-arrow">▾</span></td>
       </tr>
       <tr class="tc-detail-row"><td colspan="6"><div class="tc-detail-inner"><strong>전제조건:</strong> 가입된 계정 존재<br><strong>스텝:</strong> 이메일·비밀번호 입력 → 로그인 버튼 클릭<br><strong>기대 결과:</strong> /dashboard로 리다이렉트, 세션 토큰 발급 확인</div></td></tr>
-
-      <tr class="tc-row-wrap" data-type="네거티브" onclick="toggleTc(this)">
-        <td>AUTH-007</td><td><span class="badge-n">네거티브</span></td><td>5회 로그인 실패 후 계정 잠금</td><td>계정 잠금 또는 인증 요청</td><td><span class="p1">P1</span></td><td><span class="expand-arrow">▾</span></td>
-      </tr>
-      <tr class="tc-detail-row"><td colspan="6"><div class="tc-detail-inner"><strong>전제조건:</strong> 잘못된 비밀번호 준비<br><strong>스텝:</strong> 오류 비밀번호로 5회 연속 로그인 시도<br><strong>기대 결과:</strong> 5회 초과 시 계정 잠금 메시지 노출, 추가 시도 차단</div></td></tr>
-
-      <tr class="tc-row-wrap" data-type="엣지케이스" onclick="toggleTc(this)">
-        <td>PAY-012</td><td><span class="badge-e">엣지케이스</span></td><td>다중 상품 + 할인 소수점 오차</td><td>합산 후 할인 1회, 오차 0원</td><td><span class="p1">P1</span></td><td><span class="expand-arrow">▾</span></td>
-      </tr>
-      <tr class="tc-detail-row"><td colspan="6"><div class="tc-detail-inner"><strong>전제조건:</strong> 소수점 단가 상품 3종, 할인쿠폰 1매<br><strong>스텝:</strong> 장바구니 담기 → 쿠폰 적용 → 결제<br><strong>기대 결과:</strong> 할인은 최종 합산 후 1회만 적용, 소수점 반올림 오차 0원</div></td></tr>
-
-      <tr class="tc-row-wrap" data-type="해피패스" onclick="toggleTc(this)">
+<tr class="tc-row-wrap" data-type="해피패스" onclick="toggleTc(this)">
         <td>PAY-HP-001</td><td><span class="badge-h">해피패스</span></td><td>정상 카드로 결제 완료</td><td>주문 완료 페이지 이동, 이메일 발송</td><td><span class="p1">P1</span></td><td><span class="expand-arrow">▾</span></td>
       </tr>
       <tr class="tc-detail-row"><td colspan="6"><div class="tc-detail-inner"><strong>전제조건:</strong> 결제 테스트 카드 준비<br><strong>스텝:</strong> 장바구니 → 결제 페이지 → 테스트 카드 입력 → 결제 완료<br><strong>기대 결과:</strong> 주문 완료 페이지 이동, 주문번호 생성 확인</div></td></tr>
-
-      <tr class="tc-row-wrap" data-type="네거티브" onclick="toggleTc(this)">
+<tr class="tc-row-wrap" data-type="네거티브" onclick="toggleTc(this)">
+        <td>AUTH-007</td><td><span class="badge-n">네거티브</span></td><td>5회 로그인 실패 후 계정 잠금</td><td>계정 잠금 또는 인증 요청</td><td><span class="p1">P1</span></td><td><span class="expand-arrow">▾</span></td>
+      </tr>
+      <tr class="tc-detail-row"><td colspan="6"><div class="tc-detail-inner"><strong>전제조건:</strong> 잘못된 비밀번호 준비<br><strong>스텝:</strong> 오류 비밀번호로 5회 연속 로그인 시도<br><strong>기대 결과:</strong> 5회 초과 시 계정 잠금 메시지 노출, 추가 시도 차단</div></td></tr>
+<tr class="tc-row-wrap" data-type="네거티브" onclick="toggleTc(this)">
         <td>PAY-N-005</td><td><span class="badge-n">네거티브</span></td><td>잔액 부족 카드 결제 시도</td><td>결제 실패 메시지, 주문 미생성</td><td><span class="p1">P1</span></td><td><span class="expand-arrow">▾</span></td>
       </tr>
       <tr class="tc-detail-row"><td colspan="6"><div class="tc-detail-inner"><strong>전제조건:</strong> 잔액 부족 테스트 카드 준비<br><strong>스텝:</strong> 잔액 부족 카드로 결제 시도 → PG사 응답 확인<br><strong>기대 결과:</strong> 결제 실패 메시지 노출, 주문 미생성 확인</div></td></tr>
-
-      <tr class="tc-row-wrap" data-type="엣지케이스" onclick="toggleTc(this)">
-        <td>API-S-006</td><td><span class="badge-e">엣지케이스</span></td><td>특수문자 / SQL 패턴 검색</td><td>안전 처리된 결과 (500 없음)</td><td><span class="p1">P1</span></td><td><span class="expand-arrow">▾</span></td>
-      </tr>
-      <tr class="tc-detail-row"><td colspan="6"><div class="tc-detail-inner"><strong>전제조건:</strong> 검색 API 엔드포인트 접근 가능<br><strong>스텝:</strong> SQL Injection 패턴 입력 → 특수문자 조합 입력 → 응답 확인<br><strong>기대 결과:</strong> 500 에러 없음, DB 데이터 노출 없음</div></td></tr>
-
-      <tr class="tc-row-wrap" data-type="네거티브" onclick="toggleTc(this)">
+<tr class="tc-row-wrap" data-type="네거티브" onclick="toggleTc(this)">
         <td>SEC-N-002</td><td><span class="badge-n">네거티브</span></td><td>만료된 JWT 토큰으로 API 호출</td><td>403 Forbidden, 데이터 노출 없음</td><td><span class="p1">P1</span></td><td><span class="expand-arrow">▾</span></td>
       </tr>
       <tr class="tc-detail-row"><td colspan="6"><div class="tc-detail-inner"><strong>전제조건:</strong> 만료된 JWT 토큰 보유<br><strong>스텝:</strong> 만료 토큰 Authorization 헤더에 삽입 → 보호된 API 호출<br><strong>기대 결과:</strong> 403 Forbidden 확인, 데이터 노출 없음</div></td></tr>
-
-      <tr class="tc-row-wrap" data-type="해피패스" onclick="toggleTc(this)">
-        <td>CART-001</td><td><span class="badge-h">해피패스</span></td><td>상품 장바구니 추가</td><td>장바구니 아이콘 숫자 +1</td><td><span class="p1">P1</span></td><td><span class="expand-arrow">▾</span></td>
+<tr class="tc-row-wrap" data-type="엣지케이스" onclick="toggleTc(this)">
+        <td>PAY-012</td><td><span class="badge-e">엣지케이스</span></td><td>다중 상품 + 할인 소수점 오차</td><td>합산 후 할인 1회, 오차 0원</td><td><span class="p1">P1</span></td><td><span class="expand-arrow">▾</span></td>
       </tr>
-      <tr class="tc-detail-row"><td colspan="6"><div class="tc-detail-inner"><strong>전제조건:</strong> 로그인 상태, 상품 상세 페이지 접근 가능<br><strong>스텝:</strong> 상품 상세 → 장바구니 담기 → 헤더 아이콘 확인<br><strong>기대 결과:</strong> 장바구니 아이콘 +1, 수량·가격 정확히 반영</div></td></tr>
-
-      <tr class="tc-row-wrap" data-type="네거티브" onclick="toggleTc(this)">
-        <td>SEARCH-N-001</td><td><span class="badge-n">네거티브</span></td><td>검색 결과 0건 빈 상태 표시</td><td>"결과 없음" 메시지 노출, 500 없음</td><td><span class="p1">P2</span></td><td><span class="expand-arrow">▾</span></td>
-      </tr>
-      <tr class="tc-detail-row"><td colspan="6"><div class="tc-detail-inner"><strong>전제조건:</strong> 존재하지 않는 키워드 준비<br><strong>스텝:</strong> 없는 키워드 입력 → 검색 실행<br><strong>기대 결과:</strong> "결과 없음" 문구 노출, 500 에러 없음</div></td></tr>
-
-      <tr class="tc-row-wrap" data-type="네거티브" onclick="toggleTc(this)">
-        <td>AUTH-N-008</td><td><span class="badge-n">네거티브</span></td><td>세션 만료 후 보호 페이지 접근</td><td>로그인 페이지 리다이렉트, 401</td><td><span class="p1">P1</span></td><td><span class="expand-arrow">▾</span></td>
-      </tr>
-      <tr class="tc-detail-row"><td colspan="6"><div class="tc-detail-inner"><strong>전제조건:</strong> 만료된 세션 토큰 보유<br><strong>스텝:</strong> 세션 만료 처리 → 보호된 URL 직접 접근<br><strong>기대 결과:</strong> 로그인 페이지 리다이렉트, 401 Unauthorized</div></td></tr>
-
-      <tr class="tc-row-wrap" data-type="엣지케이스" onclick="toggleTc(this)">
-        <td>NOTIF-E-003</td><td><span class="badge-e">엣지케이스</span></td><td>저속 네트워크(3G) 알림 중복 발송</td><td>알림 1회만 수신, 중복 없음</td><td><span class="p1">P2</span></td><td><span class="expand-arrow">▾</span></td>
-      </tr>
-      <tr class="tc-detail-row"><td colspan="6"><div class="tc-detail-inner"><strong>전제조건:</strong> 3G 네트워크 스로틀링 설정 가능<br><strong>스텝:</strong> 3G 시뮬레이션 활성화 → 알림 트리거 실행<br><strong>기대 결과:</strong> 알림 1회만 수신, 중복 없음</div></td></tr>
-
-      <tr class="tc-row-wrap" data-type="해피패스" onclick="toggleTc(this)">
-        <td>TC-CICD-HP-001</td><td><span class="badge-h">해피패스</span></td><td>TC push 시 Actions 자동 트리거</td><td>workflow run 생성 확인</td><td><span class="p1">P1</span></td><td><span class="expand-arrow">▾</span></td>
-      </tr>
-      <tr class="tc-detail-row"><td colspan="6"><div class="tc-detail-inner"><strong>전제조건:</strong> GitHub Actions qa-notify.yml 설정 완료<br><strong>스텝:</strong> testcase_*.md 파일 push → Actions 탭 확인<br><strong>기대 결과:</strong> workflow run 자동 생성, Slack 알림 자동 발송</div></td></tr>
-
-      <tr class="tc-row-wrap" data-type="해피패스" onclick="toggleTc(this)">
-        <td>ACCESS-HP-001</td><td><span class="badge-h">해피패스</span></td><td>키보드만으로 전체 폼 입력·제출</td><td>Tab 순서 정상, Enter 제출 동작</td><td><span class="p1">P2</span></td><td><span class="expand-arrow">▾</span></td>
-      </tr>
-      <tr class="tc-detail-row"><td colspan="6"><div class="tc-detail-inner"><strong>전제조건:</strong> 마우스 비활성화 환경<br><strong>스텝:</strong> Tab 키로 폼 필드 이동 → Enter로 제출<br><strong>기대 결과:</strong> Tab 순서 논리적, Enter 제출 동작 확인</div></td></tr>
-
-      <tr class="tc-row-wrap" data-type="네거티브" onclick="toggleTc(this)">
-        <td>SEARCH-N-004</td><td><span class="badge-n">네거티브</span></td><td>XSS 패턴 검색어 입력</td><td>스크립트 미실행, 인코딩 처리 확인</td><td><span class="p1">P1</span></td><td><span class="expand-arrow">▾</span></td>
-      </tr>
-      <tr class="tc-detail-row"><td colspan="6"><div class="tc-detail-inner"><strong>전제조건:</strong> 검색 기능 동작 중<br><strong>스텝:</strong> &lt;script&gt;alert('xss')&lt;/script&gt; 입력 → 검색 실행<br><strong>기대 결과:</strong> 스크립트 미실행, HTML 인코딩 처리 확인</div></td></tr>
-
-      <tr class="tc-row-wrap" data-type="엣지케이스" onclick="toggleTc(this)">
-        <td>PERF-E-001</td><td><span class="badge-e">엣지케이스</span></td><td>동시 100개 요청 부하 테스트</td><td>응답 2s 이내, 서버 500 없음</td><td><span class="p1">P2</span></td><td><span class="expand-arrow">▾</span></td>
-      </tr>
-      <tr class="tc-detail-row"><td colspan="6"><div class="tc-detail-inner"><strong>전제조건:</strong> 부하 테스트 도구 준비<br><strong>스텝:</strong> 동시 100개 요청 스크립트 실행 → 응답 시간 분포 측정<br><strong>기대 결과:</strong> p95 응답 2s 이내, 500 에러 0건</div></td></tr>
-
-      <tr class="tc-row-wrap" data-type="해피패스" onclick="toggleTc(this)">
-        <td>SIGNUP-HP-001</td><td><span class="badge-h">해피패스</span></td><td>신규 회원가입 + 이메일 인증</td><td>인증 메일 수신, 로그인 가능</td><td><span class="p1">P1</span></td><td><span class="expand-arrow">▾</span></td>
-      </tr>
-      <tr class="tc-detail-row"><td colspan="6"><div class="tc-detail-inner"><strong>전제조건:</strong> 미가입 이메일, 수신 가능 환경<br><strong>스텝:</strong> 이메일·비밀번호 입력 → 가입 → 인증 메일 클릭<br><strong>기대 결과:</strong> 인증 메일 5분 이내 수신, 인증 후 로그인 성공</div></td></tr>
-
-      <tr class="tc-row-wrap" data-type="엣지케이스" onclick="toggleTc(this)">
-        <td>SESSION-E-001</td><td><span class="badge-e">엣지케이스</span></td><td>동일 계정 멀티 디바이스 동시 세션</td><td>세션 정책에 따라 기존 또는 신규 로그아웃</td><td><span class="p1">P2</span></td><td><span class="expand-arrow">▾</span></td>
-      </tr>
-      <tr class="tc-detail-row"><td colspan="6"><div class="tc-detail-inner"><strong>전제조건:</strong> 동일 계정, PC + 모바일 준비<br><strong>스텝:</strong> PC 로그인 → 모바일 동일 계정 로그인 → PC 세션 확인<br><strong>기대 결과:</strong> 세션 정책 명시 동작 확인</div></td></tr>
-
-      <tr class="tc-row-wrap" data-type="네거티브" onclick="toggleTc(this)">
-        <td>UX-N-001</td><td><span class="badge-n">네거티브</span></td><td>필수 입력 누락 시 인라인 에러</td><td>각 필드별 에러 즉시 표시, 제출 차단</td><td><span class="p1">P2</span></td><td><span class="expand-arrow">▾</span></td>
-      </tr>
-      <tr class="tc-detail-row"><td colspan="6"><div class="tc-detail-inner"><strong>전제조건:</strong> 필수 입력 필드 있는 폼 페이지<br><strong>스텝:</strong> 필수 필드 비운 채 제출 → 에러 메시지 확인<br><strong>기대 결과:</strong> 각 필드 하단 인라인 에러 표시, 제출 차단</div></td></tr>
+      <tr class="tc-detail-row"><td colspan="6"><div class="tc-detail-inner"><strong>전제조건:</strong> 소수점 단가 상품 3종, 할인쿠폰 1매<br><strong>스텝:</strong> 장바구니 담기 → 쿠폰 적용 → 결제<br><strong>기대 결과:</strong> 할인은 최종 합산 후 1회만 적용, 소수점 반올림 오차 0원</div></td></tr>
     </tbody>
   </table>
   <div style="margin-top:10px;text-align:right">
-    <a href="https://github.com/kihyunqa/qa-portfolio" class="proof-link" target="_blank">전체 TC 파일 보기 (145건+) ↗</a>
+    <a href="https://github.com/kihyunqa/qa-portfolio" class="proof-link" target="_blank">전체 TC 파일 보기 ↗</a>
   </div>
 </div>
 
-<!-- 06 스킬 -->
-<div class="sec" id="skills">
-  <div class="sec-head"><span class="sec-n">06</span><span class="sec-t">스킬</span><div class="sec-line"></div><span class="sec-badge">20개 스킬</span></div>
-  <div class="skills-wrap">
-    <div>
-      <div class="sk-group-title">TESTING &amp; QA</div>
-      <div class="pills">
-        <span class="pill">테스트케이스 설계</span><span class="pill">버그 리포팅</span><span class="pill">E2E 자동화</span><span class="pill">Cypress / Playwright</span><span class="pill">API 테스트</span><span class="pill">릴리즈 QA 리딩</span>
+
+<!-- 04 경력 -->
+<div class="sec" id="timeline">
+  <div class="sec-head"><span class="sec-n">04</span><span class="sec-t">QA 경력</span><div class="sec-line"></div><span class="sec-badge">6년 9개월</span></div>
+  <div class="career-grid" style="grid-template-columns:1fr">
+    <div class="tl">
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-header"><div>
+          <div class="tl-yr">2024.11 — 2025.02 · 두플</div><div class="tl-name">QA 파트장</div><div class="tl-role">반도체 공정 시뮬레이션 QA</div><div class="tl-desc">공정 변수 변동에 따른 시뮬레이션 결과 정합성 분석, 결과 오차 재현·검증. 파트원 업무 배정과 고객사 일정 조율.</div>
+        </div></div>
       </div>
-    </div>
-    <div>
-      <div class="sk-group-title">MCP CORE &amp; AI</div>
-      <div class="pills">
-        <span class="pill">Claude MCP 설계</span><span class="pill">Playwright MCP</span><span class="pill">GitHub MCP</span><span class="pill">Notion MCP</span><span class="pill">Slack MCP</span><span class="pill">Prompt Engineering</span>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-header"><div>
+          <div class="tl-yr">2022.03 — 2024.02 · IMS Mobility</div><div class="tl-name">QA 대리</div><div class="tl-role">모바일 앱 · 웹 · 백오피스 · 결제</div><div class="tl-desc">기능·회귀 테스트, Swagger 기반 API 검증, 결제 검증, 이슈 트래킹 체계 구성.</div>
+        </div></div>
       </div>
-    </div>
-    <div>
-      <div class="sk-group-title">QA DOCUMENTATION</div>
-      <div class="pills">
-        <span class="pill">QA 리포트 작성</span><span class="pill">버그 문서화</span><span class="pill">TC 결과 정리</span><span class="pill">QA 프로세스 정의</span><span class="pill">GitHub 구조화</span>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-header"><div>
+          <div class="tl-yr">2017.09 — 2022.01 · 모비프렌 (삼성전자 파트너)</div><div class="tl-name">QA 주임</div><div class="tl-role">AI Bixby · SmartThings IoT · CMC</div><div class="tl-desc">Bixby ASR 정확도 검증, SmartThings 다중 기기 연동·CMC 통화 연동 검증.</div>
+        </div></div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- FOOTER -->
 <div class="footer-cta">
   <div class="footer-cta-pre">// OPEN TO WORK · QA ENGINEER</div>
   <h2 class="footer-cta-title">현재 <em>QA 포지션</em>으로 구직 중입니다</h2>
-  <p class="footer-cta-sub">6년 9개월 QA · MCP 5개 자동화 · TC 145건+ · Playwright E2E · Jira 연동</p>
+  <p class="footer-cta-sub">6년 9개월 QA · Claude MCP 5개 자동화 · Playwright E2E</p>
   <div class="footer-btns">
     <a href="mailto:kihyun.qa@gmail.com" class="fbtn primary" style="text-decoration:none">✉ kihyun.qa@gmail.com</a>
     <a href="https://github.com/kihyunqa/qa-portfolio" class="fbtn" target="_blank" style="text-decoration:none">GitHub ↗</a>
-    <a href="https://kihyunqa-1775011951168.atlassian.net" class="fbtn" target="_blank" style="text-decoration:none;border-color:rgba(168,85,247,.2);color:var(--dim)">Jira ↗</a>
   </div>
 </div>
 
 <script>
 const pipeData = [
   {
-    acts: ['자연어 기능 명세 입력','Claude가 요구사항 분석 및 구조 파악','테스트 범위 자동 판단'],
-    result: '명세 한 줄로 <em>전체 TC 범위 설정</em>. 누락 없이 자동 커버.'
+    acts: ['기능 명세를 자연어로 입력','Claude가 요구사항을 분석해 테스트 범위를 구성'],
+    result: '명세를 입력하면 <em>TC 범위 초안</em>이 만들어집니다.'
   },
   {
-    acts: ['145건+ TC 파일 자동 생성','우선순위·전제조건·스텝 자동 포함','결과 파일 로컬 저장 완료'],
-    result: '대화 1회로 <em>145건 생성</em>.<br>작성 시간 <em>90% 감소</em>.'
+    acts: ['TC를 md 파일로 자동 생성·저장 (Filesystem MCP)','우선순위·전제조건·스텝 포함'],
+    result: '기능별 TC 문서 <em>16개</em> (testcase_*.md)'
   },
   {
-    acts: ['Playwright MCP로 브라우저 자동 제어','시나리오별 E2E 실행 및 결과 수집','실패 케이스 자동 스크린샷'],
-    result: 'TC 생성 직후 <em>자동 실행</em>.<br>수동 트리거 없음.'
+    acts: ['Playwright MCP로 브라우저 제어','로그인·결제·검색 등 E2E 시나리오 작성·실행'],
+    result: 'E2E spec <em>12개</em> (playwright-tests/)'
   },
   {
-    acts: ['GitHub MCP로 결과 파일 자동 커밋','Actions 워크플로우 자동 트리거','커밋 이력에 QA 결과 전체 보존'],
-    result: '80개+ 파일 <em>자동 배포</em>.<br>히스토리 완전 보존.'
+    acts: ['GitHub MCP로 결과 파일 커밋','TC 파일을 push하면 GitHub Actions 자동 실행'],
+    result: '커밋 이력으로 <em>변경 내역 보존</em>'
   },
   {
-    acts: ['Slack MCP로 팀 채널에 결과 알림 전송','Notion MCP로 QA 리포트 페이지 자동 생성','Jira 이슈와 TC 결과 자동 연결'],
-    result: '릴리즈 후 <em>알림·문서화 자동</em>.<br>수동 공유 0회.'
+    acts: ['Slack MCP로 팀 채널에 변경 알림 (커밋·작성자·링크)','Notion MCP로 TC 페이지 생성'],
+    result: 'TC가 바뀌면 <em>팀 채널에 자동 알림</em>'
   }
 ];
 
